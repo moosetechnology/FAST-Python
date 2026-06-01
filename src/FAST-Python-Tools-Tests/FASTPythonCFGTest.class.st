@@ -967,3 +967,69 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenElifAndElseAllBreakin
 	self assert: lastBlock statements size equals: 1.
 	self assert: (lastBlock statements first isOfType: FASTPyCall)
 ]
+
+{ #category : 'tests - while' }
+FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenElifBreakingAndElse [
+
+	| ifConditionalBlock thenBlock elifConditionalBlock elifBlock elseBlock lastBlock |
+	self buildCFGFor: 'def f(i):
+	while i < 4:
+		a()
+		if i > 2:
+			b() 
+		elif i > 1:
+			c()
+			break
+			d()
+		else:
+			e()
+	f()'.
+
+	self assert: startBlock isConditional.
+	self deny: startBlock isFinal.
+	self assert: startBlock statements size equals: 1.
+	self assert: (startBlock statements first class isOfType: FASTPyComparisonOperator).
+	self assert: startBlock nextBlocks size equals: 2.
+	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
+
+	ifConditionalBlock := startBlock nextTrueBlock.
+	self assert: ifConditionalBlock isConditional.
+	self deny: ifConditionalBlock isFinal.
+	self assert: ifConditionalBlock statements size equals: 2.
+	self assert: (ifConditionalBlock statements first isOfType: FASTPyCall).
+	self assert: (ifConditionalBlock statements second isOfType: FASTPyComparisonOperator).
+
+	thenBlock := ifConditionalBlock nextTrueBlock.
+	self deny: thenBlock isConditional.
+	self deny: thenBlock isFinal.
+	self assert: thenBlock statements size equals: 1.
+	self assert: (thenBlock statements first isOfType: FASTPyCall).
+	self assert: thenBlock nextBlock equals: startBlock.
+
+	elifConditionalBlock := ifConditionalBlock nextFalseBlock.
+	self assert: elifConditionalBlock isConditional.
+	self deny: elifConditionalBlock isFinal.
+	self assert: elifConditionalBlock statements size equals: 1.
+	self assert: (elifConditionalBlock statements first isOfType: FASTPyComparisonOperator).
+
+	elifBlock := elifConditionalBlock nextTrueBlock.
+	self deny: elifBlock isConditional.
+	self deny: elifBlock isFinal.
+	self assert: elifBlock statements size equals: 2.
+	self assert: (elifBlock statements first isOfType: FASTPyCall).
+	self assert: (elifBlock statements second isOfType: FASTPyBreakStatement).
+
+	elseBlock := elifConditionalBlock nextFalseBlock.
+	self deny: elseBlock isConditional.
+	self deny: elseBlock isFinal.
+	self assert: elseBlock statements size equals: 1.
+	self assert: (elseBlock statements first isOfType: FASTPyCall).
+	self assert: elseBlock nextBlock equals: startBlock.
+
+	lastBlock := startBlock nextFalseBlock.
+	self deny: lastBlock isNullBlock.
+	self assert: lastBlock equals: elifBlock nextBlock.
+	self assert: lastBlock isFinal.
+	self assert: lastBlock statements size equals: 1.
+	self assert: (lastBlock statements first isOfType: FASTPyCall)
+]
