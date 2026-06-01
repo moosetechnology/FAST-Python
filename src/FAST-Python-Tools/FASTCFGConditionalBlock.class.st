@@ -72,3 +72,15 @@ FASTCFGConditionalBlock >> nextTrueBlock [
 
 	^ self nextBlocks first
 ]
+
+{ #category : 'printing' }
+FASTCFGConditionalBlock >> printOn: aStrem [
+
+	super printOn: aStrem.
+
+	self statements ifNotEmpty: [
+			aStrem
+				nextPutAll: ' [ ';
+				nextPutAll: self statements last sourceCode;
+				nextPutAll: ' ]' ]
+]

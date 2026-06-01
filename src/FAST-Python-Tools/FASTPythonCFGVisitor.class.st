@@ -39,8 +39,10 @@ FASTPythonCFGVisitor >> visitFASTPyConditionalExpression: aConditionalExpression
 FASTPythonCFGVisitor >> visitFASTPyElifClause: anElifClause [
 
 	self visitFASTTConditionalStatement: anElifClause.
-
-	self buildAndUseConditionalDuring: [ self visitFASTTStatementBlock: anElifClause ]
+	
+	"In the case of the elif, the else clause is in the parent and not here. So we create a conditional that will be automatically popped when we will finalize the containing if."
+	self buildNewConditional.
+	self visitFASTTStatementBlock: anElifClause
 ]
 
 { #category : 'visiting' }

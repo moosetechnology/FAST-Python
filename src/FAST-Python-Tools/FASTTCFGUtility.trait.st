@@ -34,13 +34,16 @@ FASTTCFGUtility >> allBlocks [
 FASTTCFGUtility >> buildAndUseConditionalDuring: aBlock [
 
 	| conditional |
-	[
-		conditional := self buildBlockOfType: FASTCFGConditionalBlock.
-		currentConditionals push: conditional.
+	conditional := self buildNewConditional.
 
-		aBlock value ] ensure: [
-			self assert: conditional == currentConditionals top description: 'The top conditional does not match the one produced before the execution of the block'.
-			^ currentConditionals pop ]
+	aBlock value.
+	
+	"Sometimes it is possible that we will need to pop multiple conditionals. 
+	For example, in the case of elif. Usually the elif contains the `then` block but not the `else`. The else will be either the next elif, or next else or next block after the if.
+	In that case, #buildNewConditional allows to push conditional blocks that I will clause with the containing conditional here. "
+	[ conditional == currentConditionals top ] whileFalse: [ currentConditionals pop ].
+
+	^ currentConditionals pop
 ]
 
 { #category : 'running' }
@@ -84,6 +87,15 @@ FASTTCFGUtility >> buildCFGForModel: aFASTModel [
 	^ startBlock
 ]
 
+{ #category : 'running' }
+FASTTCFGUtility >> buildNewConditional [
+
+	| conditional |
+	conditional := self buildBlockOfType: FASTCFGConditionalBlock.
+	currentConditionals push: conditional.
+	^ conditional
+]
+
 { #category : 'accessing' }
 FASTTCFGUtility >> currentStatements [
 	^ currentStatements
@@ -123,5 +135,5 @@ FASTTCFGUtility >> shouldBuildNullBlock [
 
 	(self allBlocks select: [ :block | block isConditional and: [ block isFull not ] ]) ifNotEmpty: [ ^ true ].
 
-	^ (self allBlocks reject: #isFinal) size = 1
+	^ (self allBlocks select: #isFinal) size > 1
 ]
