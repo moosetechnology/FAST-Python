@@ -74,13 +74,16 @@ FASTCFGConditionalBlock >> nextTrueBlock [
 ]
 
 { #category : 'printing' }
-FASTCFGConditionalBlock >> printOn: aStrem [
+FASTCFGConditionalBlock >> printOn: aStream [
 
-	super printOn: aStrem.
-
+	super printOn: aStream.
+	
+	"Printing the condition since it is the most important part of the block"
 	self statements ifNotEmpty: [
-			aStrem
-				nextPutAll: ' [ ';
+			aStream nextPutAll: ' [ '.
+
+			self statements size > 1 ifTrue: [ aStream nextPutAll: ' ... ' ].
+			aStream
 				nextPutAll: self statements last sourceCode;
 				nextPutAll: ' ]' ]
 ]

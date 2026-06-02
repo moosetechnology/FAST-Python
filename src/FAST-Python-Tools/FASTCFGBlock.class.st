@@ -52,3 +52,18 @@ FASTCFGBlock >> nextBlocks [
 		  ifNil: [ Array empty ]
 		  ifNotNil: [ { self nextBlock } ]
 ]
+
+{ #category : 'printing' }
+FASTCFGBlock >> printOn: aStream [
+
+	super printOn: aStream.
+	
+	"Printing the condition since it is the most important part of the block"
+	self statements ifNotEmpty: [
+			aStream
+				nextPutAll: ' [ ';
+				nextPutAll: self statements first sourceCode.
+
+			self statements size > 1 ifTrue: [ aStream nextPutAll: ' ... ' ].
+			aStream nextPutAll: ' ]' ]
+]
