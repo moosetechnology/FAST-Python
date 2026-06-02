@@ -3,9 +3,7 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'conditional',
-		'trueBlocks',
-		'falseBlocks',
-		'isOpen',
+		'currentBlocks',
 		'isLoop'
 	],
 	#category : 'FAST-Python-Tools-CFG/DataFlow',
@@ -16,24 +14,7 @@ Class {
 { #category : 'adding' }
 FASTCFGContextEntry >> addBlock: aBlock [
 
-	isOpen
-		ifTrue: [ trueBlocks add: aBlock ]
-		ifFalse: [ falseBlocks add: aBlock ]
-]
-
-{ #category : 'accessing' }
-FASTCFGContextEntry >> blocksInCurrentBranch [
-	"If we are in a true branch, return the blocks of the true branch. Else, return the blocks of the false branch."
-
-	^ self isOpen
-		  ifTrue: [ self trueBlocks ]
-		  ifFalse: [ self falseBlocks ]
-]
-
-{ #category : 'accessing' }
-FASTCFGContextEntry >> close [
-
-	isOpen := false
+	currentBlocks add: aBlock
 ]
 
 { #category : 'accessing' }
@@ -47,17 +28,27 @@ FASTCFGContextEntry >> conditional: anObject [
 ]
 
 { #category : 'accessing' }
-FASTCFGContextEntry >> falseBlocks [
-	^ falseBlocks
+FASTCFGContextEntry >> currentBlocks [
+	"Reutrn the blocks that were already built in the current branch of the context entry I represent.
+	
+	At first it will be the blocks of the true branch. Once we close it once, it will be the blocks of the false branch.
+	
+	This is useful in order to know if a block we are creating is the first one of a branch or of it should follow already existing blocks.."
+
+	^ currentBlocks
+]
+
+{ #category : 'accessing' }
+FASTCFGContextEntry >> flushCurrentBlocks [
+
+	currentBlocks := OrderedCollection new
 ]
 
 { #category : 'initialization' }
 FASTCFGContextEntry >> initialize [
 
 	super initialize.
-	trueBlocks := OrderedCollection new.
-	falseBlocks := OrderedCollection new.
-	isOpen := true.
+	currentBlocks := OrderedCollection new.
 	isLoop := false
 ]
 
@@ -69,11 +60,6 @@ FASTCFGContextEntry >> isLoop [
 { #category : 'accessing' }
 FASTCFGContextEntry >> isLoop: anObject [
 	isLoop := anObject
-]
-
-{ #category : 'accessing' }
-FASTCFGContextEntry >> isOpen [
-	^ isOpen
 ]
 
 { #category : 'printing' }
@@ -88,9 +74,4 @@ FASTCFGContextEntry >> printOn: aStream [
 	aStream nextPutAll: ' ]'.
 
 	self isLoop ifTrue: [ aStream nextPutAll: ' - Loop' ]
-]
-
-{ #category : 'accessing' }
-FASTCFGContextEntry >> trueBlocks [
-	^ trueBlocks
 ]

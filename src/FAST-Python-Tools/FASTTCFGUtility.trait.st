@@ -109,7 +109,7 @@ FASTTCFGUtility >> currentStatements [
 FASTTCFGUtility >> endBlock [
 
 	self buildBlockIfNeeded.
-	context top close
+	context top flushCurrentBlocks
 ]
 
 { #category : 'running' }
@@ -141,7 +141,7 @@ FASTTCFGUtility >> managePreviousBlocksOf: newBlock [
 
 	topContext := context top.
 
-	topContext blocksInCurrentBranch ifEmpty: [ topContext conditional addNextBlock: newBlock ] ifNotEmpty: [ :blocksAtScope |
+	topContext currentBlocks ifEmpty: [ topContext conditional addNextBlock: newBlock ] ifNotEmpty: [ :blocksAtScope |
 			(blocksAtScope flatCollect: #withAllFollowingBlocks)
 				reject: [ :block | block isFull ]
 				thenDo: [ :block | block addNextBlock: newBlock ] ]
