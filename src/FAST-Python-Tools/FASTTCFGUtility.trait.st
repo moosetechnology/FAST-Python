@@ -3,7 +3,7 @@ Trait {
 	#instVars : [
 		'startBlock',
 		'currentStatements',
-		'currentConditionals'
+		'context'
 	],
 	#category : 'FAST-Python-Tools-CFG/DataFlow',
 	#package : 'FAST-Python-Tools',
@@ -41,16 +41,20 @@ FASTTCFGUtility >> buildAndUseConditionalDuring: aBlock [
 	"Sometimes it is possible that we will need to pop multiple conditionals. 
 	For example, in the case of elif. Usually the elif contains the `then` block but not the `else`. The else will be either the next elif, or next else or next block after the if.
 	In that case, #buildNewConditional allows to push conditional blocks that I will clause with the containing conditional here. "
-	[ conditional == currentConditionals top ] whileFalse: [ currentConditionals pop ].
+	[ conditional == context top conditional ] whileFalse: [ context pop ].
 
-	^ currentConditionals pop
+	context pop.
+	^ conditional
 ]
 
 { #category : 'running' }
 FASTTCFGUtility >> buildAndUseLoopDuring: aBlock [
 	"For loops, we do an extra step compared to conditionals in order to build the loops if needed."
 
-	self finializeLoop: (self buildAndUseConditionalDuring: aBlock)
+	self finializeLoop: (self buildAndUseConditionalDuring: [
+				"In order to be able to manage the breaks correctly, we need to know if we are in a loop or not. So I give the information to the context."
+				 context top isLoop: true.
+				 aBlock value ])
 ]
 
 { #category : 'running' }
@@ -71,9 +75,7 @@ FASTTCFGUtility >> buildBlockOfType: aBlockClass [
 
 	self managePreviousBlocksOf: newBlock.
 
-	startBlock ifNil: [
-			startBlock := newBlock.
-			newBlock isStart: true ].
+	context top addBlock: newBlock.
 
 	^ newBlock
 ]
@@ -92,13 +94,22 @@ FASTTCFGUtility >> buildNewConditional [
 
 	| conditional |
 	conditional := self buildBlockOfType: FASTCFGConditionalBlock.
-	currentConditionals push: conditional.
+	context push: (FASTCFGContextEntry new
+			 conditional: conditional;
+			 yourself).
 	^ conditional
 ]
 
 { #category : 'accessing' }
 FASTTCFGUtility >> currentStatements [
 	^ currentStatements
+]
+
+{ #category : 'running' }
+FASTTCFGUtility >> endBlock [
+
+	self buildBlockIfNeeded.
+	context top close
 ]
 
 { #category : 'running' }
@@ -113,7 +124,8 @@ FASTTCFGUtility >> finializeLoop: loop [
 { #category : 'initialization' }
 FASTTCFGUtility >> initializeCFG [
 
-	currentConditionals := Stack new.
+	context := Stack new.
+	context push: FASTCFGContextEntry new.
 	currentStatements := OrderedCollection new
 ]
 
@@ -121,12 +133,18 @@ FASTTCFGUtility >> initializeCFG [
 FASTTCFGUtility >> managePreviousBlocksOf: newBlock [
 	"If we are in a conditional, we add ourself there. Else we add ourself in all non finished conditionals and to their ."
 
-	currentConditionals
-		ifEmpty: [
-				self allBlocks
-					reject: #isFull
-					thenDo: [ :block | block addNextBlock: newBlock ] ]
-		ifNotEmpty: [ currentConditionals top addNextBlock: newBlock ]
+	| topContext |
+	startBlock ifNil: [
+			startBlock := newBlock.
+			newBlock isStart: true.
+			^ self ].
+
+	topContext := context top.
+
+	topContext blocksInCurrentBranch ifEmpty: [ topContext conditional addNextBlock: newBlock ] ifNotEmpty: [ :blocksAtScope |
+			(blocksAtScope flatCollect: #withAllFollowingBlocks)
+				reject: [ :block | block isFull ]
+				thenDo: [ :block | block addNextBlock: newBlock ] ]
 ]
 
 { #category : 'asserting' }

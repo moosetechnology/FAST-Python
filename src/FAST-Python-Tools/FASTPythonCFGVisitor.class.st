@@ -30,7 +30,7 @@ FASTPythonCFGVisitor >> visitFASTPyConditionalExpression: aConditionalExpression
 
 	self buildAndUseConditionalDuring: [
 			self addStatement: aConditionalExpression thenExpression.
-			self buildBlockIfNeeded.
+			self endBlock.
 			self addStatement: aConditionalExpression elseExpression.
 			self buildBlockIfNeeded ]
 ]
@@ -126,9 +126,8 @@ FASTPythonCFGVisitor >> visitFASTTStatementBlock: aFASTTStatementBlock [
 	"We do not consider the block as a statemert.
 	Also, once we are done with a block, if we encountered statements we produce a new normal block with them."
 
-	[
-		self visitCollection: aFASTTStatementBlock statements.
-		self buildBlockIfNeeded ]
+	[ self visitCollection: aFASTTStatementBlock statements ]
 		on: FASTCFGBreakEncountered
-		do: [ "End visit of the block and resume the rest of the visit." self buildBlockIfNeeded ]
+		do: [ "End visit of the block and resume the rest of the visit." ].
+	self endBlock
 ]
