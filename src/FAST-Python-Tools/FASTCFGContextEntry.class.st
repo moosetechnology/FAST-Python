@@ -3,13 +3,20 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'conditional',
-		'currentBlocks',
-		'isLoop'
+		'currentBlocks'
 	],
 	#category : 'FAST-Python-Tools-CFG/DataFlow',
 	#package : 'FAST-Python-Tools',
 	#tag : 'CFG/DataFlow'
 }
+
+{ #category : 'accessing' }
+FASTCFGContextEntry class >> conditional: aConditionalBlock [
+
+	^ self new
+		  conditional: aConditionalBlock;
+		  yourself
+]
 
 { #category : 'adding' }
 FASTCFGContextEntry >> addBlock: aBlock [
@@ -48,18 +55,15 @@ FASTCFGContextEntry >> flushCurrentBlocks [
 FASTCFGContextEntry >> initialize [
 
 	super initialize.
-	currentBlocks := OrderedCollection new.
-	isLoop := false
+	currentBlocks := OrderedCollection new
 ]
 
 { #category : 'accessing' }
 FASTCFGContextEntry >> isLoop [
-	^ isLoop
-]
 
-{ #category : 'accessing' }
-FASTCFGContextEntry >> isLoop: anObject [
-	isLoop := anObject
+	^ self conditional
+		  ifNil: [ false ]
+		  ifNotNil: #isLoop
 ]
 
 { #category : 'printing' }
@@ -71,7 +75,5 @@ FASTCFGContextEntry >> printOn: aStream [
 	self conditional
 		ifNil: [ aStream nextPutAll: 'Root' ]
 		ifNotNil: [ self conditional printOn: aStream ].
-	aStream nextPutAll: ' ]'.
-
-	self isLoop ifTrue: [ aStream nextPutAll: ' - Loop' ]
+	aStream nextPutAll: ' ]'
 ]

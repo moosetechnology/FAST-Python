@@ -2,8 +2,7 @@ Class {
 	#name : 'FASTPythonCFGTest',
 	#superclass : 'TestCase',
 	#instVars : [
-		'startBlock',
-		'visitor'
+		'startBlock'
 	],
 	#category : 'FAST-Python-Tools-Tests',
 	#package : 'FAST-Python-Tools-Tests'
@@ -865,6 +864,61 @@ FASTPythonCFGTest >> testFunctionWithWhile [
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: nullBlock isFinal
+]
+
+{ #category : 'tests - while' }
+FASTPythonCFGTest >> testFunctionWithWhileBreakingInWhile [
+
+	| trueWhile whileConditionalBlock2 thenBlock elseBlock lastBlock |
+	self buildCFGFor: 'def f(i):
+	while i < 4:
+		a()
+		while i < 2:
+			b() 
+			break
+			c()
+		d()
+	e()'.
+
+	self assert: startBlock isConditional.
+	self deny: startBlock isFinal.
+	self assert: startBlock statements size equals: 1.
+	self assert: (startBlock statements first class isOfType: FASTPyComparisonOperator).
+	self assert: startBlock nextBlocks size equals: 2.
+	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
+	
+	trueWhile := startBlock nextTrueBlock.
+	self deny: trueWhile isConditional.
+	self deny: trueWhile isFinal.
+	self assert: trueWhile statements size equals: 1.
+	self assert: (trueWhile statements first isOfType: FASTPyCall).
+	
+	whileConditionalBlock2 := trueWhile nextBlock.
+	self assert: whileConditionalBlock2 isConditional.
+	self deny: whileConditionalBlock2 isFinal.
+	self assert: whileConditionalBlock2 statements size equals: 1.
+	self assert: (whileConditionalBlock2 statements first isOfType: FASTPyComparisonOperator).
+
+	thenBlock := whileConditionalBlock2 nextTrueBlock.
+	self deny: thenBlock isConditional.
+	self deny: thenBlock isFinal.
+	self assert: thenBlock statements size equals: 2.
+	self assert: (thenBlock statements first isOfType: FASTPyCall).
+	self assert: (thenBlock statements second isOfType: FASTPyBreakStatement).
+
+	elseBlock := whileConditionalBlock2 nextFalseBlock.
+	self deny: elseBlock isConditional.
+	self deny: elseBlock isFinal.
+	self assert: elseBlock statements size equals: 1.
+	self assert: (elseBlock statements first isOfType: FASTPyCall).
+	self assert: elseBlock equals: thenBlock nextBlock.
+	self assert: elseBlock nextBlock equals: startBlock.
+
+	lastBlock := startBlock nextFalseBlock.
+	self deny: lastBlock isNullBlock.
+	self assert: lastBlock isFinal.
+	self assert: lastBlock statements size equals: 1.
+	self assert: (lastBlock statements first isOfType: FASTPyCall)
 ]
 
 { #category : 'tests - while' }

@@ -2,7 +2,8 @@ Class {
 	#name : 'FASTCFGConditionalBlock',
 	#superclass : 'FASTCFGAbstractBlock',
 	#instVars : [
-		'nextBlocks'
+		'nextBlocks',
+		'isLoop'
 	],
 	#category : 'FAST-Python-Tools-CFG/DataFlow',
 	#package : 'FAST-Python-Tools',
@@ -29,7 +30,8 @@ FASTCFGConditionalBlock >> endsWithBreakStatement [
 FASTCFGConditionalBlock >> initialize [
 
 	super initialize.
-	nextBlocks := OrderedCollection new: 2 "There will be only a true and false next blocks."
+	nextBlocks := OrderedCollection new: 2. "There will be only a true and false next blocks."
+	isLoop := false
 ]
 
 { #category : 'testing' }
@@ -43,6 +45,16 @@ FASTCFGConditionalBlock >> isFull [
 	"I return true if both my true and false next block are resolved."
 
 	^ self nextBlocks size = 2
+]
+
+{ #category : 'accessing' }
+FASTCFGConditionalBlock >> isLoop [
+	^ isLoop
+]
+
+{ #category : 'accessing' }
+FASTCFGConditionalBlock >> isLoop: anObject [
+	isLoop := anObject
 ]
 
 { #category : 'accessing' }
@@ -85,5 +97,7 @@ FASTCFGConditionalBlock >> printOn: aStream [
 			self statements size > 1 ifTrue: [ aStream nextPutAll: ' ... ' ].
 			aStream
 				nextPutAll: self statements last sourceCode;
-				nextPutAll: ' ]' ]
+				nextPutAll: ' ]' ].
+
+	self isLoop ifTrue: [ aStream nextPutAll: ' - Loop' ]
 ]

@@ -36,7 +36,7 @@ FASTTCFGUtility >> buildAndUseConditionalDuring: aBlock [
 	| conditional |
 	conditional := self buildNewConditional.
 
-	aBlock value.
+	aBlock cull: conditional.
 	
 	"Sometimes it is possible that we will need to pop multiple conditionals. 
 	For example, in the case of elif. Usually the elif contains the `then` block but not the `else`. The else will be either the next elif, or next else or next block after the if.
@@ -51,10 +51,11 @@ FASTTCFGUtility >> buildAndUseConditionalDuring: aBlock [
 FASTTCFGUtility >> buildAndUseLoopDuring: aBlock [
 	"For loops, we do an extra step compared to conditionals in order to build the loops if needed."
 
-	self finializeLoop: (self buildAndUseConditionalDuring: [
-				"In order to be able to manage the breaks correctly, we need to know if we are in a loop or not. So I give the information to the context."
-				 context top isLoop: true.
-				 aBlock value ])
+	self buildAndUseConditionalDuring: [ :loop |
+			"In order to be able to manage the breaks correctly, we need to know if the conditional is a loop or not."
+			loop isLoop: true.
+			aBlock cull: loop.
+			self finializeLoop: loop ]
 ]
 
 { #category : 'running' }
@@ -96,9 +97,7 @@ FASTTCFGUtility >> buildNewConditional [
 
 	| conditional |
 	conditional := self buildBlockOfType: FASTCFGConditionalBlock.
-	context push: (FASTCFGContextEntry new
-			 conditional: conditional;
-			 yourself).
+	context push: (FASTCFGContextEntry conditional: conditional).
 	^ conditional
 ]
 
@@ -120,7 +119,7 @@ FASTTCFGUtility >> finializeLoop: loop [
 	"When we close a loop, we check all blocks that are not full and that do not end with a break to create the loop."
 
 	loop allFollowingBlocks
-		reject: [ :block | block isFull or: [ block endsWithBreakStatement ] ]
+		reject: [ :block | block isFull or: [ block shouldBreakLoop: loop inContext: context ] ]
 		thenDo: [ :block | block addNextBlock: loop ]
 ]
 
@@ -145,7 +144,7 @@ FASTTCFGUtility >> managePreviousBlocksOf: newBlock [
 	topContext := context top.
 
 	topContext currentBlocks ifEmpty: [ topContext conditional addNextBlock: newBlock ] ifNotEmpty: [ :blocksAtScope |
-			(blocksAtScope flatCollect: #withAllFollowingBlocks)
+			(blocksAtScope flatCollectAsSet: #withAllFollowingBlocks)
 				reject: [ :block | block isFull or: [ block shouldBreakInContext: context ] ]
 				thenDo: [ :block | block addNextBlock: newBlock ] ]
 ]

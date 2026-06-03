@@ -35,6 +35,16 @@ FASTCFGAbstractBlock >> endsWithBreakStatement [
 	^ self subclassResponsibility
 ]
 
+{ #category : 'accessing' }
+FASTCFGAbstractBlock >> firstParentLoop [
+	"I return the first loop containing myself.
+	This is useful to know which loop a node ending with a break statement will break."
+
+	self deep: #previousBlocks do: [ :parent | parent isLoop ifTrue: [ ^ parent ] ].
+
+	^ nil
+]
+
 { #category : 'initialization' }
 FASTCFGAbstractBlock >> initialize [
 
@@ -71,6 +81,12 @@ FASTCFGAbstractBlock >> isFinal [
 ]
 
 { #category : 'testing' }
+FASTCFGAbstractBlock >> isLoop [
+
+	^ false
+]
+
+{ #category : 'testing' }
 FASTCFGAbstractBlock >> isNullBlock [
 
 	^ false
@@ -99,11 +115,23 @@ FASTCFGAbstractBlock >> previousBlocks [
 
 { #category : 'asserting' }
 FASTCFGAbstractBlock >> shouldBreakInContext: context [
-	"I should breack this node if it's a breack and that we are currently visiting a loop. This node is breaking the loop in all cases of the current branch. "
+	"I should break this node if it's a break and that we are currently visiting the first loop containing the break."
+
+	^ self firstParentLoop
+		  ifNil: [ false ]
+		  ifNotNil: [ :loop | self shouldBreakLoop: loop inContext: context ]
+]
+
+{ #category : 'asserting' }
+FASTCFGAbstractBlock >> shouldBreakLoop: aLoop inContext: context [
+	"I should break this node if it's a break and that we are currently visiting the loop as parameter."
 
 	self endsWithBreakStatement ifFalse: [ ^ false ].
 
-	^ context anySatisfy: #isLoop
+	^ context
+		  detect: #isLoop
+		  ifFound: [ :loop | loop conditional = aLoop ]
+		  ifNone: [ false ]
 ]
 
 { #category : 'accessing' }
