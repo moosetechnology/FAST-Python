@@ -143,7 +143,7 @@ FASTTCFGUtility >> managePreviousBlocksOf: newBlock [
 
 	topContext currentBlocks ifEmpty: [ topContext conditional addNextBlock: newBlock ] ifNotEmpty: [ :blocksAtScope |
 			(blocksAtScope flatCollect: #withAllFollowingBlocks)
-				reject: [ :block | block isFull ]
+				reject: [ :block | block isFull or: [ block shouldBreakInContext: context ] ]
 				thenDo: [ :block | block addNextBlock: newBlock ] ]
 ]
 

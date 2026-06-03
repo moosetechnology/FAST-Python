@@ -29,6 +29,12 @@ FASTCFGAbstractBlock >> allFollowingBlocks [
 	^ self deep: #nextBlocks collect: #yourself
 ]
 
+{ #category : 'testing' }
+FASTCFGAbstractBlock >> endsWithBreakStatement [
+
+	^ self subclassResponsibility
+]
+
 { #category : 'initialization' }
 FASTCFGAbstractBlock >> initialize [
 
@@ -89,6 +95,15 @@ FASTCFGAbstractBlock >> nextBlocks [
 { #category : 'accessing' }
 FASTCFGAbstractBlock >> previousBlocks [
 	^ previousBlocks
+]
+
+{ #category : 'asserting' }
+FASTCFGAbstractBlock >> shouldBreakInContext: context [
+	"I should breack this node if it's a breack and that we are currently visiting a loop. This node is breaking the loop in all cases of the current branch. "
+
+	self endsWithBreakStatement ifFalse: [ ^ false ].
+
+	^ context anySatisfy: #isLoop
 ]
 
 { #category : 'accessing' }

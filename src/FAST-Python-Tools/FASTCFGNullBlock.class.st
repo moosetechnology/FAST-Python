@@ -13,6 +13,13 @@ FASTCFGNullBlock >> addNextBlock: aBlock [
 ]
 
 { #category : 'testing' }
+FASTCFGNullBlock >> endsWithBreakStatement [
+	"I cannot contain a breack"
+
+	^ false
+]
+
+{ #category : 'testing' }
 FASTCFGNullBlock >> isNullBlock [
 
 	^ true

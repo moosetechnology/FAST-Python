@@ -985,7 +985,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThen2 [
         break
         c()
       d()'.
-	self skip. "To fix"
+
 	self assert: startBlock isConditional.
 	self deny: startBlock isFinal.
 	self assert: startBlock statements size equals: 1.
@@ -1015,7 +1015,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThen2 [
 
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: endOfWhile nextBlock equals: nullBlock.
+	self assert: thenBlock nextBlock equals: nullBlock.
 	self assert: nullBlock isFinal
 ]
 
@@ -1273,7 +1273,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithIfInElif [
 		else:
 			e()
 	f()'.
-	self skip. "Not working for now because break are not well managed"
+
 	self assert: startBlock isConditional.
 	self deny: startBlock isFinal.
 	self assert: startBlock statements size equals: 1.
