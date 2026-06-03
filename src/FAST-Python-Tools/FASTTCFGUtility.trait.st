@@ -59,7 +59,9 @@ FASTTCFGUtility >> buildAndUseLoopDuring: aBlock [
 
 { #category : 'running' }
 FASTTCFGUtility >> buildBlockIfNeeded [
-	"If we have statements stocked, we create a new block with them. Else we do nothing."
+	"If we have statements stocked, we create a new block with them. Else we do nothing.
+	
+	If I should be call at the closing of a statement block in the AST visit, then you should call #endBlock instead."
 
 	self currentStatements ifEmpty: [ ^ self ].
 	^ self buildBlockOfType: FASTCFGBlock
@@ -107,6 +109,7 @@ FASTTCFGUtility >> currentStatements [
 
 { #category : 'running' }
 FASTTCFGUtility >> endBlock [
+	"I declare that we are ending the visit of a statement block. I'll build a new block with the current statements and then I'll flush the current blocks of the top context entry. In case we where visiting the true side of a conditional, this will mark the shift to the false side of the conditional."
 
 	self buildBlockIfNeeded.
 	context top flushCurrentBlocks

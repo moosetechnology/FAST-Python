@@ -1257,6 +1257,61 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenElifBreakingAndElse [
 ]
 
 { #category : 'tests - while' }
+FASTPythonCFGTest >> testFunctionWithWhileWithBreakingIfThenElse [
+
+	| ifConditionalBlock thenBlock elseBlock lastBlock |
+	self buildCFGFor: 'def f(i):
+	while i < 4:
+		a()
+		if i > 2:
+			b() 
+			break
+			c()
+		else:
+			d()
+			break
+			e()
+		f()
+	g()'.
+
+	self assert: startBlock isConditional.
+	self deny: startBlock isFinal.
+	self assert: startBlock statements size equals: 1.
+	self assert: (startBlock statements first class isOfType: FASTPyComparisonOperator).
+	self assert: startBlock nextBlocks size equals: 2.
+	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
+
+	ifConditionalBlock := startBlock nextTrueBlock.
+	self assert: ifConditionalBlock isConditional.
+	self deny: ifConditionalBlock isFinal.
+	self assert: ifConditionalBlock statements size equals: 2.
+	self assert: (ifConditionalBlock statements first isOfType: FASTPyCall).
+	self assert: (ifConditionalBlock statements second isOfType: FASTPyComparisonOperator).
+
+	thenBlock := ifConditionalBlock nextTrueBlock.
+	self deny: thenBlock isConditional.
+	self deny: thenBlock isFinal.
+	self assert: thenBlock statements size equals: 2.
+	self assert: (thenBlock statements first isOfType: FASTPyCall).
+	self assert: (thenBlock statements second isOfType: FASTPyBreakStatement).
+
+	elseBlock := ifConditionalBlock nextFalseBlock.
+	self deny: elseBlock isConditional.
+	self deny: elseBlock isFinal.
+	self assert: elseBlock statements size equals: 2.
+	self assert: (elseBlock statements first isOfType: FASTPyCall).
+	self assert: (elseBlock statements second isOfType: FASTPyBreakStatement).
+
+	lastBlock := startBlock nextFalseBlock.
+	self deny: lastBlock isNullBlock.
+	self assert: lastBlock equals: thenBlock nextBlock.
+	self assert: lastBlock equals: elseBlock nextBlock.
+	self assert: lastBlock isFinal.
+	self assert: lastBlock statements size equals: 1.
+	self assert: (lastBlock statements first isOfType: FASTPyCall)
+]
+
+{ #category : 'tests - while' }
 FASTPythonCFGTest >> testFunctionWithWhileWithIfInElif [
 
 	| ifConditionalBlock thenBlock elifConditionalBlock ifConditionalBlock2 thenBlock2 endOfElifBlock elseBlock lastBlock |
