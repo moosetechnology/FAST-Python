@@ -1,6 +1,6 @@
 Class {
 	#name : 'FASTCFGConditionalBlock',
-	#superclass : 'FASTCFGAbstractBlock',
+	#superclass : 'FASTCFGAbstractConditionalBlock',
 	#instVars : [
 		'nextBlocks',
 		'isLoop'
@@ -19,25 +19,12 @@ FASTCFGConditionalBlock >> addNextBlock: aBlock [
 	^ self nextBlocks add: aBlock
 ]
 
-{ #category : 'testing' }
-FASTCFGConditionalBlock >> endsWithBreakStatement [
-	"I return true if I have my two next blocks and they both end with a break statement."
-
-	^ self isFull and: [ self nextBlocks allSatisfy: #endsWithBreakStatement ]
-]
-
 { #category : 'initialization' }
 FASTCFGConditionalBlock >> initialize [
 
 	super initialize.
 	nextBlocks := OrderedCollection new: 2. "There will be only a true and false next blocks."
 	isLoop := false
-]
-
-{ #category : 'testing' }
-FASTCFGConditionalBlock >> isConditional [
-
-	^ true
 ]
 
 { #category : 'testing' }
@@ -89,15 +76,6 @@ FASTCFGConditionalBlock >> nextTrueBlock [
 FASTCFGConditionalBlock >> printOn: aStream [
 
 	super printOn: aStream.
-	
-	"Printing the condition since it is the most important part of the block"
-	self statements ifNotEmpty: [
-			aStream nextPutAll: ' [ '.
-
-			self statements size > 1 ifTrue: [ aStream nextPutAll: ' ... ' ].
-			aStream
-				nextPutAll: self statements last sourceCode;
-				nextPutAll: ' ]' ].
 
 	self isLoop ifTrue: [ aStream nextPutAll: ' - Loop' ]
 ]

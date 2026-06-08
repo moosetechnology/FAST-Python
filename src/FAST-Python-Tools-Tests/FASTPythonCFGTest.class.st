@@ -1292,6 +1292,61 @@ FASTPythonCFGTest >> testFunctionWithIfThenInIfThenElse [
 	self assert: nullBlock isFinal
 ]
 
+{ #category : 'tests - match' }
+FASTPythonCFGTest >> testFunctionWithMatch [
+
+	| case1 case2 defaultCase lastBlock |
+	self buildCFGFor: 'def f(day):
+	a()
+	match day:
+		case "Saturday" | "Sunday":
+			print(f"{day} is a weekend.")
+		case "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday":
+			print(f"{day} is a weekday.")
+		case _:
+			print("That''s not a valid day of the week.")
+	b()'.
+
+	self assert: startBlock isConditional.
+	self assert: startBlock isSwitch.
+	self deny: startBlock isFinal.
+	self assert: startBlock statements size equals: 2.
+	self assert: (startBlock statements first class isOfType: FASTPyCall).
+	self assert: (startBlock statements second class isOfType: FASTPyIdentifier).
+	self assert: startBlock nextBlocks size equals: 3.
+	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
+
+	self assert: ((startBlock associations at: 1) key isOfType: FASTPyUnionPattern).
+	case1 := (startBlock associations at: 1) value.
+	self deny: case1 isConditional.
+	self deny: case1 isFinal.
+	self assert: case1 statements size equals: 1.
+	self assert: (case1 statements first isOfType: FASTPyCall).
+
+	self assert: ((startBlock associations at: 2) key isOfType: FASTPyUnionPattern).
+	case2 := (startBlock associations at: 2) value.
+	self deny: case1 isConditional.
+	self deny: case1 isFinal.
+	self assert: case1 statements size equals: 1.
+	self assert: (case1 statements first isOfType: FASTPyCall).
+
+	self assert: ((startBlock associations at: 3) key isOfType: nil).
+	defaultCase := (startBlock associations at: 3) value.
+	self assert: defaultCase equals: startBlock defaultCase.
+	self deny: case1 isConditional.
+	self deny: case1 isFinal.
+	self assert: case1 statements size equals: 1.
+	self assert: (case1 statements first isOfType: FASTPyCall).
+
+	lastBlock := case1 nextBlock.
+	self deny: lastBlock isNullBlock.
+	self assert: lastBlock equals: case2 nextBlock.
+	self assert: lastBlock equals: defaultCase nextBlock.
+	self assert: lastBlock isFinal.
+	self assert: lastBlock statements size equals: 1.
+	self assert: (lastBlock statements first isOfType: FASTPyCall)
+]
+
 { #category : 'tests' }
 FASTPythonCFGTest >> testFunctionWithOneStatement [
 

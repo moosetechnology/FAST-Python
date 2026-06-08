@@ -81,6 +81,13 @@ FASTCFGAbstractBlock >> isFinal [
 ]
 
 { #category : 'testing' }
+FASTCFGAbstractBlock >> isFull [
+	"A node is full when it had all its next block set."
+
+	^ self subclassResponsibility
+]
+
+{ #category : 'testing' }
 FASTCFGAbstractBlock >> isLoop [
 
 	^ false
@@ -100,6 +107,18 @@ FASTCFGAbstractBlock >> isStart [
 { #category : 'accessing' }
 FASTCFGAbstractBlock >> isStart: anObject [
 	isStart := anObject
+]
+
+{ #category : 'testing' }
+FASTCFGAbstractBlock >> isSwitch [
+
+	^ false
+]
+
+{ #category : 'accessing' }
+FASTCFGAbstractBlock >> nextBlockForValues [
+
+	^ self subclassResponsibility
 ]
 
 { #category : 'accessing' }

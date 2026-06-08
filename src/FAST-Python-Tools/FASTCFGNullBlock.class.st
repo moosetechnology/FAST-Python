@@ -20,9 +20,22 @@ FASTCFGNullBlock >> endsWithBreakStatement [
 ]
 
 { #category : 'testing' }
+FASTCFGNullBlock >> isFull [
+	"I never have a next block"
+
+	^ true
+]
+
+{ #category : 'testing' }
 FASTCFGNullBlock >> isNullBlock [
 
 	^ true
+]
+
+{ #category : 'accessing' }
+FASTCFGNullBlock >> nextBlockForValues [
+
+	^ {  }
 ]
 
 { #category : 'accessing' }
