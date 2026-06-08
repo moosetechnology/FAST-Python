@@ -1316,22 +1316,22 @@ FASTPythonCFGTest >> testFunctionWithMatch [
 	self assert: startBlock nextBlocks size equals: 3.
 	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
 
-	self assert: ((startBlock associations at: 1) key isOfType: FASTPyUnionPattern).
-	case1 := (startBlock associations at: 1) value.
+	self assert: ((startBlock patterns at: 1) isOfType: FASTPyUnionPattern).
+	case1 := startBlock nextBlocks at: 1.
 	self deny: case1 isConditional.
 	self deny: case1 isFinal.
 	self assert: case1 statements size equals: 1.
 	self assert: (case1 statements first isOfType: FASTPyCall).
 
-	self assert: ((startBlock associations at: 2) key isOfType: FASTPyUnionPattern).
-	case2 := (startBlock associations at: 2) value.
+	self assert: ((startBlock patterns at: 2) isOfType: FASTPyUnionPattern).
+	case2 := startBlock nextBlocks at: 2.
 	self deny: case1 isConditional.
 	self deny: case1 isFinal.
 	self assert: case1 statements size equals: 1.
 	self assert: (case1 statements first isOfType: FASTPyCall).
 
-	self assert: ((startBlock associations at: 3) key isOfType: nil).
-	defaultCase := (startBlock associations at: 3) value.
+	self assert: (startBlock patterns at: 3) isNil.
+	defaultCase := startBlock nextBlocks at: 3.
 	self assert: defaultCase equals: startBlock defaultCase.
 	self deny: case1 isConditional.
 	self deny: case1 isFinal.

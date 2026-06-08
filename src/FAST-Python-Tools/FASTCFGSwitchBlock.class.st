@@ -12,8 +12,27 @@ Class {
 
 { #category : 'adding' }
 FASTCFGSwitchBlock >> addNextBlock: aBlock [
+	"The way I work, we should have created a new entry with the pattern of the switch in my dictionary earlier. 
+	I'll add the node in this pattern that should be associated to nil."
 
-	self halt
+	| lastAssociation |
+	lastAssociation := blocksMap associations last.
+	self assert: lastAssociation value isNil description: 'My last pattern should be associated to nil since it should not have a value yet.'.
+
+	^ blocksMap at: lastAssociation key put: aBlock
+]
+
+{ #category : 'adding' }
+FASTCFGSwitchBlock >> addPattern: aFASTNode [
+	"We add a pattern and then the value will be set in #addNextBlock."
+
+	blocksMap at: aFASTNode put: nil
+]
+
+{ #category : 'accessing' }
+FASTCFGSwitchBlock >> defaultCase [
+
+	^ blocksMap at: nil
 ]
 
 { #category : 'initialization' }
@@ -31,6 +50,11 @@ FASTCFGSwitchBlock >> isFull [
 	^ isFull
 ]
 
+{ #category : 'accessing' }
+FASTCFGSwitchBlock >> isFull: anObject [
+	isFull := anObject
+]
+
 { #category : 'testing' }
 FASTCFGSwitchBlock >> isSwitch [
 
@@ -40,11 +64,22 @@ FASTCFGSwitchBlock >> isSwitch [
 { #category : 'accessing' }
 FASTCFGSwitchBlock >> nextBlockForValues [
 
-	^ blocksMap associations
+	^ self patternsAndBlocks
 ]
 
 { #category : 'accessing' }
 FASTCFGSwitchBlock >> nextBlocks [
 
 	^ blocksMap values
+]
+
+{ #category : 'accessing' }
+FASTCFGSwitchBlock >> patterns [
+	^ blocksMap keys
+]
+
+{ #category : 'accessing' }
+FASTCFGSwitchBlock >> patternsAndBlocks [
+
+	^ blocksMap associations
 ]

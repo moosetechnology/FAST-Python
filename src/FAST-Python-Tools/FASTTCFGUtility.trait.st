@@ -31,10 +31,22 @@ FASTTCFGUtility >> allBlocks [
 ]
 
 { #category : 'running' }
-FASTTCFGUtility >> buildAndUseConditionalDuring: aBlock [
+FASTTCFGUtility >> buildAndPushBlockOfType: aClass [
+	"I create a new block provided in parameter. It should be a conditional node.
+	
+	Ideally I should only be used by FASTTCFGUtility>>#buildAndUse:during: so that the context get poped when needed. But in some cases it get useful for me to be used alone. For example, when implementing the CFG of an elif since the false branch of the elif is the next elif or else of the parent if, and not a child of the elif."
+
+	| block |
+	block := self buildBlockOfType: aClass.
+	context push: (FASTCFGContextEntry conditional: block).
+	^ block
+]
+
+{ #category : 'running' }
+FASTTCFGUtility >> buildAndUse: aClass during: aBlock [
 
 	| conditional |
-	conditional := self buildNewConditional.
+	conditional := self buildAndPushBlockOfType: aClass.
 
 	aBlock cull: conditional.
 	
@@ -48,6 +60,12 @@ FASTTCFGUtility >> buildAndUseConditionalDuring: aBlock [
 ]
 
 { #category : 'running' }
+FASTTCFGUtility >> buildAndUseConditionalDuring: aBlock [
+
+	^ self buildAndUse: FASTCFGConditionalBlock during: aBlock
+]
+
+{ #category : 'running' }
 FASTTCFGUtility >> buildAndUseLoopDuring: aBlock [
 	"For loops, we do an extra step compared to conditionals in order to build the loops if needed."
 
@@ -55,7 +73,16 @@ FASTTCFGUtility >> buildAndUseLoopDuring: aBlock [
 			"In order to be able to manage the breaks correctly, we need to know if the conditional is a loop or not."
 			loop isLoop: true.
 			aBlock cull: loop.
+			"We finilize in the loop so that the context entry related to the loop is not yet poped."
 			self finializeLoop: loop ]
+]
+
+{ #category : 'running' }
+FASTTCFGUtility >> buildAndUseSwitchDuring: aBlock [
+
+	^ self buildAndUse: FASTCFGSwitchBlock during: [ :switch |
+			  aBlock cull: switch.
+			  switch isFull: true ]
 ]
 
 { #category : 'running' }
@@ -92,15 +119,6 @@ FASTTCFGUtility >> buildCFGForModel: aFASTModel [
 	^ startBlock
 ]
 
-{ #category : 'running' }
-FASTTCFGUtility >> buildNewConditional [
-
-	| conditional |
-	conditional := self buildBlockOfType: FASTCFGConditionalBlock.
-	context push: (FASTCFGContextEntry conditional: conditional).
-	^ conditional
-]
-
 { #category : 'accessing' }
 FASTTCFGUtility >> currentStatements [
 	^ currentStatements
@@ -135,15 +153,12 @@ FASTTCFGUtility >> initializeCFG [
 FASTTCFGUtility >> managePreviousBlocksOf: newBlock [
 	"If we are in a conditional, we add ourself there. Else we add ourself in all non finished conditionals and to their ."
 
-	| topContext |
 	startBlock ifNil: [
 			startBlock := newBlock.
 			newBlock isStart: true.
 			^ self ].
 
-	topContext := context top.
-
-	topContext currentBlocks ifEmpty: [ topContext conditional addNextBlock: newBlock ] ifNotEmpty: [ :blocksAtScope |
+	context top currentBlocks ifEmpty: [ context top conditional addNextBlock: newBlock ] ifNotEmpty: [ :blocksAtScope |
 			(blocksAtScope flatCollectAsSet: #withAllFollowingBlocks)
 				reject: [ :block | block isFull or: [ block shouldBreakInContext: context ] ]
 				thenDo: [ :block | block addNextBlock: newBlock ] ]

@@ -24,6 +24,23 @@ FASTPythonCFGVisitor >> visitFASTPyBreakStatement: aBreakStatement [
 ]
 
 { #category : 'visiting' }
+FASTPythonCFGVisitor >> visitFASTPyCaseClause: aCaseClause [
+
+	| switch |
+	switch := context top conditional.
+	self assert: switch isSwitch.
+
+	self flag: #todo. "Add tests on a match with multiple times the same pattern" "If we have multiple times the same pattern in a match, we keep only the first one because the others will be ignored."
+	(switch patterns includes: aCaseClause pattern) ifTrue: [ ^ self ].
+
+	switch addPattern: aCaseClause pattern.
+
+	self visitFASTTStatementBlock: aCaseClause.
+	self flag: #todo. "Add the condition"
+	self visitFASTTWithCondition: aCaseClause
+]
+
+{ #category : 'visiting' }
 FASTPythonCFGVisitor >> visitFASTPyConditionalExpression: aConditionalExpression [
 
 	self visitFASTTConditionalStatement: aConditionalExpression.
@@ -41,7 +58,7 @@ FASTPythonCFGVisitor >> visitFASTPyElifClause: anElifClause [
 	self visitFASTTConditionalStatement: anElifClause.
 	
 	"In the case of the elif, the else clause is in the parent and not here. So we create a conditional that will be automatically popped when we will finalize the containing if."
-	self buildNewConditional.
+	self buildAndPushBlockOfType: FASTCFGConditionalBlock.
 	self visitFASTTStatementBlock: anElifClause
 ]
 
@@ -86,6 +103,15 @@ FASTPythonCFGVisitor >> visitFASTPyIfStatement: anIfStatement [
 			self visitEntity: anIfStatement thenClause.
 			self visitCollection: anIfStatement elifClauses.
 			self visitFASTPyTWithElseClause: anIfStatement ]
+]
+
+{ #category : 'visiting' }
+FASTPythonCFGVisitor >> visitFASTPyMatchStatement: aMatchStatement [
+	"We skip the visit of the statement. We add the subject as last thing to execute of the previous block then we declare a switch."
+
+	self addStatement: aMatchStatement subject.
+
+	self buildAndUseSwitchDuring: [ self visitCollection: aMatchStatement cases ]
 ]
 
 { #category : 'visiting' }
