@@ -26,18 +26,26 @@ FASTPythonCFGVisitor >> visitFASTPyBreakStatement: aBreakStatement [
 { #category : 'visiting' }
 FASTPythonCFGVisitor >> visitFASTPyCaseClause: aCaseClause [
 
-	| switch |
+	| switch pattern |
 	switch := context top conditional.
 	self assert: switch isSwitch.
 
-	self flag: #todo. "Add tests on a match with multiple times the same pattern" "If we have multiple times the same pattern in a match, we keep only the first one because the others will be ignored."
-	(switch patterns includes: aCaseClause pattern) ifTrue: [ ^ self ].
+	"In Python a pattern can come with a condition. If that is the case, I ship the pattern with this condition."
+	pattern := aCaseClause pattern ifNotNil: [
+			           aCaseClause condition
+				           ifNil: [ aCaseClause pattern ]
+				           ifNotNil: [ :condition |
+						           {
+							           aCaseClause pattern.
+							           condition } ] ].
 
-	switch addPattern: aCaseClause pattern.
+	self flag: #todo. "Add tests on a match with multiple times the same pattern"
+	"If we have multiple times the same pattern in a match, we keep only the first one because the others will be ignored."
+	(switch includesPattern:  pattern) ifTrue: [ ^ self ].
 
-	self visitFASTTStatementBlock: aCaseClause.
-	self flag: #todo. "Add the condition"
-	self visitFASTTWithCondition: aCaseClause
+	switch addPattern:  pattern.
+
+	self visitFASTTStatementBlock: aCaseClause
 ]
 
 { #category : 'visiting' }

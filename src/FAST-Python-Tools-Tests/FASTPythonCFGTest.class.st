@@ -1347,6 +1347,111 @@ FASTPythonCFGTest >> testFunctionWithMatch [
 	self assert: (lastBlock statements first isOfType: FASTPyCall)
 ]
 
+{ #category : 'tests - match' }
+FASTPythonCFGTest >> testFunctionWithMatchWith2IdenticalCase [
+	"If two cases have the same pattern, only the first one wins."
+	| case1 defaultCase lastBlock |
+	self buildCFGFor: 'def f(day):
+	a()
+	match day:
+		case 1:
+			a()
+		case 1:
+			pass
+		case _:
+			c()
+	b()'.
+
+	self assert: startBlock isConditional.
+	self assert: startBlock isSwitch.
+	self deny: startBlock isFinal.
+	self assert: startBlock statements size equals: 2.
+	self assert: (startBlock statements first class isOfType: FASTPyCall).
+	self assert: (startBlock statements second class isOfType: FASTPyIdentifier).
+	self assert: startBlock nextBlocks size equals: 2.
+	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
+
+	self assert: ((startBlock patterns at: 1) isOfType: FASTPyInteger).
+	case1 := startBlock nextBlocks at: 1.
+	self deny: case1 isConditional.
+	self deny: case1 isFinal.
+	self assert: case1 statements size equals: 1.
+	self assert: (case1 statements first isOfType: FASTPyCall).
+
+	self assert: (startBlock patterns at: 2) isNil.
+	defaultCase := startBlock nextBlocks at: 2.
+	self assert: defaultCase equals: startBlock defaultCase.
+	self deny: case1 isConditional.
+	self deny: case1 isFinal.
+	self assert: case1 statements size equals: 1.
+	self assert: (case1 statements first isOfType: FASTPyCall).
+
+	lastBlock := case1 nextBlock.
+	self deny: lastBlock isNullBlock.
+	self assert: lastBlock equals: defaultCase nextBlock.
+	self assert: lastBlock isFinal.
+	self assert: lastBlock statements size equals: 1.
+	self assert: (lastBlock statements first isOfType: FASTPyCall)
+]
+
+{ #category : 'tests - match' }
+FASTPythonCFGTest >> testFunctionWithMatchWithCondition [
+
+	| case1 case1Pattern case2 defaultCase lastBlock |
+	self buildCFGFor: 'def f(day):
+	a()
+	match day:
+		case 1 if n > 10:
+			a()
+		case 1:
+			b()
+		case _:
+			c()
+	b()'.
+
+	self assert: startBlock isConditional.
+	self assert: startBlock isSwitch.
+	self deny: startBlock isFinal.
+	self assert: startBlock statements size equals: 2.
+	self assert: (startBlock statements first class isOfType: FASTPyCall).
+	self assert: (startBlock statements second class isOfType: FASTPyIdentifier).
+	self assert: startBlock nextBlocks size equals: 3.
+	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
+
+	case1Pattern := startBlock patterns at: 1.
+	self assert: case1Pattern isCollection.
+	self assert: (case1Pattern first isOfType: FASTPyInteger).
+	self assert: (case1Pattern second isOfType: FASTPyComparisonOperator).
+	case1 := startBlock nextBlocks at: 1.
+	self deny: case1 isConditional.
+	self deny: case1 isFinal.
+	self assert: case1 statements size equals: 1.
+	self assert: (case1 statements first isOfType: FASTPyCall).
+
+	self assert: ((startBlock patterns at: 2) isOfType: FASTPyInteger).
+	case2 := startBlock nextBlocks at: 2.
+	self deny: case1 isConditional.
+	self deny: case1 isFinal.
+	self assert: case1 statements size equals: 1.
+	self assert: (case1 statements first isOfType: FASTPyCall).
+
+	self assert: (startBlock patterns at: 3) isNil.
+	defaultCase := startBlock nextBlocks at: 3.
+	self assert: defaultCase equals: startBlock defaultCase.
+	self deny: case1 isConditional.
+	self deny: case1 isFinal.
+	self assert: case1 statements size equals: 1.
+	self assert: (case1 statements first isOfType: FASTPyCall).
+
+	lastBlock := case1 nextBlock.
+	self deny: lastBlock isNullBlock.
+	self assert: lastBlock equals: case2 nextBlock.
+	self assert: lastBlock equals: defaultCase nextBlock.
+	self assert: lastBlock isFinal.
+	self assert: lastBlock statements size equals: 1.
+	self assert: (lastBlock statements first isOfType: FASTPyCall)
+]
+
 { #category : 'tests' }
 FASTPythonCFGTest >> testFunctionWithOneStatement [
 

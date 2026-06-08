@@ -35,6 +35,12 @@ FASTCFGSwitchBlock >> defaultCase [
 	^ blocksMap at: nil
 ]
 
+{ #category : 'testing' }
+FASTCFGSwitchBlock >> includesPattern: aPattern [
+
+	^ self patterns anySatisfy: [ :pattern | pattern isSameAsCFGCasePattern: aPattern ]
+]
+
 { #category : 'initialization' }
 FASTCFGSwitchBlock >> initialize [
 
