@@ -24,6 +24,12 @@ FASTCFGBlock >> endsWithBreakStatement [
 ]
 
 { #category : 'testing' }
+FASTCFGBlock >> endsWithContinueStatement [
+
+	^ self statements last isContinueStatement
+]
+
+{ #category : 'testing' }
 FASTCFGBlock >> isFull [
 
 	^ self nextBlock isNotNil

@@ -35,6 +35,12 @@ FASTCFGAbstractBlock >> endsWithBreakStatement [
 	^ self subclassResponsibility
 ]
 
+{ #category : 'testing' }
+FASTCFGAbstractBlock >> endsWithContinueStatement [
+
+	^ self subclassResponsibility
+]
+
 { #category : 'accessing' }
 FASTCFGAbstractBlock >> firstParentLoop [
 	"I return the first loop containing myself.
@@ -133,23 +139,29 @@ FASTCFGAbstractBlock >> previousBlocks [
 ]
 
 { #category : 'asserting' }
-FASTCFGAbstractBlock >> shouldBreakInContext: context [
-	"I should break this node if it's a break and that we are currently visiting the first loop containing the break."
-
-	^ self firstParentLoop
-		  ifNil: [ false ]
-		  ifNotNil: [ :loop | self shouldBreakLoop: loop inContext: context ]
-]
-
-{ #category : 'asserting' }
 FASTCFGAbstractBlock >> shouldBreakLoop: aLoop inContext: context [
-	"I should break this node if it's a break and that we are currently visiting the loop as parameter."
+	"I should break this node if i'm a break and that we are currently visiting the loop as parameter."
 
 	self endsWithBreakStatement ifFalse: [ ^ false ].
 
 	^ context
 		  detect: #isLoop
 		  ifFound: [ :loop | loop conditional = aLoop ]
+		  ifNone: [ false ]
+]
+
+{ #category : 'asserting' }
+FASTCFGAbstractBlock >> shouldBreakOrContinueInContext: context [
+	"I should break or continue this node if i'm a break or continue and that we are currently visiting the first loop containing me to not mix loops in loops."
+
+	| firstLoop |
+	firstLoop := self firstParentLoop ifNil: [ ^ false ].
+
+	(self endsWithBreakStatement or: [ self endsWithContinueStatement ]) ifFalse: [ ^ false ].
+
+	^ context
+		  detect: #isLoop
+		  ifFound: [ :loop | loop conditional = firstLoop ]
 		  ifNone: [ false ]
 ]
 

@@ -20,6 +20,13 @@ FASTCFGAbstractConditionalBlock >> endsWithBreakStatement [
 ]
 
 { #category : 'testing' }
+FASTCFGAbstractConditionalBlock >> endsWithContinueStatement [
+	"I return true if I have my two next blocks and they both end with a break statement."
+
+	^ self isFull and: [ self nextBlocks allSatisfy: #endsWithContinueStatement ]
+]
+
+{ #category : 'testing' }
 FASTCFGAbstractConditionalBlock >> isConditional [
 
 	^ true

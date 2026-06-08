@@ -20,6 +20,13 @@ FASTCFGNullBlock >> endsWithBreakStatement [
 ]
 
 { #category : 'testing' }
+FASTCFGNullBlock >> endsWithContinueStatement [
+	"I cannot contain a continue"
+
+	^ false
+]
+
+{ #category : 'testing' }
 FASTCFGNullBlock >> isFull [
 	"I never have a next block"
 
