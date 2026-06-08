@@ -156,7 +156,8 @@ Class {
 		'tSliceIndex',
 		'tAwaitable',
 		'tExecutable',
-		'tBreakStatement'
+		'tBreakStatement',
+		'tContinueStatement'
 	],
 	#category : 'FAST-Python-Model-Generator',
 	#package : 'FAST-Python-Model-Generator'
@@ -429,6 +430,7 @@ FASTPythonMetamodelGenerator >> defineHierarchy [
 	conditionalExpression --|> tExecutable.
 	
 	continueStatement --|> statement.
+	continueStatement --|> tContinueStatement.
 	
 	constrainedType --|> tTypeContent.
 
@@ -901,6 +903,7 @@ FASTPythonMetamodelGenerator >> defineTraits [
 	tBreakStatement := self remoteTrait: #TBreakStatement withPrefix: #FAST.
 	tComment := self remoteTrait: #TComment withPrefix: #FAST.
 	tConditionalStatement := self remoteTrait: #TConditionalStatement withPrefix: #FAST.
+	tContinueStatement := self remoteTrait: #TContinueStatement withPrefix: #FAST.
 	tExpression := self remoteTrait: #TExpression withPrefix: #FAST.
 	tInvocation := self remoteTrait: #TInvocation withPrefix: #FAST.
 	tLiteral := self remoteTrait: #TLiteral withPrefix: #FAST.

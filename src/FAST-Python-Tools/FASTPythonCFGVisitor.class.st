@@ -61,6 +61,14 @@ FASTPythonCFGVisitor >> visitFASTPyConditionalExpression: aConditionalExpression
 ]
 
 { #category : 'visiting' }
+FASTPythonCFGVisitor >> visitFASTPyContinueStatement: aContinueStatement [
+	"We need to visit the statement before the TContinueStatement to add the break statement in the list of statements. Else the visit of #FASTPyStatement will be skipped by the exception raised TContinueStatement"
+
+	self visitFASTPyStatement: aContinueStatement.
+	self visitFASTTContinueStatement: aContinueStatement
+]
+
+{ #category : 'visiting' }
 FASTPythonCFGVisitor >> visitFASTPyElifClause: anElifClause [
 
 	self visitFASTTConditionalStatement: anElifClause.
@@ -139,13 +147,20 @@ FASTPythonCFGVisitor >> visitFASTPyWhileStatement: aWhileStatement [
 FASTPythonCFGVisitor >> visitFASTTBreakStatement: aBreakStatement [
 
 	super visitFASTTBreakStatement: aBreakStatement.
-	FASTCFGBreakEncountered signal
+	FASTCFGLoopInterruptionEncountered signal
 ]
 
 { #category : 'visiting' }
 FASTPythonCFGVisitor >> visitFASTTConditionalStatement: aStatement [
 
 	self addStatement: aStatement condition
+]
+
+{ #category : 'visiting' }
+FASTPythonCFGVisitor >> visitFASTTContinueStatement: aBreakStatement [
+
+	super visitFASTTContinueStatement: aBreakStatement.
+	FASTCFGLoopInterruptionEncountered signal
 ]
 
 { #category : 'visiting' }
@@ -161,7 +176,7 @@ FASTPythonCFGVisitor >> visitFASTTStatementBlock: aFASTTStatementBlock [
 	Also, once we are done with a block, if we encountered statements we produce a new normal block with them."
 
 	[ self visitCollection: aFASTTStatementBlock statements ]
-		on: FASTCFGBreakEncountered
+		on: FASTCFGLoopInterruptionEncountered
 		do: [ "End visit of the block and resume the rest of the visit." ].
 	self endBlock
 ]

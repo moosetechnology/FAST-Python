@@ -263,6 +263,7 @@ FASTPyTVisitor >> visitFASTPyConstrainedType: aConstrainedType [
 FASTPyTVisitor >> visitFASTPyContinueStatement: aContinueStatement [
 
 	<generated>
+	self visitFASTTContinueStatement: aContinueStatement.
 	self visitFASTPyStatement: aContinueStatement
 ]
 
@@ -1194,6 +1195,13 @@ FASTPyTVisitor >> visitFASTTConditionalStatement: aTConditionalStatement [
 	({ FASTPyIfStatement . FASTPyWhileStatement } includes: aTConditionalStatement class)
 		ifFalse: [ self visitFASTTStatement: aTConditionalStatement ].
 	self visitFASTTWithCondition: aTConditionalStatement
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTTContinueStatement: aTContinueStatement [
+
+	<generated>
+
 ]
 
 { #category : 'visiting' }

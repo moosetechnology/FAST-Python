@@ -86,6 +86,13 @@ FASTPyEntity >> isClassDefinition [
 ]
 
 { #category : 'testing' }
+FASTPyEntity >> isContinueStatement [
+
+	<generated>
+	^ false
+]
+
+{ #category : 'testing' }
 FASTPyEntity >> isExpression [
 
 	<generated>
