@@ -1,6 +1,9 @@
 Class {
 	#name : 'FASTCFGSwitchBlock',
 	#superclass : 'FASTCFGAbstractMultipleConditionBlock',
+	#instVars : [
+		'isFull'
+	],
 	#category : 'FAST-Python-Tools-CFG/DataFlow',
 	#package : 'FAST-Python-Tools',
 	#tag : 'CFG/DataFlow'
@@ -16,6 +19,25 @@ FASTCFGSwitchBlock >> defaultCase [
 FASTCFGSwitchBlock >> includesPattern: aPattern [
 
 	^ self patterns anySatisfy: [ :pattern | pattern isSameAsCFGCasePattern: aPattern ]
+]
+
+{ #category : 'initialization' }
+FASTCFGSwitchBlock >> initialize [
+
+	super initialize.
+	isFull := false
+]
+
+{ #category : 'accessing' }
+FASTCFGSwitchBlock >> isFull [
+	"In the case of a switch, we cannot know with just the node so the algo will tell us when it is full at the closing of the switch.."
+
+	^ isFull
+]
+
+{ #category : 'accessing' }
+FASTCFGSwitchBlock >> isFull: anObject [
+	isFull := anObject
 ]
 
 { #category : 'testing' }

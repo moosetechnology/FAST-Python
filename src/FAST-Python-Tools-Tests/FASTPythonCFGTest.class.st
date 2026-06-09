@@ -1933,17 +1933,17 @@ FASTPythonCFGTest >> testFunctionWithTry [
 	self assert: tryBlock isConditional.
 	self assert: tryBlock isTry.
 	self deny: tryBlock isFinal.
-	self assert: tryBlock statements size equals: 1.
+	self assert: tryBlock statements size equals: 3.
 	self assert: (tryBlock statements first isOfType: FASTPyCall).
+	self assert: (tryBlock statements second isOfType: FASTPyCall).
+	self assert: (tryBlock statements third isOfType: FASTPyCall).
 
 	self assert: ((tryBlock patterns at: 1) isOfType: FASTPyIdentifier).
 	exceptBlock := tryBlock nextBlocks at: 1.
 	self deny: exceptBlock isConditional.
 	self deny: exceptBlock isFinal.
-	self assert: exceptBlock statements size equals: 3.
+	self assert: exceptBlock statements size equals: 1.
 	self assert: (exceptBlock statements first isOfType: FASTPyCall).
-	self assert: (exceptBlock statements second isOfType: FASTPyCall).
-	self assert: (exceptBlock statements third isOfType: FASTPyCall).
 
 	self assert: (tryBlock patterns at: 2) isNil.
 	lastBlock := tryBlock nextBlocks at: 2.

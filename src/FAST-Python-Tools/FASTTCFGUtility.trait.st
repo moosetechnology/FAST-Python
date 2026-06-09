@@ -88,9 +88,9 @@ FASTTCFGUtility >> buildAndUseSwitchDuring: aBlock [
 { #category : 'running' }
 FASTTCFGUtility >> buildAndUseTryDuring: aBlock [
 
-	^ self buildAndUse: FASTCFGTryBlock during: [ :switch |
-			  aBlock cull: switch.
-			  switch isFull: true ]
+	^ self buildAndUse: FASTCFGTryBlock during: [ :try |
+			  aBlock cull: try.
+			  try isFull ifFalse: [ try addPattern: nil ] ]
 ]
 
 { #category : 'running' }

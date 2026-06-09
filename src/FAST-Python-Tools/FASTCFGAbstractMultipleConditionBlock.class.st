@@ -2,7 +2,6 @@ Class {
 	#name : 'FASTCFGAbstractMultipleConditionBlock',
 	#superclass : 'FASTCFGAbstractConditionalBlock',
 	#instVars : [
-		'isFull',
 		'blocksMap'
 	],
 	#category : 'FAST-Python-Tools-CFG/DataFlow',
@@ -39,20 +38,7 @@ FASTCFGAbstractMultipleConditionBlock >> addPattern: aFASTNode [
 FASTCFGAbstractMultipleConditionBlock >> initialize [
 
 	super initialize.
-	blocksMap := OrderedDictionary new.
-	isFull := false
-]
-
-{ #category : 'accessing' }
-FASTCFGAbstractMultipleConditionBlock >> isFull [
-	"In the case of a switch, we cannot know with just the node so the algo will tell us when it is full at the closing of the switch.."
-
-	^ isFull
-]
-
-{ #category : 'accessing' }
-FASTCFGAbstractMultipleConditionBlock >> isFull: anObject [
-	isFull := anObject
+	blocksMap := OrderedDictionary new
 ]
 
 { #category : 'accessing' }

@@ -79,6 +79,18 @@ FASTPythonCFGVisitor >> visitFASTPyElifClause: anElifClause [
 ]
 
 { #category : 'visiting' }
+FASTPythonCFGVisitor >> visitFASTPyExceptClause: anExceptClause [
+
+	| try |
+	try := context top conditional.
+	self assert: try isTry.
+
+	try addPattern: anExceptClause expression.
+
+	self visitFASTTStatementBlock: anExceptClause
+]
+
+{ #category : 'visiting' }
 FASTPythonCFGVisitor >> visitFASTPyExpression: aFASTPyExpression [
 	"We ignore expressions that are not in a statement block"
 
@@ -134,13 +146,11 @@ FASTPythonCFGVisitor >> visitFASTPyMatchStatement: aMatchStatement [
 FASTPythonCFGVisitor >> visitFASTPyTryStatement: aTryStatement [
 
 	self buildBlockIfNeeded.
-
 	self visitCollection: aTryStatement statements.
 
-	self buildAndUse: FASTCFGTryBlock during: [
-			self visitFASTPyTWithElseClause: aTryStatement.
-
+	self buildAndUseTryDuring: [
 			self visitCollection: aTryStatement excepts.
+			self visitFASTPyTWithElseClause: aTryStatement.
 			self visitEntity: aTryStatement finally ]
 ]
 
