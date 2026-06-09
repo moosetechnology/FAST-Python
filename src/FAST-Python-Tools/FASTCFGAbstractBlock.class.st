@@ -121,6 +121,12 @@ FASTCFGAbstractBlock >> isSwitch [
 	^ false
 ]
 
+{ #category : 'testing' }
+FASTCFGAbstractBlock >> isTry [
+
+	^ false
+]
+
 { #category : 'accessing' }
 FASTCFGAbstractBlock >> nextBlockForValues [
 

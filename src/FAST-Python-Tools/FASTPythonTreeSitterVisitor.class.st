@@ -505,7 +505,7 @@ FASTPythonTreeSitterVisitor >> visitEscapedSequence: aTSNode [
 { #category : 'visiting' }
 FASTPythonTreeSitterVisitor >> visitExceptClause: aTSNode [
 
-	self onNextContextDo: [ :entry | entry add: 'expressions' asAliasOfField: 'value' ].
+	self onNextContextDo: [ :entry | entry add: 'expression' asAliasOfField: 'value' ].
 
 	^ self handleNode: aTSNode kind: FASTPyExceptClause parentBlock: [ :entity | self topFastEntity addExcept: entity ]
 ]

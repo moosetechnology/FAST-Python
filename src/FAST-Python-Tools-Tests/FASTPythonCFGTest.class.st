@@ -1908,6 +1908,52 @@ FASTPythonCFGTest >> testFunctionWithSimpleStatements [
 	self assertEmpty: startBlock nextBlocks
 ]
 
+{ #category : 'tests - try' }
+FASTPythonCFGTest >> testFunctionWithTry [
+
+	| tryBlock exceptBlock lastBlock |
+	self buildCFGFor: 'def f(day):
+	a()
+	try:
+		b()
+		c()
+		d()
+	except Exception1:
+		e()
+	f()'.
+
+	self deny: startBlock isConditional.
+	self deny: startBlock isFinal.
+	self assert: startBlock statements size equals: 1.
+	self assert: (startBlock statements first class isOfType: FASTPyCall).
+	self assert: startBlock nextBlocks size equals: 1.
+	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
+
+	tryBlock := startBlock nextBlock.
+	self assert: tryBlock isConditional.
+	self assert: tryBlock isTry.
+	self deny: tryBlock isFinal.
+	self assert: tryBlock statements size equals: 1.
+	self assert: (tryBlock statements first isOfType: FASTPyCall).
+
+	self assert: ((tryBlock patterns at: 1) isOfType: FASTPyIdentifier).
+	exceptBlock := tryBlock nextBlocks at: 1.
+	self deny: exceptBlock isConditional.
+	self deny: exceptBlock isFinal.
+	self assert: exceptBlock statements size equals: 3.
+	self assert: (exceptBlock statements first isOfType: FASTPyCall).
+	self assert: (exceptBlock statements second isOfType: FASTPyCall).
+	self assert: (exceptBlock statements third isOfType: FASTPyCall).
+
+	self assert: (tryBlock patterns at: 2) isNil.
+	lastBlock := tryBlock nextBlocks at: 2.
+	self deny: lastBlock isNullBlock.
+	self assert: lastBlock equals: exceptBlock nextBlock.
+	self assert: lastBlock isFinal.
+	self assert: lastBlock statements size equals: 1.
+	self assert: (lastBlock statements first isOfType: FASTPyCall)
+]
+
 { #category : 'tests - while' }
 FASTPythonCFGTest >> testFunctionWithWhile [
 

@@ -741,7 +741,7 @@ FASTPythonMetamodelGenerator >> defineRelations [
 	((deleteStatement property: #expression) comment: 'The expression to apply the delete on')
 	<>- ((tDeletable property: #parentDeleteStatement) comment: 'The delete statement that own the expression (if it''s the case)').
 	
-	(exceptClause property: #expressions) <>-* (expression property: #parentExceptClause). "We could point less things than expression, but in reality in Python any expression can be provided. It will just end up in runtime error."
+	(exceptClause property: #expression) <>- (expression property: #parentExceptClause). "We could point less things than expression, but in reality in Python any expression can be provided. It will just end up in runtime error."
 	
 	(execStatement property: #code) <>- (tExecutable property: #parentExecStatement).
 	(execStatement property: #scopes) <>-* (expression property: #parentExecStatementScopes).

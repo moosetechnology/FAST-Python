@@ -131,6 +131,20 @@ FASTPythonCFGVisitor >> visitFASTPyMatchStatement: aMatchStatement [
 ]
 
 { #category : 'visiting' }
+FASTPythonCFGVisitor >> visitFASTPyTryStatement: aTryStatement [
+
+	self buildBlockIfNeeded.
+
+	self visitCollection: aTryStatement statements.
+
+	self buildAndUse: FASTCFGTryBlock during: [
+			self visitFASTPyTWithElseClause: aTryStatement.
+
+			self visitCollection: aTryStatement excepts.
+			self visitEntity: aTryStatement finally ]
+]
+
+{ #category : 'visiting' }
 FASTPythonCFGVisitor >> visitFASTPyWhileStatement: aWhileStatement [
 
 	self buildBlockIfNeeded.

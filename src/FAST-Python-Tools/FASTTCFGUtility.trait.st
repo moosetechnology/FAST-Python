@@ -86,6 +86,14 @@ FASTTCFGUtility >> buildAndUseSwitchDuring: aBlock [
 ]
 
 { #category : 'running' }
+FASTTCFGUtility >> buildAndUseTryDuring: aBlock [
+
+	^ self buildAndUse: FASTCFGTryBlock during: [ :switch |
+			  aBlock cull: switch.
+			  switch isFull: true ]
+]
+
+{ #category : 'running' }
 FASTTCFGUtility >> buildBlockIfNeeded [
 	"If we have statements stocked, we create a new block with them. Else we do nothing.
 	
