@@ -21,7 +21,7 @@
 | `parentConditionalExpressionElse` | `FASTPyExpression` | `elseExpression` | `FASTPyConditionalExpression` | |
 | `parentConditionalExpressionThen` | `FASTPyExpression` | `thenExpression` | `FASTPyConditionalExpression` | |
 | `parentDefaultParameterValue` | `FASTPyExpression` | `defaultValue` | `FASTPyParameter` | |
-| `parentExceptClause` | `FASTPyExpression` | `expressions` | `FASTPyExceptClause` | |
+| `parentExceptClause` | `FASTPyExpression` | `expression` | `FASTPyExceptClause` | |
 | `parentExecStatementScopes` | `FASTPyExpression` | `scopes` | `FASTPyExecStatement` | |
 | `parentExpression` | `FASTTExpression` | `expression` | `FASTTUnaryExpression` | Parent (unary) expression|
 | `parentExpressionLeft` | `FASTTExpression` | `leftOperand` | `FASTTBinaryExpression` | Parent (binary) expression of which I am left side|
@@ -75,7 +75,7 @@ Class {
 		'#parentConditionalExpressionElse => FMOne type: #FASTPyConditionalExpression opposite: #elseExpression',
 		'#parentConditionalExpressionThen => FMOne type: #FASTPyConditionalExpression opposite: #thenExpression',
 		'#parentDefaultParameterValue => FMOne type: #FASTPyParameter opposite: #defaultValue',
-		'#parentExceptClause => FMOne type: #FASTPyExceptClause opposite: #expressions',
+		'#parentExceptClause => FMOne type: #FASTPyExceptClause opposite: #expression',
 		'#parentExecStatementScopes => FMOne type: #FASTPyExecStatement opposite: #scopes',
 		'#parentForInClauseLeft => FMOne type: #FASTPyForInClause opposite: #left',
 		'#parentForInClauseRight => FMOne type: #FASTPyForInClause opposite: #right',
@@ -329,10 +329,11 @@ FASTPyExpression >> parentDefaultParameterValue: anObject [
 
 { #category : 'accessing' }
 FASTPyExpression >> parentExceptClause [
-	"Relation named: #parentExceptClause type: #FASTPyExceptClause opposite: #expressions"
+	"Relation named: #parentExceptClause type: #FASTPyExceptClause opposite: #expression"
 
 	<generated>
 	<container>
+	<derived>
 	^ parentExceptClause
 ]
 

@@ -367,7 +367,7 @@ FASTPyTVisitor >> visitFASTPyExceptClause: anExceptClause [
 	<generated>
 	self visitFASTTStatementBlock: anExceptClause.
 
-	self visitCollection: anExceptClause expressions
+	self visitEntity: anExceptClause expression
 ]
 
 { #category : 'visiting' }
