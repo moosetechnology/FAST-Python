@@ -952,6 +952,122 @@ FASTPythonCFGTest >> testFunctionWithForWithContinuingIfThenElse [
 ]
 
 { #category : 'tests - for' }
+FASTPythonCFGTest >> testFunctionWithForWithElseWithBreakInAllBranches [
+
+	| forBlock elseBlock nullBlock |
+	self buildCFGFor: 'def f(i):
+	for x in i:
+		print(i)
+		break
+	else:
+		pass'.
+
+	self assert: startBlock isConditional.
+	self deny: startBlock isFinal.
+	self assert: startBlock statements size equals: 2.
+	self assert: (startBlock statements first class isOfType: FASTPyIdentifier).
+	self assert: (startBlock statements second class isOfType: FASTPyIdentifier).
+	self assert: startBlock nextBlocks size equals: 2.
+	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
+
+	forBlock := startBlock nextTrueBlock.
+	self deny: forBlock isConditional.
+	self deny: forBlock isFinal.
+	self assert: forBlock statements size equals: 2.
+	self assert: (forBlock statements first isOfType: FASTPyCall).
+	self assert: (forBlock statements second isOfType: FASTPyBreakStatement).
+
+	elseBlock := startBlock nextFalseBlock.
+	self deny: elseBlock isNullBlock.
+	self deny: elseBlock isFinal.
+	self assert: elseBlock statements size equals: 1.
+	self assert: (elseBlock statements first isOfType: FASTPyPassStatement).
+
+	nullBlock := elseBlock nextBlock.
+	self assert: nullBlock isNullBlock.
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: forBlock nextBlock
+]
+
+{ #category : 'tests - for' }
+FASTPythonCFGTest >> testFunctionWithForWithElseWithBreakInIf [
+
+	| forBlock thenBlock elseBlock nullBlock |
+	self buildCFGFor: 'def f(i):
+	for x in i:
+		print(i)
+		if 1 > 2:
+			break
+	else:
+		pass'.
+
+	self assert: startBlock isConditional.
+	self deny: startBlock isFinal.
+	self assert: startBlock statements size equals: 2.
+	self assert: (startBlock statements first class isOfType: FASTPyIdentifier).
+	self assert: (startBlock statements second class isOfType: FASTPyIdentifier).
+	self assert: startBlock nextBlocks size equals: 2.
+	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
+
+	forBlock := startBlock nextTrueBlock.
+	self assert: forBlock isConditional.
+	self deny: forBlock isFinal.
+	self assert: forBlock statements size equals: 2.
+	self assert: (forBlock statements first isOfType: FASTPyCall).
+	self assert: (forBlock statements second isOfType: FASTPyComparisonOperator).
+	self assert: forBlock nextFalseBlock equals: startBlock.
+
+	thenBlock := forBlock nextTrueBlock.
+	self deny: thenBlock isConditional.
+	self deny: thenBlock isFinal.
+	self assert: thenBlock statements size equals: 1.
+	self assert: (thenBlock statements first isOfType: FASTPyBreakStatement).
+
+	elseBlock := startBlock nextFalseBlock.
+	self deny: elseBlock isNullBlock.
+	self deny: elseBlock isFinal.
+	self assert: elseBlock statements size equals: 1.
+	self assert: (elseBlock statements first isOfType: FASTPyPassStatement).
+
+	nullBlock := elseBlock nextBlock.
+	self assert: nullBlock isNullBlock.
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: thenBlock nextBlock
+]
+
+{ #category : 'tests - for' }
+FASTPythonCFGTest >> testFunctionWithForWithElseWithoutBreak [
+
+	| forBlock elseBlock |
+	self buildCFGFor: 'def f(i):
+	for x in i:
+		print(i)
+	else:
+		pass'.
+
+	self assert: startBlock isConditional.
+	self deny: startBlock isFinal.
+	self assert: startBlock statements size equals: 2.
+	self assert: (startBlock statements first class isOfType: FASTPyIdentifier).
+	self assert: (startBlock statements second class isOfType: FASTPyIdentifier).
+	self assert: startBlock nextBlocks size equals: 2.
+	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
+
+	forBlock := startBlock nextTrueBlock.
+	self deny: forBlock isConditional.
+	self deny: forBlock isFinal.
+	self assert: forBlock statements size equals: 1.
+	self assert: (forBlock statements first isOfType: FASTPyCall).
+	self assert: forBlock nextBlock equals: startBlock.
+
+	elseBlock := startBlock nextFalseBlock.
+	self deny: elseBlock isNullBlock.
+	self assert: elseBlock isFinal.
+	self assert: elseBlock statements size equals: 1.
+	self assert: (elseBlock statements first isOfType: FASTPyPassStatement).
+]
+
+{ #category : 'tests - for' }
 FASTPythonCFGTest >> testFunctionWithForWithIfInElif [
 
 	| ifConditionalBlock thenBlock elifConditionalBlock ifConditionalBlock2 thenBlock2 endOfElifBlock elseBlock lastBlock |
@@ -3174,6 +3290,119 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinuingIfThenElse [
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
 	self assert: (lastBlock statements first isOfType: FASTPyCall)
+]
+
+{ #category : 'tests - while' }
+FASTPythonCFGTest >> testFunctionWithWhileWithElseWithBreakInAllBranches [
+
+	| whileBlock elseBlock nullBlock |
+	self buildCFGFor: 'def f(i):
+	while i < 4:
+		print(i)
+		break
+	else:
+		pass'.
+
+	self assert: startBlock isConditional.
+	self deny: startBlock isFinal.
+	self assert: startBlock statements size equals: 1.
+	self assert: (startBlock statements first class isOfType: FASTPyComparisonOperator).
+	self assert: startBlock nextBlocks size equals: 2.
+	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
+
+	whileBlock := startBlock nextTrueBlock.
+	self deny: whileBlock isConditional.
+	self deny: whileBlock isFinal.
+	self assert: whileBlock statements size equals: 2.
+	self assert: (whileBlock statements first isOfType: FASTPyCall).
+	self assert: (whileBlock statements second isOfType: FASTPyBreakStatement).
+
+	elseBlock := startBlock nextFalseBlock.
+	self deny: elseBlock isNullBlock.
+	self deny: elseBlock isFinal.
+	self assert: elseBlock statements size equals: 1.
+	self assert: (elseBlock statements first isOfType: FASTPyPassStatement).
+
+	nullBlock := elseBlock nextBlock.
+	self assert: nullBlock isNullBlock.
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: whileBlock nextBlock
+]
+
+{ #category : 'tests - while' }
+FASTPythonCFGTest >> testFunctionWithWhileWithElseWithBreakInIf [
+
+	| whileBlock thenBlock elseBlock nullBlock |
+	self buildCFGFor: 'def f(i):
+	while i < 4:
+		print(i)
+		if 1 > 2:
+			break
+	else:
+		pass'.
+
+	self assert: startBlock isConditional.
+	self deny: startBlock isFinal.
+	self assert: startBlock statements size equals: 1.
+	self assert: (startBlock statements first class isOfType: FASTPyComparisonOperator).
+	self assert: startBlock nextBlocks size equals: 2.
+	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
+
+	whileBlock := startBlock nextTrueBlock.
+	self assert: whileBlock isConditional.
+	self deny: whileBlock isFinal.
+	self assert: whileBlock statements size equals: 2.
+	self assert: (whileBlock statements first isOfType: FASTPyCall).
+	self assert: (whileBlock statements second isOfType: FASTPyComparisonOperator).
+	self assert: whileBlock nextFalseBlock equals: startBlock.
+
+	thenBlock := whileBlock nextTrueBlock.
+	self deny: thenBlock isConditional.
+	self deny: thenBlock isFinal.
+	self assert: thenBlock statements size equals: 1.
+	self assert: (thenBlock statements first isOfType: FASTPyBreakStatement).
+
+	elseBlock := startBlock nextFalseBlock.
+	self deny: elseBlock isNullBlock.
+	self deny: elseBlock isFinal.
+	self assert: elseBlock statements size equals: 1.
+	self assert: (elseBlock statements first isOfType: FASTPyPassStatement).
+
+	nullBlock := elseBlock nextBlock.
+	self assert: nullBlock isNullBlock.
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: thenBlock nextBlock
+]
+
+{ #category : 'tests - while' }
+FASTPythonCFGTest >> testFunctionWithWhileWithElseWithoutBreak [
+
+	| whileBlock elseBlock |
+	self buildCFGFor: 'def f(i):
+	while i < 4:
+		print(i)
+	else:
+		pass'.
+
+	self assert: startBlock isConditional.
+	self deny: startBlock isFinal.
+	self assert: startBlock statements size equals: 1.
+	self assert: (startBlock statements first class isOfType: FASTPyComparisonOperator).
+	self assert: startBlock nextBlocks size equals: 2.
+	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
+
+	whileBlock := startBlock nextTrueBlock.
+	self deny: whileBlock isConditional.
+	self deny: whileBlock isFinal.
+	self assert: whileBlock statements size equals: 1.
+	self assert: (whileBlock statements first isOfType: FASTPyCall).
+	self assert: whileBlock nextBlock equals: startBlock.
+
+	elseBlock := startBlock nextFalseBlock.
+	self deny: elseBlock isNullBlock.
+	self assert: elseBlock isFinal.
+	self assert: elseBlock statements size equals: 1.
+	self assert: (elseBlock statements first isOfType: FASTPyPassStatement).
 ]
 
 { #category : 'tests - while' }

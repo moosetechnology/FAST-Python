@@ -73,8 +73,7 @@ FASTTCFGUtility >> buildAndUseLoopDuring: aBlock [
 			"In order to be able to manage the breaks correctly, we need to know if the conditional is a loop or not."
 			loop isLoop: true.
 			aBlock cull: loop.
-			"We finilize in the loop so that the context entry related to the loop is not yet poped."
-			self finializeLoop: loop ]
+			 ]
 ]
 
 { #category : 'running' }
@@ -137,6 +136,12 @@ FASTTCFGUtility >> endBlock [
 	"I declare that we are ending the visit of a statement block. I'll build a new block with the current statements and then I'll flush the current blocks of the top context entry. In case we where visiting the true side of a conditional, this will mark the shift to the false side of the conditional."
 
 	self buildBlockIfNeeded.
+	
+	"In case we are finishing the first block of a loop, we finilize the loop.
+	In the past, this was done before popping loops from the context, but doing it here with this condition allows to easily manage the else clause of loops in Python."
+	(context top conditional isLoop and: [ context top conditional nextBlocks size = 1 ]) ifTrue: [ self finializeLoop: context top conditional ].
+
+	"We are changing of statement block so we flush the blocks we saved for the previous statement block."
 	context top flushCurrentBlocks
 ]
 

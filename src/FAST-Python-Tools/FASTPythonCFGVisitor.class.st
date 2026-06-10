@@ -116,8 +116,8 @@ FASTPythonCFGVisitor >> visitFASTPyForStatement: aForStatement [
 	self buildAndUseLoopDuring: [
 			self visitFASTTStatementBlock: aForStatement.
 
-			self flag: #todo. "Manage and test else clause"
-			self visitFASTPyTWithElseClause: aForStatement ]
+			"We add the loops after finishing the first statement block, so the else can be managed in this block to be in the right context."
+			self visitFASTPyTWithElseClause: aForStatement  ]
 ]
 
 { #category : 'visiting' }
@@ -173,8 +173,8 @@ FASTPythonCFGVisitor >> visitFASTPyWhileStatement: aWhileStatement [
 
 	self buildAndUseLoopDuring: [
 			self visitFASTTStatementBlock: aWhileStatement.
-
-			self flag: #todo. "Manage and test else clause"
+			
+			"We add the loops after finishing the first statement block, so the else can be managed in this block to be in the right context."
 			self visitFASTPyTWithElseClause: aWhileStatement ]
 ]
 
