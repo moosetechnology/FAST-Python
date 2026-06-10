@@ -13,5 +13,5 @@ Class {
 ManifestFASTPythonToolsTests class >> ruleReCollectionAtCollectionSizeRuleV1FalsePositive [
 
 	<ignoreForCoverage>
-	^ #(#(#(#RGClassDefinition #(#FASTPythonImporterTest)) #'2026-03-03T01:09:10.854455+01:00') )
+	^ #(#(#(#RGClassDefinition #(#FASTPythonImporterTest)) #'2026-03-03T01:09:10.854455+01:00') #(#(#RGPackageDefinition #(#'FAST-Python-Tools-Tests')) #'2026-06-10T14:34:34.337737+02:00') )
 ]
