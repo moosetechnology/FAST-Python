@@ -23,6 +23,18 @@ FASTCFGAbstractBlock >> addPreviousBlock: aBlock [
 	(self previousBlocks includes: aBlock) ifFalse: [ self previousBlocks add: aBlock ]
 ]
 
+{ #category : 'as yet unclassified' }
+FASTCFGAbstractBlock >> allEffectiveBreakingBlocks [
+	"Return all breaking nodes. If we encounter a loop, we will ignore the breaking nodes inside since they apply to this loop and not the englobing loop in case of a loop in a loop"
+
+	| childrenBreakingBlocks |
+	childrenBreakingBlocks := (self nextBlocks reject: #isLoop) flatCollect: #allEffectiveBreakingBlocks as: OrderedCollection.
+
+	self endsWithBreakStatement ifTrue: [ childrenBreakingBlocks add: self ].
+
+	^ childrenBreakingBlocks
+]
+
 { #category : 'accessing' }
 FASTCFGAbstractBlock >> allFollowingBlocks [
 
@@ -142,18 +154,6 @@ FASTCFGAbstractBlock >> nextBlocks [
 { #category : 'accessing' }
 FASTCFGAbstractBlock >> previousBlocks [
 	^ previousBlocks
-]
-
-{ #category : 'asserting' }
-FASTCFGAbstractBlock >> shouldBreakLoop: aLoop inContext: context [
-	"I should break this node if i'm a break and that we are currently visiting the loop as parameter."
-
-	self endsWithBreakStatement ifFalse: [ ^ false ].
-
-	^ context
-		  detect: #isLoop
-		  ifFound: [ :loop | loop conditional = aLoop ]
-		  ifNone: [ false ]
 ]
 
 { #category : 'asserting' }

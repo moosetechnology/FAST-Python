@@ -13,21 +13,13 @@ Trait {
 { #category : 'instance creation' }
 FASTTCFGUtility classSide >> buildCFGOf: aFASTEntity [
 
-	^ self new buildCFGForModel: aFASTEntity
+	^ self new buildCFGOf: aFASTEntity
 ]
 
 { #category : 'running' }
 FASTTCFGUtility >> addStatement: aStatement [
 
-	^ self currentStatements add: aStatement
-]
-
-{ #category : 'accessing' }
-FASTTCFGUtility >> allBlocks [
-
-	startBlock ifNil: [ ^ Array empty ].
-
-	^ startBlock withAllFollowingBlocks
+	^ currentStatements add: aStatement
 ]
 
 { #category : 'running' }
@@ -53,7 +45,7 @@ FASTTCFGUtility >> buildAndUse: aClass during: aBlock [
 	"Sometimes it is possible that we will need to pop multiple conditionals. 
 	For example, in the case of elif. Usually the elif contains the `then` block but not the `else`. The else will be either the next elif, or next else or next block after the if.
 	In that case, #buildNewConditional allows to push conditional blocks that I will clause with the containing conditional here. "
-	[ conditional == context top conditional ] whileFalse: [ context pop ].
+	[ conditional == self currentConditional ] whileFalse: [ context pop ].
 
 	context pop.
 	^ conditional
@@ -98,16 +90,21 @@ FASTTCFGUtility >> buildBlockIfNeeded [
 	
 	If I should be call at the closing of a statement block in the AST visit, then you should call #endBlock instead."
 
-	self currentStatements ifEmpty: [ ^ self ].
+	currentStatements ifEmpty: [ ^ self ].
 	^ self buildBlockOfType: FASTCFGBlock
 ]
 
 { #category : 'running' }
 FASTTCFGUtility >> buildBlockOfType: aBlockClass [
+	"I'm responsible of creating nodes. I'll:
+	- Build a block based on the class passed as parameter
+	- Add the saved statements to it since we create a block once we visited all its statements
+	- Set the previous blocks of this block
+	- Add it on the top context blocks. This is useful to know that the following blocks of my statement block are not the first node of the statement block. This has an influence on the management of previous blocks."
 
 	| newBlock |
 	newBlock := aBlockClass new.
-	newBlock statements: self currentStatements.
+	newBlock statements: currentStatements.
 	currentStatements := OrderedCollection new.
 
 	self managePreviousBlocksOf: newBlock.
@@ -118,7 +115,7 @@ FASTTCFGUtility >> buildBlockOfType: aBlockClass [
 ]
 
 { #category : 'running' }
-FASTTCFGUtility >> buildCFGForModel: aFASTModel [
+FASTTCFGUtility >> buildCFGOf: aFASTModel [
 
 	aFASTModel accept: self.
 	self shouldBuildNullBlock ifTrue: [ self buildBlockOfType: FASTCFGNullBlock ].
@@ -126,9 +123,11 @@ FASTTCFGUtility >> buildCFGForModel: aFASTModel [
 	^ startBlock
 ]
 
-{ #category : 'accessing' }
-FASTTCFGUtility >> currentStatements [
-	^ currentStatements
+{ #category : 'as yet unclassified' }
+FASTTCFGUtility >> currentConditional [
+	"I return the top conditional of the context stack. A conditional block can be one defining an if, elif, while, for, switch or a try."
+
+	^ context top conditional
 ]
 
 { #category : 'running' }
@@ -139,19 +138,24 @@ FASTTCFGUtility >> endBlock [
 	
 	"In case we are finishing the first block of a loop, we finilize the loop.
 	In the past, this was done before popping loops from the context, but doing it here with this condition allows to easily manage the else clause of loops in Python."
-	(context top conditional isLoop and: [ context top conditional nextBlocks size = 1 ]) ifTrue: [ self finializeLoop: context top conditional ].
+	( self currentConditional isLoop and: [  self currentConditional nextBlocks size = 1 ]) ifTrue: [ self finializeLoop ].
 
 	"We are changing of statement block so we flush the blocks we saved for the previous statement block."
 	context top flushCurrentBlocks
 ]
 
 { #category : 'running' }
-FASTTCFGUtility >> finializeLoop: loop [
-	"When we close a loop, we check all blocks that are not full and that do not end with a break to create the loop."
+FASTTCFGUtility >> finializeLoop [
+	"When we close a loop, we check all blocks that are not full and that do not end with a break of the current loop.
+	
+	I require that the loop to close is the top entry of the context"
 
-	loop allFollowingBlocks
-		reject: [ :block | block isFull or: [ block shouldBreakLoop: loop inContext: context ] ]
-		thenDo: [ :block | block addNextBlock: loop ]
+	| allBreakingNodes |
+	allBreakingNodes := self currentConditional allEffectiveBreakingBlocks.
+
+	self currentConditional allFollowingBlocks
+		reject: [ :block | block isFull or: [ allBreakingNodes includes: block ] ]
+		thenDo: [ :block | block addNextBlock: self currentConditional ]
 ]
 
 { #category : 'initialization' }
@@ -171,7 +175,7 @@ FASTTCFGUtility >> managePreviousBlocksOf: newBlock [
 			newBlock isStart: true.
 			^ self ].
 
-	context top currentBlocks ifEmpty: [ context top conditional addNextBlock: newBlock ] ifNotEmpty: [ :blocksAtScope |
+	context top currentBlocks ifEmpty: [  self currentConditional addNextBlock: newBlock ] ifNotEmpty: [ :blocksAtScope |
 			(blocksAtScope flatCollectAsSet: #withAllFollowingBlocks)
 				reject: [ :block | block isFull or: [ block shouldBreakOrContinueInContext: context ] ]
 				thenDo: [ :block | block addNextBlock: newBlock ] ]
@@ -181,7 +185,12 @@ FASTTCFGUtility >> managePreviousBlocksOf: newBlock [
 FASTTCFGUtility >> shouldBuildNullBlock [
 	"We build a null block if we have an unfinished conditional or more than one final block."
 
-	(self allBlocks select: [ :block | block isConditional and: [ block isFull not ] ]) ifNotEmpty: [ ^ true ].
+	| allBlocks |
+	startBlock ifNil: [ ^ false ].
+	
+	allBlocks := startBlock withAllFollowingBlocks.
 
-	^ (self allBlocks select: #isFinal) size > 1
+	(allBlocks select: [ :block | block isConditional and: [ block isFull not ] ]) ifNotEmpty: [ ^ true ].
+
+	^ (allBlocks select: #isFinal) size > 1
 ]

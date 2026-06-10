@@ -2442,6 +2442,57 @@ FASTPythonCFGTest >> testFunctionWithWhileBreakingInWhile [
 ]
 
 { #category : 'tests - while' }
+FASTPythonCFGTest >> testFunctionWithWhileBreakingInWhile2 [
+
+	| whileCondition ifCondition then else null |
+	self buildCFGFor: 'def f(i):
+	while i < 4:
+		while i < 2:
+			if i < 1:
+				break
+			else:
+				a()'.
+
+	self assert: startBlock isConditional.
+	self deny: startBlock isFinal.
+	self assert: startBlock statements size equals: 1.
+	self assert: (startBlock statements first class isOfType: FASTPyComparisonOperator).
+	self assert: startBlock nextBlocks size equals: 2.
+	self assert: (startBlock nextBlocks select: #isNullBlock) size equals: 1.
+
+	whileCondition := startBlock nextTrueBlock.
+	self assert: whileCondition isConditional.
+	self deny: whileCondition isFinal.
+	self assert: whileCondition statements size equals: 1.
+	self assert: (whileCondition statements first isOfType: FASTPyComparisonOperator).
+	self assert: whileCondition nextFalseBlock equals: startBlock.
+
+	ifCondition := whileCondition nextTrueBlock.
+	self assert: ifCondition isConditional.
+	self deny: ifCondition isFinal.
+	self assert: ifCondition statements size equals: 1.
+	self assert: (ifCondition statements first isOfType: FASTPyComparisonOperator).
+
+	then := ifCondition nextTrueBlock.
+	self deny: then isConditional.
+	self deny: then isFinal.
+	self assert: then statements size equals: 1.
+	self assert: (then statements first isOfType: FASTPyBreakStatement).
+	self assert: then nextBlock equals: startBlock.
+
+	else := ifCondition nextFalseBlock.
+	self deny: else isConditional.
+	self deny: else isFinal.
+	self assert: else statements size equals: 1.
+	self assert: (else statements first isOfType: FASTPyCall).
+	self assert: else nextBlock equals: whileCondition.
+
+	null := startBlock nextFalseBlock.
+	self assert: null isNullBlock.
+	self assert: null isFinal
+]
+
+{ #category : 'tests - while' }
 FASTPythonCFGTest >> testFunctionWithWhileDoesNotMixWithPreviousStatements [
 	"Since the while loop, we should not mix its condition with previous statements. "
 
