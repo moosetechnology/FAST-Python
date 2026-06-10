@@ -150,7 +150,11 @@ FASTPythonCFGVisitor >> visitFASTPyTryStatement: aTryStatement [
 
 	self buildAndUseTryDuring: [
 			self visitCollection: aTryStatement excepts.
-			self visitFASTPyTWithElseClause: aTryStatement.
+
+			aTryStatement elseClause ifNotNil: [ :clause |
+					context top conditional addPattern: nil.
+					self visitEntity: clause ].
+
 			self visitEntity: aTryStatement finally ]
 ]
 
