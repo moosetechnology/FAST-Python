@@ -98,6 +98,13 @@ FASTPythonCFGVisitor >> visitFASTPyExpression: aFASTPyExpression [
 ]
 
 { #category : 'visiting' }
+FASTPythonCFGVisitor >> visitFASTPyFinallyClause: aFinallyClause [
+	"We do not want to create the block immediatly because this content will be added with the following instructions after the try since they should be executed together."
+
+	aFinallyClause statements do: [ :statement | self addStatement: statement ]
+]
+
+{ #category : 'visiting' }
 FASTPythonCFGVisitor >> visitFASTPyForStatement: aForStatement [
 
 	self buildBlockIfNeeded.
