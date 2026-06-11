@@ -216,34 +216,34 @@ FASTTCFGUtility >> shouldBuildNullBlock [
 	^ (allBlocks select: #isFinal) size > 1
 ]
 
-{ #category : 'visiting' }
+{ #category : 'visiting - generic' }
 FASTTCFGUtility >> visitFASTTBreakStatement: aBreakStatement [
 
 	super visitFASTTBreakStatement: aBreakStatement.
 	FASTCFGStatementBlockInterruption signal
 ]
 
-{ #category : 'visiting' }
+{ #category : 'visiting - generic' }
 FASTTCFGUtility >> visitFASTTConditionalStatement: aStatement [
 
 	self addStatement: aStatement condition
 ]
 
-{ #category : 'visiting' }
+{ #category : 'visiting - generic' }
 FASTTCFGUtility >> visitFASTTContinueStatement: aBreakStatement [
 
 	super visitFASTTContinueStatement: aBreakStatement.
 	FASTCFGStatementBlockInterruption signal
 ]
 
-{ #category : 'visiting' }
+{ #category : 'visiting - generic' }
 FASTTCFGUtility >> visitFASTTStatement: aStatement [
 	"Register the statement in the list of statements to create the current block once we find a conditional or the end of a block"
 
 	self addStatement: aStatement
 ]
 
-{ #category : 'visiting' }
+{ #category : 'visiting - generic' }
 FASTTCFGUtility >> visitFASTTStatementBlock: aFASTTStatementBlock [
 	"We do not consider the block as a statemert.
 	Also, once we are done with a block, if we encountered statements we produce a new normal block with them."

@@ -1,13 +1,29 @@
 "
 I am a visitor used to build a CFG for FASTPython.
 
-TODO: Make it so that we can provide a method or module and update class comment
+I can be used like this:
+
+```smalltalk
+	FASTPythonCFGVisitor buildCFGOf: aModel allFunctionDefinitions first
+```
+
+I can take one of five different entities to build a CFG:
+- a `FASTPyModule`
+- a `FASTPyFunctionDefinition`
+- a `FASTPyMethodDefinition`
+- a `FASTPyLambda`
+- a `FASTPyClassDefinition`
+
+
 "
 Class {
 	#name : 'FASTPythonCFGVisitor',
 	#superclass : 'FASTPythonVisitor',
 	#traits : 'FASTTCFGUtility',
 	#classTraits : 'FASTTCFGUtility classTrait',
+	#instVars : [
+		'started'
+	],
 	#category : 'FAST-Python-Tools-CFG/DataFlow',
 	#package : 'FAST-Python-Tools',
 	#tag : 'CFG/DataFlow'
@@ -17,7 +33,8 @@ Class {
 FASTPythonCFGVisitor >> initialize [
 
 	super initialize.
-	self initializeCFG
+	self initializeCFG.
+	started := false
 ]
 
 { #category : 'visiting' }
@@ -31,25 +48,27 @@ FASTPythonCFGVisitor >> visitFASTPyBreakStatement: aBreakStatement [
 { #category : 'visiting' }
 FASTPythonCFGVisitor >> visitFASTPyCaseClause: aCaseClause [
 
-	| switch pattern |
-	switch := context top conditional.
-	self assert: switch isSwitch.
-
+	| pattern |
+	self assert: self currentConditional isSwitch.
+	
 	"In Python a pattern can come with a condition. If that is the case, I ship the pattern with this condition."
 	pattern := aCaseClause pattern ifNotNil: [
 			           aCaseClause condition
 				           ifNil: [ aCaseClause pattern ]
-				           ifNotNil: [ :condition |
-						           {
-							           aCaseClause pattern.
-							           condition } ] ].
-
+				           ifNotNil: [ :condition | { aCaseClause pattern . condition } ] ].
+					
 	"If we have multiple times the same pattern in a match, we keep only the first one because the others will be ignored."
-	(switch includesPattern:  pattern) ifTrue: [ ^ self ].
+	(self currentConditional includesPattern: pattern) ifTrue: [ ^ self ].
 
-	switch addPattern:  pattern.
+	self currentConditional addPattern: pattern.
 
 	self visitFASTTStatementBlock: aCaseClause
+]
+
+{ #category : 'visiting - entry points' }
+FASTPythonCFGVisitor >> visitFASTPyClassDefinition: aClass [
+
+	self visitPossibleEntryPoints: aClass
 ]
 
 { #category : 'visiting' }
@@ -123,11 +142,10 @@ FASTPythonCFGVisitor >> visitFASTPyForStatement: aForStatement [
 			self visitFASTPyTWithElseClause: aForStatement  ]
 ]
 
-{ #category : 'visiting' }
+{ #category : 'visiting - entry points' }
 FASTPythonCFGVisitor >> visitFASTPyFunctionDefinition: aFunction [
-	"We do not manage the function in itself only its content"
 
-	self visitFASTPyTDefinition: aFunction
+	self visitPossibleEntryPoints: aFunction
 ]
 
 { #category : 'visiting' }
@@ -141,6 +159,12 @@ FASTPythonCFGVisitor >> visitFASTPyIfStatement: anIfStatement [
 			self visitFASTPyTWithElseClause: anIfStatement ]
 ]
 
+{ #category : 'visiting - entry points' }
+FASTPythonCFGVisitor >> visitFASTPyLambda: aLambda [
+
+	self visitPossibleEntryPoints: aLambda
+]
+
 { #category : 'visiting' }
 FASTPythonCFGVisitor >> visitFASTPyMatchStatement: aMatchStatement [
 	"We skip the visit of the statement. We add the subject as last thing to execute of the previous block then we declare a switch."
@@ -148,6 +172,18 @@ FASTPythonCFGVisitor >> visitFASTPyMatchStatement: aMatchStatement [
 	self addStatement: aMatchStatement subject.
 
 	self buildAndUseSwitchDuring: [ self visitCollection: aMatchStatement cases ]
+]
+
+{ #category : 'visiting - entry points' }
+FASTPythonCFGVisitor >> visitFASTPyMethodDefinition: aMethod [
+
+	self visitPossibleEntryPoints: aMethod
+]
+
+{ #category : 'visiting - entry points' }
+FASTPythonCFGVisitor >> visitFASTPyModule: aModule [
+
+	self visitPossibleEntryPoints: aModule
 ]
 
 { #category : 'visiting' }
@@ -177,4 +213,17 @@ FASTPythonCFGVisitor >> visitFASTPyWhileStatement: aWhileStatement [
 			
 			"We add the loops after finishing the first statement block, so the else can be managed in this block to be in the right context."
 			self visitFASTPyTWithElseClause: aWhileStatement ]
+]
+
+{ #category : 'visiting - entry points' }
+FASTPythonCFGVisitor >> visitPossibleEntryPoints: aFASTEntity [
+	"I am the definition of a function, method, class, module or lambda. I can be the entry point of a CFG but I can also be a statement encountered in another definition. 
+	
+	In the first case I visit the definition's statement block. Else I consider the definition as a statement only."
+
+	started
+		ifTrue: [ self visitFASTTStatement: aFASTEntity ]
+		ifFalse: [
+				started := true.
+				self visitFASTTStatementBlock: aFASTEntity ]
 ]

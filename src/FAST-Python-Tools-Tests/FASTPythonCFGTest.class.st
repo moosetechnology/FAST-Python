@@ -9,9 +9,8 @@ Class {
 }
 
 { #category : 'running' }
-FASTPythonCFGTest >> buildCFGFor: aString [
+FASTPythonCFGTest >> buildCFGForFunction: aString [
 
-	self flag: #todo. "What should be the entry point?"
 	startBlock := FASTPythonCFGVisitor buildCFGOf: (self parse: aString) allFunctionDefinitions first
 ]
 
@@ -23,11 +22,89 @@ FASTPythonCFGTest >> parse: aString [
 		  parse: aString withPlatformLineEndings
 ]
 
+{ #category : 'tests' }
+FASTPythonCFGTest >> testCFGOfClass [
+
+	startBlock := FASTPythonCFGVisitor buildCFGOf: (self parse: 'class Class():
+	i = 0
+	
+	def funct2(i):
+		var = i + 4
+		return var
+	
+	i = funct2(i)
+	print(i)
+	return i') allClassDefinitions first.
+
+	self assert: startBlock isStart.
+	self assert: startBlock isFinal.
+	self assert: startBlock statements size equals: 5.
+	self assertEmpty: startBlock nextBlocks
+]
+
+{ #category : 'tests' }
+FASTPythonCFGTest >> testCFGOfFunction [
+
+	startBlock := FASTPythonCFGVisitor buildCFGOf: (self parse: 'def funct():
+	i = 0
+	
+	def funct2(i):
+		var = i + 4
+		return var
+	
+	i = funct2(i)
+	print(i)
+	return i') allFunctionDefinitions first.
+
+	self assert: startBlock isStart.
+	self assert: startBlock isFinal.
+	self assert: startBlock statements size equals: 5.
+	self assertEmpty: startBlock nextBlocks
+]
+
+{ #category : 'tests' }
+FASTPythonCFGTest >> testCFGOfModule [
+
+	startBlock := FASTPythonCFGVisitor buildCFGOf: (self parse: 'i = 0
+
+def funct2(i):
+	var = i + 4
+	return var
+
+i = funct2(i)
+print(i)') allModules first.
+
+	self assert: startBlock isStart.
+	self assert: startBlock isFinal.
+	self assert: startBlock statements size equals: 4.
+	self assertEmpty: startBlock nextBlocks
+]
+
+{ #category : 'tests' }
+FASTPythonCFGTest >> testFunctionInFunction [
+	
+	self buildCFGForFunction: 'def funct():
+	i = 0
+	
+	def funct2(i):
+		var = i + 4
+		return var
+	
+	i = funct2(i)
+	print(i)
+	return i'.
+
+	self assert: startBlock isStart.
+	self assert: startBlock isFinal.
+	self assert: startBlock statements size equals: 5.
+	self assertEmpty: startBlock nextBlocks
+]
+
 { #category : 'tests - conditional expressions' }
 FASTPythonCFGTest >> testFunctionWithConditionalExpression [
 
 	| thenBlock elseBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     y()
     x() if i % 2 == 0 else y()'.
 
@@ -61,7 +138,7 @@ FASTPythonCFGTest >> testFunctionWithConditionalExpression [
 FASTPythonCFGTest >> testFunctionWithFor [
 
 	| forBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     for x in i:
         print(x)'.
 
@@ -90,7 +167,7 @@ FASTPythonCFGTest >> testFunctionWithForConditionDoesNotMixWithPreviousStatement
 	"Since the for loop, we should not mix its condition with previous statements. "
 
 	| forCondition forBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     y()
     for x in i:
         print(x)'.
@@ -125,7 +202,7 @@ FASTPythonCFGTest >> testFunctionWithForConditionDoesNotMixWithPreviousStatement
 FASTPythonCFGTest >> testFunctionWithForWithBreak [
 
 	| forBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
      for x in i:
       y()
       break
@@ -156,7 +233,7 @@ FASTPythonCFGTest >> testFunctionWithForWithBreak [
 FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThen [
 
 	| ifConditionalBlock thenBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     for x in i:
       a()
       if i > 2:
@@ -196,7 +273,7 @@ FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThen [
 FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThen2 [
 
 	| ifConditionalBlock thenBlock endOfFor nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     for x in i:
       a()
       if i > 2:
@@ -243,7 +320,7 @@ FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThen2 [
 FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThenBreakingAndElse [
 
 	| ifConditionalBlock thenBlock esleBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     for x in i:
       a()
       if i > 2:
@@ -292,7 +369,7 @@ FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThenBreakingAndElse [
 FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThenBreakingAndElseBreaking [
 
 	| ifConditionalBlock thenBlock elseBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     for x in i:
       a()
       if i > 2:
@@ -344,7 +421,7 @@ FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThenBreakingAndElseBreaking
 FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThenElifAndElseAllBreaking [
 
 	| ifConditionalBlock thenBlock elifConditionalBlock elifBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	for x in i:
 		a()
 		if i > 2:
@@ -417,7 +494,7 @@ FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThenElifAndElseAllBreaking 
 FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThenElifBreakingAndElse [
 
 	| ifConditionalBlock thenBlock elifConditionalBlock elifBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	for x in i:
 		a()
 		if i > 2:
@@ -484,7 +561,7 @@ FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThenElifBreakingAndElse [
 FASTPythonCFGTest >> testFunctionWithForWithBreakingIfThenElse [
 
 	| ifConditionalBlock thenBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	for x in i:
 		a()
 		if i > 2:
@@ -540,7 +617,7 @@ FASTPythonCFGTest >> testFunctionWithForWithBreakingIfThenElse [
 FASTPythonCFGTest >> testFunctionWithForWithContinue [
 
 	| forBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
      for x in i:
       y()
       continue
@@ -571,7 +648,7 @@ FASTPythonCFGTest >> testFunctionWithForWithContinue [
 FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThen [
 
 	| ifConditionalBlock thenBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     for x in i:
       a()
       if i > 2:
@@ -611,7 +688,7 @@ FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThen [
 FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThen2 [
 
 	| ifConditionalBlock thenBlock endOfFor nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     for x in i:
       a()
       if i > 2:
@@ -658,7 +735,7 @@ FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThen2 [
 FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThenContinuingAndElse [
 
 	| ifConditionalBlock thenBlock esleBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     for x in i:
       a()
       if i > 2:
@@ -707,7 +784,7 @@ FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThenContinuingAndElse [
 FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThenContinuingAndElseContinuing [
 
 	| ifConditionalBlock thenBlock elseBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     for x in i:
       a()
       if i > 2:
@@ -759,7 +836,7 @@ FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThenContinuingAndElseCon
 FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThenElifAndElseAllContinuing [
 
 	| ifConditionalBlock thenBlock elifConditionalBlock elifBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	for x in i:
 		a()
 		if i > 2:
@@ -832,7 +909,7 @@ FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThenElifAndElseAllContin
 FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThenElifContinuingAndElse [
 
 	| ifConditionalBlock thenBlock elifConditionalBlock elifBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	for x in i:
 		a()
 		if i > 2:
@@ -899,7 +976,7 @@ FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThenElifContinuingAndEls
 FASTPythonCFGTest >> testFunctionWithForWithContinuingIfThenElse [
 
 	| ifConditionalBlock thenBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	for x in i:
 		a()
 		if i > 2:
@@ -955,7 +1032,7 @@ FASTPythonCFGTest >> testFunctionWithForWithContinuingIfThenElse [
 FASTPythonCFGTest >> testFunctionWithForWithElseWithBreakInAllBranches [
 
 	| forBlock elseBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	for x in i:
 		print(i)
 		break
@@ -993,7 +1070,7 @@ FASTPythonCFGTest >> testFunctionWithForWithElseWithBreakInAllBranches [
 FASTPythonCFGTest >> testFunctionWithForWithElseWithBreakInIf [
 
 	| forBlock thenBlock elseBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	for x in i:
 		print(i)
 		if 1 > 2:
@@ -1039,7 +1116,7 @@ FASTPythonCFGTest >> testFunctionWithForWithElseWithBreakInIf [
 FASTPythonCFGTest >> testFunctionWithForWithElseWithoutBreak [
 
 	| forBlock elseBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	for x in i:
 		print(i)
 	else:
@@ -1071,7 +1148,7 @@ FASTPythonCFGTest >> testFunctionWithForWithElseWithoutBreak [
 FASTPythonCFGTest >> testFunctionWithForWithIfInElif [
 
 	| ifConditionalBlock thenBlock elifConditionalBlock ifConditionalBlock2 thenBlock2 endOfElifBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	for x in i:
 		a()
 		if i > 2:
@@ -1152,7 +1229,7 @@ FASTPythonCFGTest >> testFunctionWithForWithIfInElif [
 FASTPythonCFGTest >> testFunctionWithIfInElif [
 
 	| thenBlock elifConditionalBlock ifConditionalBlock2 thenBlock2 endOfElifBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	if i > 2:
 		a() 
 	elif i > 1:
@@ -1214,7 +1291,7 @@ FASTPythonCFGTest >> testFunctionWithIfInElif [
 FASTPythonCFGTest >> testFunctionWithIfInElif2 [
 
 	| thenBlock elifConditionalBlock ifConditionalBlock2 thenBlock2 endOfElifBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	if i > 2:
 		a() 
 	elif i > 1:
@@ -1284,7 +1361,7 @@ FASTPythonCFGTest >> testFunctionWithIfInElif2 [
 FASTPythonCFGTest >> testFunctionWithIfThen [
 
 	| thenBlock nextBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     y()
     if i > 3:
         print(i)
@@ -1314,7 +1391,7 @@ FASTPythonCFGTest >> testFunctionWithIfThen [
 FASTPythonCFGTest >> testFunctionWithIfThenAtEnd [
 
 	| thenBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     y()
     if i > 3:
         print(i)'.
@@ -1343,7 +1420,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenAtEnd [
 FASTPythonCFGTest >> testFunctionWithIfThenAtStart [
 
 	| thenBlock returnBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     if i > 3:
         print(i)
     return True'.
@@ -1373,7 +1450,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenAtStart [
 FASTPythonCFGTest >> testFunctionWithIfThenElif [
 
 	| thenBlock elifConditionBlock elifBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     if i > 3:
         print(i)
     elif i < 8:
@@ -1416,7 +1493,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenElif [
 FASTPythonCFGTest >> testFunctionWithIfThenElifElif [
 
 	| thenBlock elifConditionBlock elifBlock elifConditionBlock2 elifBlock2 nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     if i > 3:
         print(i)
     elif i < 8:
@@ -1473,7 +1550,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenElifElif [
 FASTPythonCFGTest >> testFunctionWithIfThenElifElifElse [
 
 	| thenBlock elifConditionBlock elifBlock elifConditionBlock2 elifBlock2 elseBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     if i > 3:
         print(i)
     elif i < 8:
@@ -1538,7 +1615,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenElifElifElse [
 FASTPythonCFGTest >> testFunctionWithIfThenElifElse [
 
 	| thenBlock elifConditionBlock elifBlock elseBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     if i > 3:
         print(i)
     elif i < 8:
@@ -1588,7 +1665,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenElifElse [
 FASTPythonCFGTest >> testFunctionWithIfThenElse [
 
 	| thenBlock elseBlock returnBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     y()
     if i > 3:
         print(i)
@@ -1628,7 +1705,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenElse [
 FASTPythonCFGTest >> testFunctionWithIfThenElseAtEnd [
 
 	| thenBlock elseBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     y()
     if i > 3:
         print(i)
@@ -1665,7 +1742,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenElseAtEnd [
 FASTPythonCFGTest >> testFunctionWithIfThenElseAtStart [
 
 	| thenBlock elseBlock returnBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     if i > 3:
         print(i)
     else:
@@ -1703,7 +1780,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenElseAtStart [
 FASTPythonCFGTest >> testFunctionWithIfThenElseInIfThen [
 
 	| thenBlock thenBlock2 elseBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     if i > 3:
 	y()
         if i < 5:
@@ -1747,7 +1824,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenElseInIfThen [
 FASTPythonCFGTest >> testFunctionWithIfThenInIfThen [
 
 	| thenBlock thenBlock2 nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     if i > 3:
 	y()
         if i < 5:
@@ -1783,7 +1860,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenInIfThen [
 FASTPythonCFGTest >> testFunctionWithIfThenInIfThenElse [
 
 	| thenBlock thenBlock2 elseBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     if i > 3:
 	y()
         if i < 5:
@@ -1827,7 +1904,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenInIfThenElse [
 FASTPythonCFGTest >> testFunctionWithMatch [
 
 	| case1 case2 defaultCase lastBlock |
-	self buildCFGFor: 'def f(day):
+	self buildCFGForFunction: 'def f(day):
 	a()
 	match day:
 		case "Saturday" | "Sunday":
@@ -1882,7 +1959,7 @@ FASTPythonCFGTest >> testFunctionWithMatch [
 FASTPythonCFGTest >> testFunctionWithMatchWith2IdenticalCase [
 	"If two cases have the same pattern, only the first one wins."
 	| case1 defaultCase lastBlock |
-	self buildCFGFor: 'def f(day):
+	self buildCFGForFunction: 'def f(day):
 	a()
 	match day:
 		case 1:
@@ -1929,7 +2006,7 @@ FASTPythonCFGTest >> testFunctionWithMatchWith2IdenticalCase [
 FASTPythonCFGTest >> testFunctionWithMatchWithCondition [
 
 	| case1 case1Pattern case2 defaultCase lastBlock |
-	self buildCFGFor: 'def f(day):
+	self buildCFGForFunction: 'def f(day):
 	a()
 	match day:
 		case 1 if n > 10:
@@ -1986,7 +2063,7 @@ FASTPythonCFGTest >> testFunctionWithMatchWithCondition [
 { #category : 'tests' }
 FASTPythonCFGTest >> testFunctionWithOneStatement [
 
-	self buildCFGFor: 'def funct():
+	self buildCFGForFunction: 'def funct():
 	print("Hello")'.
 
 	self assert: startBlock isStart.
@@ -1998,7 +2075,7 @@ FASTPythonCFGTest >> testFunctionWithOneStatement [
 { #category : 'tests' }
 FASTPythonCFGTest >> testFunctionWithSimpleReturn [
 
-	self buildCFGFor: 'def funct():
+	self buildCFGForFunction: 'def funct():
 	i = 0
 	i += 4
 	print(i)
@@ -2013,7 +2090,7 @@ FASTPythonCFGTest >> testFunctionWithSimpleReturn [
 { #category : 'tests' }
 FASTPythonCFGTest >> testFunctionWithSimpleStatements [
 
-	self buildCFGFor: 'def funct():
+	self buildCFGForFunction: 'def funct():
 	i = 0
 	i += 4
 	print(i)'.
@@ -2028,7 +2105,7 @@ FASTPythonCFGTest >> testFunctionWithSimpleStatements [
 FASTPythonCFGTest >> testFunctionWithTry [
 
 	| tryBlock exceptBlock lastBlock |
-	self buildCFGFor: 'def f(day):
+	self buildCFGForFunction: 'def f(day):
 	a()
 	try:
 		b()
@@ -2074,7 +2151,7 @@ FASTPythonCFGTest >> testFunctionWithTry [
 FASTPythonCFGTest >> testFunctionWithTryWihtMultipleExcepts [
 
 	| tryBlock exceptBlock exceptBlock2 exceptBlock3 lastBlock |
-	self buildCFGFor: 'def f(day):
+	self buildCFGForFunction: 'def f(day):
 	a()
 	try:
 		b()
@@ -2140,7 +2217,7 @@ FASTPythonCFGTest >> testFunctionWithTryWihtMultipleExcepts [
 FASTPythonCFGTest >> testFunctionWithTryWithElse [
 
 	| tryBlock exceptBlock exceptBlock2 exceptBlock3 elseBlock lastBlock |
-	self buildCFGFor: 'def f(day):
+	self buildCFGForFunction: 'def f(day):
 	a()
 	try:
 		b()
@@ -2215,7 +2292,7 @@ FASTPythonCFGTest >> testFunctionWithTryWithElse [
 FASTPythonCFGTest >> testFunctionWithTryWithElseAndFinally [
 
 	| tryBlock exceptBlock exceptBlock2 exceptBlock3 elseBlock lastBlock |
-	self buildCFGFor: 'def f(day):
+	self buildCFGForFunction: 'def f(day):
 	a()
 	try:
 		b()
@@ -2292,7 +2369,7 @@ FASTPythonCFGTest >> testFunctionWithTryWithElseAndFinally [
 FASTPythonCFGTest >> testFunctionWithTryWithFinally [
 
 	| tryBlock exceptBlock exceptBlock2 exceptBlock3 lastBlock |
-	self buildCFGFor: 'def f(day):
+	self buildCFGForFunction: 'def f(day):
 	a()
 	try:
 		b()
@@ -2361,7 +2438,7 @@ FASTPythonCFGTest >> testFunctionWithTryWithFinally [
 FASTPythonCFGTest >> testFunctionWithWhile [
 
 	| whileBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     while i < 4:
         i += 1
         print(i)'.
@@ -2390,7 +2467,7 @@ FASTPythonCFGTest >> testFunctionWithWhile [
 FASTPythonCFGTest >> testFunctionWithWhileBreakingInWhile [
 
 	| trueWhile whileConditionalBlock2 thenBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	while i < 4:
 		a()
 		while i < 2:
@@ -2445,7 +2522,7 @@ FASTPythonCFGTest >> testFunctionWithWhileBreakingInWhile [
 FASTPythonCFGTest >> testFunctionWithWhileBreakingInWhile2 [
 
 	| whileCondition ifCondition then else null |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	while i < 4:
 		while i < 2:
 			if i < 1:
@@ -2497,7 +2574,7 @@ FASTPythonCFGTest >> testFunctionWithWhileDoesNotMixWithPreviousStatements [
 	"Since the while loop, we should not mix its condition with previous statements. "
 
 	| whileCondition whileBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     y()
     while i < 4:
         i += 1
@@ -2533,7 +2610,7 @@ FASTPythonCFGTest >> testFunctionWithWhileDoesNotMixWithPreviousStatements [
 FASTPythonCFGTest >> testFunctionWithWhileWithBreak [
 
 	| whileBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     while i < 4:
       y()
       break
@@ -2563,7 +2640,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreak [
 FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThen [
 
 	| ifConditionalBlock thenBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     while i < 4:
       a()
       if i > 2:
@@ -2602,7 +2679,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThen [
 FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThen2 [
 
 	| ifConditionalBlock thenBlock endOfWhile nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     while i < 4:
       a()
       if i > 2:
@@ -2648,7 +2725,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThen2 [
 FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenBreakingAndElse [
 
 	| ifConditionalBlock thenBlock esleBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     while i < 4:
       a()
       if i > 2:
@@ -2696,7 +2773,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenBreakingAndElse [
 FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenBreakingAndElseBreaking [
 
 	| ifConditionalBlock thenBlock elseblock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     while i < 4:
       a()
       if i > 2:
@@ -2747,7 +2824,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenBreakingAndElseBreaki
 FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenElifAndElseAllBreaking [
 
 	| ifConditionalBlock thenBlock elifConditionalBlock elifBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	while i < 4:
 		a()
 		if i > 2:
@@ -2819,7 +2896,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenElifAndElseAllBreakin
 FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenElifBreakingAndElse [
 
 	| ifConditionalBlock thenBlock elifConditionalBlock elifBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	while i < 4:
 		a()
 		if i > 2:
@@ -2885,7 +2962,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenElifBreakingAndElse [
 FASTPythonCFGTest >> testFunctionWithWhileWithBreakingIfThenElse [
 
 	| ifConditionalBlock thenBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	while i < 4:
 		a()
 		if i > 2:
@@ -2940,7 +3017,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakingIfThenElse [
 FASTPythonCFGTest >> testFunctionWithWhileWithContinue [
 
 	| whileBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     while i < 4:
       y()
       continue
@@ -2970,7 +3047,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinue [
 FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThen [
 
 	| ifConditionalBlock thenBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     while i < 4:
       a()
       if i > 2:
@@ -3009,7 +3086,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThen [
 FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThen2 [
 
 	| ifConditionalBlock thenBlock endOfWhile nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     while i < 4:
       a()
       if i > 2:
@@ -3055,7 +3132,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThen2 [
 FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThenContinuingAndElse [
 
 	| ifConditionalBlock thenBlock esleBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     while i < 4:
       a()
       if i > 2:
@@ -3103,7 +3180,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThenContinuingAndElse 
 FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThenContinuingAndElseContinuing [
 
 	| ifConditionalBlock thenBlock elseBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
     while i < 4:
       a()
       if i > 2:
@@ -3154,7 +3231,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThenContinuingAndElseC
 FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThenElifAndElseAllContinuing [
 
 	| ifConditionalBlock thenBlock elifConditionalBlock elifBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	while i < 4:
 		a()
 		if i > 2:
@@ -3226,7 +3303,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThenElifAndElseAllCont
 FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThenElifContinuingAndElse [
 
 	| ifConditionalBlock thenBlock elifConditionalBlock elifBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	while i < 4:
 		a()
 		if i > 2:
@@ -3292,7 +3369,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThenElifContinuingAndE
 FASTPythonCFGTest >> testFunctionWithWhileWithContinuingIfThenElse [
 
 	| ifConditionalBlock thenBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	while i < 4:
 		a()
 		if i > 2:
@@ -3347,7 +3424,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinuingIfThenElse [
 FASTPythonCFGTest >> testFunctionWithWhileWithElseWithBreakInAllBranches [
 
 	| whileBlock elseBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	while i < 4:
 		print(i)
 		break
@@ -3384,7 +3461,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithElseWithBreakInAllBranches [
 FASTPythonCFGTest >> testFunctionWithWhileWithElseWithBreakInIf [
 
 	| whileBlock thenBlock elseBlock nullBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	while i < 4:
 		print(i)
 		if 1 > 2:
@@ -3429,7 +3506,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithElseWithBreakInIf [
 FASTPythonCFGTest >> testFunctionWithWhileWithElseWithoutBreak [
 
 	| whileBlock elseBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	while i < 4:
 		print(i)
 	else:
@@ -3460,7 +3537,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithElseWithoutBreak [
 FASTPythonCFGTest >> testFunctionWithWhileWithIfInElif [
 
 	| ifConditionalBlock thenBlock elifConditionalBlock ifConditionalBlock2 thenBlock2 endOfElifBlock elseBlock lastBlock |
-	self buildCFGFor: 'def f(i):
+	self buildCFGForFunction: 'def f(i):
 	while i < 4:
 		a()
 		if i > 2:
