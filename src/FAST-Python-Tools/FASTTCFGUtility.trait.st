@@ -237,6 +237,13 @@ FASTTCFGUtility >> visitFASTTContinueStatement: aBreakStatement [
 ]
 
 { #category : 'visiting - generic' }
+FASTTCFGUtility >> visitFASTTReturnStatement: aTReturnStatement [
+
+	super visitFASTTReturnStatement: aTReturnStatement.
+	FASTCFGStatementBlockInterruption signal
+]
+
+{ #category : 'visiting - generic' }
 FASTTCFGUtility >> visitFASTTStatement: aStatement [
 	"Register the statement in the list of statements to create the current block once we find a conditional or the end of a block"
 

@@ -100,6 +100,21 @@ FASTPythonCFGTest >> testFunctionInFunction [
 	self assertEmpty: startBlock nextBlocks
 ]
 
+{ #category : 'tests' }
+FASTPythonCFGTest >> testFunctionWithCodeAfterReturn [
+
+	self buildCFGForFunction: 'def i():
+    return 3
+    if y > 4:
+	a()'.
+
+	self assert: startBlock isStart.
+	self assert: startBlock isFinal.
+	self assert: startBlock statements size equals: 1.
+	self assert: (startBlock statements first isOfType: FASTPyReturnStatement).
+	self assertEmpty: startBlock nextBlocks
+]
+
 { #category : 'tests - conditional expressions' }
 FASTPythonCFGTest >> testFunctionWithConditionalExpression [
 

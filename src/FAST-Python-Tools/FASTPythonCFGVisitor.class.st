@@ -59,9 +59,9 @@ FASTPythonCFGVisitor >> initialize [
 	started := false
 ]
 
-{ #category : 'visiting' }
+{ #category : 'visiting - reordering' }
 FASTPythonCFGVisitor >> visitFASTPyBreakStatement: aBreakStatement [
-	"We need to visit the statement before the TBreakStatement to add the break statement in the list of statements. Else the visit of #FASTPyStatement will be skipped by the exception raised FASTTBreakStatement"
+	"We need to visit the statement before the TBreakStatement to add the break statement in the list of statements. Else the visit of #FASTPyStatement will be skipped by the exception raised FASTCFGStatementBlockInterruption"
 
 	self visitFASTPyStatement: aBreakStatement.
 	self visitFASTTBreakStatement: aBreakStatement
@@ -105,9 +105,9 @@ FASTPythonCFGVisitor >> visitFASTPyConditionalExpression: aConditionalExpression
 			self buildBlockIfNeeded ]
 ]
 
-{ #category : 'visiting' }
+{ #category : 'visiting - reordering' }
 FASTPythonCFGVisitor >> visitFASTPyContinueStatement: aContinueStatement [
-	"We need to visit the statement before the TContinueStatement to add the break statement in the list of statements. Else the visit of #FASTPyStatement will be skipped by the exception raised TContinueStatement"
+	"We need to visit the statement before the TContinueStatement to add the break statement in the list of statements. Else the visit of #FASTPyStatement will be skipped by the exception raised FASTCFGStatementBlockInterruption"
 
 	self visitFASTPyStatement: aContinueStatement.
 	self visitFASTTContinueStatement: aContinueStatement
@@ -206,6 +206,14 @@ FASTPythonCFGVisitor >> visitFASTPyMethodDefinition: aMethod [
 FASTPythonCFGVisitor >> visitFASTPyModule: aModule [
 
 	self visitPossibleEntryPoints: aModule
+]
+
+{ #category : 'visiting - reordering' }
+FASTPythonCFGVisitor >> visitFASTPyReturnStatement: aReturnStatement [
+	"We need to visit the statement before the TReturnStatement to add the return statement in the list of statements. Else the visit of #FASTPyStatement will be skipped by the exception raised FASTCFGStatementBlockInterruption"
+
+	self visitFASTPyStatement: aReturnStatement.
+	self visitFASTTReturnStatement: aReturnStatement.
 ]
 
 { #category : 'visiting' }
