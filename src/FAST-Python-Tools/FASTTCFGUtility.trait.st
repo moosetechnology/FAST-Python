@@ -218,7 +218,7 @@ FASTTCFGUtility >> shouldBuildNullBlock [
 FASTTCFGUtility >> visitFASTTBreakStatement: aBreakStatement [
 
 	super visitFASTTBreakStatement: aBreakStatement.
-	FASTCFGLoopInterruptionEncountered signal
+	FASTCFGStatementBlockInterruption signal
 ]
 
 { #category : 'visiting' }
@@ -231,7 +231,7 @@ FASTTCFGUtility >> visitFASTTConditionalStatement: aStatement [
 FASTTCFGUtility >> visitFASTTContinueStatement: aBreakStatement [
 
 	super visitFASTTContinueStatement: aBreakStatement.
-	FASTCFGLoopInterruptionEncountered signal
+	FASTCFGStatementBlockInterruption signal
 ]
 
 { #category : 'visiting' }
@@ -247,7 +247,7 @@ FASTTCFGUtility >> visitFASTTStatementBlock: aFASTTStatementBlock [
 	Also, once we are done with a block, if we encountered statements we produce a new normal block with them."
 
 	[ self visitCollection: aFASTTStatementBlock statements ]
-		on: FASTCFGLoopInterruptionEncountered
+		on: FASTCFGStatementBlockInterruption
 		do: [ "End visit of the block and resume the rest of the visit." ].
 	self endBlock
 ]
