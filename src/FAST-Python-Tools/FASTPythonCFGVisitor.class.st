@@ -39,7 +39,6 @@ FASTPythonCFGVisitor >> visitFASTPyCaseClause: aCaseClause [
 							           aCaseClause pattern.
 							           condition } ] ].
 
-	self flag: #todo. "Add tests on a match with multiple times the same pattern"
 	"If we have multiple times the same pattern in a match, we keep only the first one because the others will be ignored."
 	(switch includesPattern:  pattern) ifTrue: [ ^ self ].
 
@@ -109,7 +108,6 @@ FASTPythonCFGVisitor >> visitFASTPyForStatement: aForStatement [
 
 	self buildBlockIfNeeded.
 
-	self flag: #todo. "The condition could be a conditional expression. Add a test on this case"
 	self addStatement: aForStatement left.
 	self addStatement: aForStatement right.
 

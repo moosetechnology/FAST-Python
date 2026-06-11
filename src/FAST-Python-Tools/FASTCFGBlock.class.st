@@ -1,3 +1,8 @@
+"
+I am a block to represent a basic execution block in a CFG graph. 
+
+A basic execution block is a block that does not end with a conditional and that have only one next block. 
+"
 Class {
 	#name : 'FASTCFGBlock',
 	#superclass : 'FASTCFGAbstractBlock',
@@ -17,13 +22,13 @@ FASTCFGBlock >> addNextBlock: aBlock [
 	^ self nextBlock: aBlock
 ]
 
-{ #category : 'testing' }
+{ #category : 'private' }
 FASTCFGBlock >> endsWithBreakStatement [
 
 	^ self statements last isBreakStatement
 ]
 
-{ #category : 'testing' }
+{ #category : 'private' }
 FASTCFGBlock >> endsWithContinueStatement [
 
 	^ self statements last isContinueStatement

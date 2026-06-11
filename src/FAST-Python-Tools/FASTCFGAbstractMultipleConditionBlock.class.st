@@ -1,3 +1,14 @@
+"
+I am an abstract class to represent conditional blocks with multiple exits (0 to n). 
+
+This will be used to define blocks for switch or try catch.
+
+I keep an ordered dictionary for the next blocks association the pattern determining the next block condition and the block executed if the pattern matches. 
+
+In case the pattern is nil, it means that we have the default block (for example: a default case in a switch or a finally block in a try catch).
+
+
+"
 Class {
 	#name : 'FASTCFGAbstractMultipleConditionBlock',
 	#superclass : 'FASTCFGAbstractConditionalBlock',

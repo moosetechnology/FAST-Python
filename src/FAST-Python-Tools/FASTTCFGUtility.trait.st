@@ -123,7 +123,7 @@ FASTTCFGUtility >> buildCFGOf: aFASTModel [
 	^ startBlock
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 FASTTCFGUtility >> currentConditional [
 	"I return the top conditional of the context stack. A conditional block can be one defining an if, elif, while, for, switch or a try."
 

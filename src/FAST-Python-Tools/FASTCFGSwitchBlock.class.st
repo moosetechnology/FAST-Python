@@ -1,3 +1,10 @@
+"
+I am a block to represent a switch. 
+
+A switch will contain as last statement the subject of the switch. 
+
+Then I associate the statement defining the case to the block executed if we select this path.
+"
 Class {
 	#name : 'FASTCFGSwitchBlock',
 	#superclass : 'FASTCFGAbstractMultipleConditionBlock',

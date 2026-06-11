@@ -1,3 +1,17 @@
+"
+I am an abstract bloc in a CFG graph. I define the common API of all blocks.
+
+All nodes store:
+- A boolean to know if they are the start of a CFG graph via `#isStart`
+- A list of statements that are in the block. At the exception of a `FASTCFGTryBlock` that can be stopped at any statement, all statements of a block will be executed if the execution enter this block
+- The previous blocks pointing to me in the graph
+
+All nodes should be able to provide their next blocks via `#nextBlocks`, but the number of blocks possible vary depending on the node. 
+
+A node should return true to `#isFull` if it has all its required next blocks. 
+
+A node should return true to `#isFinal` if it is the exit of the CFG graph. A CFG graph will always have one exit. In case of multiple exits, we create a `FASTCFGNullBlock` to join the exits.
+"
 Class {
 	#name : 'FASTCFGAbstractBlock',
 	#superclass : 'Object',
@@ -23,7 +37,7 @@ FASTCFGAbstractBlock >> addPreviousBlock: aBlock [
 	(self previousBlocks includes: aBlock) ifFalse: [ self previousBlocks add: aBlock ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 FASTCFGAbstractBlock >> allEffectiveBreakingBlocks [
 	"Return all breaking nodes. If we encounter a loop, we will ignore the breaking nodes inside since they apply to this loop and not the englobing loop in case of a loop in a loop"
 
@@ -41,13 +55,13 @@ FASTCFGAbstractBlock >> allFollowingBlocks [
 	^ self deep: #nextBlocks collect: #yourself
 ]
 
-{ #category : 'testing' }
+{ #category : 'private' }
 FASTCFGAbstractBlock >> endsWithBreakStatement [
 
 	^ self subclassResponsibility
 ]
 
-{ #category : 'testing' }
+{ #category : 'private' }
 FASTCFGAbstractBlock >> endsWithContinueStatement [
 
 	^ self subclassResponsibility
@@ -156,7 +170,7 @@ FASTCFGAbstractBlock >> previousBlocks [
 	^ previousBlocks
 ]
 
-{ #category : 'asserting' }
+{ #category : 'private' }
 FASTCFGAbstractBlock >> shouldBreakOrContinueInContext: context [
 	"I should break or continue this node if i'm a break or continue and that we are currently visiting the first loop containing me to not mix loops in loops."
 

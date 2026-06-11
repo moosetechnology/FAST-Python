@@ -1,3 +1,12 @@
+"
+I am a node representing a two way conditional block.
+
+I should have 2 next blocks. The first one is the one happening if the condition is true. The second, when the condition is false.
+
+I am mostly used to define an if or an elif or a loop (while/for).
+
+If return true to `#isLoop` if I am a loop. This is important to build the CFG.
+"
 Class {
 	#name : 'FASTCFGConditionalBlock',
 	#superclass : 'FASTCFGAbstractConditionalBlock',
