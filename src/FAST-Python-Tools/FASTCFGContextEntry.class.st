@@ -1,3 +1,11 @@
+"
+I am a context entry used by `FASTCFGUtility` in order to keep a context of the FAST visit happening. 
+
+Each time we enter a conditional, a new `FSTCFGAbstractConditionalBlock` subclass is created and added to the stack as an instance of myself. Once we finish to treat this conditional, we pop the top of the stack. 
+
+In a context entry, on top of the conditional I am saving the current block created in the active branch of the conditional been visited. If a branch is finished, this collection of blocks should be flushed. 
+This is needed because when we resolve the previous nodes of a node in `FASTTCFGUtility>>#managePreviousBlocksOf:`, if a block is the first of its branch, it should follow the conditional of the context entry. But if it is not, it should follow all unfinished blocks in the same statement block. Thus we need to save those blocks.
+"
 Class {
 	#name : 'FASTCFGContextEntry',
 	#superclass : 'Object',
@@ -55,7 +63,7 @@ FASTCFGContextEntry >> flushCurrentBlocks [
 FASTCFGContextEntry >> initialize [
 
 	super initialize.
-	currentBlocks := OrderedCollection new
+	self flushCurrentBlocks
 ]
 
 { #category : 'accessing' }

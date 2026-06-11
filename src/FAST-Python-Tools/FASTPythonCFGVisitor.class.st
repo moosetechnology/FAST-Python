@@ -1,3 +1,8 @@
+"
+I am a visitor used to build a CFG for FASTPython.
+
+TODO: Make it so that we can provide a method or module and update class comment
+"
 Class {
 	#name : 'FASTPythonCFGVisitor',
 	#superclass : 'FASTPythonVisitor',

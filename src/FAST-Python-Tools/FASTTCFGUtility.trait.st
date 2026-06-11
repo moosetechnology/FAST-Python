@@ -1,3 +1,22 @@
+"
+I am a trait to provide everything needed in order to build a CFG graph from a FAST model.
+
+## Requirements
+
+One requirement is that my FAST model has a good visitor. It is recommanded to use the visitor generator of Famix in order to get one. For more info you can check this blog post: [https://modularmoose.org/blog/2026-05-20-improving-visitor-generator/](https://modularmoose.org/blog/2026-05-20-improving-visitor-generator/).
+
+Another requirement is that the FAST model should use some FAST traits:
+- `FASTTStatementBlock`: Used to know when to create normal blocks and to manage break and continue
+- `FASTTStatement`: Used to know what statements to save in the blocks
+- `FASTTBreakStatement` and `FASTTContinueStatement`: If the language supports break and continu in loops, they should use those traits
+- `FASTTConditionalStatement`: This one is used to declare that a condition should be added to the statements to build a block 
+
+Those are the most common and generic traits of FAST. But it is not possible with the current FAST to produce a generic CFG build. The user will need to use my API to implement the visit of nodes such as if statement, loops, swtich, try/catch, conditional expressions.
+
+## Public API
+
+TODO
+"
 Trait {
 	#name : 'FASTTCFGUtility',
 	#instVars : [

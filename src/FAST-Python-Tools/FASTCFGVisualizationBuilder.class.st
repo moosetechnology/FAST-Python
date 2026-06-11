@@ -1,3 +1,13 @@
+"
+I am an utility to visualize a CFG graph as a visualization. 
+
+I'll display info such as:
+- The start block
+- The final block
+- The code of each block
+- The value of the edges
+- ...
+"
 Class {
 	#name : 'FASTCFGVisualizationBuilder',
 	#superclass : 'Object',
