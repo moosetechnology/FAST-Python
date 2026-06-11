@@ -136,8 +136,11 @@ FASTTCFGUtility >> buildBlockOfType: aBlockClass [
 { #category : 'running' }
 FASTTCFGUtility >> buildCFGOf: aFASTModel [
 
+	context push: FASTCFGContextEntry new.
 	aFASTModel accept: self.
 	self shouldBuildNullBlock ifTrue: [ self buildBlockOfType: FASTCFGNullBlock ].
+	self assert: context size = 1.
+	context pop.
 
 	^ startBlock
 ]
@@ -181,7 +184,6 @@ FASTTCFGUtility >> finializeLoop [
 FASTTCFGUtility >> initializeCFG [
 
 	context := Stack new.
-	context push: FASTCFGContextEntry new.
 	currentStatements := OrderedCollection new
 ]
 
