@@ -32,6 +32,11 @@ FASTCFGContextEntry >> addBlock: aBlock [
 	currentBlocks add: aBlock
 ]
 
+{ #category : 'adding' }
+FASTCFGContextEntry >> addNextBlock: aBlock [ 
+	self conditional addNextBlock: aBlock
+]
+
 { #category : 'accessing' }
 FASTCFGContextEntry >> conditional [
 	^ conditional
@@ -63,7 +68,7 @@ FASTCFGContextEntry >> flushCurrentBlocks [
 FASTCFGContextEntry >> initialize [
 
 	super initialize.
-	self flushCurrentBlocks
+	currentBlocks := OrderedCollection new
 ]
 
 { #category : 'accessing' }
@@ -81,7 +86,7 @@ FASTCFGContextEntry >> printOn: aStream [
 
 	aStream nextPutAll: ' [ '.
 	self conditional
-		ifNil: [ aStream nextPutAll: 'Root' ]
+		ifNil: [ aStream nextPutAll: 'No block' ]
 		ifNotNil: [ self conditional printOn: aStream ].
 	aStream nextPutAll: ' ]'
 ]

@@ -136,7 +136,7 @@ FASTTCFGUtility >> buildBlockOfType: aBlockClass [
 { #category : 'running' }
 FASTTCFGUtility >> buildCFGOf: aFASTModel [
 
-	context push: FASTCFGContextEntry new.
+	context push: FASTCFGRootContextEntry new.
 	aFASTModel accept: self.
 	self shouldBuildNullBlock ifTrue: [ self buildBlockOfType: FASTCFGNullBlock ].
 	self assert: context size = 1.
@@ -160,7 +160,7 @@ FASTTCFGUtility >> endBlock [
 	
 	"In case we are finishing the first block of a loop, we finilize the loop.
 	In the past, this was done before popping loops from the context, but doing it here with this condition allows to easily manage the else clause of loops in Python."
-	( self currentConditional isLoop and: [  self currentConditional nextBlocks size = 1 ]) ifTrue: [ self finializeLoop ].
+	( context top isLoop and: [  self currentConditional nextBlocks size = 1 ]) ifTrue: [ self finializeLoop ].
 
 	"We are changing of statement block so we flush the blocks we saved for the previous statement block."
 	context top flushCurrentBlocks
@@ -196,7 +196,7 @@ FASTTCFGUtility >> managePreviousBlocksOf: newBlock [
 			newBlock isStart: true.
 			^ self ].
 
-	context top currentBlocks ifEmpty: [  self currentConditional addNextBlock: newBlock ] ifNotEmpty: [ :blocksAtScope |
+	context top currentBlocks ifEmpty: [  context top addNextBlock: newBlock ] ifNotEmpty: [ :blocksAtScope |
 			(blocksAtScope flatCollectAsSet: #withAllFollowingBlocks)
 				reject: [ :block | block isFull or: [ block shouldBreakOrContinueInContext: context ] ]
 				thenDo: [ :block | block addNextBlock: newBlock ] ]

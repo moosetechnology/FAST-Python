@@ -127,9 +127,7 @@ FASTPythonCFGVisitor >> visitFASTPyForStatement: aForStatement [
 FASTPythonCFGVisitor >> visitFASTPyFunctionDefinition: aFunction [
 	"We do not manage the function in itself only its content"
 
-	(aFunction containedEntities sorted: #endPos ascending) do: [ :child | child accept: self ].
-
-	self buildBlockIfNeeded
+	self visitFASTPyTDefinition: aFunction
 ]
 
 { #category : 'visiting' }
