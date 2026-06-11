@@ -134,10 +134,10 @@ FASTTCFGUtility >> buildBlockOfType: aBlockClass [
 ]
 
 { #category : 'running' }
-FASTTCFGUtility >> buildCFGOf: aFASTModel [
+FASTTCFGUtility >> buildCFGOf: aFASTEntryNode [
 
 	context push: FASTCFGRootContextEntry new.
-	aFASTModel accept: self.
+	aFASTEntryNode accept: self.
 	self shouldBuildNullBlock ifTrue: [ self buildBlockOfType: FASTCFGNullBlock ].
 	self assert: context size = 1.
 	context pop.

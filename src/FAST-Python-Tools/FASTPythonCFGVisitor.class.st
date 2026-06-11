@@ -1,11 +1,19 @@
 "
 I am a visitor used to build a CFG for FASTPython.
 
+##Usage 
+
 I can be used like this:
 
 ```smalltalk
-	FASTPythonCFGVisitor buildCFGOf: aModel allFunctionDefinitions first
+	FASTPythonCFGVisitor buildCFGOf: aModel allFunctionDefinitions first.
+	
+	""or""
+	
+	aModel allFunctionDefinitions first cfg
 ```
+
+# Entry Points 
 
 I can take one of five different entities to build a CFG:
 - a `FASTPyModule`
@@ -14,7 +22,9 @@ I can take one of five different entities to build a CFG:
 - a `FASTPyLambda`
 - a `FASTPyClassDefinition`
 
+# Full CFG
 
+It is possible to build af ""full"" CFG via `#fullCfg`. A full CFG returns a dictionary with each definition encountered associated to their CFG. The first entry of the dictionary is the provided definition.
 "
 Class {
 	#name : 'FASTPythonCFGVisitor',
@@ -22,12 +32,24 @@ Class {
 	#traits : 'FASTTCFGUtility',
 	#classTraits : 'FASTTCFGUtility classTrait',
 	#instVars : [
-		'started'
+		'started',
+		'cfgs'
 	],
 	#category : 'FAST-Python-Tools-CFG/DataFlow',
 	#package : 'FAST-Python-Tools',
 	#tag : 'CFG/DataFlow'
 }
+
+{ #category : 'running' }
+FASTPythonCFGVisitor >> buildFullCFGOf: aFASTEntryNode [
+	"I build the CFG of the node provided but also of all definitions I encounter."
+
+	cfgs := OrderedDictionary new.
+
+	cfgs at: aFASTEntryNode put: (self buildCFGOf: aFASTEntryNode).
+
+	^ cfgs
+]
 
 { #category : 'initialization' }
 FASTPythonCFGVisitor >> initialize [
@@ -222,7 +244,9 @@ FASTPythonCFGVisitor >> visitPossibleEntryPoints: aFASTEntity [
 	In the first case I visit the definition's statement block. Else I consider the definition as a statement only."
 
 	started
-		ifTrue: [ self visitFASTTStatement: aFASTEntity ]
+		ifTrue: [
+				self visitFASTTStatement: aFASTEntity.
+				cfgs ifNotNil: [ "In this case, we also need to build the CFG of node and store it" cfgs at: aFASTEntity put: aFASTEntity cfg ] ]
 		ifFalse: [
 				started := true.
 				self visitFASTTStatementBlock: aFASTEntity ]
