@@ -155,7 +155,9 @@ Class {
 		'tCallable',
 		'tSliceIndex',
 		'tAwaitable',
-		'tExecutable'
+		'tExecutable',
+		'tBreakStatement',
+		'tContinueStatement'
 	],
 	#category : 'FAST-Python-Model-Generator',
 	#package : 'FAST-Python-Model-Generator'
@@ -171,12 +173,6 @@ FASTPythonMetamodelGenerator class >> metamodelToolGenerators [
 FASTPythonMetamodelGenerator class >> packageName [
 
 	^ #'FAST-Python-Model'
-]
-
-{ #category : 'accessing' }
-FASTPythonMetamodelGenerator class >> packageNameForVisitor [
-
-	^ #'FAST-Python-Visitor'
 ]
 
 { #category : 'accessing' }
@@ -246,7 +242,7 @@ FASTPythonMetamodelGenerator >> defineClasses [
 
 	comparisonOperator := builder newClassNamed: #ComparisonOperator.
 
-	(comprehension := builder newClassNamed: #Comprehension) comment:
+	(comprehension := builder newAbstractClassNamed: #Comprehension) comment:
 		'I am an abstract class for comprehensions. Comprehensions are a structure in python to generate some collections or a generator.'.
 
 	(complex := builder newClassNamed: #Complex) comment: 'I represent a complex number such as `2j`'.
@@ -279,7 +275,7 @@ FASTPythonMetamodelGenerator >> defineClasses [
 	escapeSequence := builder newClassNamed: #EscapeSequence.
 	exceptClause := builder newClassNamed: #ExceptClause.
 	execStatement := builder newClassNamed: #ExecStatement.
-	expression := builder newClassNamed: #Expression.
+	expression := builder newAbstractClassNamed: #Expression.
 	finallyClause := builder newClassNamed: #FinallyClause.
 	float := builder newClassNamed: #Float.
 	forInClause := builder newClassNamed: #ForInClause.
@@ -306,7 +302,7 @@ FASTPythonMetamodelGenerator >> defineClasses [
 	lambdaParameters := builder newClassNamed: #LambdaParameters.
 	list := builder newClassNamed: #List.
 	listComprehension := builder newClassNamed: #ListComprehension.
-	literal := builder newClassNamed: #Literal.
+	literal := builder newAbstractClassNamed: #Literal.
 	matchStatement := builder newClassNamed: #MatchStatement.
 	memberType := builder newClassNamed: #MemberType.
 	methodDefinition := builder newClassNamed: #MethodDefinition.
@@ -331,7 +327,7 @@ FASTPythonMetamodelGenerator >> defineClasses [
 		'In Python a collection (list or dictionary) splat is the unpacking of a collection in a call or in the definition of another definition like `[ *list , 4 ]` or `func(*list)`'.
 	splatParameter := builder newClassNamed: #SplatParameter.
 	splatType := builder newClassNamed: #SplatType.
-	statement := builder newClassNamed: #Statement.
+	statement := builder newAbstractClassNamed: #Statement.
 	string := builder newClassNamed: #String.
 	subscript := builder newClassNamed: #Subscript.
 	thenClause := builder newClassNamed: #ThenClause.
@@ -395,6 +391,7 @@ FASTPythonMetamodelGenerator >> defineHierarchy [
 	boolean --|> tBooleanLiteral.
 	
 	breakStatement --|> statement.
+	breakStatement --|> tBreakStatement.
 
 	call --|> expression.
 	call --|> tInvocation.
@@ -433,6 +430,7 @@ FASTPythonMetamodelGenerator >> defineHierarchy [
 	conditionalExpression --|> tExecutable.
 	
 	continueStatement --|> statement.
+	continueStatement --|> tContinueStatement.
 	
 	constrainedType --|> tTypeContent.
 
@@ -743,7 +741,7 @@ FASTPythonMetamodelGenerator >> defineRelations [
 	((deleteStatement property: #expression) comment: 'The expression to apply the delete on')
 	<>- ((tDeletable property: #parentDeleteStatement) comment: 'The delete statement that own the expression (if it''s the case)').
 	
-	(exceptClause property: #expressions) <>-* (expression property: #parentExceptClause). "We could point less things than expression, but in reality in Python any expression can be provided. It will just end up in runtime error."
+	(exceptClause property: #expression) <>- (expression property: #parentExceptClause). "We could point less things than expression, but in reality in Python any expression can be provided. It will just end up in runtime error."
 	
 	(execStatement property: #code) <>- (tExecutable property: #parentExecStatement).
 	(execStatement property: #scopes) <>-* (expression property: #parentExecStatementScopes).
@@ -902,8 +900,10 @@ FASTPythonMetamodelGenerator >> defineTraits [
 	tAssignment := self remoteTrait: #TAssignment withPrefix: #FAST.
 	tBinaryExpression := self remoteTrait: #TBinaryExpression withPrefix: #FAST.
 	tBooleanLiteral := self remoteTrait: #TBooleanLiteral withPrefix: #FAST.
+	tBreakStatement := self remoteTrait: #TBreakStatement withPrefix: #FAST.
 	tComment := self remoteTrait: #TComment withPrefix: #FAST.
 	tConditionalStatement := self remoteTrait: #TConditionalStatement withPrefix: #FAST.
+	tContinueStatement := self remoteTrait: #TContinueStatement withPrefix: #FAST.
 	tExpression := self remoteTrait: #TExpression withPrefix: #FAST.
 	tInvocation := self remoteTrait: #TInvocation withPrefix: #FAST.
 	tLiteral := self remoteTrait: #TLiteral withPrefix: #FAST.

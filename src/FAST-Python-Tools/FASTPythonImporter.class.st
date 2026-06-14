@@ -6,8 +6,9 @@ I mostly declare the TS language to use and redirect the visit to `FASTPythonVis
 Class {
 	#name : 'FASTPythonImporter',
 	#superclass : 'TSFASTAbstractImporter',
-	#category : 'FAST-Python-Tools',
-	#package : 'FAST-Python-Tools'
+	#category : 'FAST-Python-Tools-Importing',
+	#package : 'FAST-Python-Tools',
+	#tag : 'Importing'
 }
 
 { #category : 'world menu' }
@@ -98,5 +99,5 @@ FASTPythonImporter >> tsLanguage [
 { #category : 'accessing' }
 FASTPythonImporter >> visitorClass [
 
-	^ FASTPythonVisitor
+	^ FASTPythonTreeSitterVisitor
 ]

@@ -6,8 +6,8 @@ I am generated with the metamodel.
 "
 Trait {
 	#name : 'FASTPyTVisitor',
-	#category : 'FAST-Python-Visitor-Visitor',
-	#package : 'FAST-Python-Visitor',
+	#category : 'FAST-Python-Model-Visitor',
+	#package : 'FAST-Python-Model',
 	#tag : 'Visitor'
 }
 
@@ -15,7 +15,7 @@ Trait {
 FASTPyTVisitor classSide >> annotation [
 
 	<FMClass: #TVisitor super: #Object>
-	<package: #'FAST-Python-Visitor'>
+	<package: #'FAST-Python-Model'>
 	<generated>
 ]
 
@@ -125,6 +125,7 @@ FASTPyTVisitor >> visitFASTPyBooleanOperator: aBooleanOperator [
 FASTPyTVisitor >> visitFASTPyBreakStatement: aBreakStatement [
 
 	<generated>
+	self visitFASTTBreakStatement: aBreakStatement.
 	self visitFASTPyStatement: aBreakStatement
 ]
 
@@ -262,6 +263,7 @@ FASTPyTVisitor >> visitFASTPyConstrainedType: aConstrainedType [
 FASTPyTVisitor >> visitFASTPyContinueStatement: aContinueStatement [
 
 	<generated>
+	self visitFASTTContinueStatement: aContinueStatement.
 	self visitFASTPyStatement: aContinueStatement
 ]
 
@@ -365,7 +367,7 @@ FASTPyTVisitor >> visitFASTPyExceptClause: anExceptClause [
 	<generated>
 	self visitFASTTStatementBlock: anExceptClause.
 
-	self visitCollection: anExceptClause expressions
+	self visitEntity: anExceptClause expression
 ]
 
 { #category : 'visiting' }
@@ -1172,6 +1174,13 @@ FASTPyTVisitor >> visitFASTTBooleanLiteral: aTBooleanLiteral [
 ]
 
 { #category : 'visiting' }
+FASTPyTVisitor >> visitFASTTBreakStatement: aTBreakStatement [
+
+	<generated>
+	"We should visit FASTTStatement but all its users in this language already visit it in their superclasses so we skip the call here."
+]
+
+{ #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTComment: aTComment [
 
 	<generated>
@@ -1186,6 +1195,13 @@ FASTPyTVisitor >> visitFASTTConditionalStatement: aTConditionalStatement [
 	({ FASTPyIfStatement . FASTPyWhileStatement } includes: aTConditionalStatement class)
 		ifFalse: [ self visitFASTTStatement: aTConditionalStatement ].
 	self visitFASTTWithCondition: aTConditionalStatement
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTTContinueStatement: aTContinueStatement [
+
+	<generated>
+
 ]
 
 { #category : 'visiting' }

@@ -13,7 +13,7 @@
 ### Children
 | Relation | Origin | Opposite | Type | Comment |
 |---|
-| `expressions` | `FASTPyExceptClause` | `parentExceptClause` | `FASTPyExpression` | |
+| `expression` | `FASTPyExceptClause` | `parentExceptClause` | `FASTPyExpression` | |
 | `statements` | `FASTTStatementBlock` | `statementContainer` | `FASTTStatement` | Statements enclosed in this block|
 
 
@@ -34,7 +34,7 @@ Class {
 	#classTraits : 'FASTTStatementBlock classTrait',
 	#instVars : [
 		'#alias => FMProperty',
-		'#expressions => FMMany type: #FASTPyExpression opposite: #parentExceptClause',
+		'#expression => FMOne type: #FASTPyExpression opposite: #parentExceptClause',
 		'#parentTryStatement => FMOne type: #FASTPyTryStatement opposite: #excepts'
 	],
 	#category : 'FAST-Python-Model-Entities',
@@ -48,12 +48,6 @@ FASTPyExceptClause class >> annotation [
 	<FMClass: #ExceptClause super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-]
-
-{ #category : 'adding' }
-FASTPyExceptClause >> addExpression: anObject [
-	<generated>
-	^ self expressions add: anObject
 ]
 
 { #category : 'accessing' }
@@ -72,19 +66,18 @@ FASTPyExceptClause >> alias: anObject [
 ]
 
 { #category : 'accessing' }
-FASTPyExceptClause >> expressions [
-	"Relation named: #expressions type: #FASTPyExpression opposite: #parentExceptClause"
+FASTPyExceptClause >> expression [
+	"Relation named: #expression type: #FASTPyExpression opposite: #parentExceptClause"
 
 	<generated>
-	<derived>
-	^ expressions
+	^ expression
 ]
 
 { #category : 'accessing' }
-FASTPyExceptClause >> expressions: anObject [
+FASTPyExceptClause >> expression: anObject [
 
 	<generated>
-	expressions value: anObject
+	expression := anObject
 ]
 
 { #category : 'accessing' }

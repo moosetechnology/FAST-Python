@@ -21,3 +21,21 @@ FASTPyModel class >> annotation [
 	<package: #'FAST-Python-Model'>
 	<generated>
 ]
+
+{ #category : 'accessing' }
+FASTPyModel >> allClassDefinitions [
+
+	^ self allWithType: FASTPyClassDefinition
+]
+
+{ #category : 'accessing' }
+FASTPyModel >> allFunctionDefinitions [
+
+	^ self allWithType: FASTPyFunctionDefinition
+]
+
+{ #category : 'accessing' }
+FASTPyModel >> allModules [
+
+	^ self allWithType: FASTPyModule
+]

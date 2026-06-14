@@ -72,7 +72,21 @@ FASTPyEntity >> isBooleanLiteral [
 ]
 
 { #category : 'testing' }
+FASTPyEntity >> isBreakStatement [
+
+	<generated>
+	^ false
+]
+
+{ #category : 'testing' }
 FASTPyEntity >> isClassDefinition [
+
+	<generated>
+	^ false
+]
+
+{ #category : 'testing' }
+FASTPyEntity >> isContinueStatement [
 
 	<generated>
 	^ false

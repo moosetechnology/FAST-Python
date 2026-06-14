@@ -34,4 +34,12 @@ FASTPyStatement class >> annotation [
 	<FMClass: #Statement super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
+	<abstract>
+]
+
+{ #category : 'testing' }
+FASTPyStatement class >> isAbstract [
+
+	<generated>
+	^ self == FASTPyStatement
 ]

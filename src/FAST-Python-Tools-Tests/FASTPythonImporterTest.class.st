@@ -84,7 +84,7 @@ FASTPythonImporterTest class >> traitsToTest [
 { #category : 'tests - with statements' }
 FASTPythonImporterTest >> testAsPatternWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAsPatternWithAttribute 	"
 
 	self parse: 'with get() as container.resource: pass'.
@@ -156,7 +156,7 @@ FASTPythonImporterTest >> testAsPatternWithAttribute [
 { #category : 'tests - with statements' }
 FASTPythonImporterTest >> testAsPatternWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAsPatternWithList 	"
 
 	self parse: 'with open() as [reader, writer]: pass'.
@@ -232,7 +232,7 @@ FASTPythonImporterTest >> testAsPatternWithList [
 { #category : 'tests - with statements' }
 FASTPythonImporterTest >> testAsPatternWithSourceAttributeAccess [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAsPatternWithSourceAttributeAccess 	"
 
 	self parse: 'with x.y as f: pass'.
@@ -293,7 +293,7 @@ FASTPythonImporterTest >> testAsPatternWithSourceAttributeAccess [
 { #category : 'tests - with statements' }
 FASTPythonImporterTest >> testAsPatternWithSourceCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAsPatternWithSourceCall 	"
 
 	self parse: 'with x() as f: pass'.
@@ -355,7 +355,7 @@ FASTPythonImporterTest >> testAsPatternWithSourceCall [
 { #category : 'tests - with statements' }
 FASTPythonImporterTest >> testAsPatternWithSourceIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAsPatternWithSourceIdentifier 	"
 
 	self parse: 'with x as f: pass'.
@@ -406,7 +406,7 @@ FASTPythonImporterTest >> testAsPatternWithSourceIdentifier [
 { #category : 'tests - with statements' }
 FASTPythonImporterTest >> testAsPatternWithSourceSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAsPatternWithSourceSubscript 	"
 
 	self parse: 'with x[y] as f: pass'.
@@ -474,7 +474,7 @@ FASTPythonImporterTest >> testAsPatternWithSourceSubscript [
 { #category : 'tests - with statements' }
 FASTPythonImporterTest >> testAsPatternWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAsPatternWithSubscript 	"
 
 	self parse: 'with get() as targets[1][0]: pass'.
@@ -574,7 +574,7 @@ FASTPythonImporterTest >> testAsPatternWithSubscript [
 { #category : 'tests - with statements' }
 FASTPythonImporterTest >> testAsPatternWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAsPatternWithTuple 	"
 
 	self parse: 'with open() as (f, g): pass'.
@@ -650,7 +650,7 @@ FASTPythonImporterTest >> testAsPatternWithTuple [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testAssertStatement [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssertStatement 	"
 
 	self parse: 'def aFunction(a, b):
@@ -724,7 +724,7 @@ FASTPythonImporterTest >> testAssertStatement [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testAssertStatementWithConcatenatedString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssertStatementWithConcatenatedString 	"
 
 	self parse: 'assert 0, "Could not find method in self.functions and no "\
@@ -776,7 +776,7 @@ FASTPythonImporterTest >> testAssertStatementWithConcatenatedString [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignment [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignment 	"
 
 	self parse: 'x = 1'.
@@ -812,7 +812,7 @@ FASTPythonImporterTest >> testAssignment [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentInAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentInAttribute 	"
 
 	self parse: 'x.y = 1'.
@@ -857,7 +857,7 @@ FASTPythonImporterTest >> testAssignmentInAttribute [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentInList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentInList 	"
 
 	self parse: '[ remote ] = 1'.
@@ -901,7 +901,7 @@ FASTPythonImporterTest >> testAssignmentInList [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentInPatternList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentInPatternList 	"
 
 	self parse: 'a, b = 1, 2'.
@@ -964,7 +964,7 @@ FASTPythonImporterTest >> testAssignmentInPatternList [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentInSlice [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentInSlice 	"
 
 	self parse: 'lst[i:j] = seq'.
@@ -1027,7 +1027,7 @@ FASTPythonImporterTest >> testAssignmentInSlice [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentInSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentInSubscript 	"
 
 	self parse: 'variables[1] = 1'.
@@ -1081,7 +1081,7 @@ FASTPythonImporterTest >> testAssignmentInSubscript [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentInTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentInTuple 	"
 
 	self parse: '(a, b) = x'.
@@ -1127,7 +1127,7 @@ FASTPythonImporterTest >> testAssignmentInTuple [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToAttribute 	"
 
 	self parse: 'x = x.y'.
@@ -1170,7 +1170,7 @@ FASTPythonImporterTest >> testAssignmentToAttribute [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToBinaryOperator 	"
 
 	self parse: 'x = 10 / 2'.
@@ -1226,7 +1226,7 @@ FASTPythonImporterTest >> testAssignmentToBinaryOperator [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToBooleanOperator 	"
 
 	self parse: 'x = x and y'.
@@ -1278,7 +1278,7 @@ FASTPythonImporterTest >> testAssignmentToBooleanOperator [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToCall 	"
 
 	self parse: 'x = obj()'.
@@ -1322,7 +1322,7 @@ FASTPythonImporterTest >> testAssignmentToCall [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToComparisonOperator 	"
 
 	self parse: 'x = 1 > 3'.
@@ -1375,7 +1375,7 @@ FASTPythonImporterTest >> testAssignmentToComparisonOperator [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToComplexe 	"
 
 	self parse: 'x = 1j'.
@@ -1411,7 +1411,7 @@ FASTPythonImporterTest >> testAssignmentToComplexe [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToConditionalExpression 	"
 
 	self parse: 'x = x if True else y'.
@@ -1473,7 +1473,7 @@ FASTPythonImporterTest >> testAssignmentToConditionalExpression [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToDictionary 	"
 
 	self parse: 'x = { 1:1 }'.
@@ -1535,7 +1535,7 @@ FASTPythonImporterTest >> testAssignmentToDictionary [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToEllipsis 	"
 
 	self parse: 'x = ...'.
@@ -1570,7 +1570,7 @@ FASTPythonImporterTest >> testAssignmentToEllipsis [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToFalse 	"
 
 	self parse: 'x = False'.
@@ -1606,7 +1606,7 @@ FASTPythonImporterTest >> testAssignmentToFalse [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToFloat 	"
 
 	self parse: 'x = 0.1'.
@@ -1642,7 +1642,7 @@ FASTPythonImporterTest >> testAssignmentToFloat [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToIdentifier 	"
 
 	self parse: 'x = element'.
@@ -1676,7 +1676,7 @@ FASTPythonImporterTest >> testAssignmentToIdentifier [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToInteger 	"
 
 	self parse: 'x = 1'.
@@ -1712,7 +1712,7 @@ FASTPythonImporterTest >> testAssignmentToInteger [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToLambda 	"
 
 	self parse: 'x = lambda x:x'.
@@ -1766,7 +1766,7 @@ FASTPythonImporterTest >> testAssignmentToLambda [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToList 	"
 
 	self parse: 'x = [ remote ]'.
@@ -1808,7 +1808,7 @@ FASTPythonImporterTest >> testAssignmentToList [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToList_comprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToList_comprehension 	"
 
 	self parse: 'x = [random for i in range(3)]'.
@@ -1895,7 +1895,7 @@ FASTPythonImporterTest >> testAssignmentToList_comprehension [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToNone 	"
 
 	self parse: 'x = None'.
@@ -1930,7 +1930,7 @@ FASTPythonImporterTest >> testAssignmentToNone [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToNotOperator 	"
 
 	self parse: 'x = not old'.
@@ -1973,7 +1973,7 @@ FASTPythonImporterTest >> testAssignmentToNotOperator [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToPatternList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToPatternList 	"
 
 	self parse: 'x = a, b'.
@@ -2020,7 +2020,7 @@ FASTPythonImporterTest >> testAssignmentToPatternList [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToSet 	"
 
 	self parse: 'x = { 1 }'.
@@ -2064,7 +2064,7 @@ FASTPythonImporterTest >> testAssignmentToSet [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToSetComprehension 	"
 
 	self parse: 'x = {random for i in range(3)}'.
@@ -2151,7 +2151,7 @@ FASTPythonImporterTest >> testAssignmentToSetComprehension [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToString 	"
 
 	self parse: 'x = "Hello"'.
@@ -2187,7 +2187,7 @@ FASTPythonImporterTest >> testAssignmentToString [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToSubscript 	"
 
 	self parse: 'x = attrs[2]'.
@@ -2240,7 +2240,7 @@ FASTPythonImporterTest >> testAssignmentToSubscript [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToTrue 	"
 
 	self parse: 'x = True'.
@@ -2276,7 +2276,7 @@ FASTPythonImporterTest >> testAssignmentToTrue [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToTuple 	"
 
 	self parse: 'x = (1,)'.
@@ -2320,7 +2320,7 @@ FASTPythonImporterTest >> testAssignmentToTuple [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentToUnaryOperator 	"
 
 	self parse: 'x = -1'.
@@ -2367,7 +2367,7 @@ FASTPythonImporterTest >> testAssignmentToUnaryOperator [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentType [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAssignmentType 	"
 
 	self parse: 'int: x = 1'.
@@ -2420,7 +2420,7 @@ FASTPythonImporterTest >> testAssignmentType [
 { #category : 'tests - accesses' }
 FASTPythonImporterTest >> testAttributeAccess [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccess 	"
 
 	self parse: 'obj.count'.
@@ -2445,7 +2445,7 @@ FASTPythonImporterTest >> testAttributeAccess [
 { #category : 'tests - accesses' }
 FASTPythonImporterTest >> testAttributeAccessNested [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessNested 	"
 
 	self parse: 'obj.toto.count'.
@@ -2478,7 +2478,7 @@ FASTPythonImporterTest >> testAttributeAccessNested [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnAttribute 	"
 
 	self parse: 'x.y.__dict__'.
@@ -2511,7 +2511,7 @@ FASTPythonImporterTest >> testAttributeAccessOnAttribute [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnBinaryOperator 	"
 
 	self parse: '(10 / 2).__dict__'.
@@ -2558,7 +2558,7 @@ FASTPythonImporterTest >> testAttributeAccessOnBinaryOperator [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnBooleanOperator 	"
 
 	self parse: '(x and y).__dict__'.
@@ -2601,7 +2601,7 @@ FASTPythonImporterTest >> testAttributeAccessOnBooleanOperator [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnCall 	"
 
 	self parse: 'obj().__dict__'.
@@ -2636,7 +2636,7 @@ FASTPythonImporterTest >> testAttributeAccessOnCall [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnComparisonOperator 	"
 
 	self parse: '(1 > 3).__dict__'.
@@ -2680,7 +2680,7 @@ FASTPythonImporterTest >> testAttributeAccessOnComparisonOperator [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnComplexe 	"
 
 	self parse: '1j.__dict__'.
@@ -2707,7 +2707,7 @@ FASTPythonImporterTest >> testAttributeAccessOnComplexe [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnConditionalExpression 	"
 
 	self parse: '(x if True else y).__dict__'.
@@ -2760,7 +2760,7 @@ FASTPythonImporterTest >> testAttributeAccessOnConditionalExpression [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnDictionary 	"
 
 	self parse: '{ 1:1 }.__dict__'.
@@ -2813,7 +2813,7 @@ FASTPythonImporterTest >> testAttributeAccessOnDictionary [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnDictionary_comprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnDictionary_comprehension 	"
 
 	self parse: '{ v:v for v in x }.__dict__'.
@@ -2887,7 +2887,7 @@ FASTPythonImporterTest >> testAttributeAccessOnDictionary_comprehension [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnFalse 	"
 
 	self parse: 'False.__dict__'.
@@ -2914,7 +2914,7 @@ FASTPythonImporterTest >> testAttributeAccessOnFalse [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnFloat 	"
 
 	self parse: '0.1.__dict__'.
@@ -2941,7 +2941,7 @@ FASTPythonImporterTest >> testAttributeAccessOnFloat [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnIdentifier 	"
 
 	self parse: 'obj.__dict__'.
@@ -2966,7 +2966,7 @@ FASTPythonImporterTest >> testAttributeAccessOnIdentifier [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnList 	"
 
 	self parse: '[ remote ].__dict__'.
@@ -2999,7 +2999,7 @@ FASTPythonImporterTest >> testAttributeAccessOnList [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnList_comprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnList_comprehension 	"
 
 	self parse: '[random for i in range(3)].__dict__'.
@@ -3077,7 +3077,7 @@ FASTPythonImporterTest >> testAttributeAccessOnList_comprehension [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnNone 	"
 
 	self parse: 'None.__dict__'.
@@ -3103,7 +3103,7 @@ FASTPythonImporterTest >> testAttributeAccessOnNone [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnNotOperator 	"
 
 	self parse: '(not old).__dict__'.
@@ -3137,7 +3137,7 @@ FASTPythonImporterTest >> testAttributeAccessOnNotOperator [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnSet 	"
 
 	self parse: '{ 1 }.__dict__'.
@@ -3172,7 +3172,7 @@ FASTPythonImporterTest >> testAttributeAccessOnSet [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnSetComprehension 	"
 
 	self parse: '{random for i in range(3)}.__dict__'.
@@ -3250,7 +3250,7 @@ FASTPythonImporterTest >> testAttributeAccessOnSetComprehension [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnString 	"
 
 	self parse: '"Hello".__dict__'.
@@ -3277,7 +3277,7 @@ FASTPythonImporterTest >> testAttributeAccessOnString [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnSubscript 	"
 
 	self parse: 'attrs[2].__dict__'.
@@ -3321,7 +3321,7 @@ FASTPythonImporterTest >> testAttributeAccessOnSubscript [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnTrue 	"
 
 	self parse: 'True.__dict__'.
@@ -3348,7 +3348,7 @@ FASTPythonImporterTest >> testAttributeAccessOnTrue [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnTuple 	"
 
 	self parse: '(a,b).__dict__'.
@@ -3386,7 +3386,7 @@ FASTPythonImporterTest >> testAttributeAccessOnTuple [
 { #category : 'tests - attributes' }
 FASTPythonImporterTest >> testAttributeAccessOnUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessOnUnaryOperator 	"
 
 	self parse: '(-1).__dict__'.
@@ -3424,7 +3424,7 @@ FASTPythonImporterTest >> testAttributeAccessOnUnaryOperator [
 { #category : 'tests - accesses' }
 FASTPythonImporterTest >> testAttributeAccessWithReceiverParenthesised [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAttributeAccessWithReceiverParenthesised 	"
 
 	self parse: '(obj).attribute'.
@@ -3449,7 +3449,7 @@ FASTPythonImporterTest >> testAttributeAccessWithReceiverParenthesised [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAugmentedAssignmentInAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAugmentedAssignmentInAttribute 	"
 
 	self parse: 'x.y+=  1'.
@@ -3495,7 +3495,7 @@ FASTPythonImporterTest >> testAugmentedAssignmentInAttribute [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAugmentedAssignmentInIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAugmentedAssignmentInIdentifier 	"
 
 	self parse: 'element+=  1'.
@@ -3532,7 +3532,7 @@ FASTPythonImporterTest >> testAugmentedAssignmentInIdentifier [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAugmentedAssignmentInSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAugmentedAssignmentInSubscript 	"
 
 	self parse: 'attrs[2]+=  1'.
@@ -3587,7 +3587,7 @@ FASTPythonImporterTest >> testAugmentedAssignmentInSubscript [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAugmentedAssignmentInTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAugmentedAssignmentInTuple 	"
 
 	self parse: '(a,b)+=  1'.
@@ -3637,7 +3637,7 @@ FASTPythonImporterTest >> testAugmentedAssignmentInTuple [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAugmentedAssignmentToAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAugmentedAssignmentToAttribute 	"
 
 	self parse: 'a +=  x.y'.
@@ -3681,7 +3681,7 @@ FASTPythonImporterTest >> testAugmentedAssignmentToAttribute [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAugmentedAssignmentToBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAugmentedAssignmentToBinaryOperator 	"
 
 	self parse: 'a +=  10 / 2'.
@@ -3738,7 +3738,7 @@ FASTPythonImporterTest >> testAugmentedAssignmentToBinaryOperator [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAugmentedAssignmentToCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAugmentedAssignmentToCall 	"
 
 	self parse: 'a +=  obj()'.
@@ -3783,7 +3783,7 @@ FASTPythonImporterTest >> testAugmentedAssignmentToCall [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAugmentedAssignmentToComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAugmentedAssignmentToComplexe 	"
 
 	self parse: 'a +=  1j'.
@@ -3820,7 +3820,7 @@ FASTPythonImporterTest >> testAugmentedAssignmentToComplexe [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAugmentedAssignmentToConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAugmentedAssignmentToConditionalExpression 	"
 
 	self parse: 'a +=  x if True else y'.
@@ -3883,7 +3883,7 @@ FASTPythonImporterTest >> testAugmentedAssignmentToConditionalExpression [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAugmentedAssignmentToFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAugmentedAssignmentToFloat 	"
 
 	self parse: 'a +=  0.1'.
@@ -3920,7 +3920,7 @@ FASTPythonImporterTest >> testAugmentedAssignmentToFloat [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAugmentedAssignmentToIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAugmentedAssignmentToIdentifier 	"
 
 	self parse: 'a +=  element'.
@@ -3955,7 +3955,7 @@ FASTPythonImporterTest >> testAugmentedAssignmentToIdentifier [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAugmentedAssignmentToInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAugmentedAssignmentToInteger 	"
 
 	self parse: 'a +=  1'.
@@ -3992,7 +3992,7 @@ FASTPythonImporterTest >> testAugmentedAssignmentToInteger [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAugmentedAssignmentToSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAugmentedAssignmentToSubscript 	"
 
 	self parse: 'a +=  attrs[2]'.
@@ -4046,7 +4046,7 @@ FASTPythonImporterTest >> testAugmentedAssignmentToSubscript [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAugmentedAssignmentToUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAugmentedAssignmentToUnaryOperator 	"
 
 	self parse: 'a +=  -1'.
@@ -4094,7 +4094,7 @@ FASTPythonImporterTest >> testAugmentedAssignmentToUnaryOperator [
 { #category : 'tests - await' }
 FASTPythonImporterTest >> testAwait [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAwait 	"
 
 	self parse: 'await future'.
@@ -4118,7 +4118,7 @@ FASTPythonImporterTest >> testAwait [
 { #category : 'tests - await' }
 FASTPythonImporterTest >> testAwaitAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAwaitAttribute 	"
 
 	self parse: 'f(x.y)'.
@@ -4162,7 +4162,7 @@ FASTPythonImporterTest >> testAwaitAttribute [
 { #category : 'tests - await' }
 FASTPythonImporterTest >> testAwaitAwait [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAwaitAwait 	"
 
 	self parse: 'f((await x))'.
@@ -4205,7 +4205,7 @@ FASTPythonImporterTest >> testAwaitAwait [
 { #category : 'tests - await' }
 FASTPythonImporterTest >> testAwaitCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAwaitCall 	"
 
 	self parse: 'f(factory())'.
@@ -4249,7 +4249,7 @@ FASTPythonImporterTest >> testAwaitCall [
 { #category : 'tests - await' }
 FASTPythonImporterTest >> testAwaitConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAwaitConditionalExpression 	"
 
 	self parse: 'f((x if True else y))'.
@@ -4312,7 +4312,7 @@ FASTPythonImporterTest >> testAwaitConditionalExpression [
 { #category : 'tests - await' }
 FASTPythonImporterTest >> testAwaitIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAwaitIdentifier 	"
 
 	self parse: 'f(x)'.
@@ -4346,7 +4346,7 @@ FASTPythonImporterTest >> testAwaitIdentifier [
 { #category : 'tests - await' }
 FASTPythonImporterTest >> testAwaitSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testAwaitSubscript 	"
 
 	self parse: 'f(x[2])'.
@@ -4445,7 +4445,7 @@ FASTPythonImporterTest >> testBinaryOperatorInBinaryOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithAttribute 	"
 
 	self parse: 'x.y + x.y'.
@@ -4497,7 +4497,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithAttribute [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithBinaryOperator 	"
 
 	self parse: '10 / 2 + 10 / 2'.
@@ -4574,7 +4574,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithBinaryOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithBooleanOperator 	"
 
 	self parse: 'x and y + x and y'.
@@ -4645,7 +4645,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithBooleanOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithCall 	"
 
 	self parse: 'obj() + obj()'.
@@ -4699,7 +4699,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithCall [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithComparisonOperator 	"
 
 	self parse: '1 > 3 + 1 > 3'.
@@ -4762,7 +4762,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithComparisonOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithComplexe 	"
 
 	self parse: '1j + 1j'.
@@ -4800,7 +4800,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithComplexe [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithConditionalExpression 	"
 
 	self parse: 'x if True else y + x if True else y'.
@@ -4890,7 +4890,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithConditionalExpression [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithDictionary 	"
 
 	self parse: '{ 1:1 } + { 1:1 }'.
@@ -4980,7 +4980,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithDictionary [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithDictionary_comprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithDictionary_comprehension 	"
 
 	self parse: '{ v:v for v in x } + { v:v for v in x }'.
@@ -5111,7 +5111,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithDictionary_comprehension [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithFalse 	"
 
 	self parse: 'False + False'.
@@ -5149,7 +5149,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithFalse [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithFloat 	"
 
 	self parse: '0.1 + 0.1'.
@@ -5187,7 +5187,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithFloat [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithIdentifier 	"
 
 	self parse: 'obj + obj'.
@@ -5221,7 +5221,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithIdentifier [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithInteger 	"
 
 	self parse: '1 + 1'.
@@ -5259,7 +5259,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithInteger [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithList 	"
 
 	self parse: '[ remote ] + [ remote ]'.
@@ -5309,7 +5309,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithList [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithList_comprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithList_comprehension 	"
 
 	self parse: '[random for i in range(3)] + [random for i in range(3)]'.
@@ -5448,7 +5448,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithList_comprehension [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithNotOperator 	"
 
 	self parse: '(not old) + (not old)'.
@@ -5500,7 +5500,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithNotOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithSet 	"
 
 	self parse: '{ 1 } + { 1 }'.
@@ -5554,7 +5554,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithSet [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithSetComprehension 	"
 
 	self parse: '{random for i in range(3)} + {random for i in range(3)}'.
@@ -5693,7 +5693,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithSetComprehension [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithString 	"
 
 	self parse: '"Hello" + "Hello"'.
@@ -5731,7 +5731,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithString [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithSubscript 	"
 
 	self parse: 'attrs[2] + attrs[2]'.
@@ -5802,7 +5802,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithSubscript [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithTrue 	"
 
 	self parse: 'True + True'.
@@ -5840,7 +5840,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithTrue [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithTuple 	"
 
 	self parse: '(a,b) + (a,b)'.
@@ -5900,7 +5900,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithTuple [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorWithUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBinaryOperatorWithUnaryOperator 	"
 
 	self parse: '(-1) + (-1)'.
@@ -5959,7 +5959,7 @@ FASTPythonImporterTest >> testBinaryOperatorWithUnaryOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBitwiseOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBitwiseOperator 	"
 
 	self parse: '0b00101101 & 0b00011011'.
@@ -6042,7 +6042,7 @@ FASTPythonImporterTest >> testBooleanOperatorInBooleanOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithAttribute 	"
 
 	self parse: 'x.y and x.y'.
@@ -6094,7 +6094,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithAttribute [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithBinaryOperator 	"
 
 	self parse: 'x & y and x & y'.
@@ -6164,7 +6164,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithBinaryOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithBooleanOperator 	"
 
 	self parse: 'x and y and x and y'.
@@ -6234,7 +6234,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithBooleanOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithCall 	"
 
 	self parse: 'obj() and obj()'.
@@ -6288,7 +6288,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithCall [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithComparisonOperator 	"
 
 	self parse: '1 > 3 and 1 > 3'.
@@ -6359,7 +6359,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithComparisonOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithComplexe 	"
 
 	self parse: '0j and 0j'.
@@ -6397,7 +6397,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithComplexe [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithConditionalExpression 	"
 
 	self parse: 'x if True else y and x if True else y'.
@@ -6487,7 +6487,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithConditionalExpression [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithDictionary 	"
 
 	self parse: '{ 1:1 } and { 1:1 }'.
@@ -6577,7 +6577,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithDictionary [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithFalse 	"
 
 	self parse: 'False and False'.
@@ -6615,7 +6615,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithFalse [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithFloat 	"
 
 	self parse: '0.0 and 0.0'.
@@ -6653,7 +6653,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithFloat [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithIdentifier 	"
 
 	self parse: 'obj and obj'.
@@ -6687,7 +6687,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithIdentifier [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithInteger 	"
 
 	self parse: '0 and 0'.
@@ -6725,7 +6725,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithInteger [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithList 	"
 
 	self parse: '[  ] and [  ]'.
@@ -6759,7 +6759,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithList [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithNotOperator 	"
 
 	self parse: 'not old and not old'.
@@ -6811,7 +6811,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithNotOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithSet 	"
 
 	self parse: '{ 1 } and { 1 }'.
@@ -6865,7 +6865,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithSet [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithString 	"
 
 	self parse: '"Hello" and "Hello"'.
@@ -6903,7 +6903,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithString [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithSubscript 	"
 
 	self parse: 'attrs[2] and attrs[2]'.
@@ -6974,7 +6974,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithSubscript [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithTrue 	"
 
 	self parse: 'True and True'.
@@ -7012,7 +7012,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithTrue [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithTuple 	"
 
 	self parse: '(a,b) and (a,b)'.
@@ -7072,7 +7072,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithTuple [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorWithUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBooleanOperatorWithUnaryOperator 	"
 
 	self parse: '-1 and -1'.
@@ -7131,7 +7131,7 @@ FASTPythonImporterTest >> testBooleanOperatorWithUnaryOperator [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testBreakStatement [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testBreakStatement 	"
 
 	self parse: 'while True:
@@ -7172,7 +7172,7 @@ FASTPythonImporterTest >> testBreakStatement [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentAttribute 	"
 
 	self parse: 'f(x.y)'.
@@ -7216,7 +7216,7 @@ FASTPythonImporterTest >> testCalWithArgumentAttribute [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentAwait [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentAwait 	"
 
 	self parse: 'f(await x)'.
@@ -7259,7 +7259,7 @@ FASTPythonImporterTest >> testCalWithArgumentAwait [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentBinaryOperator 	"
 
 	self parse: 'f(1 + x)'.
@@ -7315,7 +7315,7 @@ FASTPythonImporterTest >> testCalWithArgumentBinaryOperator [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentBooleanOperator 	"
 
 	self parse: 'f(x or y)'.
@@ -7368,7 +7368,7 @@ FASTPythonImporterTest >> testCalWithArgumentBooleanOperator [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentCall 	"
 
 	self parse: 'f(factory())'.
@@ -7412,7 +7412,7 @@ FASTPythonImporterTest >> testCalWithArgumentCall [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentComparisonOperator 	"
 
 	self parse: 'f(x > y)'.
@@ -7461,7 +7461,7 @@ FASTPythonImporterTest >> testCalWithArgumentComparisonOperator [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentComplexe 	"
 
 	self parse: 'f(0j)'.
@@ -7498,7 +7498,7 @@ FASTPythonImporterTest >> testCalWithArgumentComplexe [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentConditionalExpression 	"
 
 	self parse: 'f(x if True else y)'.
@@ -7561,7 +7561,7 @@ FASTPythonImporterTest >> testCalWithArgumentConditionalExpression [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentDictionary 	"
 
 	self parse: 'f({ 1:x })'.
@@ -7624,7 +7624,7 @@ FASTPythonImporterTest >> testCalWithArgumentDictionary [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentDictionaryComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentDictionaryComprehension 	"
 
 	self parse: 'f({ v:x for v in y })'.
@@ -7709,7 +7709,7 @@ FASTPythonImporterTest >> testCalWithArgumentDictionaryComprehension [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentDictionarySplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentDictionarySplat 	"
 
 	self parse: 'f(**kwargs)'.
@@ -7752,7 +7752,7 @@ FASTPythonImporterTest >> testCalWithArgumentDictionarySplat [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentEllipsis 	"
 
 	self parse: 'f(...)'.
@@ -7788,7 +7788,7 @@ FASTPythonImporterTest >> testCalWithArgumentEllipsis [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentFalse 	"
 
 	self parse: 'f(False)'.
@@ -7825,7 +7825,7 @@ FASTPythonImporterTest >> testCalWithArgumentFalse [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentFloat 	"
 
 	self parse: 'f(0.0)'.
@@ -7862,7 +7862,7 @@ FASTPythonImporterTest >> testCalWithArgumentFloat [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentIdentifier 	"
 
 	self parse: 'f(x)'.
@@ -7896,7 +7896,7 @@ FASTPythonImporterTest >> testCalWithArgumentIdentifier [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentInteger 	"
 
 	self parse: 'f(0)'.
@@ -7933,7 +7933,7 @@ FASTPythonImporterTest >> testCalWithArgumentInteger [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentLambda 	"
 
 	self parse: 'f((lambda x:x))'.
@@ -7988,7 +7988,7 @@ FASTPythonImporterTest >> testCalWithArgumentLambda [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentList 	"
 
 	self parse: 'f([ 1 ])'.
@@ -8034,7 +8034,7 @@ FASTPythonImporterTest >> testCalWithArgumentList [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentListComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentListComprehension 	"
 
 	self parse: 'f([i + x for i in range(3)])'.
@@ -8142,7 +8142,7 @@ FASTPythonImporterTest >> testCalWithArgumentListComprehension [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentListSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentListSplat 	"
 
 	self parse: 'f(*args)'.
@@ -8185,7 +8185,7 @@ FASTPythonImporterTest >> testCalWithArgumentListSplat [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentNone 	"
 
 	self parse: 'f(None)'.
@@ -8221,7 +8221,7 @@ FASTPythonImporterTest >> testCalWithArgumentNone [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentNotOperator 	"
 
 	self parse: 'f((not old))'.
@@ -8265,7 +8265,7 @@ FASTPythonImporterTest >> testCalWithArgumentNotOperator [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentSet 	"
 
 	self parse: 'f({ 1 })'.
@@ -8311,7 +8311,7 @@ FASTPythonImporterTest >> testCalWithArgumentSet [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentSetComprehension 	"
 
 	self parse: 'f({i + x for i in range(3) })'.
@@ -8419,7 +8419,7 @@ FASTPythonImporterTest >> testCalWithArgumentSetComprehension [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentString 	"
 
 	self parse: 'f("Hello")'.
@@ -8456,7 +8456,7 @@ FASTPythonImporterTest >> testCalWithArgumentString [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentSubscript 	"
 
 	self parse: 'f(x[2])'.
@@ -8510,7 +8510,7 @@ FASTPythonImporterTest >> testCalWithArgumentSubscript [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentTrue 	"
 
 	self parse: 'f(True)'.
@@ -8547,7 +8547,7 @@ FASTPythonImporterTest >> testCalWithArgumentTrue [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentTuple 	"
 
 	self parse: 'f((x, y))'.
@@ -8595,7 +8595,7 @@ FASTPythonImporterTest >> testCalWithArgumentTuple [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCalWithArgumentUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCalWithArgumentUnaryOperator 	"
 
 	self parse: 'f(-x)'.
@@ -8640,7 +8640,7 @@ FASTPythonImporterTest >> testCalWithArgumentUnaryOperator [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCall 	"
 
 	self parse: 'print("Hello")'.
@@ -8677,7 +8677,7 @@ FASTPythonImporterTest >> testCall [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallArgumentWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallArgumentWithAttribute 	"
 
 	self parse: 'function(CFG.seed)'.
@@ -8721,7 +8721,7 @@ FASTPythonImporterTest >> testCallArgumentWithAttribute [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallArgumentWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallArgumentWithBinaryOperator 	"
 
 	self parse: 'function(30000/train_bs*epochs)'.
@@ -8795,7 +8795,7 @@ FASTPythonImporterTest >> testCallArgumentWithBinaryOperator [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallArgumentWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallArgumentWithCall 	"
 
 	self parse: 'function(data[0].replace(''case'',''''))'.
@@ -8887,7 +8887,7 @@ FASTPythonImporterTest >> testCallArgumentWithCall [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallArgumentWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallArgumentWithComparisonOperator 	"
 
 	self parse: 'function(shape0!=resize)'.
@@ -8936,7 +8936,7 @@ FASTPythonImporterTest >> testCallArgumentWithComparisonOperator [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallArgumentWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallArgumentWithDictionary 	"
 
 	self parse: 'function({
@@ -9031,7 +9031,7 @@ FASTPythonImporterTest >> testCallArgumentWithDictionary [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallArgumentWithEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallArgumentWithEllipsis 	"
 
 	self parse: 'function(3, ...)'.
@@ -9075,7 +9075,7 @@ FASTPythonImporterTest >> testCallArgumentWithEllipsis [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallArgumentWithKeywordArgument [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallArgumentWithKeywordArgument 	"
 
 	self parse: 'function("/root/.cache/torch/hub/checkpoints/", exist_ok=True)'.
@@ -9130,7 +9130,7 @@ FASTPythonImporterTest >> testCallArgumentWithKeywordArgument [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallArgumentWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallArgumentWithList 	"
 
 	self parse: 'function(img, [pady, padx])'.
@@ -9183,7 +9183,7 @@ FASTPythonImporterTest >> testCallArgumentWithList [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallChained [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallChained 	"
 
 	self parse: 'function()(13)'.
@@ -9229,7 +9229,7 @@ FASTPythonImporterTest >> testCallChained [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallLambda 	"
 
 	self parse: '(lambda x: x > 0)(10)'.
@@ -9303,7 +9303,7 @@ FASTPythonImporterTest >> testCallLambda [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallOnAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallOnAttribute 	"
 
 	self parse: 'obj.func()'.
@@ -9338,7 +9338,7 @@ FASTPythonImporterTest >> testCallOnAttribute [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallOnCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallOnCall 	"
 
 	self parse: 'factory()()'.
@@ -9373,7 +9373,7 @@ FASTPythonImporterTest >> testCallOnCall [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallOnConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallOnConditionalExpression 	"
 
 	self parse: '(x if True else y)()'.
@@ -9427,7 +9427,7 @@ FASTPythonImporterTest >> testCallOnConditionalExpression [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallOnIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallOnIdentifier 	"
 
 	self parse: 'func()'.
@@ -9453,7 +9453,7 @@ FASTPythonImporterTest >> testCallOnIdentifier [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallOnLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallOnLambda 	"
 
 	self parse: '(lambda x:x)()'.
@@ -9499,7 +9499,7 @@ FASTPythonImporterTest >> testCallOnLambda [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallOnSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallOnSubscript 	"
 
 	self parse: 'functions[2]()'.
@@ -9544,7 +9544,7 @@ FASTPythonImporterTest >> testCallOnSubscript [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallSubscript 	"
 
 	self parse: 'coll[1](True)'.
@@ -9600,7 +9600,7 @@ FASTPythonImporterTest >> testCallSubscript [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallWithAttribute 	"
 
 	self parse: 'tqdm.pandas()'.
@@ -9635,7 +9635,7 @@ FASTPythonImporterTest >> testCallWithAttribute [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testCallWithGeneratorExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCallWithGeneratorExpression 	"
 
 	self parse: 'sum(x * x for x in range(10)) '.
@@ -9767,7 +9767,7 @@ FASTPythonImporterTest >> testChainedComparisonOperator [
 { #category : 'tests - classes' }
 FASTPythonImporterTest >> testClassDefinition [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testClassDefinition 	"
 
 	self parse: 'class AClass():
@@ -9796,7 +9796,7 @@ FASTPythonImporterTest >> testClassDefinition [
 { #category : 'tests - classes' }
 FASTPythonImporterTest >> testClassDefinitionWithMetaclass [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testClassDefinitionWithMetaclass 	"
 
 	self parse: 'class aClass(metaclass=MyMeta): pass'.
@@ -9842,7 +9842,7 @@ FASTPythonImporterTest >> testClassDefinitionWithMetaclass [
 { #category : 'tests - classes' }
 FASTPythonImporterTest >> testClassDefinitionWithMetaclassCustomizations [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testClassDefinitionWithMetaclassCustomizations 	"
 
 	self parse: 'class aClass(metaclass=MyMeta, custom_arg=42): pass'.
@@ -9905,7 +9905,7 @@ FASTPythonImporterTest >> testClassDefinitionWithMetaclassCustomizations [
 { #category : 'tests - classes' }
 FASTPythonImporterTest >> testClassDefinitionWithMultipleSuperclasses [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testClassDefinitionWithMultipleSuperclasses 	"
 
 	self parse: 'class aClass(Super1, Super2, Super3): pass'.
@@ -9951,7 +9951,7 @@ FASTPythonImporterTest >> testClassDefinitionWithMultipleSuperclasses [
 { #category : 'tests - classes' }
 FASTPythonImporterTest >> testClassDefinitionWithSuperclassAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testClassDefinitionWithSuperclassAttribute 	"
 
 	self parse: 'class aClass(module.Superclass): pass'.
@@ -9996,7 +9996,7 @@ FASTPythonImporterTest >> testClassDefinitionWithSuperclassAttribute [
 { #category : 'tests - classes' }
 FASTPythonImporterTest >> testClassDefinitionWithSuperclassCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testClassDefinitionWithSuperclassCall 	"
 
 	self parse: 'class aClass(factory()): pass'.
@@ -10042,7 +10042,7 @@ FASTPythonImporterTest >> testClassDefinitionWithSuperclassCall [
 { #category : 'tests - classes' }
 FASTPythonImporterTest >> testClassDefinitionWithSuperclassConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testClassDefinitionWithSuperclassConditionalExpression 	"
 
 	self parse: 'class aClass(Super1 if True else Super2): pass'.
@@ -10106,7 +10106,7 @@ FASTPythonImporterTest >> testClassDefinitionWithSuperclassConditionalExpression
 { #category : 'tests - classes' }
 FASTPythonImporterTest >> testClassDefinitionWithSuperclassIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testClassDefinitionWithSuperclassIdentifier 	"
 
 	self parse: 'class aClass(SuperClass): pass'.
@@ -10142,7 +10142,7 @@ FASTPythonImporterTest >> testClassDefinitionWithSuperclassIdentifier [
 { #category : 'tests - classes' }
 FASTPythonImporterTest >> testClassDefinitionWithSuperclassListSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testClassDefinitionWithSuperclassListSplat 	"
 
 	self parse: 'class aClass(*args): pass'.
@@ -10186,7 +10186,7 @@ FASTPythonImporterTest >> testClassDefinitionWithSuperclassListSplat [
 { #category : 'tests - classes' }
 FASTPythonImporterTest >> testClassDefinitionWithSuperclassSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testClassDefinitionWithSuperclassSubscript 	"
 
 	self parse: 'class aClass(classes[2]): pass'.
@@ -10241,7 +10241,7 @@ FASTPythonImporterTest >> testClassDefinitionWithSuperclassSubscript [
 { #category : 'tests - classes' }
 FASTPythonImporterTest >> testClassDefinitionWithTypeParameters [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testClassDefinitionWithTypeParameters 	"
 
 	self parse: 'class Pair[K, V]: pass'.
@@ -10298,7 +10298,7 @@ FASTPythonImporterTest >> testClassDefinitionWithTypeParameters [
 { #category : 'tests - comments' }
 FASTPythonImporterTest >> testComment [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComment 	"
 
 	self parse: '#There is only one comment'.
@@ -10315,7 +10315,7 @@ FASTPythonImporterTest >> testComment [
 { #category : 'tests - comments' }
 FASTPythonImporterTest >> testCommentInArgumentList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testCommentInArgumentList 	"
 
 	self parse: 'funct(
@@ -10387,7 +10387,7 @@ FASTPythonImporterTest >> testComparisonOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithAttribute 	"
 
 	self parse: 'x.y is ... '.
@@ -10430,7 +10430,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithAttribute [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithBinaryOperator 	"
 
 	self parse: '1 + x is ... '.
@@ -10485,7 +10485,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithBinaryOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithBooleanOperator 	"
 
 	self parse: 'x or y is ... '.
@@ -10536,7 +10536,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithBooleanOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithCall 	"
 
 	self parse: 'obj() is ... '.
@@ -10580,7 +10580,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithCall [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithComplexe 	"
 
 	self parse: '0j is ... '.
@@ -10615,7 +10615,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithComplexe [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithConditionalExpression 	"
 
 	self parse: 'x if True else y is ... '.
@@ -10676,7 +10676,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithConditionalExpression [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithDictionary 	"
 
 	self parse: '{ 1:1 } is ... '.
@@ -10739,7 +10739,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithDictionary [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithEllipsis 	"
 
 	self parse: 'obj is ...'.
@@ -10772,7 +10772,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithEllipsis [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithFalse 	"
 
 	self parse: 'False is ... '.
@@ -10807,7 +10807,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithFalse [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithFloat 	"
 
 	self parse: '0.0 is ... '.
@@ -10842,7 +10842,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithFloat [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithIdentifier 	"
 
 	self parse: 'obj is ... '.
@@ -10875,7 +10875,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithIdentifier [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithInteger 	"
 
 	self parse: '0 is ... '.
@@ -10910,7 +10910,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithInteger [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithList 	"
 
 	self parse: '[  ] is ... '.
@@ -10943,7 +10943,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithList [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithNone 	"
 
 	self parse: 'None is ... '.
@@ -10977,7 +10977,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithNone [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithNotOperator 	"
 
 	self parse: 'not old is ... '.
@@ -11019,7 +11019,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithNotOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithSet 	"
 
 	self parse: '{ 1 } is ... '.
@@ -11063,7 +11063,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithSet [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithString 	"
 
 	self parse: '"Hello" is ... '.
@@ -11098,7 +11098,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithString [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithSubscript 	"
 
 	self parse: 'attrs[2] is ... '.
@@ -11151,7 +11151,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithSubscript [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithTrue 	"
 
 	self parse: 'True is ... '.
@@ -11186,7 +11186,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithTrue [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithTuple 	"
 
 	self parse: '(a,b) is ... '.
@@ -11233,7 +11233,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithTuple [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testComparisonOperatorWithUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComparisonOperatorWithUnaryOperator 	"
 
 	self parse: '-1 is ... '.
@@ -11279,7 +11279,7 @@ FASTPythonImporterTest >> testComparisonOperatorWithUnaryOperator [
 { #category : 'tests - literals' }
 FASTPythonImporterTest >> testComplex [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testComplex 	"
 
 	self parse: '42j'.
@@ -11297,7 +11297,7 @@ FASTPythonImporterTest >> testComplex [
 { #category : 'tests - literals' }
 FASTPythonImporterTest >> testConcatenatedString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConcatenatedString 	"
 
 	self parse: 'f"Hello {name}" "Have a nice day"'.
@@ -11348,7 +11348,7 @@ FASTPythonImporterTest >> testConcatenatedString [
 { #category : 'tests' }
 FASTPythonImporterTest >> testConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpression 	"
 
 	self parse: '"even" if x % 2 == 0 else "odd"'.
@@ -11433,7 +11433,7 @@ FASTPythonImporterTest >> testConditionalExpression [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithAttribute 	"
 
 	self parse: 'x.y if False else x.y'.
@@ -11495,7 +11495,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithAttribute [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithBinaryOperator 	"
 
 	self parse: '(y + x) if False else (y + x)'.
@@ -11575,7 +11575,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithBinaryOperator [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithBooleanOperator 	"
 
 	self parse: '(x or y) if False else (x or y)'.
@@ -11655,7 +11655,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithBooleanOperator [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithCall 	"
 
 	self parse: 'factory() if False else factory()'.
@@ -11719,7 +11719,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithCall [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithComparisonOperator 	"
 
 	self parse: '(x > y) if False else (x > y)'.
@@ -11792,7 +11792,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithComparisonOperator [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithComplexe 	"
 
 	self parse: '0j if False else 0j'.
@@ -11840,7 +11840,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithComplexe [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionAttribute 	"
 
 	self parse: '1 if x.y else y'.
@@ -11894,7 +11894,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionAttribute [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionBinaryOperator 	"
 
 	self parse: '1 if (y + x) else y'.
@@ -11957,7 +11957,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionBinaryOperator [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionBooleanOperator 	"
 
 	self parse: '1 if (x or y) else y'.
@@ -12020,7 +12020,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionBooleanOperator 
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionCall 	"
 
 	self parse: '1 if factory() else y'.
@@ -12075,7 +12075,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionCall [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionComparisonOperator 	"
 
 	self parse: '1 if (x > y) else y'.
@@ -12134,7 +12134,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionComparisonOperat
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionComplexe 	"
 
 	self parse: '1 if 0j else y'.
@@ -12181,7 +12181,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionComplexe [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionConditionalExpression 	"
 
 	self parse: '1 if (x if True else y) else y'.
@@ -12253,7 +12253,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionConditionalExpre
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionFalse 	"
 
 	self parse: '1 if False else y'.
@@ -12300,7 +12300,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionFalse [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionFloat 	"
 
 	self parse: '1 if 0.0 else y'.
@@ -12347,7 +12347,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionFloat [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionIdentifier 	"
 
 	self parse: '1 if x else y'.
@@ -12391,7 +12391,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionIdentifier [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionInteger 	"
 
 	self parse: '1 if 0 else y'.
@@ -12437,7 +12437,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionInteger [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionNotOperator 	"
 
 	self parse: '1 if not old else y'.
@@ -12491,7 +12491,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionNotOperator [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionSubscript 	"
 
 	self parse: '1 if functions[2] else y'.
@@ -12554,7 +12554,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionSubscript [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionTrue 	"
 
 	self parse: '1 if True else y'.
@@ -12601,7 +12601,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionTrue [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionUnaryOperator 	"
 
 	self parse: '1 if -x else y'.
@@ -12656,7 +12656,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionUnaryOperator [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithConditionalExpression 	"
 
 	self parse: '(x if True else y) if False else (x if True else y)'.
@@ -12753,7 +12753,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithConditionalExpression [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithDictionary 	"
 
 	self parse: '{ 1:x } if False else { 1:x }'.
@@ -12850,7 +12850,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithDictionary [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithDictionaryComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithDictionaryComprehension 	"
 
 	self parse: '{ v:x for v in y } if False else { v:x for v in y }'.
@@ -12991,7 +12991,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithDictionaryComprehension [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithEllipsis 	"
 
 	self parse: '... if False else ...'.
@@ -13037,7 +13037,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithEllipsis [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithFalse 	"
 
 	self parse: 'False if False else False'.
@@ -13084,7 +13084,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithFalse [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithFloat 	"
 
 	self parse: '0.0 if False else 0.0'.
@@ -13132,7 +13132,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithFloat [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithIdentifier 	"
 
 	self parse: 'x if False else x'.
@@ -13176,7 +13176,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithIdentifier [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithInteger 	"
 
 	self parse: '0 if False else 0'.
@@ -13224,7 +13224,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithInteger [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithLambda 	"
 
 	self parse: '(lambda x:x) if False else (lambda x:x)'.
@@ -13307,7 +13307,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithLambda [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithList 	"
 
 	self parse: '[ 1 ] if False else [ 1 ]'.
@@ -13371,7 +13371,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithList [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithListComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithListComprehension 	"
 
 	self parse: '[i + x for i in range(3)] if False else [i + x for i in range(3)]'.
@@ -13557,7 +13557,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithListComprehension [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithListSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithListSplat 	"
 
 	self parse: '*args if False else *args'.
@@ -13617,7 +13617,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithListSplat [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithNone 	"
 
 	self parse: 'None if False else None'.
@@ -13663,7 +13663,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithNone [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithNotOperator 	"
 
 	self parse: 'not old if False else not old'.
@@ -13725,7 +13725,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithNotOperator [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithPatternList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithPatternList 	"
 
 	self parse: 'a, b if False else a, b'.
@@ -13788,7 +13788,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithPatternList [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithSet 	"
 
 	self parse: '{ 1 } if False else { 1 }'.
@@ -13852,7 +13852,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithSet [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithSetComprehension 	"
 
 	self parse: '{i + x for i in range(3) } if False else {i + x for i in range(3) }'.
@@ -14038,7 +14038,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithSetComprehension [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithString 	"
 
 	self parse: '"Hello" if False else "Hello"'.
@@ -14086,7 +14086,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithString [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithSubscript 	"
 
 	self parse: 'functions[2] if False else functions[2]'.
@@ -14167,7 +14167,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithSubscript [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithTrue 	"
 
 	self parse: 'True if False else True'.
@@ -14214,7 +14214,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithTrue [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithTuple 	"
 
 	self parse: '(x, y) if False else (x, y)'.
@@ -14284,7 +14284,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithTuple [
 { #category : 'tests - conditional expressions' }
 FASTPythonImporterTest >> testConditionalExpressionWithUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConditionalExpressionWithUnaryOperator 	"
 
 	self parse: '-x if False else -x'.
@@ -14349,7 +14349,7 @@ FASTPythonImporterTest >> testConditionalExpressionWithUnaryOperator [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testConstrainedType [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testConstrainedType 	"
 
 	self parse: 'def f[T: int](): pass'.
@@ -14425,7 +14425,7 @@ FASTPythonImporterTest >> testConstrainedType [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testContinueStatement [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testContinueStatement 	"
 
 	self parse: 'while True:
@@ -14466,7 +14466,7 @@ FASTPythonImporterTest >> testContinueStatement [
 { #category : 'tests - decorators' }
 FASTPythonImporterTest >> testDecorator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDecorator 	"
 
 	self parse: '@decorator
@@ -14515,7 +14515,7 @@ def funct():
 { #category : 'tests - decorators' }
 FASTPythonImporterTest >> testDecoratorOnClassDefinition [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDecoratorOnClassDefinition 	"
 
 	self parse: '@register_component
@@ -14561,7 +14561,7 @@ class MyComponent: pass'.
 { #category : 'tests - decorators' }
 FASTPythonImporterTest >> testDecoratorOnFunctionDefinition [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDecoratorOnFunctionDefinition 	"
 
 	self parse: '@public
@@ -14608,7 +14608,7 @@ def func(): pass'.
 { #category : 'tests - decorators' }
 FASTPythonImporterTest >> testDecoratorOnMethodDefinition [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDecoratorOnMethodDefinition 	"
 
 	self parse: 'class C():
@@ -14669,7 +14669,7 @@ FASTPythonImporterTest >> testDecoratorOnMethodDefinition [
 { #category : 'tests - decorators' }
 FASTPythonImporterTest >> testDecoratorWithAttributeAccess [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDecoratorWithAttributeAccess 	"
 
 	self parse: '@functools.lru_cache
@@ -14726,7 +14726,7 @@ def funct(): pass'.
 { #category : 'tests - decorators' }
 FASTPythonImporterTest >> testDecoratorWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDecoratorWithCall 	"
 
 	self parse: '@factory.make_decorator()
@@ -14794,7 +14794,7 @@ def funct(): pass'.
 { #category : 'tests - decorators' }
 FASTPythonImporterTest >> testDecoratorWithLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDecoratorWithLambda 	"
 
 	self parse: '@(lambda f: f)
@@ -14862,7 +14862,7 @@ def funct(): pass'.
 { #category : 'tests - decorators' }
 FASTPythonImporterTest >> testDecoratorWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDecoratorWithSubscript 	"
 
 	self parse: '@decorators[''auth'']
@@ -14929,7 +14929,7 @@ def funct(): pass'.
 { #category : 'tests - decorators' }
 FASTPythonImporterTest >> testDecorators [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDecorators 	"
 
 	self parse: '@decoratorA
@@ -14992,7 +14992,7 @@ def funct():
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameter [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameter 	"
 
 	self parse: 'def f(x=1): pass'.
@@ -15042,7 +15042,7 @@ FASTPythonImporterTest >> testDefaultParameter [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithAttribute 	"
 
 	self parse: 'def f(x = x.y): pass'.
@@ -15100,7 +15100,7 @@ FASTPythonImporterTest >> testDefaultParameterWithAttribute [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithAwait [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithAwait 	"
 
 	self parse: 'def f(x = await x): pass'.
@@ -15157,7 +15157,7 @@ FASTPythonImporterTest >> testDefaultParameterWithAwait [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithBinaryOperator 	"
 
 	self parse: 'def f(x = 1 + x): pass'.
@@ -15227,7 +15227,7 @@ FASTPythonImporterTest >> testDefaultParameterWithBinaryOperator [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithBooleanOperator 	"
 
 	self parse: 'def f(x = x or y): pass'.
@@ -15294,7 +15294,7 @@ FASTPythonImporterTest >> testDefaultParameterWithBooleanOperator [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithCall 	"
 
 	self parse: 'def f(x = factory()): pass'.
@@ -15353,7 +15353,7 @@ FASTPythonImporterTest >> testDefaultParameterWithCall [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithComparisonOperator 	"
 
 	self parse: 'def f(x = x > y): pass'.
@@ -15416,7 +15416,7 @@ FASTPythonImporterTest >> testDefaultParameterWithComparisonOperator [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithComplexe 	"
 
 	self parse: 'def f(x = 0j): pass'.
@@ -15466,7 +15466,7 @@ FASTPythonImporterTest >> testDefaultParameterWithComplexe [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithConditionalExpression 	"
 
 	self parse: 'def f(x = x if True else y): pass'.
@@ -15543,7 +15543,7 @@ FASTPythonImporterTest >> testDefaultParameterWithConditionalExpression [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithDictionary 	"
 
 	self parse: 'def f(x = { 1:x }): pass'.
@@ -15620,7 +15620,7 @@ FASTPythonImporterTest >> testDefaultParameterWithDictionary [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithDictionaryComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithDictionaryComprehension 	"
 
 	self parse: 'def f(x = { v:x for v in y }): pass'.
@@ -15719,7 +15719,7 @@ FASTPythonImporterTest >> testDefaultParameterWithDictionaryComprehension [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithEllipsis 	"
 
 	self parse: 'def f(x = ...): pass'.
@@ -15768,7 +15768,7 @@ FASTPythonImporterTest >> testDefaultParameterWithEllipsis [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithFalse 	"
 
 	self parse: 'def f(x = False): pass'.
@@ -15818,7 +15818,7 @@ FASTPythonImporterTest >> testDefaultParameterWithFalse [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithFloat 	"
 
 	self parse: 'def f(x = 0.0): pass'.
@@ -15868,7 +15868,7 @@ FASTPythonImporterTest >> testDefaultParameterWithFloat [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithIdentifier 	"
 
 	self parse: 'def f(x = x): pass'.
@@ -15916,7 +15916,7 @@ FASTPythonImporterTest >> testDefaultParameterWithIdentifier [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithInteger 	"
 
 	self parse: 'def f(x = 0): pass'.
@@ -15966,7 +15966,7 @@ FASTPythonImporterTest >> testDefaultParameterWithInteger [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithLambda 	"
 
 	self parse: 'def f(x = (lambda x:x)): pass'.
@@ -16034,7 +16034,7 @@ FASTPythonImporterTest >> testDefaultParameterWithLambda [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithList 	"
 
 	self parse: 'def f(x = [ 1 ]): pass'.
@@ -16093,7 +16093,7 @@ FASTPythonImporterTest >> testDefaultParameterWithList [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithListComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithListComprehension 	"
 
 	self parse: 'def f(x = [i + x for i in range(3)]): pass'.
@@ -16216,7 +16216,7 @@ FASTPythonImporterTest >> testDefaultParameterWithListComprehension [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithNone 	"
 
 	self parse: 'def f(x = None): pass'.
@@ -16265,7 +16265,7 @@ FASTPythonImporterTest >> testDefaultParameterWithNone [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithNotOperator 	"
 
 	self parse: 'def f(x = (not old)): pass'.
@@ -16323,7 +16323,7 @@ FASTPythonImporterTest >> testDefaultParameterWithNotOperator [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithSet 	"
 
 	self parse: 'def f(x = { 1 }): pass'.
@@ -16382,7 +16382,7 @@ FASTPythonImporterTest >> testDefaultParameterWithSet [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithSetComprehension 	"
 
 	self parse: 'def f(x = {i + x for i in range(3) }): pass'.
@@ -16505,7 +16505,7 @@ FASTPythonImporterTest >> testDefaultParameterWithSetComprehension [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithString 	"
 
 	self parse: 'def f(x = "Hello"): pass'.
@@ -16555,7 +16555,7 @@ FASTPythonImporterTest >> testDefaultParameterWithString [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithSubscript 	"
 
 	self parse: 'def f(x = x[2]): pass'.
@@ -16623,7 +16623,7 @@ FASTPythonImporterTest >> testDefaultParameterWithSubscript [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithTrue 	"
 
 	self parse: 'def f(x = True): pass'.
@@ -16673,7 +16673,7 @@ FASTPythonImporterTest >> testDefaultParameterWithTrue [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithTuple 	"
 
 	self parse: 'def f(x = (x, y)): pass'.
@@ -16735,7 +16735,7 @@ FASTPythonImporterTest >> testDefaultParameterWithTuple [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultParameterWithUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultParameterWithUnaryOperator 	"
 
 	self parse: 'def f(x = -x): pass'.
@@ -16794,7 +16794,7 @@ FASTPythonImporterTest >> testDefaultParameterWithUnaryOperator [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameter [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameter 	"
 
 	self parse: 'def f(c:int={}): pass'.
@@ -16860,7 +16860,7 @@ FASTPythonImporterTest >> testDefaultTypedParameter [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithAttribute 	"
 
 	self parse: 'def f(x: int = x.y): pass'.
@@ -16935,7 +16935,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithAttribute [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithAwait [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithAwait 	"
 
 	self parse: 'def f(x: int = await x): pass'.
@@ -17009,7 +17009,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithAwait [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithBinaryOperator 	"
 
 	self parse: 'def f(x: int = 1 + x): pass'.
@@ -17096,7 +17096,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithBinaryOperator [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithBooleanOperator 	"
 
 	self parse: 'def f(x: int = x or y): pass'.
@@ -17180,7 +17180,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithBooleanOperator [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithCall 	"
 
 	self parse: 'def f(x: int = factory()): pass'.
@@ -17256,7 +17256,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithCall [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithComparisonOperator 	"
 
 	self parse: 'def f(x: int = x > y): pass'.
@@ -17336,7 +17336,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithComparisonOperator [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithComplexe 	"
 
 	self parse: 'def f(x: int = 0j): pass'.
@@ -17404,7 +17404,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithComplexe [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithConditionalExpression 	"
 
 	self parse: 'def f(x: int = x if True else y): pass'.
@@ -17498,7 +17498,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithConditionalExpression [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithDictionary 	"
 
 	self parse: 'def f(x: int = { 1:x }): pass'.
@@ -17592,7 +17592,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithDictionary [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithDictionaryComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithDictionaryComprehension 	"
 
 	self parse: 'def f(x: int = { v:x for v in y }): pass'.
@@ -17708,7 +17708,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithDictionaryComprehension [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithEllipsis 	"
 
 	self parse: 'def f(x: int = ...): pass'.
@@ -17775,7 +17775,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithEllipsis [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithFalse 	"
 
 	self parse: 'def f(x: int = False): pass'.
@@ -17843,7 +17843,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithFalse [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithFloat 	"
 
 	self parse: 'def f(x: int = 0.0): pass'.
@@ -17911,7 +17911,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithFloat [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithIdentifier 	"
 
 	self parse: 'def f(x: int = x): pass'.
@@ -17976,7 +17976,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithIdentifier [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithInteger 	"
 
 	self parse: 'def f(x: int = 0): pass'.
@@ -18044,7 +18044,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithInteger [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithLambda 	"
 
 	self parse: 'def f(x: int = (lambda x:x)): pass'.
@@ -18129,7 +18129,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithLambda [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithList 	"
 
 	self parse: 'def f(x: int = [ 1 ]): pass'.
@@ -18206,7 +18206,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithList [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithListComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithListComprehension 	"
 
 	self parse: 'def f(x: int = [i + x for i in range(3)]): pass'.
@@ -18346,7 +18346,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithListComprehension [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithNone 	"
 
 	self parse: 'def f(x: int = None): pass'.
@@ -18413,7 +18413,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithNone [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithNotOperator 	"
 
 	self parse: 'def f(x: int = (not old)): pass'.
@@ -18488,7 +18488,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithNotOperator [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithSet 	"
 
 	self parse: 'def f(x: int = { 1 }): pass'.
@@ -18565,7 +18565,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithSet [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithSetComprehension 	"
 
 	self parse: 'def f(x: int = {i + x for i in range(3) }): pass'.
@@ -18705,7 +18705,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithSetComprehension [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithString 	"
 
 	self parse: 'def f(x: int = "Hello"): pass'.
@@ -18773,7 +18773,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithString [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithSubscript 	"
 
 	self parse: 'def f(x: int = x[2]): pass'.
@@ -18858,7 +18858,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithSubscript [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithTrue 	"
 
 	self parse: 'def f(x: int = True): pass'.
@@ -18926,7 +18926,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithTrue [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithTuple 	"
 
 	self parse: 'def f(x: int = (x, y)): pass'.
@@ -19005,7 +19005,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithTuple [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDefaultTypedParameterWithUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDefaultTypedParameterWithUnaryOperator 	"
 
 	self parse: 'def f(x: int = -x): pass'.
@@ -19081,7 +19081,7 @@ FASTPythonImporterTest >> testDefaultTypedParameterWithUnaryOperator [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testDelStatement [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDelStatement 	"
 
 	self parse: 'del coll'.
@@ -19105,7 +19105,7 @@ FASTPythonImporterTest >> testDelStatement [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testDelStatementAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDelStatementAttribute 	"
 
 	self parse: 'del obj.attr'.
@@ -19138,7 +19138,7 @@ FASTPythonImporterTest >> testDelStatementAttribute [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testDelStatementExpressionList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDelStatementExpressionList 	"
 
 	self parse: 'del rate, add_baudrate_if_supported'.
@@ -19175,7 +19175,7 @@ FASTPythonImporterTest >> testDelStatementExpressionList [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testDelStatementMultiple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDelStatementMultiple 	"
 
 	self parse: 'del obj1, obj2, obj.attr'.
@@ -19226,7 +19226,7 @@ FASTPythonImporterTest >> testDelStatementMultiple [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testDelStatementSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDelStatementSubscript 	"
 
 	self parse: 'del obj.attrs[1]'.
@@ -19278,7 +19278,7 @@ FASTPythonImporterTest >> testDelStatementSubscript [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testDelStatementTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDelStatementTuple 	"
 
 	self parse: 'del ()'.
@@ -19302,7 +19302,7 @@ FASTPythonImporterTest >> testDelStatementTuple [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionary 	"
 
 	self parse: ' { "brand": "Ford", "model": "Mustang", "year": 1964 }'.
@@ -19397,7 +19397,7 @@ FASTPythonImporterTest >> testDictionary [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testDictionaryComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryComprehension 	"
 
 	self parse: '{ v:k for k,v in class_indices.items() }'.
@@ -19495,7 +19495,7 @@ FASTPythonImporterTest >> testDictionaryComprehension [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testDictionaryComprehensionWithIfClause [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryComprehensionWithIfClause 	"
 
 	self parse: '{ v:k for k,v in class_indices.items() if v > 3 }'.
@@ -19619,7 +19619,7 @@ FASTPythonImporterTest >> testDictionaryComprehensionWithIfClause [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testDictionarySplatInCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionarySplatInCall 	"
 
 	self parse: 'func(**kwargs)'.
@@ -19662,7 +19662,7 @@ FASTPythonImporterTest >> testDictionarySplatInCall [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testDictionarySplatInDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionarySplatInDictionary 	"
 
 	self parse: '{**d1, "c": 3}'.
@@ -19722,7 +19722,7 @@ FASTPythonImporterTest >> testDictionarySplatInDictionary [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testDictionarySplatOnAttributeAccess [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionarySplatOnAttributeAccess 	"
 
 	self parse: 'funct(**obj.settings)'.
@@ -19775,7 +19775,7 @@ FASTPythonImporterTest >> testDictionarySplatOnAttributeAccess [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testDictionarySplatOnBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionarySplatOnBinaryOperator 	"
 
 	self parse: 'func(**default_args | subprocess_args)'.
@@ -19837,7 +19837,7 @@ FASTPythonImporterTest >> testDictionarySplatOnBinaryOperator [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testDictionarySplatOnBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionarySplatOnBooleanOperator 	"
 
 	self parse: 'func(**extra or {}) '.
@@ -19900,7 +19900,7 @@ FASTPythonImporterTest >> testDictionarySplatOnBooleanOperator [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testDictionarySplatOnCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionarySplatOnCall 	"
 
 	self parse: 'funct(**get_config())'.
@@ -19953,7 +19953,7 @@ FASTPythonImporterTest >> testDictionarySplatOnCall [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testDictionarySplatOnDictionaryComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionarySplatOnDictionaryComprehension 	"
 
 	self parse: 'funct(**{k: v * 2 for k, v in items})'.
@@ -20083,7 +20083,7 @@ FASTPythonImporterTest >> testDictionarySplatOnDictionaryComprehension [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testDictionarySplatOnParenthesis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionarySplatOnParenthesis 	"
 
 	self parse: 'func(**(kwargs)) '.
@@ -20126,7 +20126,7 @@ FASTPythonImporterTest >> testDictionarySplatOnParenthesis [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testDictionarySplatOnSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionarySplatOnSubscript 	"
 
 	self parse: 'funct(**d["nested"])'.
@@ -20189,7 +20189,7 @@ FASTPythonImporterTest >> testDictionarySplatOnSubscript [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testDictionarySplatParameter [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionarySplatParameter 	"
 
 	self parse: 'def function(**kwargs): pass'.
@@ -20228,7 +20228,7 @@ FASTPythonImporterTest >> testDictionarySplatParameter [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithAttribute 	"
 
 	self parse: '{ "key": obj.attr }'.
@@ -20280,7 +20280,7 @@ FASTPythonImporterTest >> testDictionaryWithAttribute [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithBinaryOperator 	"
 
 	self parse: '{ "key": 10 / 2 }'.
@@ -20345,7 +20345,7 @@ FASTPythonImporterTest >> testDictionaryWithBinaryOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithBooleanOperator 	"
 
 	self parse: '{ "key": x and y }'.
@@ -20406,7 +20406,7 @@ FASTPythonImporterTest >> testDictionaryWithBooleanOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithCall 	"
 
 	self parse: '{ "key": obj() }'.
@@ -20459,7 +20459,7 @@ FASTPythonImporterTest >> testDictionaryWithCall [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithComparisonOperator 	"
 
 	self parse: '{ "key": 1 > 3 }'.
@@ -20521,7 +20521,7 @@ FASTPythonImporterTest >> testDictionaryWithComparisonOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithComplexe 	"
 
 	self parse: '{ "key": 1j }'.
@@ -20566,7 +20566,7 @@ FASTPythonImporterTest >> testDictionaryWithComplexe [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithConditionalExpression 	"
 
 	self parse: '{ "key": x if True else y }'.
@@ -20637,7 +20637,7 @@ FASTPythonImporterTest >> testDictionaryWithConditionalExpression [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithDictionary 	"
 
 	self parse: '{ "key": { 1:1 } }'.
@@ -20706,7 +20706,7 @@ FASTPythonImporterTest >> testDictionaryWithDictionary [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithEllipsis 	"
 
 	self parse: '{ "key": ... }'.
@@ -20750,7 +20750,7 @@ FASTPythonImporterTest >> testDictionaryWithEllipsis [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithFalse 	"
 
 	self parse: '{ "key": False }'.
@@ -20795,7 +20795,7 @@ FASTPythonImporterTest >> testDictionaryWithFalse [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithFloat 	"
 
 	self parse: '{ "key": 0.1 }'.
@@ -20840,7 +20840,7 @@ FASTPythonImporterTest >> testDictionaryWithFloat [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithIdentifier 	"
 
 	self parse: '{ "key": element }'.
@@ -20883,7 +20883,7 @@ FASTPythonImporterTest >> testDictionaryWithIdentifier [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithInteger 	"
 
 	self parse: '{ "key": 1 }'.
@@ -20928,7 +20928,7 @@ FASTPythonImporterTest >> testDictionaryWithInteger [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithLambda 	"
 
 	self parse: '{ "key": lambda x:x }'.
@@ -20991,7 +20991,7 @@ FASTPythonImporterTest >> testDictionaryWithLambda [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithList 	"
 
 	self parse: '{ "key": [ 1 ] }'.
@@ -21044,7 +21044,7 @@ FASTPythonImporterTest >> testDictionaryWithList [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithListSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithListSplat 	"
 
 	self parse: '{ "key": *args }'.
@@ -21095,7 +21095,7 @@ FASTPythonImporterTest >> testDictionaryWithListSplat [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithList_comprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithList_comprehension 	"
 
 	self parse: '{ "key": [random for i in range(3)] }'.
@@ -21191,7 +21191,7 @@ FASTPythonImporterTest >> testDictionaryWithList_comprehension [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithNone 	"
 
 	self parse: '{ "key": None }'.
@@ -21235,7 +21235,7 @@ FASTPythonImporterTest >> testDictionaryWithNone [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithNotOperator 	"
 
 	self parse: '{ "key": not old }'.
@@ -21287,7 +21287,7 @@ FASTPythonImporterTest >> testDictionaryWithNotOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithSet 	"
 
 	self parse: '{ "key": { 1 } }'.
@@ -21340,7 +21340,7 @@ FASTPythonImporterTest >> testDictionaryWithSet [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithSetComprehension 	"
 
 	self parse: '{ "key": {random for i in range(3)} }'.
@@ -21436,7 +21436,7 @@ FASTPythonImporterTest >> testDictionaryWithSetComprehension [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithSplat 	"
 
 	self parse: '{**base, 1:2}'.
@@ -21495,7 +21495,7 @@ FASTPythonImporterTest >> testDictionaryWithSplat [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithString 	"
 
 	self parse: '{ "key": "Hello" }'.
@@ -21539,7 +21539,7 @@ FASTPythonImporterTest >> testDictionaryWithString [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithSubscript 	"
 
 	self parse: '{ "key": attrs[2] }'.
@@ -21601,7 +21601,7 @@ FASTPythonImporterTest >> testDictionaryWithSubscript [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithTrue 	"
 
 	self parse: '{ "key": True }'.
@@ -21646,7 +21646,7 @@ FASTPythonImporterTest >> testDictionaryWithTrue [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithTuple 	"
 
 	self parse: '{ "key": (1,) }'.
@@ -21699,7 +21699,7 @@ FASTPythonImporterTest >> testDictionaryWithTuple [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testDictionaryWithUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testDictionaryWithUnaryOperator 	"
 
 	self parse: '{ "key": -1 }'.
@@ -21770,7 +21770,7 @@ FASTPythonImporterTest >> testDoubleQuotedString [
 { #category : 'tests - literals' }
 FASTPythonImporterTest >> testEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testEllipsis 	"
 
 	self parse: '...'.
@@ -21787,7 +21787,7 @@ FASTPythonImporterTest >> testEllipsis [
 { #category : 'tests - ellipsis' }
 FASTPythonImporterTest >> testEllipsisInBlock [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testEllipsisInBlock 	"
 
 	self parse: 'if True:
@@ -21837,7 +21837,7 @@ FASTPythonImporterTest >> testEllipsisInBlock [
 { #category : 'tests - try statement' }
 FASTPythonImporterTest >> testExceptAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testExceptAttribute 	"
 
 	self parse: 'try: pass
@@ -21865,10 +21865,10 @@ except exceptions.Exception: pass' withPlatformLineEndings.
 		self assert: (self topEntity isOfType: FASTPyExceptClause).
 		self assert: (self topEntity isOfType: FASTTStatementBlock).
 		
-		"Testing value of multivalued relation expressions"
-		self assert: self topEntity expressions size equals: 1.
-		
-			stack push: (stack top expressions at: 1).
+		"Testing value of monovalue relation expression"
+		self assert: self topEntity expression isNotNil.
+
+			stack push: self topEntity expression.
 			self assert: self topEntity sourceCode equals: 'exceptions.Exception'.
 			self assert: (self topEntity isOfType: FASTPyAttributeAccess).
 			self assert: self topEntity name equals: 'Exception'.
@@ -21902,7 +21902,7 @@ except exceptions.Exception: pass' withPlatformLineEndings.
 { #category : 'tests - try statement' }
 FASTPythonImporterTest >> testExceptCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testExceptCall 	"
 
 	self parse: 'try: pass
@@ -21930,10 +21930,10 @@ except Exception(): pass' withPlatformLineEndings.
 		self assert: (self topEntity isOfType: FASTPyExceptClause).
 		self assert: (self topEntity isOfType: FASTTStatementBlock).
 		
-		"Testing value of multivalued relation expressions"
-		self assert: self topEntity expressions size equals: 1.
-		
-			stack push: (stack top expressions at: 1).
+		"Testing value of monovalue relation expression"
+		self assert: self topEntity expression isNotNil.
+
+			stack push: self topEntity expression.
 			self assert: self topEntity sourceCode equals: 'Exception()'.
 			self assert: (self topEntity isOfType: FASTPyCall).
 			self assert: (self topEntity isOfType: FASTTInvocation).
@@ -21968,7 +21968,7 @@ except Exception(): pass' withPlatformLineEndings.
 { #category : 'tests - try statement' }
 FASTPythonImporterTest >> testExceptConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testExceptConditionalExpression 	"
 
 	self parse: 'try: pass
@@ -21998,10 +21998,10 @@ except Exception if n > 1 else Error: pass' withPlatformLineEndings.
 		self assert: (self topEntity isOfType: FASTPyExceptClause).
 		self assert: (self topEntity isOfType: FASTTStatementBlock).
 		
-		"Testing value of multivalued relation expressions"
-		self assert: self topEntity expressions size equals: 1.
-		
-			stack push: (stack top expressions at: 1).
+		"Testing value of monovalue relation expression"
+		self assert: self topEntity expression isNotNil.
+
+			stack push: self topEntity expression.
 			self assert: self topEntity sourceCode equals: 'Exception if n > 1 else Error'.
 			self assert: (self topEntity isOfType: FASTPyConditionalExpression).
 			self assert: (self topEntity isOfType: FASTTWithCondition).
@@ -22067,7 +22067,7 @@ except Exception if n > 1 else Error: pass' withPlatformLineEndings.
 { #category : 'tests - try statement' }
 FASTPythonImporterTest >> testExceptIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testExceptIdentifier 	"
 
 	self parse: 'try: pass
@@ -22094,10 +22094,10 @@ except Exception: pass' withPlatformLineEndings.
 		self assert: (self topEntity isOfType: FASTPyExceptClause).
 		self assert: (self topEntity isOfType: FASTTStatementBlock).
 		
-		"Testing value of multivalued relation expressions"
-		self assert: self topEntity expressions size equals: 1.
-		
-			stack push: (stack top expressions at: 1).
+		"Testing value of monovalue relation expression"
+		self assert: self topEntity expression isNotNil.
+
+			stack push: self topEntity expression.
 			self assert: self topEntity sourceCode equals: 'Exception'.
 			self assert: (self topEntity isOfType: FASTPyIdentifier).
 			stack pop.
@@ -22122,7 +22122,7 @@ except Exception: pass' withPlatformLineEndings.
 { #category : 'tests - try statement' }
 FASTPythonImporterTest >> testExceptSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testExceptSubscript 	"
 
 	self parse: 'try: pass
@@ -22151,10 +22151,10 @@ except exceptions[2]: pass' withPlatformLineEndings.
 		self assert: (self topEntity isOfType: FASTPyExceptClause).
 		self assert: (self topEntity isOfType: FASTTStatementBlock).
 		
-		"Testing value of multivalued relation expressions"
-		self assert: self topEntity expressions size equals: 1.
-		
-			stack push: (stack top expressions at: 1).
+		"Testing value of monovalue relation expression"
+		self assert: self topEntity expression isNotNil.
+
+			stack push: self topEntity expression.
 			self assert: self topEntity sourceCode equals: 'exceptions[2]'.
 			self assert: (self topEntity isOfType: FASTPySubscript).
 			
@@ -22197,7 +22197,7 @@ except exceptions[2]: pass' withPlatformLineEndings.
 { #category : 'tests - try statements' }
 FASTPythonImporterTest >> testExceptWithAlias [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testExceptWithAlias 	"
 
 	self parse: 'try: pass
@@ -22225,10 +22225,10 @@ except Exception as e: pass' withPlatformLineEndings.
 		self assert: (self topEntity isOfType: FASTTStatementBlock).
 		self assert: self topEntity alias equals: 'e'.
 		
-		"Testing value of multivalued relation expressions"
-		self assert: self topEntity expressions size equals: 1.
-		
-			stack push: (stack top expressions at: 1).
+		"Testing value of monovalue relation expression"
+		self assert: self topEntity expression isNotNil.
+
+			stack push: self topEntity expression.
 			self assert: self topEntity sourceCode equals: 'Exception'.
 			self assert: (self topEntity isOfType: FASTPyIdentifier).
 			stack pop.
@@ -22253,7 +22253,7 @@ except Exception as e: pass' withPlatformLineEndings.
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testExecStatementOfIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testExecStatementOfIdentifier 	"
 
 	self parse: 'exec x'.
@@ -22277,7 +22277,7 @@ FASTPythonImporterTest >> testExecStatementOfIdentifier [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testExecStatementWithScopes [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testExecStatementWithScopes 	"
 
 	self parse: 'exec "print ''Hello''" in globals_dict, locals_dict'.
@@ -22317,7 +22317,7 @@ FASTPythonImporterTest >> testExecStatementWithScopes [
 { #category : 'tests - literals' }
 FASTPythonImporterTest >> testFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFalse 	"
 
 	self parse: 'False'.
@@ -22349,7 +22349,7 @@ FASTPythonImporterTest >> testFloat [
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testForStatement [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testForStatement 	"
 
 	self parse: 'for i in [ ]:
@@ -22395,7 +22395,7 @@ FASTPythonImporterTest >> testForStatement [
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testForStatementWithABreak [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testForStatementWithABreak 	"
 
 	self parse: 'for c in [1, 3, 5]:
@@ -22492,7 +22492,7 @@ FASTPythonImporterTest >> testForStatementWithABreak [
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testForStatementWithAContinue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testForStatementWithAContinue 	"
 
 	self parse: 'for c in [1, 3, 5]:
@@ -22589,7 +22589,7 @@ FASTPythonImporterTest >> testForStatementWithAContinue [
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testForStatementWithElseClause [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testForStatementWithElseClause 	"
 
 	self parse: 'for c in [1, 3, 5]:
@@ -22718,7 +22718,7 @@ else: print("Hello")' withPlatformLineEndings.
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testForStatementWithExpressionList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testForStatementWithExpressionList 	"
 
 	self parse: 'for i in a, b: continue'.
@@ -22775,7 +22775,7 @@ FASTPythonImporterTest >> testForStatementWithExpressionList [
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testForStatementWithForInClauseAndTuplePattern [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testForStatementWithForInClauseAndTuplePattern 	"
 
 	self parse: 'for idx, (heights, widths) in data:
@@ -22874,7 +22874,7 @@ FASTPythonImporterTest >> testForStatementWithForInClauseAndTuplePattern [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testFromImport [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFromImport 	"
 
 	self parse: 'from datetime import date'.
@@ -22909,7 +22909,7 @@ FASTPythonImporterTest >> testFromImport [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testFromImportMultiple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFromImportMultiple 	"
 
 	self parse: 'from collections import Counter, defaultdic'.
@@ -22950,7 +22950,7 @@ FASTPythonImporterTest >> testFromImportMultiple [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testFromImportMultipleWithAlias [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFromImportMultipleWithAlias 	"
 
 	self parse: 'from math import sin, cos as cosinus, pi'.
@@ -22998,7 +22998,7 @@ FASTPythonImporterTest >> testFromImportMultipleWithAlias [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testFromImportMultipleWithParenthesis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFromImportMultipleWithParenthesis 	"
 
 	self parse: 'from math import (count, cycle, repeat,)'.
@@ -23045,7 +23045,7 @@ FASTPythonImporterTest >> testFromImportMultipleWithParenthesis [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testFromImportMultipleWithParenthesisAndAlias [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFromImportMultipleWithParenthesisAndAlias 	"
 
 	self parse: 'from math import (count, cycle as c, repeat,)'.
@@ -23093,7 +23093,7 @@ FASTPythonImporterTest >> testFromImportMultipleWithParenthesisAndAlias [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testFromImportRelative [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFromImportRelative 	"
 
 	self parse: 'from ..utils.extra import module'.
@@ -23128,7 +23128,7 @@ FASTPythonImporterTest >> testFromImportRelative [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testFromImportRelativeWithAlias [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFromImportRelativeWithAlias 	"
 
 	self parse: 'from ..utils import module as mod'.
@@ -23164,7 +23164,7 @@ FASTPythonImporterTest >> testFromImportRelativeWithAlias [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testFromImportRelativeWithDoubleDot [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFromImportRelativeWithDoubleDot 	"
 
 	self parse: 'from .. import module'.
@@ -23199,7 +23199,7 @@ FASTPythonImporterTest >> testFromImportRelativeWithDoubleDot [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testFromImportRelativeWithOnlyOneDot [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFromImportRelativeWithOnlyOneDot 	"
 
 	self parse: 'from . import module'.
@@ -23234,7 +23234,7 @@ FASTPythonImporterTest >> testFromImportRelativeWithOnlyOneDot [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testFromImportWithAlias [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFromImportWithAlias 	"
 
 	self parse: 'from datetime import date as d'.
@@ -23270,7 +23270,7 @@ FASTPythonImporterTest >> testFromImportWithAlias [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testFromImportWithWildcard [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFromImportWithWildcard 	"
 
 	self parse: 'from math import *'.
@@ -23305,7 +23305,7 @@ FASTPythonImporterTest >> testFromImportWithWildcard [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testFunctionDefinition [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFunctionDefinition 	"
 
 	self parse: 'def function(): pass'.
@@ -23333,7 +23333,7 @@ FASTPythonImporterTest >> testFunctionDefinition [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testFunctionDefinitionWithReturnType [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFunctionDefinitionWithReturnType 	"
 
 	self parse: 'def function() -> int: pass'.
@@ -23396,7 +23396,7 @@ FASTPythonImporterTest >> testFunctionParameters [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testFutureImport [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testFutureImport 	"
 
 	self parse: 'from __future__ import annotiations as ann, division'.
@@ -23438,7 +23438,7 @@ FASTPythonImporterTest >> testFutureImport [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpression 	"
 
 	self parse: '(x * x for x in range(10))'.
@@ -23526,7 +23526,7 @@ FASTPythonImporterTest >> testGeneratorExpression [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithAttribute 	"
 
 	self parse: '(x.y for x in range(3))'.
@@ -23605,7 +23605,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithAttribute [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithAwait [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithAwait 	"
 
 	self parse: '(await x for x in range(3))'.
@@ -23683,7 +23683,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithAwait [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithBinaryOperator 	"
 
 	self parse: '(y + x for x in range(3))'.
@@ -23771,7 +23771,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithBinaryOperator [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithBooleanOperator 	"
 
 	self parse: '(x or y for x in range(3))'.
@@ -23859,7 +23859,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithBooleanOperator [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithCall 	"
 
 	self parse: '(obj() for x in range(3))'.
@@ -23938,7 +23938,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithCall [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithComparisonOperator 	"
 
 	self parse: '(x in str for x in range(3))'.
@@ -24022,7 +24022,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithComparisonOperator [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithComplexe 	"
 
 	self parse: '(0j for x in range(3))'.
@@ -24094,7 +24094,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithComplexe [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithConditionalExpression 	"
 
 	self parse: '(x if True else y for x in range(3))'.
@@ -24192,7 +24192,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithConditionalExpression [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithDictionary 	"
 
 	self parse: '({ 1:x } for x in range(3))'.
@@ -24289,7 +24289,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithDictionary [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithDictionaryComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithDictionaryComprehension 	"
 
 	self parse: '({ v:x for v in y } for x in range(3))'.
@@ -24408,7 +24408,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithDictionaryComprehension [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithEllipsis 	"
 
 	self parse: '(... for x in range(3))'.
@@ -24479,7 +24479,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithEllipsis [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithFalse 	"
 
 	self parse: '(False for x in range(3))'.
@@ -24551,7 +24551,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithFalse [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithFloat 	"
 
 	self parse: '(0.0 for x in range(3))'.
@@ -24623,7 +24623,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithFloat [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithIdentifier 	"
 
 	self parse: '(obj for x in range(3))'.
@@ -24692,7 +24692,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithIdentifier [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithIfClause [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithIfClause 	"
 
 	self parse: '(x for x in range(10) if x  == 0)'.
@@ -24786,7 +24786,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithIfClause [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithInteger 	"
 
 	self parse: '(0 for x in range(3))'.
@@ -24857,7 +24857,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithInteger [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithLambda 	"
 
 	self parse: '(lambda x:x for x in range(3))'.
@@ -24947,7 +24947,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithLambda [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithList 	"
 
 	self parse: '([  ] for x in range(3))'.
@@ -25017,7 +25017,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithList [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithListComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithListComprehension 	"
 
 	self parse: '([i + x for i in range(3)] for x in range(3))'.
@@ -25158,7 +25158,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithListComprehension [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithMultipleForClauses [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithMultipleForClauses 	"
 
 	self parse: '(x for row in matrix for x in row)'.
@@ -25227,7 +25227,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithMultipleForClauses [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithMultipleIfClause [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithMultipleIfClause 	"
 
 	self parse: '(x for x in range(100) if x % 2 == 0 if x % 3 == 0)'.
@@ -25383,7 +25383,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithMultipleIfClause [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithNone 	"
 
 	self parse: '(None for x in range(3))'.
@@ -25454,7 +25454,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithNone [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithNotOperator 	"
 
 	self parse: '(not old for x in range(3))'.
@@ -25533,7 +25533,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithNotOperator [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithSet 	"
 
 	self parse: '({ 1 } for x in range(3))'.
@@ -25613,7 +25613,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithSet [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithSetComprehension 	"
 
 	self parse: '({i + x for i in range(3) } for x in range(3))'.
@@ -25754,7 +25754,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithSetComprehension [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithString 	"
 
 	self parse: '("Hello" for x in range(3))'.
@@ -25826,7 +25826,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithString [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithSubscript 	"
 
 	self parse: '(attrs[2] for x in range(3))'.
@@ -25914,7 +25914,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithSubscript [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithTrue 	"
 
 	self parse: '(True for x in range(3))'.
@@ -25986,7 +25986,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithTrue [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithTuple 	"
 
 	self parse: '((x,) for x in range(3))'.
@@ -26064,7 +26064,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithTuple [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testGeneratorExpressionWithUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGeneratorExpressionWithUnaryOperator 	"
 
 	self parse: '(-x for x in range(3))'.
@@ -26144,7 +26144,7 @@ FASTPythonImporterTest >> testGeneratorExpressionWithUnaryOperator [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testGenericType [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGenericType 	"
 
 	self parse: 'def f(items: List[T]): pass'.
@@ -26219,7 +26219,7 @@ FASTPythonImporterTest >> testGenericType [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testGenericTypeWithMultipleParameters [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGenericTypeWithMultipleParameters 	"
 
 	self parse: 'def f(items: Dictionary[str, T]): pass'.
@@ -26307,7 +26307,7 @@ FASTPythonImporterTest >> testGenericTypeWithMultipleParameters [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testGlobalStatement [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGlobalStatement 	"
 
 	self parse: 'def aFunction():
@@ -26364,7 +26364,7 @@ FASTPythonImporterTest >> testGlobalStatement [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testGlobalStatementMultiple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testGlobalStatementMultiple 	"
 
 	self parse: 'def function ():
@@ -26451,7 +26451,7 @@ FASTPythonImporterTest >> testGlobalStatementMultiple [
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testIf [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testIf 	"
 
 	self parse: 'if x > 0:
@@ -26517,7 +26517,7 @@ FASTPythonImporterTest >> testIf [
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testIfElse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testIfElse 	"
 
 	self parse: 'if x > 0:
@@ -26608,7 +26608,7 @@ else:
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testIfElseIf [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testIfElseIf 	"
 
 	self parse: 'if x > 0:
@@ -26726,7 +26726,7 @@ elif x < 10:
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testIfElseIf2 [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testIfElseIf2 	"
 
 	self parse: 'if x > 0:
@@ -26891,7 +26891,7 @@ elif x == 60:
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testIfElseIfElse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testIfElseIfElse 	"
 
 	self parse: 'if x > 0:
@@ -27080,7 +27080,7 @@ else:
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testIfStatementWithABreak [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testIfStatementWithABreak 	"
 
 	self parse: 'if c > 3: break'.
@@ -27143,7 +27143,7 @@ FASTPythonImporterTest >> testIfStatementWithABreak [
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testIfStatementWithAContinue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testIfStatementWithAContinue 	"
 
 	self parse: 'if c > 3: continue'.
@@ -27206,7 +27206,7 @@ FASTPythonImporterTest >> testIfStatementWithAContinue [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testImport [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testImport 	"
 
 	self parse: 'import random'.
@@ -27231,7 +27231,7 @@ FASTPythonImporterTest >> testImport [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testImportDottedImport [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testImportDottedImport 	"
 
 	self parse: 'import xml.etree.ElementTree'.
@@ -27256,7 +27256,7 @@ FASTPythonImporterTest >> testImportDottedImport [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testImportDottedImportAndAlias [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testImportDottedImportAndAlias 	"
 
 	self parse: 'import xml.etree.ElementTree as ET'.
@@ -27282,7 +27282,7 @@ FASTPythonImporterTest >> testImportDottedImportAndAlias [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testImportFromWithLineContinuation [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testImportFromWithLineContinuation 	"
 
 	self parse: 'from distutils.ccompiler import \
@@ -27325,7 +27325,7 @@ FASTPythonImporterTest >> testImportFromWithLineContinuation [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testImportInFunction [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testImportInFunction 	"
 
 	self parse: 'def fun():
@@ -27393,7 +27393,7 @@ FASTPythonImporterTest >> testImportInFunction [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testImportMultiple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testImportMultiple 	"
 
 	self parse: 'import random, collections'.
@@ -27424,7 +27424,7 @@ FASTPythonImporterTest >> testImportMultiple [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testImportMultipleAndAliases [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testImportMultipleAndAliases 	"
 
 	self parse: 'import random as rand, collections'.
@@ -27456,7 +27456,7 @@ FASTPythonImporterTest >> testImportMultipleAndAliases [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testImportWithAlias [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testImportWithAlias 	"
 
 	self parse: 'import random as rand'.
@@ -27482,7 +27482,7 @@ FASTPythonImporterTest >> testImportWithAlias [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testImportWithComment [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testImportWithComment 	"
 
 	self parse: 'import #For visu
@@ -27533,7 +27533,7 @@ FASTPythonImporterTest >> testInteger [
 { #category : 'tests - interpolations' }
 FASTPythonImporterTest >> testInterpolation [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testInterpolation 	"
 
 	self parse: 'f"User {name} has {value} items"'.
@@ -27580,7 +27580,7 @@ FASTPythonImporterTest >> testInterpolation [
 { #category : 'tests - interpolations' }
 FASTPythonImporterTest >> testInterpolationWithAttributeAccess [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testInterpolationWithAttributeAccess 	"
 
 	self parse: 'f"{CFG.model_name}"'.
@@ -27623,7 +27623,7 @@ FASTPythonImporterTest >> testInterpolationWithAttributeAccess [
 { #category : 'tests - interpolations' }
 FASTPythonImporterTest >> testInterpolationWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testInterpolationWithBinaryOperator 	"
 
 	self parse: 'f"{k+1}"'.
@@ -27678,7 +27678,7 @@ FASTPythonImporterTest >> testInterpolationWithBinaryOperator [
 { #category : 'tests - interpolations' }
 FASTPythonImporterTest >> testInterpolationWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testInterpolationWithBooleanOperator 	"
 
 	self parse: 'f"{x and y}"'.
@@ -27730,7 +27730,7 @@ FASTPythonImporterTest >> testInterpolationWithBooleanOperator [
 { #category : 'tests - interpolations' }
 FASTPythonImporterTest >> testInterpolationWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testInterpolationWithCall 	"
 
 	self parse: 'f"{myMethod(2)}"'.
@@ -27785,7 +27785,7 @@ FASTPythonImporterTest >> testInterpolationWithCall [
 { #category : 'tests - interpolations' }
 FASTPythonImporterTest >> testInterpolationWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testInterpolationWithComparisonOperator 	"
 
 	self parse: 'f"{x == y}"'.
@@ -27834,7 +27834,7 @@ FASTPythonImporterTest >> testInterpolationWithComparisonOperator [
 { #category : 'tests - interpolations' }
 FASTPythonImporterTest >> testInterpolationWithComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testInterpolationWithComprehension 	"
 
 	self parse: 'f"{[x for x in items]}"'.
@@ -27900,7 +27900,7 @@ FASTPythonImporterTest >> testInterpolationWithComprehension [
 { #category : 'tests - interpolations' }
 FASTPythonImporterTest >> testInterpolationWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testInterpolationWithConditionalExpression 	"
 
 	self parse: 'f"x{ if cond else y}"'.
@@ -27959,7 +27959,7 @@ FASTPythonImporterTest >> testInterpolationWithConditionalExpression [
 { #category : 'tests - interpolations' }
 FASTPythonImporterTest >> testInterpolationWithFormatSpecifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testInterpolationWithFormatSpecifier 	"
 
 	self parse: 'f"{255:X}"'.
@@ -27997,7 +27997,7 @@ FASTPythonImporterTest >> testInterpolationWithFormatSpecifier [
 { #category : 'tests - interpolations' }
 FASTPythonImporterTest >> testInterpolationWithLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testInterpolationWithLambda 	"
 
 	self parse: 'f"{ (lambda x: x*2) }"'.
@@ -28073,7 +28073,7 @@ FASTPythonImporterTest >> testInterpolationWithLambda [
 { #category : 'tests - interpolations' }
 FASTPythonImporterTest >> testInterpolationWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testInterpolationWithSubscript 	"
 
 	self parse: 'f"{label_order[i]}"'.
@@ -28123,7 +28123,7 @@ FASTPythonImporterTest >> testInterpolationWithSubscript [
 { #category : 'tests - interpolations' }
 FASTPythonImporterTest >> testInterpolationWithTypeConversion [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testInterpolationWithTypeConversion 	"
 
 	self parse: 'f"{text!r}" '.
@@ -28159,7 +28159,7 @@ FASTPythonImporterTest >> testInterpolationWithTypeConversion [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToAttribute 	"
 
 	self parse: 'f(var = x.y)'.
@@ -28213,7 +28213,7 @@ FASTPythonImporterTest >> testKeywordArgumentToAttribute [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToAwait [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToAwait 	"
 
 	self parse: 'f(var = await x)'.
@@ -28266,7 +28266,7 @@ FASTPythonImporterTest >> testKeywordArgumentToAwait [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToBinaryOperator 	"
 
 	self parse: 'f(var = 1 + x)'.
@@ -28332,7 +28332,7 @@ FASTPythonImporterTest >> testKeywordArgumentToBinaryOperator [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToBooleanOperator 	"
 
 	self parse: 'f(var = x or y)'.
@@ -28395,7 +28395,7 @@ FASTPythonImporterTest >> testKeywordArgumentToBooleanOperator [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToCall 	"
 
 	self parse: 'f(var = factory())'.
@@ -28449,7 +28449,7 @@ FASTPythonImporterTest >> testKeywordArgumentToCall [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToComparisonOperator 	"
 
 	self parse: 'f(var = x > y)'.
@@ -28508,7 +28508,7 @@ FASTPythonImporterTest >> testKeywordArgumentToComparisonOperator [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToComplexe 	"
 
 	self parse: 'f(var = 0j)'.
@@ -28555,7 +28555,7 @@ FASTPythonImporterTest >> testKeywordArgumentToComplexe [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToConditionalExpression 	"
 
 	self parse: 'f(var = x if True else y)'.
@@ -28628,7 +28628,7 @@ FASTPythonImporterTest >> testKeywordArgumentToConditionalExpression [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToDictionary 	"
 
 	self parse: 'f(var = { 1:x })'.
@@ -28701,7 +28701,7 @@ FASTPythonImporterTest >> testKeywordArgumentToDictionary [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToDictionaryComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToDictionaryComprehension 	"
 
 	self parse: 'f(var = { v:x for v in y })'.
@@ -28796,7 +28796,7 @@ FASTPythonImporterTest >> testKeywordArgumentToDictionaryComprehension [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToEllipsis 	"
 
 	self parse: 'f(var = ...)'.
@@ -28842,7 +28842,7 @@ FASTPythonImporterTest >> testKeywordArgumentToEllipsis [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToFalse 	"
 
 	self parse: 'f(var = False)'.
@@ -28889,7 +28889,7 @@ FASTPythonImporterTest >> testKeywordArgumentToFalse [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToFloat 	"
 
 	self parse: 'f(var = 0.0)'.
@@ -28936,7 +28936,7 @@ FASTPythonImporterTest >> testKeywordArgumentToFloat [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToIdentifier 	"
 
 	self parse: 'f(var = x)'.
@@ -28980,7 +28980,7 @@ FASTPythonImporterTest >> testKeywordArgumentToIdentifier [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToInteger 	"
 
 	self parse: 'f(var = 0)'.
@@ -29027,7 +29027,7 @@ FASTPythonImporterTest >> testKeywordArgumentToInteger [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToLambda 	"
 
 	self parse: 'f(var = (lambda x:x))'.
@@ -29092,7 +29092,7 @@ FASTPythonImporterTest >> testKeywordArgumentToLambda [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToList 	"
 
 	self parse: 'f(var = [ 1 ])'.
@@ -29148,7 +29148,7 @@ FASTPythonImporterTest >> testKeywordArgumentToList [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToListComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToListComprehension 	"
 
 	self parse: 'f(var = [i + x for i in range(3)])'.
@@ -29266,7 +29266,7 @@ FASTPythonImporterTest >> testKeywordArgumentToListComprehension [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToListSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToListSplat 	"
 
 	self parse: 'f(var = *args)'.
@@ -29319,7 +29319,7 @@ FASTPythonImporterTest >> testKeywordArgumentToListSplat [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToNone 	"
 
 	self parse: 'f(var = None)'.
@@ -29365,7 +29365,7 @@ FASTPythonImporterTest >> testKeywordArgumentToNone [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToNotOperator 	"
 
 	self parse: 'f(var = (not old))'.
@@ -29419,7 +29419,7 @@ FASTPythonImporterTest >> testKeywordArgumentToNotOperator [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToSet 	"
 
 	self parse: 'f(var = { 1 })'.
@@ -29475,7 +29475,7 @@ FASTPythonImporterTest >> testKeywordArgumentToSet [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToSetComprehension 	"
 
 	self parse: 'f(var = {i + x for i in range(3) })'.
@@ -29593,7 +29593,7 @@ FASTPythonImporterTest >> testKeywordArgumentToSetComprehension [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToString 	"
 
 	self parse: 'f(var = "Hello")'.
@@ -29640,7 +29640,7 @@ FASTPythonImporterTest >> testKeywordArgumentToString [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToSubscript 	"
 
 	self parse: 'f(var = x[2])'.
@@ -29704,7 +29704,7 @@ FASTPythonImporterTest >> testKeywordArgumentToSubscript [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToTrue 	"
 
 	self parse: 'f(var = True)'.
@@ -29751,7 +29751,7 @@ FASTPythonImporterTest >> testKeywordArgumentToTrue [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToTuple 	"
 
 	self parse: 'f(var = (x, y))'.
@@ -29809,7 +29809,7 @@ FASTPythonImporterTest >> testKeywordArgumentToTuple [
 { #category : 'tests - calls' }
 FASTPythonImporterTest >> testKeywordArgumentToUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordArgumentToUnaryOperator 	"
 
 	self parse: 'f(var = -x)'.
@@ -29864,7 +29864,7 @@ FASTPythonImporterTest >> testKeywordArgumentToUnaryOperator [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testKeywordSeparator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testKeywordSeparator 	"
 
 	self parse: 'def function(fp, *, x): pass'.
@@ -29917,7 +29917,7 @@ FASTPythonImporterTest >> testKeywordSeparator [
 { #category : 'tests - lambdas' }
 FASTPythonImporterTest >> testLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testLambda 	"
 
 	self parse: 'lambda : 3'.
@@ -29944,7 +29944,7 @@ FASTPythonImporterTest >> testLambda [
 { #category : 'tests - lambdas' }
 FASTPythonImporterTest >> testLambdaWithDefaultParameter [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testLambdaWithDefaultParameter 	"
 
 	self parse: 'lambda x = 1: x'.
@@ -29991,7 +29991,7 @@ FASTPythonImporterTest >> testLambdaWithDefaultParameter [
 { #category : 'tests - lambdas' }
 FASTPythonImporterTest >> testLambdaWithDictionarySplatParameter [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testLambdaWithDictionarySplatParameter 	"
 
 	self parse: 'lambda **fp, x: x'.
@@ -30035,7 +30035,7 @@ FASTPythonImporterTest >> testLambdaWithDictionarySplatParameter [
 { #category : 'tests - lambdas' }
 FASTPythonImporterTest >> testLambdaWithKeywordSeparator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testLambdaWithKeywordSeparator 	"
 
 	self parse: 'lambda fp, *, x: fp + x'.
@@ -30104,7 +30104,7 @@ FASTPythonImporterTest >> testLambdaWithKeywordSeparator [
 { #category : 'tests - lambdas' }
 FASTPythonImporterTest >> testLambdaWithListSplatParameter [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testLambdaWithListSplatParameter 	"
 
 	self parse: 'lambda *fp, x: x'.
@@ -30148,7 +30148,7 @@ FASTPythonImporterTest >> testLambdaWithListSplatParameter [
 { #category : 'tests - lambdas' }
 FASTPythonImporterTest >> testLambdaWithParameter [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testLambdaWithParameter 	"
 
 	self parse: 'lambda x: x * x'.
@@ -30203,7 +30203,7 @@ FASTPythonImporterTest >> testLambdaWithParameter [
 { #category : 'tests - lambdas' }
 FASTPythonImporterTest >> testLambdaWithParameters [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testLambdaWithParameters 	"
 
 	self parse: 'lambda a, b: a + b'.
@@ -30265,7 +30265,7 @@ FASTPythonImporterTest >> testLambdaWithParameters [
 { #category : 'tests - lambdas' }
 FASTPythonImporterTest >> testLambdaWithPositionalSeparator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testLambdaWithPositionalSeparator 	"
 
 	self parse: 'lambda fp, /, x: fp + x'.
@@ -30334,7 +30334,7 @@ FASTPythonImporterTest >> testLambdaWithPositionalSeparator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testList 	"
 
 	self parse: '[1, 2, 3]'.
@@ -30374,7 +30374,7 @@ FASTPythonImporterTest >> testList [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehension 	"
 
 	self parse: '[x * x for x in range(5)]'.
@@ -30462,7 +30462,7 @@ FASTPythonImporterTest >> testListComprehension [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithAttribute 	"
 
 	self parse: '[x.y for x in range(3)]'.
@@ -30541,7 +30541,7 @@ FASTPythonImporterTest >> testListComprehensionWithAttribute [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithAwait [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithAwait 	"
 
 	self parse: '[await x for x in range(3)]'.
@@ -30619,7 +30619,7 @@ FASTPythonImporterTest >> testListComprehensionWithAwait [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithBinaryOperator 	"
 
 	self parse: '[y + x for x in range(3)]'.
@@ -30707,7 +30707,7 @@ FASTPythonImporterTest >> testListComprehensionWithBinaryOperator [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithBooleanOperator 	"
 
 	self parse: '[x or y for x in range(3)]'.
@@ -30795,7 +30795,7 @@ FASTPythonImporterTest >> testListComprehensionWithBooleanOperator [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithCall 	"
 
 	self parse: '[obj() for x in range(3)]'.
@@ -30874,7 +30874,7 @@ FASTPythonImporterTest >> testListComprehensionWithCall [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithComparisonOperator 	"
 
 	self parse: '[x in str for x in range(3)]'.
@@ -30958,7 +30958,7 @@ FASTPythonImporterTest >> testListComprehensionWithComparisonOperator [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithComplexe 	"
 
 	self parse: '[0j for x in range(3)]'.
@@ -31030,7 +31030,7 @@ FASTPythonImporterTest >> testListComprehensionWithComplexe [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithConditionalExpression 	"
 
 	self parse: '[x if True else y for x in range(3)]'.
@@ -31128,7 +31128,7 @@ FASTPythonImporterTest >> testListComprehensionWithConditionalExpression [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithDictionary 	"
 
 	self parse: '[{ 1:x } for x in range(3)]'.
@@ -31225,7 +31225,7 @@ FASTPythonImporterTest >> testListComprehensionWithDictionary [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithDictionaryComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithDictionaryComprehension 	"
 
 	self parse: '[{ v:x for v in y } for x in range(3)]'.
@@ -31344,7 +31344,7 @@ FASTPythonImporterTest >> testListComprehensionWithDictionaryComprehension [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithEllipsis 	"
 
 	self parse: '[... for x in range(3)]'.
@@ -31415,7 +31415,7 @@ FASTPythonImporterTest >> testListComprehensionWithEllipsis [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithFalse 	"
 
 	self parse: '[False for x in range(3)]'.
@@ -31487,7 +31487,7 @@ FASTPythonImporterTest >> testListComprehensionWithFalse [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithFloat 	"
 
 	self parse: '[0.0 for x in range(3)]'.
@@ -31559,7 +31559,7 @@ FASTPythonImporterTest >> testListComprehensionWithFloat [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithIdentifier 	"
 
 	self parse: '[obj for x in range(3)]'.
@@ -31628,7 +31628,7 @@ FASTPythonImporterTest >> testListComprehensionWithIdentifier [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithIfClause [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithIfClause 	"
 
 	self parse: '[x for x in range(10) if x  == 0]'.
@@ -31722,7 +31722,7 @@ FASTPythonImporterTest >> testListComprehensionWithIfClause [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithInteger 	"
 
 	self parse: '[0 for x in range(3)]'.
@@ -31793,7 +31793,7 @@ FASTPythonImporterTest >> testListComprehensionWithInteger [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithLambda 	"
 
 	self parse: '[lambda x:x for x in range(3)]'.
@@ -31883,7 +31883,7 @@ FASTPythonImporterTest >> testListComprehensionWithLambda [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithList 	"
 
 	self parse: '[[  ] for x in range(3)]'.
@@ -31953,7 +31953,7 @@ FASTPythonImporterTest >> testListComprehensionWithList [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithListComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithListComprehension 	"
 
 	self parse: '[[i + x for i in range(3)] for x in range(3)]'.
@@ -32093,7 +32093,7 @@ FASTPythonImporterTest >> testListComprehensionWithListComprehension [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithMultipleForClauses [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithMultipleForClauses 	"
 
 	self parse: '[x for row in matrix for x in row]'.
@@ -32162,7 +32162,7 @@ FASTPythonImporterTest >> testListComprehensionWithMultipleForClauses [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithMultipleIfClause [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithMultipleIfClause 	"
 
 	self parse: '[x for x in range(100) if x % 2 == 0 if x % 3 == 0]'.
@@ -32318,7 +32318,7 @@ FASTPythonImporterTest >> testListComprehensionWithMultipleIfClause [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithNone 	"
 
 	self parse: '[None for x in range(3)]'.
@@ -32389,7 +32389,7 @@ FASTPythonImporterTest >> testListComprehensionWithNone [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithNotOperator 	"
 
 	self parse: '[not old for x in range(3)]'.
@@ -32468,7 +32468,7 @@ FASTPythonImporterTest >> testListComprehensionWithNotOperator [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithPatternList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithPatternList 	"
 
 	self parse: '[abs(x) + abs(y) for x, y in points]'.
@@ -32586,7 +32586,7 @@ FASTPythonImporterTest >> testListComprehensionWithPatternList [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithSet 	"
 
 	self parse: '[{ 1 } for x in range(3)]'.
@@ -32666,7 +32666,7 @@ FASTPythonImporterTest >> testListComprehensionWithSet [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithSetComprehension 	"
 
 	self parse: '[{i + x for i in range(3) } for x in range(3)]'.
@@ -32807,7 +32807,7 @@ FASTPythonImporterTest >> testListComprehensionWithSetComprehension [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithString 	"
 
 	self parse: '["Hello" for x in range(3)]'.
@@ -32879,7 +32879,7 @@ FASTPythonImporterTest >> testListComprehensionWithString [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithSubscript 	"
 
 	self parse: '[attrs[2] for x in range(3)]'.
@@ -32967,7 +32967,7 @@ FASTPythonImporterTest >> testListComprehensionWithSubscript [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithTrue 	"
 
 	self parse: '[True for x in range(3)]'.
@@ -33039,7 +33039,7 @@ FASTPythonImporterTest >> testListComprehensionWithTrue [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithTuple 	"
 
 	self parse: '[(x,) for x in range(3)]'.
@@ -33117,7 +33117,7 @@ FASTPythonImporterTest >> testListComprehensionWithTuple [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testListComprehensionWithUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListComprehensionWithUnaryOperator 	"
 
 	self parse: '[-x for x in range(3)]'.
@@ -33197,7 +33197,7 @@ FASTPythonImporterTest >> testListComprehensionWithUnaryOperator [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testListSplatInCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListSplatInCall 	"
 
 	self parse: 'func(*args)'.
@@ -33240,7 +33240,7 @@ FASTPythonImporterTest >> testListSplatInCall [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testListSplatInList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListSplatInList 	"
 
 	self parse: '[*args, 4]'.
@@ -33281,7 +33281,7 @@ FASTPythonImporterTest >> testListSplatInList [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testListSplatOnAttributeAccess [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListSplatOnAttributeAccess 	"
 
 	self parse: 'func(*obj.list)'.
@@ -33334,7 +33334,7 @@ FASTPythonImporterTest >> testListSplatOnAttributeAccess [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testListSplatOnBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListSplatOnBooleanOperator 	"
 
 	self parse: 'func(*a or b)'.
@@ -33396,7 +33396,7 @@ FASTPythonImporterTest >> testListSplatOnBooleanOperator [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testListSplatOnCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListSplatOnCall 	"
 
 	self parse: 'func(*getList())'.
@@ -33449,7 +33449,7 @@ FASTPythonImporterTest >> testListSplatOnCall [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testListSplatOnList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListSplatOnList 	"
 
 	self parse: 'func(*[1, 2])'.
@@ -33511,7 +33511,7 @@ FASTPythonImporterTest >> testListSplatOnList [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testListSplatOnListComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListSplatOnListComprehension 	"
 
 	self parse: 'func(*[format(f) for f in FILES])'.
@@ -33606,7 +33606,7 @@ FASTPythonImporterTest >> testListSplatOnListComprehension [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testListSplatOnParenthesis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListSplatOnParenthesis 	"
 
 	self parse: 'func(*(args))'.
@@ -33649,7 +33649,7 @@ FASTPythonImporterTest >> testListSplatOnParenthesis [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testListSplatOnString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListSplatOnString 	"
 
 	self parse: 'func(*''absdef'')'.
@@ -33695,7 +33695,7 @@ FASTPythonImporterTest >> testListSplatOnString [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testListSplatOnSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListSplatOnSubscript 	"
 
 	self parse: 'func(*obj[1])'.
@@ -33758,7 +33758,7 @@ FASTPythonImporterTest >> testListSplatOnSubscript [
 { #category : 'tests - splats' }
 FASTPythonImporterTest >> testListSplatOnTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListSplatOnTuple 	"
 
 	self parse: 'funct(*(func, *args))'.
@@ -33823,7 +33823,7 @@ FASTPythonImporterTest >> testListSplatOnTuple [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testListSplatParameter [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListSplatParameter 	"
 
 	self parse: 'def function(*args): pass'.
@@ -33862,7 +33862,7 @@ FASTPythonImporterTest >> testListSplatParameter [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithAttribute 	"
 
 	self parse: '[ obj.attr ]'.
@@ -33895,7 +33895,7 @@ FASTPythonImporterTest >> testListWithAttribute [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithBinaryOperator 	"
 
 	self parse: '[ 10 / 2 ]'.
@@ -33941,7 +33941,7 @@ FASTPythonImporterTest >> testListWithBinaryOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithBooleanOperator 	"
 
 	self parse: '[ x and y ]'.
@@ -33983,7 +33983,7 @@ FASTPythonImporterTest >> testListWithBooleanOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithCall 	"
 
 	self parse: '[ obj() ]'.
@@ -34017,7 +34017,7 @@ FASTPythonImporterTest >> testListWithCall [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithComparisonOperator 	"
 
 	self parse: '[ 1 > 3 ]'.
@@ -34060,7 +34060,7 @@ FASTPythonImporterTest >> testListWithComparisonOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithComplexe 	"
 
 	self parse: '[ 1j ]'.
@@ -34086,7 +34086,7 @@ FASTPythonImporterTest >> testListWithComplexe [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithConditionalExpression 	"
 
 	self parse: '[ x if True else y ]'.
@@ -34138,7 +34138,7 @@ FASTPythonImporterTest >> testListWithConditionalExpression [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithDictionary 	"
 
 	self parse: '[ { 1:1 } ]'.
@@ -34190,7 +34190,7 @@ FASTPythonImporterTest >> testListWithDictionary [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithEllipsis 	"
 
 	self parse: '[ ... ]'.
@@ -34215,7 +34215,7 @@ FASTPythonImporterTest >> testListWithEllipsis [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithFalse 	"
 
 	self parse: '[ False ]'.
@@ -34241,7 +34241,7 @@ FASTPythonImporterTest >> testListWithFalse [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithFloat 	"
 
 	self parse: '[ 0.1 ]'.
@@ -34267,7 +34267,7 @@ FASTPythonImporterTest >> testListWithFloat [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithIdentifier 	"
 
 	self parse: '[ element ]'.
@@ -34291,7 +34291,7 @@ FASTPythonImporterTest >> testListWithIdentifier [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithInteger 	"
 
 	self parse: '[ 1 ]'.
@@ -34317,7 +34317,7 @@ FASTPythonImporterTest >> testListWithInteger [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithLambda 	"
 
 	self parse: '[ lambda x:x ]'.
@@ -34361,7 +34361,7 @@ FASTPythonImporterTest >> testListWithLambda [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithList 	"
 
 	self parse: '[ [ 1 ] ]'.
@@ -34394,7 +34394,7 @@ FASTPythonImporterTest >> testListWithList [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithListSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithListSplat 	"
 
 	self parse: '[ *args ]'.
@@ -34426,7 +34426,7 @@ FASTPythonImporterTest >> testListWithListSplat [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithList_comprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithList_comprehension 	"
 
 	self parse: '[ [random for i in range(3)] ]'.
@@ -34503,7 +34503,7 @@ FASTPythonImporterTest >> testListWithList_comprehension [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithNone 	"
 
 	self parse: '[ None ]'.
@@ -34528,7 +34528,7 @@ FASTPythonImporterTest >> testListWithNone [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithNotOperator 	"
 
 	self parse: '[ not old ]'.
@@ -34561,7 +34561,7 @@ FASTPythonImporterTest >> testListWithNotOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithSet 	"
 
 	self parse: '[ { 1 } ]'.
@@ -34595,7 +34595,7 @@ FASTPythonImporterTest >> testListWithSet [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithSetComprehension 	"
 
 	self parse: '[ {random for i in range(3)} ]'.
@@ -34672,7 +34672,7 @@ FASTPythonImporterTest >> testListWithSetComprehension [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithSplat 	"
 
 	self parse: '[*args, 1]'.
@@ -34713,7 +34713,7 @@ FASTPythonImporterTest >> testListWithSplat [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithString 	"
 
 	self parse: '[ "Hello" ]'.
@@ -34739,7 +34739,7 @@ FASTPythonImporterTest >> testListWithString [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithSubscript 	"
 
 	self parse: '[ attrs[2] ]'.
@@ -34782,7 +34782,7 @@ FASTPythonImporterTest >> testListWithSubscript [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithTrue 	"
 
 	self parse: '[ True ]'.
@@ -34808,7 +34808,7 @@ FASTPythonImporterTest >> testListWithTrue [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithTuple 	"
 
 	self parse: '[ (1,) ]'.
@@ -34842,7 +34842,7 @@ FASTPythonImporterTest >> testListWithTuple [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testListWithUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testListWithUnaryOperator 	"
 
 	self parse: '[ -1 ]'.
@@ -34879,7 +34879,7 @@ FASTPythonImporterTest >> testListWithUnaryOperator [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchAttribute 	"
 
 	self parse: 'match x.y:
@@ -34934,7 +34934,7 @@ FASTPythonImporterTest >> testMatchAttribute [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchCall 	"
 
 	self parse: 'match func():
@@ -34990,7 +34990,7 @@ FASTPythonImporterTest >> testMatchCall [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchDictionary 	"
 
 	self parse: 'match { 0:0 }:
@@ -35064,7 +35064,7 @@ FASTPythonImporterTest >> testMatchDictionary [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchEllipsis 	"
 
 	self parse: 'match ...:
@@ -35111,7 +35111,7 @@ FASTPythonImporterTest >> testMatchEllipsis [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchIdentifier 	"
 
 	self parse: 'match x:
@@ -35157,7 +35157,7 @@ FASTPythonImporterTest >> testMatchIdentifier [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchInteger 	"
 
 	self parse: 'match 1:
@@ -35205,7 +35205,7 @@ FASTPythonImporterTest >> testMatchInteger [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchList 	"
 
 	self parse: 'match [1]:
@@ -35261,7 +35261,7 @@ FASTPythonImporterTest >> testMatchList [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternComplexOperation [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternComplexOperation 	"
 
 	self parse: 'match value:
@@ -35340,7 +35340,7 @@ FASTPythonImporterTest >> testMatchPatternComplexOperation [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternComplexe 	"
 
 	self parse: 'match status:
@@ -35397,7 +35397,7 @@ FASTPythonImporterTest >> testMatchPatternComplexe [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternDictionary 	"
 
 	self parse: 'match status:
@@ -35507,7 +35507,7 @@ FASTPythonImporterTest >> testMatchPatternDictionary [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternDictionarySplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternDictionarySplat 	"
 
 	self parse: 'match status:
@@ -35570,7 +35570,7 @@ FASTPythonImporterTest >> testMatchPatternDictionarySplat [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternDictionarySplatUnnamed [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternDictionarySplatUnnamed 	"
 
 	self parse: 'match status:
@@ -35625,7 +35625,7 @@ FASTPythonImporterTest >> testMatchPatternDictionarySplatUnnamed [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternDictionaryWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternDictionaryWithDictionary 	"
 
 	self parse: 'match status:
@@ -35762,7 +35762,7 @@ FASTPythonImporterTest >> testMatchPatternDictionaryWithDictionary [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternDictionaryWithNoValues [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternDictionaryWithNoValues 	"
 
 	self parse: 'match status:
@@ -35852,7 +35852,7 @@ FASTPythonImporterTest >> testMatchPatternDictionaryWithNoValues [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternDictionaryWithSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternDictionaryWithSplat 	"
 
 	self parse: 'match status:
@@ -35951,7 +35951,7 @@ FASTPythonImporterTest >> testMatchPatternDictionaryWithSplat [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternDictionaryWithVariables [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternDictionaryWithVariables 	"
 
 	self parse: 'match status:
@@ -36060,7 +36060,7 @@ FASTPythonImporterTest >> testMatchPatternDictionaryWithVariables [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternDottedName [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternDottedName 	"
 
 	self parse: 'match value:
@@ -36116,7 +36116,7 @@ FASTPythonImporterTest >> testMatchPatternDottedName [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternFalse 	"
 
 	self parse: 'match status:
@@ -36173,7 +36173,7 @@ FASTPythonImporterTest >> testMatchPatternFalse [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternFloat 	"
 
 	self parse: 'match status:
@@ -36230,7 +36230,7 @@ FASTPythonImporterTest >> testMatchPatternFloat [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternInteger 	"
 
 	self parse: 'match status:
@@ -36287,7 +36287,7 @@ FASTPythonImporterTest >> testMatchPatternInteger [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternKeyword [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternKeyword 	"
 
 	self parse: 'match status:
@@ -36354,7 +36354,7 @@ FASTPythonImporterTest >> testMatchPatternKeyword [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternKeywordWithClass [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternKeywordWithClass 	"
 
 	self parse: 'match status:
@@ -36429,7 +36429,7 @@ FASTPythonImporterTest >> testMatchPatternKeywordWithClass [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternKeywordWithComplexPattern [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternKeywordWithComplexPattern 	"
 
 	self parse: 'match status:
@@ -36518,7 +36518,7 @@ FASTPythonImporterTest >> testMatchPatternKeywordWithComplexPattern [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternKeywordWithDottedName [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternKeywordWithDottedName 	"
 
 	self parse: 'match status:
@@ -36584,7 +36584,7 @@ FASTPythonImporterTest >> testMatchPatternKeywordWithDottedName [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternKeywordWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternKeywordWithIdentifier 	"
 
 	self parse: 'match status:
@@ -36650,7 +36650,7 @@ FASTPythonImporterTest >> testMatchPatternKeywordWithIdentifier [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternKeywordWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternKeywordWithInteger 	"
 
 	self parse: 'match status:
@@ -36717,7 +36717,7 @@ FASTPythonImporterTest >> testMatchPatternKeywordWithInteger [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternKeywordWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternKeywordWithList 	"
 
 	self parse: 'match status:
@@ -36793,7 +36793,7 @@ FASTPythonImporterTest >> testMatchPatternKeywordWithList [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternKeywordWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternKeywordWithTuple 	"
 
 	self parse: 'match status:
@@ -36869,7 +36869,7 @@ FASTPythonImporterTest >> testMatchPatternKeywordWithTuple [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternKeywordWithUnion [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternKeywordWithUnion 	"
 
 	self parse: 'match status:
@@ -36952,7 +36952,7 @@ FASTPythonImporterTest >> testMatchPatternKeywordWithUnion [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternList 	"
 
 	self parse: 'match value:
@@ -37025,7 +37025,7 @@ FASTPythonImporterTest >> testMatchPatternList [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternListInList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternListInList 	"
 
 	self parse: 'match status:
@@ -37106,7 +37106,7 @@ FASTPythonImporterTest >> testMatchPatternListInList [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternListSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternListSplat 	"
 
 	self parse: 'match status:
@@ -37169,7 +37169,7 @@ FASTPythonImporterTest >> testMatchPatternListSplat [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternListSplatUnnamed [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternListSplatUnnamed 	"
 
 	self parse: 'match status:
@@ -37224,7 +37224,7 @@ FASTPythonImporterTest >> testMatchPatternListSplatUnnamed [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternListWithSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternListWithSplat 	"
 
 	self parse: 'match status:
@@ -37304,7 +37304,7 @@ FASTPythonImporterTest >> testMatchPatternListWithSplat [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternListWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternListWithTuple 	"
 
 	self parse: 'match status:
@@ -37393,7 +37393,7 @@ FASTPythonImporterTest >> testMatchPatternListWithTuple [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternNone 	"
 
 	self parse: 'match status:
@@ -37449,7 +37449,7 @@ FASTPythonImporterTest >> testMatchPatternNone [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternString 	"
 
 	self parse: 'match status:
@@ -37506,7 +37506,7 @@ FASTPythonImporterTest >> testMatchPatternString [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternTrue 	"
 
 	self parse: 'match status:
@@ -37563,7 +37563,7 @@ FASTPythonImporterTest >> testMatchPatternTrue [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternTuple 	"
 
 	self parse: 'match value:
@@ -37636,7 +37636,7 @@ FASTPythonImporterTest >> testMatchPatternTuple [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternUnion [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternUnion 	"
 
 	self parse: 'match status:
@@ -37716,7 +37716,7 @@ FASTPythonImporterTest >> testMatchPatternUnion [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternUnionClassPattern [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternUnionClassPattern 	"
 
 	self parse: 'match status:
@@ -37798,7 +37798,7 @@ FASTPythonImporterTest >> testMatchPatternUnionClassPattern [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternUnionDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternUnionDictionary 	"
 
 	self parse: 'match status:
@@ -37899,7 +37899,7 @@ FASTPythonImporterTest >> testMatchPatternUnionDictionary [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternUnionDottedName [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternUnionDottedName 	"
 
 	self parse: 'match status:
@@ -37972,7 +37972,7 @@ FASTPythonImporterTest >> testMatchPatternUnionDottedName [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternUnionList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternUnionList 	"
 
 	self parse: 'match status:
@@ -38054,7 +38054,7 @@ FASTPythonImporterTest >> testMatchPatternUnionList [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternUnionTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternUnionTuple 	"
 
 	self parse: 'match status:
@@ -38136,7 +38136,7 @@ FASTPythonImporterTest >> testMatchPatternUnionTuple [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternWithAlias [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternWithAlias 	"
 
 	self parse: 'match value:
@@ -38193,7 +38193,7 @@ FASTPythonImporterTest >> testMatchPatternWithAlias [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchPatternWithGuard [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchPatternWithGuard 	"
 
 	self parse: 'match status:
@@ -38275,7 +38275,7 @@ FASTPythonImporterTest >> testMatchPatternWithGuard [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchString 	"
 
 	self parse: 'match "Hello":
@@ -38323,7 +38323,7 @@ FASTPythonImporterTest >> testMatchString [
 { #category : 'tests - match' }
 FASTPythonImporterTest >> testMatchTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMatchTuple 	"
 
 	self parse: 'match (1, ):
@@ -38379,7 +38379,7 @@ FASTPythonImporterTest >> testMatchTuple [
 { #category : 'tests - methods' }
 FASTPythonImporterTest >> testMethodDefinition [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testMethodDefinition 	"
 
 	self parse: 'class MyClass: 
@@ -38441,7 +38441,7 @@ FASTPythonImporterTest >> testMethodDefinition [
 { #category : 'tests' }
 FASTPythonImporterTest >> testModuleWithTwoStatements [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testModuleWithTwoStatements 	"
 
 	self parse: 'True
@@ -38480,7 +38480,7 @@ False' withPlatformLineEndings.
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testNestAssignment [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNestAssignment 	"
 
 	self parse: 'name_len = actual_len = 130'.
@@ -38532,7 +38532,7 @@ FASTPythonImporterTest >> testNestAssignment [
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testNestedIf [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNestedIf 	"
 
 	self parse: 'if x > 0:
@@ -38709,7 +38709,7 @@ FASTPythonImporterTest >> testNone [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testNonlocalStatement [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNonlocalStatement 	"
 
 	self parse: 'def aFunction():
@@ -38766,7 +38766,7 @@ FASTPythonImporterTest >> testNonlocalStatement [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testNonlocalStatementMultiple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNonlocalStatementMultiple 	"
 
 	self parse: 'def function ():
@@ -38869,7 +38869,7 @@ FASTPythonImporterTest >> testNotOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithAttribute 	"
 
 	self parse: 'not x.y'.
@@ -38903,7 +38903,7 @@ FASTPythonImporterTest >> testNotOperatorWithAttribute [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithBinaryOperator 	"
 
 	self parse: 'not y & x'.
@@ -38946,7 +38946,7 @@ FASTPythonImporterTest >> testNotOperatorWithBinaryOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithBooleanOperator 	"
 
 	self parse: 'not x or y'.
@@ -38990,7 +38990,7 @@ FASTPythonImporterTest >> testNotOperatorWithBooleanOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithCall 	"
 
 	self parse: 'not obj()'.
@@ -39025,7 +39025,7 @@ FASTPythonImporterTest >> testNotOperatorWithCall [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithComparisonOperator 	"
 
 	self parse: 'not 1 > 3'.
@@ -39069,7 +39069,7 @@ FASTPythonImporterTest >> testNotOperatorWithComparisonOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithComplexe 	"
 
 	self parse: 'not 0j'.
@@ -39096,7 +39096,7 @@ FASTPythonImporterTest >> testNotOperatorWithComplexe [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithConditionalExpression 	"
 
 	self parse: 'not x if True else y'.
@@ -39149,7 +39149,7 @@ FASTPythonImporterTest >> testNotOperatorWithConditionalExpression [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithDictionary 	"
 
 	self parse: 'not { }'.
@@ -39174,7 +39174,7 @@ FASTPythonImporterTest >> testNotOperatorWithDictionary [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithFalse 	"
 
 	self parse: 'not False'.
@@ -39201,7 +39201,7 @@ FASTPythonImporterTest >> testNotOperatorWithFalse [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithFloat 	"
 
 	self parse: 'not 0.0'.
@@ -39228,7 +39228,7 @@ FASTPythonImporterTest >> testNotOperatorWithFloat [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithIdentifier 	"
 
 	self parse: 'not obj'.
@@ -39253,7 +39253,7 @@ FASTPythonImporterTest >> testNotOperatorWithIdentifier [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithInteger 	"
 
 	self parse: 'not 0'.
@@ -39280,7 +39280,7 @@ FASTPythonImporterTest >> testNotOperatorWithInteger [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithList 	"
 
 	self parse: 'not [  ]'.
@@ -39305,7 +39305,7 @@ FASTPythonImporterTest >> testNotOperatorWithList [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithNotOperator 	"
 
 	self parse: 'not not old'.
@@ -39338,7 +39338,7 @@ FASTPythonImporterTest >> testNotOperatorWithNotOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithSet 	"
 
 	self parse: 'not { 1 }'.
@@ -39373,7 +39373,7 @@ FASTPythonImporterTest >> testNotOperatorWithSet [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithString 	"
 
 	self parse: 'not "Hello"'.
@@ -39400,7 +39400,7 @@ FASTPythonImporterTest >> testNotOperatorWithString [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithSubscript 	"
 
 	self parse: 'not attrs[2]'.
@@ -39444,7 +39444,7 @@ FASTPythonImporterTest >> testNotOperatorWithSubscript [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testNotOperatorWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testNotOperatorWithTrue 	"
 
 	self parse: 'not True'.
@@ -39471,7 +39471,7 @@ FASTPythonImporterTest >> testNotOperatorWithTrue [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testParameter [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testParameter 	"
 
 	self parse: 'def function(a): pass'.
@@ -39510,7 +39510,7 @@ FASTPythonImporterTest >> testParameter [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testPassStatement [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testPassStatement 	"
 
 	self parse: 'def aFunction():
@@ -39540,7 +39540,7 @@ FASTPythonImporterTest >> testPassStatement [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testPositionalSeparator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testPositionalSeparator 	"
 
 	self parse: 'def function(fp, /, x): pass'.
@@ -39593,7 +39593,7 @@ FASTPythonImporterTest >> testPositionalSeparator [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testPrintStatement [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testPrintStatement 	"
 
 	self parse: 'print "Hello ", "World", 30'.
@@ -39634,7 +39634,7 @@ FASTPythonImporterTest >> testPrintStatement [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testPrintStatmentWithChevron [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testPrintStatmentWithChevron 	"
 
 	self parse: 'print >> file_object, "message"'.
@@ -39677,7 +39677,7 @@ FASTPythonImporterTest >> testPrintStatmentWithChevron [
 { #category : 'tests - raise statement' }
 FASTPythonImporterTest >> testRaise [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testRaise 	"
 
 	self parse: 'raise'.
@@ -39693,7 +39693,7 @@ FASTPythonImporterTest >> testRaise [
 { #category : 'tests - raise statement' }
 FASTPythonImporterTest >> testRaiseAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testRaiseAttribute 	"
 
 	self parse: 'raise module.Exception'.
@@ -39726,7 +39726,7 @@ FASTPythonImporterTest >> testRaiseAttribute [
 { #category : 'tests - raise statement' }
 FASTPythonImporterTest >> testRaiseBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testRaiseBooleanOperator 	"
 
 	self parse: 'raise (ValueError or TypeError)'.
@@ -39768,7 +39768,7 @@ FASTPythonImporterTest >> testRaiseBooleanOperator [
 { #category : 'tests - raise statement' }
 FASTPythonImporterTest >> testRaiseCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testRaiseCall 	"
 
 	self parse: 'raise Exception("New instance")'.
@@ -39813,7 +39813,7 @@ FASTPythonImporterTest >> testRaiseCall [
 { #category : 'tests - raise statement' }
 FASTPythonImporterTest >> testRaiseIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testRaiseIdentifier 	"
 
 	self parse: 'raise Exception'.
@@ -39837,7 +39837,7 @@ FASTPythonImporterTest >> testRaiseIdentifier [
 { #category : 'tests - raise statement' }
 FASTPythonImporterTest >> testRaiseSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testRaiseSubscript 	"
 
 	self parse: 'raise exceptions[x]'.
@@ -39892,7 +39892,7 @@ FASTPythonImporterTest >> testRawString [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testReturnEmpty [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testReturnEmpty 	"
 
 	self parse: 'def aFunction():
@@ -39923,7 +39923,7 @@ FASTPythonImporterTest >> testReturnEmpty [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testReturnList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testReturnList 	"
 
 	self parse: 'def aFunction():
@@ -39986,7 +39986,7 @@ FASTPythonImporterTest >> testReturnList [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testReturnLiteral [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testReturnLiteral 	"
 
 	self parse: 'def aFunction():
@@ -40027,7 +40027,7 @@ FASTPythonImporterTest >> testReturnLiteral [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testReturnMultiple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testReturnMultiple 	"
 
 	self parse: 'def myFunct():
@@ -40151,7 +40151,7 @@ FASTPythonImporterTest >> testReturnMultiple [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testReturnOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testReturnOperator 	"
 
 	self parse: 'def aFunction():
@@ -40209,7 +40209,7 @@ FASTPythonImporterTest >> testReturnOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSet 	"
 
 	self parse: '{1, 2, 3}'.
@@ -40249,7 +40249,7 @@ FASTPythonImporterTest >> testSet [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehension 	"
 
 	self parse: '{k1 for k1 in v.items() }'.
@@ -40316,7 +40316,7 @@ FASTPythonImporterTest >> testSetComprehension [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithAttribute 	"
 
 	self parse: '{x.y for x in range(3)}'.
@@ -40395,7 +40395,7 @@ FASTPythonImporterTest >> testSetComprehensionWithAttribute [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithAwait [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithAwait 	"
 
 	self parse: '{await x for x in range(3)}'.
@@ -40473,7 +40473,7 @@ FASTPythonImporterTest >> testSetComprehensionWithAwait [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithBinaryOperator 	"
 
 	self parse: '{y + x for x in range(3)}'.
@@ -40561,7 +40561,7 @@ FASTPythonImporterTest >> testSetComprehensionWithBinaryOperator [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithBooleanOperator 	"
 
 	self parse: '{x or y for x in range(3)}'.
@@ -40649,7 +40649,7 @@ FASTPythonImporterTest >> testSetComprehensionWithBooleanOperator [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithCall 	"
 
 	self parse: '{obj() for x in range(3)}'.
@@ -40728,7 +40728,7 @@ FASTPythonImporterTest >> testSetComprehensionWithCall [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithComparisonOperator 	"
 
 	self parse: '{x in str for x in range(3)}'.
@@ -40812,7 +40812,7 @@ FASTPythonImporterTest >> testSetComprehensionWithComparisonOperator [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithComplexe 	"
 
 	self parse: '{0j for x in range(3)}'.
@@ -40884,7 +40884,7 @@ FASTPythonImporterTest >> testSetComprehensionWithComplexe [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithConditionalExpression 	"
 
 	self parse: '{x if True else y for x in range(3)}'.
@@ -40982,7 +40982,7 @@ FASTPythonImporterTest >> testSetComprehensionWithConditionalExpression [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithDictionary 	"
 
 	self parse: '{{ 1:x } for x in range(3)}'.
@@ -41079,7 +41079,7 @@ FASTPythonImporterTest >> testSetComprehensionWithDictionary [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithDictionaryComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithDictionaryComprehension 	"
 
 	self parse: '{{ v:x for v in y } for x in range(3)}'.
@@ -41198,7 +41198,7 @@ FASTPythonImporterTest >> testSetComprehensionWithDictionaryComprehension [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithEllipsis 	"
 
 	self parse: '{... for x in range(3)}'.
@@ -41269,7 +41269,7 @@ FASTPythonImporterTest >> testSetComprehensionWithEllipsis [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithFalse 	"
 
 	self parse: '{False for x in range(3)}'.
@@ -41341,7 +41341,7 @@ FASTPythonImporterTest >> testSetComprehensionWithFalse [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithFloat 	"
 
 	self parse: '{0.0 for x in range(3)}'.
@@ -41413,7 +41413,7 @@ FASTPythonImporterTest >> testSetComprehensionWithFloat [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithIdentifier 	"
 
 	self parse: '{obj for x in range(3)}'.
@@ -41482,7 +41482,7 @@ FASTPythonImporterTest >> testSetComprehensionWithIdentifier [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithIfClause [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithIfClause 	"
 
 	self parse: '{k1 for k1 in v.items() if k1 > 4}'.
@@ -41575,7 +41575,7 @@ FASTPythonImporterTest >> testSetComprehensionWithIfClause [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithInteger 	"
 
 	self parse: '{0 for x in range(3)}'.
@@ -41646,7 +41646,7 @@ FASTPythonImporterTest >> testSetComprehensionWithInteger [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithLambda 	"
 
 	self parse: '{lambda x:x for x in range(3)}'.
@@ -41736,7 +41736,7 @@ FASTPythonImporterTest >> testSetComprehensionWithLambda [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithList 	"
 
 	self parse: '{[  ] for x in range(3)}'.
@@ -41806,7 +41806,7 @@ FASTPythonImporterTest >> testSetComprehensionWithList [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithListComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithListComprehension 	"
 
 	self parse: '{[i + x for i in range(3)] for x in range(3)}'.
@@ -41947,7 +41947,7 @@ FASTPythonImporterTest >> testSetComprehensionWithListComprehension [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithMultipleForClauses [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithMultipleForClauses 	"
 
 	self parse: '{x for row in matrix for x in row}'.
@@ -42016,7 +42016,7 @@ FASTPythonImporterTest >> testSetComprehensionWithMultipleForClauses [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithMultipleIfClause [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithMultipleIfClause 	"
 
 	self parse: '{x for x in range(100) if x % 2 == 0 if x % 3 == 0}'.
@@ -42172,7 +42172,7 @@ FASTPythonImporterTest >> testSetComprehensionWithMultipleIfClause [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithNone 	"
 
 	self parse: '{None for x in range(3)}'.
@@ -42243,7 +42243,7 @@ FASTPythonImporterTest >> testSetComprehensionWithNone [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithNotOperator 	"
 
 	self parse: '{not old for x in range(3)}'.
@@ -42322,7 +42322,7 @@ FASTPythonImporterTest >> testSetComprehensionWithNotOperator [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithSet 	"
 
 	self parse: '{{ 1 } for x in range(3)}'.
@@ -42402,7 +42402,7 @@ FASTPythonImporterTest >> testSetComprehensionWithSet [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithSetComprehension 	"
 
 	self parse: '{{i + x for i in range(3) } for x in range(3)}'.
@@ -42542,7 +42542,7 @@ FASTPythonImporterTest >> testSetComprehensionWithSetComprehension [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithString 	"
 
 	self parse: '{"Hello" for x in range(3)}'.
@@ -42614,7 +42614,7 @@ FASTPythonImporterTest >> testSetComprehensionWithString [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithSubscript 	"
 
 	self parse: '{attrs[2] for x in range(3)}'.
@@ -42702,7 +42702,7 @@ FASTPythonImporterTest >> testSetComprehensionWithSubscript [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithTrue 	"
 
 	self parse: '{True for x in range(3)}'.
@@ -42774,7 +42774,7 @@ FASTPythonImporterTest >> testSetComprehensionWithTrue [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithTuple 	"
 
 	self parse: '{(x,) for x in range(3)}'.
@@ -42852,7 +42852,7 @@ FASTPythonImporterTest >> testSetComprehensionWithTuple [
 { #category : 'tests - comprehensions' }
 FASTPythonImporterTest >> testSetComprehensionWithUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetComprehensionWithUnaryOperator 	"
 
 	self parse: '{-x for x in range(3)}'.
@@ -42932,7 +42932,7 @@ FASTPythonImporterTest >> testSetComprehensionWithUnaryOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithAttribute 	"
 
 	self parse: '{ obj.attr }'.
@@ -42965,7 +42965,7 @@ FASTPythonImporterTest >> testSetWithAttribute [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithBinaryOperator 	"
 
 	self parse: '{ 10 / 2 }'.
@@ -43011,7 +43011,7 @@ FASTPythonImporterTest >> testSetWithBinaryOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithBooleanOperator 	"
 
 	self parse: '{ x and y }'.
@@ -43053,7 +43053,7 @@ FASTPythonImporterTest >> testSetWithBooleanOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithCall 	"
 
 	self parse: '{ obj() }'.
@@ -43087,7 +43087,7 @@ FASTPythonImporterTest >> testSetWithCall [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithComparisonOperator 	"
 
 	self parse: '{ 1 > 3 }'.
@@ -43130,7 +43130,7 @@ FASTPythonImporterTest >> testSetWithComparisonOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithComplexe 	"
 
 	self parse: '{ 1j }'.
@@ -43156,7 +43156,7 @@ FASTPythonImporterTest >> testSetWithComplexe [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithConditionalExpression 	"
 
 	self parse: '{ x if True else y }'.
@@ -43208,7 +43208,7 @@ FASTPythonImporterTest >> testSetWithConditionalExpression [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithDictionary 	"
 
 	self parse: '{ { 1:1 } }'.
@@ -43260,7 +43260,7 @@ FASTPythonImporterTest >> testSetWithDictionary [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithEllipsis 	"
 
 	self parse: '{ ... }'.
@@ -43285,7 +43285,7 @@ FASTPythonImporterTest >> testSetWithEllipsis [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithFalse 	"
 
 	self parse: '{ False }'.
@@ -43311,7 +43311,7 @@ FASTPythonImporterTest >> testSetWithFalse [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithFloat 	"
 
 	self parse: '{ 0.1 }'.
@@ -43337,7 +43337,7 @@ FASTPythonImporterTest >> testSetWithFloat [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithIdentifier 	"
 
 	self parse: '{ element }'.
@@ -43361,7 +43361,7 @@ FASTPythonImporterTest >> testSetWithIdentifier [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithInteger 	"
 
 	self parse: '{ 1 }'.
@@ -43387,7 +43387,7 @@ FASTPythonImporterTest >> testSetWithInteger [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithLambda 	"
 
 	self parse: '{ lambda x:x }'.
@@ -43431,7 +43431,7 @@ FASTPythonImporterTest >> testSetWithLambda [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithList 	"
 
 	self parse: '{ [ 1 ] }'.
@@ -43465,7 +43465,7 @@ FASTPythonImporterTest >> testSetWithList [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithListSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithListSplat 	"
 
 	self parse: '{ *args }'.
@@ -43497,7 +43497,7 @@ FASTPythonImporterTest >> testSetWithListSplat [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithList_comprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithList_comprehension 	"
 
 	self parse: '{ [random for i in range(3)] }'.
@@ -43574,7 +43574,7 @@ FASTPythonImporterTest >> testSetWithList_comprehension [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithNone 	"
 
 	self parse: '{ None }'.
@@ -43599,7 +43599,7 @@ FASTPythonImporterTest >> testSetWithNone [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithNotOperator 	"
 
 	self parse: '{ not old }'.
@@ -43632,7 +43632,7 @@ FASTPythonImporterTest >> testSetWithNotOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithSet 	"
 
 	self parse: '{ { 1 } }'.
@@ -43665,7 +43665,7 @@ FASTPythonImporterTest >> testSetWithSet [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithSetComprehension 	"
 
 	self parse: '{ {random for i in range(3)} }'.
@@ -43742,7 +43742,7 @@ FASTPythonImporterTest >> testSetWithSetComprehension [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithSplat 	"
 
 	self parse: '{*args, 1}'.
@@ -43783,7 +43783,7 @@ FASTPythonImporterTest >> testSetWithSplat [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithString 	"
 
 	self parse: '{ "Hello" }'.
@@ -43809,7 +43809,7 @@ FASTPythonImporterTest >> testSetWithString [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithSubscript 	"
 
 	self parse: '{ attrs[2] }'.
@@ -43852,7 +43852,7 @@ FASTPythonImporterTest >> testSetWithSubscript [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithTrue 	"
 
 	self parse: '{ True }'.
@@ -43878,7 +43878,7 @@ FASTPythonImporterTest >> testSetWithTrue [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithTuple 	"
 
 	self parse: '{ (1,) }'.
@@ -43912,7 +43912,7 @@ FASTPythonImporterTest >> testSetWithTuple [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testSetWithUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSetWithUnaryOperator 	"
 
 	self parse: '{ -1 }'.
@@ -43964,7 +43964,7 @@ FASTPythonImporterTest >> testSingleQuotedString [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceAttribute 	"
 
 	self parse: 'values[:obj.attr]'.
@@ -44015,7 +44015,7 @@ FASTPythonImporterTest >> testSliceAttribute [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceBinaryOperator 	"
 
 	self parse: 'lst[a+b:a+c:1]'.
@@ -44106,7 +44106,7 @@ FASTPythonImporterTest >> testSliceBinaryOperator [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceBoolean [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceBoolean 	"
 
 	self parse: 'lst[True:False]'.
@@ -44157,7 +44157,7 @@ FASTPythonImporterTest >> testSliceBoolean [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceCall 	"
 
 	self parse: 'values[1:indexOf(c)]'.
@@ -44225,7 +44225,7 @@ FASTPythonImporterTest >> testSliceCall [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceConditionalExpression 	"
 
 	self parse: 'lst[a if cond else b:c]'.
@@ -44297,7 +44297,7 @@ FASTPythonImporterTest >> testSliceConditionalExpression [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceEmpty [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceEmpty 	"
 
 	self parse: 'values[:]'.
@@ -44330,7 +44330,7 @@ FASTPythonImporterTest >> testSliceEmpty [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceNone 	"
 
 	self parse: 'values[1:None]'.
@@ -44381,7 +44381,7 @@ FASTPythonImporterTest >> testSliceNone [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceParenthesis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceParenthesis 	"
 
 	self parse: 'values[i:(i + h)]'.
@@ -44446,7 +44446,7 @@ FASTPythonImporterTest >> testSliceParenthesis [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceReverse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceReverse 	"
 
 	self parse: 'values[::-1]'.
@@ -44501,7 +44501,7 @@ FASTPythonImporterTest >> testSliceReverse [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceSubscript 	"
 
 	self parse: 'values[pady[0]:pady[1]]'.
@@ -44584,7 +44584,7 @@ FASTPythonImporterTest >> testSliceSubscript [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceUnaryOperator 	"
 
 	self parse: 'values[-1:-5:-1]'.
@@ -44673,7 +44673,7 @@ FASTPythonImporterTest >> testSliceUnaryOperator [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceVariables [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceVariables 	"
 
 	self parse: 'values[x:y]'.
@@ -44719,7 +44719,7 @@ FASTPythonImporterTest >> testSliceVariables [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceWithEnd [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceWithEnd 	"
 
 	self parse: 'values[:7]'.
@@ -44763,7 +44763,7 @@ FASTPythonImporterTest >> testSliceWithEnd [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceWithStart [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceWithStart 	"
 
 	self parse: 'values[2:]'.
@@ -44807,7 +44807,7 @@ FASTPythonImporterTest >> testSliceWithStart [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceWithStartStopStep [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceWithStartStopStep 	"
 
 	self parse: 'values[2:10:2]'.
@@ -44865,7 +44865,7 @@ FASTPythonImporterTest >> testSliceWithStartStopStep [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSliceWithStep [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSliceWithStep 	"
 
 	self parse: 'values[::4]'.
@@ -44909,7 +44909,7 @@ FASTPythonImporterTest >> testSliceWithStep [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testSplatType [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSplatType 	"
 
 	self parse: 'def f(*items: *Ts): pass'.
@@ -44967,7 +44967,7 @@ FASTPythonImporterTest >> testSplatType [
 { #category : 'tests - literals' }
 FASTPythonImporterTest >> testStringWithEscapedInterpolation [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testStringWithEscapedInterpolation 	"
 
 	self parse: 'f"The result is {{value}}"'.
@@ -44985,7 +44985,7 @@ FASTPythonImporterTest >> testStringWithEscapedInterpolation [
 { #category : 'tests - literals' }
 FASTPythonImporterTest >> testStringWithEscapedSequence [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testStringWithEscapedSequence 	"
 
 	self parse: '"Line 1\nLine 2"'.
@@ -45003,7 +45003,7 @@ FASTPythonImporterTest >> testStringWithEscapedSequence [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscript 	"
 
 	self parse: 'row[''id'']'.
@@ -45038,7 +45038,7 @@ FASTPythonImporterTest >> testSubscript [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnAttribute 	"
 
 	self parse: 'x.y[0]'.
@@ -45082,7 +45082,7 @@ FASTPythonImporterTest >> testSubscriptOnAttribute [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnAttributeWithParenthesis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnAttributeWithParenthesis 	"
 
 	self parse: '(os.environ)[''ATTR'']'.
@@ -45126,7 +45126,7 @@ FASTPythonImporterTest >> testSubscriptOnAttributeWithParenthesis [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnAwait [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnAwait 	"
 
 	self parse: 'await x[0]'.
@@ -45169,7 +45169,7 @@ FASTPythonImporterTest >> testSubscriptOnAwait [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnBinaryOperator 	"
 
 	self parse: '(y + x)[0]'.
@@ -45222,7 +45222,7 @@ FASTPythonImporterTest >> testSubscriptOnBinaryOperator [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnCall 	"
 
 	self parse: 'obj()[0]'.
@@ -45267,7 +45267,7 @@ FASTPythonImporterTest >> testSubscriptOnCall [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnConditionalExpression 	"
 
 	self parse: '(x if True else y)[0]'.
@@ -45330,7 +45330,7 @@ FASTPythonImporterTest >> testSubscriptOnConditionalExpression [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnDictionary 	"
 
 	self parse: '{ 1:x }[0]'.
@@ -45391,7 +45391,7 @@ FASTPythonImporterTest >> testSubscriptOnDictionary [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnDictionaryComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnDictionaryComprehension 	"
 
 	self parse: '{ v:x for v in y }[0]'.
@@ -45475,7 +45475,7 @@ FASTPythonImporterTest >> testSubscriptOnDictionaryComprehension [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnIdentifier 	"
 
 	self parse: 'obj[0]'.
@@ -45510,7 +45510,7 @@ FASTPythonImporterTest >> testSubscriptOnIdentifier [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnList 	"
 
 	self parse: '[ 1 ][0]'.
@@ -45554,7 +45554,7 @@ FASTPythonImporterTest >> testSubscriptOnList [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnListComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnListComprehension 	"
 
 	self parse: '[i + x for i in range(3)][0]'.
@@ -45660,7 +45660,7 @@ FASTPythonImporterTest >> testSubscriptOnListComprehension [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnListSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnListSplat 	"
 
 	self parse: '*args[0]'.
@@ -45703,7 +45703,7 @@ FASTPythonImporterTest >> testSubscriptOnListSplat [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnSet 	"
 
 	self parse: '{ 1 }[0]'.
@@ -45747,7 +45747,7 @@ FASTPythonImporterTest >> testSubscriptOnSet [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnSetComprehension 	"
 
 	self parse: '{i + x for i in range(3) }[0]'.
@@ -45853,7 +45853,7 @@ FASTPythonImporterTest >> testSubscriptOnSetComprehension [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnString 	"
 
 	self parse: '"Hello"[0]'.
@@ -45890,7 +45890,7 @@ FASTPythonImporterTest >> testSubscriptOnString [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnSubscript 	"
 
 	self parse: 'attrs[2][0]'.
@@ -45942,7 +45942,7 @@ FASTPythonImporterTest >> testSubscriptOnSubscript [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnTuple 	"
 
 	self parse: '(x, y)[0]'.
@@ -45990,7 +45990,7 @@ FASTPythonImporterTest >> testSubscriptOnTuple [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptOnUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptOnUnaryOperator 	"
 
 	self parse: '-x[0]'.
@@ -46037,7 +46037,7 @@ FASTPythonImporterTest >> testSubscriptOnUnaryOperator [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptWithAttributeInSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptWithAttributeInSubscript 	"
 
 	self parse: 'coll[obj.attr]'.
@@ -46079,7 +46079,7 @@ FASTPythonImporterTest >> testSubscriptWithAttributeInSubscript [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptWithBinaryOperator 	"
 
 	self parse: 'values[1 + 2]'.
@@ -46135,7 +46135,7 @@ FASTPythonImporterTest >> testSubscriptWithBinaryOperator [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptWithEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptWithEllipsis 	"
 
 	self parse: 'imgs[..., i]'.
@@ -46174,7 +46174,7 @@ FASTPythonImporterTest >> testSubscriptWithEllipsis [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptWithTwoIndicies [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptWithTwoIndicies 	"
 
 	self parse: 'loc[1, 2]'.
@@ -46216,7 +46216,7 @@ FASTPythonImporterTest >> testSubscriptWithTwoIndicies [
 { #category : 'tests - subscripts' }
 FASTPythonImporterTest >> testSubscriptWithTwoSlices [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testSubscriptWithTwoSlices 	"
 
 	self parse: 'arr[1:3, 2:4] '.
@@ -46303,7 +46303,7 @@ FASTPythonImporterTest >> testTrue [
 { #category : 'tests - try statement' }
 FASTPythonImporterTest >> testTryStatement [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTryStatement 	"
 
 	self parse: 'try: pass
@@ -46349,7 +46349,7 @@ except: pass' withPlatformLineEndings.
 { #category : 'tests - try statement' }
 FASTPythonImporterTest >> testTryStatementWithElseClause [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTryStatementWithElseClause 	"
 
 	self parse: 'try: pass
@@ -46418,10 +46418,10 @@ else: print(1)' withPlatformLineEndings.
 		self assert: (self topEntity isOfType: FASTPyExceptClause).
 		self assert: (self topEntity isOfType: FASTTStatementBlock).
 		
-		"Testing value of multivalued relation expressions"
-		self assert: self topEntity expressions size equals: 1.
-		
-			stack push: (stack top expressions at: 1).
+		"Testing value of monovalue relation expression"
+		self assert: self topEntity expression isNotNil.
+
+			stack push: self topEntity expression.
 			self assert: self topEntity sourceCode equals: 'Exception'.
 			self assert: (self topEntity isOfType: FASTPyIdentifier).
 			stack pop.
@@ -46446,7 +46446,7 @@ else: print(1)' withPlatformLineEndings.
 { #category : 'tests - try statement' }
 FASTPythonImporterTest >> testTryStatementWithFinallyClause [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTryStatementWithFinallyClause 	"
 
 	self parse: 'try: pass
@@ -46478,10 +46478,10 @@ finally: print(1)' withPlatformLineEndings.
 		self assert: (self topEntity isOfType: FASTPyExceptClause).
 		self assert: (self topEntity isOfType: FASTTStatementBlock).
 		
-		"Testing value of multivalued relation expressions"
-		self assert: self topEntity expressions size equals: 1.
-		
-			stack push: (stack top expressions at: 1).
+		"Testing value of monovalue relation expression"
+		self assert: self topEntity expression isNotNil.
+
+			stack push: self topEntity expression.
 			self assert: self topEntity sourceCode equals: 'Exception'.
 			self assert: (self topEntity isOfType: FASTPyIdentifier).
 			stack pop.
@@ -46543,7 +46543,7 @@ finally: print(1)' withPlatformLineEndings.
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTuple 	"
 
 	self parse: '(1, 2, 3)'.
@@ -46583,7 +46583,7 @@ FASTPythonImporterTest >> testTuple [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleExpression 	"
 
 	self parse: '3, 5,'.
@@ -46616,7 +46616,7 @@ FASTPythonImporterTest >> testTupleExpression [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleExpressionWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleExpressionWithCall 	"
 
 	self parse: 'toto(), 5,'.
@@ -46659,7 +46659,7 @@ FASTPythonImporterTest >> testTupleExpressionWithCall [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleOverview [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleOverview 	"
 
 	self parse: '(2, 2.0, 2j, "abc", [3], (2,2), {3: 3}, b"def", bytearray(b"ghi"), True, False, None, ..., self.a)'.
@@ -46859,7 +46859,7 @@ FASTPythonImporterTest >> testTupleOverview [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithAttribute 	"
 
 	self parse: '(x.y, )'.
@@ -46892,7 +46892,7 @@ FASTPythonImporterTest >> testTupleWithAttribute [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithBinaryOperator 	"
 
 	self parse: '(1 + x, )'.
@@ -46937,7 +46937,7 @@ FASTPythonImporterTest >> testTupleWithBinaryOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithBooleanOperator 	"
 
 	self parse: '(x or y, )'.
@@ -46979,7 +46979,7 @@ FASTPythonImporterTest >> testTupleWithBooleanOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithCall 	"
 
 	self parse: '(factory(), )'.
@@ -47013,7 +47013,7 @@ FASTPythonImporterTest >> testTupleWithCall [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithComparisonOperator 	"
 
 	self parse: '(x > y, )'.
@@ -47052,7 +47052,7 @@ FASTPythonImporterTest >> testTupleWithComparisonOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithComplexe 	"
 
 	self parse: '(0j, )'.
@@ -47078,7 +47078,7 @@ FASTPythonImporterTest >> testTupleWithComplexe [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithConditionalExpression 	"
 
 	self parse: '(x if True else y, )'.
@@ -47130,7 +47130,7 @@ FASTPythonImporterTest >> testTupleWithConditionalExpression [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithDictionary 	"
 
 	self parse: '({ 1:x }, )'.
@@ -47181,7 +47181,7 @@ FASTPythonImporterTest >> testTupleWithDictionary [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithDictionaryComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithDictionaryComprehension 	"
 
 	self parse: '({ v:x for v in y }, )'.
@@ -47254,7 +47254,7 @@ FASTPythonImporterTest >> testTupleWithDictionaryComprehension [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithEllipsis 	"
 
 	self parse: '(..., )'.
@@ -47279,7 +47279,7 @@ FASTPythonImporterTest >> testTupleWithEllipsis [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithFalse 	"
 
 	self parse: '(False, )'.
@@ -47305,7 +47305,7 @@ FASTPythonImporterTest >> testTupleWithFalse [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithFloat 	"
 
 	self parse: '(0.0, )'.
@@ -47331,7 +47331,7 @@ FASTPythonImporterTest >> testTupleWithFloat [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithIdentifier 	"
 
 	self parse: '(x, )'.
@@ -47355,7 +47355,7 @@ FASTPythonImporterTest >> testTupleWithIdentifier [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithInteger 	"
 
 	self parse: '(0, )'.
@@ -47381,7 +47381,7 @@ FASTPythonImporterTest >> testTupleWithInteger [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithLambda 	"
 
 	self parse: '((lambda x:x), )'.
@@ -47425,7 +47425,7 @@ FASTPythonImporterTest >> testTupleWithLambda [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithList 	"
 
 	self parse: '([ 1 ], )'.
@@ -47459,7 +47459,7 @@ FASTPythonImporterTest >> testTupleWithList [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithListComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithListComprehension 	"
 
 	self parse: '([i + x for i in range(3)], )'.
@@ -47555,7 +47555,7 @@ FASTPythonImporterTest >> testTupleWithListComprehension [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithListSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithListSplat 	"
 
 	self parse: '(*args, )'.
@@ -47587,7 +47587,7 @@ FASTPythonImporterTest >> testTupleWithListSplat [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithNone 	"
 
 	self parse: '(None, )'.
@@ -47612,7 +47612,7 @@ FASTPythonImporterTest >> testTupleWithNone [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithNotOperator 	"
 
 	self parse: '((not old), )'.
@@ -47645,7 +47645,7 @@ FASTPythonImporterTest >> testTupleWithNotOperator [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithSet 	"
 
 	self parse: '({ 1 }, )'.
@@ -47679,7 +47679,7 @@ FASTPythonImporterTest >> testTupleWithSet [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithSetComprehension 	"
 
 	self parse: '({i + x for i in range(3) }, )'.
@@ -47775,7 +47775,7 @@ FASTPythonImporterTest >> testTupleWithSetComprehension [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithString 	"
 
 	self parse: '("Hello", )'.
@@ -47801,7 +47801,7 @@ FASTPythonImporterTest >> testTupleWithString [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithSubscript 	"
 
 	self parse: '(x[2], )'.
@@ -47844,7 +47844,7 @@ FASTPythonImporterTest >> testTupleWithSubscript [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithTrue 	"
 
 	self parse: '(True, )'.
@@ -47870,7 +47870,7 @@ FASTPythonImporterTest >> testTupleWithTrue [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithTuple 	"
 
 	self parse: '((x, y), )'.
@@ -47906,7 +47906,7 @@ FASTPythonImporterTest >> testTupleWithTuple [
 { #category : 'tests - collections' }
 FASTPythonImporterTest >> testTupleWithUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTupleWithUnaryOperator 	"
 
 	self parse: '(-x, )'.
@@ -47941,7 +47941,7 @@ FASTPythonImporterTest >> testTupleWithUnaryOperator [
 { #category : 'tests - comments' }
 FASTPythonImporterTest >> testTwoComments [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTwoComments 	"
 
 	self parse: '# Comment 1
@@ -47982,7 +47982,7 @@ FASTPythonImporterTest >> testTwoComments [
 { #category : 'tests - imports' }
 FASTPythonImporterTest >> testTwoImports [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTwoImports 	"
 
 	self parse: 'import numpy as np
@@ -48037,7 +48037,7 @@ import mathplotlib as mpl' withPlatformLineEndings.
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testTypeAliasStatement [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeAliasStatement 	"
 
 	self parse: 'type MyInt = int'.
@@ -48085,7 +48085,7 @@ FASTPythonImporterTest >> testTypeAliasStatement [
 { #category : 'tests - statements' }
 FASTPythonImporterTest >> testTypeAliasStatementInBlock [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeAliasStatementInBlock 	"
 
 	self parse: 'def f(): type MyInt = int'.
@@ -48145,7 +48145,7 @@ FASTPythonImporterTest >> testTypeAliasStatementInBlock [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeAttribute 	"
 
 	self parse: 'def func() -> subprocess.CompletedProcess: pass'.
@@ -48201,7 +48201,7 @@ FASTPythonImporterTest >> testTypeAttribute [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeBinaryOperator 	"
 
 	self parse: 'def func() -> int | str: pass'.
@@ -48266,7 +48266,7 @@ FASTPythonImporterTest >> testTypeBinaryOperator [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeCall 	"
 
 	self parse: 'def func() -> f(): pass'.
@@ -48323,7 +48323,7 @@ FASTPythonImporterTest >> testTypeCall [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeComparisonOperator 	"
 
 	self parse: 'def func() -> 1 > 3: pass'.
@@ -48388,7 +48388,7 @@ FASTPythonImporterTest >> testTypeComparisonOperator [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeDictionary 	"
 
 	self parse: 'def func() -> {42: ''ham''}: pass #Valid in Python3...'.
@@ -48475,7 +48475,7 @@ FASTPythonImporterTest >> testTypeDictionary [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeEllipsis 	"
 
 	self parse: 'def func() -> ...: pass'.
@@ -48522,7 +48522,7 @@ FASTPythonImporterTest >> testTypeEllipsis [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeFalse 	"
 
 	self parse: 'def func() -> False: pass'.
@@ -48570,7 +48570,7 @@ FASTPythonImporterTest >> testTypeFalse [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeFloat 	"
 
 	self parse: 'def func() -> 1.5: pass'.
@@ -48618,7 +48618,7 @@ FASTPythonImporterTest >> testTypeFloat [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeIdentifier 	"
 
 	self parse: 'def func() -> Path: pass'.
@@ -48664,7 +48664,7 @@ FASTPythonImporterTest >> testTypeIdentifier [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeInteger 	"
 
 	self parse: 'def func() -> 1: pass'.
@@ -48712,7 +48712,7 @@ FASTPythonImporterTest >> testTypeInteger [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeLambda 	"
 
 	self parse: 'def func() -> lambda : None: pass'.
@@ -48769,7 +48769,7 @@ FASTPythonImporterTest >> testTypeLambda [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeList 	"
 
 	self parse: 'def func() -> [object]: pass'.
@@ -48824,7 +48824,7 @@ FASTPythonImporterTest >> testTypeList [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeListComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeListComprehension 	"
 
 	self parse: 'def func() -> [T for T in T.name]: pass'.
@@ -48914,7 +48914,7 @@ FASTPythonImporterTest >> testTypeListComprehension [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeNone 	"
 
 	self parse: 'def func() -> None: pass'.
@@ -48961,7 +48961,7 @@ FASTPythonImporterTest >> testTypeNone [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeNotOperator 	"
 
 	self parse: 'def func() -> not True: pass'.
@@ -49019,7 +49019,7 @@ FASTPythonImporterTest >> testTypeNotOperator [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeParametersInFunctionDefinition [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeParametersInFunctionDefinition 	"
 
 	self parse: 'def f[T](): pass'.
@@ -49064,7 +49064,7 @@ FASTPythonImporterTest >> testTypeParametersInFunctionDefinition [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeParametersMultiple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeParametersMultiple 	"
 
 	self parse: 'def f[T, K, L](): pass'.
@@ -49135,7 +49135,7 @@ FASTPythonImporterTest >> testTypeParametersMultiple [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeSet 	"
 
 	self parse: 'def func() -> { 1 }: pass'.
@@ -49192,7 +49192,7 @@ FASTPythonImporterTest >> testTypeSet [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeString 	"
 
 	self parse: 'def func() -> "test": pass'.
@@ -49240,7 +49240,7 @@ FASTPythonImporterTest >> testTypeString [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeTrue 	"
 
 	self parse: 'def func() -> True: pass'.
@@ -49288,7 +49288,7 @@ FASTPythonImporterTest >> testTypeTrue [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeTuple 	"
 
 	self parse: 'def func() -> (1, ): pass'.
@@ -49345,7 +49345,7 @@ FASTPythonImporterTest >> testTypeTuple [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testTypeUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypeUnaryOperator 	"
 
 	self parse: 'def func() -> -1: pass'.
@@ -49404,7 +49404,7 @@ FASTPythonImporterTest >> testTypeUnaryOperator [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testTypedListSplatParameter [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypedListSplatParameter 	"
 
 	self parse: 'def f(*arg: Any): pass'.
@@ -49461,7 +49461,7 @@ FASTPythonImporterTest >> testTypedListSplatParameter [
 { #category : 'tests - function definitions' }
 FASTPythonImporterTest >> testTypedParameter [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testTypedParameter 	"
 
 	self parse: 'def f(location: Path): pass'.
@@ -49535,7 +49535,7 @@ FASTPythonImporterTest >> testUnaryOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithAttribute 	"
 
 	self parse: '~x.y'.
@@ -49572,7 +49572,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithAttribute [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithAwait [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithAwait 	"
 
 	self parse: '~await x'.
@@ -49608,7 +49608,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithAwait [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithBinaryOperator 	"
 
 	self parse: '~-10**e'.
@@ -49667,7 +49667,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithBinaryOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithBooleanOperator 	"
 
 	self parse: '~(x or y)'.
@@ -49713,7 +49713,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithBooleanOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithCall 	"
 
 	self parse: '~factory()'.
@@ -49751,7 +49751,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithCall [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithComparisonOperator 	"
 
 	self parse: '~(x > y)'.
@@ -49793,7 +49793,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithComparisonOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithComplexe 	"
 
 	self parse: '~0j'.
@@ -49822,7 +49822,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithComplexe [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithConditionalExpression 	"
 
 	self parse: '~(x if True else y)'.
@@ -49878,7 +49878,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithConditionalExpression [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithFalse 	"
 
 	self parse: '~False'.
@@ -49907,7 +49907,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithFalse [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithFloat 	"
 
 	self parse: '~0.0'.
@@ -49936,7 +49936,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithFloat [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithIdentifier 	"
 
 	self parse: '~x'.
@@ -49963,7 +49963,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithIdentifier [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithInteger 	"
 
 	self parse: '~0'.
@@ -49992,7 +49992,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithInteger [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithNotOperator 	"
 
 	self parse: '~(not old)'.
@@ -50029,7 +50029,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithNotOperator [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithString 	"
 
 	self parse: '~""'.
@@ -50058,7 +50058,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithString [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithSubscript 	"
 
 	self parse: '~x[2]'.
@@ -50105,7 +50105,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithSubscript [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithTrue 	"
 
 	self parse: '~True'.
@@ -50134,7 +50134,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithTrue [
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testUnaryOperatorWithUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnaryOperatorWithUnaryOperator 	"
 
 	self parse: '~-x'.
@@ -50171,7 +50171,7 @@ FASTPythonImporterTest >> testUnaryOperatorWithUnaryOperator [
 { #category : 'tests - types' }
 FASTPythonImporterTest >> testUnionType [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testUnionType 	"
 
 	self parse: 'def f( arg: IO[bytes] | int): pass'.
@@ -50276,7 +50276,7 @@ FASTPythonImporterTest >> testUnionType [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testVariableDeclaration [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testVariableDeclaration 	"
 
 	self parse: 'posix: ModuleType'.
@@ -50318,7 +50318,7 @@ FASTPythonImporterTest >> testVariableDeclaration [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrus [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrus 	"
 
 	self parse: '(x := 1)'.
@@ -50345,7 +50345,7 @@ FASTPythonImporterTest >> testWalrus [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusAttribute [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusAttribute 	"
 
 	self parse: 'a :=  x.y'.
@@ -50379,7 +50379,7 @@ FASTPythonImporterTest >> testWalrusAttribute [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusBinaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusBinaryOperator 	"
 
 	self parse: 'a :=  10 / 2'.
@@ -50426,7 +50426,7 @@ FASTPythonImporterTest >> testWalrusBinaryOperator [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusBooleanOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusBooleanOperator 	"
 
 	self parse: 'a :=  x and y'.
@@ -50469,7 +50469,7 @@ FASTPythonImporterTest >> testWalrusBooleanOperator [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusCall [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusCall 	"
 
 	self parse: 'a :=  obj()'.
@@ -50504,7 +50504,7 @@ FASTPythonImporterTest >> testWalrusCall [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusComparisonOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusComparisonOperator 	"
 
 	self parse: 'a :=  1 > 3'.
@@ -50548,7 +50548,7 @@ FASTPythonImporterTest >> testWalrusComparisonOperator [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusComplexe [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusComplexe 	"
 
 	self parse: 'a :=  1j'.
@@ -50575,7 +50575,7 @@ FASTPythonImporterTest >> testWalrusComplexe [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusConditionalExpression [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusConditionalExpression 	"
 
 	self parse: 'a :=  x if True else y'.
@@ -50628,7 +50628,7 @@ FASTPythonImporterTest >> testWalrusConditionalExpression [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusDictionary [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusDictionary 	"
 
 	self parse: 'a :=  { 1:1 }'.
@@ -50681,7 +50681,7 @@ FASTPythonImporterTest >> testWalrusDictionary [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusEllipsis [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusEllipsis 	"
 
 	self parse: 'a :=  ...'.
@@ -50707,7 +50707,7 @@ FASTPythonImporterTest >> testWalrusEllipsis [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusFalse [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusFalse 	"
 
 	self parse: 'a :=  False'.
@@ -50734,7 +50734,7 @@ FASTPythonImporterTest >> testWalrusFalse [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusFloat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusFloat 	"
 
 	self parse: 'a :=  0.1'.
@@ -50761,7 +50761,7 @@ FASTPythonImporterTest >> testWalrusFloat [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusIdentifier 	"
 
 	self parse: 'a :=  element'.
@@ -50786,7 +50786,7 @@ FASTPythonImporterTest >> testWalrusIdentifier [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusInteger [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusInteger 	"
 
 	self parse: 'a :=  1'.
@@ -50813,7 +50813,7 @@ FASTPythonImporterTest >> testWalrusInteger [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusLambda [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusLambda 	"
 
 	self parse: 'a :=  lambda x:x'.
@@ -50858,7 +50858,7 @@ FASTPythonImporterTest >> testWalrusLambda [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusList 	"
 
 	self parse: 'a :=  [ remote ]'.
@@ -50891,7 +50891,7 @@ FASTPythonImporterTest >> testWalrusList [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusListSplat [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusListSplat 	"
 
 	self parse: 'a :=  *args'.
@@ -50924,7 +50924,7 @@ FASTPythonImporterTest >> testWalrusListSplat [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusList_comprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusList_comprehension 	"
 
 	self parse: 'a :=  [random for i in range(3)]'.
@@ -51002,7 +51002,7 @@ FASTPythonImporterTest >> testWalrusList_comprehension [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusNone [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusNone 	"
 
 	self parse: 'a :=  None'.
@@ -51028,7 +51028,7 @@ FASTPythonImporterTest >> testWalrusNone [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusNotOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusNotOperator 	"
 
 	self parse: 'a :=  not old'.
@@ -51062,7 +51062,7 @@ FASTPythonImporterTest >> testWalrusNotOperator [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusPatternList [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusPatternList 	"
 
 	self parse: 'a :=  a, b'.
@@ -51101,7 +51101,7 @@ FASTPythonImporterTest >> testWalrusPatternList [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusSet [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusSet 	"
 
 	self parse: 'a :=  { 1 }'.
@@ -51136,7 +51136,7 @@ FASTPythonImporterTest >> testWalrusSet [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusSetComprehension [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusSetComprehension 	"
 
 	self parse: 'a :=  {random for i in range(3)}'.
@@ -51214,7 +51214,7 @@ FASTPythonImporterTest >> testWalrusSetComprehension [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusString [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusString 	"
 
 	self parse: 'a :=  "Hello"'.
@@ -51241,7 +51241,7 @@ FASTPythonImporterTest >> testWalrusString [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusSubscript [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusSubscript 	"
 
 	self parse: 'a :=  attrs[2]'.
@@ -51285,7 +51285,7 @@ FASTPythonImporterTest >> testWalrusSubscript [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusTrue [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusTrue 	"
 
 	self parse: 'a :=  True'.
@@ -51312,7 +51312,7 @@ FASTPythonImporterTest >> testWalrusTrue [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusTuple [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusTuple 	"
 
 	self parse: 'a :=  (a,b)'.
@@ -51350,7 +51350,7 @@ FASTPythonImporterTest >> testWalrusTuple [
 { #category : 'tests - assignments' }
 FASTPythonImporterTest >> testWalrusUnaryOperator [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWalrusUnaryOperator 	"
 
 	self parse: 'a :=  -1'.
@@ -51388,7 +51388,7 @@ FASTPythonImporterTest >> testWalrusUnaryOperator [
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testWhile [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWhile 	"
 
 	self parse: 'while True:
@@ -51429,7 +51429,7 @@ FASTPythonImporterTest >> testWhile [
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testWhileStatementWithElseClause [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWhileStatementWithElseClause 	"
 
 	self parse: 'while True:
@@ -51529,7 +51529,7 @@ else: print("Hello")' withPlatformLineEndings.
 { #category : 'tests - with statements' }
 FASTPythonImporterTest >> testWithStatement [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWithStatement 	"
 
 	self parse: 'with open(): pass'.
@@ -51574,7 +51574,7 @@ FASTPythonImporterTest >> testWithStatement [
 { #category : 'tests - with statements' }
 FASTPythonImporterTest >> testWithStatementWithAsPattern [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWithStatementWithAsPattern 	"
 
 	self parse: 'with open() as f: pass'.
@@ -51636,7 +51636,7 @@ FASTPythonImporterTest >> testWithStatementWithAsPattern [
 { #category : 'tests - with statements' }
 FASTPythonImporterTest >> testWithStatementWithMultipleAsPattern [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testWithStatementWithMultipleAsPattern 	"
 
 	self parse: 'with expr1 as target1, expr2 as target2, expr3 as target3: pass'.
@@ -51729,7 +51729,7 @@ FASTPythonImporterTest >> testWithStatementWithMultipleAsPattern [
 { #category : 'tests' }
 FASTPythonImporterTest >> testYield [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testYield 	"
 
 	self parse: 'yield'.
@@ -51745,7 +51745,7 @@ FASTPythonImporterTest >> testYield [
 { #category : 'tests' }
 FASTPythonImporterTest >> testYieldFrom [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testYieldFrom 	"
 
 	self parse: 'yield from x'.
@@ -51769,7 +51769,7 @@ FASTPythonImporterTest >> testYieldFrom [
 { #category : 'tests' }
 FASTPythonImporterTest >> testYieldWithIdentifier [
 	<generated>
-	"Generated as regression test by FASTPyImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
 	Regenerate executing: 	self regenerateTest: #testYieldWithIdentifier 	"
 
 	self parse: 'yield x'.
