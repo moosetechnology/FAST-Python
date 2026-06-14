@@ -126,11 +126,9 @@ FASTPythonCFGVisitor >> visitFASTPyElifClause: anElifClause [
 { #category : 'visiting' }
 FASTPythonCFGVisitor >> visitFASTPyExceptClause: anExceptClause [
 
-	| try |
-	try := context top conditional.
-	self assert: try isTry.
+	self assert: self currentConditional isTry.
 
-	try addPattern: anExceptClause expression.
+	self currentConditional addPattern: anExceptClause expression.
 
 	self visitFASTTStatementBlock: anExceptClause
 ]
