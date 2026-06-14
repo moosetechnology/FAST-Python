@@ -43,9 +43,26 @@ Or
     FASTPythonImporter parseFile: myFile
 ```
 
-# Documentation
+## Documentation
 
 The best documentation to read about this project is located in Pharo Tree Sitter's repository here: [https://github.com/Evref-BL/Pharo-Tree-Sitter/blob/main/resources/doc/fast_importer.md](https://github.com/Evref-BL/Pharo-Tree-Sitter/blob/main/resources/doc/fast_importer.md) and here: [https://github.com/Evref-BL/Pharo-Tree-Sitter/blob/main/resources/doc/ts_utilities.md](https://github.com/Evref-BL/Pharo-Tree-Sitter/blob/main/resources/doc/ts_utilities.md)
+
+
+## Control flow graph
+
+It is possible to get a control flow graph of your python entities like this:
+
+```smalltalk
+FASTPythonCFGVisitor buildCFGOf: aModel allFunctionDefinitions first.
+
+"or"
+
+aModel allFunctionDefinitions first cfg
+```
+
+A CFG can be done on a function, method, class, module or lambda. 
+
+You can visualize it in the inspector as a visualization and you can also export your CFG as a mermaid visualization using `#asMermaidScript`
 
 ## Moose versions compatibility
 
