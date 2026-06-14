@@ -28,7 +28,7 @@ It is possible to build af ""full"" CFG via `#fullCfg`. A full CFG returns a dic
 "
 Class {
 	#name : 'FASTPythonCFGVisitor',
-	#superclass : 'FASTPythonVisitor',
+	#superclass : 'AnObsoleteFASTPythonVisitor',
 	#traits : 'FASTTCFGUtility',
 	#classTraits : 'FASTTCFGUtility classTrait',
 	#instVars : [
