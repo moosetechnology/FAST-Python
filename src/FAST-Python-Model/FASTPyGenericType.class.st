@@ -44,7 +44,6 @@ FASTPyGenericType class >> annotation [
 	<FMClass: #GenericType super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

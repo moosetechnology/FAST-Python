@@ -48,7 +48,6 @@ FASTPyExceptClause class >> annotation [
 	<FMClass: #ExceptClause super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

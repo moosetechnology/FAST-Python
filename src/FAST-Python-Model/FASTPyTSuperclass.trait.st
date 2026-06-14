@@ -28,7 +28,6 @@ FASTPyTSuperclass classSide >> annotation [
 	<FMClass: #TSuperclass super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

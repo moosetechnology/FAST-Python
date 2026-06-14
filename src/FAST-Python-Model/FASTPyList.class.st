@@ -28,5 +28,4 @@ FASTPyList class >> annotation [
 	<FMClass: #List super: #FASTPyCollectionInitializer>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

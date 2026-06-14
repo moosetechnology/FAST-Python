@@ -17,5 +17,4 @@ FASTPyContinueStatement class >> annotation [
 	<FMClass: #ContinueStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

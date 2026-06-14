@@ -44,7 +44,6 @@ FASTPyThenClause class >> annotation [
 	<FMClass: #ThenClause super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

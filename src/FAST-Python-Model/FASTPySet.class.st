@@ -24,5 +24,4 @@ FASTPySet class >> annotation [
 	<FMClass: #Set super: #FASTPyCollectionInitializer>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

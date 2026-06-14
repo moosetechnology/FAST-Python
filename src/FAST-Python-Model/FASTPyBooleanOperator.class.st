@@ -49,5 +49,4 @@ FASTPyBooleanOperator class >> annotation [
 	<FMClass: #BooleanOperator super: #FASTPyOperator>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

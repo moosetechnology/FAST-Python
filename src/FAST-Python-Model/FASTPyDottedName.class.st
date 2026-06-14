@@ -40,7 +40,6 @@ FASTPyDottedName class >> annotation [
 	<FMClass: #DottedName super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

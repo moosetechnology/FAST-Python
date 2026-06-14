@@ -43,5 +43,4 @@ FASTPyComplex class >> annotation [
 	<FMClass: #Complex super: #FASTPyLiteral>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

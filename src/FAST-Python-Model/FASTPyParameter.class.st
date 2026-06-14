@@ -46,7 +46,6 @@ FASTPyParameter class >> annotation [
 	<FMClass: #Parameter super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

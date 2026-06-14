@@ -31,5 +31,4 @@ FASTPySetComprehension class >> annotation [
 	<FMClass: #SetComprehension super: #FASTPyComprehension>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

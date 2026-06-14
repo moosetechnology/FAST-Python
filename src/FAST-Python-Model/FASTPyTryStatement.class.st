@@ -47,7 +47,6 @@ FASTPyTryStatement class >> annotation [
 	<FMClass: #TryStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

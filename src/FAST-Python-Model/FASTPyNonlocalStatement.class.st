@@ -27,7 +27,6 @@ FASTPyNonlocalStatement class >> annotation [
 	<FMClass: #NonlocalStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

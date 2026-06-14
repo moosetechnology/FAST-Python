@@ -39,7 +39,6 @@ FASTPySplat class >> annotation [
 	<FMClass: #Splat super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

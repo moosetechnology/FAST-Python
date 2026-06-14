@@ -44,7 +44,6 @@ FASTPyKeywordArgument class >> annotation [
 	<FMClass: #KeywordArgument super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

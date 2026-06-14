@@ -49,7 +49,6 @@ FASTPyFunctionDefinition class >> annotation [
 	<FMClass: #FunctionDefinition super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'testing' }

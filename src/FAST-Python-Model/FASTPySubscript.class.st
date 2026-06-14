@@ -46,7 +46,6 @@ FASTPySubscript class >> annotation [
 	<FMClass: #Subscript super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

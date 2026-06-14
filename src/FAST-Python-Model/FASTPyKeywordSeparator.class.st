@@ -36,5 +36,4 @@ FASTPyKeywordSeparator class >> annotation [
 	<FMClass: #KeywordSeparator super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

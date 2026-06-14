@@ -34,7 +34,6 @@ FASTPyFromModule class >> annotation [
 	<FMClass: #FromModule super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

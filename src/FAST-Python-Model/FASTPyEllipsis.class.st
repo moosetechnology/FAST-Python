@@ -12,5 +12,4 @@ FASTPyEllipsis class >> annotation [
 	<FMClass: #Ellipsis super: #FASTPyLiteral>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

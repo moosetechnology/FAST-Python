@@ -12,5 +12,4 @@ FASTPyImportStatement class >> annotation [
 	<FMClass: #ImportStatement super: #FASTPyImport>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

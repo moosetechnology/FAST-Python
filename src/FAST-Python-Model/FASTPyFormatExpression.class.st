@@ -12,5 +12,4 @@ FASTPyFormatExpression class >> annotation [
 	<FMClass: #FormatExpression super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

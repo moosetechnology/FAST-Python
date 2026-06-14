@@ -12,5 +12,4 @@ FASTPyEscapeSequence class >> annotation [
 	<FMClass: #EscapeSequence super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

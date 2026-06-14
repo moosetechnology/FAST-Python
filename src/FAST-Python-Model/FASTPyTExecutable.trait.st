@@ -28,7 +28,6 @@ FASTPyTExecutable classSide >> annotation [
 	<FMClass: #TExecutable super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

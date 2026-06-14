@@ -26,5 +26,4 @@ FASTPyNotOperator class >> annotation [
 	<FMClass: #NotOperator super: #FASTPyOperator>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

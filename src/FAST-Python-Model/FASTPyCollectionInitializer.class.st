@@ -39,7 +39,6 @@ FASTPyCollectionInitializer class >> annotation [
 	<FMClass: #CollectionInitializer super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

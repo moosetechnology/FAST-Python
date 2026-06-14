@@ -24,5 +24,4 @@ FASTPyNone class >> annotation [
 	<FMClass: #None super: #FASTPyLiteral>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

@@ -28,7 +28,6 @@ FASTPyTWithStatementItem classSide >> annotation [
 	<FMClass: #TWithStatementItem super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

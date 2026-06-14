@@ -12,5 +12,4 @@ FASTPyParenthesizedListSplat class >> annotation [
 	<FMClass: #ParenthesizedListSplat super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

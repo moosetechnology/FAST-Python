@@ -31,5 +31,4 @@ FASTPyDictionaryComprehension class >> annotation [
 	<FMClass: #DictionaryComprehension super: #FASTPyComprehension>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

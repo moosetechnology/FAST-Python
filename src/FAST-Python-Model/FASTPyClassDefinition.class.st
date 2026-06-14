@@ -52,7 +52,6 @@ FASTPyClassDefinition class >> annotation [
 	<FMClass: #ClassDefinition super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

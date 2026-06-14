@@ -51,5 +51,4 @@ FASTPyBinaryOperator class >> annotation [
 	<FMClass: #BinaryOperator super: #FASTPyOperator>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

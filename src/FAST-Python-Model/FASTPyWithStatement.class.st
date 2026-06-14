@@ -44,7 +44,6 @@ FASTPyWithStatement class >> annotation [
 	<FMClass: #WithStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

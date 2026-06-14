@@ -27,7 +27,6 @@ FASTPySplatParameter class >> annotation [
 	<FMClass: #SplatParameter super: #FASTPyParameter>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

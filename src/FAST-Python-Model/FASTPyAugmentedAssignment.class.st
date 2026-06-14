@@ -26,7 +26,6 @@ FASTPyAugmentedAssignment class >> annotation [
 	<FMClass: #AugmentedAssignment super: #FASTPyAssignment>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

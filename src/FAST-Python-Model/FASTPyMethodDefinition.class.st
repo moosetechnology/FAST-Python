@@ -45,5 +45,4 @@ FASTPyMethodDefinition class >> annotation [
 	<FMClass: #MethodDefinition super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

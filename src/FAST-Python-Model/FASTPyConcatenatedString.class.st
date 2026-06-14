@@ -27,7 +27,6 @@ FASTPyConcatenatedString class >> annotation [
 	<FMClass: #ConcatenatedString super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

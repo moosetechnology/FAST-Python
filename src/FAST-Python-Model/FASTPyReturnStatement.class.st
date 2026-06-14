@@ -39,5 +39,4 @@ FASTPyReturnStatement class >> annotation [
 	<FMClass: #ReturnStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

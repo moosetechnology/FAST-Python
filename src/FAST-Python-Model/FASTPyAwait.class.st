@@ -29,7 +29,6 @@ FASTPyAwait class >> annotation [
 	<FMClass: #Await super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

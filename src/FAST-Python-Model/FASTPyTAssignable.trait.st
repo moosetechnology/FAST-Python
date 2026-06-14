@@ -28,7 +28,6 @@ FASTPyTAssignable classSide >> annotation [
 	<FMClass: #TAssignable super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

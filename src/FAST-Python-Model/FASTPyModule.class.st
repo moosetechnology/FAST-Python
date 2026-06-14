@@ -46,5 +46,4 @@ FASTPyModule class >> annotation [
 	<FMClass: #Module super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

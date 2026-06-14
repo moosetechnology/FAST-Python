@@ -44,7 +44,6 @@ FASTPyFinallyClause class >> annotation [
 	<FMClass: #FinallyClause super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

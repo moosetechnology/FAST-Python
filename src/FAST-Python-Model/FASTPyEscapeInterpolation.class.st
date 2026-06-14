@@ -12,5 +12,4 @@ FASTPyEscapeInterpolation class >> annotation [
 	<FMClass: #EscapeInterpolation super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

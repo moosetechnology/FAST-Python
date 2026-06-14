@@ -46,7 +46,6 @@ FASTPyKeywordPattern class >> annotation [
 	<FMClass: #KeywordPattern super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

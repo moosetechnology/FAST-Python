@@ -36,7 +36,6 @@ FASTPyLambda class >> annotation [
 	<FMClass: #Lambda super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

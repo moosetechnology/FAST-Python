@@ -27,7 +27,6 @@ FASTPyGlobalStatement class >> annotation [
 	<FMClass: #GlobalStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

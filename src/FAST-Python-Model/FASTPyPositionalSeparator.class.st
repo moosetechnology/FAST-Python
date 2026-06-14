@@ -36,5 +36,4 @@ FASTPyPositionalSeparator class >> annotation [
 	<FMClass: #PositionalSeparator super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

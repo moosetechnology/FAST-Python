@@ -32,5 +32,4 @@ FASTPyPassStatement class >> annotation [
 	<FMClass: #PassStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

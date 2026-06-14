@@ -29,7 +29,6 @@ FASTPyForInClause class >> annotation [
 	<FMClass: #ForInClause super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

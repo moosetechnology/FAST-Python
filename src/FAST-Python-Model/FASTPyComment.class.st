@@ -32,5 +32,4 @@ FASTPyComment class >> annotation [
 	<FMClass: #Comment super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

@@ -45,7 +45,6 @@ FASTPyTDefinition classSide >> annotation [
 	<FMClass: #TDefinition super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

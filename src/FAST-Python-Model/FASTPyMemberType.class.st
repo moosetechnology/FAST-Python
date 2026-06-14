@@ -12,5 +12,4 @@ FASTPyMemberType class >> annotation [
 	<FMClass: #MemberType super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

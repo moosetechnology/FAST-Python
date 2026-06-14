@@ -28,7 +28,6 @@ FASTPyTDeletable classSide >> annotation [
 	<FMClass: #TDeletable super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

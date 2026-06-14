@@ -66,7 +66,6 @@ FASTPyCall class >> annotation [
 	<FMClass: #Call super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

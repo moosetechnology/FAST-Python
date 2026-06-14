@@ -12,5 +12,4 @@ FASTPyLambdaParameters class >> annotation [
 	<FMClass: #LambdaParameters super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
