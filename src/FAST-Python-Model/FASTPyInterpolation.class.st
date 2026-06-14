@@ -42,7 +42,6 @@ FASTPyInterpolation class >> annotation [
 	<FMClass: #Interpolation super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

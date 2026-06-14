@@ -31,5 +31,4 @@ FASTPyGeneratorExpression class >> annotation [
 	<FMClass: #GeneratorExpression super: #FASTPyComprehension>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

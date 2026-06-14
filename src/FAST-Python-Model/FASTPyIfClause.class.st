@@ -27,7 +27,6 @@ FASTPyIfClause class >> annotation [
 	<FMClass: #IfClause super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

@@ -34,7 +34,6 @@ FASTPyComparisonOperator class >> annotation [
 	<FMClass: #ComparisonOperator super: #FASTPyOperator>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

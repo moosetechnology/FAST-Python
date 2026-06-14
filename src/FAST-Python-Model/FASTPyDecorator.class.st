@@ -35,7 +35,6 @@ FASTPyDecorator class >> annotation [
 	<FMClass: #Decorator super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

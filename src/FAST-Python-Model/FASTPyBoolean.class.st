@@ -41,5 +41,4 @@ FASTPyBoolean class >> annotation [
 	<FMClass: #Boolean super: #FASTPyLiteral>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

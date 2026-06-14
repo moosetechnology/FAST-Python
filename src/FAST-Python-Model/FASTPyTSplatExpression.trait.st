@@ -28,7 +28,6 @@ FASTPyTSplatExpression classSide >> annotation [
 	<FMClass: #TSplatExpression super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

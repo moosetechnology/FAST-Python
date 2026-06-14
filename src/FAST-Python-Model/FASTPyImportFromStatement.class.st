@@ -27,7 +27,6 @@ FASTPyImportFromStatement class >> annotation [
 	<FMClass: #ImportFromStatement super: #FASTPyImport>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

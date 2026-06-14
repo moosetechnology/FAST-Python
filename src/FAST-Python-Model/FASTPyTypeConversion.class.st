@@ -12,5 +12,4 @@ FASTPyTypeConversion class >> annotation [
 	<FMClass: #TypeConversion super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

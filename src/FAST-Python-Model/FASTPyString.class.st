@@ -53,7 +53,6 @@ FASTPyString class >> annotation [
 	<FMClass: #String super: #FASTPyLiteral>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

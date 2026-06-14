@@ -35,7 +35,6 @@ FASTPyChevron class >> annotation [
 	<FMClass: #Chevron super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

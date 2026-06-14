@@ -40,7 +40,6 @@ FASTPyComprehension class >> annotation [
 	<FMClass: #Comprehension super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

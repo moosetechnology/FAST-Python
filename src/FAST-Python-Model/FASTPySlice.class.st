@@ -34,7 +34,6 @@ FASTPySlice class >> annotation [
 	<FMClass: #Slice super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

@@ -26,7 +26,6 @@ FASTPyTUnaryOperator classSide >> annotation [
 	<FMClass: #TUnaryOperator super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

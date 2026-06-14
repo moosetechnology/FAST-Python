@@ -35,5 +35,4 @@ FASTPySplatType class >> annotation [
 	<FMClass: #SplatType super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

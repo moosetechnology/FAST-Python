@@ -41,7 +41,6 @@ FASTPyConditionalExpression class >> annotation [
 	<FMClass: #ConditionalExpression super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

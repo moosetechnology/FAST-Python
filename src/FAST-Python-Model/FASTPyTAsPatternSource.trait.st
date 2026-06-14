@@ -28,7 +28,6 @@ FASTPyTAsPatternSource classSide >> annotation [
 	<FMClass: #TAsPatternSource super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

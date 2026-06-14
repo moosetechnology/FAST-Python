@@ -51,7 +51,6 @@ FASTPyType class >> annotation [
 	<FMClass: #Type super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

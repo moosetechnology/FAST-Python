@@ -31,5 +31,4 @@ FASTPyListComprehension class >> annotation [
 	<FMClass: #ListComprehension super: #FASTPyComprehension>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

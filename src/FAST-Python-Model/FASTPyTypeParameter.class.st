@@ -26,5 +26,4 @@ FASTPyTypeParameter class >> annotation [
 	<FMClass: #TypeParameter super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

@@ -28,7 +28,6 @@ FASTPyTDecoratorExpression classSide >> annotation [
 	<FMClass: #TDecoratorExpression super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

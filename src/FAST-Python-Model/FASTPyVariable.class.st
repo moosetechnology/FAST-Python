@@ -43,7 +43,6 @@ FASTPyVariable class >> annotation [
 	<FMClass: #Variable super: #FASTPyIdentifier>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

@@ -28,7 +28,6 @@ FASTPyTSliceIndex classSide >> annotation [
 	<FMClass: #TSliceIndex super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

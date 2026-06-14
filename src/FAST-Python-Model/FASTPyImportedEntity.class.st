@@ -36,7 +36,6 @@ FASTPyImportedEntity class >> annotation [
 	<FMClass: #ImportedEntity super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

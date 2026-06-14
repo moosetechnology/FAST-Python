@@ -47,7 +47,6 @@ FASTPyForStatement class >> annotation [
 	<FMClass: #ForStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

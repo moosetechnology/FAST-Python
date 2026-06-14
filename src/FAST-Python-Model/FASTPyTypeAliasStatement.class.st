@@ -29,7 +29,6 @@ FASTPyTypeAliasStatement class >> annotation [
 	<FMClass: #TypeAliasStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

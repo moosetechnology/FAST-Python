@@ -16,7 +16,8 @@ FASTPyModel class >> allSubmetamodelsPackagesNames [
 
 { #category : 'meta' }
 FASTPyModel class >> annotation [
-	<FMClass: #FASTPyModel super: #MooseModel>
+
+	<FMClass: #Model super: #MooseModel>
 	<package: #'FAST-Python-Model'>
 	<generated>
 ]

@@ -29,5 +29,4 @@ FASTPyTuple class >> annotation [
 	<FMClass: #Tuple super: #FASTPyCollectionInitializer>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

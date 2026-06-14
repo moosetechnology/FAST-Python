@@ -26,7 +26,6 @@ FASTPyTWithElseClause classSide >> annotation [
 	<FMClass: #TWithElseClause super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

@@ -41,5 +41,4 @@ FASTPyFloat class >> annotation [
 	<FMClass: #Float super: #FASTPyLiteral>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

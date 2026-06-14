@@ -37,5 +37,4 @@ FASTPyIdentifier class >> annotation [
 	<FMClass: #Identifier super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

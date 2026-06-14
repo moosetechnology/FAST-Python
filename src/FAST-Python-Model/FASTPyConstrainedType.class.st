@@ -38,7 +38,6 @@ FASTPyConstrainedType class >> annotation [
 	<FMClass: #ConstrainedType super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

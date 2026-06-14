@@ -28,7 +28,6 @@ FASTPyTSplatParameterTarget classSide >> annotation [
 	<FMClass: #TSplatParameterTarget super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

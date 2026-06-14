@@ -36,5 +36,4 @@ FASTPyTReturnReferenceable classSide >> annotation [
 	<FMClass: #TReturnReferenceable super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

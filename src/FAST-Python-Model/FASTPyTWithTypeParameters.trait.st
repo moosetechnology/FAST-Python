@@ -28,7 +28,6 @@ FASTPyTWithTypeParameters classSide >> annotation [
 	<FMClass: #TWithTypeParameters super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

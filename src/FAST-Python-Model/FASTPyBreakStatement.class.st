@@ -17,5 +17,4 @@ FASTPyBreakStatement class >> annotation [
 	<FMClass: #BreakStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

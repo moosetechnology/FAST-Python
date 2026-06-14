@@ -51,7 +51,6 @@ FASTPyCaseClause class >> annotation [
 	<FMClass: #CaseClause super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

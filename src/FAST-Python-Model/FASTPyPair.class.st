@@ -29,7 +29,6 @@ FASTPyPair class >> annotation [
 	<FMClass: #Pair super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

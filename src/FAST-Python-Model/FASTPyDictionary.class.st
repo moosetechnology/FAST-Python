@@ -17,5 +17,4 @@ FASTPyDictionary class >> annotation [
 	<FMClass: #Dictionary super: #FASTPyCollectionInitializer>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

@@ -35,7 +35,6 @@ FASTPyUnaryOperator class >> annotation [
 	<FMClass: #UnaryOperator super: #FASTPyOperator>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

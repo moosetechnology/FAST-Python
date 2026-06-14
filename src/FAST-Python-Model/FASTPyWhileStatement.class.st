@@ -42,5 +42,4 @@ FASTPyWhileStatement class >> annotation [
 	<FMClass: #WhileStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

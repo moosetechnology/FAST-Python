@@ -27,7 +27,6 @@ FASTPyRaiseStatement class >> annotation [
 	<FMClass: #RaiseStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

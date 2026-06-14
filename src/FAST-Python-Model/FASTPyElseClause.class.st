@@ -44,7 +44,6 @@ FASTPyElseClause class >> annotation [
 	<FMClass: #ElseClause super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

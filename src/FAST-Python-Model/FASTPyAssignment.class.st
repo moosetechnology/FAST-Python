@@ -40,7 +40,6 @@ FASTPyAssignment class >> annotation [
 	<FMClass: #Assignment super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'testing' }

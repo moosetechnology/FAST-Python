@@ -28,7 +28,6 @@ FASTPyTClassPatternElement classSide >> annotation [
 	<FMClass: #TClassPatternElement super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

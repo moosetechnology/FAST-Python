@@ -34,5 +34,4 @@ FASTPyStatement class >> annotation [
 	<FMClass: #Statement super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

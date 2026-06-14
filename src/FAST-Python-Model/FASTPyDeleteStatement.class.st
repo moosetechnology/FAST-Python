@@ -29,7 +29,6 @@ FASTPyDeleteStatement class >> annotation [
 	<FMClass: #DeleteStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

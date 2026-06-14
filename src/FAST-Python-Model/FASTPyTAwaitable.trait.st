@@ -28,7 +28,6 @@ FASTPyTAwaitable classSide >> annotation [
 	<FMClass: #TAwaitable super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

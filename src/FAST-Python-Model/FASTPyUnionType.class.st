@@ -34,7 +34,6 @@ FASTPyUnionType class >> annotation [
 	<FMClass: #UnionType super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

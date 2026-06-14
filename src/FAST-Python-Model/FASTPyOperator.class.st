@@ -24,5 +24,4 @@ FASTPyOperator class >> annotation [
 	<FMClass: #Operator super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

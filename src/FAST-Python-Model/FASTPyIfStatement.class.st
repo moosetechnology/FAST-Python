@@ -46,7 +46,6 @@ FASTPyIfStatement class >> annotation [
 	<FMClass: #IfStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

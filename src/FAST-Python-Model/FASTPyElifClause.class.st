@@ -45,7 +45,6 @@ FASTPyElifClause class >> annotation [
 	<FMClass: #ElifClause super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'accessing' }

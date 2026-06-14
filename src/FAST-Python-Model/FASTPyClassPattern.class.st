@@ -38,7 +38,6 @@ FASTPyClassPattern class >> annotation [
 	<FMClass: #ClassPattern super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

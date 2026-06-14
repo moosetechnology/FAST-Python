@@ -41,5 +41,4 @@ FASTPyInteger class >> annotation [
 	<FMClass: #Integer super: #FASTPyLiteral>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]

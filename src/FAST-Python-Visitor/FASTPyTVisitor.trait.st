@@ -1,11 +1,11 @@
 "
 I am a visitor for FASTPyEntities. 
 I am generated with the metamodel.
+
+
 "
 Trait {
 	#name : 'FASTPyTVisitor',
-	#traits : 'FASTTVisitor + FamixTVisitor',
-	#classTraits : 'FASTTVisitor classTrait + FamixTVisitor classTrait',
 	#category : 'FAST-Python-Visitor-Visitor',
 	#package : 'FAST-Python-Visitor',
 	#tag : 'Visitor'
@@ -15,1178 +15,1318 @@ Trait {
 FASTPyTVisitor classSide >> annotation [
 
 	<FMClass: #TVisitor super: #Object>
-	<package: #'FAST-Python-Model'>
+	<package: #'FAST-Python-Visitor'>
 	<generated>
-	^ self
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyAsPattern: aFASTPyAsPattern [
+FASTPyTVisitor >> visitCollection: aCollection [
 
 	<generated>
-	self visitFASTPyTWithStatementItem: aFASTPyAsPattern.
+	^ aCollection collect: [ :each | each accept: self ]
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitEntity: aFamixEntity [
+
+	<generated>
+	^ aFamixEntity ifNotNil: [ aFamixEntity accept: self ]
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyAsPattern: anAsPattern [
+
+	<generated>
+	self visitFASTPyTWithStatementItem: anAsPattern.
 
-	self visitEntity: aFASTPyAsPattern target.
-	self visitEntity: aFASTPyAsPattern source
+	self visitEntity: anAsPattern target.
+	self visitEntity: anAsPattern source
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyAssertStatement: aFASTPyAssertStatement [
+FASTPyTVisitor >> visitFASTPyAssertStatement: anAssertStatement [
 
 	<generated>
-	self visitFASTPyStatement: aFASTPyAssertStatement.
+	self visitFASTPyStatement: anAssertStatement.
 
-	self visitCollection: aFASTPyAssertStatement expressions
+	self visitCollection: anAssertStatement expressions
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyAssignment: aFASTPyAssignment [
+FASTPyTVisitor >> visitFASTPyAssignment: anAssignment [
 
 	<generated>
-	self visitFASTPyTAssignable: aFASTPyAssignment.
-	self visitFASTPyExpression: aFASTPyAssignment.
+	self visitFASTPyTAssignable: anAssignment.
+	self visitFASTPyExpression: anAssignment.
 
-	self visitEntity: aFASTPyAssignment left.
-	self visitEntity: aFASTPyAssignment right.
-	self visitEntity: aFASTPyAssignment type
+	self visitEntity: anAssignment left.
+	self visitEntity: anAssignment right.
+	self visitEntity: anAssignment type
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyAttributeAccess: aFASTPyAttributeAccess [
+FASTPyTVisitor >> visitFASTPyAttributeAccess: anAttributeAccess [
 
 	<generated>
-	self visitFASTPyTAsPatternTarget: aFASTPyAttributeAccess.
-	self visitFASTPyTReturnReferenceable: aFASTPyAttributeAccess.
-	self visitFASTPyTSplatParameterTarget: aFASTPyAttributeAccess.
-	self visitFASTTNamedEntity: aFASTPyAttributeAccess.
-	self visitFASTPyExpression: aFASTPyAttributeAccess.
+	self visitFASTPyTAsPatternTarget: anAttributeAccess.
+	self visitFASTPyTReturnReferenceable: anAttributeAccess.
+	self visitFASTPyTSplatParameterTarget: anAttributeAccess.
+	self visitFASTTNamedEntity: anAttributeAccess.
+	self visitFASTPyExpression: anAttributeAccess.
 
-	self visitEntity: aFASTPyAttributeAccess value
+	self visitEntity: anAttributeAccess value
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyAugmentedAssignment: aFASTPyAugmentedAssignment [
+FASTPyTVisitor >> visitFASTPyAugmentedAssignment: anAugmentedAssignment [
 
 	<generated>
-	self visitFASTPyAssignment: aFASTPyAugmentedAssignment
+	self visitFASTPyAssignment: anAugmentedAssignment
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyAwait: aFASTPyAwait [
+FASTPyTVisitor >> visitFASTPyAwait: anAwait [
 
 	<generated>
-	self visitFASTPyExpression: aFASTPyAwait.
+	self visitFASTPyExpression: anAwait.
+
+	self visitEntity: anAwait expression
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyBinaryOperator: aBinaryOperator [
 
-	self visitEntity: aFASTPyAwait expression
+	<generated>
+	self visitFASTPyTPattern: aBinaryOperator.
+	self visitFASTPyTSplatExpression: aBinaryOperator.
+	self visitFASTTBinaryExpression: aBinaryOperator.
+	self visitFASTPyOperator: aBinaryOperator
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyBinaryOperator: aFASTPyBinaryOperator [
+FASTPyTVisitor >> visitFASTPyBoolean: aBoolean [
 
 	<generated>
-	self visitFASTPyTPattern: aFASTPyBinaryOperator.
-	self visitFASTPyTSplatExpression: aFASTPyBinaryOperator.
-	self visitFASTTBinaryExpression: aFASTPyBinaryOperator.
-	self visitFASTPyOperator: aFASTPyBinaryOperator
+	self visitFASTTBooleanLiteral: aBoolean.
+	self visitFASTPyLiteral: aBoolean
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyBoolean: aFASTPyBoolean [
+FASTPyTVisitor >> visitFASTPyBooleanOperator: aBooleanOperator [
 
 	<generated>
-	self visitFASTTBooleanLiteral: aFASTPyBoolean.
-	self visitFASTPyLiteral: aFASTPyBoolean
+	self visitFASTPyTRaised: aBooleanOperator.
+	self visitFASTPyTSplatExpression: aBooleanOperator.
+	self visitFASTTBinaryExpression: aBooleanOperator.
+	self visitFASTPyOperator: aBooleanOperator
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyBooleanOperator: aFASTPyBooleanOperator [
+FASTPyTVisitor >> visitFASTPyBreakStatement: aBreakStatement [
 
 	<generated>
-	self visitFASTPyTRaised: aFASTPyBooleanOperator.
-	self visitFASTPyTSplatExpression: aFASTPyBooleanOperator.
-	self visitFASTTBinaryExpression: aFASTPyBooleanOperator.
-	self visitFASTPyOperator: aFASTPyBooleanOperator
+	self visitFASTPyStatement: aBreakStatement
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyBreakStatement: aFASTPyBreakStatement [
+FASTPyTVisitor >> visitFASTPyCall: aCall [
 
 	<generated>
-	self visitFASTPyStatement: aFASTPyBreakStatement
+	self visitFASTPyTReturnReferenceable: aCall.
+	self visitFASTPyTWithStatementItem: aCall.
+	self visitFASTTInvocation: aCall.
+	self visitFASTPyExpression: aCall.
+
+	self visitEntity: aCall callee
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyCall: aFASTPyCall [
+FASTPyTVisitor >> visitFASTPyCaseClause: aCaseClause [
 
 	<generated>
-	self visitFASTPyTReturnReferenceable: aFASTPyCall.
-	self visitFASTPyTWithStatementItem: aFASTPyCall.
-	self visitFASTTInvocation: aFASTPyCall.
-	self visitFASTPyExpression: aFASTPyCall.
+	self visitFASTTStatementBlock: aCaseClause.
+	self visitFASTTWithCondition: aCaseClause.
+
+	self visitEntity: aCaseClause pattern
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyChevron: aChevron [
 
-	self visitEntity: aFASTPyCall callee
+	<generated>
+	self visitEntity: aChevron expression
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyCaseClause: aFASTPyCaseClause [
+FASTPyTVisitor >> visitFASTPyClassDefinition: aClassDefinition [
 
 	<generated>
-	self visitFASTTStatementBlock: aFASTPyCaseClause.
-	self visitFASTTWithCondition: aFASTPyCaseClause.
+	self visitFASTPyTDefinition: aClassDefinition.
+	self visitFASTPyTWithTypeParameters: aClassDefinition.
+	self visitFASTPyStatement: aClassDefinition.
 
-	self visitEntity: aFASTPyCaseClause pattern.
-	self visitEntity: aFASTPyCaseClause parentMatchStatement
+	self visitCollection: aClassDefinition superclasses.
+	self visitCollection: aClassDefinition keywords
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyChevron: aFASTPyChevron [
+FASTPyTVisitor >> visitFASTPyClassPattern: aClassPattern [
 
 	<generated>
-	self visitEntity: aFASTPyChevron expression.
-	self visitEntity: aFASTPyChevron parentPrintStatement
+	self visitFASTPyTPattern: aClassPattern.
+
+	self visitCollection: aClassPattern elements
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyClassDefinition: aFASTPyClassDefinition [
+FASTPyTVisitor >> visitFASTPyCollectionInitializer: aCollectionInitializer [
 
 	<generated>
-	self visitFASTPyTDefinition: aFASTPyClassDefinition.
-	self visitFASTPyTWithTypeParameters: aFASTPyClassDefinition.
-	self visitFASTPyStatement: aFASTPyClassDefinition.
+	self visitFASTPyTPattern: aCollectionInitializer.
+	self visitFASTPyTSplatExpression: aCollectionInitializer.
+	self visitFASTPyExpression: aCollectionInitializer.
+
+	self visitCollection: aCollectionInitializer initializers
+]
 
-	self visitCollection: aFASTPyClassDefinition superclasses.
-	self visitCollection: aFASTPyClassDefinition keywords
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyComment: aComment [
+
+	<generated>
+	self visitFASTTComment: aComment
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyClassPattern: aFASTPyClassPattern [
+FASTPyTVisitor >> visitFASTPyComparisonOperator: aComparisonOperator [
 
 	<generated>
-	self visitFASTPyTPattern: aFASTPyClassPattern.
+	self visitFASTPyOperator: aComparisonOperator.
+
+	self visitCollection: aComparisonOperator operands
+]
 
-	self visitCollection: aFASTPyClassPattern elements
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyComplex: aComplex [
+
+	<generated>
+	self visitFASTTNumericalLiteral: aComplex.
+	self visitFASTPyLiteral: aComplex
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyCollectionInitializer: aFASTPyCollectionInitializer [
+FASTPyTVisitor >> visitFASTPyComprehension: aComprehension [
 
 	<generated>
-	self visitFASTPyTPattern: aFASTPyCollectionInitializer.
-	self visitFASTPyTSplatExpression: aFASTPyCollectionInitializer.
-	self visitFASTPyExpression: aFASTPyCollectionInitializer.
+	self visitFASTPyTSplatExpression: aComprehension.
+	self visitFASTPyExpression: aComprehension.
 
-	self visitCollection: aFASTPyCollectionInitializer initializers
+	self visitEntity: aComprehension body.
+	self visitCollection: aComprehension forClauses.
+	self visitCollection: aComprehension conditions
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyComment: aFASTPyComment [
+FASTPyTVisitor >> visitFASTPyConcatenatedString: aConcatenatedString [
 
 	<generated>
-	self visitFASTTComment: aFASTPyComment
+	self visitFASTPyExpression: aConcatenatedString.
+
+	self visitCollection: aConcatenatedString strings
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyComparisonOperator: aFASTPyComparisonOperator [
+FASTPyTVisitor >> visitFASTPyConditionalExpression: aConditionalExpression [
 
 	<generated>
-	self visitFASTPyOperator: aFASTPyComparisonOperator.
+	self visitFASTPyTCallable: aConditionalExpression.
+	self visitFASTPyTExecutable: aConditionalExpression.
+	self visitFASTPyTSuperclass: aConditionalExpression.
+	self visitFASTTWithCondition: aConditionalExpression.
+	self visitFASTPyExpression: aConditionalExpression.
 
-	self visitCollection: aFASTPyComparisonOperator operands
+	self visitEntity: aConditionalExpression thenExpression.
+	self visitEntity: aConditionalExpression elseExpression
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyComplex: aFASTPyComplex [
+FASTPyTVisitor >> visitFASTPyConstrainedType: aConstrainedType [
 
 	<generated>
-	self visitFASTTNumericalLiteral: aFASTPyComplex.
-	self visitFASTPyLiteral: aFASTPyComplex
+	self visitFASTPyTTypeContent: aConstrainedType.
+
+	self visitEntity: aConstrainedType type.
+	self visitEntity: aConstrainedType bound
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyComprehension: aFASTPyComprehension [
+FASTPyTVisitor >> visitFASTPyContinueStatement: aContinueStatement [
 
 	<generated>
-	self visitFASTPyTSplatExpression: aFASTPyComprehension.
-	self visitFASTPyExpression: aFASTPyComprehension.
+	self visitFASTPyStatement: aContinueStatement
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyDecorator: aDecorator [
 
-	self visitEntity: aFASTPyComprehension body.
-	self visitCollection: aFASTPyComprehension forClauses.
-	self visitCollection: aFASTPyComprehension conditions
+	<generated>
+	self visitEntity: aDecorator expression
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyConcatenatedString: aFASTPyConcatenatedString [
+FASTPyTVisitor >> visitFASTPyDeleteStatement: aDeleteStatement [
 
 	<generated>
-	self visitFASTPyExpression: aFASTPyConcatenatedString.
+	self visitFASTPyStatement: aDeleteStatement.
 
-	self visitCollection: aFASTPyConcatenatedString strings
+	self visitEntity: aDeleteStatement expression
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyConditionalExpression: aFASTPyConditionalExpression [
+FASTPyTVisitor >> visitFASTPyDictionary: aDictionary [
 
 	<generated>
-	self visitFASTPyTCallable: aFASTPyConditionalExpression.
-	self visitFASTPyTExecutable: aFASTPyConditionalExpression.
-	self visitFASTPyTSuperclass: aFASTPyConditionalExpression.
-	self visitFASTTWithCondition: aFASTPyConditionalExpression.
-	self visitFASTPyExpression: aFASTPyConditionalExpression.
+	self visitFASTPyCollectionInitializer: aDictionary
+]
 
-	self visitEntity: aFASTPyConditionalExpression thenExpression.
-	self visitEntity: aFASTPyConditionalExpression elseExpression
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyDictionaryComprehension: aDictionaryComprehension [
+
+	<generated>
+	self visitFASTPyComprehension: aDictionaryComprehension
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyConstrainedType: aFASTPyConstrainedType [
+FASTPyTVisitor >> visitFASTPyDottedName: aDottedName [
 
 	<generated>
-	self visitFASTPyTTypeContent: aFASTPyConstrainedType.
+	self visitFASTPyTClassPatternElement: aDottedName.
+	self visitFASTPyTPattern: aDottedName.
+	self visitFASTPyExpression: aDottedName
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyERROR: anERROR [
 
-	self visitEntity: aFASTPyConstrainedType type.
-	self visitEntity: aFASTPyConstrainedType bound
+	<generated>
+	self visitFASTPyExpression: anERROR
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyContinueStatement: aFASTPyContinueStatement [
+FASTPyTVisitor >> visitFASTPyElifClause: anElifClause [
 
 	<generated>
-	self visitFASTPyStatement: aFASTPyContinueStatement
+	self visitFASTTConditionalStatement: anElifClause.
+	self visitFASTTStatementBlock: anElifClause.
+
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyDecorator: aFASTPyDecorator [
+FASTPyTVisitor >> visitFASTPyEllipsis: anEllipsis [
 
 	<generated>
-	self visitEntity: aFASTPyDecorator expression.
-	self visitEntity: aFASTPyDecorator parentDefinition
+	self visitFASTPyLiteral: anEllipsis
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyDeleteStatement: aFASTPyDeleteStatement [
+FASTPyTVisitor >> visitFASTPyElseClause: anElseClause [
 
 	<generated>
-	self visitFASTPyStatement: aFASTPyDeleteStatement.
+	self visitFASTTStatementBlock: anElseClause.
+
 
-	self visitEntity: aFASTPyDeleteStatement expression
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyDictionary: aFASTPyDictionary [
+FASTPyTVisitor >> visitFASTPyEntity: anEntity [
 
 	<generated>
-	self visitFASTPyCollectionInitializer: aFASTPyDictionary
+	self visitFASTTEntity: anEntity.
+	self visitFASTTWithComments: anEntity
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyDictionaryComprehension: aFASTPyDictionaryComprehension [
+FASTPyTVisitor >> visitFASTPyEscapeInterpolation: anEscapeInterpolation [
 
 	<generated>
-	self visitFASTPyComprehension: aFASTPyDictionaryComprehension
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyDottedName: aFASTPyDottedName [
+FASTPyTVisitor >> visitFASTPyEscapeSequence: anEscapeSequence [
 
 	<generated>
-	self visitFASTPyTClassPatternElement: aFASTPyDottedName.
-	self visitFASTPyTPattern: aFASTPyDottedName.
-	self visitFASTPyExpression: aFASTPyDottedName
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyERROR: aFASTPyERROR [
+FASTPyTVisitor >> visitFASTPyExceptClause: anExceptClause [
 
 	<generated>
-	self visitFASTPyExpression: aFASTPyERROR
+	self visitFASTTStatementBlock: anExceptClause.
+
+	self visitCollection: anExceptClause expressions
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyElifClause: aFASTPyElifClause [
+FASTPyTVisitor >> visitFASTPyExecStatement: anExecStatement [
 
 	<generated>
-	self visitFASTTConditionalStatement: aFASTPyElifClause.
-	self visitFASTTStatementBlock: aFASTPyElifClause.
+	self visitFASTPyStatement: anExecStatement.
 
-	self visitEntity: aFASTPyElifClause parentIfStatement
+	self visitEntity: anExecStatement code.
+	self visitCollection: anExecStatement scopes
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyEllipsis: aFASTPyEllipsis [
+FASTPyTVisitor >> visitFASTPyExpression: anExpression [
 
 	<generated>
-	self visitFASTPyLiteral: aFASTPyEllipsis
+	self visitFASTPyTSliceIndex: anExpression.
+	self visitFASTPyTTypeContent: anExpression.
+	self visitFASTTExpression: anExpression.
+	self visitFASTPyStatement: anExpression.
+
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyElseClause: aFASTPyElseClause [
+FASTPyTVisitor >> visitFASTPyFinallyClause: aFinallyClause [
 
 	<generated>
-	self visitFASTTStatementBlock: aFASTPyElseClause.
+	self visitFASTTStatementBlock: aFinallyClause.
+
+
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyFloat: aFloat [
 
-	self visitEntity: aFASTPyElseClause parentIfStatement
+	<generated>
+	self visitFASTTNumericalLiteral: aFloat.
+	self visitFASTPyLiteral: aFloat
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyEntity: aFASTPyEntity [
+FASTPyTVisitor >> visitFASTPyForInClause: aForInClause [
 
 	<generated>
-	self visitFASTTEntity: aFASTPyEntity.
-	self visitFASTTWithComments: aFASTPyEntity
+	self visitFASTPyExpression: aForInClause.
+
+	self visitEntity: aForInClause left.
+	self visitEntity: aForInClause right
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyEscapeInterpolation: aFASTPyEscapeInterpolation [
+FASTPyTVisitor >> visitFASTPyForStatement: aForStatement [
 
 	<generated>
+	self visitFASTPyTWithElseClause: aForStatement.
+	self visitFASTTStatementBlock: aForStatement.
+	self visitFASTPyStatement: aForStatement.
 
+	self visitEntity: aForStatement right.
+	self visitEntity: aForStatement left
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyEscapeSequence: aFASTPyEscapeSequence [
+FASTPyTVisitor >> visitFASTPyFormatExpression: aFormatExpression [
 
 	<generated>
 
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyExceptClause: aFASTPyExceptClause [
+FASTPyTVisitor >> visitFASTPyFromModule: aFromModule [
 
 	<generated>
-	self visitFASTTStatementBlock: aFASTPyExceptClause.
 
-	self visitCollection: aFASTPyExceptClause expressions.
-	self visitEntity: aFASTPyExceptClause parentTryStatement
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyExecStatement: aFASTPyExecStatement [
+FASTPyTVisitor >> visitFASTPyFunctionDefinition: aFunctionDefinition [
 
 	<generated>
-	self visitFASTPyStatement: aFASTPyExecStatement.
+	self visitFASTPyTDefinition: aFunctionDefinition.
+	self visitFASTPyTWithTypeParameters: aFunctionDefinition.
+	self visitFASTTWithParameters: aFunctionDefinition.
+	self visitFASTPyStatement: aFunctionDefinition.
+
+	self visitEntity: aFunctionDefinition returnType
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyGeneratorExpression: aGeneratorExpression [
 
-	self visitEntity: aFASTPyExecStatement code.
-	self visitCollection: aFASTPyExecStatement scopes
+	<generated>
+	self visitFASTPyComprehension: aGeneratorExpression
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyExpression: aFASTPyExpression [
+FASTPyTVisitor >> visitFASTPyGenericType: aGenericType [
 
 	<generated>
-	self visitFASTPyTSliceIndex: aFASTPyExpression.
-	self visitFASTPyTTypeContent: aFASTPyExpression.
-	self visitFASTTExpression: aFASTPyExpression.
-	self visitFASTPyStatement: aFASTPyExpression.
+	self visitFASTPyTTypeContent: aGenericType.
+	self visitFASTPyTWithTypeParameters: aGenericType.
+	self visitFASTTNamedEntity: aGenericType.
 
-	self visitEntity: aFASTPyExpression parentAssignmentRight.
-	self visitEntity: aFASTPyExpression parentAssertStatement.
-	self visitEntity: aFASTPyExpression parentAttributeObject.
-	self visitEntity: aFASTPyExpression parentChevron.
-	self visitEntity: aFASTPyExpression collectionInitializer.
-	self visitEntity: aFASTPyExpression parentComparisonOperator.
-	self visitEntity: aFASTPyExpression parentComprehensionBody.
-	self visitEntity: aFASTPyExpression parentComprehensionForClause.
-	self visitEntity: aFASTPyExpression parentComprehensionCondition.
-	self visitEntity: aFASTPyExpression parentConditionalExpressionThen.
-	self visitEntity: aFASTPyExpression parentConditionalExpressionElse.
-	self visitEntity: aFASTPyExpression parentExceptClause.
-	self visitEntity: aFASTPyExpression parentExecStatementScopes.
-	self visitEntity: aFASTPyExpression parentForInClauseLeft.
-	self visitEntity: aFASTPyExpression parentForInClauseRight.
-	self visitEntity: aFASTPyExpression parentForStatementLeft.
-	self visitEntity: aFASTPyExpression parentForStatementRight.
-	self visitEntity: aFASTPyExpression parentIfClause.
-	self visitEntity: aFASTPyExpression parentInterpolation.
-	self visitEntity: aFASTPyExpression parentKeywordArgument.
-	self visitEntity: aFASTPyExpression parentLambda.
-	self visitEntity: aFASTPyExpression parentMatchStatement.
-	self visitEntity: aFASTPyExpression parentWalrus.
-	self visitEntity: aFASTPyExpression parentPairKey.
-	self visitEntity: aFASTPyExpression parentPairValuer.
-	self visitEntity: aFASTPyExpression parentDefaultParameterValue.
-	self visitEntity: aFASTPyExpression prarentPrintStatement.
-	self visitEntity: aFASTPyExpression parentSlice.
-	self visitEntity: aFASTPyExpression parentSubscriptValue.
-	self visitEntity: aFASTPyExpression parentUnaryOperator.
-	self visitEntity: aFASTPyExpression parentYield
+	self visitCollection: aGenericType arguments
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyFinallyClause: aFASTPyFinallyClause [
+FASTPyTVisitor >> visitFASTPyGlobalStatement: aGlobalStatement [
 
 	<generated>
-	self visitFASTTStatementBlock: aFASTPyFinallyClause.
+	self visitFASTPyStatement: aGlobalStatement.
+
+	self visitCollection: aGlobalStatement variables
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyIdentifier: anIdentifier [
 
-	self visitEntity: aFASTPyFinallyClause parentTryStatement
+	<generated>
+	self visitFASTPyTAsPatternTarget: anIdentifier.
+	self visitFASTPyTReturnReferenceable: anIdentifier.
+	self visitFASTPyTSplatParameterTarget: anIdentifier.
+	self visitFASTPyExpression: anIdentifier
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyFloat: aFASTPyFloat [
+FASTPyTVisitor >> visitFASTPyIfClause: anIfClause [
 
 	<generated>
-	self visitFASTTNumericalLiteral: aFASTPyFloat.
-	self visitFASTPyLiteral: aFASTPyFloat
+	self visitFASTPyExpression: anIfClause.
+
+	self visitEntity: anIfClause expression
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyForInClause: aFASTPyForInClause [
+FASTPyTVisitor >> visitFASTPyIfStatement: anIfStatement [
 
 	<generated>
-	self visitFASTPyExpression: aFASTPyForInClause.
+	self visitFASTPyTWithElseClause: anIfStatement.
+	self visitFASTTConditionalStatement: anIfStatement.
+	self visitFASTPyStatement: anIfStatement.
 
-	self visitEntity: aFASTPyForInClause left.
-	self visitEntity: aFASTPyForInClause right
+	self visitEntity: anIfStatement thenClause.
+	self visitCollection: anIfStatement elifClauses
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyForStatement: aFASTPyForStatement [
+FASTPyTVisitor >> visitFASTPyImport: anImport [
 
 	<generated>
-	self visitFASTPyTWithElseClause: aFASTPyForStatement.
-	self visitFASTTStatementBlock: aFASTPyForStatement.
-	self visitFASTPyStatement: aFASTPyForStatement.
+	self visitFASTPyStatement: anImport.
 
-	self visitEntity: aFASTPyForStatement right.
-	self visitEntity: aFASTPyForStatement left
+	self visitCollection: anImport importedEntities
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyFormatExpression: aFASTPyFormatExpression [
+FASTPyTVisitor >> visitFASTPyImportFromStatement: anImportFromStatement [
 
 	<generated>
+	self visitFASTPyImport: anImportFromStatement.
 
+	self visitEntity: anImportFromStatement fromModule
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyFromModule: aFASTPyFromModule [
+FASTPyTVisitor >> visitFASTPyImportStatement: anImportStatement [
 
 	<generated>
-	self visitEntity: aFASTPyFromModule import
+	self visitFASTPyImport: anImportStatement
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyFunctionDefinition: aFASTPyFunctionDefinition [
+FASTPyTVisitor >> visitFASTPyImportedEntity: anImportedEntity [
 
 	<generated>
-	self visitFASTPyTDefinition: aFASTPyFunctionDefinition.
-	self visitFASTPyTWithTypeParameters: aFASTPyFunctionDefinition.
-	self visitFASTTWithParameters: aFASTPyFunctionDefinition.
-	self visitFASTPyStatement: aFASTPyFunctionDefinition.
+
+]
 
-	self visitEntity: aFASTPyFunctionDefinition returnType
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyInteger: anInteger [
+
+	<generated>
+	self visitFASTTNumericalLiteral: anInteger.
+	self visitFASTPyLiteral: anInteger
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyGeneratorExpression: aFASTPyGeneratorExpression [
+FASTPyTVisitor >> visitFASTPyInterpolation: anInterpolation [
 
 	<generated>
-	self visitFASTPyComprehension: aFASTPyGeneratorExpression
+	self visitEntity: anInterpolation expression
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyGenericType: aFASTPyGenericType [
+FASTPyTVisitor >> visitFASTPyKeywordArgument: aKeywordArgument [
 
 	<generated>
-	self visitFASTPyTTypeContent: aFASTPyGenericType.
-	self visitFASTPyTWithTypeParameters: aFASTPyGenericType.
-	self visitFASTTNamedEntity: aFASTPyGenericType.
+	self visitFASTTNamedEntity: aKeywordArgument.
+	self visitFASTPyExpression: aKeywordArgument.
 
-	self visitCollection: aFASTPyGenericType arguments
+	self visitEntity: aKeywordArgument value
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyGlobalStatement: aFASTPyGlobalStatement [
+FASTPyTVisitor >> visitFASTPyKeywordPattern: aKeywordPattern [
 
 	<generated>
-	self visitFASTPyStatement: aFASTPyGlobalStatement.
+	self visitFASTPyTClassPatternElement: aKeywordPattern.
+	self visitFASTPyTPattern: aKeywordPattern.
+	self visitFASTTNamedEntity: aKeywordPattern.
 
-	self visitCollection: aFASTPyGlobalStatement variables
+	self visitEntity: aKeywordPattern value
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyIdentifier: aFASTPyIdentifier [
+FASTPyTVisitor >> visitFASTPyKeywordSeparator: aKeywordSeparator [
 
 	<generated>
-	self visitFASTPyTAsPatternTarget: aFASTPyIdentifier.
-	self visitFASTPyTReturnReferenceable: aFASTPyIdentifier.
-	self visitFASTPyTSplatParameterTarget: aFASTPyIdentifier.
-	self visitFASTPyExpression: aFASTPyIdentifier
+	self visitFASTTVariableEntity: aKeywordSeparator
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyIfClause: aFASTPyIfClause [
+FASTPyTVisitor >> visitFASTPyLambda: aLambda [
 
 	<generated>
-	self visitFASTPyExpression: aFASTPyIfClause.
+	self visitFASTPyTCallable: aLambda.
+	self visitFASTPyTDecoratorExpression: aLambda.
+	self visitFASTTWithParameters: aLambda.
+	self visitFASTPyExpression: aLambda.
 
-	self visitEntity: aFASTPyIfClause expression
+	self visitEntity: aLambda expression
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyIfStatement: aFASTPyIfStatement [
+FASTPyTVisitor >> visitFASTPyLambdaParameters: aLambdaParameters [
 
 	<generated>
-	self visitFASTPyTWithElseClause: aFASTPyIfStatement.
-	self visitFASTTConditionalStatement: aFASTPyIfStatement.
-	self visitFASTPyStatement: aFASTPyIfStatement.
+
+]
 
-	self visitEntity: aFASTPyIfStatement thenClause.
-	self visitCollection: aFASTPyIfStatement elifClauses
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyList: aList [
+
+	<generated>
+	self visitFASTPyTAsPatternTarget: aList.
+	self visitFASTPyTAssignable: aList.
+	self visitFASTPyCollectionInitializer: aList
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyImport: aFASTPyImport [
+FASTPyTVisitor >> visitFASTPyListComprehension: aListComprehension [
 
 	<generated>
-	self visitFASTPyStatement: aFASTPyImport.
+	self visitFASTPyComprehension: aListComprehension
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyLiteral: aLiteral [
 
-	self visitCollection: aFASTPyImport importedEntities
+	<generated>
+	self visitFASTPyTPattern: aLiteral.
+	self visitFASTTLiteral: aLiteral.
+	self visitFASTPyExpression: aLiteral
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyImportFromStatement: aFASTPyImportFromStatement [
+FASTPyTVisitor >> visitFASTPyMatchStatement: aMatchStatement [
 
 	<generated>
-	self visitFASTPyImport: aFASTPyImportFromStatement.
+	self visitFASTPyStatement: aMatchStatement.
 
-	self visitEntity: aFASTPyImportFromStatement fromModule
+	self visitEntity: aMatchStatement subject.
+	self visitCollection: aMatchStatement cases
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyImportStatement: aFASTPyImportStatement [
+FASTPyTVisitor >> visitFASTPyMemberType: aMemberType [
 
 	<generated>
-	self visitFASTPyImport: aFASTPyImportStatement
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyImportedEntity: aFASTPyImportedEntity [
+FASTPyTVisitor >> visitFASTPyMethodDefinition: aMethodDefinition [
 
 	<generated>
-	self visitEntity: aFASTPyImportedEntity import
+	self visitFASTPyTDefinition: aMethodDefinition.
+	self visitFASTPyTWithTypeParameters: aMethodDefinition.
+	self visitFASTTWithParameters: aMethodDefinition.
+	self visitFASTPyStatement: aMethodDefinition
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyInteger: aFASTPyInteger [
+FASTPyTVisitor >> visitFASTPyModule: aModule [
 
 	<generated>
-	self visitFASTTNumericalLiteral: aFASTPyInteger.
-	self visitFASTPyLiteral: aFASTPyInteger
+	self visitFASTTStatementBlock: aModule.
+	self visitFamixTHasImmediateSource: aModule
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyInterpolation: aFASTPyInterpolation [
+FASTPyTVisitor >> visitFASTPyNone: aNone [
 
 	<generated>
-	self visitEntity: aFASTPyInterpolation expression.
-	self visitEntity: aFASTPyInterpolation parentString
+	self visitFASTPyLiteral: aNone
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyKeywordArgument: aFASTPyKeywordArgument [
+FASTPyTVisitor >> visitFASTPyNonlocalStatement: aNonlocalStatement [
 
 	<generated>
-	self visitFASTTNamedEntity: aFASTPyKeywordArgument.
-	self visitFASTPyExpression: aFASTPyKeywordArgument.
+	self visitFASTPyStatement: aNonlocalStatement.
 
-	self visitEntity: aFASTPyKeywordArgument parentClassDefinition.
-	self visitEntity: aFASTPyKeywordArgument value
+	self visitCollection: aNonlocalStatement variables
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyKeywordPattern: aFASTPyKeywordPattern [
+FASTPyTVisitor >> visitFASTPyNotOperator: aNotOperator [
 
 	<generated>
-	self visitFASTPyTClassPatternElement: aFASTPyKeywordPattern.
-	self visitFASTPyTPattern: aFASTPyKeywordPattern.
-	self visitFASTTNamedEntity: aFASTPyKeywordPattern.
+	self visitFASTPyTUnaryOperator: aNotOperator.
+	self visitFASTPyOperator: aNotOperator
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyOperator: anOperator [
 
-	self visitEntity: aFASTPyKeywordPattern value
+	<generated>
+	self visitFASTPyExpression: anOperator
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyKeywordSeparator: aFASTPyKeywordSeparator [
+FASTPyTVisitor >> visitFASTPyPair: aPair [
 
 	<generated>
-	self visitFASTTVariableEntity: aFASTPyKeywordSeparator
+	self visitFASTPyExpression: aPair.
+
+	self visitEntity: aPair key.
+	self visitEntity: aPair value
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyLambda: aFASTPyLambda [
+FASTPyTVisitor >> visitFASTPyParameter: aParameter [
 
 	<generated>
-	self visitFASTPyTCallable: aFASTPyLambda.
-	self visitFASTPyTDecoratorExpression: aFASTPyLambda.
-	self visitFASTTWithParameters: aFASTPyLambda.
-	self visitFASTPyExpression: aFASTPyLambda.
+	self visitFASTTVariableEntity: aParameter.
 
-	self visitEntity: aFASTPyLambda expression
+	self visitEntity: aParameter type.
+	self visitEntity: aParameter defaultValue
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyLambdaParameters: aFASTPyLambdaParameters [
+FASTPyTVisitor >> visitFASTPyParenthesizedListSplat: aParenthesizedListSplat [
 
 	<generated>
 
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyList: aFASTPyList [
+FASTPyTVisitor >> visitFASTPyPassStatement: aPassStatement [
 
 	<generated>
-	self visitFASTPyTAsPatternTarget: aFASTPyList.
-	self visitFASTPyTAssignable: aFASTPyList.
-	self visitFASTPyCollectionInitializer: aFASTPyList
+	self visitFASTPyStatement: aPassStatement
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyListComprehension: aFASTPyListComprehension [
+FASTPyTVisitor >> visitFASTPyPositionalSeparator: aPositionalSeparator [
 
 	<generated>
-	self visitFASTPyComprehension: aFASTPyListComprehension
+	self visitFASTTVariableEntity: aPositionalSeparator
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyLiteral: aFASTPyLiteral [
+FASTPyTVisitor >> visitFASTPyPrintStatement: aPrintStatement [
 
 	<generated>
-	self visitFASTPyTPattern: aFASTPyLiteral.
-	self visitFASTTLiteral: aFASTPyLiteral.
-	self visitFASTPyExpression: aFASTPyLiteral
+	self visitFASTPyStatement: aPrintStatement.
+
+	self visitCollection: aPrintStatement expressions.
+	self visitEntity: aPrintStatement redirection
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyMatchStatement: aFASTPyMatchStatement [
+FASTPyTVisitor >> visitFASTPyRaiseStatement: aRaiseStatement [
 
 	<generated>
-	self visitFASTPyStatement: aFASTPyMatchStatement.
+	self visitFASTPyStatement: aRaiseStatement.
 
-	self visitEntity: aFASTPyMatchStatement subject.
-	self visitCollection: aFASTPyMatchStatement cases
+	self visitEntity: aRaiseStatement exception
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyMemberType: aFASTPyMemberType [
+FASTPyTVisitor >> visitFASTPyReturnStatement: aReturnStatement [
 
 	<generated>
+	self visitFASTTReturnStatement: aReturnStatement.
+	self visitFASTPyStatement: aReturnStatement
+]
 
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPySet: aSet [
+
+	<generated>
+	self visitFASTPyCollectionInitializer: aSet
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyMethodDefinition: aFASTPyMethodDefinition [
+FASTPyTVisitor >> visitFASTPySetComprehension: aSetComprehension [
 
 	<generated>
-	self visitFASTPyTDefinition: aFASTPyMethodDefinition.
-	self visitFASTPyTWithTypeParameters: aFASTPyMethodDefinition.
-	self visitFASTTWithParameters: aFASTPyMethodDefinition.
-	self visitFASTPyStatement: aFASTPyMethodDefinition
+	self visitFASTPyComprehension: aSetComprehension
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyModule: aFASTPyModule [
+FASTPyTVisitor >> visitFASTPySlice: aSlice [
 
 	<generated>
-	self visitFASTTStatementBlock: aFASTPyModule.
-	self visitFamixTHasImmediateSource: aFASTPyModule
+	self visitFASTPyTSliceIndex: aSlice.
+
+	self visitCollection: aSlice components
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyNone: aFASTPyNone [
+FASTPyTVisitor >> visitFASTPySplat: aSplat [
 
 	<generated>
-	self visitFASTPyLiteral: aFASTPyNone
+	self visitFASTPyTPattern: aSplat.
+	self visitFASTPyTSuperclass: aSplat.
+	self visitFASTPyExpression: aSplat.
+
+	self visitEntity: aSplat expression
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyNonlocalStatement: aFASTPyNonlocalStatement [
+FASTPyTVisitor >> visitFASTPySplatParameter: aSplatParameter [
 
 	<generated>
-	self visitFASTPyStatement: aFASTPyNonlocalStatement.
+	self visitFASTPyParameter: aSplatParameter.
 
-	self visitCollection: aFASTPyNonlocalStatement variables
+	self visitEntity: aSplatParameter target
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyNotOperator: aFASTPyNotOperator [
+FASTPyTVisitor >> visitFASTPySplatType: aSplatType [
 
 	<generated>
-	self visitFASTPyTUnaryOperator: aFASTPyNotOperator.
-	self visitFASTPyOperator: aFASTPyNotOperator
+	self visitFASTPyTTypeContent: aSplatType.
+	self visitFASTTNamedEntity: aSplatType
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyOperator: aFASTPyOperator [
+FASTPyTVisitor >> visitFASTPyStatement: aStatement [
 
 	<generated>
-	self visitFASTPyExpression: aFASTPyOperator
+	self visitFASTTStatement: aStatement
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyPair: aFASTPyPair [
+FASTPyTVisitor >> visitFASTPyString: aString [
 
 	<generated>
-	self visitFASTPyExpression: aFASTPyPair.
+	self visitFASTPyTExecutable: aString.
+	self visitFASTPyTSplatExpression: aString.
+	self visitFASTTStringLiteral: aString.
+	self visitFASTPyLiteral: aString.
 
-	self visitEntity: aFASTPyPair key.
-	self visitEntity: aFASTPyPair value
+	self visitCollection: aString interpolations
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyParameter: aFASTPyParameter [
+FASTPyTVisitor >> visitFASTPySubscript: aSubscript [
 
 	<generated>
-	self visitFASTTVariableEntity: aFASTPyParameter.
+	self visitFASTPyTAsPatternTarget: aSubscript.
+	self visitFASTPyTReturnReferenceable: aSubscript.
+	self visitFASTPyExpression: aSubscript.
 
-	self visitEntity: aFASTPyParameter type.
-	self visitEntity: aFASTPyParameter defaultValue
+	self visitEntity: aSubscript value.
+	self visitCollection: aSubscript indices
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyParenthesizedListSplat: aFASTPyParenthesizedListSplat [
+FASTPyTVisitor >> visitFASTPyTAsPatternSource: aTAsPatternSource [
 
 	<generated>
 
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyPassStatement: aFASTPyPassStatement [
+FASTPyTVisitor >> visitFASTPyTAsPatternTarget: aTAsPatternTarget [
 
 	<generated>
-	self visitFASTPyStatement: aFASTPyPassStatement
+	self visitFASTPyTAsPatternSource: aTAsPatternTarget.
+
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyPositionalSeparator: aFASTPyPositionalSeparator [
+FASTPyTVisitor >> visitFASTPyTAssignable: aTAssignable [
 
 	<generated>
-	self visitFASTTVariableEntity: aFASTPyPositionalSeparator
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyPrintStatement: aFASTPyPrintStatement [
+FASTPyTVisitor >> visitFASTPyTAwaitable: aTAwaitable [
 
 	<generated>
-	self visitFASTPyStatement: aFASTPyPrintStatement.
 
-	self visitCollection: aFASTPyPrintStatement expressions.
-	self visitEntity: aFASTPyPrintStatement redirection
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyRaiseStatement: aFASTPyRaiseStatement [
+FASTPyTVisitor >> visitFASTPyTCallable: aTCallable [
 
 	<generated>
-	self visitFASTPyStatement: aFASTPyRaiseStatement.
 
-	self visitEntity: aFASTPyRaiseStatement exception
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyReturnStatement: aFASTPyReturnStatement [
+FASTPyTVisitor >> visitFASTPyTClassPatternElement: aTClassPatternElement [
 
 	<generated>
-	self visitFASTTReturnStatement: aFASTPyReturnStatement.
-	self visitFASTPyStatement: aFASTPyReturnStatement
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPySet: aFASTPySet [
+FASTPyTVisitor >> visitFASTPyTDecoratorExpression: aTDecoratorExpression [
 
 	<generated>
-	self visitFASTPyCollectionInitializer: aFASTPySet
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPySetComprehension: aFASTPySetComprehension [
+FASTPyTVisitor >> visitFASTPyTDefinition: aTDefinition [
 
 	<generated>
-	self visitFASTPyComprehension: aFASTPySetComprehension
+	self visitFASTTNamedEntity: aTDefinition.
+	self visitFASTTStatementBlock: aTDefinition.
+
+	self visitCollection: aTDefinition decorators
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPySlice: aFASTPySlice [
+FASTPyTVisitor >> visitFASTPyTDeletable: aTDeletable [
 
 	<generated>
-	self visitFASTPyTSliceIndex: aFASTPySlice.
 
-	self visitCollection: aFASTPySlice components
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPySplat: aFASTPySplat [
+FASTPyTVisitor >> visitFASTPyTExecutable: aTExecutable [
 
 	<generated>
-	self visitFASTPyTPattern: aFASTPySplat.
-	self visitFASTPyTSuperclass: aFASTPySplat.
-	self visitFASTPyExpression: aFASTPySplat.
 
-	self visitEntity: aFASTPySplat expression
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPySplatParameter: aFASTPySplatParameter [
+FASTPyTVisitor >> visitFASTPyTPattern: aTPattern [
 
 	<generated>
-	self visitFASTPyParameter: aFASTPySplatParameter.
 
-	self visitEntity: aFASTPySplatParameter target
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPySplatType: aFASTPySplatType [
+FASTPyTVisitor >> visitFASTPyTRaised: aTRaised [
 
 	<generated>
-	self visitFASTPyTTypeContent: aFASTPySplatType.
-	self visitFASTTNamedEntity: aFASTPySplatType
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyStatement: aFASTPyStatement [
+FASTPyTVisitor >> visitFASTPyTReturnReferenceable: aTReturnReferenceable [
 
 	<generated>
-	self visitFASTTStatement: aFASTPyStatement
+	self visitFASTPyTAsPatternSource: aTReturnReferenceable.
+	self visitFASTPyTAssignable: aTReturnReferenceable.
+	self visitFASTPyTAwaitable: aTReturnReferenceable.
+	self visitFASTPyTCallable: aTReturnReferenceable.
+	self visitFASTPyTDecoratorExpression: aTReturnReferenceable.
+	self visitFASTPyTDeletable: aTReturnReferenceable.
+	self visitFASTPyTExecutable: aTReturnReferenceable.
+	self visitFASTPyTRaised: aTReturnReferenceable.
+	self visitFASTPyTSplatExpression: aTReturnReferenceable.
+	self visitFASTPyTSuperclass: aTReturnReferenceable
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyString: aFASTPyString [
+FASTPyTVisitor >> visitFASTPyTSliceIndex: aTSliceIndex [
 
 	<generated>
-	self visitFASTPyTExecutable: aFASTPyString.
-	self visitFASTPyTSplatExpression: aFASTPyString.
-	self visitFASTTStringLiteral: aFASTPyString.
-	self visitFASTPyLiteral: aFASTPyString.
 
-	self visitEntity: aFASTPyString parentConcatenatedString.
-	self visitCollection: aFASTPyString interpolations
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPySubscript: aFASTPySubscript [
+FASTPyTVisitor >> visitFASTPyTSplatExpression: aTSplatExpression [
 
 	<generated>
-	self visitFASTPyTAsPatternTarget: aFASTPySubscript.
-	self visitFASTPyTReturnReferenceable: aFASTPySubscript.
-	self visitFASTPyExpression: aFASTPySubscript.
 
-	self visitEntity: aFASTPySubscript value.
-	self visitCollection: aFASTPySubscript indices
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTAsPatternSource: aFASTPyTAsPatternSource [
+FASTPyTVisitor >> visitFASTPyTSplatParameterTarget: aTSplatParameterTarget [
 
 	<generated>
-	self visitEntity: aFASTPyTAsPatternSource parentAsPatternSource
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTAsPatternTarget: aFASTPyTAsPatternTarget [
+FASTPyTVisitor >> visitFASTPyTSuperclass: aTSuperclass [
 
 	<generated>
-	self visitFASTPyTAsPatternSource: aFASTPyTAsPatternTarget.
 
-	self visitEntity: aFASTPyTAsPatternTarget parentAsPatternTarget
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTAssignable: aFASTPyTAssignable [
+FASTPyTVisitor >> visitFASTPyTTypeContent: aTTypeContent [
 
 	<generated>
-	self visitEntity: aFASTPyTAssignable parentAssignmentLeft
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTAwaitable: aFASTPyTAwaitable [
+FASTPyTVisitor >> visitFASTPyTUnaryOperator: aTUnaryOperator [
 
 	<generated>
-	self visitEntity: aFASTPyTAwaitable parentAwait
+	self visitEntity: aTUnaryOperator argument
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTCallable: aFASTPyTCallable [
+FASTPyTVisitor >> visitFASTPyTWithElseClause: aTWithElseClause [
 
 	<generated>
-	self visitEntity: aFASTPyTCallable caller
+	self visitEntity: aTWithElseClause elseClause
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTClassPatternElement: aFASTPyTClassPatternElement [
+FASTPyTVisitor >> visitFASTPyTWithStatementItem: aTWithStatementItem [
 
 	<generated>
-	self visitEntity: aFASTPyTClassPatternElement parentClassPattern
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTDecoratorExpression: aFASTPyTDecoratorExpression [
+FASTPyTVisitor >> visitFASTPyTWithTypeParameters: aTWithTypeParameters [
 
 	<generated>
-	self visitEntity: aFASTPyTDecoratorExpression parentDeclarator
+	self visitCollection: aTWithTypeParameters typeParameters
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTDefinition: aFASTPyTDefinition [
+FASTPyTVisitor >> visitFASTPyThenClause: aThenClause [
 
 	<generated>
-	self visitFASTTNamedEntity: aFASTPyTDefinition.
-	self visitFASTTStatementBlock: aFASTPyTDefinition.
+	self visitFASTTStatementBlock: aThenClause.
 
-	self visitCollection: aFASTPyTDefinition decorators
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTDeletable: aFASTPyTDeletable [
+FASTPyTVisitor >> visitFASTPyTryStatement: aTryStatement [
 
 	<generated>
-	self visitEntity: aFASTPyTDeletable parentDeleteStatement
+	self visitFASTPyTWithElseClause: aTryStatement.
+	self visitFASTTStatementBlock: aTryStatement.
+	self visitFASTPyStatement: aTryStatement.
+
+	self visitCollection: aTryStatement excepts.
+	self visitEntity: aTryStatement finally
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTExecutable: aFASTPyTExecutable [
+FASTPyTVisitor >> visitFASTPyTuple: aTuple [
 
 	<generated>
-	self visitEntity: aFASTPyTExecutable parentExecStatement
+	self visitFASTPyTAsPatternTarget: aTuple.
+	self visitFASTPyTAssignable: aTuple.
+	self visitFASTPyTDeletable: aTuple.
+	self visitFASTPyCollectionInitializer: aTuple
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTPattern: aFASTPyTPattern [
+FASTPyTVisitor >> visitFASTPyType: aType [
 
 	<generated>
-	self visitEntity: aFASTPyTPattern parentCaseClause.
-	self visitEntity: aFASTPyTPattern parentKeywordPatternValue.
-	self visitEntity: aFASTPyTPattern parentUnionPattern
+	self visitEntity: aType content
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTRaised: aFASTPyTRaised [
+FASTPyTVisitor >> visitFASTPyTypeAliasStatement: aTypeAliasStatement [
 
 	<generated>
-	self visitEntity: aFASTPyTRaised parentRaiseStatement
+	self visitFASTPyStatement: aTypeAliasStatement.
+
+	self visitEntity: aTypeAliasStatement left.
+	self visitEntity: aTypeAliasStatement right
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTReturnReferenceable: aFASTPyTReturnReferenceable [
+FASTPyTVisitor >> visitFASTPyTypeConversion: aTypeConversion [
 
 	<generated>
-	self visitFASTPyTAsPatternSource: aFASTPyTReturnReferenceable.
-	self visitFASTPyTAssignable: aFASTPyTReturnReferenceable.
-	self visitFASTPyTAwaitable: aFASTPyTReturnReferenceable.
-	self visitFASTPyTCallable: aFASTPyTReturnReferenceable.
-	self visitFASTPyTDecoratorExpression: aFASTPyTReturnReferenceable.
-	self visitFASTPyTDeletable: aFASTPyTReturnReferenceable.
-	self visitFASTPyTExecutable: aFASTPyTReturnReferenceable.
-	self visitFASTPyTRaised: aFASTPyTReturnReferenceable.
-	self visitFASTPyTSplatExpression: aFASTPyTReturnReferenceable.
-	self visitFASTPyTSuperclass: aFASTPyTReturnReferenceable
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTSliceIndex: aFASTPyTSliceIndex [
+FASTPyTVisitor >> visitFASTPyTypeParameter: aTypeParameter [
 
 	<generated>
-	self visitEntity: aFASTPyTSliceIndex parentSubscriptIndex
+	self visitFASTPyTTypeContent: aTypeParameter
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTSplatExpression: aFASTPyTSplatExpression [
+FASTPyTVisitor >> visitFASTPyUnaryOperator: anUnaryOperator [
 
 	<generated>
-	self visitEntity: aFASTPyTSplatExpression parentSplat
+	self visitFASTPyTUnaryOperator: anUnaryOperator.
+	self visitFASTPyOperator: anUnaryOperator
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTSplatParameterTarget: aFASTPyTSplatParameterTarget [
+FASTPyTVisitor >> visitFASTPyUnionPattern: anUnionPattern [
 
 	<generated>
-	self visitEntity: aFASTPyTSplatParameterTarget parentSplatParameter
+	self visitFASTPyTPattern: anUnionPattern.
+
+	self visitCollection: anUnionPattern members
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTSuperclass: aFASTPyTSuperclass [
+FASTPyTVisitor >> visitFASTPyUnionType: anUnionType [
 
 	<generated>
-	self visitEntity: aFASTPyTSuperclass parentClassDefinition
+	self visitFASTPyTTypeContent: anUnionType.
+
+	self visitCollection: anUnionType types
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTTypeContent: aFASTPyTTypeContent [
+FASTPyTVisitor >> visitFASTPyVariable: aVariable [
 
 	<generated>
-	self visitEntity: aFASTPyTTypeContent parentType
+	self visitFASTPyTAssignable: aVariable.
+	self visitFASTTVariableEntity: aVariable.
+	self visitFASTPyIdentifier: aVariable.
+
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTUnaryOperator: aFASTPyTUnaryOperator [
+FASTPyTVisitor >> visitFASTPyWalrus: aWalrus [
 
 	<generated>
-	self visitEntity: aFASTPyTUnaryOperator argument
+	self visitFASTTNamedEntity: aWalrus.
+	self visitFASTPyExpression: aWalrus.
+
+	self visitEntity: aWalrus value
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTWithElseClause: aFASTPyTWithElseClause [
+FASTPyTVisitor >> visitFASTPyWhileStatement: aWhileStatement [
 
 	<generated>
-	self visitEntity: aFASTPyTWithElseClause elseClause
+	self visitFASTPyTWithElseClause: aWhileStatement.
+	self visitFASTTConditionalStatement: aWhileStatement.
+	self visitFASTTStatementBlock: aWhileStatement.
+	self visitFASTPyStatement: aWhileStatement
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTWithStatementItem: aFASTPyTWithStatementItem [
+FASTPyTVisitor >> visitFASTPyWithStatement: aWithStatement [
 
 	<generated>
-	self visitEntity: aFASTPyTWithStatementItem parentWithStatementItem
+	self visitFASTTStatementBlock: aWithStatement.
+	self visitFASTPyStatement: aWithStatement.
+
+	self visitCollection: aWithStatement items
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTWithTypeParameters: aFASTPyTWithTypeParameters [
+FASTPyTVisitor >> visitFASTPyYield: aYield [
 
 	<generated>
-	self visitCollection: aFASTPyTWithTypeParameters typeParameters
+	self visitFASTPyExpression: aYield.
+
+	self visitEntity: aYield expression
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyThenClause: aFASTPyThenClause [
+FASTPyTVisitor >> visitFASTTBinaryExpression: aTBinaryExpression [
 
 	<generated>
-	self visitFASTTStatementBlock: aFASTPyThenClause.
+	"We should visit FASTTExpression but all its users in this language already visit it in their superclasses so we skip the call here.".
+
+	self visitEntity: aTBinaryExpression leftOperand.
+	self visitEntity: aTBinaryExpression rightOperand
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTTBooleanLiteral: aTBooleanLiteral [
 
-	self visitEntity: aFASTPyThenClause parentIfStatement
+	<generated>
+	"We should visit FASTTLiteral but all its users in this language already visit it in their superclasses so we skip the call here."
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTryStatement: aFASTPyTryStatement [
+FASTPyTVisitor >> visitFASTTComment: aTComment [
 
 	<generated>
-	self visitFASTPyTWithElseClause: aFASTPyTryStatement.
-	self visitFASTTStatementBlock: aFASTPyTryStatement.
-	self visitFASTPyStatement: aFASTPyTryStatement.
+
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTTConditionalStatement: aTConditionalStatement [
 
-	self visitCollection: aFASTPyTryStatement excepts.
-	self visitEntity: aFASTPyTryStatement finally
+	<generated>
+	"We do not visit all behaviorals because some classes already visit it in their superclasses in this language implementation. Visiting them here also would cause a double visit of this trait."
+	({ FASTPyIfStatement . FASTPyWhileStatement } includes: aTConditionalStatement class)
+		ifFalse: [ self visitFASTTStatement: aTConditionalStatement ].
+	self visitFASTTWithCondition: aTConditionalStatement
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTuple: aFASTPyTuple [
+FASTPyTVisitor >> visitFASTTEntity: aTEntity [
 
 	<generated>
-	self visitFASTPyTAsPatternTarget: aFASTPyTuple.
-	self visitFASTPyTAssignable: aFASTPyTuple.
-	self visitFASTPyTDeletable: aFASTPyTuple.
-	self visitFASTPyCollectionInitializer: aFASTPyTuple
+	"We should visit TEntityMetaLevelDependency but all its users in this language already visit it in their superclasses so we skip the call here."
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyType: aFASTPyType [
+FASTPyTVisitor >> visitFASTTExpression: aTExpression [
 
 	<generated>
-	self visitEntity: aFASTPyType parentAssignment.
-	self visitEntity: aFASTPyType parentContrainedType.
-	self visitEntity: aFASTPyType parentContrainedTypeBound.
-	self visitEntity: aFASTPyType parentFunctionDefinition.
-	self visitEntity: aFASTPyType parentGenericTypeArgument.
-	self visitEntity: aFASTPyType parentParameter.
-	self visitEntity: aFASTPyType content.
-	self visitEntity: aFASTPyType parentyTypeAliasStatementAlias.
-	self visitEntity: aFASTPyType parentyTypeAliasStatementType.
-	self visitEntity: aFASTPyType parentWithTypeParameters.
-	self visitEntity: aFASTPyType parentUnionType
+	"We should visit FASTTEntity but all its users in this language already visit it in their superclasses so we skip the call here.".
+
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTypeAliasStatement: aFASTPyTypeAliasStatement [
+FASTPyTVisitor >> visitFASTTInvocation: aTInvocation [
 
 	<generated>
-	self visitFASTPyStatement: aFASTPyTypeAliasStatement.
+	"We should visit FASTTExpression but all its users in this language already visit it in their superclasses so we skip the call here.".
+	self visitFASTTWithArguments: aTInvocation.
+
+	self visitEntity: aTInvocation invoked
+]
 
-	self visitEntity: aFASTPyTypeAliasStatement left.
-	self visitEntity: aFASTPyTypeAliasStatement right
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTTLiteral: aTLiteral [
+
+	<generated>
+	"We should visit FASTTExpression but all its users in this language already visit it in their superclasses so we skip the call here."
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTypeConversion: aFASTPyTypeConversion [
+FASTPyTVisitor >> visitFASTTNamedEntity: aTNamedEntity [
 
 	<generated>
+	"We should visit FASTTEntity but all its users in this language already visit it in their superclasses so we skip the call here.".
 
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTypeParameter: aFASTPyTypeParameter [
+FASTPyTVisitor >> visitFASTTNumericalLiteral: aTNumericalLiteral [
 
 	<generated>
-	self visitFASTPyTTypeContent: aFASTPyTypeParameter
+	"We should visit FASTTLiteral but all its users in this language already visit it in their superclasses so we skip the call here."
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyUnaryOperator: aFASTPyUnaryOperator [
+FASTPyTVisitor >> visitFASTTReturnStatement: aTReturnStatement [
 
 	<generated>
-	self visitFASTPyTUnaryOperator: aFASTPyUnaryOperator.
-	self visitFASTPyOperator: aFASTPyUnaryOperator
+	"We should visit FASTTStatement but all its users in this language already visit it in their superclasses so we skip the call here.".
+
+	self visitEntity: aTReturnStatement expression
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyUnionPattern: aFASTPyUnionPattern [
+FASTPyTVisitor >> visitFASTTStatement: aTStatement [
 
 	<generated>
-	self visitFASTPyTPattern: aFASTPyUnionPattern.
+	"We should visit FASTTEntity but all its users in this language already visit it in their superclasses so we skip the call here.".
 
-	self visitCollection: aFASTPyUnionPattern members
+
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyUnionType: aFASTPyUnionType [
+FASTPyTVisitor >> visitFASTTStatementBlock: aTStatementBlock [
 
 	<generated>
-	self visitFASTPyTTypeContent: aFASTPyUnionType.
+	"We do not visit all behaviorals because some classes already visit it in their superclasses in this language implementation. Visiting them here also would cause a double visit of this trait."
+	({ FASTPyClassDefinition . FASTPyForStatement . FASTPyFunctionDefinition . FASTPyMethodDefinition . FASTPyTryStatement . FASTPyWhileStatement . FASTPyWithStatement } includes: aTStatementBlock class)
+		ifFalse: [ self visitFASTTStatement: aTStatementBlock ].
+
+	self visitCollection: aTStatementBlock statements
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTTStringLiteral: aTStringLiteral [
 
-	self visitCollection: aFASTPyUnionType types
+	<generated>
+	"We should visit FASTTLiteral but all its users in this language already visit it in their superclasses so we skip the call here."
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyVariable: aFASTPyVariable [
+FASTPyTVisitor >> visitFASTTVariableEntity: aTVariableEntity [
 
 	<generated>
-	self visitFASTPyTAssignable: aFASTPyVariable.
-	self visitFASTTVariableEntity: aFASTPyVariable.
-	self visitFASTPyIdentifier: aFASTPyVariable.
+	self visitFASTTNamedEntity: aTVariableEntity.
+
+
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTTWithArguments: aTWithArguments [
 
-	self visitEntity: aFASTPyVariable parentGlobalStatement.
-	self visitEntity: aFASTPyVariable parentNonlocalStatement
+	<generated>
+	self visitCollection: aTWithArguments arguments
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyWalrus: aFASTPyWalrus [
+FASTPyTVisitor >> visitFASTTWithComments: aTWithComments [
 
 	<generated>
-	self visitFASTTNamedEntity: aFASTPyWalrus.
-	self visitFASTPyExpression: aFASTPyWalrus.
+	self visitCollection: aTWithComments comments
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTTWithCondition: aTWithCondition [
 
-	self visitEntity: aFASTPyWalrus value
+	<generated>
+	self visitEntity: aTWithCondition condition
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyWhileStatement: aFASTPyWhileStatement [
+FASTPyTVisitor >> visitFASTTWithParameters: aTWithParameters [
 
 	<generated>
-	self visitFASTPyTWithElseClause: aFASTPyWhileStatement.
-	self visitFASTTConditionalStatement: aFASTPyWhileStatement.
-	self visitFASTTStatementBlock: aFASTPyWhileStatement.
-	self visitFASTPyStatement: aFASTPyWhileStatement
+	self visitCollection: aTWithParameters parameters
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyWithStatement: aFASTPyWithStatement [
+FASTPyTVisitor >> visitFamixTHasImmediateSource: aTHasImmediateSource [
 
 	<generated>
-	self visitFASTTStatementBlock: aFASTPyWithStatement.
-	self visitFASTPyStatement: aFASTPyWithStatement.
+	self visitFamixTSourceAnchor: aTHasImmediateSource
+]
 
-	self visitCollection: aFASTPyWithStatement items
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFamixTSourceAnchor: aTSourceAnchor [
+
+	<generated>
+	self visitEntity: aTSourceAnchor element
 ]
 
 { #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyYield: aFASTPyYield [
+FASTPyTVisitor >> visitTEntityMetaLevelDependency: aTEntityMetaLevelDependency [
 
 	<generated>
-	self visitFASTPyExpression: aFASTPyYield.
 
-	self visitEntity: aFASTPyYield expression
 ]

@@ -29,7 +29,6 @@ FASTPyExecStatement class >> annotation [
 	<FMClass: #ExecStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
 
 { #category : 'adding' }

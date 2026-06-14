@@ -12,5 +12,4 @@ FASTPyERROR class >> annotation [
 	<FMClass: #ERROR super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
-	^ self
 ]
