@@ -181,8 +181,16 @@ FASTPythonCFGVisitor >> visitFASTPyIfStatement: anIfStatement [
 
 { #category : 'visiting - entry points' }
 FASTPythonCFGVisitor >> visitFASTPyLambda: aLambda [
+	"Opposed to other entry points, lambdas have an expression instead of a statement block so we manage it differently"
 
-	self visitPossibleEntryPoints: aLambda
+	started
+		ifTrue: [
+				self visitFASTTStatement: aLambda.
+				cfgs ifNotNil: [ "In this case, we also need to build the CFG of node and store it" cfgs at: aLambda put: aLambda cfg ] ]
+		ifFalse: [
+				started := true.
+				self addStatement: aLambda expression.
+				self endBlock ]
 ]
 
 { #category : 'visiting' }

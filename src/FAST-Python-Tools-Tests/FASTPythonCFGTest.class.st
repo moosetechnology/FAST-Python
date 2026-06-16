@@ -63,6 +63,17 @@ FASTPythonCFGTest >> testCFGOfFunction [
 ]
 
 { #category : 'tests' }
+FASTPythonCFGTest >> testCFGOfLambda [
+
+	startBlock := FASTPythonCFGVisitor buildCFGOf: ((self parse: 'lambda x: im_path_ls[name_ls.index(x)]') allWithType: FASTPyLambda) first.
+
+	self assert: startBlock isStart.
+	self assert: startBlock isFinal.
+	self assert: startBlock statements size equals: 1.
+	self assertEmpty: startBlock nextBlocks
+]
+
+{ #category : 'tests' }
 FASTPythonCFGTest >> testCFGOfModule [
 
 	startBlock := FASTPythonCFGVisitor buildCFGOf: (self parse: 'i = 0
