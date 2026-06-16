@@ -10,6 +10,7 @@
 | `parentContrainedTypeBound` | `FASTPyType` | `bound` | `FASTPyConstrainedType` | |
 | `parentFunctionDefinition` | `FASTPyType` | `returnType` | `FASTPyFunctionDefinition` | |
 | `parentGenericTypeArgument` | `FASTPyType` | `arguments` | `FASTPyGenericType` | |
+| `parentMethodDefinition` | `FASTPyType` | `returnType` | `FASTPyMethodDefinition` | |
 | `parentParameter` | `FASTPyType` | `type` | `FASTPyParameter` | |
 | `parentUnionType` | `FASTPyType` | `types` | `FASTPyUnionType` | |
 | `parentWithTypeParameters` | `FASTPyType` | `typeParameters` | `FASTPyTWithTypeParameters` | |
@@ -34,6 +35,7 @@ Class {
 		'#parentContrainedTypeBound => FMOne type: #FASTPyConstrainedType opposite: #bound',
 		'#parentFunctionDefinition => FMOne type: #FASTPyFunctionDefinition opposite: #returnType',
 		'#parentGenericTypeArgument => FMOne type: #FASTPyGenericType opposite: #arguments',
+		'#parentMethodDefinition => FMOne type: #FASTPyMethodDefinition opposite: #returnType',
 		'#parentParameter => FMOne type: #FASTPyParameter opposite: #type',
 		'#parentUnionType => FMOne type: #FASTPyUnionType opposite: #types',
 		'#parentWithTypeParameters => FMOne type: #FASTPyTWithTypeParameters opposite: #typeParameters',
@@ -150,6 +152,23 @@ FASTPyType >> parentGenericTypeArgument: anObject [
 
 	<generated>
 	parentGenericTypeArgument := anObject
+]
+
+{ #category : 'accessing' }
+FASTPyType >> parentMethodDefinition [
+	"Relation named: #parentMethodDefinition type: #FASTPyMethodDefinition opposite: #returnType"
+
+	<generated>
+	<container>
+	<derived>
+	^ parentMethodDefinition
+]
+
+{ #category : 'accessing' }
+FASTPyType >> parentMethodDefinition: anObject [
+
+	<generated>
+	parentMethodDefinition := anObject
 ]
 
 { #category : 'accessing' }

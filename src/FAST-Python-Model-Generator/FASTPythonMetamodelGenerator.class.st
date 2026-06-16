@@ -785,6 +785,8 @@ FASTPythonMetamodelGenerator >> defineRelations [
 	(matchStatement property: #subject) <>- (expression property: #parentMatchStatement).
 	(matchStatement property: #cases) <>-* (caseClause property: #parentMatchStatement).
 	
+	(methodDefinition property: #returnType) <>- (type property: #parentMethodDefinition).
+	
 	(namedExpression property: #value) <>- (expression property: #parentWalrus).
 	
 	((nonlocalStatement property: #variables) comment: 'The variables scoped')

@@ -658,7 +658,9 @@ FASTPyTVisitor >> visitFASTPyMethodDefinition: aMethodDefinition [
 	self visitFASTPyTDefinition: aMethodDefinition.
 	self visitFASTPyTWithTypeParameters: aMethodDefinition.
 	self visitFASTTWithParameters: aMethodDefinition.
-	self visitFASTPyStatement: aMethodDefinition
+	self visitFASTPyStatement: aMethodDefinition.
+
+	self visitEntity: aMethodDefinition returnType
 ]
 
 { #category : 'visiting' }

@@ -38438,6 +38438,90 @@ FASTPythonImporterTest >> testMethodDefinition [
 			self assert: (self topEntity isOfType: FASTPyPassStatement)
 ]
 
+{ #category : 'tests - methods' }
+FASTPythonImporterTest >> testMethodWithReturnType [
+	<generated>
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	Regenerate executing: 	self regenerateTest: #testMethodWithReturnType 	"
+
+	self parse: 'class LitDataModule():
+    def _dataset(self) -> CSVDataset:
+        return True'.
+
+	self assert: (fast allWithType: FASTPyBoolean) size equals: 1.
+	self assert: (fast allWithType: FASTPyClassDefinition) size equals: 1.
+	self assert: (fast allWithType: FASTPyIdentifier) size equals: 1.
+	self assert: (fast allWithType: FASTPyMethodDefinition) size equals: 1.
+	self assert: (fast allWithType: FASTPyModule) size equals: 1.
+	self assert: (fast allWithType: FASTPyParameter) size equals: 1.
+	self assert: (fast allWithType: FASTPyReturnStatement) size equals: 1.
+	self assert: (fast allWithType: FASTPyType) size equals: 1.
+
+	stack push: fast rootEntities anyOne containedEntities first.
+	self assert: self topEntity sourceCode equals: 'class LitDataModule():
+    def _dataset(self) -> CSVDataset:
+        return True' withPlatformLineEndings.
+	self assert: (self topEntity isOfType: FASTPyClassDefinition).
+	self assert: (self topEntity isOfType: FASTPyTDefinition).
+	self assert: (self topEntity isOfType: FASTTStatementBlock).
+	self assert: self topEntity name equals: 'LitDataModule'.
+	
+	"Testing value of multivalued relation statements"
+	self assert: self topEntity statements size equals: 1.
+	
+		stack push: (stack top statements at: 1).
+		self assert: self topEntity sourceCode equals: 'def _dataset(self) -> CSVDataset:
+        return True' withPlatformLineEndings.
+		self assert: (self topEntity isOfType: FASTPyMethodDefinition).
+		self assert: (self topEntity isOfType: FASTPyTDefinition).
+		self assert: (self topEntity isOfType: FASTTStatementBlock).
+		self assert: (self topEntity isOfType: FASTTWithParameters).
+		self assert: self topEntity name equals: '_dataset'.
+		
+		"Testing value of multivalued relation parameters"
+		self assert: self topEntity parameters size equals: 1.
+		
+			stack push: (stack top parameters at: 1).
+			self assert: self topEntity sourceCode equals: 'self'.
+			self assert: (self topEntity isOfType: FASTPyParameter).
+			self assert: (self topEntity isOfType: FASTTVariableEntity).
+			self assert: self topEntity name equals: 'self'.
+			stack pop.
+		
+		"Testing value of monovalue relation returnType"
+		self assert: self topEntity returnType isNotNil.
+
+			stack push: self topEntity returnType.
+			self assert: self topEntity sourceCode equals: 'CSVDataset'.
+			self assert: (self topEntity isOfType: FASTPyType).
+			
+			"Testing value of monovalue relation content"
+			self assert: self topEntity content isNotNil.
+
+				stack push: self topEntity content.
+				self assert: self topEntity sourceCode equals: 'CSVDataset'.
+				self assert: (self topEntity isOfType: FASTPyIdentifier).
+				stack pop.
+			stack pop.
+		
+		"Testing value of multivalued relation statements"
+		self assert: self topEntity statements size equals: 1.
+		
+			stack push: (stack top statements at: 1).
+			self assert: self topEntity sourceCode equals: 'return True'.
+			self assert: (self topEntity isOfType: FASTPyReturnStatement).
+			self assert: (self topEntity isOfType: FASTTReturnStatement).
+			
+			"Testing value of monovalue relation expression"
+			self assert: self topEntity expression isNotNil.
+
+				stack push: self topEntity expression.
+				self assert: self topEntity sourceCode equals: 'True'.
+				self assert: (self topEntity isOfType: FASTPyBoolean).
+				self assert: (self topEntity isOfType: FASTTBooleanLiteral).
+				self assert: (self topEntity isOfType: FASTTLiteral)
+]
+
 { #category : 'tests' }
 FASTPythonImporterTest >> testModuleWithTwoStatements [
 	<generated>

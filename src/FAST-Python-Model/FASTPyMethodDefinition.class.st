@@ -15,6 +15,7 @@
 |---|
 | `decorators` | `FASTPyTDefinition` | `parentDefinition` | `FASTPyDecorator` | |
 | `parameters` | `FASTTWithParameters` | `parameterOwner` | `FASTTVariableEntity` | My parameters|
+| `returnType` | `FASTPyMethodDefinition` | `parentMethodDefinition` | `FASTPyType` | |
 | `statements` | `FASTTStatementBlock` | `statementContainer` | `FASTTStatement` | Statements enclosed in this block|
 | `typeParameters` | `FASTPyTWithTypeParameters` | `parentWithTypeParameters` | `FASTPyType` | |
 
@@ -34,6 +35,9 @@ Class {
 	#superclass : 'FASTPyStatement',
 	#traits : 'FASTPyTDefinition + FASTPyTWithTypeParameters + FASTTWithParameters',
 	#classTraits : 'FASTPyTDefinition classTrait + FASTPyTWithTypeParameters classTrait + FASTTWithParameters classTrait',
+	#instVars : [
+		'#returnType => FMOne type: #FASTPyType opposite: #parentMethodDefinition'
+	],
 	#category : 'FAST-Python-Model-Entities',
 	#package : 'FAST-Python-Model',
 	#tag : 'Entities'
@@ -45,4 +49,19 @@ FASTPyMethodDefinition class >> annotation [
 	<FMClass: #MethodDefinition super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
+]
+
+{ #category : 'accessing' }
+FASTPyMethodDefinition >> returnType [
+	"Relation named: #returnType type: #FASTPyType opposite: #parentMethodDefinition"
+
+	<generated>
+	^ returnType
+]
+
+{ #category : 'accessing' }
+FASTPyMethodDefinition >> returnType: anObject [
+
+	<generated>
+	returnType := anObject
 ]
