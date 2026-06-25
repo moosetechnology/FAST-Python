@@ -39,9 +39,12 @@ FASTPythonLocalResolverVisitor >> resolve: aFASTBehaviouralEntity [
 FASTPythonLocalResolverVisitor >> visitFASTPyAssignment: anAssignment [
 
 	anAssignment left isVariableEntity ifTrue: [
-			scoper scopeAdd: anAssignment left name declaration: anAssignment.
+			[
+				scoper scopeAdd: anAssignment left name declaration: anAssignment.
 
-			anAssignment left localDeclaration: anAssignment ].
+				anAssignment left localDeclaration: anAssignment ]
+				on: DuplicatedVariableError
+				do: [ "Do nothing on the second declaration." ] ].
 
 	super visitFASTPyAssignment: anAssignment
 ]
@@ -55,8 +58,8 @@ FASTPythonLocalResolverVisitor >> visitFASTPyIdentifier: anIdentifier [
 { #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyVariable: aVariable [
 
-	"If I am on the left side of an assignation, no need to do anything, it's already done in my parent."
-	aVariable parentAssignmentLeft ifNotNil: [ ^ self ].
-	
-	super visitFASTPyVariable: aVariable 
+	"If I am the left side of my variable declaration, I do not create a local use."
+	aVariable localDeclarationIfPresent: [ :assignment | assignment left == aVariable ifTrue: [ ^ self ] ].
+
+	super visitFASTPyVariable: aVariable
 ]
