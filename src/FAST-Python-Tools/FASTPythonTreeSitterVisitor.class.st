@@ -56,6 +56,18 @@ FASTPythonTreeSitterVisitor >> initialize [
 ]
 
 { #category : 'testing' }
+FASTPythonTreeSitterVisitor >> isIdentifierAVariableInTheCurrentContext [
+	"I am sure that an identifier is a variable in some cases:
+	- It is directly in the left side of an assignation
+	- It's in a global statement
+	- It's in a non local statement"
+
+	(context top field = #left and: [ context top isOfFASTType: FASTPyAssignment ]) ifTrue: [ ^ true ].
+
+	^ (context top isOfFASTType: FASTPyGlobalStatement) or: [ context top isOfFASTType: FASTPyNonlocalStatement ]
+]
+
+{ #category : 'testing' }
 FASTPythonTreeSitterVisitor >> isInParameter: aNode [
 
 	| parent type |
@@ -608,18 +620,18 @@ FASTPythonTreeSitterVisitor >> visitGlobalStatement: aTSNode [
 FASTPythonTreeSitterVisitor >> visitIdentifier: aNode [
 
 	(self isInParameter: aNode) ifTrue: [ ^ self handleParameterNode: aNode name: (self sourceCodeOf: aNode) ].
-	
+
 	"If we are in a field `name` then we are probably in a definition of an entity and we set my content as a name."
 	self shouldIdentifierSetNameProperty ifTrue: [ ^ self topFastEntity name: (self sourceCodeOf: aNode) ].
-	
-	"If I am on the left side of an assignation then I am a variable."
-	(context top field = #left and: [ context top isOfFASTType: FASTPyAssignment ]) ifTrue: [ ^ self handleNode: aNode kind: FASTPyVariable ].
-	
+
+	self isIdentifierAVariableInTheCurrentContext ifTrue: [
+			| variable |
+			variable := self handleNode: aNode kind: FASTPyVariable.
+			variable name: (self sourceCodeOf: aNode).
+			^ variable ].
+
 	"In case we are in an alias, we edit the property alias of the last imported entity"
 	aNode parent type = #aliased_import ifTrue: [ ^ self topFastEntity importedEntities last alias: (self sourceCodeOf: aNode) ].
-	
-	"Those statements points a variable"
-	((context top isOfFASTType: FASTPyGlobalStatement) or: [ context top isOfFASTType: FASTPyNonlocalStatement ]) ifTrue: [ ^ self handleNode: aNode kind: FASTPyVariable ].
 
 	^ self handleNode: aNode
 ]

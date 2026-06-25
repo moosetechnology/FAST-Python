@@ -1,6 +1,6 @@
 Class {
 	#name : 'FASTPythonCFGTest',
-	#superclass : 'TestCase',
+	#superclass : 'FASTPythonAbstractTestCase',
 	#instVars : [
 		'startBlock'
 	],
@@ -12,14 +12,6 @@ Class {
 FASTPythonCFGTest >> buildCFGForFunction: aString [
 
 	startBlock := FASTPythonCFGVisitor buildCFGOf: (self parse: aString) allFunctionDefinitions first
-]
-
-{ #category : 'running' }
-FASTPythonCFGTest >> parse: aString [
-
-	^ FASTPythonImporter new
-		  errorReportBlock: [ :i | i errors ifNotEmpty: [ self fail: 'Errors happened during parsing. Errors: ' , i errors printString ] ];
-		  parse: aString withPlatformLineEndings
 ]
 
 { #category : 'tests' }

@@ -39,3 +39,11 @@ FASTPyModel >> allModules [
 
 	^ self allWithType: FASTPyModule
 ]
+
+{ #category : 'accessing' }
+FASTPyModel >> module [
+	"In general a fast python model can only get one module so I return this module."
+
+	self assert: self allModules size = 1.
+	^ self allModules anyOne
+]
