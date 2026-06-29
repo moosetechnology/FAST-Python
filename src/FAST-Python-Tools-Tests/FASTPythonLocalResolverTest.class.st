@@ -37,7 +37,7 @@ x'.
 ]
 
 { #category : 'tests' }
-FASTPythonLocalResolverTest >> testTwoAssignationsCreateOneVariable [
+FASTPythonLocalResolverTest >> testTwoAssignationsCreateOneDeclaration [
 
 	| assignment1 assignment2 assignedVariable usedVariable |
 	self parseAndResolve: 'x = 1
