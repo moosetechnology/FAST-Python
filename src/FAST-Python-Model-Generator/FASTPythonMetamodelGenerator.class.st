@@ -750,9 +750,9 @@ FASTPythonMetamodelGenerator >> defineRelations [
 	(forInClause property: #right) <>- (expression property: #parentForInClauseRight).
 
 	((forStatement property: #right) comment: 'The list that the for statement iterates over')
-	<>- ((expression property: #parentForStatementLeft) comment: 'The for statement owner (if possible)').
+	<>- ((expression property: #parentForStatementRight) comment: 'The for statement right owner (if possible)').
 	((forStatement property: #left) comment: 'The identifier of the created local variable or tuple')
-	<>- ((expression property: #parentForStatementRight) comment: 'The for statement owner (if possible)').
+	<>- ((expression property: #parentForStatementLeft) comment: 'The for statement left owner (if possible)').
 	
 	(functionDefinition property: #returnType) <>- (type property: #parentFunctionDefinition).
 
