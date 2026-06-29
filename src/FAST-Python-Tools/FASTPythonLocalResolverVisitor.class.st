@@ -49,14 +49,16 @@ FASTPythonLocalResolverVisitor >> visitFASTPyForStatement: aForStatement [
 
 { #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyIdentifier: anIdentifier [
-	"I define a variable in a for statement. Thus I need to create a new declaration"
 
-	self halt.
+	| name |
+	name := anIdentifier sourceCode.
+
+	"I define a variable in a for statement. Thus I need to create a new declaration"
 	anIdentifier parentForStatementLeft ifNotNil: [ :forStatement |
-			scoper scopeAdd: anIdentifier sourceCode declaration: forStatement.
+			scoper scopeAdd: name declaration: forStatement.
 			anIdentifier localDeclaration: forStatement ].
 
-	scoper bind: anIdentifier toLocalDeclaration: anIdentifier sourceCode
+	scoper bind: anIdentifier toLocalDeclaration: name
 ]
 
 { #category : 'visiting' }
