@@ -35,22 +35,26 @@ FASTPythonLocalResolverVisitor >> resolve: aFASTBehaviouralEntity [
 	aFASTBehaviouralEntity accept: self
 ]
 
-{ #category : 'visiting' }
-FASTPythonLocalResolverVisitor >> visitFASTPyAssignment: anAssignment [
+{ #category : 'visiting - reordering' }
+FASTPythonLocalResolverVisitor >> visitFASTPyForStatement: aForStatement [
+	"Reorginizing the order"
 
-	anAssignment left isVariableEntity ifTrue: [
-			[
-				scoper scopeAdd: anAssignment left name declaration: anAssignment.
+	self visitEntity: aForStatement left.
+	self visitEntity: aForStatement right.
 
-				anAssignment left localDeclaration: anAssignment ]
-				on: DuplicatedVariableError
-				do: [ "Do nothing on the second declaration." ] ].
-
-	super visitFASTPyAssignment: anAssignment
+	self visitFASTPyTWithElseClause: aForStatement.
+	self visitFASTTStatementBlock: aForStatement.
+	self visitFASTPyStatement: aForStatement
 ]
 
 { #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyIdentifier: anIdentifier [
+	"I define a variable in a for statement. Thus I need to create a new declaration"
+
+	self halt.
+	anIdentifier parentForStatementLeft ifNotNil: [ :forStatement |
+			scoper scopeAdd: anIdentifier sourceCode declaration: forStatement.
+			anIdentifier localDeclaration: forStatement ].
 
 	scoper bind: anIdentifier toLocalDeclaration: anIdentifier sourceCode
 ]
@@ -58,8 +62,13 @@ FASTPythonLocalResolverVisitor >> visitFASTPyIdentifier: anIdentifier [
 { #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyVariable: aVariable [
 
-	"If I am the left side of my variable declaration, I do not create a local use."
-	aVariable localDeclarationIfPresent: [ :assignment | assignment left == aVariable ifTrue: [ ^ self ] ].
+	"We are declaring a variable in an assignation"
+	aVariable parentAssignmentLeft ifNotNil: [ :assignment |
+			[
+				scoper scopeAdd: aVariable name declaration: assignment.
+				aVariable localDeclaration: assignment ]
+				on: DuplicatedVariableError
+				do: [ "Do nothing on the second declaration." ] ].
 
 	super visitFASTPyVariable: aVariable
 ]
