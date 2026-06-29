@@ -28,8 +28,8 @@
 | `parentExpressionRight` | `FASTTExpression` | `rightOperand` | `FASTTBinaryExpression` | Parent (binary) expression of which I am right side|
 | `parentForInClauseLeft` | `FASTPyExpression` | `left` | `FASTPyForInClause` | |
 | `parentForInClauseRight` | `FASTPyExpression` | `right` | `FASTPyForInClause` | |
-| `parentForStatementLeft` | `FASTPyExpression` | `right` | `FASTPyForStatement` | The for statement owner (if possible)|
-| `parentForStatementRight` | `FASTPyExpression` | `left` | `FASTPyForStatement` | The for statement owner (if possible)|
+| `parentForStatementLeft` | `FASTPyExpression` | `left` | `FASTPyForStatement` | The for statement left owner (if possible)|
+| `parentForStatementRight` | `FASTPyExpression` | `right` | `FASTPyForStatement` | The for statement right owner (if possible)|
 | `parentIfClause` | `FASTPyExpression` | `expression` | `FASTPyIfClause` | |
 | `parentInterpolation` | `FASTPyExpression` | `expression` | `FASTPyInterpolation` | |
 | `parentKeywordArgument` | `FASTPyExpression` | `value` | `FASTPyKeywordArgument` | Keyword argument from which I am the value (if it's the case)|
@@ -79,8 +79,8 @@ Class {
 		'#parentExecStatementScopes => FMOne type: #FASTPyExecStatement opposite: #scopes',
 		'#parentForInClauseLeft => FMOne type: #FASTPyForInClause opposite: #left',
 		'#parentForInClauseRight => FMOne type: #FASTPyForInClause opposite: #right',
-		'#parentForStatementLeft => FMOne type: #FASTPyForStatement opposite: #right',
-		'#parentForStatementRight => FMOne type: #FASTPyForStatement opposite: #left',
+		'#parentForStatementLeft => FMOne type: #FASTPyForStatement opposite: #left',
+		'#parentForStatementRight => FMOne type: #FASTPyForStatement opposite: #right',
 		'#parentIfClause => FMOne type: #FASTPyIfClause opposite: #expression',
 		'#parentInterpolation => FMOne type: #FASTPyInterpolation opposite: #expression',
 		'#parentKeywordArgument => FMOne type: #FASTPyKeywordArgument opposite: #value',
@@ -396,10 +396,10 @@ FASTPyExpression >> parentForInClauseRight: anObject [
 
 { #category : 'accessing' }
 FASTPyExpression >> parentForStatementLeft [
-	"Relation named: #parentForStatementLeft type: #FASTPyForStatement opposite: #right"
+	"Relation named: #parentForStatementLeft type: #FASTPyForStatement opposite: #left"
 
 	<generated>
-	<FMComment: 'The for statement owner (if possible)'>
+	<FMComment: 'The for statement left owner (if possible)'>
 	<container>
 	<derived>
 	^ parentForStatementLeft
@@ -414,10 +414,10 @@ FASTPyExpression >> parentForStatementLeft: anObject [
 
 { #category : 'accessing' }
 FASTPyExpression >> parentForStatementRight [
-	"Relation named: #parentForStatementRight type: #FASTPyForStatement opposite: #left"
+	"Relation named: #parentForStatementRight type: #FASTPyForStatement opposite: #right"
 
 	<generated>
-	<FMComment: 'The for statement owner (if possible)'>
+	<FMComment: 'The for statement right owner (if possible)'>
 	<container>
 	<derived>
 	^ parentForStatementRight
