@@ -63,8 +63,8 @@ FASTPythonLocalResolverVisitor >> visitFASTPyIdentifier: anIdentifier [
 
 { #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyVariable: aVariable [
-
 	"We are declaring a variable in an assignation"
+
 	aVariable parentAssignmentLeft ifNotNil: [ :assignment |
 			[
 				scoper scopeAdd: aVariable name declaration: assignment.
@@ -73,4 +73,14 @@ FASTPythonLocalResolverVisitor >> visitFASTPyVariable: aVariable [
 				do: [ "Do nothing on the second declaration." ] ].
 
 	super visitFASTPyVariable: aVariable
+]
+
+{ #category : 'visiting' }
+FASTPythonLocalResolverVisitor >> visitFASTTStatementBlock: aFASTJavaStatementBlock [
+
+	scoper pushScope.
+
+	super visitFASTTStatementBlock: aFASTJavaStatementBlock.
+
+	^ scoper popScope
 ]
