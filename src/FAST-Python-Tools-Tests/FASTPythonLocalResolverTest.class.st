@@ -194,6 +194,31 @@ for x in fruits:
 ]
 
 { #category : 'tests' }
+FASTPythonLocalResolverTest >> testVariableAccessedInIf [
+
+	| assignment assignedVariable usedVariable1 usedVariable2 |
+	self parseAndResolve: 'glob = 1
+
+if glob < 3:
+    print(glob)'.
+
+	assignment := model module statements first.
+	assignedVariable := assignment left.
+	self assert: assignedVariable localDeclaration equals: assignment.
+	self assert: assignedVariable localDeclaration left name equals: 'glob'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 3.
+
+	usedVariable1 := model module statements second condition operands first.
+	self assert: usedVariable1 localDeclaration equals: assignment.
+	self assert: usedVariable1 equals: assignedVariable localDeclaration localUses second.
+
+	usedVariable2 := model module statements second thenClause statements first arguments first.
+	self assert: usedVariable2 localDeclaration equals: assignment.
+	self assert: usedVariable2 equals: assignedVariable localDeclaration localUses third
+]
+
+{ #category : 'tests' }
 FASTPythonLocalResolverTest >> testVariableOfFor [
 
 	| for declared usedVariable |
@@ -211,4 +236,31 @@ FASTPythonLocalResolverTest >> testVariableOfFor [
 	usedVariable := for statements first arguments first.
 	self assert: usedVariable localDeclaration equals: for.
 	self assert: usedVariable equals: declared localDeclaration localUses second
+]
+
+{ #category : 'tests' }
+FASTPythonLocalResolverTest >> testVariableRedefinedInIf [
+
+	| assignment assignedVariable assignedVariable2 usedVariable |
+	self parseAndResolve: 'glob = 1
+
+if True:
+    glob = 3
+
+print(glob)'.
+
+	assignment := model module statements first.
+	assignedVariable := assignment left.
+	self assert: assignedVariable localDeclaration equals: assignment.
+	self assert: assignedVariable localDeclaration left name equals: 'glob'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 3.
+
+	assignedVariable2 := model module statements second thenClause statements first left.
+	self assert: assignedVariable2 localDeclaration equals: assignment.
+	self assert: assignedVariable2 equals: assignedVariable localDeclaration localUses second.
+
+	usedVariable := model module statements third arguments first.
+	self assert: usedVariable localDeclaration equals: assignment.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses third
 ]
