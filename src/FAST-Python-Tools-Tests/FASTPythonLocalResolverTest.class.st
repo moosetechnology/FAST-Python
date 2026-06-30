@@ -239,6 +239,54 @@ FASTPythonLocalResolverTest >> testVariableOfFor [
 ]
 
 { #category : 'tests' }
+FASTPythonLocalResolverTest >> testVariableOfForClashingWithOtherVariables [
+
+	| assignation assignedVariable assignedVariableInFor usedVariable |
+	self parseAndResolve: 'x = 3
+
+for x in range(5):
+    print(x)'.
+
+	assignation := model module statements first.
+	assignedVariable := assignation left.
+	self assert: assignedVariable localDeclaration equals: assignation.
+	self assert: assignedVariable localDeclaration left sourceCode equals: 'x'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 3.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	assignedVariableInFor := model module statements second left.
+	self assert: assignedVariableInFor localDeclaration equals: assignation.
+	self assert: assignedVariableInFor equals: assignedVariableInFor localDeclaration localUses second.
+
+	usedVariable := model module statements second statements first arguments first.
+	self assert: usedVariable localDeclaration equals: assignation.
+	self assert: usedVariable equals: usedVariable localDeclaration localUses third
+]
+
+{ #category : 'tests' }
+FASTPythonLocalResolverTest >> testVariableOfForStaysAfterFor [
+
+	| for assignedVariable usedVariable |
+	self parseAndResolve: 'for x in range(5):
+    pass
+
+print(x)'.
+
+	for := model module statements first.
+	assignedVariable := for left.
+	self assert: assignedVariable localDeclaration equals: for.
+	self assert: assignedVariable localDeclaration left sourceCode equals: 'x'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: for.
+	self assert: usedVariable equals: usedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests' }
 FASTPythonLocalResolverTest >> testVariableRedefinedInIf [
 
 	| assignment assignedVariable assignedVariable2 usedVariable |
