@@ -218,7 +218,51 @@ if glob < 3:
 	self assert: usedVariable2 equals: assignedVariable localDeclaration localUses third
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - for' }
+FASTPythonLocalResolverTest >> testVariableDeclaredInFor [
+
+	| assignement declared usedVariable |
+	self parseAndResolve: 'for x in "banana":
+    i = 2
+
+print(i)'.
+
+	assignement := model module statements first statements first.
+	declared := assignement left.
+	self assert: declared localDeclaration equals: assignement.
+	self assert: declared localDeclaration left sourceCode equals: 'i'.
+	self deny: declared localDeclaration isNonLocalDeclaration.
+	self assert: declared localDeclaration localUses size equals: 2.
+	self assert: declared localDeclaration localUses first equals: declared.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: assignement.
+	self assert: usedVariable equals: declared localDeclaration localUses second
+]
+
+{ #category : 'tests - while' }
+FASTPythonLocalResolverTest >> testVariableDeclaredInWhile [
+
+	| assignement declared usedVariable |
+	self parseAndResolve: 'while False:
+    i = 2
+
+print(i)'.
+
+	assignement := model module statements first statements first.
+	declared := assignement left.
+	self assert: declared localDeclaration equals: assignement.
+	self assert: declared localDeclaration left sourceCode equals: 'i'.
+	self deny: declared localDeclaration isNonLocalDeclaration.
+	self assert: declared localDeclaration localUses size equals: 2.
+	self assert: declared localDeclaration localUses first equals: declared.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: assignement.
+	self assert: usedVariable equals: declared localDeclaration localUses second
+]
+
+{ #category : 'tests - for' }
 FASTPythonLocalResolverTest >> testVariableOfFor [
 
 	| for declared usedVariable |
@@ -238,7 +282,7 @@ FASTPythonLocalResolverTest >> testVariableOfFor [
 	self assert: usedVariable equals: declared localDeclaration localUses second
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - for' }
 FASTPythonLocalResolverTest >> testVariableOfForClashingWithOtherVariables [
 
 	| assignation assignedVariable assignedVariableInFor usedVariable |
@@ -264,7 +308,7 @@ for x in range(5):
 	self assert: usedVariable equals: usedVariable localDeclaration localUses third
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - for' }
 FASTPythonLocalResolverTest >> testVariableOfForStaysAfterFor [
 
 	| for assignedVariable usedVariable |
