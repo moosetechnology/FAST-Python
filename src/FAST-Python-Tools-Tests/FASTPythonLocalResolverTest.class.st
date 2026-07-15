@@ -56,6 +56,25 @@ FASTPythonLocalResolverTest >> testFunctionParameter [
 	self assert: usedVariable equals: declaration localDeclaration localUses second
 ]
 
+{ #category : 'tests - parameters' }
+FASTPythonLocalResolverTest >> testFunctionParameterWithDefaultValue [
+
+	| declaration usedVariable |
+	self parseAndResolve: 'def funct(y=3):
+		return y'.
+
+	declaration := model module statements first parameters first.
+	self assert: declaration localDeclaration equals: declaration.
+	self assert: declaration localDeclaration name equals: 'y'.
+	self deny: declaration localDeclaration isNonLocalDeclaration.
+	self assert: declaration localDeclaration localUses size equals: 2.
+	self assert: declaration localDeclaration localUses first equals: declaration.
+
+	usedVariable := model module statements first statements first expression.
+	self assert: usedVariable localDeclaration equals: declaration.
+	self assert: usedVariable equals: declaration localDeclaration localUses second
+]
+
 { #category : 'tests' }
 FASTPythonLocalResolverTest >> testGlobalAndTemporaryOfTheSameNameInFunction [
 
@@ -100,6 +119,27 @@ print(glob)'.
 ]
 
 { #category : 'tests' }
+FASTPythonLocalResolverTest >> testGlobalUsedInDictionaryValue [
+
+	| assignment assignedVariable usedVariable |
+	self parseAndResolve: 'x = 3
+
+{x: 2}'.
+
+	assignment := model module statements first.
+	assignedVariable := assignment left.
+	self assert: assignedVariable localDeclaration equals: assignment.
+	self assert: assignedVariable localDeclaration left name equals: 'x'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second initializers first key.
+	self assert: usedVariable localDeclaration equals: assignment.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests' }
 FASTPythonLocalResolverTest >> testGlobalUsedInFunction [
 
 	| assignment assignedVariable usedVariable |
@@ -140,6 +180,69 @@ lambda: x'.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
 
 	usedVariable := model module statements second expression.
+	self assert: usedVariable localDeclaration equals: assignment.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests' }
+FASTPythonLocalResolverTest >> testGlobalUsedInList [
+
+	| assignment assignedVariable usedVariable |
+	self parseAndResolve: 'x = 3
+
+[ x ]'.
+
+	assignment := model module statements first.
+	assignedVariable := assignment left.
+	self assert: assignedVariable localDeclaration equals: assignment.
+	self assert: assignedVariable localDeclaration left name equals: 'x'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second initializers first.
+	self assert: usedVariable localDeclaration equals: assignment.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests' }
+FASTPythonLocalResolverTest >> testGlobalUsedInSet [
+
+	| assignment assignedVariable usedVariable |
+	self parseAndResolve: 'x = 3
+
+{ x }'.
+
+	assignment := model module statements first.
+	assignedVariable := assignment left.
+	self assert: assignedVariable localDeclaration equals: assignment.
+	self assert: assignedVariable localDeclaration left name equals: 'x'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second initializers first.
+	self assert: usedVariable localDeclaration equals: assignment.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests' }
+FASTPythonLocalResolverTest >> testGlobalUsedInTuple [
+
+	| assignment assignedVariable usedVariable |
+	self parseAndResolve: 'x = 3
+
+(x, 2)'.
+
+	assignment := model module statements first.
+	assignedVariable := assignment left.
+	self assert: assignedVariable localDeclaration equals: assignment.
+	self assert: assignedVariable localDeclaration left name equals: 'x'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second initializers first.
 	self assert: usedVariable localDeclaration equals: assignment.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
