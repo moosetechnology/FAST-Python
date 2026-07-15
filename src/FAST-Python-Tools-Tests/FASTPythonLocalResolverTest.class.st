@@ -37,6 +37,25 @@ x'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
+{ #category : 'tests - parameters' }
+FASTPythonLocalResolverTest >> testFunctionParameter [
+
+	| declaration usedVariable |
+	self parseAndResolve: 'def funct(y):
+		return y'.
+
+	declaration := model module statements first parameters first.
+	self assert: declaration localDeclaration equals: declaration.
+	self assert: declaration localDeclaration name equals: 'y'.
+	self deny: declaration localDeclaration isNonLocalDeclaration.
+	self assert: declaration localDeclaration localUses size equals: 2.
+	self assert: declaration localDeclaration localUses first equals: declaration.
+
+	usedVariable := model module statements first statements first expression.
+	self assert: usedVariable localDeclaration equals: declaration.
+	self assert: usedVariable equals: declaration localDeclaration localUses second
+]
+
 { #category : 'tests' }
 FASTPythonLocalResolverTest >> testGlobalAndTemporaryOfTheSameNameInFunction [
 
@@ -125,7 +144,7 @@ lambda: x'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - parameters' }
 FASTPythonLocalResolverTest >> testLambdaParameter [
 
 	| declaration usedVariable |

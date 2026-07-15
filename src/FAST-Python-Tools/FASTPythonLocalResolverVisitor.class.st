@@ -28,7 +28,7 @@ FASTPythonLocalResolverVisitor class >> resolve: aPythonEntity [
 	^ self new resolve: aPythonEntity
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'declarations' }
 FASTPythonLocalResolverVisitor >> bind: aVariable toDeclarationNamed: aVariableName [
 
 	| declaration |
@@ -38,14 +38,14 @@ FASTPythonLocalResolverVisitor >> bind: aVariable toDeclarationNamed: aVariableN
 	declaration addLocalUse: aVariable
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'declarations' }
 FASTPythonLocalResolverVisitor >> declarationNamed: aVariableName [
 
 	scopes do: [ :scope | scope declarationNamed: aVariableName ifPresent: [ :declaration | ^ declaration ] ].
 	^ nil
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'declarations' }
 FASTPythonLocalResolverVisitor >> ensureDeclarationOf: aVariable named: aVariableName assignment: anAssignment [
 
 	scopes top ensureDeclarationOf: aVariableName assignment: anAssignment.
@@ -59,7 +59,7 @@ FASTPythonLocalResolverVisitor >> initialize [
 	scopes := Stack new
 ]
 
-{ #category : 'instance creation' }
+{ #category : 'initialization' }
 FASTPythonLocalResolverVisitor >> resolve: aFASTBehaviouralEntity [
 
 	scopes push: ((aFASTBehaviouralEntity isClassDefinition
@@ -82,6 +82,14 @@ FASTPythonLocalResolverVisitor >> shouldSkipIdentifier: anIdentifier [
 	^ false
 ]
 
+{ #category : 'declarations' }
+FASTPythonLocalResolverVisitor >> useScope: aScope during: aBlock [
+
+	scopes push: aScope.
+
+	[ aBlock value ] ensure: [ scopes pop ]
+]
+
 { #category : 'visiting - reordering' }
 FASTPythonLocalResolverVisitor >> visitFASTPyForStatement: aForStatement [
 	"Reorginizing the order"
@@ -97,9 +105,14 @@ FASTPythonLocalResolverVisitor >> visitFASTPyForStatement: aForStatement [
 { #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyFunctionDefinition: aFunctionDefinition [
 
-	scopes push: (FASTPythonLRScope for: aFunctionDefinition).
-	super visitFASTPyFunctionDefinition: aFunctionDefinition.
-	scopes pop
+	self
+		useScope: (FASTPythonLRScope for: aFunctionDefinition)
+		during: [ "Cannot use super because the super method does not visit parameters before the block statement so we miss the parameters declerations before their usage."
+				self visitFASTTWithParameters: aFunctionDefinition.
+				self visitFASTPyTWithTypeParameters: aFunctionDefinition.
+				self visitFASTPyStatement: aFunctionDefinition.
+				self visitEntity: aFunctionDefinition returnType.
+				self visitFASTPyTDefinition: aFunctionDefinition ]
 ]
 
 { #category : 'visiting' }
