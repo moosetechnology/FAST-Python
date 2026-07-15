@@ -117,6 +117,13 @@ FASTPythonLocalResolverVisitor >> visitFASTPyIdentifier: anIdentifier [
 ]
 
 { #category : 'visiting' }
+FASTPythonLocalResolverVisitor >> visitFASTPyParameter: aParameter [
+
+	self ensureDeclarationOf: aParameter named: aParameter name assignment: aParameter.
+	super visitFASTPyParameter: aParameter
+]
+
+{ #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyVariable: aVariable [
 	"We are declaring a variable in an assignation"
 

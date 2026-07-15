@@ -126,6 +126,24 @@ lambda: x'.
 ]
 
 { #category : 'tests' }
+FASTPythonLocalResolverTest >> testLambdaParameter [
+
+	| declaration usedVariable |
+	self parseAndResolve: 'lambda y: y'.
+
+	declaration := model module statements first parameters first.
+	self assert: declaration localDeclaration equals: declaration.
+	self assert: declaration localDeclaration name equals: 'y'.
+	self deny: declaration localDeclaration isNonLocalDeclaration.
+	self assert: declaration localDeclaration localUses size equals: 2.
+	self assert: declaration localDeclaration localUses first equals: declaration.
+
+	usedVariable := model module statements first expression.
+	self assert: usedVariable localDeclaration equals: declaration.
+	self assert: usedVariable equals: declaration localDeclaration localUses second
+]
+
+{ #category : 'tests' }
 FASTPythonLocalResolverTest >> testLocalVariableInFunction [
 
 	| assignment assignedVariable usedVariable |
