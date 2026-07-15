@@ -105,6 +105,27 @@ print(fun())'.
 ]
 
 { #category : 'tests' }
+FASTPythonLocalResolverTest >> testGlobalUsedInLambda [
+
+	| assignment assignedVariable usedVariable |
+	self parseAndResolve: 'x = 1
+
+lambda: x'.
+
+	assignment := model module statements first.
+	assignedVariable := assignment left.
+	self assert: assignedVariable localDeclaration equals: assignment.
+	self assert: assignedVariable localDeclaration left name equals: 'x'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second expression.
+	self assert: usedVariable localDeclaration equals: assignment.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests' }
 FASTPythonLocalResolverTest >> testLocalVariableInFunction [
 
 	| assignment assignedVariable usedVariable |
