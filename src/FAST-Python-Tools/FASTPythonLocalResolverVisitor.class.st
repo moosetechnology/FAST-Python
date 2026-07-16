@@ -131,6 +131,17 @@ FASTPythonLocalResolverVisitor >> visitFASTPyIdentifier: anIdentifier [
 ]
 
 { #category : 'visiting' }
+FASTPythonLocalResolverVisitor >> visitFASTPyImport: anImport [
+
+	anImport importedEntities do: [ :entity |
+			entity hasAlias
+				ifTrue: [ scopes top forgetDeclarationOf: entity alias ]
+				ifFalse: [ self halt ] ].
+
+	super visitFASTPyImport: anImport
+]
+
+{ #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyParameter: aParameter [
 
 	self ensureDeclarationOf: aParameter named: aParameter name assignment: aParameter.
