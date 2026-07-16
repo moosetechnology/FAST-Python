@@ -64,6 +64,32 @@ A CFG can be done on a function, method, class, module or lambda.
 
 You can visualize it in the inspector as a visualization and you can also export your CFG as a mermaid visualization using `#asMermaidScript`
 
+## Local variable resolutions
+
+It is possible to apply a local variable name resolution on a FAST-Python model by executing this piece of code:
+
+```smalltalk
+FASTPythonLocalResolverVisitor resolve: model module
+```
+
+Once this is executed, all nodes representing a variable will be able to provide a `#localDeclaration` pointing to the first use of the variable. This local declaration also knows all the `#localUses` of the variable.
+
+### Limitations
+
+This has some limitations. For example, if we import a global variable, we cannot know if this is a global variable or something else. So we will not link it to any declaration. 
+
+Also, this kind of uses are not supported:
+
+```python
+a.b.c = 3
+d = a.b
+print(d.c)
+```
+
+Here `a.b.c` will have a local declaration, but it will not know that`d.c` is a local use of this declared variable.
+
+
+
 ## Moose versions compatibility
 
 | Version 	| Compatible Moose versions    |
