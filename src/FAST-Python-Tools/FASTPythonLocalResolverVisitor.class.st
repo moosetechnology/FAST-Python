@@ -32,7 +32,8 @@ FASTPythonLocalResolverVisitor class >> resolve: aPythonEntity [
 FASTPythonLocalResolverVisitor >> bind: aVariable toDeclarationNamed: aVariableName [
 
 	| declaration |
-	declaration := (self declarationNamed: aVariableName) ifNil: [ self error: 'Not yet implemented.' ].
+	declaration := (self declarationNamed: aVariableName) ifNil: [
+		               ^ self "In python we cannot know if an identifier that was not assigned is a variable or something else such as a function. So we do not bind anything if we have no variable of this name declared" ].
 
 	aVariable localDeclaration: declaration.
 	declaration addLocalUse: aVariable

@@ -18,6 +18,23 @@ FASTPythonLocalResolverTest >> parseAndResolve: aString [
 ]
 
 { #category : 'tests' }
+FASTPythonLocalResolverTest >> testCommentedGlobalUsage [
+
+	| assignment assignedVariable |
+	self parseAndResolve: 'x = 3
+
+# {x: 2}'.
+
+	assignment := model module statements first.
+	assignedVariable := assignment left.
+	self assert: assignedVariable localDeclaration equals: assignment.
+	self assert: assignedVariable localDeclaration left name equals: 'x'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 1.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable
+]
+
+{ #category : 'tests' }
 FASTPythonLocalResolverTest >> testDeclarationAndUsageOfGlobalInModule [
 
 	| assignment assignedVariable usedVariable |
@@ -245,6 +262,18 @@ FASTPythonLocalResolverTest >> testGlobalUsedInTuple [
 	usedVariable := model module statements second initializers first.
 	self assert: usedVariable localDeclaration equals: assignment.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests - not variables' }
+FASTPythonLocalResolverTest >> testImportedIdentifier [
+
+	| receiver |
+	self parseAndResolve: 'import pandas as pd
+pd.readCSV("path")'.
+
+	receiver := model module statements second callee value.
+	self assert: receiver sourceCode equals: 'pd'.
+	self deny: receiver hasLocalDeclaration
 ]
 
 { #category : 'tests - parameters' }
