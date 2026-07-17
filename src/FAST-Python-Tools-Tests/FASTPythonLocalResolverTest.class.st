@@ -17,7 +17,7 @@ FASTPythonLocalResolverTest >> parseAndResolve: aString [
 	FASTPythonLocalResolverVisitor resolve: model module
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testCommentedGlobalUsage [
 
 	| assignment assignedVariable |
@@ -34,7 +34,7 @@ FASTPythonLocalResolverTest >> testCommentedGlobalUsage [
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testDeclarationAndUsageOfGlobalInModule [
 
 	| assignment assignedVariable usedVariable |
@@ -52,6 +52,27 @@ x'.
 	usedVariable := model module statements second.
 	self assert: usedVariable localDeclaration equals: assignment.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests - globals' }
+FASTPythonLocalResolverTest >> testFunctionDeclaredAndCalled [
+
+	| functionDefinition call |
+	self parseAndResolve: 'def func():
+	pass
+	
+func()'.
+
+	functionDefinition := model module statements first.
+	self assert: functionDefinition localDeclaration equals: functionDefinition.
+	self assert: functionDefinition localDeclaration name equals: 'func'.
+	self deny: functionDefinition localDeclaration isNonLocalDeclaration.
+	self assert: functionDefinition localDeclaration localUses size equals: 2.
+	self assert: functionDefinition localDeclaration localUses first equals: functionDefinition.
+
+	call := model module statements second callee.
+	self assert: call localDeclaration equals: functionDefinition.
+	self assert: call equals: functionDefinition localDeclaration localUses second
 ]
 
 { #category : 'tests - parameters' }
@@ -92,7 +113,7 @@ FASTPythonLocalResolverTest >> testFunctionParameterWithDefaultValue [
 	self assert: usedVariable equals: declaration localDeclaration localUses second
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testGlobalAndTemporaryOfTheSameNameInFunction [
 
 	| globalAssignment assignedGlobal usedGlobal temporaryAssignment assignedTemporary temporaryUsage1 temporaryUsage2 |
@@ -162,7 +183,27 @@ print(x)'.
 	self deny: model module statements fourth arguments first hasLocalDeclaration
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - globals' }
+FASTPythonLocalResolverTest >> testGlobalUsageInCall [
+
+	| assignment assignedVariable usedVariable |
+	self parseAndResolve: 'x = 1
+print(x)'.
+
+	assignment := model module statements first.
+	assignedVariable := assignment left.
+	self assert: assignedVariable localDeclaration equals: assignment.
+	self assert: assignedVariable localDeclaration left name equals: 'x'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: assignment.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testGlobalUsedInDictionaryValue [
 
 	| assignment assignedVariable usedVariable |
@@ -183,7 +224,7 @@ FASTPythonLocalResolverTest >> testGlobalUsedInDictionaryValue [
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testGlobalUsedInFunction [
 
 	| assignment assignedVariable usedVariable |
@@ -207,7 +248,7 @@ print(fun())'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testGlobalUsedInLambda [
 
 	| assignment assignedVariable usedVariable |
@@ -228,7 +269,7 @@ lambda: x'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testGlobalUsedInList [
 
 	| assignment assignedVariable usedVariable |
@@ -249,7 +290,7 @@ FASTPythonLocalResolverTest >> testGlobalUsedInList [
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testGlobalUsedInSet [
 
 	| assignment assignedVariable usedVariable |
@@ -270,7 +311,7 @@ FASTPythonLocalResolverTest >> testGlobalUsedInSet [
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testGlobalUsedInTuple [
 
 	| assignment assignedVariable usedVariable |
@@ -321,7 +362,7 @@ FASTPythonLocalResolverTest >> testLambdaParameter [
 	self assert: usedVariable equals: declaration localDeclaration localUses second
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - local variables' }
 FASTPythonLocalResolverTest >> testLocalVariableInFunction [
 
 	| assignment assignedVariable usedVariable |
@@ -368,26 +409,6 @@ x'.
 	usedVariable := model module statements third.
 	self assert: usedVariable localDeclaration equals: assignment1.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses third
-]
-
-{ #category : 'tests' }
-FASTPythonLocalResolverTest >> testUsageInCall [
-
-	| assignment assignedVariable usedVariable |
-	self parseAndResolve: 'x = 1
-print(x)'.
-
-	assignment := model module statements first.
-	assignedVariable := assignment left.
-	self assert: assignedVariable localDeclaration equals: assignment.
-	self assert: assignedVariable localDeclaration left name equals: 'x'.
-	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
-	self assert: assignedVariable localDeclaration localUses size equals: 2.
-	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
-
-	usedVariable := model module statements second arguments first.
-	self assert: usedVariable localDeclaration equals: assignment.
-	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
 { #category : 'tests' }
