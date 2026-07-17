@@ -403,12 +403,79 @@ func()'.
 	import := model module statements first.
 	importedEntity := import importedEntities anyOne.
 	self assert: importedEntity localDeclaration equals: import.
+	self deny: importedEntity localDeclaration importedEntities first hasAlias.
 	self assert: importedEntity localDeclaration importedEntities first segments last equals: 'func'.
 	self deny: importedEntity localDeclaration isNonLocalDeclaration.
 	self assert: importedEntity localDeclaration localUses size equals: 2.
 	self assert: importedEntity localDeclaration localUses first equals: importedEntity.
 
 	call := model module statements second callee.
+	self assert: call localDeclaration equals: import.
+	self assert: call equals: importedEntity localDeclaration localUses second
+]
+
+{ #category : 'tests - imports' }
+FASTPythonLocalResolverTest >> testImportedEntityWithAlias [
+
+	| import importedEntity call |
+	self parseAndResolve: 'import functi as func
+	
+func()'.
+
+	import := model module statements first.
+	importedEntity := import importedEntities anyOne.
+	self assert: importedEntity localDeclaration equals: import.
+	self assert: importedEntity localDeclaration importedEntities first hasAlias.
+	self assert: importedEntity localDeclaration importedEntities first alias equals: 'func'.
+	self deny: importedEntity localDeclaration isNonLocalDeclaration.
+	self assert: importedEntity localDeclaration localUses size equals: 2.
+	self assert: importedEntity localDeclaration localUses first equals: importedEntity.
+
+	call := model module statements second callee.
+	self assert: call localDeclaration equals: import.
+	self assert: call equals: importedEntity localDeclaration localUses second
+]
+
+{ #category : 'tests - imports' }
+FASTPythonLocalResolverTest >> testImportedEntityWithAliasDoesNotShadowVariable [
+
+	| import importedEntity call assignment assignedVariable usedVariable1 usedVariable2 |
+	self parseAndResolve: 'x = 1
+
+print(x)
+
+import x as func
+	
+func()
+
+print(x)'.
+
+	assignment := model module statements first.
+	assignedVariable := assignment left.
+	self assert: assignedVariable localDeclaration equals: assignment.
+	self assert: assignedVariable localDeclaration left name equals: 'x'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 3.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable1 := model module statements second arguments first.
+	self assert: usedVariable1 localDeclaration equals: assignment.
+	self assert: usedVariable1 equals: assignedVariable localDeclaration localUses second.
+
+	usedVariable2 := model module statements fifth arguments first.
+	self assert: usedVariable2 localDeclaration equals: assignment.
+	self assert: usedVariable2 equals: assignedVariable localDeclaration localUses third.
+
+	import := model module statements third.
+	importedEntity := import importedEntities anyOne.
+	self assert: importedEntity localDeclaration equals: import.
+	self assert: importedEntity localDeclaration importedEntities first hasAlias.
+	self assert: importedEntity localDeclaration importedEntities first alias equals: 'func'.
+	self deny: importedEntity localDeclaration isNonLocalDeclaration.
+	self assert: importedEntity localDeclaration localUses size equals: 2.
+	self assert: importedEntity localDeclaration localUses first equals: importedEntity.
+
+	call := model module statements fourth callee.
 	self assert: call localDeclaration equals: import.
 	self assert: call equals: importedEntity localDeclaration localUses second
 ]

@@ -139,7 +139,7 @@ FASTPythonLocalResolverVisitor >> visitFASTPyImport: anImport [
 
 	anImport importedEntities do: [ :entity |
 			entity hasAlias
-				ifTrue: [ self flag: #todo ]
+				ifTrue: [ self ensureDeclarationOf: entity named: entity alias declaration: anImport ]
 				ifFalse: [
 						entity segments size = 1
 							ifTrue: [ self ensureDeclarationOf: entity named: entity segments last declaration: anImport ]
