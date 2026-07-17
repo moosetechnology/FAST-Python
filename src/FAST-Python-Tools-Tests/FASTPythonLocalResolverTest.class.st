@@ -160,14 +160,14 @@ print(glob)'.
 FASTPythonLocalResolverTest >> testGlobalShadowedByImport [
 	"Here we cannot know if the second printing is of a variable."
 
-	| assignment assignedVariable usedVariable |
+	| assignment assignedVariable usedVariable import importedEntity usedImportedEntity |
 	self parseAndResolve: 'x = 1
 print(x)
 
 import x
 
 print(x)'.
-	self skip. "To update and fix"
+
 	assignment := model module statements first.
 	assignedVariable := assignment left.
 	self assert: assignedVariable localDeclaration equals: assignment.
@@ -180,7 +180,18 @@ print(x)'.
 	self assert: usedVariable localDeclaration equals: assignment.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second.
 
-	self deny: model module statements fourth arguments first hasLocalDeclaration
+	import := model module statements third.
+	importedEntity := import importedEntities anyOne.
+	self assert: importedEntity localDeclaration equals: import.
+	self deny: importedEntity localDeclaration importedEntities first hasAlias.
+	self assert: importedEntity localDeclaration importedEntities first segments last equals: 'x'.
+	self deny: importedEntity localDeclaration isNonLocalDeclaration.
+	self assert: importedEntity localDeclaration localUses size equals: 2.
+	self assert: importedEntity localDeclaration localUses first equals: importedEntity.
+
+	usedImportedEntity := model module statements fourth arguments first.
+	self assert: usedImportedEntity localDeclaration equals: import.
+	self assert: usedImportedEntity equals: importedEntity localDeclaration localUses second
 ]
 
 { #category : 'tests - shadowing' }
@@ -478,18 +489,6 @@ print(x)'.
 	call := model module statements fourth callee.
 	self assert: call localDeclaration equals: import.
 	self assert: call equals: importedEntity localDeclaration localUses second
-]
-
-{ #category : 'tests - not variables' }
-FASTPythonLocalResolverTest >> testImportedIdentifier [
-
-	| receiver |
-	self parseAndResolve: 'import pandas as pd
-pd.readCSV("path")'.
-
-	receiver := model module statements second callee value.
-	self assert: receiver sourceCode equals: 'pd'.
-	self deny: receiver hasLocalDeclaration
 ]
 
 { #category : 'tests - parameters' }

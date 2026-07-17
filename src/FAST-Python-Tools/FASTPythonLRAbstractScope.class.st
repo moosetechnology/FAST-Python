@@ -28,9 +28,17 @@ FASTPythonLRAbstractScope >> declarationNamed: aVariableName ifPresent: aBlock [
 FASTPythonLRAbstractScope >> ensureDeclarationOf: aVariableName assignment: anAssignment [
 	"If it is already present we do nothing "
 
-	^ nameDictionary at: aVariableName ifAbsentPut: [
-			  anAssignment clearLocalUses.
-			  anAssignment ]
+	^ nameDictionary
+		  at: aVariableName
+		  ifPresent: [ :declaration |
+				  declaration localResolverKind = anAssignment localResolverKind
+					  ifTrue: [ ^ declaration ]
+					  ifFalse: [ "If the kind is different, we save a new declaration."
+							  anAssignment clearLocalUses.
+							  nameDictionary at: aVariableName put: anAssignment ] ]
+		  ifAbsentPut: [
+				  anAssignment clearLocalUses.
+				  anAssignment ]
 ]
 
 { #category : 'accessing' }
