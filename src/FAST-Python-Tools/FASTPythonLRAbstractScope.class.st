@@ -38,12 +38,6 @@ FASTPythonLRAbstractScope >> entity: anObject [
 	entity := anObject
 ]
 
-{ #category : 'as yet unclassified' }
-FASTPythonLRAbstractScope >> forgetDeclarationOf: aName [
-
-	nameDictionary removeKey: aName ifAbsent: [ "Do nothing" ]
-]
-
 { #category : 'initialization' }
 FASTPythonLRAbstractScope >> initialize [
 

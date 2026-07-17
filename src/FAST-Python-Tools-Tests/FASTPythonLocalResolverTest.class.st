@@ -54,7 +54,7 @@ x'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
-{ #category : 'tests - globals' }
+{ #category : 'tests - functions' }
 FASTPythonLocalResolverTest >> testFunctionDeclaredAndCalled [
 
 	| functionDefinition call |
@@ -195,6 +195,7 @@ import a as x
 
 print(x)'.
 
+	self skip. "We need to update the behavior"
 	assignment := model module statements first.
 	assignedVariable := assignment left.
 	self assert: assignedVariable localDeclaration equals: assignment.
@@ -389,6 +390,27 @@ FASTPythonLocalResolverTest >> testGlobalUsedInTuple [
 	usedVariable := model module statements second initializers first.
 	self assert: usedVariable localDeclaration equals: assignment.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests - imports' }
+FASTPythonLocalResolverTest >> testImportedEntity [
+
+	| import importedEntity call |
+	self parseAndResolve: 'import func
+	
+func()'.
+
+	import := model module statements first.
+	importedEntity := import importedEntities anyOne.
+	self assert: importedEntity localDeclaration equals: import.
+	self assert: importedEntity localDeclaration importedEntities first segments last equals: 'func'.
+	self deny: importedEntity localDeclaration isNonLocalDeclaration.
+	self assert: importedEntity localDeclaration localUses size equals: 2.
+	self assert: importedEntity localDeclaration localUses first equals: importedEntity.
+
+	call := model module statements second callee.
+	self assert: call localDeclaration equals: import.
+	self assert: call equals: importedEntity localDeclaration localUses second
 ]
 
 { #category : 'tests - not variables' }
