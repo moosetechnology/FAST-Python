@@ -157,6 +157,33 @@ print(glob)'.
 ]
 
 { #category : 'tests - shadowing' }
+FASTPythonLocalResolverTest >> testGlobalShadowedByImport [
+	"Here we cannot know if the second printing is of a variable."
+
+	| assignment assignedVariable usedVariable |
+	self parseAndResolve: 'x = 1
+print(x)
+
+import x
+
+print(x)'.
+	self skip. "To update and fix"
+	assignment := model module statements first.
+	assignedVariable := assignment left.
+	self assert: assignedVariable localDeclaration equals: assignment.
+	self assert: assignedVariable localDeclaration left name equals: 'x'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: assignment.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second.
+
+	self deny: model module statements fourth arguments first hasLocalDeclaration
+]
+
+{ #category : 'tests - shadowing' }
 FASTPythonLocalResolverTest >> testGlobalShadowedByImportAlias [
 	"Here we cannot know if the second printing is of a variable."
 
@@ -181,6 +208,38 @@ print(x)'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second.
 
 	self deny: model module statements fourth arguments first hasLocalDeclaration
+]
+
+{ #category : 'tests - shadowing' }
+FASTPythonLocalResolverTest >> testGlobalShadowedByImportInFunction [
+
+	| assignment assignedVariable usedVariable1 usedVariable2 |
+	self parseAndResolve: 'matplotlib = 3
+
+print(matplotlib)
+
+def f():
+    import matplotlib
+    return matplotlib
+
+print(matplotlib)'.
+
+	self skip. "To update and fix"
+	assignment := model module statements first.
+	assignedVariable := assignment left.
+	self assert: assignedVariable localDeclaration equals: assignment.
+	self assert: assignedVariable localDeclaration left name equals: 'matplotlib'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 3.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable1 := model module statements second arguments first.
+	self assert: usedVariable1 localDeclaration equals: assignment.
+	self assert: usedVariable1 equals: assignedVariable localDeclaration localUses second.
+
+	usedVariable2 := model module statements fourth arguments first.
+	self assert: usedVariable2 localDeclaration equals: assignment.
+	self assert: usedVariable2 equals: assignedVariable localDeclaration localUses third
 ]
 
 { #category : 'tests - globals' }
