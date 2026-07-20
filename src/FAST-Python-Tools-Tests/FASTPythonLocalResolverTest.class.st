@@ -655,6 +655,25 @@ print(f())'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
+{ #category : 'tests - non local declarations' }
+FASTPythonLocalResolverTest >> testNonLocalMethodAndVariable [
+
+	| nonLocalCall nonLocalAccess |
+	self parseAndResolve: 'print(x)'.
+
+	nonLocalCall := model module statements first callee.
+	self assert: nonLocalCall localDeclaration name equals: 'print'.
+	self assert: nonLocalCall localDeclaration isNonLocalDeclaration.
+	self assert: nonLocalCall localDeclaration localUses size equals: 1.
+	self assert: nonLocalCall localDeclaration localUses first equals: nonLocalCall.
+
+	nonLocalAccess := model module statements first arguments first.
+	self assert: nonLocalAccess localDeclaration name equals: 'x'.
+	self assert: nonLocalAccess localDeclaration isNonLocalDeclaration.
+	self assert: nonLocalAccess localDeclaration localUses size equals: 1.
+	self assert: nonLocalAccess localDeclaration localUses first equals: nonLocalAccess
+]
+
 { #category : 'tests - shadowing' }
 FASTPythonLocalResolverTest >> testParameterShadowedByAssignement [
 

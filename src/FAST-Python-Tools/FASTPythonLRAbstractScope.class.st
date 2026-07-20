@@ -25,20 +25,20 @@ FASTPythonLRAbstractScope >> declarationNamed: aVariableName ifPresent: aBlock [
 ]
 
 { #category : 'as yet unclassified' }
-FASTPythonLRAbstractScope >> ensureDeclarationOf: aVariableName assignment: anAssignment [
+FASTPythonLRAbstractScope >> ensureDeclarationOf: aName declaration: aFASTNode [
 	"If it is already present we do nothing "
 
 	^ nameDictionary
-		  at: aVariableName
+		  at: aName
 		  ifPresent: [ :declaration |
-				  declaration localResolverKind = anAssignment localResolverKind
+				  declaration localResolverKind = aFASTNode localResolverKind
 					  ifTrue: [ ^ declaration ]
 					  ifFalse: [ "If the kind is different, we save a new declaration."
-							  anAssignment clearLocalUses.
-							  nameDictionary at: aVariableName put: anAssignment ] ]
+							  aFASTNode clearLocalUses.
+							  nameDictionary at: aName put: aFASTNode ] ]
 		  ifAbsentPut: [
-				  anAssignment clearLocalUses.
-				  anAssignment ]
+				  aFASTNode clearLocalUses.
+				  aFASTNode ]
 ]
 
 { #category : 'accessing' }

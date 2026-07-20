@@ -37,8 +37,10 @@ FASTPythonLocalResolverVisitor class >> resolve: aPythonEntity [
 FASTPythonLocalResolverVisitor >> bind: aFASTNode toDeclarationNamed: aName [
 
 	| declaration |
-	declaration := (self declarationNamed: aName) ifNil: [
-		               ^ self "In python we cannot know if an identifier that was not assigned is a variable or something else such as a function. So we do not bind anything if we have no variable of this name declared" ].
+	declaration := (self declarationNamed: aName) ifNil: [ "If it is undeclared, we create an undeclared in the lowest scope in the stack."
+			               scopes first ensureDeclarationOf: aName declaration: (FASTNonLocalDeclaration new
+					                name: aName;
+					                yourself) ].
 
 	aFASTNode localDeclaration: declaration.
 	declaration addLocalUse: aFASTNode
@@ -54,7 +56,7 @@ FASTPythonLocalResolverVisitor >> declarationNamed: aName [
 { #category : 'declarations' }
 FASTPythonLocalResolverVisitor >> ensureDeclarationOf: anEntity named: aName declaration: aFASTNode [
 
-	scopes top ensureDeclarationOf: aName assignment: aFASTNode.
+	scopes top ensureDeclarationOf: aName declaration: aFASTNode.
 	self bind: anEntity toDeclarationNamed: aName
 ]
 
