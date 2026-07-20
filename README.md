@@ -2,6 +2,23 @@
 
 Famix AST representation for Python based on TreeSitter
 
+<!-- TOC -->
+
+- [FAST-Python](#fast-python)
+  - [Installation](#installation)
+  - [Quick start](#quick-start)
+  - [Documentation](#documentation)
+  - [Control flow graph](#control-flow-graph)
+  - [Local resolutions](#local-resolutions)
+    - [Shadowing](#shadowing)
+    - [Limitations](#limitations)
+  - [Moose versions compatibility](#moose-versions-compatibility)
+  - [TreeSitter python version compatibility](#treesitter-python-version-compatibility)
+  - [Python version compatibility](#python-version-compatibility)
+  - [Contact](#contact)
+
+<!-- /TOC -->
+
 ## Installation
 
 To install this project on your Pharo image, execute the following script: 
@@ -64,21 +81,35 @@ A CFG can be done on a function, method, class, module or lambda.
 
 You can visualize it in the inspector as a visualization and you can also export your CFG as a mermaid visualization using `#asMermaidScript`
 
-## Local variable resolutions
+## Local resolutions
 
-It is possible to apply a local variable name resolution on a FAST-Python model by executing this piece of code:
+It is possible to apply a local name resolution on a FAST-Python model by executing this piece of code:
 
 ```smalltalk
-FASTPythonLocalResolverVisitor resolve: model module
+FASTPythonLocalResolverVisitor resolve: model module "Can be any behavioral entity"
 ```
 
-Once this is executed, all nodes representing a variable will be able to provide a `#localDeclaration` pointing to the first use of the variable. This local declaration also knows all the `#localUses` of the variable.
+Once this is executed, all nodes resolved will be able to provide a `#localDeclaration` pointing to the declaration/first use of the entity. This local declaration also knows all the `#localUses` of the entity.
+
+The local declaration can be multiple things such as:
+- An assignement
+- A function/class/method declaration
+- An import
+- A parameter declaration
+- A for loop to declare a variable
+- ...
+
+### Shadowing
+
+In Python anything named can shadow anything named. For example we can declare a global variable then shadow it with an import, then shadow it with a function...
+
+In the case of a shadowing, we manage it in two distinct ways: 
+- If we know for sure that the entity will be the same kind of entity (for example, if the entity stays a variable because we assign two times values to the same variable), then they keep the same local declaration
+- If the entity kind is different (for example we shadow a global variable with a function) or if we are not sure (if we shadow something with an imported entity for example), then we create a new local declaration
 
 ### Limitations
 
-This has some limitations. For example, if we import a global variable, we cannot know if this is a global variable or something else. So we will not link it to any declaration. 
-
-Also, this kind of uses are not supported:
+This has some limitations. In case we have a dotted name but we do not use the same way to declare it, we are currently not keeping track of the declaration. For example, ßhis kind of uses are not supported:
 
 ```python
 a.b.c = 3
