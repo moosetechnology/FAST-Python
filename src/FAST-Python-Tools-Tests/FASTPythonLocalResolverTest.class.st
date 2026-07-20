@@ -491,6 +491,41 @@ FASTPythonLocalResolverTest >> testGlobalUsedInTuple [
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
+{ #category : 'tests - shadowing' }
+FASTPythonLocalResolverTest >> testImportShadowedByImport [
+	"Here we cannot know if the second printing is of a variable."
+
+	| import importedEntity1 usedImportedEntity1 importedEntity2 usedImportedEntity2 |
+	self parseAndResolve: 'import time
+	
+print(time)
+
+from time import time
+
+print(time)'.
+
+	import := model module statements first.
+	importedEntity1 := import importedEntities anyOne.
+	self assert: importedEntity1 localDeclaration equals: import.
+	self deny: importedEntity1 localDeclaration importedEntities first hasAlias.
+	self assert: importedEntity1 localDeclaration importedEntities first segments last equals: 'time'.
+	self deny: importedEntity1 localDeclaration isNonLocalDeclaration.
+	self assert: importedEntity1 localDeclaration localUses size equals: 4.
+	self assert: importedEntity1 localDeclaration localUses first equals: importedEntity1.
+
+	usedImportedEntity1 := model module statements second arguments first.
+	self assert: usedImportedEntity1 localDeclaration equals: import.
+	self assert: usedImportedEntity1 equals: importedEntity1 localDeclaration localUses second.
+
+	importedEntity2 := model module statements third importedEntities anyOne.
+	self assert: importedEntity2 localDeclaration equals: import.
+	self assert: importedEntity2 localDeclaration localUses third equals: importedEntity2.
+
+	usedImportedEntity2 := model module statements fourth arguments first.
+	self assert: usedImportedEntity2 localDeclaration equals: import.
+	self assert: usedImportedEntity2 equals: importedEntity2 localDeclaration localUses fourth
+]
+
 { #category : 'tests - imports' }
 FASTPythonLocalResolverTest >> testImportedEntity [
 
