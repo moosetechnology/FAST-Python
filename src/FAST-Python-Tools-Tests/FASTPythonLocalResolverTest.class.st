@@ -620,6 +620,39 @@ print(f())'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
+{ #category : 'tests - shadowing' }
+FASTPythonLocalResolverTest >> testParameterShadowedByAssignement [
+
+	| parameter usedParameter assignment assignedVariable usedVariable |
+	self parseAndResolve: 'def func(param):
+    print(param)
+    param = 3
+    print(param)'.
+
+	parameter := model module statements first parameters first.
+	self assert: parameter localDeclaration equals: parameter.
+	self assert: parameter localDeclaration name equals: 'param'.
+	self deny: parameter localDeclaration isNonLocalDeclaration.
+	self assert: parameter localDeclaration localUses size equals: 2.
+	self assert: parameter localDeclaration localUses first equals: parameter.
+
+	usedParameter := model module statements first statements first arguments first.
+	self assert: usedParameter localDeclaration equals: parameter.
+	self assert: usedParameter equals: parameter localDeclaration localUses second.
+
+	assignment := model module statements first statements second.
+	assignedVariable := assignment left.
+	self assert: assignedVariable localDeclaration equals: assignment.
+	self assert: assignedVariable localDeclaration left name equals: 'param'.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements first statements third arguments first.
+	self assert: usedVariable localDeclaration equals: assignment.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
 { #category : 'tests' }
 FASTPythonLocalResolverTest >> testTwoAssignationsCreateOneDeclaration [
 
