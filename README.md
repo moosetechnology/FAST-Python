@@ -12,6 +12,8 @@ Famix AST representation for Python based on TreeSitter
   - [Local resolutions](#local-resolutions)
     - [Shadowing](#shadowing)
     - [Limitations](#limitations)
+      - [Separated dotted names](#separated-dotted-names)
+      - [Access to non local entities](#access-to-non-local-entities)
   - [Moose versions compatibility](#moose-versions-compatibility)
   - [TreeSitter python version compatibility](#treesitter-python-version-compatibility)
   - [Python version compatibility](#python-version-compatibility)
@@ -109,7 +111,11 @@ In the case of a shadowing, we manage it in two distinct ways:
 
 ### Limitations
 
-This has some limitations. In case we have a dotted name but we do not use the same way to declare it, we are currently not keeping track of the declaration. For example, ßhis kind of uses are not supported:
+This project has a few limitations.
+
+#### Separated dotted names
+
+In case we have a dotted name but we do not use the same way to declare it, we are currently not keeping track of the declaration. For example, ßhis kind of uses are not supported:
 
 ```python
 a.b.c = 3
@@ -119,7 +125,21 @@ print(d.c)
 
 Here `a.b.c` will have a local declaration, but it will not know that`d.c` is a local use of this declared variable.
 
+#### Access to non local entities
 
+If the code has access to entities that we do not know, then we create a `FASTNonLocalDeclaration`. For example:
+
+```python
+import x
+
+x.y
+```
+
+Here, in the expression `x.y` we will be able to link `x` to its declaration in the import, but we have no declaration for y since this is done in another project.
+In that case, we associate it to a non local declaration. 
+
+But, this has the current limit that if you access multiple times this `y` field of `x`, then each of them ill have their own non local declaration. 
+This is not the way I would like the project to work and this could be improved by having all references point to the same non local declaration object, but we need time for this :)
 
 ## Moose versions compatibility
 
