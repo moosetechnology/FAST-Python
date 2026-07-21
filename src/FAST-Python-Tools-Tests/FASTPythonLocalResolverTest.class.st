@@ -17,6 +17,31 @@ FASTPythonLocalResolverTest >> parseAndResolve: aString [
 	FASTPythonLocalResolverVisitor resolve: model module
 ]
 
+{ #category : 'tests - tuples assignment' }
+FASTPythonLocalResolverTest >> testAssignementToTuple [
+
+	| assignment assignedVariableX assignedVariableY usedVariableX |
+	self parseAndResolve: 'x, y = 1, 2
+
+print(x)'.
+
+	assignment := model module statements first.
+	assignedVariableX := assignment left initializers first.
+	self assert: assignedVariableX localDeclaration equals: assignment.
+	self assert: assignedVariableX localDeclaration left sourceCode equals: 'x, y'.
+	self deny: assignedVariableX localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariableX localDeclaration localUses size equals: 3.
+	self assert: assignedVariableX localDeclaration localUses first equals: assignedVariableX.
+	
+	assignedVariableY := assignment left initializers second.
+	self assert: assignedVariableY localDeclaration equals: assignment.
+	self assert: assignedVariableY localDeclaration localUses second equals: assignedVariableY.
+
+	usedVariableX := model module statements second arguments first.
+	self assert: usedVariableX localDeclaration equals: assignment.
+	self assert: usedVariableX equals: assignedVariableX localDeclaration localUses third
+]
+
 { #category : 'tests - non local declarations' }
 FASTPythonLocalResolverTest >> testAttributeAccessHalfResolved [
 	"Here x is resolved but y is not resolved locally."

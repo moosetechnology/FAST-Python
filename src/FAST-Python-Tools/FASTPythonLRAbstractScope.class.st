@@ -18,15 +18,17 @@ FASTPythonLRAbstractScope class >> for: anEntity [
 		  yourself
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'actions' }
 FASTPythonLRAbstractScope >> declarationNamed: aVariableName ifPresent: aBlock [
 
 	^ nameDictionary at: aVariableName ifPresent: aBlock
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'actions' }
 FASTPythonLRAbstractScope >> ensureDeclarationOf: aName declaration: aFASTNode [
-	"If it is already present we do nothing "
+	"If it is already present we do nothing. Else we create the local declaration.
+	
+	I just `ensure` that the local uses are initialized instead of reseting them as we do in other languages because in Python I have multiple variables that can be declared in the same assignment because of the tuples."
 
 	^ nameDictionary
 		  at: aName
@@ -34,11 +36,12 @@ FASTPythonLRAbstractScope >> ensureDeclarationOf: aName declaration: aFASTNode [
 				  declaration localResolverKind = aFASTNode localResolverKind
 					  ifTrue: [ ^ declaration ]
 					  ifFalse: [ "If the kind is different, we save a new declaration."
-							  aFASTNode clearLocalUses.
+							  aFASTNode ensureLocalUses.
 							  nameDictionary at: aName put: aFASTNode ] ]
 		  ifAbsentPut: [
-				  aFASTNode clearLocalUses.
-				  aFASTNode ]
+				  aFASTNode
+					  ensureLocalUses;
+					  yourself ]
 ]
 
 { #category : 'accessing' }

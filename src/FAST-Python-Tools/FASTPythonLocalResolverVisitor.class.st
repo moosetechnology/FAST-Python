@@ -67,6 +67,19 @@ FASTPythonLocalResolverVisitor >> initialize [
 	scopes := Stack new
 ]
 
+{ #category : 'visiting' }
+FASTPythonLocalResolverVisitor >> isInTupleAssignment: anIdentifier [
+	"I return true if my parent is a tuple on the left side of an assignment"
+
+	anIdentifier collectionInitializer ifNil: [ ^ false ].
+
+	anIdentifier collectionInitializer isTuple ifFalse: [ ^ false ].
+
+	anIdentifier collectionInitializer parentAssignmentLeft ifNil: [ ^ false ].
+
+	^ true
+]
+
 { #category : 'initialization' }
 FASTPythonLocalResolverVisitor >> resolve: aFASTBehaviouralEntity [
 
@@ -152,6 +165,10 @@ FASTPythonLocalResolverVisitor >> visitFASTPyIdentifier: anIdentifier [
 
 	"I define a variable in a for statement. Thus I need to create a new declaration"
 	anIdentifier parentForStatementLeft ifNotNil: [ :forStatement | ^ self ensureDeclarationOf: anIdentifier named: name declaration: forStatement ].
+
+	"If I am in a tuple that is on the left side of an assignement, then I must declare a new variable"
+	(self isInTupleAssignment: anIdentifier) ifTrue: [
+		^ self ensureDeclarationOf: anIdentifier named: name declaration: anIdentifier collectionInitializer parentAssignmentLeft ].
 
 	self bind: anIdentifier toDeclarationNamed: name
 ]
