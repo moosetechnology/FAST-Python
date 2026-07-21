@@ -67,7 +67,7 @@ FASTPythonLocalResolverVisitor >> initialize [
 	scopes := Stack new
 ]
 
-{ #category : 'visiting' }
+{ #category : 'testing' }
 FASTPythonLocalResolverVisitor >> isInTupleAssignment: anIdentifier [
 	"I return true if my parent is a tuple on the left side of an assignment"
 
@@ -93,17 +93,6 @@ FASTPythonLocalResolverVisitor >> resolve: aFASTBehaviouralEntity [
 	self assert: scopes isEmpty
 ]
 
-{ #category : 'visiting' }
-FASTPythonLocalResolverVisitor >> shouldSkipIdentifier: anIdentifier [
-	"In fact we could have a variable, but I'll manage it later.
-	https://github.com/moosetechnology/FAST-Python/issues/20"
-
-	self flag: #todo.
-	anIdentifier caller ifNotNil: [ ^ true ].
-
-	^ false
-]
-
 { #category : 'declarations' }
 FASTPythonLocalResolverVisitor >> useScope: aScope during: aBlock [
 
@@ -127,6 +116,18 @@ FASTPythonLocalResolverVisitor >> visitFASTPyAttributeAccess: anAttribute [
 	declaration addLocalUse: anAttribute.
 
 	super visitFASTPyAttributeAccess: anAttribute
+]
+
+{ #category : 'visiting' }
+FASTPythonLocalResolverVisitor >> visitFASTPyComprehension: aComprehension [
+	"Reordering the visit of children to ensure for clauses are visited before the body and conditions since they can refer to it."
+
+	self visitFASTPyTSplatExpression: aComprehension.
+	self visitFASTPyExpression: aComprehension.
+
+	self visitCollection: aComprehension forClauses.
+	self visitCollection: aComprehension conditions.
+	self visitEntity: aComprehension body
 ]
 
 { #category : 'visiting - reordering' }
@@ -167,6 +168,9 @@ FASTPythonLocalResolverVisitor >> visitFASTPyIdentifier: anIdentifier [
 	"If I am in a tuple that is on the left side of an assignement, then I must declare a new variable"
 	(self isInTupleAssignment: anIdentifier) ifTrue: [
 		^ self ensureDeclarationOf: anIdentifier named: name declaration: anIdentifier collectionInitializer parentAssignmentLeft ].
+
+	"I could be the declaration of a variable in a for clause used in comprehensions"
+	(anIdentifier parentForInClauseLeft) ifNotNil: [ :forClause | ^ self ensureDeclarationOf: anIdentifier named: name declaration: forClause ].
 
 	self bind: anIdentifier toDeclarationNamed: name
 ]

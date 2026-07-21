@@ -899,6 +899,27 @@ print(i)'.
 	self assert: usedVariable equals: declared localDeclaration localUses second
 ]
 
+{ #category : 'tests - comprehensions' }
+FASTPythonLocalResolverTest >> testVariableInListComprehensions [
+
+	| forClause declared usedVariable |
+	self parseAndResolve: 'fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+
+[x for x in fruits]'.
+
+	forClause := model module statements second forClauses first.
+	declared := forClause left.
+	self assert: declared localDeclaration equals: forClause.
+	self assert: declared localDeclaration left sourceCode equals: 'x'.
+	self deny: declared localDeclaration isNonLocalDeclaration.
+	self assert: declared localDeclaration localUses size equals: 2.
+	self assert: declared localDeclaration localUses first equals: declared.
+
+	usedVariable := model module statements second body.
+	self assert: usedVariable localDeclaration equals: forClause.
+	self assert: usedVariable equals: declared localDeclaration localUses second
+]
+
 { #category : 'tests - for' }
 FASTPythonLocalResolverTest >> testVariableOfFor [
 
