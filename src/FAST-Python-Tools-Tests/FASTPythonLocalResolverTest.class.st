@@ -17,6 +17,35 @@ FASTPythonLocalResolverTest >> parseAndResolve: aString [
 	FASTPythonLocalResolverVisitor resolve: model module
 ]
 
+{ #category : 'tests - non local declarations' }
+FASTPythonLocalResolverTest >> testAttributeAccessHalfResolved [
+	"Here x is resolved but y is not resolved locally."
+
+	| import importedEntity receiver value |
+	self parseAndResolve: 'import x
+
+x.y'.
+
+	import := model module statements first.
+	importedEntity := import importedEntities first.
+	self assert: importedEntity localDeclaration equals: import.
+	self assert: importedEntity localDeclaration importedEntities first segments last equals: 'x'.
+	self deny: importedEntity localDeclaration isNonLocalDeclaration.
+	self assert: importedEntity localDeclaration localUses size equals: 2.
+	self assert: importedEntity localDeclaration localUses first equals: importedEntity.
+
+	receiver := model module statements second value.
+	self assert: receiver localDeclaration equals: import.
+	self deny: receiver localDeclaration isNonLocalDeclaration.
+	self assert: receiver localDeclaration localUses second equals: receiver.
+	
+	value := model module statements second.
+	self assert: value localDeclaration name equals: 'y'.
+	self assert: value localDeclaration isNonLocalDeclaration.
+	self assert: value localDeclaration localUses size equals: 1.
+	self assert: value localDeclaration localUses first equals: value
+]
+
 { #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testCommentedGlobalUsage [
 

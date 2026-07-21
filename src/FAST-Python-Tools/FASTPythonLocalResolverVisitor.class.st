@@ -98,6 +98,23 @@ FASTPythonLocalResolverVisitor >> useScope: aScope during: aBlock [
 	[ aBlock value ] ensure: [ scopes pop ]
 ]
 
+{ #category : 'visiting' }
+FASTPythonLocalResolverVisitor >> visitFASTPyAttributeAccess: anAttribute [
+	"This should be improved later to check if we already encountered this accessed attribute and maybe this should go in the scopes?."
+
+	| declaration |
+	declaration := FASTNonLocalDeclaration new
+		               name: anAttribute name;
+		               yourself.
+
+	declaration clearLocalUses.
+
+	anAttribute localDeclaration: declaration.
+	declaration addLocalUse: anAttribute.
+
+	super visitFASTPyAttributeAccess: anAttribute
+]
+
 { #category : 'visiting - reordering' }
 FASTPythonLocalResolverVisitor >> visitFASTPyForStatement: aForStatement [
 	"Reorginizing the order"
