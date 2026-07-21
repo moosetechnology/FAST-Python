@@ -122,12 +122,15 @@ FASTPythonLocalResolverVisitor >> visitFASTPyAttributeAccess: anAttribute [
 FASTPythonLocalResolverVisitor >> visitFASTPyComprehension: aComprehension [
 	"Reordering the visit of children to ensure for clauses are visited before the body and conditions since they can refer to it."
 
-	self visitFASTPyTSplatExpression: aComprehension.
-	self visitFASTPyExpression: aComprehension.
+	"In Python 3, the comprehension has its own scope. In the future we should also manage python 2 that had no scope and could leek its variables."
 
-	self visitCollection: aComprehension forClauses.
-	self visitCollection: aComprehension conditions.
-	self visitEntity: aComprehension body
+	self useScope: (FASTPythonLRScope for: aComprehension) during: [
+			self visitFASTPyTSplatExpression: aComprehension.
+			self visitFASTPyExpression: aComprehension.
+
+			self visitCollection: aComprehension forClauses.
+			self visitCollection: aComprehension conditions.
+			self visitEntity: aComprehension body ]
 ]
 
 { #category : 'visiting - reordering' }

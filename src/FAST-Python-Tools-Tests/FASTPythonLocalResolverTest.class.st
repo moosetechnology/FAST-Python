@@ -920,6 +920,45 @@ FASTPythonLocalResolverTest >> testVariableInListComprehensions [
 	self assert: usedVariable equals: declared localDeclaration localUses second
 ]
 
+{ #category : 'tests - comprehensions' }
+FASTPythonLocalResolverTest >> testVariableInListComprehensionsDoesNotLeak [
+	"Here the x of the comprehension should not leek outside of it if we consider we are in Python 3"
+
+	| import importedEntity forClause declared usedVariable usedImportedEntity |
+	self parseAndResolve: 'import x
+	
+fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+
+[x for x in fruits]
+
+print(x)'.
+
+	import := model module statements first.
+	importedEntity := import importedEntities anyOne.
+	self assert: importedEntity localDeclaration equals: import.
+	self deny: importedEntity localDeclaration importedEntities first hasAlias.
+	self assert: importedEntity localDeclaration importedEntities first segments last equals: 'x'.
+	self deny: importedEntity localDeclaration isNonLocalDeclaration.
+	self assert: importedEntity localDeclaration localUses size equals: 2.
+	self assert: importedEntity localDeclaration localUses first equals: importedEntity.
+
+	usedImportedEntity := model module statements fourth arguments first.
+	self assert: usedImportedEntity localDeclaration equals: import.
+	self assert: usedImportedEntity equals: importedEntity localDeclaration localUses second.
+
+	forClause := model module statements third forClauses first.
+	declared := forClause left.
+	self assert: declared localDeclaration equals: forClause.
+	self assert: declared localDeclaration left sourceCode equals: 'x'.
+	self deny: declared localDeclaration isNonLocalDeclaration.
+	self assert: declared localDeclaration localUses size equals: 2.
+	self assert: declared localDeclaration localUses first equals: declared.
+
+	usedVariable := model module statements third body.
+	self assert: usedVariable localDeclaration equals: forClause.
+	self assert: usedVariable equals: declared localDeclaration localUses second
+]
+
 { #category : 'tests - for' }
 FASTPythonLocalResolverTest >> testVariableOfFor [
 
