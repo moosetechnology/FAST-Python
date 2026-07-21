@@ -83,10 +83,8 @@ FASTPythonLocalResolverVisitor >> isInTupleAssignment: anIdentifier [
 { #category : 'initialization' }
 FASTPythonLocalResolverVisitor >> resolve: aFASTBehaviouralEntity [
 
-	scopes push: ((aFASTBehaviouralEntity isClassDefinition
-			  ifTrue: [ FASTPythonLRClassScope ]
-			  ifFalse: [ FASTPythonLRScope ]) for: aFASTBehaviouralEntity).
-			
+	scopes push: (FASTPythonLRScope for: aFASTBehaviouralEntity).
+
 	"We fulsh the attributes in case this is not the fist resolution"
 	aFASTBehaviouralEntity withAllContainedEntities do: [ :entity | entity resetLocalResolution ].
 
