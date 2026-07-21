@@ -333,6 +333,7 @@ FASTPythonMetamodelGenerator >> defineClasses [
 	thenClause := builder newClassNamed: #ThenClause.
 	tryStatement := builder newClassNamed: #TryStatement.
 	tuple := builder newClassNamed: #Tuple.
+	tuple withTesting.
 	type := builder newClassNamed: #Type.
 	typeAliasStatement := builder newClassNamed: #TypeAliasStatement.
 	typeConversion := builder newClassNamed: #TypeConversion.
