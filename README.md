@@ -14,6 +14,7 @@ Famix AST representation for Python based on TreeSitter
     - [Limitations](#limitations)
       - [Separated dotted names](#separated-dotted-names)
       - [Access to non local entities](#access-to-non-local-entities)
+      - [Python 2 management](#python-2-management)
   - [Moose versions compatibility](#moose-versions-compatibility)
   - [TreeSitter python version compatibility](#treesitter-python-version-compatibility)
   - [Python version compatibility](#python-version-compatibility)
@@ -140,6 +141,16 @@ In that case, we associate it to a non local declaration.
 
 But, this has the current limit that if you access multiple times this `y` field of `x`, then each of them ill have their own non local declaration. 
 This is not the way I would like the project to work and this could be improved by having all references point to the same non local declaration object, but we need time for this :)
+
+See (https://github.com/moosetechnology/FAST-Python/issues/26)[https://github.com/moosetechnology/FAST-Python/issues/26]
+
+#### Python 2 management
+
+Currently, the Local resolver is based on Python 3. In the future we should add the support for Python 2 and let the user configure his version of Python. 
+
+This has an influence for example on the scope of comprehensions. In Python 2 comprehensions do not have any scope and the variable declared in it leak while in Python 3 there is a scope and the variable does not leak. 
+
+See (https://github.com/moosetechnology/FAST-Python/issues/27)[https://github.com/moosetechnology/FAST-Python/issues/27]
 
 ## Moose versions compatibility
 
