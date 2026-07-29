@@ -70,5 +70,7 @@ FASTPythonSSAVisitor >> visit: aCFGBlockOrFASTEntity [
 { #category : 'visiting' }
 FASTPythonSSAVisitor >> visitFASTPyIdentifier: anIdentifier [
 
-	anIdentifier withLocalDeclarationDo: [ :declaration | declaration isSSAVariableAssignment ifTrue: [ self handleNewAssignemntTo: anIdentifier ] ]
+	anIdentifier isSSAVariableAssignment ifTrue: [ self handleNewAssignemntTo: anIdentifier ].
+
+	super visitFASTPyIdentifier: anIdentifier
 ]

@@ -38,3 +38,13 @@ FASTPyIdentifier class >> annotation [
 	<package: #'FAST-Python-Model'>
 	<generated>
 ]
+
+{ #category : 'testing' }
+FASTPyIdentifier >> isSSAVariableAssignment [
+	"Checking my parents to know if I'm a variable been assigned."
+
+	"If I'm the left side of an assignment then I'm an assigned variable."
+	self parentAssignmentLeft ifNotNil: [ ^ true ].
+
+	^ super isSSAVariableAssignment
+]
