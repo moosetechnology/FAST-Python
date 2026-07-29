@@ -22,9 +22,9 @@ Class {
 	#instVars : [
 		'scopes'
 	],
-	#category : 'FAST-Python-Tools-LocalResolver',
+	#category : 'FAST-Python-Tools-CFG/LocalResolver/SSA',
 	#package : 'FAST-Python-Tools',
-	#tag : 'LocalResolver'
+	#tag : 'CFG/LocalResolver/SSA'
 }
 
 { #category : 'instance creation' }
