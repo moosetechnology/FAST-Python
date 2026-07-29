@@ -100,7 +100,7 @@ x'.
 	self assert: assignedVariable localDeclaration equals: assignment.
 	self assert: assignedVariable localDeclaration left name equals: 'x'.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
-	self assert: assignedVariable localDeclaration isVariableAssignment.
+	self assert: assignedVariable localDeclaration isSSAVariableAssignment.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
 

@@ -1,7 +1,7 @@
 Extension { #name : 'FASTPyAssignment' }
 
 { #category : '*FAST-Python-Tools' }
-FASTPyAssignment >> isVariableAssignment [
+FASTPyAssignment >> isSSAVariableAssignment [
 
 	^ true
 ]
