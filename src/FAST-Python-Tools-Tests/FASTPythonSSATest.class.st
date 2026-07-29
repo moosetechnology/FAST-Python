@@ -45,3 +45,13 @@ print(x)'.
 	usedVar := model module statements second arguments first.
 	self assert: assignedVar ssaVersion identicalTo: assignedVar ssaVersion
 ]
+
+{ #category : 'tests - non local declarations' }
+FASTPythonSSATest >> testUndeclaredVariable [
+
+	| undeclared |
+	self parseAndResolve: 'print(x)'.
+
+	undeclared := model module statements first arguments first.
+	self assert: undeclared ssaVersion isNil
+]
