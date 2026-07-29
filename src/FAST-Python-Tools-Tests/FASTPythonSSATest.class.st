@@ -17,6 +17,21 @@ FASTPythonSSATest >> parseAndResolve: aString [
 	FASTPythonSSAVisitor resolve: model module
 ]
 
+{ #category : 'tests - parameters' }
+FASTPythonSSATest >> testParameterUsed [
+
+	| parameterDeclaration parameterUsage |
+	self parseAndResolve: 'def func(x):
+	print(x)'.
+
+	parameterDeclaration := model module statements first parameters first.
+	self assert: parameterDeclaration ssaVersion version equals: 1.
+	self assert: parameterDeclaration ssaName equals: 'x_1'.
+
+	parameterUsage := model module statements first statements first arguments first.
+	self assert: parameterDeclaration ssaVersion identicalTo: parameterDeclaration ssaVersion
+]
+
 { #category : 'tests - assignments' }
 FASTPythonSSATest >> testSingleAssignement [
 
