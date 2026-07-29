@@ -1,8 +1,9 @@
 Class {
 	#name : 'FASTPythonAbstractTestCase',
 	#superclass : 'TestCase',
-	#category : 'FAST-Python-Tools-Tests',
-	#package : 'FAST-Python-Tools-Tests'
+	#category : 'FAST-Python-Tools-Tests-Core',
+	#package : 'FAST-Python-Tools-Tests',
+	#tag : 'Core'
 }
 
 { #category : 'running' }

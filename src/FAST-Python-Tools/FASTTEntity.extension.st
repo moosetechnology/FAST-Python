@@ -7,14 +7,6 @@ FASTTEntity >> ensureLocalUses [
 ]
 
 { #category : '*FAST-Python-Tools' }
-FASTTEntity >> hasLocalDeclaration [
-
-	self attributeAt: #localDeclaration ifAbsent: [ ^ false ].
-
-	^ true
-]
-
-{ #category : '*FAST-Python-Tools' }
 FASTTEntity >> resetLocalResolution [
 
 	self removeAttribute: #localDeclaration.

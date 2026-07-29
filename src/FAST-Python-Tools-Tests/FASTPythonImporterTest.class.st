@@ -37,8 +37,9 @@ Dictionary new
 Class {
 	#name : 'FASTPythonImporterTest',
 	#superclass : 'TSFASTAbstractImporterTest',
-	#category : 'FAST-Python-Tools-Tests',
-	#package : 'FAST-Python-Tools-Tests'
+	#category : 'FAST-Python-Tools-Tests-Importer',
+	#package : 'FAST-Python-Tools-Tests',
+	#tag : 'Importer'
 }
 
 { #category : 'class initialization' }

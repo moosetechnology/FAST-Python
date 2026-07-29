@@ -25,5 +25,5 @@ FASTPyEntity >> localResolverKind [
 	
 	I am used to know the kind of entity that is been declared."
 
-	^ self subclassResponsibility
+	^ self error: 'This entity cannot be a local declaration or is missing the overriding method.'
 ]

@@ -4,9 +4,9 @@ Class {
 	#instVars : [
 		'model'
 	],
-	#category : 'FAST-Python-Tools-Tests-Utilities',
+	#category : 'FAST-Python-Tools-Tests-Algos',
 	#package : 'FAST-Python-Tools-Tests',
-	#tag : 'Utilities'
+	#tag : 'Algos'
 }
 
 { #category : 'parsing' }
