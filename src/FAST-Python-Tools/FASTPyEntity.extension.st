@@ -13,6 +13,13 @@ FASTPyEntity >> fullCfg [
 ]
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> isVariableAssignment [
+	"I am used in the SSA builder to know if I represent the assignment of a variable."
+
+	^ false
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> localResolverKind [
 	"In the local resolver, if we redefine an entity with an entity of the same kind, we keep the same declaration. Else we create a new one. 
 	
