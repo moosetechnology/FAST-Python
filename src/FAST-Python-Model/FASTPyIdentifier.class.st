@@ -45,6 +45,9 @@ FASTPyIdentifier >> isSSAVariableAssignment [
 
 	"If I'm the left side of an assignment then I'm an assigned variable."
 	self parentAssignmentLeft ifNotNil: [ ^ true ].
+	
+	"Variable declared in a foreach."
+	self parentForStatementLeft ifNotNil: [ ^ true ].
 
 	^ super isSSAVariableAssignment
 ]

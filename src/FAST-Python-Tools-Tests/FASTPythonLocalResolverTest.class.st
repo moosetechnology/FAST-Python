@@ -937,6 +937,7 @@ print(i)'.
 	declared := assignement left.
 	self assert: declared localDeclaration equals: assignement.
 	self assert: declared localDeclaration left sourceCode equals: 'i'.
+	self assert: declared localDeclaration left isSSAVariableAssignment.
 	self deny: declared localDeclaration isNonLocalDeclaration.
 	self assert: declared localDeclaration localUses size equals: 2.
 	self assert: declared localDeclaration localUses first equals: declared.
@@ -1039,6 +1040,7 @@ FASTPythonLocalResolverTest >> testVariableOfFor [
 	declared := for left.
 	self assert: declared localDeclaration equals: for.
 	self assert: declared localDeclaration left sourceCode equals: 'x'.
+	self assert: declared localDeclaration left isSSAVariableAssignment.
 	self deny: declared localDeclaration isNonLocalDeclaration.
 	self assert: declared localDeclaration localUses size equals: 2.
 	self assert: declared localDeclaration localUses first equals: declared.
