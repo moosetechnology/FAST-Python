@@ -150,7 +150,7 @@ FASTPythonLocalResolverVisitor >> visitFASTPyFunctionDefinition: aFunctionDefini
 FASTPythonLocalResolverVisitor >> visitFASTPyIdentifier: anIdentifier [
 
 	anIdentifier isVariableWriteAccess ifTrue: [
-		^ self ensureDeclarationOf: anIdentifier named: anIdentifier name declaration: anIdentifier variableDeclarator ].
+		^ self ensureDeclarationOf: anIdentifier named: anIdentifier name declaration: anIdentifier "We cannot put the right node because of the tuples" ].
 
 	self bind: anIdentifier toDeclarationNamed: anIdentifier name
 ]
@@ -181,13 +181,4 @@ FASTPythonLocalResolverVisitor >> visitFASTPyParameter: aParameter [
 
 	self ensureDeclarationOf: aParameter named: aParameter name declaration: aParameter.
 	super visitFASTPyParameter: aParameter
-]
-
-{ #category : 'visiting' }
-FASTPythonLocalResolverVisitor >> visitFASTPyVariable: aVariable [
-	"We are declaring a variable in an assignation"
-
-	aVariable parentAssignmentLeft ifNotNil: [ :assignment | ^ self ensureDeclarationOf: aVariable named: aVariable name declaration: assignment ].
-
-	super visitFASTPyVariable: aVariable
 ]
