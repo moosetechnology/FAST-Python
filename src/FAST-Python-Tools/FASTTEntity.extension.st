@@ -12,17 +12,3 @@ FASTTEntity >> resetLocalResolution [
 	self removeAttribute: #localDeclaration.
 	self removeAttribute: #localUses
 ]
-
-{ #category : '*FAST-Python-Tools' }
-FASTTEntity >> withLocalDeclarationDo: aBlock [
-	"Used for LocalResolver"
-
-	| declaration |
-	self flag: #todo. "Move to FAST"
-	declaration := self attributeAt: #localDeclaration.
-
-	"Do nothing on non local declaration."
-	declaration isNonLocalDeclaration ifTrue: [ ^ nil ].
-
-	^ aBlock cull: declaration
-]
