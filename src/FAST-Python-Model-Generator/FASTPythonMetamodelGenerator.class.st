@@ -488,6 +488,7 @@ FASTPythonMetamodelGenerator >> defineHierarchy [
 	identifier --|> tReturnReferenceable.
 	identifier --|> tAsPatternTarget.
 	identifier --|> tSplatParameterTarget.
+	identifier --|> tNamedEntity.
 	
 	ifClause --|> expression. "This is wrong! I am just here temporarily until we rework the relation to the for in clause (I need to be able to be a clause of a list comprehension)"
 
