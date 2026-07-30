@@ -150,9 +150,9 @@ FASTPythonLocalResolverVisitor >> visitFASTPyFunctionDefinition: aFunctionDefini
 FASTPythonLocalResolverVisitor >> visitFASTPyIdentifier: anIdentifier [
 
 	anIdentifier isVariableWriteAccess ifTrue: [
-		^ self ensureDeclarationOf: anIdentifier named: anIdentifier sourceCode declaration: anIdentifier variableDeclarator ].
+		^ self ensureDeclarationOf: anIdentifier named: anIdentifier name declaration: anIdentifier variableDeclarator ].
 
-	self bind: anIdentifier toDeclarationNamed: anIdentifier sourceCode
+	self bind: anIdentifier toDeclarationNamed: anIdentifier name
 ]
 
 { #category : 'visiting' }
