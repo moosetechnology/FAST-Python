@@ -17,6 +17,21 @@ FASTPythonSSATest >> parseAndResolve: aString [
 	FASTPythonSSAVisitor resolve: model module
 ]
 
+{ #category : 'tests - for' }
+FASTPythonSSATest >> testForVariableUsed [
+
+	| assignedVar usedVar |
+	self parseAndResolve: 'for x in range(5):
+    print(x)'.
+
+	assignedVar := model module statements first left.
+	self assert: assignedVar ssaVersion version equals: 1.
+	self assert: assignedVar ssaName equals: 'x_1'.
+
+	usedVar := model module statements first statements first arguments first.
+	self assert: assignedVar ssaVersion identicalTo: assignedVar ssaVersion
+]
+
 { #category : 'tests - parameters' }
 FASTPythonSSATest >> testParameterUsed [
 
