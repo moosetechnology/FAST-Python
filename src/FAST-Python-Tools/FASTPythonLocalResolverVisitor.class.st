@@ -67,19 +67,6 @@ FASTPythonLocalResolverVisitor >> initialize [
 	scopes := Stack new
 ]
 
-{ #category : 'testing' }
-FASTPythonLocalResolverVisitor >> isInTupleAssignment: anIdentifier [
-	"I return true if my parent is a tuple on the left side of an assignment"
-
-	anIdentifier collectionInitializer ifNil: [ ^ false ].
-
-	anIdentifier collectionInitializer isTuple ifFalse: [ ^ false ].
-
-	anIdentifier collectionInitializer parentAssignmentLeft ifNil: [ ^ false ].
-
-	^ true
-]
-
 { #category : 'initialization' }
 FASTPythonLocalResolverVisitor >> resolve: aFASTBehaviouralEntity [
 
@@ -162,20 +149,10 @@ FASTPythonLocalResolverVisitor >> visitFASTPyFunctionDefinition: aFunctionDefini
 { #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyIdentifier: anIdentifier [
 
-	| name |
-	name := anIdentifier sourceCode.
+	anIdentifier isVariableWriteAccess ifTrue: [
+		^ self ensureDeclarationOf: anIdentifier named: anIdentifier sourceCode declaration: anIdentifier variableDeclarator ].
 
-	"I define a variable in a for statement. Thus I need to create a new declaration"
-	anIdentifier parentForStatementLeft ifNotNil: [ :forStatement | ^ self ensureDeclarationOf: anIdentifier named: name declaration: forStatement ].
-
-	"If I am in a tuple that is on the left side of an assignement, then I must declare a new variable"
-	(self isInTupleAssignment: anIdentifier) ifTrue: [
-		^ self ensureDeclarationOf: anIdentifier named: name declaration: anIdentifier collectionInitializer parentAssignmentLeft ].
-
-	"I could be the declaration of a variable in a for clause used in comprehensions"
-	(anIdentifier parentForInClauseLeft) ifNotNil: [ :forClause | ^ self ensureDeclarationOf: anIdentifier named: name declaration: forClause ].
-
-	self bind: anIdentifier toDeclarationNamed: name
+	self bind: anIdentifier toDeclarationNamed: anIdentifier sourceCode
 ]
 
 { #category : 'visiting' }

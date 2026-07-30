@@ -879,7 +879,7 @@ print(x)'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
-{ #category : 'tests' }
+{ #category : 'tests - for' }
 FASTPythonLocalResolverTest >> testVariableAccessedInForIn [
 
 	| assignment assignedVariable usedVariable |
@@ -1116,6 +1116,36 @@ print(x)'.
 	usedVariable := model module statements second arguments first.
 	self assert: usedVariable localDeclaration equals: for.
 	self assert: usedVariable equals: usedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests - for' }
+FASTPythonLocalResolverTest >> testVariableOfForWithTuple [
+
+	| for declaredA usedVariableA declaredB usedVariableB |
+	self parseAndResolve: 'for a, b in arg:
+  print(a, b)'.
+
+	for := model module statements first.
+	declaredA := for left initializers first.
+	self assert: declaredA localDeclaration equals: for.
+	self assert: declaredA localDeclaration left sourceCode equals: 'a, b'.
+	self assert: declaredA localDeclaration left initializers first isVariableWriteAccess.
+	self assert: declaredA localDeclaration left initializers second isVariableWriteAccess.
+	self deny: declaredA localDeclaration isNonLocalDeclaration.
+	self assert: declaredA localDeclaration localUses size equals: 4.
+	self assert: declaredA localDeclaration localUses first equals: declaredA.
+
+	declaredB := for left initializers second.
+	self assert: declaredB localDeclaration equals: for.
+	self assert: declaredB localDeclaration localUses second equals: declaredB.
+
+	usedVariableA := for statements first arguments first.
+	self assert: usedVariableA localDeclaration equals: for.
+	self assert: usedVariableA equals: declaredA localDeclaration localUses third.
+
+	usedVariableB := for statements first arguments second.
+	self assert: usedVariableB localDeclaration equals: for.
+	self assert: usedVariableB equals: declaredB localDeclaration localUses fourth
 ]
 
 { #category : 'tests' }
