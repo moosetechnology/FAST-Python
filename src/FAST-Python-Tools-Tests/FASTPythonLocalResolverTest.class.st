@@ -713,6 +713,29 @@ print(f())'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
+{ #category : 'tests - methods' }
+FASTPythonLocalResolverTest >> testMethodRedefined [
+
+	| declaration1 declaration2 |
+	self parseAndResolve: 'class C:
+    def meth(self):
+        return self
+
+    def meth(self):
+        return self'.
+
+	declaration1 := model module statements first statements first.
+	self assert: declaration1 localDeclaration equals: declaration1.
+	self assert: declaration1 localDeclaration name equals: 'meth'.
+	self deny: declaration1 localDeclaration isNonLocalDeclaration.
+	self assert: declaration1 localDeclaration localUses size equals: 2.
+	self assert: declaration1 localDeclaration localUses first equals: declaration1.
+
+	declaration2 := model module statements first statements second.
+	self assert: declaration2 localDeclaration equals: declaration1.
+	self assert: declaration1 localDeclaration localUses second equals: declaration2
+]
+
 { #category : 'tests - parameters' }
 FASTPythonLocalResolverTest >> testMethodSelfParameter [
 
