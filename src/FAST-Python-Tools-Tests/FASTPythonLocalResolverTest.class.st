@@ -99,8 +99,8 @@ x'.
 	assignedVariable := assignment left.
 	self assert: assignedVariable localDeclaration equals: assignment.
 	self assert: assignedVariable localDeclaration left name equals: 'x'.
+	self assert: assignedVariable localDeclaration left isSSAVariableAssignment.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
-	self assert: assignedVariable localDeclaration isSSAVariableAssignment.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
 
@@ -228,6 +228,7 @@ FASTPythonLocalResolverTest >> testFunctionParameter [
 	declaration := model module statements first parameters first.
 	self assert: declaration localDeclaration equals: declaration.
 	self assert: declaration localDeclaration name equals: 'y'.
+	self assert: declaration localDeclaration isSSAVariableAssignment.
 	self deny: declaration localDeclaration isNonLocalDeclaration.
 	self assert: declaration localDeclaration localUses size equals: 2.
 	self assert: declaration localDeclaration localUses first equals: declaration.
@@ -247,6 +248,7 @@ FASTPythonLocalResolverTest >> testFunctionParameterWithDefaultValue [
 	declaration := model module statements first parameters first.
 	self assert: declaration localDeclaration equals: declaration.
 	self assert: declaration localDeclaration name equals: 'y'.
+	self assert: declaration localDeclaration isSSAVariableAssignment.
 	self deny: declaration localDeclaration isNonLocalDeclaration.
 	self assert: declaration localDeclaration localUses size equals: 2.
 	self assert: declaration localDeclaration localUses first equals: declaration.
@@ -678,6 +680,7 @@ FASTPythonLocalResolverTest >> testLambdaParameter [
 	declaration := model module statements first parameters first.
 	self assert: declaration localDeclaration equals: declaration.
 	self assert: declaration localDeclaration name equals: 'y'.
+	self assert: declaration localDeclaration isSSAVariableAssignment.
 	self deny: declaration localDeclaration isNonLocalDeclaration.
 	self assert: declaration localDeclaration localUses size equals: 2.
 	self assert: declaration localDeclaration localUses first equals: declaration.
