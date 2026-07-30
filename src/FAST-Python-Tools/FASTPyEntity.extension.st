@@ -13,7 +13,7 @@ FASTPyEntity >> fullCfg [
 ]
 
 { #category : '*FAST-Python-Tools' }
-FASTPyEntity >> isSSAVariableAssignment [
+FASTPyEntity >> isVariableWriteAccess [
 	"I am used in the SSA builder to know if I represent the assignment of a variable."
 
 	^ false

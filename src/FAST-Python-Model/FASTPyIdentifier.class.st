@@ -40,7 +40,7 @@ FASTPyIdentifier class >> annotation [
 ]
 
 { #category : 'testing' }
-FASTPyIdentifier >> isSSAVariableAssignment [
+FASTPyIdentifier >> isVariableWriteAccess [
 	"Checking my parents to know if I'm a variable been assigned."
 
 	"If I'm the left side of an assignment then I'm an assigned variable."
@@ -49,5 +49,5 @@ FASTPyIdentifier >> isSSAVariableAssignment [
 	"Variable declared in a foreach."
 	self parentForStatementLeft ifNotNil: [ ^ true ].
 
-	^ super isSSAVariableAssignment
+	^ super isVariableWriteAccess
 ]

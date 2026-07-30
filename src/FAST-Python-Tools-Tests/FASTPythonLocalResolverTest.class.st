@@ -99,7 +99,7 @@ x'.
 	assignedVariable := assignment left.
 	self assert: assignedVariable localDeclaration equals: assignment.
 	self assert: assignedVariable localDeclaration left name equals: 'x'.
-	self assert: assignedVariable localDeclaration left isSSAVariableAssignment.
+	self assert: assignedVariable localDeclaration left isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -228,7 +228,7 @@ FASTPythonLocalResolverTest >> testFunctionParameter [
 	declaration := model module statements first parameters first.
 	self assert: declaration localDeclaration equals: declaration.
 	self assert: declaration localDeclaration name equals: 'y'.
-	self assert: declaration localDeclaration isSSAVariableAssignment.
+	self assert: declaration localDeclaration isVariableWriteAccess.
 	self deny: declaration localDeclaration isNonLocalDeclaration.
 	self assert: declaration localDeclaration localUses size equals: 2.
 	self assert: declaration localDeclaration localUses first equals: declaration.
@@ -248,7 +248,7 @@ FASTPythonLocalResolverTest >> testFunctionParameterWithDefaultValue [
 	declaration := model module statements first parameters first.
 	self assert: declaration localDeclaration equals: declaration.
 	self assert: declaration localDeclaration name equals: 'y'.
-	self assert: declaration localDeclaration isSSAVariableAssignment.
+	self assert: declaration localDeclaration isVariableWriteAccess.
 	self deny: declaration localDeclaration isNonLocalDeclaration.
 	self assert: declaration localDeclaration localUses size equals: 2.
 	self assert: declaration localDeclaration localUses first equals: declaration.
@@ -680,7 +680,7 @@ FASTPythonLocalResolverTest >> testLambdaParameter [
 	declaration := model module statements first parameters first.
 	self assert: declaration localDeclaration equals: declaration.
 	self assert: declaration localDeclaration name equals: 'y'.
-	self assert: declaration localDeclaration isSSAVariableAssignment.
+	self assert: declaration localDeclaration isVariableWriteAccess.
 	self deny: declaration localDeclaration isNonLocalDeclaration.
 	self assert: declaration localDeclaration localUses size equals: 2.
 	self assert: declaration localDeclaration localUses first equals: declaration.
@@ -747,7 +747,7 @@ FASTPythonLocalResolverTest >> testMethodSelfParameter [
 	declaration := model module statements first statements first parameters first.
 	self assert: declaration localDeclaration equals: declaration.
 	self assert: declaration localDeclaration name equals: 'self'.
-	self assert: declaration localDeclaration isSSAVariableAssignment.
+	self assert: declaration localDeclaration isVariableWriteAccess.
 	self deny: declaration localDeclaration isNonLocalDeclaration.
 	self assert: declaration localDeclaration localUses size equals: 2.
 	self assert: declaration localDeclaration localUses first equals: declaration.
@@ -768,7 +768,7 @@ FASTPythonLocalResolverTest >> testMethodSelfParameterWithDifferentName [
 	declaration := model module statements first statements first parameters first.
 	self assert: declaration localDeclaration equals: declaration.
 	self assert: declaration localDeclaration name equals: 'this'.
-	self assert: declaration localDeclaration isSSAVariableAssignment.
+	self assert: declaration localDeclaration isVariableWriteAccess.
 	self deny: declaration localDeclaration isNonLocalDeclaration.
 	self assert: declaration localDeclaration localUses size equals: 2.
 	self assert: declaration localDeclaration localUses first equals: declaration.
@@ -937,7 +937,7 @@ print(i)'.
 	declared := assignement left.
 	self assert: declared localDeclaration equals: assignement.
 	self assert: declared localDeclaration left sourceCode equals: 'i'.
-	self assert: declared localDeclaration left isSSAVariableAssignment.
+	self assert: declared localDeclaration left isVariableWriteAccess.
 	self deny: declared localDeclaration isNonLocalDeclaration.
 	self assert: declared localDeclaration localUses size equals: 2.
 	self assert: declared localDeclaration localUses first equals: declared.
@@ -1040,7 +1040,7 @@ FASTPythonLocalResolverTest >> testVariableOfFor [
 	declared := for left.
 	self assert: declared localDeclaration equals: for.
 	self assert: declared localDeclaration left sourceCode equals: 'x'.
-	self assert: declared localDeclaration left isSSAVariableAssignment.
+	self assert: declared localDeclaration left isVariableWriteAccess.
 	self deny: declared localDeclaration isNonLocalDeclaration.
 	self assert: declared localDeclaration localUses size equals: 2.
 	self assert: declared localDeclaration localUses first equals: declared.

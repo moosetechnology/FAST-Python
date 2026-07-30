@@ -70,7 +70,7 @@ FASTPythonSSAVisitor >> visit: aCFGBlockOrFASTEntity [
 { #category : 'visiting' }
 FASTPythonSSAVisitor >> visitFASTPyIdentifier: anIdentifier [
 
-	anIdentifier isSSAVariableAssignment ifTrue: [ self handleNewAssignemntTo: anIdentifier ].
+	anIdentifier isVariableWriteAccess ifTrue: [ self handleNewAssignemntTo: anIdentifier ].
 
 	super visitFASTPyIdentifier: anIdentifier
 ]
@@ -79,7 +79,7 @@ FASTPythonSSAVisitor >> visitFASTPyIdentifier: anIdentifier [
 FASTPythonSSAVisitor >> visitFASTPyParameter: aParameter [
 	"Contrary to the visit of py identifier, we should always have a local declaration for a parameter. If it is nil, there is a bug in the local resolver"
 
-	aParameter localDeclaration isSSAVariableAssignment ifTrue: [ self handleNewAssignemntTo: aParameter ].
+	aParameter localDeclaration isVariableWriteAccess ifTrue: [ self handleNewAssignemntTo: aParameter ].
 
 	super visitFASTPyParameter: aParameter
 ]
