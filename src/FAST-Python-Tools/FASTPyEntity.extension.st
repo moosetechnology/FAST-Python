@@ -14,9 +14,9 @@ FASTPyEntity >> fullCfg [
 
 { #category : '*FAST-Python-Tools' }
 FASTPyEntity >> isVariableWriteAccess [
-	"I am used in the SSA builder to know if I represent the assignment of a variable."
+	"I am used in the LR and SSA builder to know if I represent the assignment of a variable."
 
-	^ false
+	^ self variableDeclarator isNotNil
 ]
 
 { #category : '*FAST-Python-Tools' }
@@ -26,4 +26,14 @@ FASTPyEntity >> localResolverKind [
 	I am used to know the kind of entity that is been declared."
 
 	^ self error: 'This entity cannot be a local declaration or is missing the overriding method.'
+]
+
+{ #category : '*FAST-Python-Tools' }
+FASTPyEntity >> variableDeclarator [
+	"In case I am a write access to a variable, I return the node categorized as my declaration. Else I return nil.
+	Nodes representing potential variable write access should override me.
+	
+	I am used by the LocalResolver and potentially SSA"
+
+	^ nil
 ]
