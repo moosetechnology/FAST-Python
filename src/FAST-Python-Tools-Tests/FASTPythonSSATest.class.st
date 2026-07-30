@@ -32,6 +32,28 @@ FASTPythonSSATest >> testForVariableUsed [
 	self assert: assignedVar ssaVersion identicalTo: assignedVar ssaVersion
 ]
 
+{ #category : 'tests - for' }
+FASTPythonSSATest >> testForVariablesInTupleUsed [
+
+	| assignedVarA assignedVarB usedVarA usedVarB |
+	self parseAndResolve: 'for a, b in data:
+    print(a, b)'.
+
+	assignedVarA := model module statements first left initializers first.
+	self assert: assignedVarA ssaVersion version equals: 1.
+	self assert: assignedVarA ssaName equals: 'a_1'.
+
+	usedVarA := model module statements first statements first arguments first.
+	self assert: assignedVarA ssaVersion identicalTo: assignedVarA ssaVersion.
+
+	assignedVarB := model module statements first left initializers second.
+	self assert: assignedVarB ssaVersion version equals: 1.
+	self assert: assignedVarB ssaName equals: 'b_1'.
+
+	usedVarB := model module statements first statements first arguments first.
+	self assert: assignedVarB ssaVersion identicalTo: assignedVarB ssaVersion
+]
+
 { #category : 'tests - parameters' }
 FASTPythonSSATest >> testParameterUsed [
 
