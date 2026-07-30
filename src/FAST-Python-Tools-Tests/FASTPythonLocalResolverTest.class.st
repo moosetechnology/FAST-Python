@@ -713,6 +713,48 @@ print(f())'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
+{ #category : 'tests - parameters' }
+FASTPythonLocalResolverTest >> testMethodSelfParameter [
+
+	| declaration usedVariable |
+	self parseAndResolve: 'class C:
+    def meth(self):
+        return self'.
+
+	declaration := model module statements first statements first parameters first.
+	self assert: declaration localDeclaration equals: declaration.
+	self assert: declaration localDeclaration name equals: 'self'.
+	self assert: declaration localDeclaration isSSAVariableAssignment.
+	self deny: declaration localDeclaration isNonLocalDeclaration.
+	self assert: declaration localDeclaration localUses size equals: 2.
+	self assert: declaration localDeclaration localUses first equals: declaration.
+
+	usedVariable := model module statements first statements first statements first expression.
+	self assert: usedVariable localDeclaration equals: declaration.
+	self assert: usedVariable equals: declaration localDeclaration localUses second
+]
+
+{ #category : 'tests - parameters' }
+FASTPythonLocalResolverTest >> testMethodSelfParameterWithDifferentName [
+
+	| declaration usedVariable |
+	self parseAndResolve: 'class C:
+    def meth(this):
+        return this'.
+
+	declaration := model module statements first statements first parameters first.
+	self assert: declaration localDeclaration equals: declaration.
+	self assert: declaration localDeclaration name equals: 'this'.
+	self assert: declaration localDeclaration isSSAVariableAssignment.
+	self deny: declaration localDeclaration isNonLocalDeclaration.
+	self assert: declaration localDeclaration localUses size equals: 2.
+	self assert: declaration localDeclaration localUses first equals: declaration.
+
+	usedVariable := model module statements first statements first statements first expression.
+	self assert: usedVariable localDeclaration equals: declaration.
+	self assert: usedVariable equals: declaration localDeclaration localUses second
+]
+
 { #category : 'tests - non local declarations' }
 FASTPythonLocalResolverTest >> testNonLocalMethodAndVariable [
 

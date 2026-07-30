@@ -192,6 +192,13 @@ FASTPythonLocalResolverVisitor >> visitFASTPyImport: anImport [
 	super visitFASTPyImport: anImport
 ]
 
+{ #category : 'visiting - reordering' }
+FASTPythonLocalResolverVisitor >> visitFASTPyMethodDefinition: aMethodDefinition [
+	"We resolve in the same way as functions."
+
+	self visitFASTPyFunctionDefinition: aMethodDefinition
+]
+
 { #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyParameter: aParameter [
 
