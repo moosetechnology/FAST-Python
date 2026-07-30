@@ -1075,6 +1075,26 @@ for x in range(5):
 ]
 
 { #category : 'tests - for' }
+FASTPythonLocalResolverTest >> testVariableOfForRedefinedInside [
+
+	| for declared usedVariable |
+	self parseAndResolve: 'for x in range(5):
+    x += 1'.
+
+	for := model module statements first.
+	declared := for left.
+	self assert: declared localDeclaration equals: for.
+	self assert: declared localDeclaration left sourceCode equals: 'x'.
+	self deny: declared localDeclaration isNonLocalDeclaration.
+	self assert: declared localDeclaration localUses size equals: 2.
+	self assert: declared localDeclaration localUses first equals: declared.
+
+	usedVariable := for statements first left.
+	self assert: usedVariable localDeclaration equals: for.
+	self assert: usedVariable equals: declared localDeclaration localUses second
+]
+
+{ #category : 'tests - for' }
 FASTPythonLocalResolverTest >> testVariableOfForStaysAfterFor [
 
 	| for assignedVariable usedVariable |
