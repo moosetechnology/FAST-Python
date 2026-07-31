@@ -726,6 +726,40 @@ print(f())'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
+{ #category : 'tests - local variables' }
+FASTPythonLocalResolverTest >> testLocalVariableInFunctionWithTuples [
+
+	| assignedVariableX assignedVariableY usedVariable |
+	self parseAndResolve: 'def f():
+	x, y = 1, 2
+	return x
+	
+print(f())'.
+
+	assignedVariableX := model module statements first statements first left initializers first.
+	self assert: assignedVariableX localDeclaration equals: assignedVariableX.
+	self assert: assignedVariableX localDeclaration name equals: 'x'.
+	self assert: assignedVariableX localDeclaration isVariableWriteAccess.
+	self assert: assignedVariableX localDeclaration variableDeclarator equals: model module statements first statements first.
+	self deny: assignedVariableX localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariableX localDeclaration localUses size equals: 2.
+	self assert: assignedVariableX localDeclaration localUses first equals: assignedVariableX.
+
+	usedVariable := model module statements first statements second expression.
+	self assert: usedVariable localDeclaration equals: assignedVariableX.
+	self assert: usedVariable equals: assignedVariableX localDeclaration localUses second.
+
+	assignedVariableY := model module statements first statements first left initializers second.
+	self assert: assignedVariableY localDeclaration equals: assignedVariableY.
+	self assert: assignedVariableY localDeclaration name equals: 'y'.
+	self assert: assignedVariableY localDeclaration isVariableWriteAccess.
+	self assert: assignedVariableY localDeclaration variableDeclarator equals: model module statements first statements first.
+	self deny: assignedVariableY localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariableY localDeclaration localUses size equals: 1.
+	self assert: assignedVariableY localDeclaration localUses first equals: assignedVariableY.
+
+]
+
 { #category : 'tests - methods' }
 FASTPythonLocalResolverTest >> testMethodRedefined [
 
