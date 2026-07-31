@@ -27,9 +27,10 @@ FASTPythonSSATest >> testForVariableUsed [
 	assignedVar := model module statements first left.
 	self assert: assignedVar ssaVersion version equals: 1.
 	self assert: assignedVar ssaName equals: 'x_1'.
+	self assert: assignedVar ssaVersion localUses size equals: 2.
 
 	usedVar := model module statements first statements first arguments first.
-	self assert: assignedVar ssaVersion identicalTo: assignedVar ssaVersion
+	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
 ]
 
 { #category : 'tests - for' }
@@ -42,16 +43,18 @@ FASTPythonSSATest >> testForVariablesInTupleUsed [
 	assignedVarA := model module statements first left initializers first.
 	self assert: assignedVarA ssaVersion version equals: 1.
 	self assert: assignedVarA ssaName equals: 'a_1'.
+	self assert: assignedVarA ssaVersion localUses size equals: 2.
 
 	usedVarA := model module statements first statements first arguments first.
-	self assert: assignedVarA ssaVersion identicalTo: assignedVarA ssaVersion.
+	self assert: usedVarA ssaVersion identicalTo: assignedVarA ssaVersion.
 
 	assignedVarB := model module statements first left initializers second.
 	self assert: assignedVarB ssaVersion version equals: 1.
 	self assert: assignedVarB ssaName equals: 'b_1'.
+	self assert: assignedVarB ssaVersion localUses size equals: 2.
 
-	usedVarB := model module statements first statements first arguments first.
-	self assert: assignedVarB ssaVersion identicalTo: assignedVarB ssaVersion
+	usedVarB := model module statements first statements first arguments second.
+	self assert: usedVarB ssaVersion identicalTo: assignedVarB ssaVersion
 ]
 
 { #category : 'tests - parameters' }
@@ -64,9 +67,10 @@ FASTPythonSSATest >> testParameterUsed [
 	parameterDeclaration := model module statements first parameters first.
 	self assert: parameterDeclaration ssaVersion version equals: 1.
 	self assert: parameterDeclaration ssaName equals: 'x_1'.
+	self assert: parameterDeclaration ssaVersion localUses size equals: 2.
 
 	parameterUsage := model module statements first statements first arguments first.
-	self assert: parameterDeclaration ssaVersion identicalTo: parameterDeclaration ssaVersion
+	self assert: parameterUsage ssaVersion identicalTo: parameterDeclaration ssaVersion
 ]
 
 { #category : 'tests - assignments' }
@@ -79,7 +83,9 @@ FASTPythonSSATest >> testSingleAssignement [
 	self assert: assignedVar ssaVersion version equals: 1.
 	self assert: assignedVar ssaName equals: 'x_1'.
 
-	self assert: assignedVar localDeclaration newVersionNumber equals: 2
+	self assert: assignedVar localDeclaration newVersionNumber equals: 2.
+	self assert: assignedVar ssaVersion localDeclaration equals: assignedVar localDeclaration.
+	self assert: assignedVar ssaVersion localUses size equals: 1
 ]
 
 { #category : 'tests - assignments' }
@@ -93,9 +99,11 @@ print(x)'.
 	assignedVar := model module statements first left.
 	self assert: assignedVar ssaVersion version equals: 1.
 	self assert: assignedVar ssaName equals: 'x_1'.
+	self assert: assignedVar ssaVersion localDeclaration equals: assignedVar localDeclaration.
+	self assert: assignedVar ssaVersion localUses size equals: 2.
 
 	usedVar := model module statements second arguments first.
-	self assert: assignedVar ssaVersion identicalTo: assignedVar ssaVersion
+	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
 ]
 
 { #category : 'tests - assignments' }
