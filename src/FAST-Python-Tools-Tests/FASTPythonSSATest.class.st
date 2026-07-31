@@ -98,6 +98,40 @@ print(x)'.
 	self assert: assignedVar ssaVersion identicalTo: assignedVar ssaVersion
 ]
 
+{ #category : 'tests - assignments' }
+FASTPythonSSATest >> testTupleAssignement [
+
+	| assignedVarX assignedVarY |
+	self parseAndResolve: 'x, y = 5, 6'.
+
+	assignedVarX := model module statements first left initializers first.
+	self assert: assignedVarX ssaVersion version equals: 1.
+	self assert: assignedVarX ssaName equals: 'x_1'.
+
+	assignedVarY := model module statements first left initializers second.
+	self assert: assignedVarY ssaVersion version equals: 1.
+	self assert: assignedVarY ssaName equals: 'y_1'
+]
+
+{ #category : 'tests - assignments' }
+FASTPythonSSATest >> testTupleInTupleAssignement [
+
+	| assignedVarX assignedVarY assignedVarZ |
+	self parseAndResolve: 'x, (y, z) = 5, (6, 7)'.
+
+	assignedVarX := model module statements first left initializers first.
+	self assert: assignedVarX ssaVersion version equals: 1.
+	self assert: assignedVarX ssaName equals: 'x_1'.
+
+	assignedVarY := model module statements first left initializers second initializers first.
+	self assert: assignedVarY ssaVersion version equals: 1.
+	self assert: assignedVarY ssaName equals: 'y_1'.
+
+	assignedVarZ := model module statements first left initializers second initializers second.
+	self assert: assignedVarZ ssaVersion version equals: 1.
+	self assert: assignedVarZ ssaName equals: 'z_1'
+]
+
 { #category : 'tests - non local declarations' }
 FASTPythonSSATest >> testUndeclaredVariable [
 
