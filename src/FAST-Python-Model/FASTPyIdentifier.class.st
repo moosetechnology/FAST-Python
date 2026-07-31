@@ -47,21 +47,3 @@ FASTPyIdentifier class >> annotation [
 	<package: #'FAST-Python-Model'>
 	<generated>
 ]
-
-{ #category : 'testing' }
-FASTPyIdentifier >> variableDeclarator [
-	"In the case I represent a write access to a variable, I return the node representing my assignment."
-
-	| node |
-	"In case I'm in a tuple, I should do the checks for the tuple instead of me."
-	node := self.
-	self collectionInitializer ifNotNil: [ :collection | collection isTuple ifTrue: [ node := collection ] ].
-
-	node parentAssignmentLeft ifNotNil: [ :assignment | ^ assignment ].
-
-	node parentForStatementLeft ifNotNil: [ :for | ^ for ].
-
-	node parentForInClauseLeft ifNotNil: [ :clause | ^ clause ].
-
-	^ super variableDeclarator
-]

@@ -48,6 +48,56 @@ print(x)'.
 	self assert: assignedVariableY localDeclaration localUses first equals: assignedVariableY
 ]
 
+{ #category : 'tests - globals' }
+FASTPythonLocalResolverTest >> testAssignementToTupleInTuples [
+
+	| assignedVariableX assignedVariableY assignedVariableZ usedVariableX usedVariableY usedVariableZ |
+	self parseAndResolve: 'x, (y, z) = 1, (2, 4)
+	
+print(x)
+print(y)
+print(z)'.
+
+	assignedVariableX := model module statements first left initializers first.
+	self assert: assignedVariableX localDeclaration equals: assignedVariableX.
+	self assert: assignedVariableX localDeclaration name equals: 'x'.
+	self assert: assignedVariableX localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariableX localDeclaration isVariableWriteAccess.
+	self deny: assignedVariableX localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariableX localDeclaration localUses size equals: 2.
+	self assert: assignedVariableX localDeclaration localUses first equals: assignedVariableX.
+
+	usedVariableX := model module statements second arguments first.
+	self assert: usedVariableX localDeclaration equals: assignedVariableX.
+	self assert: usedVariableX equals: assignedVariableX localDeclaration localUses second.
+
+	assignedVariableY := model module statements first left initializers second initializers first.
+	self assert: assignedVariableY localDeclaration equals: assignedVariableY.
+	self assert: assignedVariableY localDeclaration name equals: 'y'.
+	self assert: assignedVariableY localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariableY localDeclaration isVariableWriteAccess.
+	self deny: assignedVariableY localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariableY localDeclaration localUses size equals: 2.
+	self assert: assignedVariableY localDeclaration localUses first equals: assignedVariableY.
+
+	usedVariableY := model module statements third arguments first.
+	self assert: usedVariableY localDeclaration equals: assignedVariableY.
+	self assert: usedVariableY equals: assignedVariableY localDeclaration localUses second.
+
+	assignedVariableZ := model module statements first left initializers second initializers second.
+	self assert: assignedVariableZ localDeclaration equals: assignedVariableZ.
+	self assert: assignedVariableZ localDeclaration name equals: 'z'.
+	self assert: assignedVariableZ localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariableZ localDeclaration isVariableWriteAccess.
+	self deny: assignedVariableZ localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariableZ localDeclaration localUses size equals: 2.
+	self assert: assignedVariableZ localDeclaration localUses first equals: assignedVariableZ.
+
+	usedVariableZ := model module statements fourth arguments first.
+	self assert: usedVariableZ localDeclaration equals: assignedVariableZ.
+	self assert: usedVariableZ equals: assignedVariableZ localDeclaration localUses second
+]
+
 { #category : 'tests - non local declarations' }
 FASTPythonLocalResolverTest >> testAttributeAccessHalfResolved [
 	"Here x is resolved but y is not resolved locally."
