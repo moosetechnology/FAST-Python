@@ -17,6 +17,16 @@ FASTPythonSSAVisitor class >> resolve: aPythonEntity [
 	^ self new resolve: aPythonEntity
 ]
 
+{ #category : 'visiting' }
+FASTPythonSSAVisitor >> createPhiVersionFor: localDeclaration versions: allVersions [
+	"No need to add it to the versions since it was already added by the previous versions."
+
+	| phiVersion |
+	phiVersion := FASTVariablePhiVersionSSA for: allVersions.
+	localDeclaration activeVersion: phiVersion.
+	^ phiVersion
+]
+
 { #category : 'actions' }
 FASTPythonSSAVisitor >> createVariableVersionFor: aFASTEntity [
 
@@ -29,6 +39,12 @@ FASTPythonSSAVisitor >> createVariableVersionFor: aFASTEntity [
 	variableVersions add: aFASTEntity localDeclaration.
 
 	^ newSSA
+]
+
+{ #category : 'accessing' }
+FASTPythonSSAVisitor >> currentActiveVersions [
+
+	^ variableVersions collect: #activeVersion
 ]
 
 { #category : 'actions' }
@@ -44,6 +60,30 @@ FASTPythonSSAVisitor >> initialize [
 
 	super initialize.
 	variableVersions := IdentitySet new
+]
+
+{ #category : 'visiting' }
+FASTPythonSSAVisitor >> producePhiVersionBasedOnPreviousVariables: previousVariables andNewVariableMap: newVariablesMap [
+
+	| declarationsToMerge |
+	declarationsToMerge := newVariablesMap values flatten collectAsSet: #localDeclaration.
+
+	declarationsToMerge do: [ :localDeclaration |
+			| allVersions |
+			"First we collect all the versions to use to produce a new Phi version for the current local declaration. "
+			allVersions := Set new.
+			newVariablesMap valuesDo: [ :variables |
+					variables
+						detect: [ :variable | variable localDeclaration = localDeclaration ]
+						ifFound: [ :variable | allVersions add: variable ] ].
+
+			"If not all branches are creating a new version, we need to add the previous version also to the list of variables for the Phi variable. Note that it is possible it did not exist before."
+			allVersions size = newVariablesMap size ifFalse: [
+					previousVariables
+						detect: [ :variable | variable localDeclaration = localDeclaration ]
+						ifFound: [ :variable | allVersions add: variable ] ].
+
+			self createPhiVersionFor: localDeclaration versions: allVersions ]
 ]
 
 { #category : 'actions' }
@@ -65,6 +105,24 @@ FASTPythonSSAVisitor >> visit: aCFGBlockOrFASTEntity [
 
 	self flag: #todo. "Should be moved to the CFG visitor of FAST"
 	^ aCFGBlockOrFASTEntity ifNotNil: [ aCFGBlockOrFASTEntity accept: self ]
+]
+
+{ #category : 'visiting' }
+FASTPythonSSAVisitor >> visitCFGAbstractConditionalBlock: aBlock [
+
+	| previousVariables newVariablesMap |
+	self visitedBlocks add: aBlock.
+
+	aBlock statements do: [ :statement | statement accept: self ].
+
+	previousVariables := self currentActiveVersions. "We need to do this after visiting the statements that could produce new variables."
+	newVariablesMap := IdentityDictionary new.
+
+	aBlock nextBlocks do: [ :block |
+			(self visitedBlocks includes: block) ifFalse: [ block accept: self ].
+			newVariablesMap at: block put: (self currentActiveVersions difference: previousVariables) ].
+
+	self producePhiVersionBasedOnPreviousVariables: previousVariables andNewVariableMap: newVariablesMap
 ]
 
 { #category : 'visiting' }
