@@ -74,6 +74,62 @@ FASTPythonSSATest >> testParameterUsed [
 ]
 
 { #category : 'tests - assignments' }
+FASTPythonSSATest >> testReAssignement [
+
+	| assignedVar1 assignedVar2 |
+	self parseAndResolve: 'x = 3
+
+x = 4'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
+	self assert: assignedVar1 ssaVersion localUses size equals: 1.
+
+	assignedVar2 := model module statements second left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 1
+]
+
+{ #category : 'tests - assignments' }
+FASTPythonSSATest >> testReAssignementAndUsage [
+
+	| assignedVar1 assignedVar2 usedVar1 usedVar2 |
+	self parseAndResolve: 'x = 3
+
+print(x)
+
+  x = 4
+    
+print(x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	usedVar1 := model module statements second arguments first.
+	self deny: usedVar1 ssaVersion isPhi.
+	self assert: usedVar1 ssaVersion identicalTo: assignedVar1 ssaVersion.
+
+	assignedVar2 := model module statements third left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	usedVar2 := model module statements fourth arguments first.
+	self deny: usedVar2 ssaVersion isPhi.
+	self assert: usedVar2 ssaVersion identicalTo: assignedVar2 ssaVersion
+]
+
+{ #category : 'tests - assignments' }
 FASTPythonSSATest >> testSingleAssignement [
 
 	| assignedVar |
