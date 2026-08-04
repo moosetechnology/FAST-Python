@@ -30,10 +30,3 @@ FASTPyTuple class >> annotation [
 	<package: #'FAST-Python-Model'>
 	<generated>
 ]
-
-{ #category : 'testing' }
-FASTPyTuple >> isTuple [
-
-	<generated>
-	^ true
-]

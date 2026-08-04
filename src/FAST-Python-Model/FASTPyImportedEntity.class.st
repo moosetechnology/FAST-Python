@@ -53,12 +53,6 @@ FASTPyImportedEntity >> alias: anObject [
 	alias := anObject
 ]
 
-{ #category : 'testing' }
-FASTPyImportedEntity >> hasAlias [
-
-	^ self alias isNotNil
-]
-
 { #category : 'accessing' }
 FASTPyImportedEntity >> import [
 	"Relation named: #import type: #FASTPyImport opposite: #importedEntities"

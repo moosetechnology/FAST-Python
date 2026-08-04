@@ -4,9 +4,8 @@ Class {
 	#instVars : [
 		'startBlock'
 	],
-	#category : 'FAST-Python-Tools-Tests-Algos',
-	#package : 'FAST-Python-Tools-Tests',
-	#tag : 'Algos'
+	#category : 'FAST-Python-Tools-Tests',
+	#package : 'FAST-Python-Tools-Tests'
 }
 
 { #category : 'running' }
@@ -175,10 +174,11 @@ FASTPythonCFGTest >> testFunctionWithFor [
 	self assert: forBlock statements size equals: 1.
 	self assert: (forBlock statements first isOfType: FASTPyCall).
 	self assert: forBlock nextBlock equals: startBlock.
-	
+
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -195,7 +195,7 @@ FASTPythonCFGTest >> testFunctionWithForConditionDoesNotMixWithPreviousStatement
 	self deny: startBlock isFinal.
 	self assert: startBlock statements size equals: 1.
 	self assert: (startBlock statements first class isOfType: FASTPyCall).
-	
+
 	forCondition := startBlock nextBlock.
 	self assert: forCondition isConditional.
 	self deny: forCondition isFinal.
@@ -214,7 +214,8 @@ FASTPythonCFGTest >> testFunctionWithForConditionDoesNotMixWithPreviousStatement
 
 	nullBlock := forCondition nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: forCondition mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -245,7 +246,8 @@ FASTPythonCFGTest >> testFunctionWithForWithBreak [
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: forBlock nextBlock equals: nullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -285,7 +287,8 @@ FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThen [
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: thenBlock nextBlock equals: nullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -332,7 +335,8 @@ FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThen2 [
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: thenBlock nextBlock equals: nullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -381,7 +385,8 @@ FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThenBreakingAndElse [
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: thenBlock nextBlock equals: nullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -433,7 +438,8 @@ FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThenBreakingAndElseBreaking
 	self assert: nullBlock isNullBlock.
 	self assert: thenBlock nextBlock equals: nullBlock.
 	self assert: elseBlock nextBlock equals: nullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -506,7 +512,8 @@ FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThenElifAndElseAllBreaking 
 	self assert: lastBlock equals: elseBlock nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -573,7 +580,8 @@ FASTPythonCFGTest >> testFunctionWithForWithBreakInIfThenElifBreakingAndElse [
 	self assert: lastBlock equals: elifBlock nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -629,7 +637,8 @@ FASTPythonCFGTest >> testFunctionWithForWithBreakingIfThenElse [
 	self assert: lastBlock equals: elseBlock nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -660,7 +669,8 @@ FASTPythonCFGTest >> testFunctionWithForWithContinue [
 
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -700,7 +710,8 @@ FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThen [
 
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -747,7 +758,8 @@ FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThen2 [
 
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -796,7 +808,8 @@ FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThenContinuingAndElse [
 
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -848,7 +861,8 @@ FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThenContinuingAndElseCon
 
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -921,7 +935,8 @@ FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThenElifAndElseAllContin
 	self deny: lastBlock isNullBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -988,7 +1003,8 @@ FASTPythonCFGTest >> testFunctionWithForWithContinueInIfThenElifContinuingAndEls
 	self deny: lastBlock isNullBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -1044,7 +1060,8 @@ FASTPythonCFGTest >> testFunctionWithForWithContinuingIfThenElse [
 	self deny: lastBlock isNullBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -1082,7 +1099,8 @@ FASTPythonCFGTest >> testFunctionWithForWithElseWithBreakInAllBranches [
 	nullBlock := elseBlock nextBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: nullBlock isFinal.
-	self assert: nullBlock equals: forBlock nextBlock
+	self assert: nullBlock equals: forBlock nextBlock.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -1128,7 +1146,8 @@ FASTPythonCFGTest >> testFunctionWithForWithElseWithBreakInIf [
 	nullBlock := elseBlock nextBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: nullBlock isFinal.
-	self assert: nullBlock equals: thenBlock nextBlock
+	self assert: nullBlock equals: startBlock mergeBlock.
+	self assert: nullBlock equals: forBlock mergeBlock
 ]
 
 { #category : 'tests - for' }
@@ -1160,7 +1179,7 @@ FASTPythonCFGTest >> testFunctionWithForWithElseWithoutBreak [
 	self deny: elseBlock isNullBlock.
 	self assert: elseBlock isFinal.
 	self assert: elseBlock statements size equals: 1.
-	self assert: (elseBlock statements first isOfType: FASTPyPassStatement).
+	self assert: (elseBlock statements first isOfType: FASTPyPassStatement)
 ]
 
 { #category : 'tests - for' }
@@ -1241,7 +1260,8 @@ FASTPythonCFGTest >> testFunctionWithForWithIfInElif [
 	self assert: lastBlock equals: thenBlock2 nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1296,6 +1316,7 @@ FASTPythonCFGTest >> testFunctionWithIfInElif [
 	self assert: endOfElifBlock equals: thenBlock2 nextBlock.
 	self assert: endOfElifBlock statements size equals: 1.
 	self assert: (endOfElifBlock statements first isOfType: FASTPyCall).
+	self assert: endOfElifBlock equals: ifConditionalBlock2 mergeBlock.
 
 	lastBlock := thenBlock nextBlock.
 	self deny: lastBlock isNullBlock.
@@ -1303,7 +1324,8 @@ FASTPythonCFGTest >> testFunctionWithIfInElif [
 	self assert: lastBlock equals: elifConditionalBlock nextFalseBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1360,6 +1382,7 @@ FASTPythonCFGTest >> testFunctionWithIfInElif2 [
 	self assert: endOfElifBlock equals: thenBlock2 nextBlock.
 	self assert: endOfElifBlock statements size equals: 1.
 	self assert: (endOfElifBlock statements first isOfType: FASTPyCall).
+	self assert: endOfElifBlock equals: ifConditionalBlock2 mergeBlock.
 
 	elseBlock := elifConditionalBlock nextFalseBlock.
 	self deny: elseBlock isConditional.
@@ -1373,7 +1396,8 @@ FASTPythonCFGTest >> testFunctionWithIfInElif2 [
 	self assert: lastBlock equals: elseBlock nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1403,7 +1427,8 @@ FASTPythonCFGTest >> testFunctionWithIfThen [
 	nextBlock := startBlock nextFalseBlock.
 	self deny: nextBlock isNullBlock.
 	self assert: nextBlock identicalTo: thenBlock nextBlock.
-	self assert: nextBlock isFinal
+	self assert: nextBlock isFinal.
+	self assert: nextBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1432,7 +1457,8 @@ FASTPythonCFGTest >> testFunctionWithIfThenAtEnd [
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: nullBlock identicalTo: thenBlock nextBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1462,7 +1488,8 @@ FASTPythonCFGTest >> testFunctionWithIfThenAtStart [
 	self assert: returnBlock identicalTo: thenBlock nextBlock.
 	self assert: returnBlock isFinal.
 	self assert: returnBlock statements size equals: 1.
-	self assert: (returnBlock statements first isOfType: FASTPyReturnStatement)
+	self assert: (returnBlock statements first isOfType: FASTPyReturnStatement).
+	self assert: returnBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1505,7 +1532,8 @@ FASTPythonCFGTest >> testFunctionWithIfThenElif [
 	self assert: nullBlock identicalTo: thenBlock nextBlock.
 	self assert: nullBlock identicalTo: elifConditionBlock nextFalseBlock.
 	self assert: nullBlock identicalTo: elifBlock nextBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1544,7 +1572,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenElifElif [
 	self deny: elifBlock isFinal.
 	self assert: elifBlock statements size equals: 1.
 	self assert: (elifBlock statements first isOfType: FASTPyPassStatement).
-	
+
 	elifConditionBlock2 := elifConditionBlock nextFalseBlock.
 	self assert: elifConditionBlock2 isConditional.
 	self deny: elifConditionBlock2 isFinal.
@@ -1556,13 +1584,14 @@ FASTPythonCFGTest >> testFunctionWithIfThenElifElif [
 	self deny: elifBlock2 isFinal.
 	self assert: elifBlock2 statements size equals: 1.
 	self assert: (elifBlock2 statements first isOfType: FASTPyCall).
-	
+
 	nullBlock := thenBlock nextBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: nullBlock identicalTo: elifBlock nextBlock.
 	self assert: nullBlock identicalTo: elifConditionBlock2 nextFalseBlock.
 	self assert: nullBlock identicalTo: elifBlock2 nextBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1603,7 +1632,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenElifElifElse [
 	self deny: elifBlock isFinal.
 	self assert: elifBlock statements size equals: 1.
 	self assert: (elifBlock statements first isOfType: FASTPyPassStatement).
-	
+
 	elifConditionBlock2 := elifConditionBlock nextFalseBlock.
 	self assert: elifConditionBlock2 isConditional.
 	self deny: elifConditionBlock2 isFinal.
@@ -1621,13 +1650,14 @@ FASTPythonCFGTest >> testFunctionWithIfThenElifElifElse [
 	self deny: elseBlock isFinal.
 	self assert: elseBlock statements size equals: 1.
 	self assert: (elseBlock statements first isOfType: FASTPyCall).
-	
+
 	nullBlock := thenBlock nextBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: nullBlock identicalTo: elifBlock nextBlock.
 	self assert: nullBlock identicalTo: elifBlock2 nextBlock.
 	self assert: nullBlock identicalTo: elseBlock nextBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1677,7 +1707,8 @@ FASTPythonCFGTest >> testFunctionWithIfThenElifElse [
 	self assert: nullBlock isNullBlock.
 	self assert: nullBlock identicalTo: thenBlock nextBlock.
 	self assert: nullBlock identicalTo: elifBlock nextBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1717,7 +1748,8 @@ FASTPythonCFGTest >> testFunctionWithIfThenElse [
 	self assert: returnBlock identicalTo: elseBlock nextBlock.
 	self assert: returnBlock isFinal.
 	self assert: returnBlock statements size equals: 1.
-	self assert: (returnBlock statements first isOfType: FASTPyReturnStatement)
+	self assert: (returnBlock statements first isOfType: FASTPyReturnStatement).
+	self assert: returnBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1754,7 +1786,8 @@ FASTPythonCFGTest >> testFunctionWithIfThenElseAtEnd [
 	nullBlock := thenBlock nextBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: nullBlock identicalTo: elseBlock nextBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1792,7 +1825,8 @@ FASTPythonCFGTest >> testFunctionWithIfThenElseAtStart [
 	self assert: returnBlock identicalTo: elseBlock nextBlock.
 	self assert: returnBlock isFinal.
 	self assert: returnBlock statements size equals: 1.
-	self assert: (returnBlock statements first isOfType: FASTPyReturnStatement)
+	self assert: (returnBlock statements first isOfType: FASTPyReturnStatement).
+	self assert: returnBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1825,7 +1859,7 @@ FASTPythonCFGTest >> testFunctionWithIfThenElseInIfThen [
 	self deny: thenBlock2 isFinal.
 	self assert: thenBlock2 statements size equals: 1.
 	self assert: (thenBlock2 statements first isOfType: FASTPyCall).
-	
+
 	elseBlock := thenBlock nextFalseBlock.
 	self deny: elseBlock isConditional.
 	self deny: elseBlock isFinal.
@@ -1836,7 +1870,9 @@ FASTPythonCFGTest >> testFunctionWithIfThenElseInIfThen [
 	self assert: nullBlock isNullBlock.
 	self assert: nullBlock identicalTo: thenBlock2 nextBlock.
 	self assert: nullBlock identicalTo: elseBlock nextBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock.
+	self assert: nullBlock equals: thenBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1872,7 +1908,9 @@ FASTPythonCFGTest >> testFunctionWithIfThenInIfThen [
 	self assert: nullBlock isNullBlock.
 	self assert: nullBlock identicalTo: thenBlock nextFalseBlock.
 	self assert: nullBlock identicalTo: thenBlock2 nextBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock.
+	self assert: nullBlock equals: thenBlock mergeBlock
 ]
 
 { #category : 'tests - if' }
@@ -1916,7 +1954,9 @@ FASTPythonCFGTest >> testFunctionWithIfThenInIfThenElse [
 	self assert: nullBlock isNullBlock.
 	self assert: nullBlock identicalTo: elseBlock nextBlock.
 	self assert: nullBlock identicalTo: thenBlock2 nextBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock.
+	self assert: nullBlock equals: thenBlock mergeBlock
 ]
 
 { #category : 'tests - match' }
@@ -1971,7 +2011,8 @@ FASTPythonCFGTest >> testFunctionWithMatch [
 	self assert: lastBlock equals: defaultCase nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - match' }
@@ -2018,7 +2059,8 @@ FASTPythonCFGTest >> testFunctionWithMatchWith2IdenticalCase [
 	self assert: lastBlock equals: defaultCase nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - match' }
@@ -2076,7 +2118,8 @@ FASTPythonCFGTest >> testFunctionWithMatchWithCondition [
 	self assert: lastBlock equals: defaultCase nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests' }
@@ -2163,7 +2206,8 @@ FASTPythonCFGTest >> testFunctionWithTry [
 	self assert: lastBlock equals: exceptBlock nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: tryBlock mergeBlock
 ]
 
 { #category : 'tests - try' }
@@ -2229,7 +2273,8 @@ FASTPythonCFGTest >> testFunctionWithTryWihtMultipleExcepts [
 	self assert: lastBlock equals: exceptBlock3 nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: tryBlock mergeBlock
 ]
 
 { #category : 'tests - try' }
@@ -2290,13 +2335,13 @@ FASTPythonCFGTest >> testFunctionWithTryWithElse [
 	self assert: (exceptBlock3 statements first isOfType: FASTPyCall).
 
 
-	self assert: ((tryBlock patterns at: 4) isNil).
+	self assert: (tryBlock patterns at: 4) isNil.
 	elseBlock := tryBlock nextBlocks at: 4.
 	self deny: elseBlock isConditional.
 	self deny: elseBlock isFinal.
 	self assert: elseBlock statements size equals: 1.
 	self assert: (elseBlock statements first isOfType: FASTPyCall).
-	
+
 	lastBlock := elseBlock nextBlock.
 	self deny: lastBlock isNullBlock.
 	self assert: lastBlock equals: exceptBlock nextBlock.
@@ -2304,7 +2349,8 @@ FASTPythonCFGTest >> testFunctionWithTryWithElse [
 	self assert: lastBlock equals: exceptBlock3 nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: tryBlock mergeBlock
 ]
 
 { #category : 'tests - try' }
@@ -2381,7 +2427,8 @@ FASTPythonCFGTest >> testFunctionWithTryWithElseAndFinally [
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 2.
 	self assert: (lastBlock statements first isOfType: FASTPyCall).
-	self assert: (lastBlock statements second isOfType: FASTPyCall)
+	self assert: (lastBlock statements second isOfType: FASTPyCall).
+	self assert: lastBlock equals: tryBlock mergeBlock
 ]
 
 { #category : 'tests - try' }
@@ -2441,7 +2488,7 @@ FASTPythonCFGTest >> testFunctionWithTryWithFinally [
 	self assert: exceptBlock3 statements size equals: 1.
 	self assert: (exceptBlock3 statements first isOfType: FASTPyCall).
 
-	self assert: ((tryBlock patterns at: 4) isNil).
+	self assert: (tryBlock patterns at: 4) isNil.
 	lastBlock := tryBlock nextBlocks at: 4.
 	self deny: lastBlock isNullBlock.
 	self assert: lastBlock equals: exceptBlock nextBlock.
@@ -2450,7 +2497,8 @@ FASTPythonCFGTest >> testFunctionWithTryWithFinally [
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 2.
 	self assert: (lastBlock statements first isOfType: FASTPyCall).
-	self assert: (lastBlock statements second isOfType: FASTPyCall)
+	self assert: (lastBlock statements second isOfType: FASTPyCall).
+	self assert: lastBlock equals: tryBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -2479,7 +2527,8 @@ FASTPythonCFGTest >> testFunctionWithWhile [
 
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -2502,13 +2551,13 @@ FASTPythonCFGTest >> testFunctionWithWhileBreakingInWhile [
 	self assert: (startBlock statements first class isOfType: FASTPyComparisonOperator).
 	self assert: startBlock nextBlocks size equals: 2.
 	self assertEmpty: (startBlock nextBlocks select: #isNullBlock).
-	
+
 	trueWhile := startBlock nextTrueBlock.
 	self deny: trueWhile isConditional.
 	self deny: trueWhile isFinal.
 	self assert: trueWhile statements size equals: 1.
 	self assert: (trueWhile statements first isOfType: FASTPyCall).
-	
+
 	whileConditionalBlock2 := trueWhile nextBlock.
 	self assert: whileConditionalBlock2 isConditional.
 	self deny: whileConditionalBlock2 isFinal.
@@ -2529,18 +2578,20 @@ FASTPythonCFGTest >> testFunctionWithWhileBreakingInWhile [
 	self assert: (elseBlock statements first isOfType: FASTPyCall).
 	self assert: elseBlock equals: thenBlock nextBlock.
 	self assert: elseBlock nextBlock equals: startBlock.
+	self assert: elseBlock equals: whileConditionalBlock2 mergeBlock.
 
 	lastBlock := startBlock nextFalseBlock.
 	self deny: lastBlock isNullBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
 FASTPythonCFGTest >> testFunctionWithWhileBreakingInWhile2 [
 
-	| whileCondition ifCondition then else null |
+	| whileConditionBlock ifConditionBlock thenBlock elseBlock nullBlock |
 	self buildCFGForFunction: 'def f(i):
 	while i < 4:
 		while i < 2:
@@ -2556,36 +2607,38 @@ FASTPythonCFGTest >> testFunctionWithWhileBreakingInWhile2 [
 	self assert: startBlock nextBlocks size equals: 2.
 	self assert: (startBlock nextBlocks select: #isNullBlock) size equals: 1.
 
-	whileCondition := startBlock nextTrueBlock.
-	self assert: whileCondition isConditional.
-	self deny: whileCondition isFinal.
-	self assert: whileCondition statements size equals: 1.
-	self assert: (whileCondition statements first isOfType: FASTPyComparisonOperator).
-	self assert: whileCondition nextFalseBlock equals: startBlock.
+	whileConditionBlock := startBlock nextTrueBlock.
+	self assert: whileConditionBlock isConditional.
+	self deny: whileConditionBlock isFinal.
+	self assert: whileConditionBlock statements size equals: 1.
+	self assert: (whileConditionBlock statements first isOfType: FASTPyComparisonOperator).
+	self assert: whileConditionBlock nextFalseBlock equals: startBlock.
 
-	ifCondition := whileCondition nextTrueBlock.
-	self assert: ifCondition isConditional.
-	self deny: ifCondition isFinal.
-	self assert: ifCondition statements size equals: 1.
-	self assert: (ifCondition statements first isOfType: FASTPyComparisonOperator).
+	ifConditionBlock := whileConditionBlock nextTrueBlock.
+	self assert: ifConditionBlock isConditional.
+	self deny: ifConditionBlock isFinal.
+	self assert: ifConditionBlock statements size equals: 1.
+	self assert: (ifConditionBlock statements first isOfType: FASTPyComparisonOperator).
 
-	then := ifCondition nextTrueBlock.
-	self deny: then isConditional.
-	self deny: then isFinal.
-	self assert: then statements size equals: 1.
-	self assert: (then statements first isOfType: FASTPyBreakStatement).
-	self assert: then nextBlock equals: startBlock.
+	thenBlock := ifConditionBlock nextTrueBlock.
+	self deny: thenBlock isConditional.
+	self deny: thenBlock isFinal.
+	self assert: thenBlock statements size equals: 1.
+	self assert: (thenBlock statements first isOfType: FASTPyBreakStatement).
+	self assert: thenBlock nextBlock equals: startBlock.
 
-	else := ifCondition nextFalseBlock.
-	self deny: else isConditional.
-	self deny: else isFinal.
-	self assert: else statements size equals: 1.
-	self assert: (else statements first isOfType: FASTPyCall).
-	self assert: else nextBlock equals: whileCondition.
+	elseBlock := ifConditionBlock nextFalseBlock.
+	self deny: elseBlock isConditional.
+	self deny: elseBlock isFinal.
+	self assert: elseBlock statements size equals: 1.
+	self assert: (elseBlock statements first isOfType: FASTPyCall).
+	self assert: elseBlock nextBlock equals: whileConditionBlock.
 
-	null := startBlock nextFalseBlock.
-	self assert: null isNullBlock.
-	self assert: null isFinal
+	nullBlock := startBlock nextFalseBlock.
+	self assert: nullBlock isNullBlock.
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock.
+	self assert: nullBlock equals: whileConditionBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -2603,7 +2656,7 @@ FASTPythonCFGTest >> testFunctionWithWhileDoesNotMixWithPreviousStatements [
 	self deny: startBlock isFinal.
 	self assert: startBlock statements size equals: 1.
 	self assert: (startBlock statements first class isOfType: FASTPyCall).
-	
+
 	whileCondition := startBlock nextBlock.
 	self assert: whileCondition isConditional.
 	self deny: whileCondition isFinal.
@@ -2618,11 +2671,12 @@ FASTPythonCFGTest >> testFunctionWithWhileDoesNotMixWithPreviousStatements [
 	self assert: whileBlock statements size equals: 2.
 	self assert: (whileBlock statements first isOfType: FASTPyAugmentedAssignment).
 	self assert: (whileBlock statements second isOfType: FASTPyCall).
-	self assert: whileBlock nextBlock equals: whileCondition .
+	self assert: whileBlock nextBlock equals: whileCondition.
 
 	nullBlock := whileCondition nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: whileCondition mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -2652,7 +2706,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreak [
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: whileBlock nextBlock equals: nullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -2691,7 +2746,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThen [
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: thenBlock nextBlock equals: nullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -2737,7 +2793,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThen2 [
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: thenBlock nextBlock equals: nullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -2785,7 +2842,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenBreakingAndElse [
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: thenBlock nextBlock equals: nullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -2836,7 +2894,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenBreakingAndElseBreaki
 	self assert: nullBlock isNullBlock.
 	self assert: thenBlock nextBlock equals: nullBlock.
 	self assert: elseblock nextBlock equals: nullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -2908,7 +2967,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenElifAndElseAllBreakin
 	self assert: lastBlock equals: elseBlock nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -2974,7 +3034,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakInIfThenElifBreakingAndElse [
 	self assert: lastBlock equals: elifBlock nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -3029,7 +3090,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithBreakingIfThenElse [
 	self assert: lastBlock equals: elseBlock nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -3059,7 +3121,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinue [
 
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -3098,7 +3161,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThen [
 
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -3144,7 +3208,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThen2 [
 
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -3192,7 +3257,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThenContinuingAndElse 
 
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -3243,7 +3309,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThenContinuingAndElseC
 
 	nullBlock := startBlock nextFalseBlock.
 	self assert: nullBlock isNullBlock.
-	self assert: nullBlock isFinal
+	self assert: nullBlock isFinal.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -3315,7 +3382,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThenElifAndElseAllCont
 	self deny: lastBlock isNullBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -3381,7 +3449,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinueInIfThenElifContinuingAndE
 	self deny: lastBlock isNullBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -3436,7 +3505,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithContinuingIfThenElse [
 	self deny: lastBlock isNullBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -3473,7 +3543,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithElseWithBreakInAllBranches [
 	nullBlock := elseBlock nextBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: nullBlock isFinal.
-	self assert: nullBlock equals: whileBlock nextBlock
+	self assert: nullBlock equals: whileBlock nextBlock.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -3518,7 +3589,8 @@ FASTPythonCFGTest >> testFunctionWithWhileWithElseWithBreakInIf [
 	nullBlock := elseBlock nextBlock.
 	self assert: nullBlock isNullBlock.
 	self assert: nullBlock isFinal.
-	self assert: nullBlock equals: thenBlock nextBlock
+	self assert: nullBlock equals: thenBlock nextBlock.
+	self assert: nullBlock equals: startBlock mergeBlock
 ]
 
 { #category : 'tests - while' }
@@ -3549,7 +3621,7 @@ FASTPythonCFGTest >> testFunctionWithWhileWithElseWithoutBreak [
 	self deny: elseBlock isNullBlock.
 	self assert: elseBlock isFinal.
 	self assert: elseBlock statements size equals: 1.
-	self assert: (elseBlock statements first isOfType: FASTPyPassStatement).
+	self assert: (elseBlock statements first isOfType: FASTPyPassStatement)
 ]
 
 { #category : 'tests - while' }
@@ -3629,5 +3701,6 @@ FASTPythonCFGTest >> testFunctionWithWhileWithIfInElif [
 	self assert: lastBlock equals: thenBlock2 nextBlock.
 	self assert: lastBlock isFinal.
 	self assert: lastBlock statements size equals: 1.
-	self assert: (lastBlock statements first isOfType: FASTPyCall)
+	self assert: (lastBlock statements first isOfType: FASTPyCall).
+	self assert: lastBlock equals: startBlock mergeBlock
 ]

@@ -149,13 +149,6 @@ FASTPyEntity >> isStringLiteral [
 ]
 
 { #category : 'testing' }
-FASTPyEntity >> isTuple [
-
-	<generated>
-	^ false
-]
-
-{ #category : 'testing' }
 FASTPyEntity >> isVariableEntity [
 
 	<generated>

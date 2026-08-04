@@ -6,7 +6,6 @@
 | Relation | Origin | Opposite | Type | Comment |
 |---|
 | `caller` | `FASTPyTCallable` | `callee` | `FASTPyCall` | The call entity calling me (if it's the case)|
-| `invokedIn` | `FASTTNamedEntity` | `invoked` | `FASTTInvocation` | Optional invocation where this name is used|
 | `parentAsPatternSource` | `FASTPyTAsPatternSource` | `source` | `FASTPyAsPattern` | |
 | `parentAsPatternTarget` | `FASTPyTAsPatternTarget` | `target` | `FASTPyAsPattern` | |
 | `parentAssignmentLeft` | `FASTPyTAssignable` | `left` | `FASTPyAssignment` | |
@@ -20,21 +19,13 @@
 | `parentSplatParameter` | `FASTPyTSplatParameterTarget` | `target` | `FASTPySplatParameter` | |
 
 
-## Properties
-======================
-
-| Name | Type | Default value | Comment |
-|---|
-| `endPos` | `Number` | nil | |
-| `name` | `String` | nil | |
-| `startPos` | `Number` | nil | |
 
 "
 Class {
 	#name : 'FASTPyIdentifier',
 	#superclass : 'FASTPyExpression',
-	#traits : 'FASTPyTAsPatternTarget + FASTPyTReturnReferenceable + FASTPyTSplatParameterTarget + FASTTNamedEntity',
-	#classTraits : 'FASTPyTAsPatternTarget classTrait + FASTPyTReturnReferenceable classTrait + FASTPyTSplatParameterTarget classTrait + FASTTNamedEntity classTrait',
+	#traits : 'FASTPyTAsPatternTarget + FASTPyTReturnReferenceable + FASTPyTSplatParameterTarget',
+	#classTraits : 'FASTPyTAsPatternTarget classTrait + FASTPyTReturnReferenceable classTrait + FASTPyTSplatParameterTarget classTrait',
 	#category : 'FAST-Python-Model-Entities',
 	#package : 'FAST-Python-Model',
 	#tag : 'Entities'

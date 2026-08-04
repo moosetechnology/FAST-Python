@@ -619,26 +619,21 @@ FASTPythonTreeSitterVisitor >> visitGlobalStatement: aTSNode [
 { #category : 'visiting' }
 FASTPythonTreeSitterVisitor >> visitIdentifier: aNode [
 
-	| name |
-	name := self sourceCodeOf: aNode.
-
-	(self isInParameter: aNode) ifTrue: [ ^ self handleParameterNode: aNode name: name ].
+	(self isInParameter: aNode) ifTrue: [ ^ self handleParameterNode: aNode name: (self sourceCodeOf: aNode) ].
 
 	"If we are in a field `name` then we are probably in a definition of an entity and we set my content as a name."
-	self shouldIdentifierSetNameProperty ifTrue: [ ^ self topFastEntity name: name ].
+	self shouldIdentifierSetNameProperty ifTrue: [ ^ self topFastEntity name: (self sourceCodeOf: aNode) ].
 
 	self isIdentifierAVariableInTheCurrentContext ifTrue: [
 			| variable |
 			variable := self handleNode: aNode kind: FASTPyVariable.
-			variable name: name.
+			variable name: (self sourceCodeOf: aNode).
 			^ variable ].
 
 	"In case we are in an alias, we edit the property alias of the last imported entity"
-	aNode parent type = #aliased_import ifTrue: [ ^ self topFastEntity importedEntities last alias: name ].
+	aNode parent type = #aliased_import ifTrue: [ ^ self topFastEntity importedEntities last alias: (self sourceCodeOf: aNode) ].
 
-	^ (self handleNode: aNode)
-		  name: name;
-		  yourself
+	^ self handleNode: aNode
 ]
 
 { #category : 'visiting - skip' }
