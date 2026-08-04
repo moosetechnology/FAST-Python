@@ -35,9 +35,9 @@ Class {
 		'started',
 		'cfgs'
 	],
-	#category : 'FAST-Python-Tools-CFG/DataFlow',
+	#category : 'FAST-Python-Tools-CFG/LocalResolver/SSA',
 	#package : 'FAST-Python-Tools',
-	#tag : 'CFG/DataFlow'
+	#tag : 'CFG/LocalResolver/SSA'
 }
 
 { #category : 'running' }

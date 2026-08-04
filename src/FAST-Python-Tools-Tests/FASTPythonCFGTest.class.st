@@ -4,8 +4,9 @@ Class {
 	#instVars : [
 		'startBlock'
 	],
-	#category : 'FAST-Python-Tools-Tests',
-	#package : 'FAST-Python-Tools-Tests'
+	#category : 'FAST-Python-Tools-Tests-Algos',
+	#package : 'FAST-Python-Tools-Tests',
+	#tag : 'Algos'
 }
 
 { #category : 'running' }

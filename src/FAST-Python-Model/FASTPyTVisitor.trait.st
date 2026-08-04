@@ -491,6 +491,7 @@ FASTPyTVisitor >> visitFASTPyIdentifier: anIdentifier [
 	self visitFASTPyTAsPatternTarget: anIdentifier.
 	self visitFASTPyTReturnReferenceable: anIdentifier.
 	self visitFASTPyTSplatParameterTarget: anIdentifier.
+	self visitFASTTNamedEntity: anIdentifier.
 	self visitFASTPyExpression: anIdentifier
 ]
 
@@ -1295,7 +1296,9 @@ FASTPyTVisitor >> visitFASTTStringLiteral: aTStringLiteral [
 FASTPyTVisitor >> visitFASTTVariableEntity: aTVariableEntity [
 
 	<generated>
-	self visitFASTTNamedEntity: aTVariableEntity.
+	"We do not visit all behaviorals because some classes already visit it in their superclasses in this language implementation. Visiting them here also would cause a double visit of this trait."
+	({ FASTPyVariable } includes: aTVariableEntity class)
+		ifFalse: [ self visitFASTTNamedEntity: aTVariableEntity ].
 
 
 ]
