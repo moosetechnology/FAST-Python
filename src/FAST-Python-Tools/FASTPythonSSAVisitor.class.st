@@ -110,16 +110,18 @@ FASTPythonSSAVisitor >> visit: aCFGBlockOrFASTEntity [
 { #category : 'visiting' }
 FASTPythonSSAVisitor >> visitCFGAbstractConditionalBlock: aBlock [
 
-	| previousVariables newVariablesMap |
-	self visitedBlocks add: aBlock.
+	| previousVariables newVariablesMap firstCommonChild reacheableBlocksByBranch |
+	self visitCFGAbstractBlock: aBlock.
 
-	aBlock statements do: [ :statement | statement accept: self ].
+	reacheableBlocksByBranch := aBlock nextBlocks collect: [ :block | block withAllFollowingBlocks ].
+
+	firstCommonChild := self findClosestMergePointIn: reacheableBlocksByBranch for: aBlock.
 
 	previousVariables := self currentActiveVersions. "We need to do this after visiting the statements that could produce new variables."
 	newVariablesMap := IdentityDictionary new.
 
 	aBlock nextBlocks do: [ :block |
-			(self visitedBlocks includes: block) ifFalse: [ block accept: self ].
+			self visit: block.
 			newVariablesMap at: block put: (self currentActiveVersions difference: previousVariables) ].
 
 	self producePhiVersionBasedOnPreviousVariables: previousVariables andNewVariableMap: newVariablesMap
