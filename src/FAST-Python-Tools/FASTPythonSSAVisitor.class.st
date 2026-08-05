@@ -4,7 +4,8 @@ Class {
 	#traits : 'FASTCFGTVisitor',
 	#classTraits : 'FASTCFGTVisitor classTrait',
 	#instVars : [
-		'variableVersions'
+		'variableVersions',
+		'newVariablesMap'
 	],
 	#category : 'FAST-Python-Tools-CFG/LocalResolver/SSA',
 	#package : 'FAST-Python-Tools',
@@ -59,7 +60,34 @@ FASTPythonSSAVisitor >> handleNewAssignemntTo: aFASTEntity [
 FASTPythonSSAVisitor >> initialize [
 
 	super initialize.
-	variableVersions := IdentitySet new
+	variableVersions := IdentitySet new.
+	newVariablesMap := IdentityDictionary new
+]
+
+{ #category : 'hooks' }
+FASTPythonSSAVisitor >> postConditonalsBranchVisitOf: firstBranchBlock conditional: aConditionalBlock [
+	"Once we visited a conditional branch, we save the current active versions for this branch."
+
+	| mapForConditional |
+	mapForConditional := newVariablesMap at: aConditionalBlock.
+	mapForConditional at: firstBranchBlock put: (self currentActiveVersions difference: (mapForConditional at: aConditionalBlock))
+]
+
+{ #category : 'hooks' }
+FASTPythonSSAVisitor >> postConditonalsBranchesVisitOf: aConditionalBlock [
+	"Once we're done visiting a conditional block we can clean the map and to build the Phi variables."
+
+	| mapForConditional |
+	mapForConditional := newVariablesMap at: aConditionalBlock.
+	self producePhiVersionBasedOnPreviousVariables: (mapForConditional at: aConditionalBlock) andNewVariableMap: mapForConditional.
+	newVariablesMap removeKey: aConditionalBlock
+]
+
+{ #category : 'hooks' }
+FASTPythonSSAVisitor >> preConditonalsBranchesVisitOf: aConditionalBlock [
+	"When we start to visit the branches of a conditional, we start by creating an entri for this conditional in the new variables map and we save the actives versions present before visiting the childrem."
+
+	newVariablesMap at: aConditionalBlock put: (IdentityDictionary with: aConditionalBlock -> self currentActiveVersions)
 ]
 
 { #category : 'visiting' }
@@ -98,33 +126,6 @@ FASTPythonSSAVisitor >> resolve: aFASTBehaviouralEntity [
 
 	"And lastly, I can build the SSA now that I have the CFG and Local declarations."
 	self visit: cfg
-]
-
-{ #category : 'visiting' }
-FASTPythonSSAVisitor >> visit: aCFGBlockOrFASTEntity [
-
-	self flag: #todo. "Should be moved to the CFG visitor of FAST"
-	^ aCFGBlockOrFASTEntity ifNotNil: [ aCFGBlockOrFASTEntity accept: self ]
-]
-
-{ #category : 'visiting' }
-FASTPythonSSAVisitor >> visitCFGAbstractConditionalBlock: aBlock [
-
-	| previousVariables newVariablesMap firstCommonChild reacheableBlocksByBranch |
-	self visitCFGAbstractBlock: aBlock.
-
-	reacheableBlocksByBranch := aBlock nextBlocks collect: [ :block | block withAllFollowingBlocks ].
-
-	firstCommonChild := self findClosestMergePointIn: reacheableBlocksByBranch for: aBlock.
-
-	previousVariables := self currentActiveVersions. "We need to do this after visiting the statements that could produce new variables."
-	newVariablesMap := IdentityDictionary new.
-
-	aBlock nextBlocks do: [ :block |
-			self visit: block.
-			newVariablesMap at: block put: (self currentActiveVersions difference: previousVariables) ].
-
-	self producePhiVersionBasedOnPreviousVariables: previousVariables andNewVariableMap: newVariablesMap
 ]
 
 { #category : 'visiting' }
