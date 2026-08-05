@@ -70,16 +70,18 @@ FASTPythonSSAVisitor >> postConditonalsBranchVisitOf: firstBranchBlock condition
 
 	| mapForConditional |
 	mapForConditional := newVariablesMap at: aConditionalBlock.
-	mapForConditional at: firstBranchBlock put: (self currentActiveVersions difference: (mapForConditional at: aConditionalBlock))
+	mapForConditional at: firstBranchBlock put: (self currentActiveVersions difference: (mapForConditional at: #previousVariables))
 ]
 
 { #category : 'hooks' }
 FASTPythonSSAVisitor >> postConditonalsBranchesVisitOf: aConditionalBlock [
 	"Once we're done visiting a conditional block we can clean the map and to build the Phi variables."
 
-	| mapForConditional |
+	| mapForConditional previousVariables |
 	mapForConditional := newVariablesMap at: aConditionalBlock.
-	self producePhiVersionBasedOnPreviousVariables: (mapForConditional at: aConditionalBlock) andNewVariableMap: mapForConditional.
+	previousVariables := mapForConditional at: #previousVariables.
+	mapForConditional removeKey: #previousVariables.
+	self producePhiVersionBasedOnPreviousVariables: previousVariables andNewVariableMap: mapForConditional.
 	newVariablesMap removeKey: aConditionalBlock
 ]
 
@@ -87,7 +89,7 @@ FASTPythonSSAVisitor >> postConditonalsBranchesVisitOf: aConditionalBlock [
 FASTPythonSSAVisitor >> preConditonalsBranchesVisitOf: aConditionalBlock [
 	"When we start to visit the branches of a conditional, we start by creating an entri for this conditional in the new variables map and we save the actives versions present before visiting the childrem."
 
-	newVariablesMap at: aConditionalBlock put: (IdentityDictionary with: aConditionalBlock -> self currentActiveVersions)
+	newVariablesMap at: aConditionalBlock put: (IdentityDictionary with: #previousVariables -> self currentActiveVersions)
 ]
 
 { #category : 'visiting' }
@@ -101,9 +103,9 @@ FASTPythonSSAVisitor >> producePhiVersionBasedOnPreviousVariables: previousVaria
 			"First we collect all the versions to use to produce a new Phi version for the current local declaration. "
 			allVersions := Set new.
 			newVariablesMap valuesDo: [ :variables |
-					variables
-						detect: [ :variable | variable localDeclaration = localDeclaration ]
-						ifFound: [ :variable | allVersions add: variable ] ].
+				variables
+					detect: [ :variable | variable localDeclaration = localDeclaration ]
+					ifFound: [ :variable | allVersions add: variable ] ].
 
 			"If not all branches are creating a new version, we need to add the previous version also to the list of variables for the Phi variable. Note that it is possible it did not exist before."
 			allVersions size = newVariablesMap size ifFalse: [

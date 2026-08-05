@@ -17,6 +17,30 @@ FASTPythonSSATest >> parseAndResolve: aString [
 	FASTPythonSSAVisitor resolve: model module
 ]
 
+{ #category : 'tests - assignments' }
+FASTPythonSSATest >> testAssignementNotUpdatedInIfAndUsage [
+
+	| assignedVar usedVar |
+	self parseAndResolve: 'x = 3
+
+if y < 2:
+    function1()
+else:
+	function2()
+    
+print(x)'.
+
+	assignedVar := model module statements first left.
+	self assert: assignedVar ssaVersion version equals: 1.
+	self assert: assignedVar ssaName equals: 'x_1'.
+	self assert: assignedVar ssaVersion localDeclaration equals: assignedVar localDeclaration.
+	self assert: assignedVar ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements third arguments first.
+	self deny: usedVar ssaVersion isPhi.
+	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
+]
+
 { #category : 'tests - for' }
 FASTPythonSSATest >> testForVariableUsed [
 
