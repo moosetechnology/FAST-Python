@@ -375,6 +375,136 @@ print(x)'.
 			assignedVar2 ssaVersion }
 ]
 
+{ #category : 'tests - match' }
+FASTPythonSSATest >> testReAssignementInMatchAllCasesThenAndUsage [
+
+	| assignedVar1 assignedVar2 assignedVar3 usedVar |
+	self parseAndResolve: 'x = 4
+match toto:
+  case 1:
+    x = 5
+  case 2:
+    x = 8
+
+print(x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
+	self assert: assignedVar1 ssaVersion localUses size equals: 1.
+
+	assignedVar2 := model module statements second cases first statements first left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	assignedVar3 := model module statements second cases second statements first left.
+	self assert: assignedVar3 ssaVersion version equals: 3.
+	self assert: assignedVar3 ssaName equals: 'x_3'.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar3 localDeclaration.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar3 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVar2 ssaVersion.
+			assignedVar3 ssaVersion }
+]
+
+{ #category : 'tests - match' }
+FASTPythonSSATest >> testReAssignementInMatchThenAndUsage [
+
+	| assignedVar1 assignedVar2 assignedVar3 usedVar |
+	self parseAndResolve: 'x = 4
+match toto:
+  case 1:
+    x = 5
+  case 2:
+    x = 8
+  case 3:
+    function1()
+  case 4:
+    function2()
+
+print(x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	assignedVar2 := model module statements second cases first statements first left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	assignedVar3 := model module statements second cases second statements first left.
+	self assert: assignedVar3 ssaVersion version equals: 3.
+	self assert: assignedVar3 ssaName equals: 'x_3'.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar3 localDeclaration.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar3 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVar1 ssaVersion.
+			assignedVar2 ssaVersion.
+			assignedVar3 ssaVersion }
+]
+
+{ #category : 'tests - match' }
+FASTPythonSSATest >> testReAssignementInMatchWithDefaultThenAndUsage [
+
+	| assignedVar1 assignedVar2 assignedVar3 usedVar |
+	self parseAndResolve: 'x = 4
+match toto:
+  case 1:
+    x = 5
+  case 3:
+    function1()
+  case 4:
+    function2()
+  case _:
+    x = 8
+
+print(x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	assignedVar2 := model module statements second cases first statements first left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	assignedVar3 := model module statements second cases fourth statements first left.
+	self assert: assignedVar3 ssaVersion version equals: 3.
+	self assert: assignedVar3 ssaName equals: 'x_3'.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar3 localDeclaration.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar3 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVar1 ssaVersion.
+			assignedVar2 ssaVersion.
+			assignedVar3 ssaVersion }
+]
+
 { #category : 'tests - assignments' }
 FASTPythonSSATest >> testReAssignementInMultipleIfsAndUsage [
 
@@ -423,6 +553,73 @@ print(x)'.
 			assignedVar1 ssaVersion.
 			assignedVar2 ssaVersion.
 			assignedVar3 ssaVersion }
+]
+
+{ #category : 'tests - assignments' }
+FASTPythonSSATest >> testReAssignementInMultipleIfsAndUsage2 [
+
+	| assignedVar1 assignedVar2 assignedVar3 assignedVar4 assignedVar5 usedVar1 usedVar2 |
+	self parseAndResolve: 'x = 3
+
+if y < 2:
+    x = 4
+else:
+	x = 6
+
+print(x)
+
+if y > 2:
+	x = 5
+else:
+	x = 7
+    
+print(x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
+	self assert: assignedVar1 ssaVersion localUses size equals: 1.
+
+	assignedVar2 := model module statements second thenClause statements first left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	assignedVar3 := model module statements second elseClause statements first left.
+	self assert: assignedVar3 ssaVersion version equals: 3.
+	self assert: assignedVar3 ssaName equals: 'x_3'.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar3 localDeclaration.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar3 ssaVersion localUses size equals: 2.
+
+	usedVar1 := model module statements third arguments first.
+	self assert: usedVar1 ssaVersion isPhi.
+	self assertCollection: usedVar1 ssaVersion ssaVariables hasSameElements: {
+			assignedVar2 ssaVersion.
+			assignedVar3 ssaVersion }.
+
+	assignedVar4 := model module statements fourth thenClause statements first left.
+	self assert: assignedVar4 ssaVersion version equals: 4.
+	self assert: assignedVar4 ssaName equals: 'x_4'.
+	self assert: assignedVar4 ssaVersion localDeclaration equals: assignedVar4 localDeclaration.
+	self assert: assignedVar4 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar4 ssaVersion localUses size equals: 2.
+
+	assignedVar5 := model module statements fourth elseClause statements first left.
+	self assert: assignedVar5 ssaVersion version equals: 5.
+	self assert: assignedVar5 ssaName equals: 'x_5'.
+	self assert: assignedVar5 ssaVersion localDeclaration equals: assignedVar5 localDeclaration.
+	self assert: assignedVar5 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar5 ssaVersion localUses size equals: 2.
+
+	usedVar2 := model module statements fifth arguments first.
+	self assert: usedVar2 ssaVersion isPhi.
+	self assertCollection: usedVar2 ssaVersion ssaVariables hasSameElements: {
+			assignedVar4 ssaVersion.
+			assignedVar5 ssaVersion }
 ]
 
 { #category : 'tests - assignments' }
