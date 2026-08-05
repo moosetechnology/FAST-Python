@@ -151,15 +151,14 @@ FASTPythonCFGVisitor >> visitFASTPyFinallyClause: aFinallyClause [
 FASTPythonCFGVisitor >> visitFASTPyForStatement: aForStatement [
 
 	self buildBlockIfNeeded.
-
-	self addStatement: aForStatement left.
 	self addStatement: aForStatement right.
 
 	self buildAndUseLoopDuring: [
+			self addStatement: aForStatement left. "The variable does not go in the conditional block because if the collection is empty, we never assign the variable."
 			self visitFASTTStatementBlock: aForStatement.
 
 			"We add the loops after finishing the first statement block, so the else can be managed in this block to be in the right context."
-			self visitFASTPyTWithElseClause: aForStatement  ]
+			self visitFASTPyTWithElseClause: aForStatement ]
 ]
 
 { #category : 'visiting - entry points' }
