@@ -41,6 +41,28 @@ print(x)'.
 	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
 ]
 
+{ #category : 'tests - assignments' }
+FASTPythonSSATest >> testAssignementNotUpdatedInIfAndUsage2 [
+
+	| assignedVar usedVar |
+	self parseAndResolve: 'x = 3
+
+if y < 2:
+    function1()
+    
+print(x)'.
+
+	assignedVar := model module statements first left.
+	self assert: assignedVar ssaVersion version equals: 1.
+	self assert: assignedVar ssaName equals: 'x_1'.
+	self assert: assignedVar ssaVersion localDeclaration equals: assignedVar localDeclaration.
+	self assert: assignedVar ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements third arguments first.
+	self deny: usedVar ssaVersion isPhi.
+	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
+]
+
 { #category : 'tests - for' }
 FASTPythonSSATest >> testForVariableUsed [
 
@@ -177,13 +199,86 @@ if y < 2:
 ]
 
 { #category : 'tests - assignments' }
-FASTPythonSSATest >> testReAssignementInIfAndUsage [
+FASTPythonSSATest >> testReAssignementInIfInBithBranchesAndUsage [
+
+	| assignedVar1 assignedVar2 assignedVar3 usedVar |
+	self parseAndResolve: 'x = 3
+
+if y < 2:
+    x = 4
+else:
+    x = 5
+    
+print(x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
+	self assert: assignedVar1 ssaVersion localUses size equals: 1.
+
+	assignedVar2 := model module statements second thenClause statements first left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	assignedVar3 := model module statements second elseClause statements first left.
+	self assert: assignedVar3 ssaVersion version equals: 3.
+	self assert: assignedVar3 ssaName equals: 'x_3'.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar3 localDeclaration.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar3 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVar2 ssaVersion.
+			assignedVar3 ssaVersion }
+]
+
+{ #category : 'tests - assignments' }
+FASTPythonSSATest >> testReAssignementInIfInThenAndUsage [
 
 	| assignedVar1 assignedVar2 usedVar |
 	self parseAndResolve: 'x = 3
 
 if y < 2:
     x = 4
+    
+print(x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	assignedVar2 := model module statements second thenClause statements first left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVar1 ssaVersion.
+			assignedVar2 ssaVersion }
+]
+
+{ #category : 'tests - assignments' }
+FASTPythonSSATest >> testReAssignementInIfInThenAndUsage2 [
+
+	| assignedVar1 assignedVar2 usedVar |
+	self parseAndResolve: 'x = 3
+
+if y < 2:
+    x = 4
+else:
+	function()
     
 print(x)'.
 
