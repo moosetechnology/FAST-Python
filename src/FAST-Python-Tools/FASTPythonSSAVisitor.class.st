@@ -23,6 +23,8 @@ FASTPythonSSAVisitor >> createPhiVersionFor: localDeclaration versions: allVersi
 	"No need to add it to the versions since it was already added by the previous versions."
 
 	| phiVersion |
+	allVersions size < 2 ifTrue: [ ^ self ]. "No need to create a phi version if we don't have at least 2 versions"
+
 	phiVersion := FASTVariablePhiVersionSSA for: allVersions.
 	localDeclaration activeVersion: phiVersion.
 	^ phiVersion

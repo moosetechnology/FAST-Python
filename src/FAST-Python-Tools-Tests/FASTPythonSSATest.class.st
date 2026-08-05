@@ -18,6 +18,37 @@ FASTPythonSSATest >> parseAndResolve: aString [
 ]
 
 { #category : 'tests - assignments' }
+FASTPythonSSATest >> testAssignementInIfInBothBranchesAndUsage [
+
+	| assignedVar1 assignedVar2 usedVar |
+	self parseAndResolve: 'if y < 2:
+    x = 4
+else:
+    x = 5
+    
+print(x)'.
+
+	assignedVar1 := model module statements first thenClause statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	assignedVar2 := model module statements first elseClause statements first left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements second arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVar1 ssaVersion.
+			assignedVar2 ssaVersion }
+]
+
+{ #category : 'tests - assignments' }
 FASTPythonSSATest >> testAssignementNotUpdatedInIfAndUsage [
 
 	| assignedVar usedVar |
@@ -199,7 +230,7 @@ if y < 2:
 ]
 
 { #category : 'tests - assignments' }
-FASTPythonSSATest >> testReAssignementInIfInBithBranchesAndUsage [
+FASTPythonSSATest >> testReAssignementInIfInBothBranchesAndUsage [
 
 	| assignedVar1 assignedVar2 assignedVar3 usedVar |
 	self parseAndResolve: 'x = 3
@@ -241,32 +272,21 @@ print(x)'.
 { #category : 'tests - assignments' }
 FASTPythonSSATest >> testReAssignementInIfInThenAndUsage [
 
-	| assignedVar1 assignedVar2 usedVar |
-	self parseAndResolve: 'x = 3
-
-if y < 2:
+	| assignedVar2 usedVar |
+	self parseAndResolve: 'if y < 2:
     x = 4
     
 print(x)'.
 
-	assignedVar1 := model module statements first left.
-	self assert: assignedVar1 ssaVersion version equals: 1.
-	self assert: assignedVar1 ssaName equals: 'x_1'.
-	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
-	self assert: assignedVar1 ssaVersion localUses size equals: 2.
-
-	assignedVar2 := model module statements second thenClause statements first left.
-	self assert: assignedVar2 ssaVersion version equals: 2.
-	self assert: assignedVar2 ssaName equals: 'x_2'.
+	assignedVar2 := model module statements first thenClause statements first left.
+	self assert: assignedVar2 ssaVersion version equals: 1.
+	self assert: assignedVar2 ssaName equals: 'x_1'.
 	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
-	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
 	self assert: assignedVar2 ssaVersion localUses size equals: 2.
 
-	usedVar := model module statements third arguments first.
-	self assert: usedVar ssaVersion isPhi.
-	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
-			assignedVar1 ssaVersion.
-			assignedVar2 ssaVersion }
+	usedVar := model module statements second arguments first.
+	self deny: usedVar ssaVersion isPhi.
+	self assert: usedVar ssaVersion identicalTo: assignedVar2 ssaVersion
 ]
 
 { #category : 'tests - assignments' }
