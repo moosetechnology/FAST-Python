@@ -230,7 +230,6 @@ for x in range(5):
 
 print(x)'.
 
-	self skip. "There is a problem with the CFG making this test fail."
 	assignedVar1 := model module statements first left.
 	self assert: assignedVar1 ssaVersion version equals: 1.
 	self assert: assignedVar1 ssaName equals: 'x_1'.
