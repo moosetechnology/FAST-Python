@@ -297,6 +297,31 @@ FASTPythonLocalResolverTest >> testFunctionParameter [
 ]
 
 { #category : 'tests - parameters' }
+FASTPythonLocalResolverTest >> testFunctionParameterRedefined [
+
+	| declaration declaration2 usedVariable |
+	self parseAndResolve: 'def funct(y):
+		y = 2
+		return y'.
+
+	declaration := model module statements first parameters first.
+	self assert: declaration localDeclaration equals: declaration.
+	self assert: declaration localDeclaration name equals: 'y'.
+	self assert: declaration localDeclaration isVariableWriteAccess.
+	self deny: declaration localDeclaration isNonLocalDeclaration.
+	self assert: declaration localDeclaration localUses size equals: 3.
+	self assert: declaration localDeclaration localUses first equals: declaration.
+
+	declaration2 := model module statements first statements first left.
+	self assert: declaration2 localDeclaration equals: declaration.
+	self assert: declaration localDeclaration localUses second equals: declaration2.
+
+	usedVariable := model module statements first statements second expression.
+	self assert: usedVariable localDeclaration equals: declaration.
+	self assert: usedVariable equals: declaration localDeclaration localUses third
+]
+
+{ #category : 'tests - parameters' }
 FASTPythonLocalResolverTest >> testFunctionParameterWithDefaultValue [
 
 	| declaration usedVariable |
