@@ -149,6 +149,24 @@ FASTPythonSSATest >> testAssignementOfAttribute [
 	self assert: assignedVar ssaVersion localUses size equals: 1
 ]
 
+{ #category : 'tests - assignments' }
+FASTPythonSSATest >> testAssignementOfAttributeAndUsage [
+
+	| assignedVar usedVar |
+	self parseAndResolve: 'x.y = 5
+	
+print(x.y)'.
+
+	assignedVar := model module statements first left.
+	self assert: assignedVar ssaVersion version equals: 1.
+	self assert: assignedVar ssaName equals: 'x.y_1'.
+	self assert: assignedVar ssaVersion localDeclaration equals: assignedVar localDeclaration.
+	self assert: assignedVar ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements second arguments first.
+	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
+]
+
 { #category : 'tests - for' }
 FASTPythonSSATest >> testForVariableUsed [
 

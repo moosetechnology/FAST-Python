@@ -135,11 +135,11 @@ FASTPythonSSAVisitor >> resolve: aFASTBehaviouralEntity [
 { #category : 'visiting' }
 FASTPythonSSAVisitor >> visitFASTPyAttributeAccess: anAttribute [
 
-	anAttribute isVariableWriteAccess ifTrue: [ ^ self handleNewAssignemntTo: anAttribute ]
+	anAttribute isVariableWriteAccess ifTrue: [ ^ self handleNewAssignemntTo: anAttribute ].
 
-	"anIdentifier localDeclaration isNonLocalDeclaration ifFalse: [ anIdentifier ssaVersion: anIdentifier localDeclaration activeVersion ].
+	anAttribute localDeclaration isNonLocalDeclaration ifFalse: [ anAttribute ssaVersion: anAttribute localDeclaration activeVersion ].
 
-	super visitFASTPyIdentifier: anIdentifier"
+	super visitFASTPyAttributeAccess: anAttribute
 ]
 
 { #category : 'visiting' }
