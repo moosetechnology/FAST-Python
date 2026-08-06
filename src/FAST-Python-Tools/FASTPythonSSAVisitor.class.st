@@ -178,3 +178,17 @@ FASTPythonSSAVisitor >> visitFASTPyParameter: aParameter [
 
 	super visitFASTPyParameter: aParameter
 ]
+
+{ #category : 'visiting' }
+FASTPythonSSAVisitor >> visitFASTPyTDefinition: aTDefinition [
+	"We need to redo the CFG for definitions"
+
+	| cfg |
+	self visitFASTTNamedEntity: aTDefinition.
+	self visitCollection: aTDefinition decorators.
+
+	cfg := aTDefinition cfg.
+	self visit: cfg
+
+"	super visitFASTPyTDefinition: aTDefinition"
+]

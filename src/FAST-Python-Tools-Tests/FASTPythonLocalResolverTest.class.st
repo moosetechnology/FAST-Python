@@ -957,7 +957,7 @@ FASTPythonLocalResolverTest >> testParameterShadowedByAssignement [
 	self assert: parameter localDeclaration equals: parameter.
 	self assert: parameter localDeclaration name equals: 'param'.
 	self deny: parameter localDeclaration isNonLocalDeclaration.
-	self assert: parameter localDeclaration localUses size equals: 2.
+	self assert: parameter localDeclaration localUses size equals: 4.
 	self assert: parameter localDeclaration localUses first equals: parameter.
 
 	usedParameter := model module statements first statements first arguments first.
@@ -965,17 +965,12 @@ FASTPythonLocalResolverTest >> testParameterShadowedByAssignement [
 	self assert: usedParameter equals: parameter localDeclaration localUses second.
 
 	assignedVariable := model module statements first statements second left.
-	self assert: assignedVariable localDeclaration equals: assignedVariable.
-	self assert: assignedVariable localDeclaration name equals: 'param'.
-	self assert: assignedVariable localDeclaration isVariableWriteAccess.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first statements second.
-	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
-	self assert: assignedVariable localDeclaration localUses size equals: 2.
-	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+	self assert: assignedVariable localDeclaration equals: parameter.
+	self assert: assignedVariable localDeclaration localUses third equals: assignedVariable.
 
 	usedVariable := model module statements first statements third arguments first.
-	self assert: usedVariable localDeclaration equals: assignedVariable.
-	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+	self assert: usedVariable localDeclaration equals: parameter.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses fourth
 ]
 
 { #category : 'tests' }
