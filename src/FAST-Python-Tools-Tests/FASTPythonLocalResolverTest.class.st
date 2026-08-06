@@ -359,6 +359,27 @@ print(glob)'.
 	self assert: temporaryUsage2 equals: assignedTemporary localDeclaration localUses third
 ]
 
+{ #category : 'tests - globals' }
+FASTPythonLocalResolverTest >> testGlobalAsAttributeUsageInCall [
+
+	| assignedVariable usedVariable |
+	self parseAndResolve: 'y.x = 5
+	
+print(y.x)'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: assignedVariable.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
 { #category : 'tests - shadowing' }
 FASTPythonLocalResolverTest >> testGlobalShadowedByImport [
 	"Here we cannot know if the second printing is of a variable."

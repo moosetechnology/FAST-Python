@@ -93,16 +93,9 @@ FASTPythonLocalResolverVisitor >> visitFASTPyAttributeAccess: anAttribute [
 	"This should be improved later to check if we already encountered this accessed attribute and maybe this should go in the scopes?."
 
 	| declaration |
-	declaration := FASTNonLocalDeclaration new
-		               name: anAttribute name;
-		               yourself.
+	anAttribute isVariableWriteAccess ifTrue: [ ^ self ensureDeclarationOf: anAttribute named: anAttribute sourceCode declaration: anAttribute ].
 
-	declaration clearLocalUses.
-
-	anAttribute localDeclaration: declaration.
-	declaration addLocalUse: anAttribute.
-
-	super visitFASTPyAttributeAccess: anAttribute
+	self bind: anAttribute toDeclarationNamed:anAttribute sourceCode
 ]
 
 { #category : 'visiting' }
