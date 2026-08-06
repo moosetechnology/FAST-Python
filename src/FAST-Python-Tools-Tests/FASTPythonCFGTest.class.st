@@ -85,6 +85,20 @@ print(i)') allModules first.
 ]
 
 { #category : 'tests' }
+FASTPythonCFGTest >> testContainingLambdas [
+	"Regression test. The CFG was duplicating the lambda node until now."
+
+	self buildCFGForFunction: 'def funct():
+	l = lambda x: x + 2
+	l(4)'.
+
+	self assert: startBlock isStart.
+	self assert: startBlock isFinal.
+	self assert: startBlock statements size equals: 2.
+	self assertEmpty: startBlock nextBlocks
+]
+
+{ #category : 'tests' }
 FASTPythonCFGTest >> testFunctionInFunction [
 	
 	self buildCFGForFunction: 'def funct():

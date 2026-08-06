@@ -184,7 +184,7 @@ FASTPythonCFGVisitor >> visitFASTPyLambda: aLambda [
 
 	started
 		ifTrue: [
-				self visitFASTTStatement: aLambda.
+				self visitFASTPyExpression: aLambda.
 				cfgs ifNotNil: [ "In this case, we also need to build the CFG of node and store it" cfgs at: aLambda put: aLambda cfg ] ]
 		ifFalse: [
 				started := true.
