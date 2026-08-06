@@ -164,6 +164,13 @@ FASTPythonSSAVisitor >> visitFASTPyIdentifier: anIdentifier [
 ]
 
 { #category : 'visiting' }
+FASTPythonSSAVisitor >> visitFASTPyMethodDefinition: aMethodDefinition [
+	"We resolve in the same way as functions."
+
+	self visitFASTPyFunctionDefinition: aMethodDefinition
+]
+
+{ #category : 'visiting' }
 FASTPythonSSAVisitor >> visitFASTPyParameter: aParameter [
 	"Contrary to the visit of py identifier, we should always have a local declaration for a parameter. If it is nil, there is a bug in the local resolver"
 

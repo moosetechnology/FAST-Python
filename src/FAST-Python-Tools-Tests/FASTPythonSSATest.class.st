@@ -240,6 +240,23 @@ l(4)'.
 	self assert: parameterUsage ssaVersion identicalTo: parameterDeclaration ssaVersion
 ]
 
+{ #category : 'tests - parameters' }
+FASTPythonSSATest >> testMethodParameterUsed [
+
+	| parameterDeclaration parameterUsage |
+	self parseAndResolve: 'class C():
+	def method(self):
+		return self'.
+
+	parameterDeclaration := model module statements first statements first parameters first.
+	self assert: parameterDeclaration ssaVersion version equals: 1.
+	self assert: parameterDeclaration ssaName equals: 'self_1'.
+	self assert: parameterDeclaration ssaVersion localUses size equals: 2.
+
+	parameterUsage := model module statements first statements first statements first expression.
+	self assert: parameterUsage ssaVersion identicalTo: parameterDeclaration ssaVersion
+]
+
 { #category : 'tests - for' }
 FASTPythonSSATest >> testReAssignedVariableInFor [
 
