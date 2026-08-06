@@ -208,7 +208,7 @@ FASTPythonSSATest >> testForVariablesInTupleUsed [
 ]
 
 { #category : 'tests - parameters' }
-FASTPythonSSATest >> testParameterUsed [
+FASTPythonSSATest >> testFunctionParameterUsed [
 
 	| parameterDeclaration parameterUsage |
 	self parseAndResolve: 'def func(x):
@@ -220,6 +220,23 @@ FASTPythonSSATest >> testParameterUsed [
 	self assert: parameterDeclaration ssaVersion localUses size equals: 2.
 
 	parameterUsage := model module statements first statements first arguments first.
+	self assert: parameterUsage ssaVersion identicalTo: parameterDeclaration ssaVersion
+]
+
+{ #category : 'tests - parameters' }
+FASTPythonSSATest >> testLambdaParameterUsed [
+
+	| parameterDeclaration parameterUsage |
+	self parseAndResolve: 'l = lambda x: x + 2
+
+l(4)'.
+
+	parameterDeclaration := model module statements first right parameters first.
+	self assert: parameterDeclaration ssaVersion version equals: 1.
+	self assert: parameterDeclaration ssaName equals: 'x_1'.
+	self assert: parameterDeclaration ssaVersion localUses size equals: 2.
+
+	parameterUsage := model module statements first right expression leftOperand.
 	self assert: parameterUsage ssaVersion identicalTo: parameterDeclaration ssaVersion
 ]
 
