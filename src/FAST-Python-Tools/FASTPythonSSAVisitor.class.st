@@ -133,6 +133,16 @@ FASTPythonSSAVisitor >> resolve: aFASTBehaviouralEntity [
 ]
 
 { #category : 'visiting' }
+FASTPythonSSAVisitor >> visitFASTPyAttributeAccess: anAttribute [
+
+	anAttribute isVariableWriteAccess ifTrue: [ ^ self handleNewAssignemntTo: anAttribute ]
+
+	"anIdentifier localDeclaration isNonLocalDeclaration ifFalse: [ anIdentifier ssaVersion: anIdentifier localDeclaration activeVersion ].
+
+	super visitFASTPyIdentifier: anIdentifier"
+]
+
+{ #category : 'visiting' }
 FASTPythonSSAVisitor >> visitFASTPyFunctionDefinition: aFunctionDefinition [
 	"Reordering for parameters to be visited before the statements in order to have all declarations"
 

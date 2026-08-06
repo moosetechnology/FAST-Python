@@ -90,12 +90,17 @@ FASTPythonLocalResolverVisitor >> useScope: aScope during: aBlock [
 
 { #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyAttributeAccess: anAttribute [
-	"This should be improved later to check if we already encountered this accessed attribute and maybe this should go in the scopes?."
+	"This has one limit. 
+	
+	x.y.z = 3
+	v = x.y
+	print(v.z)
+	
+	Here v.z should be linked to the z variable but it will not. This case will not be managed for now but we might need it in the future."
 
-	| declaration |
 	anAttribute isVariableWriteAccess ifTrue: [ ^ self ensureDeclarationOf: anAttribute named: anAttribute sourceCode declaration: anAttribute ].
 
-	self bind: anAttribute toDeclarationNamed:anAttribute sourceCode
+	self bind: anAttribute toDeclarationNamed: anAttribute sourceCode
 ]
 
 { #category : 'visiting' }
