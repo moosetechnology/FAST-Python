@@ -14,9 +14,5 @@ FASTPyAttributeAccess >> variableDeclarator [
 
 	assignedNode parentAssignmentLeft ifNotNil: [ :assignment | ^ assignment ].
 
-	assignedNode parentForStatementLeft ifNotNil: [ :for | ^ for ].
-
-	assignedNode parentForInClauseLeft ifNotNil: [ :clause | ^ clause ].
-
 	^ super variableDeclarator
 ]
