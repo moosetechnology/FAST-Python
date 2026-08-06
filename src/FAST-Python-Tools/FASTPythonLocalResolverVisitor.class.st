@@ -98,9 +98,11 @@ FASTPythonLocalResolverVisitor >> visitFASTPyAttributeAccess: anAttribute [
 	
 	Here v.z should be linked to the z variable but it will not. This case will not be managed for now but we might need it in the future."
 
-	anAttribute isVariableWriteAccess ifTrue: [ ^ self ensureDeclarationOf: anAttribute named: anAttribute sourceCode declaration: anAttribute ].
+	anAttribute isVariableWriteAccess
+		ifTrue: [ self ensureDeclarationOf: anAttribute named: anAttribute sourceCode declaration: anAttribute ]
+		ifFalse: [ self bind: anAttribute toDeclarationNamed: anAttribute sourceCode ].
 
-	self bind: anAttribute toDeclarationNamed: anAttribute sourceCode
+	super visitFASTPyAttributeAccess: anAttribute
 ]
 
 { #category : 'visiting' }
@@ -147,10 +149,11 @@ FASTPythonLocalResolverVisitor >> visitFASTPyFunctionDefinition: aFunctionDefini
 { #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyIdentifier: anIdentifier [
 
-	anIdentifier isVariableWriteAccess ifTrue: [
-		^ self ensureDeclarationOf: anIdentifier named: anIdentifier name declaration: anIdentifier "We cannot put the right node because of the tuples" ].
+	anIdentifier isVariableWriteAccess
+		ifTrue: [ self ensureDeclarationOf: anIdentifier named: anIdentifier name declaration: anIdentifier "We cannot put the right node because of the tuples" ]
+		ifFalse: [ self bind: anIdentifier toDeclarationNamed: anIdentifier name ].
 
-	self bind: anIdentifier toDeclarationNamed: anIdentifier name
+	super visitFASTPyIdentifier: anIdentifier
 ]
 
 { #category : 'visiting' }

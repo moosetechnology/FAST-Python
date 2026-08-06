@@ -121,7 +121,7 @@ x.y'.
 	self assert: receiver localDeclaration localUses second equals: receiver.
 	
 	value := model module statements second.
-	self assert: value localDeclaration name equals: 'y'.
+	self assert: value localDeclaration name equals: 'x.y'.
 	self assert: value localDeclaration isNonLocalDeclaration.
 	self assert: value localDeclaration localUses size equals: 1.
 	self assert: value localDeclaration localUses first equals: value
@@ -362,7 +362,7 @@ print(glob)'.
 { #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testGlobalAsAttributeUsageInCall [
 
-	| assignedVariable usedVariable |
+	| assignedVariable usedVariable attributeReceiver |
 	self parseAndResolve: 'y.x = 5
 	
 print(y.x)'.
@@ -377,7 +377,11 @@ print(y.x)'.
 
 	usedVariable := model module statements second arguments first.
 	self assert: usedVariable localDeclaration equals: assignedVariable.
-	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second.
+
+	attributeReceiver := assignedVariable value.
+	self assert: attributeReceiver localDeclaration isNonLocalDeclaration.
+	self assert: attributeReceiver localDeclaration name equals: 'y'
 ]
 
 { #category : 'tests - shadowing' }
