@@ -252,6 +252,25 @@ FASTPythonSSATest >> testFunctionParameterUsed [
 	self assert: parameterUsage ssaVersion identicalTo: parameterDeclaration ssaVersion
 ]
 
+{ #category : 'tests' }
+FASTPythonSSATest >> testGlobalReferencedInDefaultParameter [
+
+	| assignedVar usedVar |
+	self parseAndResolve: 'x = 5
+	
+def function(arg = x):
+	return arg'.
+
+	assignedVar := model module statements first left.
+	self assert: assignedVar ssaVersion version equals: 1.
+	self assert: assignedVar ssaName equals: 'x_1'.
+	self assert: assignedVar ssaVersion localDeclaration equals: assignedVar localDeclaration.
+	self assert: assignedVar ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements second parameters first defaultValue.
+	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
+]
+
 { #category : 'tests - parameters' }
 FASTPythonSSATest >> testLambdaParameterUsed [
 
@@ -817,6 +836,24 @@ FASTPythonSSATest >> testSubscriptAssignement [
 	self assert: assignedVar localDeclaration newVersionNumber equals: 2.
 	self assert: assignedVar ssaVersion localDeclaration equals: assignedVar localDeclaration.
 	self assert: assignedVar ssaVersion localUses size equals: 1
+]
+
+{ #category : 'tests - subscripts' }
+FASTPythonSSATest >> testSubscriptAssignementAndUsage [
+
+	| assignedVar usedVar |
+	self parseAndResolve: 'x[3] = 5
+	
+print(x[3])'.
+
+	assignedVar := model module statements first left.
+	self assert: assignedVar ssaVersion version equals: 1.
+	self assert: assignedVar ssaName equals: 'x[3]_1'.
+	self assert: assignedVar ssaVersion localDeclaration equals: assignedVar localDeclaration.
+	self assert: assignedVar ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements second arguments first.
+	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
 ]
 
 { #category : 'tests - assignments' }
