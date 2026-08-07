@@ -252,6 +252,64 @@ FASTPythonSSATest >> testFunctionParameterUsed [
 	self assert: parameterUsage ssaVersion identicalTo: parameterDeclaration ssaVersion
 ]
 
+{ #category : 'tests - parameters' }
+FASTPythonSSATest >> testFunctionWithSeparatorsParameters [
+
+	| parameterDeclaration assignedVar parameterUsage |
+	self parseAndResolve: 'def func(*, /, x):
+	if a:
+		x = 2
+
+	print(x)'.
+
+	parameterDeclaration := model module statements first parameters third.
+	self assert: parameterDeclaration ssaVersion version equals: 1.
+	self assert: parameterDeclaration ssaName equals: 'x_1'.
+	self assert: parameterDeclaration ssaVersion localDeclaration equals: parameterDeclaration localDeclaration.
+	self assert: parameterDeclaration ssaVersion localUses size equals: 2.
+	
+	assignedVar := model module statements first statements first thenClause statements first left.
+	self assert: assignedVar ssaVersion version equals: 2.
+	self assert: assignedVar ssaName equals: 'x_2'.
+	self assert: assignedVar ssaVersion localDeclaration equals: parameterDeclaration ssaVersion localDeclaration.
+	self assert: assignedVar ssaVersion localUses size equals: 2.
+
+	parameterUsage := model module statements first statements second arguments first.
+	self assert: parameterUsage ssaVersion isPhi.
+	self assertCollection: parameterUsage ssaVersion ssaVariables hasSameElements: {
+			parameterDeclaration ssaVersion.
+			assignedVar ssaVersion }
+]
+
+{ #category : 'tests - parameters' }
+FASTPythonSSATest >> testFunctionWithTypedParameters [
+
+	| parameterDeclaration assignedVar parameterUsage |
+	self parseAndResolve: 'def func(x: Index):
+	if a:
+		x = 2
+
+	print(x)'.
+
+	parameterDeclaration := model module statements first parameters first.
+	self assert: parameterDeclaration ssaVersion version equals: 1.
+	self assert: parameterDeclaration ssaName equals: 'x_1'.
+	self assert: parameterDeclaration ssaVersion localDeclaration equals: parameterDeclaration localDeclaration.
+	self assert: parameterDeclaration ssaVersion localUses size equals: 2.
+	
+	assignedVar := model module statements first statements first thenClause statements first left.
+	self assert: assignedVar ssaVersion version equals: 2.
+	self assert: assignedVar ssaName equals: 'x_2'.
+	self assert: assignedVar ssaVersion localDeclaration equals: parameterDeclaration ssaVersion localDeclaration.
+	self assert: assignedVar ssaVersion localUses size equals: 2.
+
+	parameterUsage := model module statements first statements second arguments first.
+	self assert: parameterUsage ssaVersion isPhi.
+	self assertCollection: parameterUsage ssaVersion ssaVariables hasSameElements: {
+			parameterDeclaration ssaVersion.
+			assignedVar ssaVersion }
+]
+
 { #category : 'tests' }
 FASTPythonSSATest >> testGlobalReferencedInDefaultParameter [
 
@@ -898,33 +956,4 @@ FASTPythonSSATest >> testUndeclaredVariable [
 
 	undeclared := model module statements first arguments first.
 	self assert: undeclared ssaVersion isNil
-]
-
-{ #category : 'tests - parameters' }
-FASTPythonSSATest >> testWithSeparators [
-
-	| parameterDeclaration assignedVar parameterUsage |
-	self parseAndResolve: 'def func(*, /, x):
-	if a:
-		x = 2
-
-	print(x)'.
-
-	parameterDeclaration := model module statements first parameters third.
-	self assert: parameterDeclaration ssaVersion version equals: 1.
-	self assert: parameterDeclaration ssaName equals: 'x_1'.
-	self assert: parameterDeclaration ssaVersion localDeclaration equals: parameterDeclaration localDeclaration.
-	self assert: parameterDeclaration ssaVersion localUses size equals: 2.
-	
-	assignedVar := model module statements first statements first thenClause statements first left.
-	self assert: assignedVar ssaVersion version equals: 2.
-	self assert: assignedVar ssaName equals: 'x_2'.
-	self assert: assignedVar ssaVersion localDeclaration equals: parameterDeclaration ssaVersion localDeclaration.
-	self assert: assignedVar ssaVersion localUses size equals: 2.
-
-	parameterUsage := model module statements first statements second arguments first.
-	self assert: parameterUsage ssaVersion isPhi.
-	self assertCollection: parameterUsage ssaVersion ssaVariables hasSameElements: {
-			parameterDeclaration ssaVersion.
-			assignedVar ssaVersion }
 ]
