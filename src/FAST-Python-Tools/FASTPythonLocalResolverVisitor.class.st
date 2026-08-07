@@ -20,7 +20,7 @@ Class {
 	#name : 'FASTPythonLocalResolverVisitor',
 	#superclass : 'FASTPythonVisitor',
 	#instVars : [
-		'scopes'
+		'namesContext'
 	],
 	#category : 'FAST-Python-Tools-CFG/LocalResolver/SSA',
 	#package : 'FAST-Python-Tools',
@@ -38,9 +38,12 @@ FASTPythonLocalResolverVisitor >> bind: aFASTNode toDeclarationNamed: aName [
 
 	| declaration |
 	declaration := (self declarationNamed: aName) ifNil: [ "If it is undeclared, we create an undeclared in the lowest scope in the stack."
-			               scopes first ensureDeclarationOf: aName declaration: (FASTNonLocalDeclaration new
-					                name: aName;
-					                yourself) ].
+			               self
+				               ensureDeclarationOf: aName
+				               declaration: (FASTNonLocalDeclaration new
+						                name: aName;
+						                yourself)
+				               in: namesContext first ].
 
 	aFASTNode localDeclaration: declaration.
 	declaration addLocalUse: aFASTNode
@@ -49,14 +52,35 @@ FASTPythonLocalResolverVisitor >> bind: aFASTNode toDeclarationNamed: aName [
 { #category : 'declarations' }
 FASTPythonLocalResolverVisitor >> declarationNamed: aName [
 
-	scopes do: [ :scope | scope declarationNamed: aName ifPresent: [ :declaration | ^ declaration ] ].
+	namesContext do: [ :scope | scope at: aName ifPresent: [ :declaration | ^ declaration ] ].
+
 	^ nil
+]
+
+{ #category : 'declarations' }
+FASTPythonLocalResolverVisitor >> ensureDeclarationOf: aName declaration: aFASTNode in: scope [
+	"If it is already present we do nothing. Else we create the local declaration.
+	
+	I just `ensure` that the local uses are initialized instead of reseting them as we do in other languages because in Python I have multiple variables that can be declared in the same assignment because of the tuples."
+
+	^ scope
+		  at: aName
+		  ifPresent: [ :declaration |
+				  declaration localResolverKind = aFASTNode localResolverKind
+					  ifTrue: [ ^ declaration ]
+					  ifFalse: [ "If the kind is different, we save a new declaration."
+							  aFASTNode ensureLocalUses.
+							  scope at: aName put: aFASTNode ] ]
+		  ifAbsentPut: [
+				  aFASTNode
+					  ensureLocalUses;
+					  yourself ]
 ]
 
 { #category : 'declarations' }
 FASTPythonLocalResolverVisitor >> ensureDeclarationOf: anEntity named: aName declaration: aFASTNode [
 
-	scopes top ensureDeclarationOf: aName declaration: aFASTNode.
+	self ensureDeclarationOf: aName declaration: aFASTNode in: namesContext top.
 	self bind: anEntity toDeclarationNamed: aName
 ]
 
@@ -64,28 +88,27 @@ FASTPythonLocalResolverVisitor >> ensureDeclarationOf: anEntity named: aName dec
 FASTPythonLocalResolverVisitor >> initialize [
 
 	super initialize.
-	scopes := Stack new
+	namesContext := Stack new
 ]
 
 { #category : 'initialization' }
 FASTPythonLocalResolverVisitor >> resolve: aFASTBehaviouralEntity [
 
-	scopes push: (FASTPythonLRScope for: aFASTBehaviouralEntity).
+	self useNewScopeDuring: [
+			"We flush the attributes in case this is not the fist resolution"
+			aFASTBehaviouralEntity withAllContainedEntities do: [ :entity | entity resetLocalResolution ].
 
-	"We fulsh the attributes in case this is not the fist resolution"
-	aFASTBehaviouralEntity withAllContainedEntities do: [ :entity | entity resetLocalResolution ].
-
-	aFASTBehaviouralEntity accept: self.
-	scopes pop.
-	self assert: scopes isEmpty
+			aFASTBehaviouralEntity accept: self ].
+		
+	self assert: namesContext isEmpty
 ]
 
 { #category : 'declarations' }
-FASTPythonLocalResolverVisitor >> useScope: aScope during: aBlock [
+FASTPythonLocalResolverVisitor >> useNewScopeDuring: aBlock [
 
-	scopes push: aScope.
+	namesContext push: Dictionary new.
 
-	[ aBlock value ] ensure: [ scopes pop ]
+	[ aBlock value ] ensure: [ namesContext pop ]
 ]
 
 { #category : 'visiting' }
@@ -94,7 +117,7 @@ FASTPythonLocalResolverVisitor >> visitFASTPyComprehension: aComprehension [
 
 	"In Python 3, the comprehension has its own scope. In the future we should also manage python 2 that had no scope and could leek its variables."
 
-	self useScope: (FASTPythonLRScope for: aComprehension) during: [
+	self useNewScopeDuring: [
 			self visitFASTPyTSplatExpression: aComprehension.
 			self visitFASTPyExpression: aComprehension.
 
@@ -119,14 +142,12 @@ FASTPythonLocalResolverVisitor >> visitFASTPyForStatement: aForStatement [
 FASTPythonLocalResolverVisitor >> visitFASTPyFunctionDefinition: aFunctionDefinition [
 
 	self ensureDeclarationOf: aFunctionDefinition named: aFunctionDefinition name declaration: aFunctionDefinition.
-	self
-		useScope: (FASTPythonLRScope for: aFunctionDefinition)
-		during: [ "Cannot use super because the super method does not visit parameters before the block statement so we miss the parameters declerations before their usage."
-				self visitFASTTWithParameters: aFunctionDefinition.
-				self visitFASTPyTWithTypeParameters: aFunctionDefinition.
-				self visitFASTPyStatement: aFunctionDefinition.
-				self visitEntity: aFunctionDefinition returnType.
-				self visitFASTPyTDefinition: aFunctionDefinition ]
+	self useNewScopeDuring: [ "Cannot use super because the super method does not visit parameters before the block statement so we miss the parameters declerations before their usage."
+			self visitFASTTWithParameters: aFunctionDefinition.
+			self visitFASTPyTWithTypeParameters: aFunctionDefinition.
+			self visitFASTPyStatement: aFunctionDefinition.
+			self visitEntity: aFunctionDefinition returnType.
+			self visitFASTPyTDefinition: aFunctionDefinition ]
 ]
 
 { #category : 'visiting' }
