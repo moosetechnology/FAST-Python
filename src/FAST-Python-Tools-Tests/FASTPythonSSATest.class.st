@@ -607,13 +607,12 @@ print(x)'.
 { #category : 'tests - assignments' }
 FASTPythonSSATest >> testReAssignementInIfInThenAndUsage2 [
 
-	| assignedVar1 assignedVar2 usedVar |
+	| assignedVar1 assignedVar2 assignedVar3 usedVar |
 	self parseAndResolve: 'x = 3
 
 if y < 2:
     x = 4
-else:
-	function()
+    x = 6
     
 print(x)'.
 
@@ -628,13 +627,20 @@ print(x)'.
 	self assert: assignedVar2 ssaName equals: 'x_2'.
 	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
 	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
-	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+	self assert: assignedVar2 ssaVersion localUses size equals: 1.
+
+	assignedVar3 := model module statements second thenClause statements second left.
+	self assert: assignedVar3 ssaVersion version equals: 3.
+	self assert: assignedVar3 ssaName equals: 'x_3'.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar3 localDeclaration.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar3 ssaVersion localUses size equals: 2.
 
 	usedVar := model module statements third arguments first.
 	self assert: usedVar ssaVersion isPhi.
 	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
 			assignedVar1 ssaVersion.
-			assignedVar2 ssaVersion }
+			assignedVar3 ssaVersion }
 ]
 
 { #category : 'tests - match' }
