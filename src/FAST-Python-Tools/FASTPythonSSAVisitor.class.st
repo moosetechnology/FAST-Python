@@ -4,8 +4,8 @@ Class {
 	#traits : 'FASTCFGTVisitor',
 	#classTraits : 'FASTCFGTVisitor classTrait',
 	#instVars : [
-		'variableVersions',
-		'newVariablesMap'
+		'newVariablesMap',
+		'localDeclarations'
 	],
 	#category : 'FAST-Python-Tools-CFG/LocalResolver/SSA',
 	#package : 'FAST-Python-Tools',
@@ -39,7 +39,7 @@ FASTPythonSSAVisitor >> createVariableVersionFor: aFASTEntity [
 
 	aFASTEntity localDeclaration activeVersion: newSSA.
 
-	variableVersions add: aFASTEntity localDeclaration.
+	localDeclarations add: aFASTEntity localDeclaration.
 
 	^ newSSA
 ]
@@ -47,7 +47,7 @@ FASTPythonSSAVisitor >> createVariableVersionFor: aFASTEntity [
 { #category : 'accessing' }
 FASTPythonSSAVisitor >> currentActiveVersions [
 
-	^ variableVersions collect: #activeVersion
+	^ localDeclarations collect: #activeVersion
 ]
 
 { #category : 'actions' }
@@ -62,7 +62,7 @@ FASTPythonSSAVisitor >> handleNewAssignemntTo: aFASTEntity [
 FASTPythonSSAVisitor >> initialize [
 
 	super initialize.
-	variableVersions := IdentitySet new.
+	localDeclarations := IdentitySet new.
 	newVariablesMap := IdentityDictionary new
 ]
 
