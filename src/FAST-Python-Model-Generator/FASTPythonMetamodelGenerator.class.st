@@ -326,7 +326,8 @@ FASTPythonMetamodelGenerator >> defineClasses [
 	slice := builder newClassNamed: #Slice.
 	(splat := builder newClassNamed: #Splat) comment:
 		'In Python a collection (list or dictionary) splat is the unpacking of a collection in a call or in the definition of another definition like `[ *list , 4 ]` or `func(*list)`'.
-	splatParameter := builder newClassNamed: #SplatParameter.
+	(splatParameter := builder newClassNamed: #SplatParameter) comment:
+		'A splat parameter is a parameter that is a list slpat such as *args or a dictionary splat such as **kwargs.'.
 	splatType := builder newClassNamed: #SplatType.
 	statement := builder newAbstractClassNamed: #Statement.
 	string := builder newClassNamed: #String.

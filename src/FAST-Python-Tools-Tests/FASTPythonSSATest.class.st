@@ -253,6 +253,42 @@ FASTPythonSSATest >> testFunctionParameterUsed [
 ]
 
 { #category : 'tests - parameters' }
+FASTPythonSSATest >> testFunctionWithDictionarySplatParameter [
+
+	| parameterDeclaration parameterUsage |
+	self parseAndResolve: 'def sample(**kwargs):
+    print(kwargs)'.
+
+	parameterDeclaration := model module statements first parameters first.
+	self assert: parameterDeclaration ssaVersion version equals: 1.
+	self assert: parameterDeclaration ssaName equals: 'kwargs_1'.
+	self assert: parameterDeclaration ssaVersion localDeclaration equals: parameterDeclaration localDeclaration.
+	self assert: parameterDeclaration ssaVersion localUses size equals: 2.
+
+	parameterUsage := model module statements first statements first arguments first.
+	self deny: parameterUsage ssaVersion isPhi.
+	self assert: parameterUsage ssaVersion equals: parameterDeclaration ssaVersion
+]
+
+{ #category : 'tests - parameters' }
+FASTPythonSSATest >> testFunctionWithListSplatParameter [
+
+	| parameterDeclaration parameterUsage |
+	self parseAndResolve: 'def sample(*args):
+    print(args)'.
+
+	parameterDeclaration := model module statements first parameters first.
+	self assert: parameterDeclaration ssaVersion version equals: 1.
+	self assert: parameterDeclaration ssaName equals: 'args_1'.
+	self assert: parameterDeclaration ssaVersion localDeclaration equals: parameterDeclaration localDeclaration.
+	self assert: parameterDeclaration ssaVersion localUses size equals: 2.
+
+	parameterUsage := model module statements first statements first arguments first.
+	self deny: parameterUsage ssaVersion isPhi.
+	self assert: parameterUsage ssaVersion equals: parameterDeclaration ssaVersion
+]
+
+{ #category : 'tests - parameters' }
 FASTPythonSSATest >> testFunctionWithSeparatorsParameters [
 
 	| parameterDeclaration assignedVar parameterUsage |
