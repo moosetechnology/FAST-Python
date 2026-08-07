@@ -40,8 +40,8 @@ I represent an access to an attribute such as `module.globalVariable`.
 Class {
 	#name : 'FASTPyAttributeAccess',
 	#superclass : 'FASTPyExpression',
-	#traits : 'FASTPyTAsPatternTarget + FASTPyTReturnReferenceable + FASTPyTSplatParameterTarget + FASTTNamedEntity',
-	#classTraits : 'FASTPyTAsPatternTarget classTrait + FASTPyTReturnReferenceable classTrait + FASTPyTSplatParameterTarget classTrait + FASTTNamedEntity classTrait',
+	#traits : 'FASTPyTAsPatternTarget + FASTPyTCanBeVariable + FASTPyTReturnReferenceable + FASTPyTSplatParameterTarget + FASTTNamedEntity',
+	#classTraits : 'FASTPyTAsPatternTarget classTrait + FASTPyTCanBeVariable classTrait + FASTPyTReturnReferenceable classTrait + FASTPyTSplatParameterTarget classTrait + FASTTNamedEntity classTrait',
 	#instVars : [
 		'#value => FMOne type: #FASTPyExpression opposite: #parentAttributeObject'
 	],

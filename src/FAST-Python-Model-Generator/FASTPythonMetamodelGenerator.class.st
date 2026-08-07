@@ -157,7 +157,8 @@ Class {
 		'tAwaitable',
 		'tExecutable',
 		'tBreakStatement',
-		'tContinueStatement'
+		'tContinueStatement',
+		'tCanBeVariable'
 	],
 	#category : 'FAST-Python-Model-Generator',
 	#package : 'FAST-Python-Model-Generator'
@@ -373,6 +374,7 @@ FASTPythonMetamodelGenerator >> defineHierarchy [
 	attribute --|> tAsPatternTarget.
 	attribute --|> tSplatParameterTarget.
 	attribute --|> tNamedEntity.
+	attribute --|> tCanBeVariable.
 	
 	augmentedAssignment --|> assignment.
 	
@@ -489,6 +491,7 @@ FASTPythonMetamodelGenerator >> defineHierarchy [
 	identifier --|> tAsPatternTarget.
 	identifier --|> tSplatParameterTarget.
 	identifier --|> tNamedEntity.
+	identifier --|> tCanBeVariable.
 	
 	ifClause --|> expression. "This is wrong! I am just here temporarily until we rework the relation to the for in clause (I need to be able to be a clause of a list comprehension)"
 
@@ -555,6 +558,7 @@ FASTPythonMetamodelGenerator >> defineHierarchy [
 	pair --|> expression.
 	
 	parameter --|> tVariableEntity.
+	parameter --|> tCanBeVariable.
 
 	passStatement --|> statement.
 	
@@ -592,6 +596,7 @@ FASTPythonMetamodelGenerator >> defineHierarchy [
 	subscript --|> expression.
 	subscript --|> tReturnReferenceable.
 	subscript --|> tAsPatternTarget.
+	subscript --|> tCanBeVariable.
 	
 	tAsPatternTarget --|> tAsPatternSource.
 
@@ -865,6 +870,8 @@ FASTPythonMetamodelGenerator >> defineTraits [
 	tAwaitable := (builder newTraitNamed: #TAwaitable) comment: 'I represent an entity that is awaitable and can be in an await statement'.
 	
 	tCallable := (builder newTraitNamed: #TCallable) comment: 'I represent something that can be the receiver of a call'.
+	
+	tCanBeVariable := (builder newTraitNamed: #TCanBeVariable) comment: 'Represent everything that can be a variable. Used for the LocalResolver and the SSA builder. Maybe I should be merged with TAssignable?'.
 	
 	tClassPatternElement := (builder newTraitNamed: #TClassPatternElement) comment: 'I represent the elements of a class pattern in python pattern matcher. The first element is the class name, the others the arguments.'.
 

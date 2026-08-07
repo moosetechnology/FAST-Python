@@ -804,6 +804,21 @@ print(x)'.
 	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
 ]
 
+{ #category : 'tests - subscripts' }
+FASTPythonSSATest >> testSubscriptAssignement [
+
+	| assignedVar |
+	self parseAndResolve: 'x[3] = 5'.
+
+	assignedVar := model module statements first left.
+	self assert: assignedVar ssaVersion version equals: 1.
+	self assert: assignedVar ssaName equals: 'x[3]_1'.
+
+	self assert: assignedVar localDeclaration newVersionNumber equals: 2.
+	self assert: assignedVar ssaVersion localDeclaration equals: assignedVar localDeclaration.
+	self assert: assignedVar ssaVersion localUses size equals: 1
+]
+
 { #category : 'tests - assignments' }
 FASTPythonSSATest >> testTupleAssignement [
 

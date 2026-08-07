@@ -89,23 +89,6 @@ FASTPythonLocalResolverVisitor >> useScope: aScope during: aBlock [
 ]
 
 { #category : 'visiting' }
-FASTPythonLocalResolverVisitor >> visitFASTPyAttributeAccess: anAttribute [
-	"This has one limit. 
-	
-	x.y.z = 3
-	v = x.y
-	print(v.z)
-	
-	Here v.z should be linked to the z variable but it will not. This case will not be managed for now but we might need it in the future."
-
-	anAttribute isVariableWriteAccess
-		ifTrue: [ self ensureDeclarationOf: anAttribute named: anAttribute sourceCode declaration: anAttribute ]
-		ifFalse: [ self bind: anAttribute toDeclarationNamed: anAttribute sourceCode ].
-
-	super visitFASTPyAttributeAccess: anAttribute
-]
-
-{ #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyComprehension: aComprehension [
 	"Reordering the visit of children to ensure for clauses are visited before the body and conditions since they can refer to it."
 
@@ -147,16 +130,6 @@ FASTPythonLocalResolverVisitor >> visitFASTPyFunctionDefinition: aFunctionDefini
 ]
 
 { #category : 'visiting' }
-FASTPythonLocalResolverVisitor >> visitFASTPyIdentifier: anIdentifier [
-
-	anIdentifier isVariableWriteAccess
-		ifTrue: [ self ensureDeclarationOf: anIdentifier named: anIdentifier name declaration: anIdentifier "We cannot put the right node because of the tuples" ]
-		ifFalse: [ self bind: anIdentifier toDeclarationNamed: anIdentifier name ].
-
-	super visitFASTPyIdentifier: anIdentifier
-]
-
-{ #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyImport: anImport [
 
 	anImport importedEntities do: [ :entity |
@@ -178,18 +151,20 @@ FASTPythonLocalResolverVisitor >> visitFASTPyMethodDefinition: aMethodDefinition
 ]
 
 { #category : 'visiting' }
-FASTPythonLocalResolverVisitor >> visitFASTPyParameter: aParameter [
+FASTPythonLocalResolverVisitor >> visitFASTPyTCanBeVariable: aTCanBeVariable [
+	"This has some limits. For example, 
+	
+	x.y.z = 3
+	v = x.y
+	print(v.z)
+	
+	Here v.z should be linked to the z variable but it will not. This case will not be managed for now but we might need it in the future.
+	
+	Or also subscripts are linked if their source code is identical only."
 
-	self ensureDeclarationOf: aParameter named: aParameter name declaration: aParameter.
-	super visitFASTPyParameter: aParameter
-]
+	aTCanBeVariable isVariableWriteAccess
+		ifTrue: [ self ensureDeclarationOf: aTCanBeVariable named: aTCanBeVariable localDeclarationName declaration: aTCanBeVariable ]
+		ifFalse: [ self bind: aTCanBeVariable toDeclarationNamed: aTCanBeVariable localDeclarationName ].
 
-{ #category : 'visiting' }
-FASTPythonLocalResolverVisitor >> visitFASTPySubscript: aSubscript [
-
-	aSubscript isVariableWriteAccess
-		ifTrue: [ self ensureDeclarationOf: aSubscript named: aSubscript sourceCode declaration: aSubscript ]
-		ifFalse: [ self bind: aSubscript toDeclarationNamed: aSubscript sourceCode ].
-
-	super visitFASTPySubscript: aSubscript
+	super visitFASTPyTCanBeVariable: aTCanBeVariable
 ]

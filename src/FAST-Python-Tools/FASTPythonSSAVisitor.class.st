@@ -132,17 +132,7 @@ FASTPythonSSAVisitor >> resolve: aFASTBehaviouralEntity [
 	self visit: cfg
 ]
 
-{ #category : 'visiting' }
-FASTPythonSSAVisitor >> visitFASTPyAttributeAccess: anAttribute [
-
-	anAttribute isVariableWriteAccess ifTrue: [ ^ self handleNewAssignemntTo: anAttribute ].
-
-	anAttribute localDeclaration isNonLocalDeclaration ifFalse: [ anAttribute ssaVersion: anAttribute localDeclaration activeVersion ].
-
-	super visitFASTPyAttributeAccess: anAttribute
-]
-
-{ #category : 'visiting' }
+{ #category : 'visiting - reordering' }
 FASTPythonSSAVisitor >> visitFASTPyFunctionDefinition: aFunctionDefinition [
 	"Reordering for parameters to be visited before the statements in order to have all declarations"
 
@@ -153,17 +143,7 @@ FASTPythonSSAVisitor >> visitFASTPyFunctionDefinition: aFunctionDefinition [
 	self visitFASTPyStatement: aFunctionDefinition
 ]
 
-{ #category : 'visiting' }
-FASTPythonSSAVisitor >> visitFASTPyIdentifier: anIdentifier [
-
-	anIdentifier isVariableWriteAccess ifTrue: [ ^ self handleNewAssignemntTo: anIdentifier ].
-
-	anIdentifier localDeclaration isNonLocalDeclaration ifFalse: [ anIdentifier ssaVersion: anIdentifier localDeclaration activeVersion ].
-
-	super visitFASTPyIdentifier: anIdentifier
-]
-
-{ #category : 'visiting' }
+{ #category : 'visiting - reordering' }
 FASTPythonSSAVisitor >> visitFASTPyMethodDefinition: aMethodDefinition [
 	"We resolve in the same way as functions."
 
@@ -171,12 +151,13 @@ FASTPythonSSAVisitor >> visitFASTPyMethodDefinition: aMethodDefinition [
 ]
 
 { #category : 'visiting' }
-FASTPythonSSAVisitor >> visitFASTPyParameter: aParameter [
-	"Contrary to the visit of py identifier, we should always have a local declaration for a parameter. If it is nil, there is a bug in the local resolver"
+FASTPythonSSAVisitor >> visitFASTPyTCanBeVariable: aTCanBeVariable [
 
-	aParameter isVariableWriteAccess ifTrue: [ self handleNewAssignemntTo: aParameter ].
+	aTCanBeVariable isVariableWriteAccess
+		ifTrue: [ self handleNewAssignemntTo: aTCanBeVariable ]
+		ifFalse: [ aTCanBeVariable localDeclaration isNonLocalDeclaration ifFalse: [ aTCanBeVariable ssaVersion: aTCanBeVariable localDeclaration activeVersion ] ].
 
-	super visitFASTPyParameter: aParameter
+	super visitFASTPyTCanBeVariable: aTCanBeVariable
 ]
 
 { #category : 'visiting' }
