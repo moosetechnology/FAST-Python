@@ -189,6 +189,4 @@ FASTPythonSSAVisitor >> visitFASTPyTDefinition: aTDefinition [
 
 	cfg := aTDefinition cfg.
 	self visit: cfg
-
-"	super visitFASTPyTDefinition: aTDefinition"
 ]

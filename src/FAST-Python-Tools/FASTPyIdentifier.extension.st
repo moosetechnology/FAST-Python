@@ -10,14 +10,11 @@ FASTPyIdentifier >> localResolverKind [
 
 { #category : '*FAST-Python-Tools' }
 FASTPyIdentifier >> variableDeclarator [
-	"In the case I represent a write access to a variable, I return the node representing my assignment.
-	
-	I should be similar to the implementation of FASTPyAttributeAccess! We should check later to remove the duplication."
+	"In the case I represent a write access to a variable, I return the node representing my assignment."
 
 	| assignedNode |
 	"If I am a variable defined in tuples, I should return the node initializing this tuple. Can be recursive (tuple in tuple)"
-	assignedNode := self.
-	[ assignedNode collectionInitializer isNotNil and: [ assignedNode collectionInitializer isTuple ] ] whileTrue: [ assignedNode := assignedNode collectionInitializer ].
+	assignedNode := self selfOrTopmostTupleContainer.
 
 	assignedNode parentAssignmentLeft ifNotNil: [ :assignment | ^ assignment ].
 

@@ -973,6 +973,27 @@ FASTPythonLocalResolverTest >> testParameterShadowedByAssignement [
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses fourth
 ]
 
+{ #category : 'tests - subscripts' }
+FASTPythonLocalResolverTest >> testSubscriptUsageInCall [
+
+	| assignedVariable usedVariable |
+	self parseAndResolve: 'x[3] = 1
+print(x[3])'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration value name equals: 'x'.
+	self assert: assignedVariable localDeclaration indices first sourceCode equals: '3'.
+	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: assignedVariable.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
 { #category : 'tests' }
 FASTPythonLocalResolverTest >> testTwoAssignationsCreateOneDeclaration [
 

@@ -183,3 +183,13 @@ FASTPythonLocalResolverVisitor >> visitFASTPyParameter: aParameter [
 	self ensureDeclarationOf: aParameter named: aParameter name declaration: aParameter.
 	super visitFASTPyParameter: aParameter
 ]
+
+{ #category : 'visiting' }
+FASTPythonLocalResolverVisitor >> visitFASTPySubscript: aSubscript [
+
+	aSubscript isVariableWriteAccess
+		ifTrue: [ self ensureDeclarationOf: aSubscript named: aSubscript sourceCode declaration: aSubscript ]
+		ifFalse: [ self bind: aSubscript toDeclarationNamed: aSubscript sourceCode ].
+
+	super visitFASTPySubscript: aSubscript
+]
