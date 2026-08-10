@@ -263,6 +263,30 @@ FASTPythonSSATest >> testForVariableUsed [
 ]
 
 { #category : 'tests - for' }
+FASTPythonSSATest >> testForVariablesInListUsed [
+
+	| assignedVarA assignedVarB usedVarA usedVarB |
+	self parseAndResolve: 'for [a, b] in data:
+    print(a, b)'.
+
+	assignedVarA := model module statements first left initializers first.
+	self assert: assignedVarA ssaVersion version equals: 1.
+	self assert: assignedVarA ssaName equals: 'a_1'.
+	self assert: assignedVarA ssaVersion localUses size equals: 2.
+
+	usedVarA := model module statements first statements first arguments first.
+	self assert: usedVarA ssaVersion identicalTo: assignedVarA ssaVersion.
+
+	assignedVarB := model module statements first left initializers second.
+	self assert: assignedVarB ssaVersion version equals: 1.
+	self assert: assignedVarB ssaName equals: 'b_1'.
+	self assert: assignedVarB ssaVersion localUses size equals: 2.
+
+	usedVarB := model module statements first statements first arguments second.
+	self assert: usedVarB ssaVersion identicalTo: assignedVarB ssaVersion
+]
+
+{ #category : 'tests - for' }
 FASTPythonSSATest >> testForVariablesInTupleUsed [
 
 	| assignedVarA assignedVarB usedVarA usedVarB |
@@ -459,6 +483,40 @@ l(4)'.
 
 	parameterUsage := model module statements first right expression leftOperand.
 	self assert: parameterUsage ssaVersion identicalTo: parameterDeclaration ssaVersion
+]
+
+{ #category : 'tests - assignments' }
+FASTPythonSSATest >> testListAssignement [
+
+	| assignedVarX assignedVarY |
+	self parseAndResolve: '[x, y] = [5, 6]'.
+
+	assignedVarX := model module statements first left initializers first.
+	self assert: assignedVarX ssaVersion version equals: 1.
+	self assert: assignedVarX ssaName equals: 'x_1'.
+
+	assignedVarY := model module statements first left initializers second.
+	self assert: assignedVarY ssaVersion version equals: 1.
+	self assert: assignedVarY ssaName equals: 'y_1'
+]
+
+{ #category : 'tests - assignments' }
+FASTPythonSSATest >> testListInListAssignement [
+
+	| assignedVarX assignedVarY assignedVarZ |
+	self parseAndResolve: '[x, [y, z]] = [5, [6, 7]]'.
+
+	assignedVarX := model module statements first left initializers first.
+	self assert: assignedVarX ssaVersion version equals: 1.
+	self assert: assignedVarX ssaName equals: 'x_1'.
+
+	assignedVarY := model module statements first left initializers second initializers first.
+	self assert: assignedVarY ssaVersion version equals: 1.
+	self assert: assignedVarY ssaName equals: 'y_1'.
+
+	assignedVarZ := model module statements first left initializers second initializers second.
+	self assert: assignedVarZ ssaVersion version equals: 1.
+	self assert: assignedVarZ ssaName equals: 'z_1'
 ]
 
 { #category : 'tests - parameters' }
