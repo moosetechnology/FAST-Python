@@ -167,6 +167,40 @@ print(x.y)'.
 	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
 ]
 
+{ #category : 'tests - assignments' }
+FASTPythonSSATest >> testAssignementOfAttributeDoesNotClashWithIdentifier [ 
+
+	| assignedVar1 assignedVar2 assignedVar3 usedVar |
+	self parseAndResolve: 'x = 5
+
+y.x = 6
+
+x = 7
+
+print(y.x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
+	self assert: assignedVar1 ssaVersion localUses size equals: 1.
+
+	assignedVar2 := model module statements second left.
+	self assert: assignedVar2 ssaVersion version equals: 1.
+	self assert: assignedVar2 ssaName equals: 'y.x_1'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	assignedVar3 := model module statements third left.
+	self assert: assignedVar3 ssaVersion version equals: 2.
+	self assert: assignedVar3 ssaName equals: 'x_2'.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar3 localDeclaration.
+	self assert: assignedVar3 ssaVersion localUses size equals: 1.
+
+	usedVar := model module statements fourth arguments first.
+	self assert: usedVar ssaVersion identicalTo: assignedVar2 ssaVersion
+]
+
 { #category : 'tests - for' }
 FASTPythonSSATest >> testForVariableUsed [
 
