@@ -107,6 +107,13 @@ FASTPyEntity >> isInvocation [
 ]
 
 { #category : 'testing' }
+FASTPyEntity >> isList [
+
+	<generated>
+	^ false
+]
+
+{ #category : 'testing' }
 FASTPyEntity >> isLiteral [
 
 	<generated>

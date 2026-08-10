@@ -14,7 +14,7 @@ FASTPyIdentifier >> variableDeclarator [
 
 	| assignedNode |
 	"If I am a variable defined in tuples, I should return the node initializing this tuple. Can be recursive (tuple in tuple)"
-	assignedNode := self selfOrTopmostTupleContainer.
+	assignedNode := self selfOrTopmostAssignableCollection.
 
 	assignedNode parentAssignmentLeft ifNotNil: [ :assignment | ^ assignment ].
 

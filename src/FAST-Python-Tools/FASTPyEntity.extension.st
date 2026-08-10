@@ -29,7 +29,7 @@ FASTPyEntity >> localResolverKind [
 ]
 
 { #category : '*FAST-Python-Tools' }
-FASTPyEntity >> selfOrTopmostTupleContainer [
+FASTPyEntity >> selfOrTopmostAssignableCollection [
 	"If I am in a tuple, I return the tuple (this applies recursively, if I am in a tuple in a tuple I return the topmost tuple). 
 	
 	Else, return myself."
@@ -37,7 +37,8 @@ FASTPyEntity >> selfOrTopmostTupleContainer [
 	| node |
 	"If I am a variable defined in tuples, I should return the node initializing this tuple. Can be recursive (tuple in tuple)"
 	node := self.
-	[ node collectionInitializer isNotNil and: [ node collectionInitializer isTuple ] ] whileTrue: [ node := node collectionInitializer ].
+	[ node collectionInitializer isNotNil and: [ node collectionInitializer isTuple or: [ node collectionInitializer isList ] ] ] whileTrue: [
+		node := node collectionInitializer ].
 
 	^ node
 ]

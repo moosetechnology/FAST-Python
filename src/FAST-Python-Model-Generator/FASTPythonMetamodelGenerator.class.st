@@ -302,6 +302,7 @@ FASTPythonMetamodelGenerator >> defineClasses [
 	lambda := builder newClassNamed: #Lambda.
 	lambdaParameters := builder newClassNamed: #LambdaParameters.
 	list := builder newClassNamed: #List.
+	list withTesting.
 	listComprehension := builder newClassNamed: #ListComprehension.
 	literal := builder newAbstractClassNamed: #Literal.
 	matchStatement := builder newClassNamed: #MatchStatement.

@@ -29,3 +29,10 @@ FASTPyList class >> annotation [
 	<package: #'FAST-Python-Model'>
 	<generated>
 ]
+
+{ #category : 'testing' }
+FASTPyList >> isList [
+
+	<generated>
+	^ true
+]
