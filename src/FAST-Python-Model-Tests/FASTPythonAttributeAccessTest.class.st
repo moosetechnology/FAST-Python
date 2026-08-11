@@ -29,6 +29,26 @@ FASTPythonAttributeAccessTest >> testIsInstanceVariableAccess [
 ]
 
 { #category : 'tests' }
+FASTPythonAttributeAccessTest >> testIsWriteVariableAccess [
+
+	| writeAccess readAccess |
+	self parse: 'class Class:
+	def method(self, author: str, obj):
+		self.author = author
+		return self.author'.
+
+	writeAccess := model module statements first statements first statements first left.
+	self assert: writeAccess name equals: 'author'.
+	self assert: writeAccess isInstanceVariableAccess.
+	self assert: writeAccess isVariableWriteAccess.
+
+	readAccess := model module statements first statements first statements second expression.
+	self assert: readAccess name equals: 'author'.
+	self assert: readAccess isInstanceVariableAccess.
+	self deny: readAccess isVariableWriteAccess
+]
+
+{ #category : 'tests' }
 FASTPythonAttributeAccessTest >> testMethodDefinition [
 
 	| method |

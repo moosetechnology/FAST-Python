@@ -175,3 +175,20 @@ FASTPyEntity >> isVariableEntity [
 	<generated>
 	^ false
 ]
+
+{ #category : 'testing' }
+FASTPyEntity >> isVariableWriteAccess [
+	"I am used in the LR and SSA builder to know if I represent the assignment of a variable."
+
+	^ self variableDeclarator isNotNil
+]
+
+{ #category : 'accessing' }
+FASTPyEntity >> variableDeclarator [
+	"In case I am a write access to a variable, I return the node categorized as my declaration. Else I return nil.
+	Nodes representing potential variable write access should override me.
+	
+	I am used by the LocalResolver and potentially SSA"
+
+	^ nil
+]

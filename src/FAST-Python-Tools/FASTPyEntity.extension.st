@@ -19,13 +19,6 @@ FASTPyEntity >> isInstanceVariableAccess [
 ]
 
 { #category : '*FAST-Python-Tools' }
-FASTPyEntity >> isVariableWriteAccess [
-	"I am used in the LR and SSA builder to know if I represent the assignment of a variable."
-
-	^ self variableDeclarator isNotNil
-]
-
-{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> localResolverKind [
 	"In the local resolver, if we redefine an entity with an entity of the same kind, we keep the same declaration. Else we create a new one. 
 	
@@ -47,14 +40,4 @@ FASTPyEntity >> selfOrTopmostAssignableCollection [
 		node := node collectionInitializer ].
 
 	^ node
-]
-
-{ #category : '*FAST-Python-Tools' }
-FASTPyEntity >> variableDeclarator [
-	"In case I am a write access to a variable, I return the node categorized as my declaration. Else I return nil.
-	Nodes representing potential variable write access should override me.
-	
-	I am used by the LocalResolver and potentially SSA"
-
-	^ nil
 ]

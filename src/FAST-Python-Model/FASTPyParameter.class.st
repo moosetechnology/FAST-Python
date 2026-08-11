@@ -88,3 +88,10 @@ FASTPyParameter >> type: anObject [
 	<generated>
 	type := anObject
 ]
+
+{ #category : 'accessing' }
+FASTPyParameter >> variableDeclarator [
+	"For parameters, they are their own declarator."
+
+	^ self
+]
