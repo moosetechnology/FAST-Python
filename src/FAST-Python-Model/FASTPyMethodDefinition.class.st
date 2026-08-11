@@ -52,17 +52,24 @@ FASTPyMethodDefinition class >> annotation [
 ]
 
 { #category : 'testing' }
-FASTPyMethodDefinition >> isAbstract [
+FASTPyMethodDefinition >> hasDecoratorNamed: aString [
 	"A method is static in python if it has the `@staticmethod` decorator."
 
-	^ self decorators anySatisfy: [ :decorator | decorator expression isIdentifier and: [ decorator expression name = 'abstractmethod' ] ]
+	^ self decorators anySatisfy: [ :decorator | decorator expression isIdentifier and: [ decorator expression name = aString ] ]
+]
+
+{ #category : 'testing' }
+FASTPyMethodDefinition >> isAbstract [
+	"A method is static in python if it has the `@abstractmethod` decorator."
+
+	^ self hasDecoratorNamed: 'abstractmethod'
 ]
 
 { #category : 'testing' }
 FASTPyMethodDefinition >> isStatic [
 	"A method is static in python if it has the `@staticmethod` decorator."
 
-	^ self decorators anySatisfy: [ :decorator | decorator expression isIdentifier and: [ decorator expression name = 'staticmethod' ] ]
+	^ self hasDecoratorNamed: 'staticmethod'
 ]
 
 { #category : 'accessing' }
