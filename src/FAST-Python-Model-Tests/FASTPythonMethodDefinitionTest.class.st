@@ -6,6 +6,25 @@ Class {
 }
 
 { #category : 'tests' }
+FASTPythonMethodDefinitionTest >> testIsAbstract [
+
+	| method1 method2 |
+	self parse: 'class Class(ABC):
+	def method(self, author: str):
+		self.author = author
+		return self.author
+		
+	@abstractmethod
+	def method2(param):
+		pass'.
+
+	method1 := model module statements first statements first.
+	self deny: method1 isAbstract.
+	method2 := model module statements first statements second.
+	self assert: method2 isAbstract
+]
+
+{ #category : 'tests' }
 FASTPythonMethodDefinitionTest >> testIsStatic [
 
 	| method1 method2 |
