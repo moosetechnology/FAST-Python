@@ -47,3 +47,10 @@ FASTPyIdentifier class >> annotation [
 	<package: #'FAST-Python-Model'>
 	<generated>
 ]
+
+{ #category : 'testing' }
+FASTPyIdentifier >> isIdentifier [
+
+	<generated>
+	^ true
+]

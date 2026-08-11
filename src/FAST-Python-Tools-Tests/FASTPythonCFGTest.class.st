@@ -12,7 +12,8 @@ Class {
 { #category : 'running' }
 FASTPythonCFGTest >> buildCFGForFunction: aString [
 
-	startBlock := FASTPythonCFGVisitor buildCFGOf: (self parse: aString) allFunctionDefinitions first
+	self parse: aString.
+	startBlock := FASTPythonCFGVisitor buildCFGOf: model allFunctionDefinitions first
 ]
 
 { #category : 'tests' }

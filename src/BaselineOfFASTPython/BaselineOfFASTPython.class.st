@@ -21,7 +21,7 @@ BaselineOfFASTPython >> baseline: spec [
 			spec
 				package: 'FAST-Python-Model' with: [ spec requires: #( 'FAST' 'TreeSitter' ) ];
 				package: 'FAST-Python-Model-Generator';
-				package: 'FAST-Python-Model-Tests' with: [ spec requires: #( 'FAST-Python-Model' ) ];
+				package: 'FAST-Python-Model-Tests' with: [ spec requires: #( 'FAST-Python-Model' 'FAST-Python-Tools' ) ];
 				package: 'FAST-Python-Tools' with: [ spec requires: #( 'FAST-Python-Model' ) ];
 				package: 'FAST-Python-Tools-Tests' with: [ spec requires: #( 'FAST-Python-Tools' ) ].
 

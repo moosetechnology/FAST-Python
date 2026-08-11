@@ -13,6 +13,12 @@ FASTPyEntity >> fullCfg [
 ]
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> isInstanceVariableAccess [
+
+	^ false
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> isVariableWriteAccess [
 	"I am used in the LR and SSA builder to know if I represent the assignment of a variable."
 

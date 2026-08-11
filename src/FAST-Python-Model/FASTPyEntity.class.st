@@ -100,6 +100,13 @@ FASTPyEntity >> isExpression [
 ]
 
 { #category : 'testing' }
+FASTPyEntity >> isIdentifier [
+
+	<generated>
+	^ false
+]
+
+{ #category : 'testing' }
 FASTPyEntity >> isInvocation [
 
 	<generated>

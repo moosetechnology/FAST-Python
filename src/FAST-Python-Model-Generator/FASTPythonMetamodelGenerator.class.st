@@ -288,6 +288,7 @@ FASTPythonMetamodelGenerator >> defineClasses [
 	genericType := builder newClassNamed: #GenericType.
 	globalStatement := builder newClassNamed: #GlobalStatement.
 	identifier := builder newClassNamed: #Identifier.
+	identifier withTesting.
 	ifClause := builder newClassNamed: #IfClause.
 	ifStatement := builder newClassNamed: #IfStatement.
 	import := builder newClassNamed: #Import.

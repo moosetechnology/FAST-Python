@@ -1,9 +1,6 @@
 Class {
 	#name : 'FASTPythonSSATest',
 	#superclass : 'FASTPythonAbstractTestCase',
-	#instVars : [
-		'model'
-	],
 	#category : 'FAST-Python-Tools-Tests-Algos',
 	#package : 'FAST-Python-Tools-Tests',
 	#tag : 'Algos'
@@ -12,8 +9,7 @@ Class {
 { #category : 'parsing' }
 FASTPythonSSATest >> parseAndResolve: aString [
 
-	model := self parse: aString.
-
+	self parse: aString.
 	FASTPythonSSAVisitor resolve: model module
 ]
 

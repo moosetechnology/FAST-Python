@@ -1,9 +1,6 @@
 Class {
 	#name : 'FASTPythonLocalResolverTest',
 	#superclass : 'FASTPythonAbstractTestCase',
-	#instVars : [
-		'model'
-	],
 	#category : 'FAST-Python-Tools-Tests-Algos',
 	#package : 'FAST-Python-Tools-Tests',
 	#tag : 'Algos'
@@ -12,8 +9,7 @@ Class {
 { #category : 'resolving' }
 FASTPythonLocalResolverTest >> parseAndResolve: aString [
 
-	model := self parse: aString.
-
+	self parse: aString.
 	FASTPythonLocalResolverVisitor resolve: model module
 ]
 
