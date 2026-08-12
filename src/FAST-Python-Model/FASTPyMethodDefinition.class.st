@@ -60,15 +60,19 @@ FASTPyMethodDefinition >> hasDecoratorNamed: aString [
 
 { #category : 'testing' }
 FASTPyMethodDefinition >> isAbstract [
-	"A method is static in python if it has the `@abstractmethod` decorator."
 
+	<FMProperty: #isAbstract type: #Boolean>
+	<derived>
+	<FMComment: 'A method is abstract in python if it has the `@abstractmethod` decorator.'>
 	^ self hasDecoratorNamed: 'abstractmethod'
 ]
 
 { #category : 'testing' }
 FASTPyMethodDefinition >> isStatic [
-	"A method is static in python if it has the `@staticmethod` decorator."
 
+	<FMProperty: #isStatic type: #Boolean>
+	<derived>
+	<FMComment: 'A method is static in python if it has the `@staticmethod` decorator.'>
 	^ self hasDecoratorNamed: 'staticmethod'
 ]
 
@@ -89,8 +93,10 @@ FASTPyMethodDefinition >> returnType: anObject [
 
 { #category : 'accessing' }
 FASTPyMethodDefinition >> selfName [
-	"Return the name of the parameter corresponding to 'self'. In case of a static method, returns nil since there is none."
 
+	<FMProperty: #selfName type: #String>
+	<derived>
+	<FMComment: 'Return the name of the parameter corresponding to ''self''. In case of a static method, returns nil since there is none.'>
 	self isStatic ifTrue: [ ^ nil ].
 
 	^ self parameters first name

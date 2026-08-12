@@ -107,6 +107,12 @@ FASTPyEntity >> isIdentifier [
 ]
 
 { #category : 'testing' }
+FASTPyEntity >> isInstanceVariableAccess [
+
+	^ false
+]
+
+{ #category : 'testing' }
 FASTPyEntity >> isInvocation [
 
 	<generated>

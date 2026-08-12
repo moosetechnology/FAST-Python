@@ -58,6 +58,25 @@ FASTPyAttributeAccess class >> annotation [
 	<generated>
 ]
 
+{ #category : 'testing' }
+FASTPyAttributeAccess >> isInstanceVariableAccess [
+
+	self methodDefinition ifNotNil: [ :method | ^ self value isIdentifier and: [ self value name = method selfName ] ].
+
+	^ false
+]
+
+{ #category : 'accessing' }
+FASTPyAttributeAccess >> methodDefinition [
+	"In case I am inside a method definition, return this method."
+
+	^ (self containersOfType: FASTPyMethodDefinition)
+		  ifNotEmpty: [ :methods |
+				  self assert: methods size = 1.
+				  methods anyOne ]
+		  ifEmpty: [ nil ]
+]
+
 { #category : 'accessing' }
 FASTPyAttributeAccess >> value [
 	"Relation named: #value type: #FASTPyExpression opposite: #parentAttributeObject"

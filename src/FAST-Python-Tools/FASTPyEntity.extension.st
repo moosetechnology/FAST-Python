@@ -13,12 +13,6 @@ FASTPyEntity >> fullCfg [
 ]
 
 { #category : '*FAST-Python-Tools' }
-FASTPyEntity >> isInstanceVariableAccess [
-
-	^ false
-]
-
-{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> localResolverKind [
 	"In the local resolver, if we redefine an entity with an entity of the same kind, we keep the same declaration. Else we create a new one. 
 	
