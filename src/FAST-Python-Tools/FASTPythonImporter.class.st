@@ -90,6 +90,28 @@ FASTPythonImporter class >> devParseFiles: aCollection [
 	result inspect
 ]
 
+{ #category : 'parsing' }
+FASTPythonImporter class >> parseAndResolve: aString [
+
+	| model |
+	model := self parse: aString.
+
+	FASTPythonSSAVisitor resolve: model module.
+
+	^ model
+]
+
+{ #category : 'parsing' }
+FASTPythonImporter class >> parseFileAndResolve: aFileReference [
+
+	| model |
+	model := self parseFile: aFileReference.
+
+	FASTPythonSSAVisitor resolve: model module.
+
+	^ model
+]
+
 { #category : 'accessing' }
 FASTPythonImporter >> tsLanguage [
 
