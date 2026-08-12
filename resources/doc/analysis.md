@@ -4,6 +4,21 @@ A general note: When we import an entity, we cannot know if it is a variable, a 
 
 > Note: Currently, analysis done with FASTPython are mostly done to analyse variables. So the documentation will be centered on analysis of variables and the algos are mostly tested on variables analysis and not functions, methods, ...ß
 
+- [Doing analysis on FASTPython](#doing-analysis-on-fastpython)
+  - [Local resolution](#local-resolution)
+    - [Shadowing](#shadowing)
+  - [Static Single Assignment (SSA)](#static-single-assignment-ssa)
+  - [Limitations of local resolver and SSA](#limitations-of-local-resolver-and-ssa)
+    - [Attribute accesses](#attribute-accesses)
+    - [Subscript content](#subscript-content)
+    - [Instance variables](#instance-variables)
+    - [Python 2 VS Python 3](#python-2-vs-python-3)
+    - [Global and Non local statement](#global-and-non-local-statement)
+  - [FAST Python visitor](#fastpython-visitor)
+  - [Control Flow Graph (CFG)](#control-flow-graph-cfg)
+  - [FAST utilities](#fast-utilities)
+  - [Examples of analysis](#examples-of-analysis)
+
 ## Local resolution
 
 FASTPython includes `FASTPythonLocalResolverVisitor`. Its goal is to link each entities to their first declaration. This works for all named entities. 
@@ -23,9 +38,24 @@ Once this is done, you can ask any node that can represent a variable for its `#
 
 The local declaration knows all the usages of the entity in the model. We can get them by asking `#localUses`.
 
+### Shadowing
+
+In Python anything named can shadow anything named. For example we can declare a global variable then shadow it with an import, then shadow it with a function...
+
+In the case of a shadowing, we manage it in two distinct ways: 
+- If we know for sure that the entity will be the same kind of entity (for example, if the entity stays a variable because we assign two times values to the same variable), then they keep the same local declaration
+- If the entity kind is different (for example we shadow a global variable with a function) or if we are not sure (if we shadow something with an imported entity for example), then we create a new local declaration
+
+
 ## Static Single Assignment (SSA)
 
 FASTPython includes `FASTPythonSSAVisitor` to build a SSA form of the AST. The goal of the SSA is to know for each use of a variable, the assignation or assignations linked to this usage. 
+
+It can be run like this:
+
+```smalltalk
+FASTPythonSSAVisitor resolve: model module
+```
 
 Two little examples:
 
@@ -204,9 +234,80 @@ print(x)' withPlatformLineEndings. "Platform line ending are needed because cr l
 model := FASTPythonImporter parseAndResolve: code. "Import and resolve with local resolver and SSA."
 ```
 
+Let's use this piece of Python code as example:
+
+```python
+x = 2
+
+print(x)
+
+x = 3
+
+if z > 4:
+	x = 5
+	
+print(x)
+```
+
 **Where is a variable defined?**
 
-TODO
+We can do this:
 
+```smalltalk
+lastVariableAccess := model module statements last arguments first.
 
-TODO: Update README
+lastVariableAccess ssaVersion. "a FASTVariablePhiVersionSSA ['x_3', 'x_2']"
+
+lastVariableAccess ssaVersion writeAccesses. "an OrderedCollection(PyVariable(18 - 18) PyVariable(36 - 36))"
+```
+
+This will return the write accesses that impacted this use of the variable.
+
+**Where is a variable read?**
+
+With the same python snippet as before we can do:
+
+```smalltalk
+lastVariableAccess := model module statements last arguments first.
+
+lastVariableAccess ssaVersion readAccesses "an OrderedCollection(PyIdentifier(50 - 50))"
+```
+
+This will return every reading of the variable you are checking for the current SSA version.
+
+**Where is a variable read independently of versions?**
+
+Let's imagine we want all read access to the variable and not just the ones for the current SSA version. We can do:
+
+```smalltalk
+variable := model module statements first left. "We could get any access to the variable here, not only the first one."
+
+variable localDeclaration readAccesses.  "an OrderedCollection(PyIdentifier(14 - 14) PyIdentifier(50 - 50))"
+```
+**Where is a variable writen independently of version?**
+
+Same as before, we can use the local declaration:
+
+```smalltalk
+variable := model module statements first left. "We could get any access to the variable here, not only the first one."
+
+variable localDeclaration writeAccesses  "an OrderedCollection(PyVariable(1 - 1) PyVariable(18 - 18) PyVariable(36 - 36))"
+```
+
+> For both local declaration and SSA version it is possible to ask for `localUses` to get read and write accesses in one go.
+
+**What is the assignment node of the variable I am manipulating?**
+
+It is possible to get the nodes doing the assignemnts this way:
+
+```smalltalk
+lastVariableAccess := model module statements last arguments first.
+
+lastVariableAccess ssaVersion writeAccesses collect: [ :access | access variableDeclarator ] "an OrderedCollection(PyAssignment(18 - 22) PyAssignment(36 - 40))"
+```
+
+The assignemnts nodes can be an assignemnt, a for, an augmented assignment or a for in clause. 
+
+Do not forget that an assignemnt can be done to a tuple or list.
+
+Also, there can be multiple ones, as shown in the example, in case of a phi version.
