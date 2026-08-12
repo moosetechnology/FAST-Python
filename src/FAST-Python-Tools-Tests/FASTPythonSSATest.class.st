@@ -532,6 +532,29 @@ FASTPythonSSATest >> testMethodParameterUsed [
 	self assert: parameterUsage ssaVersion identicalTo: parameterDeclaration ssaVersion
 ]
 
+{ #category : 'tests - queries' }
+FASTPythonSSATest >> testQueryVariableDefinitions [
+
+	| lastVariableAccess |
+	self parseAndResolve: 'x = 2
+
+x = 3
+
+if z > 4:
+	x = 5
+	
+print(x)'.
+
+	lastVariableAccess := model module statements last arguments first.
+	self assert: lastVariableAccess name equals: 'x'.
+
+	self assert: lastVariableAccess ssaVersion isPhi.
+
+	self assert: lastVariableAccess ssaVersion localUses size equals: 3. "2 write and 1 read."
+	self assert: lastVariableAccess ssaVersion readAccesses size equals: 1.
+	self assert: lastVariableAccess ssaVersion writeAccesses size equals: 2
+]
+
 { #category : 'tests - for' }
 FASTPythonSSATest >> testReAssignedVariableInFor [
 
