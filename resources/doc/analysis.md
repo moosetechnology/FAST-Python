@@ -256,12 +256,12 @@ We can do this:
 ```smalltalk
 lastVariableAccess := model module statements last arguments first.
 
-lastVariableAccess ssaVersion. "a FASTVariablePhiVersionSSA ['x_3', 'x_2']"
+lastVariableAccess ssaVersion. "a FASTVariablePhiVersionSSA ['x_3', 'x_2'] <= We see here that this variable can come from 2 assignments depending on a condition>"
 
-lastVariableAccess ssaVersion writeAccesses. "an OrderedCollection(PyVariable(18 - 18) PyVariable(36 - 36))"
+lastVariableAccess versionWriteAccesses. "an OrderedCollection(PyVariable(18 - 18) PyVariable(36 - 36))"
 ```
 
-This will return the write accesses that impacted this use of the variable.
+This will return the write accesses that impacted this use of the variable. It will ignore the write accesses that cannot have an impact of this variable.
 
 **Where is a variable read?**
 
@@ -270,10 +270,10 @@ With the same python snippet as before we can do:
 ```smalltalk
 lastVariableAccess := model module statements last arguments first.
 
-lastVariableAccess ssaVersion readAccesses "an OrderedCollection(PyIdentifier(50 - 50))"
+lastVariableAccess versionReadAccesses "an OrderedCollection(PyIdentifier(50 - 50))"
 ```
 
-This will return every reading of the variable you are checking for the current SSA version.
+This will return every reading of the variable you are checking for the current SSA version. It ignores all read accesses that are not for this version of the variable.
 
 **Where is a variable read independently of versions?**
 
@@ -282,7 +282,7 @@ Let's imagine we want all read access to the variable and not just the ones for 
 ```smalltalk
 variable := model module statements first left. "We could get any access to the variable here, not only the first one."
 
-variable localDeclaration readAccesses.  "an OrderedCollection(PyIdentifier(14 - 14) PyIdentifier(50 - 50))"
+variable allReadAccesses.  "an OrderedCollection(PyIdentifier(14 - 14) PyIdentifier(50 - 50))"
 ```
 **Where is a variable writen independently of version?**
 
@@ -291,10 +291,10 @@ Same as before, we can use the local declaration:
 ```smalltalk
 variable := model module statements first left. "We could get any access to the variable here, not only the first one."
 
-variable localDeclaration writeAccesses  "an OrderedCollection(PyVariable(1 - 1) PyVariable(18 - 18) PyVariable(36 - 36))"
+variable allWriteAccesses  "an OrderedCollection(PyVariable(1 - 1) PyVariable(18 - 18) PyVariable(36 - 36))"
 ```
 
-> For both local declaration and SSA version it is possible to ask for `localUses` to get read and write accesses in one go.
+> We can also use `#allAccesses` and `#versionAccesses` to mix read and write accesses.
 
 **What is the assignment node of the variable I am manipulating?**
 
