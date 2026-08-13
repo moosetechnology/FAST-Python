@@ -99,6 +99,26 @@ print(x)'.
 ]
 
 { #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAssignedExpressionsMap [
+
+	| variable result |
+	self parseAndResolve: 'x = 1
+	
+print(x)
+
+x = 2
+
+if y > 3:
+	x = 3
+
+print(x)'.
+
+	variable := model module statements first left.
+	result := variable assignedExpressionsMap.
+	self skip "TODO: add assertions."
+]
+
+{ #category : 'tests' }
 FASTPythonVariablesAnalysisTest >> testVersionAccessesOfIdentifier [
 
 	| variableVersion1 variableVersion2 variableVersion3 variablePhi |

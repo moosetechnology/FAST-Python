@@ -50,6 +50,12 @@ FASTPyEntity class >> metamodel [
 	^ FASTPyModel metamodel
 ]
 
+{ #category : 'accessing' }
+FASTPyEntity >> assignedExpressions [
+
+	^ Array empty
+]
+
 { #category : 'testing' }
 FASTPyEntity >> hasImmediateSource [
 

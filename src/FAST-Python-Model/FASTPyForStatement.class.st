@@ -50,6 +50,12 @@ FASTPyForStatement class >> annotation [
 ]
 
 { #category : 'accessing' }
+FASTPyForStatement >> assignedExpressions [
+
+	^ { self right }
+]
+
+{ #category : 'accessing' }
 FASTPyForStatement >> left [
 	"Relation named: #left type: #FASTPyExpression opposite: #parentForStatementLeft"
 

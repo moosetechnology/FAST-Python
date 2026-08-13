@@ -32,6 +32,12 @@ FASTPyForInClause class >> annotation [
 ]
 
 { #category : 'accessing' }
+FASTPyForInClause >> assignedExpressions [
+
+	^ { self right }
+]
+
+{ #category : 'accessing' }
 FASTPyForInClause >> left [
 	"Relation named: #left type: #FASTPyExpression opposite: #parentForInClauseLeft"
 
