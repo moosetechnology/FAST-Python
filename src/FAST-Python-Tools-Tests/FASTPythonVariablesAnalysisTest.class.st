@@ -101,7 +101,7 @@ print(x)'.
 { #category : 'tests' }
 FASTPythonVariablesAnalysisTest >> testAssignedExpressionsMap [
 
-	| variable result |
+	| writenVariable1 writenVariable2 writenVariable3 map |
 	self parseAndResolve: 'x = 1
 	
 print(x)
@@ -113,9 +113,20 @@ if y > 3:
 
 print(x)'.
 
-	variable := model module statements first left.
-	result := variable assignedExpressionsMap.
-	self skip "TODO: add assertions."
+	writenVariable1 := model module statements first left.
+	writenVariable2 := model module statements third left.
+	writenVariable3 := model module statements fourth thenClause statements first left.
+
+	map := model module statements second arguments first assignedExpressionsMap.
+
+	self assert: map size equals: 1.
+	self assertCollection: (map at: writenVariable1) hasSameElements: { model module statements first right }.
+
+	map := map := model module statements fifth arguments first assignedExpressionsMap.
+
+	self assert: map size equals: 2.
+	self assertCollection: (map at: writenVariable2) hasSameElements: { model module statements third right }.
+	self assertCollection: (map at: writenVariable3) hasSameElements: { model module statements fourth thenClause statements first right }
 ]
 
 { #category : 'tests' }
