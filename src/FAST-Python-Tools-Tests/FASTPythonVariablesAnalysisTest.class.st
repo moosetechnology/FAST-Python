@@ -130,6 +130,37 @@ print(x)'.
 ]
 
 { #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAssignedExpressionsMapWithLoop [
+
+	| writenVariable1 writenVariable2 writenVariable3 map |
+	self parseAndResolve: 'x = 1
+	
+print(x)
+
+x = 2
+
+for x in coll:
+	print(x)
+
+print(x)'.
+
+	writenVariable1 := model module statements first left.
+	writenVariable2 := model module statements third left.
+	writenVariable3 := model module statements fourth left.
+
+	map := model module statements second arguments first assignedExpressionsMap.
+
+	self assert: map size equals: 1.
+	self assertCollection: (map at: writenVariable1) hasSameElements: { model module statements first right }.
+
+	map := map := model module statements fifth arguments first assignedExpressionsMap.
+
+	self assert: map size equals: 2.
+	self assertCollection: (map at: writenVariable2) hasSameElements: { model module statements third right }.
+	self assertCollection: (map at: writenVariable3) hasSameElements: { model module statements fourth right }
+]
+
+{ #category : 'tests' }
 FASTPythonVariablesAnalysisTest >> testVersionAccessesOfIdentifier [
 
 	| variableVersion1 variableVersion2 variableVersion3 variablePhi |
