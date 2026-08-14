@@ -487,6 +487,45 @@ print(y.x)'.
 ]
 
 { #category : 'tests - shadowing' }
+FASTPythonLocalResolverTest >> testGlobalAttributeShadowedByImport [
+	"Here we cannot know if the second printing is of a variable."
+
+	| assignedVariable usedVariable import importedEntity usedImportedEntity |
+	self parseAndResolve: 'x.y = 1
+print(x.y)
+
+import x.y
+
+print(x.y)'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'y'.
+	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: assignedVariable.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second.
+
+	import := model module statements third.
+	importedEntity := import importedEntities anyOne.
+	self assert: importedEntity localDeclaration equals: import.
+	self deny: importedEntity localDeclaration importedEntities first hasAlias.
+	self assert: importedEntity localDeclaration importedEntities first segments last equals: 'y'.
+	self deny: importedEntity localDeclaration isNonLocalDeclaration.
+	self assert: importedEntity localDeclaration localUses size equals: 2.
+	self assert: importedEntity localDeclaration localUses first equals: importedEntity.
+
+	usedImportedEntity := model module statements fourth arguments first.
+	self assert: usedImportedEntity localDeclaration equals: import.
+	self assert: usedImportedEntity equals: importedEntity localDeclaration localUses second
+]
+
+{ #category : 'tests - shadowing' }
 FASTPythonLocalResolverTest >> testGlobalShadowedByImport [
 	"Here we cannot know if the second printing is of a variable."
 

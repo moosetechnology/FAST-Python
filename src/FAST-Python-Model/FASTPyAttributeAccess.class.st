@@ -66,12 +66,6 @@ FASTPyAttributeAccess >> isInstanceVariableAccess [
 	^ false
 ]
 
-{ #category : 'as yet unclassified' }
-FASTPyAttributeAccess >> localResolverKind [
-
-	^ #variable
-]
-
 { #category : 'accessing' }
 FASTPyAttributeAccess >> methodDefinition [
 	"In case I am inside a method definition, return this method."
