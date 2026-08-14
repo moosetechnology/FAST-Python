@@ -7,7 +7,11 @@ A general note: When we import an entity, we cannot know if it is a variable, a 
 - [Doing analysis on FASTPython](#doing-analysis-on-fastpython)
   - [Local resolution](#local-resolution)
     - [Shadowing](#shadowing)
+    - [Querying local resolver information](#querying-local-resolver-information)
   - [Static Single Assignment (SSA)](#static-single-assignment-ssa)
+    - [Building](#building)
+    - [Exploiting the SSA](#exploiting-the-ssa)
+    - [Assigned expressions](#assigned-expressions)
   - [Limitations of local resolver and SSA](#limitations-of-local-resolver-and-ssa)
     - [Attribute accesses](#attribute-accesses)
     - [Subscript content](#subscript-content)
@@ -46,8 +50,59 @@ In the case of a shadowing, we manage it in two distinct ways:
 - If we know for sure that the entity will be the same kind of entity (for example, if the entity stays a variable because we assign two times values to the same variable), then they keep the same local declaration
 - If the entity kind is different (for example we shadow a global variable with a function) or if we are not sure (if we shadow something with an imported entity for example), then we create a new local declaration
 
+### Querying local resolver information
+
+It is possible to ask a few things to the nodes once the resolution is done:
+- `node localDeclaration` returns the first node that declared the entity we are querying
+- `node localDeclaration localUses` returns all uses of the node (declarations and usage)
+- `node allAccesses` if the node is a variable, returns all the read and write accesses to the variable
+- `node allReadAccesses` if the node is a variable, returns all the read accesses to the variable
+- `node allWriteAccesses` if the node is a variable, returns all the write accesses to the variable
+- `node variableDeclarator` if the node that is a variable write access, it will return the node assigning the variable (can be an assignment, augmented assignment, for loop or for in clause)
+- `node allAssignedExpressionsMap` if the node is a variable, return a map of all expressions used to assigned the variable. The keys of the map are all the write accesses of this variable and the values are the expressions used for the assignment.
+
+For `#allAssignedExpressionsMap`, be carful, `x = 3` is not the only way to assign a variable. Take those cases into account:
+
+```python
+x = 3
+```
+
+For x
+
+Assigned expression: `3`
+
+```python
+x, (y, z) = (3, (4, 5))
+```
+
+Assigned expression: `(3, (4, 5))` 
+
+> Note: in case of tuples or lists, we do not select the right element in the tuple/list. Especially since it can be given via a variable or a call.
+
+```python
+for x in range(0):
+    print(x)
+```
+
+Assigned expression: `range(0)`
+
+```python
+[c for c in coll]
+```
+
+Assigned expression: `coll`
+
+```python
+x += 1
+```
+
+Assigned expression: `1`
+
+Be carful, it does not know with the addition method of `x` will do if it is an object.
 
 ## Static Single Assignment (SSA)
+
+### Building
 
 FASTPython includes `FASTPythonSSAVisitor` to build a SSA form of the AST. The goal of the SSA is to know for each use of a variable, the assignation or assignations linked to this usage. 
 
@@ -56,6 +111,15 @@ It can be run like this:
 ```smalltalk
 FASTPythonSSAVisitor resolve: model module
 ```
+
+Another possibility is to import via `FASTPythonImporter` using `#parseAndResolve:` or `parseFileAndResolve:` instead of just parsing.
+
+```smalltalk
+FASTPythonImporter parseAndResolve: 'x = 3
+print(x)' withPlateformLineEndings
+```
+
+### Exploiting the SSA
 
 Two little examples:
 
@@ -82,7 +146,7 @@ In this new case, the second printing can have two different value depending on 
 
 You can ask any node representing a variable for its `#ssaVersion`. This version can either be a `FASTVariableVersionSSA` or a `FASTPhiVersionSSA`. It will be a Phi if it can have multiple versions. 
 
-All versions know the local declaration of the variable (which allow to find all usages independently of the assignemnt) and you can use `#localUses` to find all the uses of the variable **for the current SSA version**.
+All versions know the local declaration of the variable (which allow to find all usages independently of the assignment) and you can use `#localUses` to find all the uses of the variable **for the current SSA version**.
 
 For example:
 
@@ -102,6 +166,19 @@ print(x)        # Phi(x_2, x_3)
 Asking `#ssaVersion` to the `FASTPyVariable` node of `x = 3`, it will return the version number 2. If you ask its local uses, it will return. The one of the assignment (write access), the one of the second printing (read access) and the one of the last printing (read access).
 
 It is possible to ask to a model or a group for the SSA versions inside it using `#allSSAVersions`. 
+
+On top of this, it is possible to get information via the SSA directly with the API of the variables nodes:
+- `node versionAccesses` returns all the read and write accesses for this sepcific version of the variable
+- `node versionReadAccesses` returns all the real accesses for this specific version of the variable
+- `node versionWriteAccesses` returns all the write accesses for this specific version of the variable
+
+### Assigned expressions
+
+It is also possible to query what is assigned in variables once the SSA is done:
+- `node variableDeclarator` for a node that is a write access to a variable, it will return the node assigning the variable
+- `node assignedExpressionsMap` for a variable, return a map of all expressions used to assigned the variable. The keys of the map are the write accesses that can impact the value of this variable. In some cases there will be only one. But if the variable is assigned in a conditional expression, it will get one entry by assignment that can impact the current variable value
+
+> Note: you can find some warnings on this in the section [Querying local resolver information](#querying-local-resolver-information). They are the same.
 
 ## Limitations of local resolver and SSA
 
@@ -217,11 +294,15 @@ Some general properties got added such as:
 - `FASTPyMethodDefinition>>isAbstract` to know if a method is abstract
 - `FASTPyMethodDefinition>>selfName` to know the name of the self parameter (will be nil for static methods)
 
-TODO: Document more 
+For nodes representing a write access to a variable (it is possible to find them easily once we resolved our project with the local resolver or the SSA), we can find the expressions used in their writing by using `#assignedExpressions` on the node. 
+
+> Note: you can find some warnings on this in the section [Querying local resolver information](#querying-local-resolver-information). They are the same.
+
+TODO: Document more
 
 ## Examples of analysis
 
-In this section I'll show how to answer some questions we might have.
+In this section I'll show how to answer some questions I was asked to answer with FAST-Python.
 
 The examples will use `#parseAndResolve:` from the python importer that parse a piece of code and launch the local resolver and SSA resolution.
 
@@ -298,7 +379,7 @@ variable allWriteAccesses  "an OrderedCollection(PyVariable(1 - 1) PyVariable(18
 
 **What is the assignment node of the variable I am manipulating?**
 
-It is possible to get the nodes doing the assignemnts this way:
+It is possible to get the nodes doing the assignments this way:
 
 ```smalltalk
 lastVariableAccess := model module statements last arguments first.
@@ -306,8 +387,28 @@ lastVariableAccess := model module statements last arguments first.
 lastVariableAccess ssaVersion writeAccesses collect: [ :access | access variableDeclarator ] "an OrderedCollection(PyAssignment(18 - 22) PyAssignment(36 - 40))"
 ```
 
-The assignemnts nodes can be an assignemnt, a for, an augmented assignment or a for in clause. 
+The assignments nodes can be an assignment, a for, an augmented assignment or a for in clause. 
 
-Do not forget that an assignemnt can be done to a tuple or list.
+Do not forget that an assignment can be done to a tuple or list.
 
 Also, there can be multiple ones, as shown in the example, in case of a phi version.
+
+**What expressions are used to do the assignment?**
+
+It is possible to know all possible expressions involved in the assignment of a variable like this:
+
+```smalltalk
+lastVariableAccess := model module statements last arguments first.
+
+lastVariableAccess assignedExpressionsMap
+
+"a Dictionary(
+	PyVariable(18 - 18)->#( PyInteger(22 - 22) )
+	PyVariable(36 - 36)->#( PyInteger(40 - 40) ) )"
+```
+
+It returns a dictionary with the possible write accesses as key and the expressions involved in the writing as values.
+
+> Note: you can find some warnings on this in the section [Querying local resolver information](#querying-local-resolver-information). They are the same.
+
+> Note 2: You can also use `#allAssignedExpressionsMap` if you want to consider all write accesses to a variable and not just the one impacting a specific access. Or you can use `#assignedExpressions` on a specific write access to have information only on this one.
