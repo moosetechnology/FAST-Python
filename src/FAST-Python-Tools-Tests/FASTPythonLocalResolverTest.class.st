@@ -1002,6 +1002,26 @@ FASTPythonLocalResolverTest >> testMethodSelfParameterWithDifferentName [
 	self assert: usedVariable equals: declaration localDeclaration localUses second
 ]
 
+{ #category : 'tests' }
+FASTPythonLocalResolverTest >> testNonLocalAttributesAccessesAreLinked [
+
+	| usedVariable1 usedVariable2 |
+	self parseAndResolve: 'import x
+
+a(x.y)
+b(x.y)'.
+
+
+	usedVariable1 := model module statements second arguments first.
+	self assert: usedVariable1 localDeclaration isNonLocalDeclaration.
+	self assert: usedVariable1 localDeclaration localUses size equals: 2.
+	self assert: usedVariable1 equals: usedVariable1 localDeclaration localUses first.
+
+	usedVariable2 := model module statements third arguments first.
+	self assert: usedVariable2 localDeclaration equals: usedVariable1 localDeclaration.
+	self assert: usedVariable2 equals: usedVariable1 localDeclaration localUses second
+]
+
 { #category : 'tests - non local declarations' }
 FASTPythonLocalResolverTest >> testNonLocalMethodAndVariable [
 
