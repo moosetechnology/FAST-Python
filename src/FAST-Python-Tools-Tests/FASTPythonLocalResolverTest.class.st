@@ -576,7 +576,6 @@ import a as x
 
 print(x)'.
 
-	self skip. "We need to update the behavior"
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
@@ -590,7 +589,7 @@ print(x)'.
 	self assert: usedVariable localDeclaration equals: assignedVariable.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second.
 
-	self deny: model module statements fourth arguments first hasLocalDeclaration
+	self deny: model module statements fourth arguments first localDeclaration equals: assignedVariable localDeclaration
 ]
 
 { #category : 'tests - shadowing' }
@@ -607,7 +606,6 @@ def f():
 
 print(matplotlib)'.
 
-	self skip. "To update and fix"
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'matplotlib'.
