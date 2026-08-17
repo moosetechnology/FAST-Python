@@ -35,7 +35,7 @@ FASTPythonSSAVisitor >> createVariableVersionFor: aFASTEntity [
 
 	| newSSA |
 	newSSA := FASTVariableVersionSSA for: aFASTEntity.
-	aFASTEntity localDeclaration activeVersion ifNotNil: [ :lastSSA | newSSA version: lastSSA version ].
+	aFASTEntity lastSSAVersion ifNotNil: [ :lastSSA | newSSA version: lastSSA version ].
 
 	aFASTEntity localDeclaration activeVersion: newSSA.
 

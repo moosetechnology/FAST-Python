@@ -13,6 +13,29 @@ FASTPyEntity >> fullCfg [
 ]
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> lastSSAVersion [
+	"Return the last active SSA version if there is one. In Python lots of things can shadow each other, so we check if there was not a variable shadowed previously.
+	
+	For example:
+	
+	x = 3 
+	
+	def x(): pass
+	
+	x = 4
+	
+	Here the second assignment follow the first one but was interrupted by the function. But we still need to link them in the SSA."
+
+	| entity |
+	entity := self localDeclaration.
+	[
+		entity := entity shadowing.
+		entity isNotNil ] whileTrue: [ entity activeVersion ifNotNil: [ :version | ^ version ] ].
+
+	^ nil
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> localResolverKind [
 	"In the local resolver, if we redefine an entity with an entity of the same kind, we keep the same declaration. Else we create a new one. 
 	
