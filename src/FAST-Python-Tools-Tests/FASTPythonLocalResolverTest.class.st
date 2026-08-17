@@ -526,6 +526,38 @@ print(x.y)'.
 ]
 
 { #category : 'tests - shadowing' }
+FASTPythonLocalResolverTest >> testGlobalAttributeShadowedByImportInFunction [
+
+	| assignedVariable usedVariable1 usedVariable2 |
+	self parseAndResolve: 'y.x = 3
+
+print(y.x)
+
+def f():
+    import y.x
+    return y.x
+
+print(y.x)'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 3.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable1 := model module statements second arguments first.
+	self assert: usedVariable1 localDeclaration equals: assignedVariable.
+	self assert: usedVariable1 equals: assignedVariable localDeclaration localUses second.
+
+	usedVariable2 := model module statements fourth arguments first.
+	self assert: usedVariable2 localDeclaration equals: assignedVariable.
+	self assert: usedVariable2 equals: assignedVariable localDeclaration localUses third
+]
+
+{ #category : 'tests - shadowing' }
 FASTPythonLocalResolverTest >> testGlobalShadowedByImport [
 	"Here we cannot know if the second printing is of a variable."
 
