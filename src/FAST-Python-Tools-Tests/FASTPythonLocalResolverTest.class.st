@@ -618,6 +618,43 @@ print(y.x)'.
 ]
 
 { #category : 'tests - shadowing' }
+FASTPythonLocalResolverTest >> testGlobalShadowedByFunction [
+
+	| assignedVariable usedVariable function usedFunction |
+	self parseAndResolve: 'x = 3
+
+print(x)
+
+def x(): pass
+
+print(x)'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: assignedVariable.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second.
+
+	function := model module statements third.
+	self assert: function localDeclaration equals: function.
+	self assert: function localDeclaration name equals: 'x'.
+	self deny: function localDeclaration isNonLocalDeclaration.
+	self assert: function localDeclaration localUses size equals: 2.
+	self assert: function localDeclaration localUses first equals: function.
+
+	usedFunction := model module statements fourth arguments first.
+	self assert: usedFunction localDeclaration equals: function.
+	self assert: usedFunction equals: function localDeclaration localUses second
+]
+
+{ #category : 'tests - shadowing' }
 FASTPythonLocalResolverTest >> testGlobalShadowedByImport [
 	"Here we cannot know if the second printing is of a variable."
 
