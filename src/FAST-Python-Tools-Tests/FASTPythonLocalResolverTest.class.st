@@ -866,6 +866,40 @@ FASTPythonLocalResolverTest >> testGlobalUsedInTuple [
 ]
 
 { #category : 'tests - shadowing' }
+FASTPythonLocalResolverTest >> testImportInFunctionDoesNotShadow [
+
+	| assignedVariable usedVariable import importedEntity |
+	self parseAndResolve: 'x = 3
+
+def f(a):
+    import x
+
+print(x)'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	import := model module statements second statements first.
+	importedEntity := import importedEntities anyOne.
+	self assert: importedEntity localDeclaration equals: import.
+	self deny: importedEntity localDeclaration importedEntities first hasAlias.
+	self assert: importedEntity localDeclaration importedEntities first segments last equals: 'x'.
+	self deny: importedEntity localDeclaration isNonLocalDeclaration.
+	self assert: importedEntity localDeclaration localUses size equals: 1.
+	self assert: importedEntity localDeclaration localUses first equals: importedEntity.
+
+	usedVariable := model module statements third arguments first.
+	self assert: usedVariable localDeclaration equals: assignedVariable.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests - shadowing' }
 FASTPythonLocalResolverTest >> testImportShadowedByImport [
 	"Here we cannot know if the second printing is of a variable."
 
