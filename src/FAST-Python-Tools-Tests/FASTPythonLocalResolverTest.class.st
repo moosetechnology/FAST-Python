@@ -582,7 +582,10 @@ print(x.y)'.
 
 	usedImportedEntity := model module statements fourth arguments first.
 	self assert: usedImportedEntity localDeclaration equals: import.
-	self assert: usedImportedEntity equals: importedEntity localDeclaration localUses second
+	self assert: usedImportedEntity equals: importedEntity localDeclaration localUses second.
+
+	self assert: assignedVariable localDeclaration shadowedBy equals: import.
+	self assert: importedEntity localDeclaration shadowing equals: assignedVariable
 ]
 
 { #category : 'tests - shadowing' }
@@ -651,7 +654,10 @@ print(x)'.
 
 	usedFunction := model module statements fourth arguments first.
 	self assert: usedFunction localDeclaration equals: function.
-	self assert: usedFunction equals: function localDeclaration localUses second
+	self assert: usedFunction equals: function localDeclaration localUses second.
+
+	self assert: assignedVariable localDeclaration shadowedBy equals: function.
+	self assert: function localDeclaration shadowing equals: assignedVariable
 ]
 
 { #category : 'tests - shadowing' }
@@ -690,7 +696,10 @@ print(x)'.
 
 	usedImportedEntity := model module statements fourth arguments first.
 	self assert: usedImportedEntity localDeclaration equals: import.
-	self assert: usedImportedEntity equals: importedEntity localDeclaration localUses second
+	self assert: usedImportedEntity equals: importedEntity localDeclaration localUses second.
+	
+	self assert: assignedVariable localDeclaration shadowedBy equals: import.
+	self assert: importedEntity localDeclaration shadowing equals: assignedVariable
 ]
 
 { #category : 'tests - shadowing' }

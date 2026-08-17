@@ -68,7 +68,10 @@ FASTPythonLocalResolverVisitor >> ensureDeclarationOf: aName declaration: aFASTN
 		  ifPresent: [ :declaration |
 				  declaration localResolverKind = aFASTNode localResolverKind
 					  ifTrue: [ ^ declaration ]
-					  ifFalse: [ "If the kind is different, we save a new declaration."
+					  ifFalse: [
+							  declaration shadowedBy: aFASTNode.
+
+							  "If the kind is different, we save a new declaration."
 							  aFASTNode ensureLocalUses.
 							  scope at: aName put: aFASTNode ] ]
 		  ifAbsentPut: [
