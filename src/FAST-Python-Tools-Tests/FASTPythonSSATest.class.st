@@ -1132,3 +1132,57 @@ FASTPythonSSATest >> testUndeclaredVariable [
 	undeclared := model module statements first arguments first.
 	self assert: undeclared ssaVersion isNil
 ]
+
+{ #category : 'tests - calls' }
+FASTPythonSSATest >> testVariableAttributeUsedinACall [
+
+	| assignedVar usedVar |
+	self parseAndResolve: 'x.y = z
+	
+x.y()'.
+
+	assignedVar := model module statements first left.
+	self assert: assignedVar ssaVersion version equals: 1.
+	self assert: assignedVar ssaName equals: 'x.y_1'.
+	self assert: assignedVar ssaVersion localDeclaration equals: assignedVar localDeclaration.
+	self assert: assignedVar ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements second callee.
+	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
+]
+
+{ #category : 'tests - calls' }
+FASTPythonSSATest >> testVariableSliceUsedinACall [
+
+	| assignedVar usedVar |
+	self parseAndResolve: 'x[1] = z
+	
+x[1]()'.
+
+	assignedVar := model module statements first left.
+	self assert: assignedVar ssaVersion version equals: 1.
+	self assert: assignedVar ssaName equals: 'x[1]_1'.
+	self assert: assignedVar ssaVersion localDeclaration equals: assignedVar localDeclaration.
+	self assert: assignedVar ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements second callee.
+	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
+]
+
+{ #category : 'tests - calls' }
+FASTPythonSSATest >> testVariableUsedinACall [
+
+	| assignedVar usedVar |
+	self parseAndResolve: 'x = z
+	
+x()'.
+
+	assignedVar := model module statements first left.
+	self assert: assignedVar ssaVersion version equals: 1.
+	self assert: assignedVar ssaName equals: 'x_1'.
+	self assert: assignedVar ssaVersion localDeclaration equals: assignedVar localDeclaration.
+	self assert: assignedVar ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements second callee.
+	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
+]

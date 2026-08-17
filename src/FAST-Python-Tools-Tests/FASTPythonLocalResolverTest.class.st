@@ -205,6 +205,66 @@ x.y'.
 ]
 
 { #category : 'tests - globals' }
+FASTPythonLocalResolverTest >> testCallOnGlobal [
+
+	| assignedVariable usedVariable |
+	self parseAndResolve: 'x = 1
+x()'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second callee.
+	self assert: usedVariable localDeclaration equals: assignedVariable.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests - globals' }
+FASTPythonLocalResolverTest >> testCallOnGlobalAttribute [
+
+	| assignedVariable usedVariable |
+	self parseAndResolve: 'y.x = 1
+y.x()'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second callee.
+	self assert: usedVariable localDeclaration equals: assignedVariable.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests - globals' }
+FASTPythonLocalResolverTest >> testCallOnGlobalSlice [
+
+	| assignedVariable usedVariable |
+	self parseAndResolve: 'x[1] = 1
+x[1]()'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration value name equals: 'x'.
+	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second callee.
+	self assert: usedVariable localDeclaration equals: assignedVariable.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
+{ #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testCommentedGlobalUsage [
 
 	| assignedVariable |
