@@ -299,6 +299,34 @@ print(x)'.
 ]
 
 { #category : 'tests - for' }
+FASTPythonSSATest >> testForElseAndUsage [
+
+	| assignedVar usedVar assignedVar2 |
+	self parseAndResolve: 'for x in range(5):
+    pass
+else:
+    x = 10
+
+print(x)'.
+
+	assignedVar := model module statements first left.
+	self assert: assignedVar ssaVersion version equals: 1.
+	self assert: assignedVar ssaName equals: 'x_1'.
+	self assert: assignedVar ssaVersion localUses size equals: 2.
+
+	assignedVar2 := model module statements first elseClause statements first left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements second arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVar ssaVersion.
+			assignedVar2 ssaVersion }
+]
+
+{ #category : 'tests - for' }
 FASTPythonSSATest >> testForVariableUsed [
 
 	| assignedVar usedVar |

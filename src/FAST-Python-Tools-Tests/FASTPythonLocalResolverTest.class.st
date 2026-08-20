@@ -357,6 +357,33 @@ x'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
+{ #category : 'tests - for' }
+FASTPythonLocalResolverTest >> testForElseAssignLinks [
+
+	| forVariable elseVariable usedVariable |
+	self parseAndResolve: 'for x in range(5):
+    pass
+else:
+    x = 10
+
+print(x)'.
+
+	forVariable := model module statements first left.
+	self assert: forVariable localDeclaration equals: forVariable.
+	self assert: forVariable localDeclaration name equals: 'x'.
+	self assert: forVariable localDeclaration isVariableWriteAccess.
+	self deny: forVariable localDeclaration isNonLocalDeclaration.
+	self assert: forVariable localDeclaration localUses size equals: 3.
+
+	elseVariable := model module statements first elseClause statements first left.
+	self assert: elseVariable localDeclaration equals: forVariable.
+	self assert: elseVariable equals: forVariable localDeclaration localUses second.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: forVariable.
+	self assert: usedVariable equals: forVariable localDeclaration localUses third
+]
+
 { #category : 'tests - imports' }
 FASTPythonLocalResolverTest >> testFromImportedEntity [
 
