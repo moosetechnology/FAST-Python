@@ -327,6 +327,35 @@ print(x)'.
 ]
 
 { #category : 'tests - for' }
+FASTPythonSSATest >> testForLoopReAssignAndUsage [
+
+	| assignedVar1 assignedVar2 usedVar |
+	self parseAndResolve: 'x = 3
+
+for i in range(5):
+    x = i
+
+print(x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	assignedVar2 := model module statements second statements first left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVar1 ssaVersion.
+			assignedVar2 ssaVersion }
+]
+
+{ #category : 'tests - for' }
 FASTPythonSSATest >> testForVariableUsed [
 
 	| assignedVar usedVar |
