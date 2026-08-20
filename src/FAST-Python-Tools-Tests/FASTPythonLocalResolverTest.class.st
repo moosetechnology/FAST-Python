@@ -205,6 +205,60 @@ x.y'.
 ]
 
 { #category : 'tests - globals' }
+FASTPythonLocalResolverTest >> testAugmentedAssignInConditionalLinksToExistingDeclaration [
+
+	| assignedVariable augmentedVariable usedVariable |
+	self parseAndResolve: 'x = 3
+
+if a:
+	x += 1
+
+print(x)'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 3.
+
+	augmentedVariable := model module statements second thenClause statements first left.
+	self assert: augmentedVariable localDeclaration equals: assignedVariable.
+	self assert: augmentedVariable equals: assignedVariable localDeclaration localUses second.
+
+	usedVariable := model module statements third arguments first.
+	self assert: usedVariable localDeclaration equals: assignedVariable.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses third
+]
+
+{ #category : 'tests - globals' }
+FASTPythonLocalResolverTest >> testAugmentedAssignLinksToExistingDeclaration [
+
+	| assignedVariable augmentedVariable usedVariable |
+	self parseAndResolve: 'x = 3
+
+x += 1
+
+print(x)'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 3.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	augmentedVariable := model module statements second left.
+	self assert: augmentedVariable localDeclaration equals: assignedVariable.
+	self assert: augmentedVariable equals: assignedVariable localDeclaration localUses second.
+
+	usedVariable := model module statements third arguments first.
+	self assert: usedVariable localDeclaration equals: assignedVariable.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses third
+]
+
+{ #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testCallOnGlobal [
 
 	| assignedVariable usedVariable |
