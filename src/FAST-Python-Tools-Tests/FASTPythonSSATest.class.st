@@ -617,6 +617,36 @@ FASTPythonSSATest >> testMethodParameterUsed [
 ]
 
 { #category : 'tests - for' }
+FASTPythonSSATest >> testNestedForLoop [
+
+	| assignedVarX1 assignedVarX2 usedVar |
+	self parseAndResolve: 'x = 1
+
+for i in range(5):
+    for j in range(5):
+        x = i + j
+
+print(x)'.
+
+	assignedVarX1 := model module statements first left.
+	self assert: assignedVarX1 ssaVersion version equals: 1.
+	self assert: assignedVarX1 ssaName equals: 'x_1'.
+	self assert: assignedVarX1 ssaVersion localUses size equals: 2.
+
+	assignedVarX2 := model module statements second statements first statements first left.
+	self assert: assignedVarX2 ssaVersion version equals: 2.
+	self assert: assignedVarX2 ssaName equals: 'x_2'.
+	self assert: assignedVarX2 ssaVersion localDeclaration equals: assignedVarX1 ssaVersion localDeclaration.
+	self assert: assignedVarX2 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVarX1 ssaVersion.
+			assignedVarX2 ssaVersion }
+]
+
+{ #category : 'tests - for' }
 FASTPythonSSATest >> testReAssignedVariableInFor [
 
 	| assignedVar1 assignedVar2 usedVar |
