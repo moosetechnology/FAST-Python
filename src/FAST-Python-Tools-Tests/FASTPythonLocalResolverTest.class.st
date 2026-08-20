@@ -1712,6 +1712,33 @@ FASTPythonLocalResolverTest >> testVariableOfForWithTuple [
 	self assert: usedVariableB equals: declaredB localDeclaration localUses second
 ]
 
+{ #category : 'tests - while' }
+FASTPythonLocalResolverTest >> testVariableOfWhileReassignVariable [
+
+	| assignedVariable reAssignedVariable usedVariable |
+	self parseAndResolve: 'x = 3
+
+while a:
+    x = 4
+
+print(x)'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 3.
+
+	reAssignedVariable := model module statements second statements first left.
+	self assert: reAssignedVariable localDeclaration equals: assignedVariable.
+	self assert: reAssignedVariable equals: assignedVariable localDeclaration localUses second.
+
+	usedVariable := model module statements third arguments first.
+	self assert: usedVariable localDeclaration equals: assignedVariable.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses third
+]
+
 { #category : 'tests' }
 FASTPythonLocalResolverTest >> testVariableRedefinedInIf [
 
