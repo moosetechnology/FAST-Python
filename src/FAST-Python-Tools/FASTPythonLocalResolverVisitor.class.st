@@ -153,6 +153,18 @@ FASTPythonLocalResolverVisitor >> visitFASTPyFunctionDefinition: aFunctionDefini
 			self visitFASTPyTDefinition: aFunctionDefinition ]
 ]
 
+{ #category : 'visiting - reordering' }
+FASTPythonLocalResolverVisitor >> visitFASTPyIfStatement: anIfStatement [
+	"Visit then - elif(s) -> else "
+
+	self visitFASTTConditionalStatement: anIfStatement.
+	self visitFASTPyStatement: anIfStatement.
+
+	self visitEntity: anIfStatement thenClause.
+	self visitCollection: anIfStatement elifClauses.
+	self visitFASTPyTWithElseClause: anIfStatement
+]
+
 { #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyImport: anImport [
 

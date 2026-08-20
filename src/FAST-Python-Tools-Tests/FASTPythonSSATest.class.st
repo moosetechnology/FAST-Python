@@ -58,7 +58,7 @@ print(y)'.
 	self assert: usedVar4 ssaVersion identicalTo: assignedVar2 ssaVersion
 ]
 
-{ #category : 'tests - assignments' }
+{ #category : 'tests - if' }
 FASTPythonSSATest >> testAssignementInIfInBothBranchesAndUsage [
 
 	| assignedVar1 assignedVar2 usedVar |
@@ -89,7 +89,7 @@ print(x)'.
 			assignedVar2 ssaVersion }
 ]
 
-{ #category : 'tests - assignments' }
+{ #category : 'tests - if' }
 FASTPythonSSATest >> testAssignementInIfInThenAndUsage [
 
 	| assignedVar2 usedVar |
@@ -109,7 +109,7 @@ print(x)'.
 	self assert: usedVar ssaVersion identicalTo: assignedVar2 ssaVersion
 ]
 
-{ #category : 'tests - assignments' }
+{ #category : 'tests - if' }
 FASTPythonSSATest >> testAssignementInIfInThenAndUsage2 [
 
 	| assignedVar2 usedVar |
@@ -131,7 +131,7 @@ print(x)'.
 	self assert: usedVar ssaVersion identicalTo: assignedVar2 ssaVersion
 ]
 
-{ #category : 'tests - assignments' }
+{ #category : 'tests - if' }
 FASTPythonSSATest >> testAssignementNotUpdatedInIfAndUsage [
 
 	| assignedVar usedVar |
@@ -155,7 +155,7 @@ print(x)'.
 	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
 ]
 
-{ #category : 'tests - assignments' }
+{ #category : 'tests - if' }
 FASTPythonSSATest >> testAssignementNotUpdatedInIfAndUsage2 [
 
 	| assignedVar usedVar |
@@ -786,7 +786,46 @@ print(x)'.
 	self assert: usedVar2 ssaVersion identicalTo: assignedVar2 ssaVersion
 ]
 
-{ #category : 'tests - assignments' }
+{ #category : 'tests - if' }
+FASTPythonSSATest >> testReAssignementInBothBranchesOfNestedIf [
+
+	| assignedVar1 assignedVar2 assignedVar3 usedVar |
+	self parseAndResolve: 'x = 1
+
+if a:
+    if b:
+        x = 2
+    else:
+        x = 3
+
+print(x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	assignedVar2 := model module statements second thenClause statements first thenClause statements first left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	assignedVar3 := model module statements second thenClause statements first elseClause statements first left.
+	self assert: assignedVar3 ssaVersion version equals: 3.
+	self assert: assignedVar3 ssaName equals: 'x_3'.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar3 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVar1 ssaVersion.
+			assignedVar2 ssaVersion.
+			assignedVar3 ssaVersion }
+]
+
+{ #category : 'tests - if' }
 FASTPythonSSATest >> testReAssignementInIf [
 
 	| assignedVar1 assignedVar2 |
@@ -809,7 +848,7 @@ if y < 2:
 	self assert: assignedVar2 ssaVersion localUses size equals: 1
 ]
 
-{ #category : 'tests - assignments' }
+{ #category : 'tests - if' }
 FASTPythonSSATest >> testReAssignementInIfInBothBranchesAndUsage [
 
 	| assignedVar1 assignedVar2 assignedVar3 usedVar |
@@ -849,7 +888,7 @@ print(x)'.
 			assignedVar3 ssaVersion }
 ]
 
-{ #category : 'tests - assignments' }
+{ #category : 'tests - if' }
 FASTPythonSSATest >> testReAssignementInIfInThenAndUsage [
 
 	| assignedVar1 assignedVar2 usedVar |
@@ -880,7 +919,7 @@ print(x)'.
 			assignedVar2 ssaVersion }
 ]
 
-{ #category : 'tests - assignments' }
+{ #category : 'tests - if' }
 FASTPythonSSATest >> testReAssignementInIfInThenAndUsage2 [
 
 	| assignedVar1 assignedVar2 assignedVar3 usedVar |
@@ -1049,7 +1088,7 @@ print(x)'.
 			assignedVar3 ssaVersion }
 ]
 
-{ #category : 'tests - assignments' }
+{ #category : 'tests - if' }
 FASTPythonSSATest >> testReAssignementInMultipleIfsAndUsage [
 
 	| assignedVar1 assignedVar2 assignedVar3 usedVar1 usedVar2 |
@@ -1099,7 +1138,7 @@ print(x)'.
 			assignedVar3 ssaVersion }
 ]
 
-{ #category : 'tests - assignments' }
+{ #category : 'tests - if' }
 FASTPythonSSATest >> testReAssignementInMultipleIfsAndUsage2 [
 
 	| assignedVar1 assignedVar2 assignedVar3 assignedVar4 assignedVar5 usedVar1 usedVar2 |
@@ -1164,6 +1203,35 @@ print(x)'.
 	self assertCollection: usedVar2 ssaVersion ssaVariables hasSameElements: {
 			assignedVar4 ssaVersion.
 			assignedVar5 ssaVersion }
+]
+
+{ #category : 'tests - if' }
+FASTPythonSSATest >> testReAssignementInNestedIf [
+
+	| assignedVar1 usedVar assignedVar2 |
+	self parseAndResolve: 'x = 1
+
+if a:
+    if b:
+        x = 2
+
+print(x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	assignedVar2 := model module statements second thenClause statements first thenClause statements first left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVar1 ssaVersion.
+			assignedVar2 ssaVersion }
 ]
 
 { #category : 'tests' }

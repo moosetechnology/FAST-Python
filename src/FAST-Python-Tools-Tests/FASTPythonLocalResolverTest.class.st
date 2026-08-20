@@ -1292,6 +1292,68 @@ FASTPythonLocalResolverTest >> testMethodSelfParameterWithDifferentName [
 	self assert: usedVariable equals: declaration localDeclaration localUses second
 ]
 
+{ #category : 'tests - if' }
+FASTPythonLocalResolverTest >> testNestedIfAssignInner [
+
+	| assignedOuter assignedInner usedVariable |
+	self parseAndResolve: 'x = 1
+
+if a:
+    if b:
+        x = 2
+
+print(x)'.
+
+	assignedOuter := model module statements first left.
+	self assert: assignedOuter localDeclaration equals: assignedOuter.
+	self assert: assignedOuter localDeclaration name equals: 'x'.
+	self assert: assignedOuter localDeclaration isVariableWriteAccess.
+	self deny: assignedOuter localDeclaration isNonLocalDeclaration.
+	self assert: assignedOuter localDeclaration localUses size equals: 3.
+
+	assignedInner := model module statements second thenClause statements first thenClause statements first left.
+	self assert: assignedInner localDeclaration equals: assignedOuter.
+	self assert: assignedInner equals: assignedOuter localDeclaration localUses second.
+
+	usedVariable := model module statements third arguments first.
+	self assert: usedVariable localDeclaration equals: assignedOuter.
+	self assert: usedVariable equals: assignedOuter localDeclaration localUses third
+]
+
+{ #category : 'tests - if' }
+FASTPythonLocalResolverTest >> testNestedIfBothBranchesAssign [
+
+	| assignedOuter assignedInnerThen assignedInnerElse usedVariable |
+	self parseAndResolve: 'x = 1
+
+if a:
+    if b:
+        x = 2
+    else:
+        x = 3
+
+print(x)'.
+
+	assignedOuter := model module statements first left.
+	self assert: assignedOuter localDeclaration equals: assignedOuter.
+	self assert: assignedOuter localDeclaration name equals: 'x'.
+	self assert: assignedOuter localDeclaration isVariableWriteAccess.
+	self deny: assignedOuter localDeclaration isNonLocalDeclaration.
+	self assert: assignedOuter localDeclaration localUses size equals: 4.
+
+	assignedInnerThen := model module statements second thenClause statements first thenClause statements first left.
+	self assert: assignedInnerThen localDeclaration equals: assignedOuter.
+	self assert: assignedInnerThen equals: assignedOuter localDeclaration localUses second.
+
+	assignedInnerElse := model module statements second thenClause statements first elseClause statements first left.
+	self assert: assignedInnerElse localDeclaration equals: assignedOuter.
+	self assert: assignedInnerElse equals: assignedOuter localDeclaration localUses third.
+
+	usedVariable := model module statements third arguments first.
+	self assert: usedVariable localDeclaration equals: assignedOuter.
+	self assert: usedVariable equals: assignedOuter localDeclaration localUses fourth
+]
+
 { #category : 'tests' }
 FASTPythonLocalResolverTest >> testNonLocalAttributesAccessesAreLinked [
 
