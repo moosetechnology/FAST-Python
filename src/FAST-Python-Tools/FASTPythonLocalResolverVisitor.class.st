@@ -189,3 +189,13 @@ FASTPythonLocalResolverVisitor >> visitFASTPyTCanBeVariable: aTCanBeVariable [
 
 	super visitFASTPyTCanBeVariable: aTCanBeVariable
 ]
+
+{ #category : 'visiting - reordering' }
+FASTPythonLocalResolverVisitor >> visitFASTPyWhileStatement: aWhileStatement [
+
+	"Else block should be visited after the other ones."
+	self visitFASTTConditionalStatement: aWhileStatement.
+	self visitFASTTStatementBlock: aWhileStatement.
+	self visitFASTPyStatement: aWhileStatement.
+	self visitFASTPyTWithElseClause: aWhileStatement
+]

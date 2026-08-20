@@ -1766,3 +1766,30 @@ print(glob)'.
 	self assert: usedVariable localDeclaration equals: assignedVariable.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses third
 ]
+
+{ #category : 'tests - while' }
+FASTPythonLocalResolverTest >> testWhileElseAssign [
+
+	| whileVariable elseVariable usedVariable |
+	self parseAndResolve: 'while a:
+    x = 1
+else:
+    x = 2
+
+print(x)'.
+
+	whileVariable := model module statements first statements first left.
+	self assert: whileVariable localDeclaration equals: whileVariable.
+	self assert: whileVariable localDeclaration name equals: 'x'.
+	self assert: whileVariable localDeclaration isVariableWriteAccess.
+	self deny: whileVariable localDeclaration isNonLocalDeclaration.
+	self assert: whileVariable localDeclaration localUses size equals: 3.
+
+	elseVariable := model module statements first elseClause statements first left.
+	self assert: elseVariable localDeclaration equals: whileVariable.
+	self assert: elseVariable equals: whileVariable localDeclaration localUses second.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: whileVariable.
+	self assert: usedVariable equals: whileVariable localDeclaration localUses third
+]
