@@ -28,9 +28,9 @@ FASTPyEntity >> lastSSAVersion [
 
 	| entity |
 	entity := self localDeclaration.
-	[
-		entity := entity shadowing.
-		entity isNotNil ] whileTrue: [ entity activeVersion ifNotNil: [ :version | ^ version ] ].
+	[ entity isNotNil ] whileTrue: [
+			entity activeVersion ifNotNil: [ :version | ^ version ].
+			entity := entity shadowing ].
 
 	^ nil
 ]
