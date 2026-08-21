@@ -1518,6 +1518,30 @@ print(x)'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
+{ #category : 'tests - try' }
+FASTPythonLocalResolverTest >> testTryExceptAssign [
+
+	| assignedVariable usedVariable |
+	self parseAndResolve: 'try:
+    function()
+except:
+    x = 1
+
+print(x)'.
+
+	assignedVariable := model module statements first excepts first statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: assignedVariable.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
 { #category : 'tests' }
 FASTPythonLocalResolverTest >> testTwoAssignationsCreateOneDeclaration [
 
