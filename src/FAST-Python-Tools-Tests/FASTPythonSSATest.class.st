@@ -321,6 +321,52 @@ print(x)'.
 			assignedVar2 ssaVersion }
 ]
 
+{ #category : 'tests - ternary' }
+FASTPythonSSATest >> testAssignmentInTernaryExpressionAndUsage [
+
+	| assignedVar1 usedVar assignedVar2 |
+	self parseAndResolve: 'x = 3
+	
+(x := 1) if a else 2
+
+print(x)'.
+	self skip.
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	assignedVar2 := model module statements second thenExpression.
+	self assert: assignedVar2 ssaVersion version equals: 1.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVar1 ssaVersion.
+			assignedVar2 ssaVersion }
+]
+
+{ #category : 'tests - ternary' }
+FASTPythonSSATest >> testAssignmentToTernaryExpressionAndUsage [
+
+	| assignedVar1 usedVar |
+	self parseAndResolve: 'x = 1 if a else 2
+
+print(x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+	self assert: assignedVar1 ssaVersion localUses first equals: assignedVar1.
+
+	usedVar := model module statements second arguments first.
+	self assert: usedVar ssaVersion identicalTo: assignedVar1 ssaVersion.
+	self assert: usedVar equals: assignedVar1 ssaVersion localUses second
+]
+
 { #category : 'tests - augmented assignments' }
 FASTPythonSSATest >> testAugmentedAssignAndUsage [
 

@@ -1474,6 +1474,26 @@ print(x[3])'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
 ]
 
+{ #category : 'tests - globals' }
+FASTPythonLocalResolverTest >> testTernaryExpressionAssign [
+
+	| assignedVariable usedVariable |
+	self parseAndResolve: 'x = 1 if a else 2
+
+print(x)'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 2.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: assignedVariable.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses second
+]
+
 { #category : 'tests' }
 FASTPythonLocalResolverTest >> testTwoAssignationsCreateOneDeclaration [
 
