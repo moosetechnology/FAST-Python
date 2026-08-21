@@ -1864,6 +1864,90 @@ FASTPythonImporterTest >> testAssignmentToList [
 ]
 
 { #category : 'tests - assignments' }
+FASTPythonImporterTest >> testAssignmentToListSplatInTuple [
+	<generated>
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	Regenerate executing: 	self regenerateTest: #testAssignmentToListSplatInTuple 	"
+
+	self parse: 'a, *b = [1, 2, 3]'.
+
+	self assert: (fast allWithType: FASTPyAssignment) size equals: 1.
+	self assert: (fast allWithType: FASTPyIdentifier) size equals: 1.
+	self assert: (fast allWithType: FASTPyInteger) size equals: 3.
+	self assert: (fast allWithType: FASTPyList) size equals: 1.
+	self assert: (fast allWithType: FASTPyModule) size equals: 1.
+	self assert: (fast allWithType: FASTPySplat) size equals: 1.
+	self assert: (fast allWithType: FASTPyTuple) size equals: 1.
+	self assert: (fast allWithType: FASTPyVariable) size equals: 1.
+
+	stack push: fast rootEntities anyOne containedEntities first.
+	self assert: self topEntity sourceCode equals: 'a, *b = [1, 2, 3]'.
+	self assert: (self topEntity isOfType: FASTPyAssignment).
+	
+	"Testing value of monovalue relation left"
+	self assert: self topEntity left isNotNil.
+
+		stack push: self topEntity left.
+		self assert: self topEntity sourceCode equals: 'a, *b'.
+		self assert: (self topEntity isOfType: FASTPyTuple).
+		
+		"Testing value of multivalued relation initializers"
+		self assert: self topEntity initializers size equals: 2.
+		
+			stack push: (stack top initializers at: 1).
+			self assert: self topEntity sourceCode equals: 'a'.
+			self assert: (self topEntity isOfType: FASTPyIdentifier).
+			self assert: self topEntity name equals: 'a'.
+			stack pop.
+		
+			stack push: (stack top initializers at: 2).
+			self assert: self topEntity sourceCode equals: '*b'.
+			self assert: (self topEntity isOfType: FASTPySplat).
+			
+			"Testing value of monovalue relation expression"
+			self assert: self topEntity expression isNotNil.
+
+				stack push: self topEntity expression.
+				self assert: self topEntity sourceCode equals: 'b'.
+				self assert: (self topEntity isOfType: FASTPyVariable).
+				self assert: (self topEntity isOfType: FASTTVariableEntity).
+				self assert: self topEntity name equals: 'b'.
+				stack pop.
+			stack pop.
+		stack pop.
+	
+	"Testing value of monovalue relation right"
+	self assert: self topEntity right isNotNil.
+
+		stack push: self topEntity right.
+		self assert: self topEntity sourceCode equals: '[1, 2, 3]'.
+		self assert: (self topEntity isOfType: FASTPyList).
+		
+		"Testing value of multivalued relation initializers"
+		self assert: self topEntity initializers size equals: 3.
+		
+			stack push: (stack top initializers at: 1).
+			self assert: self topEntity sourceCode equals: '1'.
+			self assert: (self topEntity isOfType: FASTPyInteger).
+			self assert: (self topEntity isOfType: FASTTLiteral).
+			self assert: (self topEntity isOfType: FASTTNumericalLiteral).
+			stack pop.
+		
+			stack push: (stack top initializers at: 2).
+			self assert: self topEntity sourceCode equals: '2'.
+			self assert: (self topEntity isOfType: FASTPyInteger).
+			self assert: (self topEntity isOfType: FASTTLiteral).
+			self assert: (self topEntity isOfType: FASTTNumericalLiteral).
+			stack pop.
+		
+			stack push: (stack top initializers at: 3).
+			self assert: self topEntity sourceCode equals: '3'.
+			self assert: (self topEntity isOfType: FASTPyInteger).
+			self assert: (self topEntity isOfType: FASTTLiteral).
+			self assert: (self topEntity isOfType: FASTTNumericalLiteral)
+]
+
+{ #category : 'tests - assignments' }
 FASTPythonImporterTest >> testAssignmentToList_comprehension [
 	<generated>
 	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
