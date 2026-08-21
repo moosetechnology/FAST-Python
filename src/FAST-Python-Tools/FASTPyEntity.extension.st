@@ -46,7 +46,8 @@ FASTPyEntity >> localResolverKind [
 
 { #category : '*FAST-Python-Tools' }
 FASTPyEntity >> selfOrTopmostAssignableCollection [
-	"If I am in a tuple, I return the tuple (this applies recursively, if I am in a tuple in a tuple I return the topmost tuple). 
+	"If I am in a tuple, I return the tuple (this applies recursively, if I am in a tuple in a tuple I return the topmost tuple).
+	If I am in a splat used as assignment target (e.g. `a, *b = ...`), I also go through the splat.
 	
 	Else, return myself."
 
@@ -55,6 +56,8 @@ FASTPyEntity >> selfOrTopmostAssignableCollection [
 	node := self.
 	[ node collectionInitializer isNotNil and: [ node collectionInitializer isTuple or: [ node collectionInitializer isList ] ] ] whileTrue: [
 		node := node collectionInitializer ].
+
+	node parentSplat ifNotNil: [ :splat | ^ splat selfOrTopmostAssignableCollection ].
 
 	^ node
 ]

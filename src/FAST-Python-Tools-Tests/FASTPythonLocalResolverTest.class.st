@@ -45,6 +45,29 @@ print(x)'.
 ]
 
 { #category : 'tests - globals' }
+FASTPythonLocalResolverTest >> testAssignUnpacking [
+
+	| assignedVariable1 assignedVariable2 |
+	self parseAndResolve: 'a, *b = [1, 2, 3]'.
+
+	assignedVariable1 := model module statements first left initializers first.
+	self assert: assignedVariable1 localDeclaration equals: assignedVariable1.
+	self assert: assignedVariable1 localDeclaration name equals: 'a'.
+	self assert: assignedVariable1 localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable1 localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable1 localDeclaration localUses size equals: 1.
+	self assert: assignedVariable1 localDeclaration variableDeclarator equals: model module statements first.
+
+	assignedVariable2 := model module statements first left initializers second expression.
+	self assert: assignedVariable2 localDeclaration equals: assignedVariable2.
+	self assert: assignedVariable2 localDeclaration name equals: 'b'.
+	self assert: assignedVariable2 localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable2 localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable2 localDeclaration localUses size equals: 1.
+	self assert: assignedVariable2 localDeclaration variableDeclarator equals: model module statements first
+]
+
+{ #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testAssignementToList [
 
 	| assignedVariableX assignedVariableY usedVariableX |

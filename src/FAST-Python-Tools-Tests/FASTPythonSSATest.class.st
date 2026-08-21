@@ -242,6 +242,27 @@ print(y.x)'.
 	self assert: usedVar ssaVersion identicalTo: assignedVar2 ssaVersion
 ]
 
+{ #category : 'tests - assignments' }
+FASTPythonSSATest >> testAssignementToUnpackingAndUsage [
+
+	| assignedVar1 assignedVar2 usedVar |
+	self parseAndResolve: 'a, *b = [1, 2, 3]
+
+print(a)'.
+
+	assignedVar1 := model module statements first left initializers first.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'a_1'.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	assignedVar2 := model module statements first left initializers second expression.
+	self assert: assignedVar2 ssaVersion version equals: 1.
+	self assert: assignedVar2 ssaName equals: 'b_1'.
+
+	usedVar := model module statements second arguments first.
+	self assert: usedVar ssaVersion identicalTo: assignedVar1 ssaVersion
+]
+
 { #category : 'tests - if' }
 FASTPythonSSATest >> testAssignmentInIfWithMultipleElif [
 
