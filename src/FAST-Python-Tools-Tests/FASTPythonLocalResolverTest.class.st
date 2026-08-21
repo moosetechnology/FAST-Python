@@ -1346,6 +1346,44 @@ FASTPythonLocalResolverTest >> testMethodSelfParameterWithDifferentName [
 	self assert: usedVariable equals: declaration localDeclaration localUses second
 ]
 
+{ #category : 'tests - scope' }
+FASTPythonLocalResolverTest >> testNestedFunctionShadowingOuter [
+
+	| assignedOuter assignedInner usedOuter usedInner |
+	self parseAndResolve: 'x = 1
+
+def func():
+    x = 2
+    print(x)
+
+func()
+
+print(x)'.
+
+	assignedOuter := model module statements first left.
+	self assert: assignedOuter localDeclaration equals: assignedOuter.
+	self assert: assignedOuter localDeclaration name equals: 'x'.
+	self assert: assignedOuter localDeclaration isVariableWriteAccess.
+	self deny: assignedOuter localDeclaration isNonLocalDeclaration.
+	self assert: assignedOuter localDeclaration localUses size equals: 2.
+	self assert: assignedOuter localDeclaration localUses first equals: assignedOuter.
+
+	assignedInner := model module statements second statements first left.
+	self assert: assignedInner localDeclaration equals: assignedInner.
+	self assert: assignedInner localDeclaration name equals: 'x'.
+	self assert: assignedInner localDeclaration isVariableWriteAccess.
+	self deny: assignedInner localDeclaration isNonLocalDeclaration.
+	self assert: assignedInner localDeclaration localUses size equals: 2.
+	self assert: assignedInner localDeclaration localUses first equals: assignedInner.
+
+	usedInner := model module statements second statements second arguments first.
+	self assert: usedInner localDeclaration equals: assignedInner.
+
+	usedOuter := model module statements fourth arguments first.
+	self assert: usedOuter localDeclaration equals: assignedOuter.
+	self assert: usedOuter equals: assignedOuter localDeclaration localUses second
+]
+
 { #category : 'tests - if' }
 FASTPythonLocalResolverTest >> testNestedIfAssignInner [
 

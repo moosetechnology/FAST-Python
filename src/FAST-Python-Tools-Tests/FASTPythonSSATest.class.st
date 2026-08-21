@@ -755,6 +755,18 @@ FASTPythonSSATest >> testListAssignement [
 	self assert: assignedVarY ssaName equals: 'y_1'
 ]
 
+{ #category : 'tests - scope' }
+FASTPythonSSATest >> testListComprehensionVariableDoesNotLeak [
+
+	| usedVar |
+	self parseAndResolve: '[i for i in items]
+
+print(i)'.
+
+	usedVar := model module statements second arguments first.
+	self assert: usedVar ssaVersion isNil
+]
+
 { #category : 'tests - assignments' }
 FASTPythonSSATest >> testListInListAssignement [
 
@@ -819,6 +831,39 @@ print(x)'.
 	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
 			assignedVarX1 ssaVersion.
 			assignedVarX2 ssaVersion }
+]
+
+{ #category : 'tests - scope' }
+FASTPythonSSATest >> testNestedFunctionShadowingOuter [
+
+	| assignedOuter assignedInner usedOuter usedInner |
+	self parseAndResolve: 'x = 1
+
+def func():
+    x = 2
+    print(x)
+
+func()
+
+print(x)'.
+
+	assignedOuter := model module statements first left.
+	self assert: assignedOuter ssaVersion version equals: 1.
+	self assert: assignedOuter ssaName equals: 'x_1'.
+	self assert: assignedOuter ssaVersion localUses size equals: 2.
+
+	assignedInner := model module statements second statements first left.
+	self assert: assignedInner ssaVersion version equals: 1.
+	self assert: assignedInner ssaName equals: 'x_1'.
+	self assert: assignedInner ssaVersion localDeclaration equals: assignedInner localDeclaration.
+	self deny: assignedInner ssaVersion localDeclaration identicalTo: assignedOuter localDeclaration.
+	self assert: assignedInner ssaVersion localUses size equals: 2.
+
+	usedInner := model module statements second statements second arguments first.
+	self assert: usedInner ssaVersion identicalTo: assignedInner ssaVersion.
+
+	usedOuter := model module statements fourth arguments first.
+	self assert: usedOuter ssaVersion identicalTo: assignedOuter ssaVersion
 ]
 
 { #category : 'tests - for' }
