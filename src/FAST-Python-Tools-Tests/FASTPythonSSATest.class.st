@@ -1463,6 +1463,27 @@ print(x[3])'.
 	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
 ]
 
+{ #category : 'tests - try' }
+FASTPythonSSATest >> testTryAssignAndUsage [
+
+	| assignedVar usedVar |
+	self parseAndResolve: 'try:
+    x = 1
+except:
+    function()
+
+print(x)'.
+
+	assignedVar := model module statements first statements first left.
+	self assert: assignedVar ssaVersion version equals: 1.
+	self assert: assignedVar ssaName equals: 'x_1'.
+	self assert: assignedVar ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements second arguments first.
+	self deny: usedVar ssaVersion isPhi.
+	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
+]
+
 { #category : 'tests - assignments' }
 FASTPythonSSATest >> testTupleAssignement [
 
