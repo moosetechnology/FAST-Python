@@ -242,6 +242,85 @@ print(y.x)'.
 	self assert: usedVar ssaVersion identicalTo: assignedVar2 ssaVersion
 ]
 
+{ #category : 'tests - if' }
+FASTPythonSSATest >> testAssignmentInIfWithMultipleElif [
+
+	| assignedVar1 assignedVar2 assignedVar3 assignedVar4 usedVar |
+	self parseAndResolve: 'x = 0
+
+if a:
+	x = 1
+elif b:
+	x = 2
+elif c:
+	x = 3
+else:
+	function()
+
+print(x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+
+	assignedVar2 := model module statements second thenClause statements first left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+
+	assignedVar3 := model module statements second elifClauses first statements first left.
+	self assert: assignedVar3 ssaVersion version equals: 3.
+	self assert: assignedVar3 ssaName equals: 'x_3'.
+	self assert: assignedVar3 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+
+	assignedVar4 := model module statements second elifClauses second statements first left.
+	self assert: assignedVar4 ssaVersion version equals: 4.
+	self assert: assignedVar4 ssaName equals: 'x_4'.
+	self assert: assignedVar4 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVar2 ssaVersion.
+			assignedVar3 ssaVersion.
+			assignedVar3 ssaVersion.
+			assignedVar4 ssaVersion }
+]
+
+{ #category : 'tests - if' }
+FASTPythonSSATest >> testAssignmentInOneElif [
+
+	| assignedVar1 assignedVar2 usedVar |
+	self parseAndResolve: 'if a:
+	x = 1
+elif b:
+	x = 2
+else:
+	function()
+
+print(x)'.
+
+	assignedVar1 := model module statements first thenClause statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	assignedVar2 := model module statements first elifClauses first statements first left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements second arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVar1 ssaVersion.
+			assignedVar1 ssaVersion.
+			assignedVar2 ssaVersion }
+]
+
 { #category : 'tests - augmented assignments' }
 FASTPythonSSATest >> testAugmentedAssignAndUsage [
 

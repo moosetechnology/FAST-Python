@@ -13,6 +13,37 @@ FASTPythonLocalResolverTest >> parseAndResolve: aString [
 	FASTPythonLocalResolverVisitor resolve: model module
 ]
 
+{ #category : 'tests - if' }
+FASTPythonLocalResolverTest >> testAssignInElif [
+
+	| assignedVariable1 assignedVariable2 usedVariable |
+	self parseAndResolve: 'if a:
+	x = 1
+elif b:
+	x = 2
+else:
+	function()
+
+print(x)'.
+
+	assignedVariable1 := model module statements first thenClause statements first left.
+	self assert: assignedVariable1 localDeclaration equals: assignedVariable1.
+	self assert: assignedVariable1 localDeclaration name equals: 'x'.
+	self assert: assignedVariable1 localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable1 localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable1 localDeclaration localUses size equals: 3.
+	self assert: assignedVariable1 localDeclaration localUses first equals: assignedVariable1.
+
+	assignedVariable2 := model module statements first elifClauses first statements first left.
+	self assert: assignedVariable2 localDeclaration equals: assignedVariable1.
+	self assert: assignedVariable2 equals: assignedVariable1 localDeclaration localUses second.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: assignedVariable1.
+	self deny: usedVariable localDeclaration isNonLocalDeclaration.
+	self assert: usedVariable equals: assignedVariable1 localDeclaration localUses third
+]
+
 { #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testAssignementToList [
 
