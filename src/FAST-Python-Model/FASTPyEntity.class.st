@@ -50,6 +50,12 @@ FASTPyEntity class >> metamodel [
 	^ FASTPyModel metamodel
 ]
 
+{ #category : 'accessing' }
+FASTPyEntity >> assignedExpressions [
+
+	^ Array empty
+]
+
 { #category : 'testing' }
 FASTPyEntity >> hasImmediateSource [
 
@@ -100,7 +106,27 @@ FASTPyEntity >> isExpression [
 ]
 
 { #category : 'testing' }
+FASTPyEntity >> isIdentifier [
+
+	<generated>
+	^ false
+]
+
+{ #category : 'testing' }
+FASTPyEntity >> isInstanceVariableAccess [
+
+	^ false
+]
+
+{ #category : 'testing' }
 FASTPyEntity >> isInvocation [
+
+	<generated>
+	^ false
+]
+
+{ #category : 'testing' }
+FASTPyEntity >> isList [
 
 	<generated>
 	^ false
@@ -149,8 +175,84 @@ FASTPyEntity >> isStringLiteral [
 ]
 
 { #category : 'testing' }
+FASTPyEntity >> isTuple [
+
+	<generated>
+	^ false
+]
+
+{ #category : 'testing' }
 FASTPyEntity >> isVariableEntity [
 
 	<generated>
 	^ false
+]
+
+{ #category : 'testing' }
+FASTPyEntity >> isVariableWriteAccess [
+	"I am used in the LR and SSA builder to know if I represent the assignment of a variable."
+
+	^ self variableDeclarator isNotNil
+]
+
+{ #category : 'accessing' }
+FASTPyEntity >> shadowedBy [
+
+	<FMProperty: #shadowedBy type: #FASTPyEntity opposite: #shadowing>
+	<FMComment:
+	'Return the entity shadowing me, if it exists. Else, return nil. An entity is shadowed went a named entity of a different kind is defined after me with the same name. Be careful, this works only if the local resolution was done and it works only on the local declaration.'>
+	^ self attributeAt: #shadowedBy ifAbsent: [ nil ]
+]
+
+{ #category : 'accessing' }
+FASTPyEntity >> shadowedBy: aFASTEntity [
+
+	| otherSide |
+	otherSide := self shadowedBy.
+
+	otherSide == aFASTEntity ifTrue: [ ^ aFASTEntity ].
+
+	aFASTEntity
+		ifNil: [
+				self attributeAt: #shadowedBy put: aFASTEntity.
+				otherSide shadowing: nil ]
+		ifNotNil: [
+				self attributeAt: #shadowedBy put: aFASTEntity.
+				aFASTEntity shadowing: self ]
+]
+
+{ #category : 'accessing' }
+FASTPyEntity >> shadowing [
+
+	<FMProperty: #shadowing type: #FASTPyEntity opposite: #shadowedBy>
+	<FMComment:
+	'Return the entity I possibly shadow. Else, return nil. An entity is shadowed went a named entity of a different kind is defined after me with the same name. Be careful, this works only if the local resolution was done and it works only on the local declaration.'>
+	^ self attributeAt: #shadowing ifAbsent: [ nil ]
+]
+
+{ #category : 'accessing' }
+FASTPyEntity >> shadowing: aFASTEntity [
+
+	| otherSide |
+	otherSide := self shadowing.
+
+	otherSide == aFASTEntity ifTrue: [ ^ aFASTEntity ].
+
+	aFASTEntity
+		ifNil: [
+				self attributeAt: #shadowing put: aFASTEntity.
+				otherSide shadowedBy: nil ]
+		ifNotNil: [
+				self attributeAt: #shadowing put: aFASTEntity.
+				aFASTEntity shadowedBy: self ]
+]
+
+{ #category : 'accessing' }
+FASTPyEntity >> variableDeclarator [
+	"In case I am a write access to a variable, I return the node categorized as my declaration. Else I return nil.
+	Nodes representing potential variable write access should override me.
+	
+	I am used by the LocalResolver and potentially SSA"
+
+	^ nil
 ]

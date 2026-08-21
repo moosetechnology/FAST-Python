@@ -1,4 +1,6 @@
 "
+A splat parameter is a parameter that is a list slpat such as *args or a dictionary splat such as **kwargs.
+
 ## Relations
 ======================
 

@@ -69,6 +69,7 @@ FASTPyTVisitor >> visitFASTPyAttributeAccess: anAttributeAccess [
 
 	<generated>
 	self visitFASTPyTAsPatternTarget: anAttributeAccess.
+	self visitFASTPyTCanBeVariable: anAttributeAccess.
 	self visitFASTPyTReturnReferenceable: anAttributeAccess.
 	self visitFASTPyTSplatParameterTarget: anAttributeAccess.
 	self visitFASTTNamedEntity: anAttributeAccess.
@@ -489,8 +490,10 @@ FASTPyTVisitor >> visitFASTPyIdentifier: anIdentifier [
 
 	<generated>
 	self visitFASTPyTAsPatternTarget: anIdentifier.
+	self visitFASTPyTCanBeVariable: anIdentifier.
 	self visitFASTPyTReturnReferenceable: anIdentifier.
 	self visitFASTPyTSplatParameterTarget: anIdentifier.
+	self visitFASTTNamedEntity: anIdentifier.
 	self visitFASTPyExpression: anIdentifier
 ]
 
@@ -716,6 +719,7 @@ FASTPyTVisitor >> visitFASTPyPair: aPair [
 FASTPyTVisitor >> visitFASTPyParameter: aParameter [
 
 	<generated>
+	self visitFASTPyTCanBeVariable: aParameter.
 	self visitFASTTVariableEntity: aParameter.
 
 	self visitEntity: aParameter type.
@@ -845,6 +849,7 @@ FASTPyTVisitor >> visitFASTPySubscript: aSubscript [
 
 	<generated>
 	self visitFASTPyTAsPatternTarget: aSubscript.
+	self visitFASTPyTCanBeVariable: aSubscript.
 	self visitFASTPyTReturnReferenceable: aSubscript.
 	self visitFASTPyExpression: aSubscript.
 
@@ -884,6 +889,13 @@ FASTPyTVisitor >> visitFASTPyTAwaitable: aTAwaitable [
 
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTCallable: aTCallable [
+
+	<generated>
+
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTPyTCanBeVariable: aTCanBeVariable [
 
 	<generated>
 
@@ -1295,7 +1307,9 @@ FASTPyTVisitor >> visitFASTTStringLiteral: aTStringLiteral [
 FASTPyTVisitor >> visitFASTTVariableEntity: aTVariableEntity [
 
 	<generated>
-	self visitFASTTNamedEntity: aTVariableEntity.
+	"We do not visit all behaviorals because some classes already visit it in their superclasses in this language implementation. Visiting them here also would cause a double visit of this trait."
+	({ FASTPyVariable } includes: aTVariableEntity class)
+		ifFalse: [ self visitFASTTNamedEntity: aTVariableEntity ].
 
 
 ]

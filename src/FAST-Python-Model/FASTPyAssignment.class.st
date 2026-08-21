@@ -42,6 +42,12 @@ FASTPyAssignment class >> annotation [
 	<generated>
 ]
 
+{ #category : 'accessing' }
+FASTPyAssignment >> assignedExpressions [
+
+	^ { self right }
+]
+
 { #category : 'testing' }
 FASTPyAssignment >> isDeclaration [
 

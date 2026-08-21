@@ -35,9 +35,9 @@ Class {
 		'started',
 		'cfgs'
 	],
-	#category : 'FAST-Python-Tools-CFG/DataFlow',
+	#category : 'FAST-Python-Tools-CFG/LocalResolver/SSA',
 	#package : 'FAST-Python-Tools',
-	#tag : 'CFG/DataFlow'
+	#tag : 'CFG/LocalResolver/SSA'
 }
 
 { #category : 'running' }
@@ -151,15 +151,14 @@ FASTPythonCFGVisitor >> visitFASTPyFinallyClause: aFinallyClause [
 FASTPythonCFGVisitor >> visitFASTPyForStatement: aForStatement [
 
 	self buildBlockIfNeeded.
-
-	self addStatement: aForStatement left.
 	self addStatement: aForStatement right.
 
 	self buildAndUseLoopDuring: [
+			self addStatement: aForStatement left. "The variable does not go in the conditional block because if the collection is empty, we never assign the variable."
 			self visitFASTTStatementBlock: aForStatement.
 
 			"We add the loops after finishing the first statement block, so the else can be managed in this block to be in the right context."
-			self visitFASTPyTWithElseClause: aForStatement  ]
+			self visitFASTPyTWithElseClause: aForStatement ]
 ]
 
 { #category : 'visiting - entry points' }
@@ -185,7 +184,7 @@ FASTPythonCFGVisitor >> visitFASTPyLambda: aLambda [
 
 	started
 		ifTrue: [
-				self visitFASTTStatement: aLambda.
+				self visitFASTPyExpression: aLambda.
 				cfgs ifNotNil: [ "In this case, we also need to build the CFG of node and store it" cfgs at: aLambda put: aLambda cfg ] ]
 		ifFalse: [
 				started := true.

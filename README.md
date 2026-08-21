@@ -2,6 +2,22 @@
 
 Famix AST representation for Python based on TreeSitter
 
+<!-- TOC -->
+
+- [FAST-Python](#fast-python)
+  - [Installation](#installation)
+  - [Quick start](#quick-start)
+  - [Documentation](#documentation)
+  - [Control flow graph](#control-flow-graph)
+  - [Local resolutions](#local-resolutions)
+  - [Single Static Assignment (SSA)](#single-static-assignment-ssa)
+  - [Moose versions compatibility](#moose-versions-compatibility)
+  - [TreeSitter python version compatibility](#treesitter-python-version-compatibility)
+  - [Python version compatibility](#python-version-compatibility)
+  - [Contact](#contact)
+
+<!-- /TOC -->
+
 ## Installation
 
 To install this project on your Pharo image, execute the following script: 
@@ -47,6 +63,8 @@ Or
 
 The best documentation to read about this project is located in Pharo Tree Sitter's repository here: [https://github.com/Evref-BL/Pharo-Tree-Sitter/blob/main/resources/doc/fast_importer.md](https://github.com/Evref-BL/Pharo-Tree-Sitter/blob/main/resources/doc/fast_importer.md) and here: [https://github.com/Evref-BL/Pharo-Tree-Sitter/blob/main/resources/doc/ts_utilities.md](https://github.com/Evref-BL/Pharo-Tree-Sitter/blob/main/resources/doc/ts_utilities.md)
 
+You can find the documentation on some analysis possible here: [Analysis documentation](resources/doc/analysis.md).
+
 
 ## Control flow graph
 
@@ -63,6 +81,35 @@ aModel allFunctionDefinitions first cfg
 A CFG can be done on a function, method, class, module or lambda. 
 
 You can visualize it in the inspector as a visualization and you can also export your CFG as a mermaid visualization using `#asMermaidScript`
+
+For more information check the analysis documentation linked above.
+
+## Local resolutions
+
+It is possible to apply a local name resolution on a FAST-Python model by executing this piece of code:
+
+```smalltalk
+FASTPythonLocalResolverVisitor resolve: model module "Can be any behavioral entity"
+```
+
+Once this is executed, all nodes resolved will be able to provide a `#localDeclaration` pointing to the declaration/first use of the entity. This local declaration also knows all the `#localUses` of the entity.
+
+For more information check the analysis documentation linked above.
+
+## Single Static Assignment (SSA)
+
+It is possible to build the SSA of a FAST-Python model like this:
+
+
+It can be run like this:
+
+```smalltalk
+FASTPythonSSAVisitor resolve: model module
+```
+
+Then we can ask to any node representing a variable access `#ssaVersion`. This version is able to tell us where are the read and write accesses of this particular version of the variable.
+
+For more information check the analysis documentation linked above.
 
 ## Moose versions compatibility
 

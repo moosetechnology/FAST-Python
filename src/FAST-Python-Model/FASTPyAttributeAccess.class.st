@@ -40,8 +40,8 @@ I represent an access to an attribute such as `module.globalVariable`.
 Class {
 	#name : 'FASTPyAttributeAccess',
 	#superclass : 'FASTPyExpression',
-	#traits : 'FASTPyTAsPatternTarget + FASTPyTReturnReferenceable + FASTPyTSplatParameterTarget + FASTTNamedEntity',
-	#classTraits : 'FASTPyTAsPatternTarget classTrait + FASTPyTReturnReferenceable classTrait + FASTPyTSplatParameterTarget classTrait + FASTTNamedEntity classTrait',
+	#traits : 'FASTPyTAsPatternTarget + FASTPyTCanBeVariable + FASTPyTReturnReferenceable + FASTPyTSplatParameterTarget + FASTTNamedEntity',
+	#classTraits : 'FASTPyTAsPatternTarget classTrait + FASTPyTCanBeVariable classTrait + FASTPyTReturnReferenceable classTrait + FASTPyTSplatParameterTarget classTrait + FASTTNamedEntity classTrait',
 	#instVars : [
 		'#value => FMOne type: #FASTPyExpression opposite: #parentAttributeObject'
 	],
@@ -58,6 +58,25 @@ FASTPyAttributeAccess class >> annotation [
 	<generated>
 ]
 
+{ #category : 'testing' }
+FASTPyAttributeAccess >> isInstanceVariableAccess [
+
+	self methodDefinition ifNotNil: [ :method | ^ self value isIdentifier and: [ self value name = method selfName ] ].
+
+	^ false
+]
+
+{ #category : 'accessing' }
+FASTPyAttributeAccess >> methodDefinition [
+	"In case I am inside a method definition, return this method."
+
+	^ (self containersOfType: FASTPyMethodDefinition)
+		  ifNotEmpty: [ :methods |
+				  self assert: methods size = 1.
+				  methods anyOne ]
+		  ifEmpty: [ nil ]
+]
+
 { #category : 'accessing' }
 FASTPyAttributeAccess >> value [
 	"Relation named: #value type: #FASTPyExpression opposite: #parentAttributeObject"
@@ -72,4 +91,15 @@ FASTPyAttributeAccess >> value: anObject [
 
 	<generated>
 	value := anObject
+]
+
+{ #category : 'accessing' }
+FASTPyAttributeAccess >> variableDeclarator [
+	"In the case I represent a write access to a variable, I return the node representing my assignment."
+
+	"If I am a variable defined in tuples, I should return the node initializing this tuple. Can be recursive (tuple in tuple)"
+
+	self selfOrTopmostAssignableCollection parentAssignmentLeft ifNotNil: [ :assignment | ^ assignment ].
+
+	^ super variableDeclarator
 ]

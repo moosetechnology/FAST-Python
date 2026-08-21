@@ -157,7 +157,8 @@ Class {
 		'tAwaitable',
 		'tExecutable',
 		'tBreakStatement',
-		'tContinueStatement'
+		'tContinueStatement',
+		'tCanBeVariable'
 	],
 	#category : 'FAST-Python-Model-Generator',
 	#package : 'FAST-Python-Model-Generator'
@@ -287,6 +288,7 @@ FASTPythonMetamodelGenerator >> defineClasses [
 	genericType := builder newClassNamed: #GenericType.
 	globalStatement := builder newClassNamed: #GlobalStatement.
 	identifier := builder newClassNamed: #Identifier.
+	identifier withTesting.
 	ifClause := builder newClassNamed: #IfClause.
 	ifStatement := builder newClassNamed: #IfStatement.
 	import := builder newClassNamed: #Import.
@@ -301,6 +303,7 @@ FASTPythonMetamodelGenerator >> defineClasses [
 	lambda := builder newClassNamed: #Lambda.
 	lambdaParameters := builder newClassNamed: #LambdaParameters.
 	list := builder newClassNamed: #List.
+	list withTesting.
 	listComprehension := builder newClassNamed: #ListComprehension.
 	literal := builder newAbstractClassNamed: #Literal.
 	matchStatement := builder newClassNamed: #MatchStatement.
@@ -325,7 +328,8 @@ FASTPythonMetamodelGenerator >> defineClasses [
 	slice := builder newClassNamed: #Slice.
 	(splat := builder newClassNamed: #Splat) comment:
 		'In Python a collection (list or dictionary) splat is the unpacking of a collection in a call or in the definition of another definition like `[ *list , 4 ]` or `func(*list)`'.
-	splatParameter := builder newClassNamed: #SplatParameter.
+	(splatParameter := builder newClassNamed: #SplatParameter) comment:
+		'A splat parameter is a parameter that is a list slpat such as *args or a dictionary splat such as **kwargs.'.
 	splatType := builder newClassNamed: #SplatType.
 	statement := builder newAbstractClassNamed: #Statement.
 	string := builder newClassNamed: #String.
@@ -333,6 +337,7 @@ FASTPythonMetamodelGenerator >> defineClasses [
 	thenClause := builder newClassNamed: #ThenClause.
 	tryStatement := builder newClassNamed: #TryStatement.
 	tuple := builder newClassNamed: #Tuple.
+	tuple withTesting.
 	type := builder newClassNamed: #Type.
 	typeAliasStatement := builder newClassNamed: #TypeAliasStatement.
 	typeConversion := builder newClassNamed: #TypeConversion.
@@ -372,6 +377,7 @@ FASTPythonMetamodelGenerator >> defineHierarchy [
 	attribute --|> tAsPatternTarget.
 	attribute --|> tSplatParameterTarget.
 	attribute --|> tNamedEntity.
+	attribute --|> tCanBeVariable.
 	
 	augmentedAssignment --|> assignment.
 	
@@ -487,6 +493,8 @@ FASTPythonMetamodelGenerator >> defineHierarchy [
 	identifier --|> tReturnReferenceable.
 	identifier --|> tAsPatternTarget.
 	identifier --|> tSplatParameterTarget.
+	identifier --|> tNamedEntity.
+	identifier --|> tCanBeVariable.
 	
 	ifClause --|> expression. "This is wrong! I am just here temporarily until we rework the relation to the for in clause (I need to be able to be a clause of a list comprehension)"
 
@@ -553,6 +561,7 @@ FASTPythonMetamodelGenerator >> defineHierarchy [
 	pair --|> expression.
 	
 	parameter --|> tVariableEntity.
+	parameter --|> tCanBeVariable.
 
 	passStatement --|> statement.
 	
@@ -590,6 +599,7 @@ FASTPythonMetamodelGenerator >> defineHierarchy [
 	subscript --|> expression.
 	subscript --|> tReturnReferenceable.
 	subscript --|> tAsPatternTarget.
+	subscript --|> tCanBeVariable.
 	
 	tAsPatternTarget --|> tAsPatternSource.
 
@@ -863,6 +873,8 @@ FASTPythonMetamodelGenerator >> defineTraits [
 	tAwaitable := (builder newTraitNamed: #TAwaitable) comment: 'I represent an entity that is awaitable and can be in an await statement'.
 	
 	tCallable := (builder newTraitNamed: #TCallable) comment: 'I represent something that can be the receiver of a call'.
+	
+	tCanBeVariable := (builder newTraitNamed: #TCanBeVariable) comment: 'Represent everything that can be a variable. Used for the LocalResolver and the SSA builder. Maybe I should be merged with TAssignable?'.
 	
 	tClassPatternElement := (builder newTraitNamed: #TClassPatternElement) comment: 'I represent the elements of a class pattern in python pattern matcher. The first element is the class name, the others the arguments.'.
 

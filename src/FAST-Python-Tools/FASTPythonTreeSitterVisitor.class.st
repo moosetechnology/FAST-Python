@@ -59,10 +59,14 @@ FASTPythonTreeSitterVisitor >> initialize [
 FASTPythonTreeSitterVisitor >> isIdentifierAVariableInTheCurrentContext [
 	"I am sure that an identifier is a variable in some cases:
 	- It is directly in the left side of an assignation
+	- It is in a splat used as assignment target (e.g. extended unpacking `a, *b = ...`)
 	- It's in a global statement
 	- It's in a non local statement"
 
 	(context top field = #left and: [ context top isOfFASTType: FASTPyAssignment ]) ifTrue: [ ^ true ].
+
+	((context top isOfFASTType: FASTPySplat) and: [ context anySatisfy: [ :entry | entry field = #left and: [ entry isOfFASTType: FASTPyAssignment ] ] ]) ifTrue: [
+		^ true ].
 
 	^ (context top isOfFASTType: FASTPyGlobalStatement) or: [ context top isOfFASTType: FASTPyNonlocalStatement ]
 ]
@@ -619,21 +623,26 @@ FASTPythonTreeSitterVisitor >> visitGlobalStatement: aTSNode [
 { #category : 'visiting' }
 FASTPythonTreeSitterVisitor >> visitIdentifier: aNode [
 
-	(self isInParameter: aNode) ifTrue: [ ^ self handleParameterNode: aNode name: (self sourceCodeOf: aNode) ].
+	| name |
+	name := self sourceCodeOf: aNode.
+
+	(self isInParameter: aNode) ifTrue: [ ^ self handleParameterNode: aNode name: name ].
 
 	"If we are in a field `name` then we are probably in a definition of an entity and we set my content as a name."
-	self shouldIdentifierSetNameProperty ifTrue: [ ^ self topFastEntity name: (self sourceCodeOf: aNode) ].
+	self shouldIdentifierSetNameProperty ifTrue: [ ^ self topFastEntity name: name ].
 
 	self isIdentifierAVariableInTheCurrentContext ifTrue: [
 			| variable |
 			variable := self handleNode: aNode kind: FASTPyVariable.
-			variable name: (self sourceCodeOf: aNode).
+			variable name: name.
 			^ variable ].
 
 	"In case we are in an alias, we edit the property alias of the last imported entity"
-	aNode parent type = #aliased_import ifTrue: [ ^ self topFastEntity importedEntities last alias: (self sourceCodeOf: aNode) ].
+	aNode parent type = #aliased_import ifTrue: [ ^ self topFastEntity importedEntities last alias: name ].
 
-	^ self handleNode: aNode
+	^ (self handleNode: aNode)
+		  name: name;
+		  yourself
 ]
 
 { #category : 'visiting - skip' }
@@ -771,7 +780,8 @@ FASTPythonTreeSitterVisitor >> visitListSplat: aTSNode [
 
 { #category : 'visiting - alias' }
 FASTPythonTreeSitterVisitor >> visitListSplatPattern: aTSNode [
-	"In case we are a parameter we skip the children because it always is an identifier"
+	"In case we are a parameter we skip the children because it always is an identifier.
+	In any other pattern context (e.g. the left side of an assignment) we visit the node as a classic splat."
 
 	(self isInParameter: aTSNode) ifTrue: [
 			| fastEntity |
@@ -780,7 +790,7 @@ FASTPythonTreeSitterVisitor >> visitListSplatPattern: aTSNode [
 			fastEntity name: (self sourceCodeOf: aTSNode collectNamedChild anyOne).
 			^ fastEntity ].
 
-	^ self handleNode: aTSNode
+	^ self visitListSplat: aTSNode
 ]
 
 { #category : 'visiting' }

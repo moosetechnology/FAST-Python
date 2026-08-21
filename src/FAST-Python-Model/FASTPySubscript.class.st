@@ -29,8 +29,8 @@
 Class {
 	#name : 'FASTPySubscript',
 	#superclass : 'FASTPyExpression',
-	#traits : 'FASTPyTAsPatternTarget + FASTPyTReturnReferenceable',
-	#classTraits : 'FASTPyTAsPatternTarget classTrait + FASTPyTReturnReferenceable classTrait',
+	#traits : 'FASTPyTAsPatternTarget + FASTPyTCanBeVariable + FASTPyTReturnReferenceable',
+	#classTraits : 'FASTPyTAsPatternTarget classTrait + FASTPyTCanBeVariable classTrait + FASTPyTReturnReferenceable classTrait',
 	#instVars : [
 		'#indices => FMMany type: #FASTPyTSliceIndex opposite: #parentSubscriptIndex',
 		'#value => FMOne type: #FASTPyExpression opposite: #parentSubscriptValue'
@@ -85,4 +85,14 @@ FASTPySubscript >> value: anObject [
 
 	<generated>
 	value := anObject
+]
+
+{ #category : 'accessing' }
+FASTPySubscript >> variableDeclarator [
+	"In the case I represent a write access to a variable, I return the node representing my assignment."
+
+	"If I am a variable defined in tuples, I should return the node initializing this tuple. Can be recursive (tuple in tuple)"
+	self selfOrTopmostAssignableCollection parentAssignmentLeft ifNotNil: [ :assignment | ^ assignment ].
+
+	^ super variableDeclarator
 ]
