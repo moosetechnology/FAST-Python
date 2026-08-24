@@ -845,6 +845,27 @@ def outer():
 ]
 
 { #category : 'tests - scopes' }
+FASTPythonSSATest >> testGlobalStatementInFunction [
+
+	| assignedVariable usedVariable |
+	self parseAndResolve: 'def f():
+    global x
+    x = 2
+
+print(x)'.
+
+	assignedVariable := model module statements first statements second left.
+	self assert: assignedVariable ssaVersion version equals: 1.
+	self assert: assignedVariable ssaName equals: 'x_1'.
+	self assert: assignedVariable ssaVersion localDeclaration equals: assignedVariable localDeclaration.
+	self assert: assignedVariable ssaVersion localUses size equals: 2.
+
+	usedVariable := model module statements second arguments first.
+	self deny: usedVariable ssaVersion isPhi.
+	self assert: usedVariable ssaVersion identicalTo: assignedVariable ssaVersion
+]
+
+{ #category : 'tests - scopes' }
 FASTPythonSSATest >> testGlobalStatementToExistingVar [
 
 	| assignedVariable globalVariable usedVariableInFunction |
