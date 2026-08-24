@@ -1669,7 +1669,7 @@ FASTPythonLocalResolverTest >> testNonLocalMethodAndVariable [
 ]
 
 { #category : 'tests - scopes' }
-FASTPythonLocalResolverTest >> testNonlocalReadOnlyUsageLinksToOuterDeclaration [
+FASTPythonLocalResolverTest >> testNonlocalStatementToReadVariable [
 
 	| assignedVariable nonlocalVariable usedVariable |
 	self parseAndResolve: 'def outer():
