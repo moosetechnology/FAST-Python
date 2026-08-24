@@ -704,6 +704,44 @@ FASTPythonSSATest >> testFunctionWithTypedParameters [
 			assignedVar ssaVersion }
 ]
 
+{ #category : 'tests - scopes' }
+FASTPythonSSATest >> testGlobalReAssignmentBumpsVersionOfSharedModuleDeclaration [
+
+	| assignedVar1 globalVar assignedVar2 usedVar1 usedVar2 |
+	self parseAndResolve: 'x = 1
+
+def f():
+    global x
+    x = 2
+    print(x)
+
+print(x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	globalVar := model module statements second statements first variables first.
+	self assert: globalVar ssaVersion identicalTo: assignedVar1 ssaVersion.
+
+	assignedVar2 := model module statements second statements second left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 3.
+
+	usedVar1 := model module statements second statements third arguments first.
+	self deny: usedVar1 ssaVersion isPhi.
+	self assert: usedVar1 ssaVersion identicalTo: assignedVar2 ssaVersion.
+
+	usedVar2 := model module statements third arguments first.
+	self deny: usedVar2 ssaVersion isPhi.
+	self assert: usedVar2 ssaVersion identicalTo: assignedVar2 ssaVersion
+]
+
 { #category : 'tests' }
 FASTPythonSSATest >> testGlobalReferencedInDefaultParameter [
 
@@ -721,6 +759,113 @@ def function(arg = x):
 
 	usedVar := model module statements second parameters first defaultValue.
 	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
+]
+
+{ #category : 'tests - scopes' }
+FASTPythonSSATest >> testGlobalSharedByMultipleFunctions [
+
+	| assignedVariable globalVariableInInc assignedVariableInInc usedVariableInInc globalVariableInReset assignedVariableInReset |
+	self parseAndResolve: 'x = 1
+
+def inc():
+    global x
+    x = x + 1
+
+def reset():
+    global x
+    x = 0'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable ssaVersion version equals: 1.
+	self assert: assignedVariable ssaName equals: 'x_1'.
+	self assert: assignedVariable ssaVersion localDeclaration equals: assignedVariable localDeclaration.
+	self assert: assignedVariable ssaVersion localUses size equals: 2.
+
+	globalVariableInInc := model module statements second statements first variables first.
+	self assert: globalVariableInInc ssaVersion identicalTo: assignedVariable ssaVersion.
+
+	assignedVariableInInc := model module statements second statements second left.
+	self assert: assignedVariableInInc ssaVersion version equals: 2.
+	self assert: assignedVariableInInc ssaName equals: 'x_2'.
+	self assert: assignedVariableInInc ssaVersion localDeclaration equals: assignedVariableInInc localDeclaration.
+	self assert: assignedVariableInInc ssaVersion localDeclaration equals: assignedVariable ssaVersion localDeclaration.
+	self assert: assignedVariableInInc ssaVersion localUses size equals: 3.
+
+	usedVariableInInc := model module statements second statements second right leftOperand.
+	self deny: usedVariableInInc ssaVersion isPhi.
+	self assert: usedVariableInInc ssaVersion identicalTo: assignedVariableInInc ssaVersion.
+
+	globalVariableInReset := model module statements third statements first variables first.
+	self assert: globalVariableInReset ssaVersion identicalTo: assignedVariableInInc ssaVersion.
+
+	assignedVariableInReset := model module statements third statements second left.
+	self assert: assignedVariableInReset ssaVersion version equals: 3.
+	self assert: assignedVariableInReset ssaName equals: 'x_3'.
+	self assert: assignedVariableInReset ssaVersion localDeclaration equals: assignedVariableInReset localDeclaration.
+	self assert: assignedVariableInReset ssaVersion localDeclaration equals: assignedVariable ssaVersion localDeclaration.
+	self assert: assignedVariableInReset ssaVersion localUses size equals: 1
+]
+
+{ #category : 'tests - scopes' }
+FASTPythonSSATest >> testGlobalStatementAndInnerFunctions [
+
+	| assignedVariable assignedVariableInOuterFunction globalVariable assignedVariableInInnerFunction |
+	self parseAndResolve: 'x = 0
+
+def outer():
+    x = 1
+
+    def inner():
+        global x
+        x = 2
+
+    inner()'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable ssaVersion version equals: 1.
+	self assert: assignedVariable ssaName equals: 'x_1'.
+	self assert: assignedVariable ssaVersion localDeclaration equals: assignedVariable localDeclaration.
+	self assert: assignedVariable ssaVersion localUses size equals: 2.
+
+	assignedVariableInOuterFunction := model module statements second statements first left.
+	self assert: assignedVariableInOuterFunction ssaVersion version equals: 1.
+	self assert: assignedVariableInOuterFunction ssaName equals: 'x_1'.
+	self assert: assignedVariableInOuterFunction ssaVersion localDeclaration equals: assignedVariableInOuterFunction localDeclaration.
+	self assert: assignedVariableInOuterFunction ssaVersion localUses size equals: 1.
+
+	globalVariable := model module statements second statements second statements first variables first.
+	self assert: globalVariable ssaVersion identicalTo: assignedVariable ssaVersion.
+
+	assignedVariableInInnerFunction := model module statements second statements second statements second left.
+	self assert: assignedVariableInInnerFunction ssaVersion version equals: 2.
+	self assert: assignedVariableInInnerFunction ssaName equals: 'x_2'.
+	self assert: assignedVariableInInnerFunction ssaVersion localDeclaration equals: assignedVariableInInnerFunction localDeclaration.
+	self assert: assignedVariableInInnerFunction ssaVersion localDeclaration equals: assignedVariable ssaVersion localDeclaration.
+	self assert: assignedVariableInInnerFunction ssaVersion localUses size equals: 1
+]
+
+{ #category : 'tests - scopes' }
+FASTPythonSSATest >> testGlobalStatementToExistingVar [
+
+	| assignedVariable globalVariable usedVariableInFunction |
+	self parseAndResolve: 'x = 1
+
+def f():
+	global x
+	print(x)'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable ssaVersion version equals: 1.
+	self assert: assignedVariable ssaName equals: 'x_1'.
+	self assert: assignedVariable ssaVersion localDeclaration equals: assignedVariable localDeclaration.
+	self assert: assignedVariable ssaVersion localUses size equals: 3.
+
+	globalVariable := model module statements second statements first variables first.
+	self assert: globalVariable ssaVersion identicalTo: assignedVariable ssaVersion.
+
+	usedVariableInFunction := model module statements second statements second arguments first.
+	self deny: usedVariableInFunction ssaVersion isPhi.
+	self assert: usedVariableInFunction ssaVersion identicalTo: assignedVariable ssaVersion
 ]
 
 { #category : 'tests - parameters' }
@@ -755,7 +900,7 @@ FASTPythonSSATest >> testListAssignement [
 	self assert: assignedVarY ssaName equals: 'y_1'
 ]
 
-{ #category : 'tests - scope' }
+{ #category : 'tests - scopes' }
 FASTPythonSSATest >> testListComprehensionVariableDoesNotLeak [
 
 	| usedVar |
@@ -833,7 +978,7 @@ print(x)'.
 			assignedVarX2 ssaVersion }
 ]
 
-{ #category : 'tests - scope' }
+{ #category : 'tests - scopes' }
 FASTPythonSSATest >> testNestedFunctionShadowingOuter [
 
 	| assignedOuter assignedInner usedOuter usedInner |
