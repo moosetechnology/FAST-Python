@@ -898,6 +898,51 @@ print(matplotlib)'.
 ]
 
 { #category : 'tests - scopes' }
+FASTPythonLocalResolverTest >> testGlobalSharedByMultipleFunctions [
+
+	| assignedVariable globalVariableInInc assignedVariableInInc usedVariableInInc globalVariableInReset assignedVariableInReset |
+	self parseAndResolve: 'x = 1
+
+def inc():
+    global x
+    x = x + 1
+
+def reset():
+    global x
+    x = 0'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 6.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	globalVariableInInc := model module statements second statements first variables first.
+	self assert: globalVariableInInc localDeclaration equals: assignedVariable.
+	self assert: globalVariableInInc equals: assignedVariable localDeclaration localUses second.
+
+	assignedVariableInInc := model module statements second statements second left.
+	self assert: assignedVariableInInc localDeclaration equals: assignedVariable.
+	self assert: assignedVariableInInc equals: assignedVariable localDeclaration localUses third.
+
+	usedVariableInInc := model module statements second statements second right leftOperand.
+	self assert: usedVariableInInc localDeclaration equals: assignedVariable.
+	self deny: usedVariableInInc localDeclaration isNonLocalDeclaration.
+	self assert: usedVariableInInc equals: assignedVariable localDeclaration localUses fourth.
+
+	globalVariableInReset := model module statements third statements first variables first.
+	self assert: globalVariableInReset localDeclaration equals: assignedVariable.
+	self assert: globalVariableInReset equals: assignedVariable localDeclaration localUses fifth.
+
+	assignedVariableInReset := model module statements third statements second left.
+	self assert: assignedVariableInReset localDeclaration equals: assignedVariable.
+	self assert: assignedVariableInReset equals: assignedVariable localDeclaration localUses sixth
+]
+
+{ #category : 'tests - scopes' }
 FASTPythonLocalResolverTest >> testGlobalStatementInFunction [
 
 	| globalVariable assignedVariable usedVariable |
