@@ -897,6 +897,33 @@ print(matplotlib)'.
 	self assert: usedVariable2 equals: assignedVariable localDeclaration localUses third
 ]
 
+{ #category : 'tests - scopes' }
+FASTPythonLocalResolverTest >> testGlobalStatementInFunction [
+
+	| globalVariable assignedVariable usedVariable |
+	self parseAndResolve: 'def f():
+    global x
+    x = 2
+
+print(x)'.
+
+	globalVariable := model module statements first statements first variables first.
+	self assert: globalVariable localDeclaration equals: globalVariable.
+	self assert: globalVariable localDeclaration name equals: 'x'.
+	self deny: globalVariable localDeclaration isNonLocalDeclaration.
+	self assert: globalVariable localDeclaration localUses size equals: 3.
+	self assert: globalVariable localDeclaration localUses first equals: globalVariable.
+
+	assignedVariable := model module statements first statements second left.
+	self assert: assignedVariable localDeclaration equals: globalVariable.
+	self assert: assignedVariable equals: globalVariable localDeclaration localUses second.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: globalVariable.
+	self deny: usedVariable localDeclaration isNonLocalDeclaration.
+	self assert: usedVariable equals: globalVariable localDeclaration localUses third
+]
+
 { #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testGlobalUsageInCall [
 
@@ -1346,7 +1373,7 @@ FASTPythonLocalResolverTest >> testMethodSelfParameterWithDifferentName [
 	self assert: usedVariable equals: declaration localDeclaration localUses second
 ]
 
-{ #category : 'tests - scope' }
+{ #category : 'tests - scopes' }
 FASTPythonLocalResolverTest >> testNestedFunctionShadowingOuter [
 
 	| assignedOuter assignedInner usedOuter usedInner |
