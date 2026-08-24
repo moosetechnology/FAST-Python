@@ -924,6 +924,35 @@ print(x)'.
 	self assert: usedVariable equals: globalVariable localDeclaration localUses third
 ]
 
+{ #category : 'tests - scopes' }
+FASTPythonLocalResolverTest >> testGlobalStatementToExistingVar [
+
+	| assignedVariable globalVariable usedVariableInFunction |
+	self parseAndResolve: 'x = 1
+
+def f():
+	global x
+	print(x)'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 3.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	globalVariable := model module statements second statements first variables first.
+	self assert: globalVariable localDeclaration equals: assignedVariable.
+	self assert: globalVariable equals: assignedVariable localDeclaration localUses second.
+
+	usedVariableInFunction := model module statements second statements second arguments first.
+	self assert: usedVariableInFunction localDeclaration equals: assignedVariable.
+	self deny: usedVariableInFunction localDeclaration isNonLocalDeclaration.
+	self assert: usedVariableInFunction equals: assignedVariable localDeclaration localUses third
+]
+
 { #category : 'tests - globals' }
 FASTPythonLocalResolverTest >> testGlobalUsageInCall [
 

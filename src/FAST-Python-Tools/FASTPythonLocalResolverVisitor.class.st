@@ -206,9 +206,10 @@ FASTPythonLocalResolverVisitor >> visitFASTPyTCanBeVariable: aTCanBeVariable [
 FASTPythonLocalResolverVisitor >> visitFASTPyVariable: aVariable [
 
 	aVariable parentGlobalStatement ifNotNil: [
-			"In case we encounter a global statement, we declare the variable in the global scope (the first entry of the context) and we copy it to the current scope in order to not create a new declaration when we assign it."
-			self ensureDeclarationOf: aVariable localDeclarationName declaration: aVariable in: namesContext last.
-			namesContext top at: aVariable localDeclarationName ifAbsentPut: aVariable ].
+			"In case we encounter a global statement, we declare the variable in the global scope (the first entry of the context) if it is not declared already and we copy it to the current scope in order to not create a new declaration when we assign it."
+			namesContext top
+				at: aVariable localDeclarationName
+				ifAbsentPut: [ self ensureDeclarationOf: aVariable localDeclarationName declaration: aVariable in: namesContext last ] ].
 
 	super visitFASTPyVariable: aVariable
 ]
