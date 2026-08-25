@@ -2509,6 +2509,54 @@ FASTPythonLocalResolverTest >> testWalrusInBooleanOperator [
 ]
 
 { #category : 'tests - walrus' }
+FASTPythonLocalResolverTest >> testWalrusInComprehensionBodyLeaks [
+
+	| walrus usedVariable |
+	self parseAndResolve: 'result = [(y := f(x)) for x in items]
+print(y)'.
+
+	self skip. "Todo"
+	walrus := model module statements first right body.
+	self assert: (walrus isOfType: FASTPyWalrus).
+	self assert: walrus localDeclaration equals: walrus.
+	self assert: walrus localDeclaration name equals: 'y'.
+	self assert: walrus localDeclaration isVariableWriteAccess.
+	self deny: walrus localDeclaration isNonLocalDeclaration.
+	self assert: walrus localDeclaration localUses size equals: 2.
+	self assert: walrus localDeclaration localUses first equals: walrus.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: walrus.
+	self assert: usedVariable equals: walrus localDeclaration localUses second
+]
+
+{ #category : 'tests - walrus' }
+FASTPythonLocalResolverTest >> testWalrusInComprehensionFilterLeaks [
+
+	| walrus usedBody usedPrint |
+	self parseAndResolve: 'result = [y for x in items if (y := x)]
+print(y)'.
+
+	self skip. "Todo"
+	walrus := model module statements first right conditions first.
+	self assert: (walrus isOfType: FASTPyWalrus).
+	self assert: walrus localDeclaration equals: walrus.
+	self assert: walrus localDeclaration name equals: 'y'.
+	self assert: walrus localDeclaration isVariableWriteAccess.
+	self deny: walrus localDeclaration isNonLocalDeclaration.
+	self assert: walrus localDeclaration localUses size equals: 3.
+	self assert: walrus localDeclaration localUses first equals: walrus.
+
+	usedBody := model module statements first right body.
+	self assert: usedBody localDeclaration equals: walrus.
+	self assert: usedBody equals: walrus localDeclaration localUses second.
+
+	usedPrint := model module statements second arguments first.
+	self assert: usedPrint localDeclaration equals: walrus.
+	self assert: usedPrint equals: walrus localDeclaration localUses third
+]
+
+{ #category : 'tests - walrus' }
 FASTPythonLocalResolverTest >> testWalrusInFunctionCallArgument [
 
 	| walrus |
