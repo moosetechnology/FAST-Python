@@ -224,6 +224,15 @@ FASTPythonLocalResolverVisitor >> visitFASTPyVariable: aVariable [
 	super visitFASTPyVariable: aVariable
 ]
 
+{ #category : 'visiting' }
+FASTPythonLocalResolverVisitor >> visitFASTPyWalrus: aWalrus [
+	"Adapt the same logic than for a variable been assigned."
+
+	self ensureDeclarationOf: aWalrus named: aWalrus localDeclarationName declaration: aWalrus.
+
+	super visitFASTPyWalrus: aWalrus
+]
+
 { #category : 'visiting - reordering' }
 FASTPythonLocalResolverVisitor >> visitFASTPyWhileStatement: aWhileStatement [
 

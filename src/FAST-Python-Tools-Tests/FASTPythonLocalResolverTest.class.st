@@ -2461,6 +2461,22 @@ print(glob)'.
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses third
 ]
 
+{ #category : 'tests - walrus' }
+FASTPythonLocalResolverTest >> testWalrusInFunctionCallArgument [
+
+	| walrus |
+	self parseAndResolve: 'print(x := 5)'.
+
+	walrus := model module statements first arguments first.
+	self assert: (walrus isOfType: FASTPyWalrus).
+	self assert: walrus localDeclaration equals: walrus.
+	self assert: walrus localDeclaration name equals: 'x'.
+	self assert: walrus localDeclaration isVariableWriteAccess.
+	self deny: walrus localDeclaration isNonLocalDeclaration.
+	self assert: walrus localDeclaration localUses size equals: 1.
+	self assert: walrus localDeclaration localUses first equals: walrus
+]
+
 { #category : 'tests - while' }
 FASTPythonLocalResolverTest >> testWhileElseAssign [
 

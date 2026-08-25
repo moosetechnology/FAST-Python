@@ -58,3 +58,9 @@ FASTPyWalrus >> value: anObject [
 	<generated>
 	value := anObject
 ]
+
+{ #category : 'accessing' }
+FASTPyWalrus >> variableDeclarator [
+
+	^ self
+]
