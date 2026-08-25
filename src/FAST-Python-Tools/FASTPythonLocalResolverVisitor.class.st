@@ -204,12 +204,22 @@ FASTPythonLocalResolverVisitor >> visitFASTPyTCanBeVariable: aTCanBeVariable [
 
 { #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyVariable: aVariable [
+	"We handle two specific cases here. 
+	
+	In case of a global statement, the variables impacted should act as if they were in the global scope. In order to manage this, I ensure the variable is in the bottom scope and I add a copy in the current scope (so that if we assign it, it goes in the global and do not create a new local)
+	
+	In case of a nonlocal statement, the variables impacted should act as if they were in the first parent scope defining the variable. I apply a logic similar to the global statement, but with a different scope."
 
 	aVariable parentGlobalStatement ifNotNil: [
-			"In case we encounter a global statement, we declare the variable in the global scope (the first entry of the context) if it is not declared already and we copy it to the current scope in order to not create a new declaration when we assign it."
 			namesContext top
 				at: aVariable localDeclarationName
 				ifAbsentPut: [ self ensureDeclarationOf: aVariable localDeclarationName declaration: aVariable in: namesContext last ] ].
+
+	aVariable parentNonlocalStatement ifNotNil: [
+			namesContext allButFirst
+				detect: [ :scope | scope includesKey: aVariable localDeclarationName ]
+				ifFound: [ :scope | namesContext top at: aVariable localDeclarationName put: (scope at: aVariable localDeclarationName) ]
+				ifNone: [ self error: 'Non local statement points a variable that was never defined.' ] ].
 
 	super visitFASTPyVariable: aVariable
 ]
