@@ -1032,6 +1032,221 @@ print(x)'.
 	self assert: usedOuter ssaVersion identicalTo: assignedOuter ssaVersion
 ]
 
+{ #category : 'tests - scopes' }
+FASTPythonSSATest >> testNonlocalStatementBindsToNearestEnclosingDeclaration [
+
+	| assignedVariableInGrand assignedVariableInMiddle nonlocalVariable assignedVariableInInnerFunction |
+	self parseAndResolve: 'def grand():
+    x = 1
+
+    def middle():
+        x = 2
+
+        def inner():
+            nonlocal x
+            x = 3
+
+        inner()'.
+
+	assignedVariableInGrand := model module statements first statements first left.
+	self assert: assignedVariableInGrand ssaVersion version equals: 1.
+	self assert: assignedVariableInGrand ssaName equals: 'x_1'.
+	self assert: assignedVariableInGrand ssaVersion localDeclaration equals: assignedVariableInGrand localDeclaration.
+	self assert: assignedVariableInGrand ssaVersion localUses size equals: 1.
+
+	assignedVariableInMiddle := model module statements first statements second statements first left.
+	self assert: assignedVariableInMiddle ssaVersion version equals: 1.
+	self assert: assignedVariableInMiddle ssaName equals: 'x_1'.
+	self assert: assignedVariableInMiddle ssaVersion localDeclaration equals: assignedVariableInMiddle localDeclaration.
+	self assert: assignedVariableInMiddle ssaVersion localUses size equals: 2.
+
+	nonlocalVariable := model module statements first statements second statements second statements first variables first.
+	self assert: nonlocalVariable ssaVersion identicalTo: assignedVariableInMiddle ssaVersion.
+
+	assignedVariableInInnerFunction := model module statements first statements second statements second statements second left.
+	self assert: assignedVariableInInnerFunction ssaVersion version equals: 2.
+	self assert: assignedVariableInInnerFunction ssaName equals: 'x_2'.
+	self assert: assignedVariableInInnerFunction ssaVersion localDeclaration equals: assignedVariableInInnerFunction localDeclaration.
+	self assert: assignedVariableInInnerFunction ssaVersion localDeclaration equals: assignedVariableInMiddle ssaVersion localDeclaration.
+	self assert: assignedVariableInInnerFunction ssaVersion localUses size equals: 1
+]
+
+{ #category : 'tests - scopes' }
+FASTPythonSSATest >> testNonlocalStatementReAssignmentBumpsVersionOfOuterDeclaration [
+
+	| assignedVar1 nonlocalVar assignedVar2 usedVar1 usedVar2 |
+	self parseAndResolve: 'def outer():
+    x = 1
+    def inner():
+        nonlocal x
+        x = 2
+        print(x)
+
+    inner()
+    print(x)'.
+
+	assignedVar1 := model module statements first statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	nonlocalVar := model module statements first statements second statements first variables first.
+	self assert: nonlocalVar ssaVersion identicalTo: assignedVar1 ssaVersion.
+
+	assignedVar2 := model module statements first statements second statements second left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 3.
+
+	usedVar1 := model module statements first statements second statements third arguments first.
+	self deny: usedVar1 ssaVersion isPhi.
+	self assert: usedVar1 ssaVersion identicalTo: assignedVar2 ssaVersion.
+
+	usedVar2 := model module statements first statements fourth arguments first.
+	self deny: usedVar2 ssaVersion isPhi.
+	self assert: usedVar2 ssaVersion identicalTo: assignedVar2 ssaVersion
+]
+
+{ #category : 'tests - scopes' }
+FASTPythonSSATest >> testNonlocalStatementSharedByInnerFunctions [
+
+	| assignedVariable nonlocalVariableInInc assignedVariableInInc usedVariableInInc nonlocalVariableInReset assignedVariableInReset |
+	self parseAndResolve: 'def outer():
+    x = 1
+
+    def inc():
+        nonlocal x
+        x = x + 1
+
+    def reset():
+        nonlocal x
+        x = 0
+
+    inc()
+    reset()'.
+
+	assignedVariable := model module statements first statements first left.
+	self assert: assignedVariable ssaVersion version equals: 1.
+	self assert: assignedVariable ssaName equals: 'x_1'.
+	self assert: assignedVariable ssaVersion localDeclaration equals: assignedVariable localDeclaration.
+	self assert: assignedVariable ssaVersion localUses size equals: 2.
+
+	nonlocalVariableInInc := model module statements first statements second statements first variables first.
+	self assert: nonlocalVariableInInc ssaVersion identicalTo: assignedVariable ssaVersion.
+
+	assignedVariableInInc := model module statements first statements second statements second left.
+	self assert: assignedVariableInInc ssaVersion version equals: 2.
+	self assert: assignedVariableInInc ssaName equals: 'x_2'.
+	self assert: assignedVariableInInc ssaVersion localDeclaration equals: assignedVariableInInc localDeclaration.
+	self assert: assignedVariableInInc ssaVersion localDeclaration equals: assignedVariable ssaVersion localDeclaration.
+	self assert: assignedVariableInInc ssaVersion localUses size equals: 3.
+
+	usedVariableInInc := model module statements first statements second statements second right leftOperand.
+	self deny: usedVariableInInc ssaVersion isPhi.
+	self assert: usedVariableInInc ssaVersion identicalTo: assignedVariableInInc ssaVersion.
+
+	nonlocalVariableInReset := model module statements first statements third statements first variables first.
+	self assert: nonlocalVariableInReset ssaVersion identicalTo: assignedVariableInInc ssaVersion.
+
+	assignedVariableInReset := model module statements first statements third statements second left.
+	self assert: assignedVariableInReset ssaVersion version equals: 3.
+	self assert: assignedVariableInReset ssaName equals: 'x_3'.
+	self assert: assignedVariableInReset ssaVersion localDeclaration equals: assignedVariableInReset localDeclaration.
+	self assert: assignedVariableInReset ssaVersion localDeclaration equals: assignedVariable ssaVersion localDeclaration.
+	self assert: assignedVariableInReset ssaVersion localUses size equals: 1
+]
+
+{ #category : 'tests - scopes' }
+FASTPythonSSATest >> testNonlocalStatementWithMultipleVariables [
+
+	| assignedVariableX assignedVariableY nonlocalVariableX nonlocalVariableY assignedVariableXInInnerFunction assignedVariableYInInnerFunction |
+	self parseAndResolve: 'def outer():
+    x = 1
+    y = 2
+
+    def inner():
+        nonlocal x, y
+        x = 10
+        y = 20
+
+    inner()'.
+
+	assignedVariableX := model module statements first statements first left.
+	self assert: assignedVariableX ssaVersion version equals: 1.
+	self assert: assignedVariableX ssaName equals: 'x_1'.
+	self assert: assignedVariableX ssaVersion localDeclaration equals: assignedVariableX localDeclaration.
+	self assert: assignedVariableX ssaVersion localUses size equals: 2.
+
+	assignedVariableY := model module statements first statements second left.
+	self assert: assignedVariableY ssaVersion version equals: 1.
+	self assert: assignedVariableY ssaName equals: 'y_1'.
+	self assert: assignedVariableY ssaVersion localDeclaration equals: assignedVariableY localDeclaration.
+	self assert: assignedVariableY ssaVersion localUses size equals: 2.
+
+	nonlocalVariableX := model module statements first statements third statements first variables first.
+	self assert: nonlocalVariableX ssaVersion identicalTo: assignedVariableX ssaVersion.
+
+	nonlocalVariableY := model module statements first statements third statements first variables second.
+	self assert: nonlocalVariableY ssaVersion identicalTo: assignedVariableY ssaVersion.
+
+	assignedVariableXInInnerFunction := model module statements first statements third statements second left.
+	self assert: assignedVariableXInInnerFunction ssaVersion version equals: 2.
+	self assert: assignedVariableXInInnerFunction ssaName equals: 'x_2'.
+	self assert: assignedVariableXInInnerFunction ssaVersion localDeclaration equals: assignedVariableXInInnerFunction localDeclaration.
+	self assert: assignedVariableXInInnerFunction ssaVersion localDeclaration equals: assignedVariableX ssaVersion localDeclaration.
+	self assert: assignedVariableXInInnerFunction ssaVersion localUses size equals: 1.
+
+	assignedVariableYInInnerFunction := model module statements first statements third statements third left.
+	self assert: assignedVariableYInInnerFunction ssaVersion version equals: 2.
+	self assert: assignedVariableYInInnerFunction ssaName equals: 'y_2'.
+	self assert: assignedVariableYInInnerFunction ssaVersion localDeclaration equals: assignedVariableYInInnerFunction localDeclaration.
+	self assert: assignedVariableYInInnerFunction ssaVersion localDeclaration equals: assignedVariableY ssaVersion localDeclaration.
+	self assert: assignedVariableYInInnerFunction ssaVersion localUses size equals: 1
+]
+
+{ #category : 'tests - scopes' }
+FASTPythonSSATest >> testNonlocalStatementWriteInInnerFunctionAfterRead [
+
+	| assignedVariable nonlocalVariable usedVariableBeforeWrite assignedVariableInInnerFunction usedVariableAfterCall |
+	self parseAndResolve: 'def outer():
+    x = 1
+
+    def inner():
+        nonlocal x
+        print(x)
+        x = 2
+
+    inner()
+    print(x)'.
+
+	assignedVariable := model module statements first statements first left.
+	self assert: assignedVariable ssaVersion version equals: 1.
+	self assert: assignedVariable ssaName equals: 'x_1'.
+	self assert: assignedVariable ssaVersion localDeclaration equals: assignedVariable localDeclaration.
+	self assert: assignedVariable ssaVersion localUses size equals: 3.
+
+	nonlocalVariable := model module statements first statements second statements first variables first.
+	self assert: nonlocalVariable ssaVersion identicalTo: assignedVariable ssaVersion.
+
+	usedVariableBeforeWrite := model module statements first statements second statements second arguments first.
+	self deny: usedVariableBeforeWrite ssaVersion isPhi.
+	self assert: usedVariableBeforeWrite ssaVersion identicalTo: assignedVariable ssaVersion.
+
+	assignedVariableInInnerFunction := model module statements first statements second statements third left.
+	self assert: assignedVariableInInnerFunction ssaVersion version equals: 2.
+	self assert: assignedVariableInInnerFunction ssaName equals: 'x_2'.
+	self assert: assignedVariableInInnerFunction ssaVersion localDeclaration equals: assignedVariableInInnerFunction localDeclaration.
+	self assert: assignedVariableInInnerFunction ssaVersion localDeclaration equals: assignedVariable ssaVersion localDeclaration.
+	self assert: assignedVariableInInnerFunction ssaVersion localUses size equals: 2.
+
+	usedVariableAfterCall := model module statements first statements fourth arguments first.
+	self deny: usedVariableAfterCall ssaVersion isPhi.
+	self assert: usedVariableAfterCall ssaVersion identicalTo: assignedVariableInInnerFunction ssaVersion
+]
+
 { #category : 'tests - for' }
 FASTPythonSSATest >> testReAssignedVariableInFor [
 
