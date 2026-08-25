@@ -1740,6 +1740,99 @@ FASTPythonLocalResolverTest >> testNonlocalStatementWriteInInnerFunction [
 	self assert: usedVariable equals: assignedVariable localDeclaration localUses fifth
 ]
 
+{ #category : 'tests - scopes' }
+FASTPythonLocalResolverTest >> testNonlocalStatementWriteInInnerFunctionAfterRead [
+
+	| assignedVariable nonlocalVariable usedVariableBeforeWrite assignedVariableInInnerFunction usedVariableAfterCall |
+	self parseAndResolve: 'def outer():
+    x = 1
+
+    def inner():
+        nonlocal x
+        print(x)
+        x = 2
+
+    inner()
+    print(x)'.
+
+	assignedVariable := model module statements first statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first statements first.
+	self assert: assignedVariable localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariable localDeclaration localUses size equals: 5.
+	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
+
+	nonlocalVariable := model module statements first statements second statements first variables first.
+	self assert: nonlocalVariable localDeclaration equals: assignedVariable.
+	self assert: nonlocalVariable equals: assignedVariable localDeclaration localUses second.
+
+	usedVariableBeforeWrite := model module statements first statements second statements second arguments first.
+	self assert: usedVariableBeforeWrite localDeclaration equals: assignedVariable.
+	self deny: usedVariableBeforeWrite localDeclaration isNonLocalDeclaration.
+	self assert: usedVariableBeforeWrite equals: assignedVariable localDeclaration localUses third.
+
+	assignedVariableInInnerFunction := model module statements first statements second statements third left.
+	self assert: assignedVariableInInnerFunction localDeclaration equals: assignedVariable.
+	self assert: assignedVariableInInnerFunction equals: assignedVariable localDeclaration localUses fourth.
+
+	usedVariableAfterCall := model module statements first statements fourth arguments first.
+	self assert: usedVariableAfterCall localDeclaration equals: assignedVariable.
+	self deny: usedVariableAfterCall localDeclaration isNonLocalDeclaration.
+	self assert: usedVariableAfterCall equals: assignedVariable localDeclaration localUses fifth
+]
+
+{ #category : 'tests - scopes' }
+FASTPythonLocalResolverTest >> testNonlocalWithMultipleVariables [
+
+	| assignedVariableX assignedVariableY nonlocalVariableX nonlocalVariableY assignedVariableXInInnerFunction assignedVariableYInInnerFunction |
+	self parseAndResolve: 'def outer():
+    x = 1
+    y = 2
+
+    def inner():
+        nonlocal x, y
+        x = 10
+        y = 20
+
+    inner()'.
+
+	assignedVariableX := model module statements first statements first left.
+	self assert: assignedVariableX localDeclaration equals: assignedVariableX.
+	self assert: assignedVariableX localDeclaration name equals: 'x'.
+	self assert: assignedVariableX localDeclaration variableDeclarator equals: model module statements first statements first.
+	self assert: assignedVariableX localDeclaration isVariableWriteAccess.
+	self deny: assignedVariableX localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariableX localDeclaration localUses size equals: 3.
+	self assert: assignedVariableX localDeclaration localUses first equals: assignedVariableX.
+
+	assignedVariableY := model module statements first statements second left.
+	self assert: assignedVariableY localDeclaration equals: assignedVariableY.
+	self assert: assignedVariableY localDeclaration name equals: 'y'.
+	self assert: assignedVariableY localDeclaration variableDeclarator equals: model module statements first statements second.
+	self assert: assignedVariableY localDeclaration isVariableWriteAccess.
+	self deny: assignedVariableY localDeclaration isNonLocalDeclaration.
+	self assert: assignedVariableY localDeclaration localUses size equals: 3.
+	self assert: assignedVariableY localDeclaration localUses first equals: assignedVariableY.
+
+	nonlocalVariableX := model module statements first statements third statements first variables first.
+	self assert: nonlocalVariableX localDeclaration equals: assignedVariableX.
+	self assert: nonlocalVariableX equals: assignedVariableX localDeclaration localUses second.
+
+	nonlocalVariableY := model module statements first statements third statements first variables second.
+	self assert: nonlocalVariableY localDeclaration equals: assignedVariableY.
+	self assert: nonlocalVariableY equals: assignedVariableY localDeclaration localUses second.
+
+	assignedVariableXInInnerFunction := model module statements first statements third statements second left.
+	self assert: assignedVariableXInInnerFunction localDeclaration equals: assignedVariableX.
+	self assert: assignedVariableXInInnerFunction equals: assignedVariableX localDeclaration localUses third.
+
+	assignedVariableYInInnerFunction := model module statements first statements third statements third left.
+	self assert: assignedVariableYInInnerFunction localDeclaration equals: assignedVariableY.
+	self assert: assignedVariableYInInnerFunction equals: assignedVariableY localDeclaration localUses third
+]
+
 { #category : 'tests - shadowing' }
 FASTPythonLocalResolverTest >> testParameterShadowedByAssignement [
 
