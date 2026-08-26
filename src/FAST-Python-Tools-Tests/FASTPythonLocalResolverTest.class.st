@@ -2487,6 +2487,26 @@ print(x)'.
 ]
 
 { #category : 'tests - walrus' }
+FASTPythonLocalResolverTest >> testWalrusAndRead [
+
+	| walrus usedVariable |
+	self parseAndResolve: 'x := 1
+print(x)'.
+
+	walrus := model module statements first.
+	self assert: walrus localDeclaration equals: walrus.
+	self assert: walrus localDeclaration name equals: 'x'.
+	self assert: walrus localDeclaration isVariableWriteAccess.
+	self deny: walrus localDeclaration isNonLocalDeclaration.
+	self assert: walrus localDeclaration localUses size equals: 2.
+	self assert: walrus localDeclaration localUses first equals: walrus.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable localDeclaration equals: walrus.
+	self assert: usedVariable equals: walrus localDeclaration localUses second
+]
+
+{ #category : 'tests - walrus' }
 FASTPythonLocalResolverTest >> testWalrusInBooleanOperator [
 
 	| walrus usedVariable ifStmt |
@@ -2771,26 +2791,6 @@ print(x)'.
 	usedVariable := model module statements third arguments first.
 	self assert: usedVariable localDeclaration equals: walrus1.
 	self assert: usedVariable equals: walrus1 localDeclaration localUses third
-]
-
-{ #category : 'tests - walrus' }
-FASTPythonLocalResolverTest >> testWalrusSimpleBindingAndRead [
-
-	| walrus usedVariable |
-	self parseAndResolve: 'x := 1
-print(x)'.
-
-	walrus := model module statements first.
-	self assert: walrus localDeclaration equals: walrus.
-	self assert: walrus localDeclaration name equals: 'x'.
-	self assert: walrus localDeclaration isVariableWriteAccess.
-	self deny: walrus localDeclaration isNonLocalDeclaration.
-	self assert: walrus localDeclaration localUses size equals: 2.
-	self assert: walrus localDeclaration localUses first equals: walrus.
-
-	usedVariable := model module statements second arguments first.
-	self assert: usedVariable localDeclaration equals: walrus.
-	self assert: usedVariable equals: walrus localDeclaration localUses second
 ]
 
 { #category : 'tests - walrus' }

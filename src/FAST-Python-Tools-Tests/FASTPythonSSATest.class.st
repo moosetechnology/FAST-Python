@@ -2079,6 +2079,37 @@ x()'.
 	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
 ]
 
+{ #category : 'tests - walrus' }
+FASTPythonSSATest >> testWalrusAndRead [
+
+	| walrus usedVariable |
+	self parseAndResolve: 'x := 1
+print(x)'.
+
+	walrus := model module statements first.
+	self assert: walrus ssaVersion version equals: 1.
+	self assert: walrus ssaName equals: 'x_1'.
+	self assert: walrus ssaVersion localUses size equals: 2.
+	self assert: walrus ssaVersion localUses first equals: walrus.
+
+	usedVariable := model module statements second arguments first.
+	self assert: usedVariable ssaVersion identicalTo: walrus ssaVersion.
+	self assert: usedVariable equals: walrus ssaVersion localUses second
+]
+
+{ #category : 'tests - walrus' }
+FASTPythonSSATest >> testWalrusInFunctionCallArgument [
+
+	| walrus |
+	self parseAndResolve: 'print(x := 5)'.
+
+	walrus := model module statements first arguments first.
+	self assert: walrus ssaVersion version equals: 1.
+	self assert: walrus ssaName equals: 'x_1'.
+	self assert: walrus ssaVersion localUses size equals: 1.
+	self assert: walrus ssaVersion localUses first equals: walrus
+]
+
 { #category : 'tests - while' }
 FASTPythonSSATest >> testWhileElseAndUsage [
 

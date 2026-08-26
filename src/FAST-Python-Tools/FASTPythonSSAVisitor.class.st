@@ -171,3 +171,11 @@ FASTPythonSSAVisitor >> visitFASTPyTDefinition: aTDefinition [
 	cfg := aTDefinition cfg.
 	self visit: cfg
 ]
+
+{ #category : 'visiting' }
+FASTPythonSSAVisitor >> visitFASTPyWalrus: aWalrus [
+
+	self handleNewAssignemntTo: aWalrus.
+
+	super visitFASTPyWalrus: aWalrus
+]
