@@ -2122,6 +2122,32 @@ print(x)'.
 ]
 
 { #category : 'tests - walrus' }
+FASTPythonSSATest >> testWalrusInConditionalBranch [
+
+	| walrus1 walrus2 usedVar |
+	self parseAndResolve: 'x := 0
+if a:
+    x := 1
+print(x)'.
+
+	walrus1 := model module statements first.
+	self assert: walrus1 ssaVersion version equals: 1.
+	self assert: walrus1 ssaName equals: 'x_1'.
+	self assert: walrus1 ssaVersion localUses size equals: 2.
+
+	walrus2 := model module statements second thenClause statements first.
+	self assert: walrus2 ssaVersion version equals: 2.
+	self assert: walrus2 ssaName equals: 'x_2'.
+	self assert: walrus2 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			walrus1 ssaVersion.
+			walrus2 ssaVersion }
+]
+
+{ #category : 'tests - walrus' }
 FASTPythonSSATest >> testWalrusInFunctionCallArgument [
 
 	| walrus |
@@ -2132,6 +2158,55 @@ FASTPythonSSATest >> testWalrusInFunctionCallArgument [
 	self assert: walrus ssaName equals: 'x_1'.
 	self assert: walrus ssaVersion localUses size equals: 1.
 	self assert: walrus ssaVersion localUses first equals: walrus
+]
+
+{ #category : 'tests - walrus' }
+FASTPythonSSATest >> testWalrusInTernaryThenBranch [
+
+	| assignedVar1 usedVar walrus2 |
+	self parseAndResolve: 'x = 3
+(x := 1) if a else 2
+print(x)'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	walrus2 := model module statements second thenExpression.
+	self assert: walrus2 ssaVersion version equals: 2.
+	self assert: walrus2 ssaName equals: 'x_2'.
+	self assert: walrus2 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion isPhi.
+	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
+			assignedVar1 ssaVersion.
+			walrus2 ssaVersion }
+]
+
+{ #category : 'tests - walrus' }
+FASTPythonSSATest >> testWalrusInWhileLoop [
+
+	| walrusInit walrusCond usedVar |
+	self parseAndResolve: 'x = 0
+while (x := x + 1) < 10:
+    pass
+print(x)'.
+
+	walrusInit := model module statements first left.
+	self assert: walrusInit ssaVersion version equals: 1.
+	self assert: walrusInit ssaName equals: 'x_1'.
+	self assert: walrusInit ssaVersion localUses size equals: 1.
+
+	walrusCond := model module statements second condition operands first.
+	self assert: walrusCond ssaVersion version equals: 2.
+	self assert: walrusCond ssaName equals: 'x_2'.
+	self assert: walrusCond ssaVersion localUses size equals: 3. "A while will re-execute the assignment if the loop is executed at least once."
+
+	usedVar := model module statements third arguments first.
+	self deny: usedVar ssaVersion isPhi.
+	self assert: usedVar ssaVersion identicalTo: walrusCond ssaVersion
 ]
 
 { #category : 'tests - walrus' }
