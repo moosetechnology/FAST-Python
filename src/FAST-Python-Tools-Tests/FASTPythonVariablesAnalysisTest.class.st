@@ -160,6 +160,180 @@ print(x)'.
 	self assertCollection: (map at: writenVariable3) hasSameElements: { model module statements fourth right }
 ]
 
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnAssignmentLHS [
+
+	self parseAndResolve: 'x = 1'.
+	self assert: model module statements first left isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnAttributeAccessRead [
+
+	self parseAndResolve: 'obj = []
+y = obj.x'.
+	self deny: model module statements second right isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnAttributeAccessWrite [
+
+	self parseAndResolve: 'obj = []
+obj.x = 1'.
+	self assert: model module statements second left isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnBinaryOperator [
+
+	self parseAndResolve: 'x = 1
+y = 2
+z = x + y'.
+	self assert: model module statements third right leftOperand isResolvedVariable.
+	self assert: model module statements third right rightOperand isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnBooleanOperator [
+
+	self parseAndResolve: 'x = 1
+y = 2
+z = x and y'.
+	self assert: model module statements third right leftOperand isResolvedVariable.
+	self assert: model module statements third right rightOperand isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnClassName [
+
+	self parseAndResolve: 'class A:
+    pass
+a = A()'.
+	self deny: model module statements second right callee isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnComprehensionVariable [
+
+	self parseAndResolve: 'items = [1, 2, 3]
+result = [x for x in items]'.
+	self assert: model module statements second right body isResolvedVariable.
+	self assert: model module statements second right forClauses first left isResolvedVariable.
+	self assert: model module statements second right forClauses first right isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnForLoopIterable [
+
+	self parseAndResolve: 'items = [1]
+for i in items:
+    print(i)'.
+	self assert: model module statements second right isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnForLoopVariable [
+
+	self parseAndResolve: 'items = [1]
+for i in items:
+    print(i)'.
+	self assert: model module statements second left isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnFunctionCallCallee [
+
+	self parseAndResolve: 'def f():
+    pass
+f()'.
+	self deny: model module statements second callee isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnFunctionDefinition [
+
+	self parseAndResolve: 'def f():
+    pass'.
+	self deny: model module statements first isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnIfCondition [
+
+	self parseAndResolve: 'x = 1
+if x:
+    pass'.
+	self assert: model module statements second condition isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnLiteral [
+
+	self parseAndResolve: 'x = 1'.
+	self deny: model module statements first right isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnParameterDeclaration [
+
+	self parseAndResolve: 'def f(x):
+    pass'.
+	self assert: model module statements first parameters first isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnParameterRead [
+
+	self parseAndResolve: 'def f(x):
+    return x'.
+	self assert: model module statements first statements first expression isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnReadAccess [
+
+	self parseAndResolve: 'x = 1
+print(x)'.
+	self assert: model module statements second arguments first isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnTernary [
+
+	self parseAndResolve: 'x = 1
+y = 2
+z = 3
+w = x if y else z'.
+	self assert: model module statements fourth right condition isResolvedVariable.
+	self assert: model module statements fourth right thenExpression isResolvedVariable.
+	self assert: model module statements fourth right elseExpression isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnTupleVariable [
+
+	self parseAndResolve: 'x, y = 1, 2
+print(x, y)'.
+	self assert: model module statements second arguments first isResolvedVariable.
+	self assert: model module statements second arguments second isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnUnresolvedName [
+
+	self parseAndResolve: 'print(x)'.
+	self deny: model module statements first arguments first isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnWhileCondition [
+
+	self parseAndResolve: 'x = 1
+while x:
+    pass'.
+	self assert: model module statements second condition isResolvedVariable
+]
+
 { #category : 'tests - variables in node' }
 FASTPythonVariablesAnalysisTest >> testUsedVariablesExcludesFunctionCall [
 

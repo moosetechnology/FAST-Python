@@ -13,6 +13,20 @@ FASTPyEntity >> fullCfg [
 ]
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> isResolvedVariable [
+	"Return true if this entity has been resolved to a local variable declaration.
+	
+	This method needs the local resolution to have happen. Variable that are not declared in the imported code are ignored because we cannot know if they are variables or other things."
+
+	| decl |
+	decl := self localDeclarationIfAbsent: [ ^ false ].
+
+	decl isNonLocalDeclaration ifTrue: [ ^ false ].
+
+	^ decl localResolverKind = #variable
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> lastSSAVersion [
 	"Return the last active SSA version if there is one. In Python lots of things can shadow each other, so we check if there was not a variable shadowed previously.
 	
@@ -60,4 +74,11 @@ FASTPyEntity >> selfOrTopmostAssignableCollection [
 	node parentSplat ifNotNil: [ :splat | ^ splat selfOrTopmostAssignableCollection ].
 
 	^ node
+]
+
+{ #category : '*FAST-Python-Tools' }
+FASTPyEntity >> usedVariables [
+	"Return all entities in my subtree that have been resolved to local variable declarations."
+
+	^ (self allContainedEntities select: [ :each | each isResolvedVariable ]) asArray
 ]

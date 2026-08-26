@@ -41,6 +41,16 @@ FASTPyModel >> allModules [
 ]
 
 { #category : 'accessing' }
+FASTPyModel >> allResolvedVariables [
+	"This method needs the local resolution to be done.
+	
+	I return all nodes representing a variable in the model
+	"
+
+	^ self entities select: [ :entity | entity isQueryable and: [ entity isResolvedVariable ] ]
+]
+
+{ #category : 'accessing' }
 FASTPyModel >> module [
 	"In general a fast python model can only get one module so I return this module."
 
