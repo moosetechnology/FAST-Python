@@ -2080,6 +2080,30 @@ x()'.
 ]
 
 { #category : 'tests - walrus' }
+FASTPythonSSATest >> testWalrusAlongsidePlainAssignment [
+
+	| walrus assignedVar2 usedVar |
+	self parseAndResolve: 'x := 1
+x = 2
+print(x)'.
+
+	walrus := model module statements first.
+	self assert: walrus ssaVersion version equals: 1.
+	self assert: walrus ssaName equals: 'x_1'.
+	self assert: walrus ssaVersion localUses size equals: 1.
+
+	assignedVar2 := model module statements second left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localUses size equals: 2.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: walrus ssaVersion localDeclaration.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion identicalTo: assignedVar2 ssaVersion.
+	self assert: usedVar equals: assignedVar2 ssaVersion localUses second
+]
+
+{ #category : 'tests - walrus' }
 FASTPythonSSATest >> testWalrusAndRead [
 
 	| walrus usedVariable |
@@ -2108,6 +2132,107 @@ FASTPythonSSATest >> testWalrusInFunctionCallArgument [
 	self assert: walrus ssaName equals: 'x_1'.
 	self assert: walrus ssaVersion localUses size equals: 1.
 	self assert: walrus ssaVersion localUses first equals: walrus
+]
+
+{ #category : 'tests - walrus' }
+FASTPythonSSATest >> testWalrusInsideFunction [
+
+	| walrus usedVariable funcDef |
+	self parseAndResolve: 'def f():
+    x := 1
+    print(x)'.
+
+	funcDef := model module statements first.
+	walrus := funcDef statements first.
+	self assert: walrus ssaVersion version equals: 1.
+	self assert: walrus ssaName equals: 'x_1'.
+	self assert: walrus ssaVersion localUses size equals: 2.
+	self assert: walrus ssaVersion localUses first equals: walrus.
+
+	usedVariable := funcDef statements second arguments first.
+	self assert: usedVariable ssaVersion identicalTo: walrus ssaVersion.
+	self assert: usedVariable equals: walrus ssaVersion localUses second
+]
+
+{ #category : 'tests - walrus' }
+FASTPythonSSATest >> testWalrusMultipleInExpression [
+
+	| walrusA walrusB usedA usedB |
+	self parseAndResolve: 'a := 1
+b := 2
+print(a + b)'.
+
+	walrusA := model module statements first.
+	self assert: walrusA ssaVersion version equals: 1.
+	self assert: walrusA ssaName equals: 'a_1'.
+	self assert: walrusA ssaVersion localUses size equals: 2.
+	self assert: walrusA ssaVersion localUses first equals: walrusA.
+
+	walrusB := model module statements second.
+	self assert: walrusB ssaVersion version equals: 1.
+	self assert: walrusB ssaName equals: 'b_1'.
+	self assert: walrusB ssaVersion localUses size equals: 2.
+	self assert: walrusB ssaVersion localUses first equals: walrusB.
+
+	usedA := model module statements third arguments first leftOperand.
+	self assert: usedA ssaVersion identicalTo: walrusA ssaVersion.
+	self assert: usedA equals: walrusA ssaVersion localUses second.
+
+	usedB := model module statements third arguments first rightOperand.
+	self assert: usedB ssaVersion identicalTo: walrusB ssaVersion.
+	self assert: usedB equals: walrusB ssaVersion localUses second
+]
+
+{ #category : 'tests - walrus' }
+FASTPythonSSATest >> testWalrusNestedWalruses [
+
+	| walrusA walrusB usedA usedB |
+	self parseAndResolve: 'a := (b := 3)
+print(a, b)'.
+
+	walrusA := model module statements first.
+	self assert: walrusA ssaVersion version equals: 1.
+	self assert: walrusA ssaName equals: 'a_1'.
+	self assert: walrusA ssaVersion localUses size equals: 2.
+	self assert: walrusA ssaVersion localUses first equals: walrusA.
+
+	walrusB := walrusA value.
+	self assert: walrusB ssaVersion version equals: 1.
+	self assert: walrusB ssaName equals: 'b_1'.
+	self assert: walrusB ssaVersion localUses size equals: 2.
+	self assert: walrusB ssaVersion localUses first equals: walrusB.
+
+	usedA := model module statements second arguments first.
+	self assert: usedA ssaVersion identicalTo: walrusA ssaVersion.
+	self assert: usedA equals: walrusA ssaVersion localUses second.
+
+	usedB := model module statements second arguments second.
+	self assert: usedB ssaVersion identicalTo: walrusB ssaVersion.
+	self assert: usedB equals: walrusB ssaVersion localUses second
+]
+
+{ #category : 'tests - walrus' }
+FASTPythonSSATest >> testWalrusRebindingSameVariable [
+
+	| walrus1 walrus2 usedVar |
+	self parseAndResolve: 'x := 1
+x := 2
+print(x)'.
+
+	walrus1 := model module statements first.
+	self assert: walrus1 ssaVersion version equals: 1.
+	self assert: walrus1 ssaName equals: 'x_1'.
+	self assert: walrus1 ssaVersion localUses size equals: 1.
+
+	walrus2 := model module statements second.
+	self assert: walrus2 ssaVersion version equals: 2.
+	self assert: walrus2 ssaName equals: 'x_2'.
+	self assert: walrus2 ssaVersion localUses size equals: 2.
+	self assert: walrus2 ssaVersion localDeclaration equals: walrus1 ssaVersion localDeclaration.
+
+	usedVar := model module statements third arguments first.
+	self assert: usedVar ssaVersion identicalTo: walrus2 ssaVersion.
+	self assert: usedVar equals: walrus2 ssaVersion localUses second
 ]
 
 { #category : 'tests - while' }
