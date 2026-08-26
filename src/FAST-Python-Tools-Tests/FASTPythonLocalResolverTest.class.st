@@ -2814,6 +2814,71 @@ if x > 0:
 	self assert: usedVariable equals: walrus localDeclaration localUses second
 ]
 
+{ #category : 'tests - scopes' }
+FASTPythonLocalResolverTest >> testWalrusWithGlobalStatement [
+
+	| assignedVariable globalVariable walrus usedVariable funcDef |
+	self parseAndResolve: 'x = 0
+def f():
+    global x
+    x := 1
+    print(x)'.
+
+	assignedVariable := model module statements first left.
+	self assert: assignedVariable localDeclaration equals: assignedVariable.
+	self assert: assignedVariable localDeclaration name equals: 'x'.
+	self assert: assignedVariable localDeclaration isVariableWriteAccess.
+	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
+
+	funcDef := model module statements second.
+	globalVariable := funcDef statements first variables first.
+	self assert: globalVariable localDeclaration equals: assignedVariable.
+	self assert: globalVariable equals: assignedVariable localDeclaration localUses second.
+
+	walrus := funcDef statements second.
+	self assert: walrus localDeclaration equals: assignedVariable.
+	self assert: walrus equals: assignedVariable localDeclaration localUses third.
+
+	usedVariable := funcDef statements third arguments first.
+	self assert: usedVariable localDeclaration equals: assignedVariable.
+	self assert: usedVariable equals: assignedVariable localDeclaration localUses fourth.
+	self assert: assignedVariable localDeclaration localUses size equals: 4
+]
+
+{ #category : 'tests - scopes' }
+FASTPythonLocalResolverTest >> testWalrusWithNonlocalStatement [
+
+	| outerAssignment nonlocalVariable walrus usedVariable outerDef innerDef |
+	self parseAndResolve: 'def outer():
+    x = 0
+    def inner():
+        nonlocal x
+        x := 1
+        print(x)
+    inner()'.
+
+	outerDef := model module statements first.
+	outerAssignment := outerDef statements first.
+	self assert: outerAssignment left localDeclaration equals: outerAssignment left.
+	self assert: outerAssignment left localDeclaration name equals: 'x'.
+	self assert: outerAssignment left localDeclaration isVariableWriteAccess.
+	self deny: outerAssignment left localDeclaration isNonLocalDeclaration.
+
+	innerDef := outerDef statements second.
+	nonlocalVariable := innerDef statements first variables first.
+	self assert: nonlocalVariable localDeclaration equals: outerAssignment left.
+	self assert: nonlocalVariable equals: outerAssignment left localDeclaration localUses second.
+
+	walrus := innerDef statements second.
+	self assert: walrus localDeclaration equals: outerAssignment left.
+	self assert: walrus equals: outerAssignment left localDeclaration localUses third.
+
+	usedVariable := innerDef statements third arguments first.
+	self assert: usedVariable localDeclaration equals: outerAssignment left.
+	self assert: usedVariable equals: outerAssignment left localDeclaration localUses fourth.
+	self assert: outerAssignment left localDeclaration localUses size equals: 4
+]
+
 { #category : 'tests - while' }
 FASTPythonLocalResolverTest >> testWhileElseAssign [
 
