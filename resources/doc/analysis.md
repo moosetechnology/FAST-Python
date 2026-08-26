@@ -50,6 +50,47 @@ In the case of a shadowing, we manage it in two distinct ways:
 - If we know for sure that the entity will be the same kind of entity (for example, if the entity stays a variable because we assign two times values to the same variable), then they keep the same local declaration
 - If the entity kind is different (for example we shadow a global variable with a function) or if we are not sure (if we shadow something with an imported entity for example), then we create a new local declaration
 
+When a new declaration shadows an existing one, the two declarations are linked via `#shadowedBy` and `#shadowing`. Each declaration in the chain keeps its own `#localUses` (the entities that resolve to it). Usages always resolve to the most recent declaration.
+
+For example:
+
+```python
+x = 1              # Declaration 1: Variable
+from os import x   # Declaration 2: Import (shadows Declaration 1)
+def x():           # Declaration 3: Function (shadows Declaration 2)
+    pass
+print(x)           # Links to Declaration 3
+```
+
+After running the local resolver:
+
+```smalltalk
+varDecl := model module statements first left.      "FASTPyVariable"
+importStmt := model module statements second.       "FASTPyImportFromStatement"
+funcDecl := model module statements third.          "FASTPyFunctionDefinition"
+
+varDecl shadowedBy.        "=> FASTPyImportFromStatement"
+importStmt shadowedBy.     "=> FASTPyFunctionDefinition"
+importStmt shadowing.      "=> FASTPyVariable"
+funcDecl shadowing.        "=> FASTPyImportFromStatement"
+
+varDecl localUses size.     "1  (just the assignment)"
+importStmt localUses size. "1  (just the import)"
+funcDecl localUses size.   "2  (the definition + print(x))"
+```
+
+Each declaration in the chain is independent: they each track their own local uses, and `#shadowedBy`/`#shadowing` form a linked list from the first declaration to the last.
+
+Note that if two assignments target the same variable with no other kind of entity in between, no shadowing link is created. Since both are the same kind of entity (variable), they share the same local declaration:
+
+```python
+x = 1
+x = 2
+print(x)
+```
+
+Here both `x = 1` and `x = 2` resolve to the same `FASTPyVariable` declaration. `#shadowedBy` is nil. To distinguish between the two assignments and trace which one impacts a given use, use [SSA](#static-single-assignment-ssa) which creates a separate version for each assignment.
+
 ### Querying local resolver information
 
 It is possible to ask a few things to the nodes once the resolution is done:
@@ -244,7 +285,7 @@ Here, the printing will be linked to an nonlocal declaration because in Python 3
 
 ### Global and Non local statement
 
-For now the LR does not manage global and non local statements.
+The local resolver handles global and non local statements. A `global x` inside a function redirects the variable resolution to the module-scope declaration of `x`. A `nonlocal x` redirects to the nearest enclosing scope that defines `x`. This means writes inside the function (including walrus operators) create new SSA versions of the outer declaration.
 
 ## FAST Python visitor
 
