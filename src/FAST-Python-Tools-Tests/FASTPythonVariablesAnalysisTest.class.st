@@ -160,6 +160,33 @@ print(x)'.
 	self assertCollection: (map at: writenVariable3) hasSameElements: { model module statements fourth right }
 ]
 
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesExcludesFunctionCall [
+
+	self parseAndResolve: 'def f():
+    pass
+f()'.
+
+	self assertCollection: model module usedVariables hasSameElements: #(  )
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesExcludesFunctionDefinition [
+
+	self parseAndResolve: 'def f():
+    pass'.
+
+	self assertCollection: model module usedVariables hasSameElements: #(  )
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesNoVariables [
+
+	self parseAndResolve: 'x = 1'.
+
+	self assertCollection: model module statements first right usedVariables hasSameElements: #(  )
+]
+
 { #category : 'tests' }
 FASTPythonVariablesAnalysisTest >> testVersionAccessesOfIdentifier [
 

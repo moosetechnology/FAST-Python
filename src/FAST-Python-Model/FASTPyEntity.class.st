@@ -248,6 +248,13 @@ FASTPyEntity >> shadowing: aFASTEntity [
 ]
 
 { #category : 'accessing' }
+FASTPyEntity >> usedVariables [
+
+	self flag: #todo.
+	^ {  }
+]
+
+{ #category : 'accessing' }
 FASTPyEntity >> variableDeclarator [
 	"In case I am a write access to a variable, I return the node categorized as my declaration. Else I return nil.
 	Nodes representing potential variable write access should override me.
