@@ -5,3 +5,9 @@ FASTPyAttributeAccess >> localDeclarationName [
 
 	^ self sourceCode
 ]
+
+{ #category : '*FAST-Python-Tools' }
+FASTPyAttributeAccess >> localResolverKind [
+
+	^ #variable
+]
