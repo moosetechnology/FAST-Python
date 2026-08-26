@@ -204,6 +204,33 @@ z = x and y'.
 ]
 
 { #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnChainedAttributeRead [
+
+	self parseAndResolve: 'obj = None
+y = obj.x.y'.
+	self deny: model module statements second right isResolvedVariable.
+	self deny: model module statements second right value isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnChainedAttributeWrite [
+
+	self parseAndResolve: 'obj = None
+obj.x.y = 1'.
+	self assert: model module statements second left isResolvedVariable.
+	self deny: model module statements second left value isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnChainedSubscript [
+
+	self parseAndResolve: 'x = [[1, 2], [3, 4]]
+y = x[0][0]'.
+	self deny: model module statements second right isResolvedVariable.
+	self deny: model module statements second right value isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
 FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnClassName [
 
 	self parseAndResolve: 'class A:
@@ -295,6 +322,31 @@ FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnReadAccess [
 	self parseAndResolve: 'x = 1
 print(x)'.
 	self assert: model module statements second arguments first isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnSubscriptIndexVariable [
+
+	self parseAndResolve: 'x = [1, 2, 3]
+i = 0
+y = x[i]'.
+	self assert: model module statements third right indices first isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnSubscriptRead [
+
+	self parseAndResolve: 'x = [1, 2, 3]
+y = x[0]'.
+	self deny: model module statements second right isResolvedVariable
+]
+
+{ #category : 'tests - isResolvedVariable' }
+FASTPythonVariablesAnalysisTest >> testIsResolvedVariableOnSubscriptWrite [
+
+	self parseAndResolve: 'x = [1, 2, 3]
+x[0] = 4'.
+	self deny: model module statements second left isResolvedVariable
 ]
 
 { #category : 'tests - isResolvedVariable' }

@@ -5,3 +5,9 @@ FASTPySubscript >> localDeclarationName [
 
 	^ self sourceCode
 ]
+
+{ #category : '*FAST-Python-Tools' }
+FASTPySubscript >> localResolverKind [
+
+	^ #subscript
+]
