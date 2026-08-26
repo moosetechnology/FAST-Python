@@ -96,11 +96,15 @@ Here both `x = 1` and `x = 2` resolve to the same `FASTPyVariable` declaration. 
 It is possible to ask a few things to the nodes once the resolution is done:
 - `node localDeclaration` returns the first node that declared the entity we are querying
 - `node localDeclaration localUses` returns all uses of the node (declarations and usage)
+- `node isResolvedVariable` returns `true` if the node resolves to a local variable declaration (not an unresolved name, not a function, not a method, not an import). Requires local resolution to have been done.
 - `node allAccesses` if the node is a variable, returns all the read and write accesses to the variable
 - `node allReadAccesses` if the node is a variable, returns all the read accesses to the variable
 - `node allWriteAccesses` if the node is a variable, returns all the write accesses to the variable
 - `node variableDeclarator` if the node that is a variable write access, it will return the node assigning the variable (can be an assignment, augmented assignment, for loop or for in clause)
 - `node allAssignedExpressionsMap` if the node is a variable, return a map of all expressions used to assigned the variable. The keys of the map are all the write accesses of this variable and the values are the expressions used for the assignment.
+
+On the model:
+- `model allResolvedVariables` returns all nodes in the model that resolve to a variable declaration. This is a shortcut for querying the model-level view of all resolved variables.
 
 For `#allAssignedExpressionsMap`, be carful, `x = 3` is not the only way to assign a variable. Take those cases into account:
 
@@ -453,3 +457,21 @@ It returns a dictionary with the possible write accesses as key and the expressi
 > Note: you can find some warnings on this in the section [Querying local resolver information](#querying-local-resolver-information). They are the same.
 
 > Note 2: You can also use `#allAssignedExpressionsMap` if you want to consider all write accesses to a variable and not just the one impacting a specific access. Or you can use `#assignedExpressions` on a specific write access to have information only on this one.
+
+**How to know what nodes are variables?**
+
+The local resolver resolves each entity to its declaration. `#isResolvedVariable` returns `true` only if the entity's local declaration is a variable (identifier, parameter, walrus). It returns `false` for unresolved names, functions, methods, imports, literals, and operators:
+
+```smalltalk
+firstVariableAccess := model module statements first left.
+firstVariableAccess isResolvedVariable. "true  (x is a variable)"
+
+firstFunctionDef := model module statements first.
+firstFunctionDef isResolvedVariable. "false (def x is a function definition)"
+```
+
+At the model level, `#allResolvedVariables` returns every entity in the model that resolves to a variable declaration:
+
+```smalltalk
+model allResolvedVariables. "all resolved variable entities across the entire model"
+```
