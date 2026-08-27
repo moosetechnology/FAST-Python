@@ -77,6 +77,33 @@ FASTPyEntity >> selfOrTopmostAssignableCollection [
 ]
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> transitiveAssignedExpressions [
+	"I return for a variable, the expressions that were used during its assignment. If an expression references a variable, recursively add the expressions assigned if those variables."
+
+	| visitedExpressions visitedAccesses result toVisit |
+	visitedExpressions := OrderedCollection new.
+	visitedAccesses := OrderedCollection new.
+	result := OrderedCollection new.
+
+	self flag: #todo. "Simplify once the todo of #assignedExpressions is done"
+	self versionWriteAccesses do: [ :access |
+			visitedAccesses add: access.
+			result addAll: access variableDeclarator assignedExpressions ].
+
+	[
+		toVisit := result \ visitedExpressions.
+		toVisit isEmpty ] whileFalse: [
+			toVisit do: [ :expression |
+					visitedExpressions add: expression.
+					expression usedVariables do: [ :variable |
+							variable versionWriteAccesses \ visitedAccesses do: [ :access |
+									visitedAccesses add: access.
+									result addAll: access variableDeclarator assignedExpressions ] ] ] ].
+
+	^ result
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> usedVariables [
 	"Return all entities in my subtree that have been resolved to local variable declarations.
 	

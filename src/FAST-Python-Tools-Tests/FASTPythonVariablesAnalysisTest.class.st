@@ -386,6 +386,22 @@ while x:
 	self assert: model module statements second condition isResolvedVariable
 ]
 
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressions [
+	| readY readX flat |
+	self parseAndResolve: 'y = 4
+
+x = y
+
+print(x)'.
+
+	readY := model module statements second right.
+	readX := model module statements third arguments first.
+
+	flat := readX transitiveAssignedExpressions.
+	self assertCollection: flat hasSameElements: { readY. model module statements first right }
+]
+
 { #category : 'tests - variables in node' }
 FASTPythonVariablesAnalysisTest >> testUsedVariablesAssignmentWithExpression [
 
