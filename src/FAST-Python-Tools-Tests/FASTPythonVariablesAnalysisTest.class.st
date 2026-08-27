@@ -599,11 +599,56 @@ FASTPythonVariablesAnalysisTest >> testUsedVariablesNoVariables [
 ]
 
 { #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesOnSubtree [
+
+	self parseAndResolve: 'x = 1
+y = 2
+if y:
+    z = x + y'.
+	{
+		model module statements third condition.
+		model module statements third thenClause statements first left.
+		model module statements third thenClause statements first right leftOperand.
+		model module statements third thenClause statements first right rightOperand } do: [ :each |
+		self assert: (model module statements third usedVariables includes: each) ]
+]
+
+{ #category : 'tests - variables in node' }
 FASTPythonVariablesAnalysisTest >> testUsedVariablesReadAccess [
 
 	self parseAndResolve: 'x = 1
 print(x)'.
 	self assertCollection: model module statements second usedVariables hasSameElements: { model module statements second arguments first }
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesSimpleAssignment [
+
+	self parseAndResolve: 'x = 1'.
+	self assertCollection: model module statements first usedVariables hasSameElements: { model module statements first left }
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesTernaryExpression [
+
+	self parseAndResolve: 'x = 1
+y = 2
+z = 3
+w = x if y else z'.
+	self assertCollection: model module statements fourth right usedVariables hasSameElements: {
+			model module statements fourth right condition.
+			model module statements fourth right thenExpression.
+			model module statements fourth right elseExpression }
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesTupleAssignment [
+
+	self parseAndResolve: 'x, y = 1, 2
+print(x, y)'.
+	self assertCollection: model module statements first usedVariables hasSameElements: {
+			model module statements first left initializers first.
+			model module statements first left initializers second }
 ]
 
 { #category : 'tests - variables in node' }
@@ -615,6 +660,19 @@ if (y := x):
 	self assertCollection: model module statements second condition usedVariables hasSameElements: {
 			model module statements second condition.
 			model module statements second condition value }
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesWhileLoop [
+
+	self parseAndResolve: 'x = 1
+y = 2
+while x:
+    z = y'.
+	{
+		model module statements third condition.
+		model module statements third statements first left.
+		model module statements third statements first right } do: [ :each | self assert: (model module statements third usedVariables includes: each) ]
 ]
 
 { #category : 'tests' }
