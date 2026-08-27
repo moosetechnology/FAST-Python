@@ -513,6 +513,84 @@ FASTPythonVariablesAnalysisTest >> testUsedVariablesFunctionBody [
 ]
 
 { #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesFunctionCallArgument [
+
+	self parseAndResolve: 'def f(a, b):
+    pass
+x = 1
+y = 2
+f(x, y)'.
+	self assertCollection: model module statements fourth usedVariables hasSameElements: {
+			model module statements fourth arguments first.
+			model module statements fourth arguments second }
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesIfStatement [
+
+	self parseAndResolve: 'x = 1
+y = 2
+if x:
+    z = y'.
+	{
+		model module statements third condition.
+		model module statements third thenClause statements first left.
+		model module statements third thenClause statements first right } do: [ :each | self assert: (model module statements third usedVariables includes: each) ]
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesIncludesParameter [
+
+	| funcDef |
+	self parseAndResolve: 'def f(x):
+    return x'.
+	funcDef := model module statements first.
+	self assertCollection: funcDef usedVariables hasSameElements: {
+			funcDef parameters first.
+			funcDef statements first expression }
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesMultipleVariables [
+
+	self parseAndResolve: 'x = 1
+y = 2
+print(x, y)'.
+	self assertCollection: model module usedVariables hasSameElements: {
+			model module statements first left.
+			model module statements second left.
+			model module statements third arguments first.
+			model module statements third arguments second }
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesNestedBinaryOperators [
+
+	self parseAndResolve: 'a = 1
+b = 2
+c = 3
+d = 4
+z = a + (b * (c - d))'.
+	self assertCollection: model module statements fifth right usedVariables hasSameElements: {
+			model module statements fifth right leftOperand.
+			model module statements fifth right rightOperand leftOperand.
+			model module statements fifth right rightOperand rightOperand leftOperand.
+			model module statements fifth right rightOperand rightOperand rightOperand }
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesNestedCall [
+
+	self parseAndResolve: 'def f(a):
+    pass
+def g(a):
+    pass
+x = 1
+r(g(x))'.
+	self assertCollection: model module statements fourth usedVariables hasSameElements: { model module statements fourth arguments first arguments first }
+]
+
+{ #category : 'tests - variables in node' }
 FASTPythonVariablesAnalysisTest >> testUsedVariablesNoVariables [
 
 	self parseAndResolve: 'x = 1'.
