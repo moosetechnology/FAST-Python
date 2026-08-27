@@ -387,6 +387,18 @@ while x:
 ]
 
 { #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesAssignmentWithExpression [
+
+	self parseAndResolve: 'y = 1
+z = 2
+x = y + z'.
+	self assertCollection: model module statements third usedVariables hasSameElements: {
+			model module statements third left.
+			model module statements third right leftOperand.
+			model module statements third right rightOperand }
+]
+
+{ #category : 'tests - variables in node' }
 FASTPythonVariablesAnalysisTest >> testUsedVariablesExcludesFunctionCall [
 
 	self parseAndResolve: 'def f():
@@ -411,6 +423,14 @@ FASTPythonVariablesAnalysisTest >> testUsedVariablesNoVariables [
 	self parseAndResolve: 'x = 1'.
 
 	self assertCollection: model module statements first right usedVariables hasSameElements: #(  )
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesReadAccess [
+
+	self parseAndResolve: 'x = 1
+print(x)'.
+	self assertCollection: model module statements second usedVariables hasSameElements: { model module statements second arguments first }
 ]
 
 { #category : 'tests' }

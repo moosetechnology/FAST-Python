@@ -79,6 +79,5 @@ FASTPyEntity >> selfOrTopmostAssignableCollection [
 { #category : '*FAST-Python-Tools' }
 FASTPyEntity >> usedVariables [
 	"Return all entities in my subtree that have been resolved to local variable declarations."
-
-	^ (self allContainedEntities select: [ :each | each isResolvedVariable ]) asArray
+	^ (self allContainedEntities select: [:each | each isResolvedVariable]) asArray
 ]
