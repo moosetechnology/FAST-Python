@@ -399,6 +399,18 @@ x = y + z'.
 ]
 
 { #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesAttributeAccess [
+
+	self parseAndResolve: 'class A:
+    pass
+obj = A()
+obj.x = 1'.
+	self assertCollection: model module statements third left usedVariables hasSameElements: {
+			model module statements third left.
+			model module statements third left value }
+]
+
+{ #category : 'tests - variables in node' }
 FASTPythonVariablesAnalysisTest >> testUsedVariablesBinaryOperator [
 
 	self parseAndResolve: 'x = 1
@@ -514,6 +526,17 @@ FASTPythonVariablesAnalysisTest >> testUsedVariablesReadAccess [
 	self parseAndResolve: 'x = 1
 print(x)'.
 	self assertCollection: model module statements second usedVariables hasSameElements: { model module statements second arguments first }
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesWalrus [
+
+	self parseAndResolve: 'x = 1
+if (y := x):
+    pass'.
+	self assertCollection: model module statements second condition usedVariables hasSameElements: {
+			model module statements second condition.
+			model module statements second condition value }
 ]
 
 { #category : 'tests' }

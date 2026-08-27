@@ -78,6 +78,9 @@ FASTPyEntity >> selfOrTopmostAssignableCollection [
 
 { #category : '*FAST-Python-Tools' }
 FASTPyEntity >> usedVariables [
-	"Return all entities in my subtree that have been resolved to local variable declarations."
-	^ (self allContainedEntities select: [:each | each isResolvedVariable]) asArray
+	"Return all entities in my subtree that have been resolved to local variable declarations.
+	
+	Once the LocalResolution has been done, this allows to find all variable nodes (declared in the model)."
+
+	^ self query containedEntities recursively withProperty: #isResolvedVariable
 ]
