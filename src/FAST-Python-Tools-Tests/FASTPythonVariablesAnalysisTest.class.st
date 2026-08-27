@@ -388,18 +388,152 @@ while x:
 
 { #category : 'tests - transitive assigned expressions' }
 FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressions [
-	| readY readX flat |
+
+	| variable |
 	self parseAndResolve: 'y = 4
 
 x = y
 
 print(x)'.
 
-	readY := model module statements second right.
-	readX := model module statements third arguments first.
+	variable := model module statements third arguments first transitiveAssignedExpressions.
+	self assertCollection: variable hasSameElements: {
+			model module statements second right.
+			model module statements first right }
+]
 
-	flat := readX transitiveAssignedExpressions.
-	self assertCollection: flat hasSameElements: { readY. model module statements first right }
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsChain [
+
+	| variable |
+	self parseAndResolve: 'a = 1
+
+b = a
+
+c = b
+
+print(c)'.
+	variable := model module statements fourth arguments first transitiveAssignedExpressions.
+	self assertCollection: variable hasSameElements: {
+			model module statements third right.
+			model module statements second right.
+			model module statements first right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsIsUnique [
+
+	| variable |
+	self parseAndResolve: 'a = 1
+
+b = a
+
+c = a
+
+x = b + c
+
+print(x)'.
+	variable := model module statements fifth arguments first transitiveAssignedExpressions.
+	self assertCollection: variable hasSameElements: {
+			model module statements fourth right.
+			model module statements second right.
+			model module statements third right.
+			model module statements first right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsWithCycleOfVariables [
+
+	| variable |
+	self parseAndResolve: 'x = 1
+
+y = x
+
+x = y
+
+print(x)'.
+	variable := model module statements fourth arguments first transitiveAssignedExpressions.
+	self assertCollection: variable hasSameElements: {
+			model module statements third right.
+			model module statements second right.
+			model module statements first right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsWithFunctionCall [
+
+	| variable |
+	self parseAndResolve: 'y = call2()
+
+x = call1(y)
+
+print(x)'.
+	variable := model module statements third arguments first transitiveAssignedExpressions.
+	self assertCollection: variable hasSameElements: {
+			model module statements second right.
+			model module statements first right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsWithMultipleVariables [
+
+	| variable |
+	self parseAndResolve: 'a = 1
+
+b = 2
+
+x = a + b
+
+print(x)'.
+	variable := model module statements fourth arguments first transitiveAssignedExpressions.
+	self assertCollection: variable hasSameElements: {
+			model module statements third right.
+			model module statements first right.
+			model module statements second right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsWithPhiVariable [
+
+	| variable |
+	self parseAndResolve: 'if z > 3:
+	y = 2
+else:
+	y = 3
+
+x = y
+
+print(x)'.
+
+	variable := model module statements third arguments first transitiveAssignedExpressions.
+	self assertCollection: variable hasSameElements: {
+			model module statements second right.
+			model module statements first thenClause statements first right.
+			model module statements first elseClause statements first right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsWithReusedVariable [
+
+	| variable |
+	self parseAndResolve: 'x = 1
+
+x = x + 1
+
+print(x)'.
+	variable := model module statements third arguments first transitiveAssignedExpressions.
+	self assertCollection: variable hasSameElements: { model module statements second right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsWithoutTransitivity [
+
+	| variable |
+	self parseAndResolve: 'x = 5
+
+print(x)'.
+	variable := model module statements second arguments first transitiveAssignedExpressions.
+	self assertCollection: variable hasSameElements: { model module statements first right }
 ]
 
 { #category : 'tests - variables in node' }
