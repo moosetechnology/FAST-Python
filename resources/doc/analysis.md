@@ -96,7 +96,8 @@ Here both `x = 1` and `x = 2` resolve to the same `FASTPyVariable` declaration. 
 It is possible to ask a few things to the nodes once the resolution is done:
 - `node localDeclaration` returns the first node that declared the entity we are querying
 - `node localDeclaration localUses` returns all uses of the node (declarations and usage)
-- `node isResolvedVariable` returns `true` if the node resolves to a local variable declaration (not an unresolved name, not a function, not a method, not an import). Requires local resolution to have been done.
+- `node isResolvedVariable` returns `true` if the node resolves to a local variable declaration (not an unresolved name, not a function, not a method, not an import).
+- `node usedVariables` returns all entities in the node and its subtree that have been resolved to local variable declarations (includes the node itself if it is a resolved variable).
 - `node allAccesses` if the node is a variable, returns all the read and write accesses to the variable
 - `node allReadAccesses` if the node is a variable, returns all the read accesses to the variable
 - `node allWriteAccesses` if the node is a variable, returns all the write accesses to the variable
@@ -474,4 +475,20 @@ At the model level, `#allResolvedVariables` returns every entity in the model th
 
 ```smalltalk
 model allResolvedVariables. "all resolved variable entities across the entire model"
+```
+
+**How to find all variables used in a node?**
+
+`#usedVariables` collects all resolved variable entities within a node and its subtree. It includes the node itself if it is a resolved variable. It requires the local resolution to have been done:
+
+```smalltalk
+firstPrint := model module statements second. "print(x)"
+firstPrint usedVariables. "an OrderedCollection with the x identifier"
+```
+
+This works on any AST node — an expression, a statement, or an entire module. For example, on a binary operator:
+
+```smalltalk
+binaryExpr := model module statements second right. "x + z"
+binaryExpr usedVariables. "an OrderedCollection with x (z is undeclared, so excluded)"
 ```
