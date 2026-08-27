@@ -399,6 +399,62 @@ x = y + z'.
 ]
 
 { #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesBinaryOperator [
+
+	self parseAndResolve: 'x = 1
+y = 2
+z = x + y'.
+	self assertCollection: model module statements third right usedVariables hasSameElements: {
+			model module statements third right leftOperand.
+			model module statements third right rightOperand }
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesBooleanOperator [
+
+	self parseAndResolve: 'x = 1
+y = 2
+z = x and y'.
+	self assertCollection: model module statements third right usedVariables hasSameElements: {
+			model module statements third right leftOperand.
+			model module statements third right rightOperand }
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesComparison [
+
+	self parseAndResolve: 'a = 1
+b = 2
+c = a < b'.
+	self assertCollection: model module statements third right usedVariables hasSameElements: {
+			model module statements third right operands first.
+			model module statements third right operands second }
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesComprehension [
+
+	| comp |
+	self parseAndResolve: 'items = [1, 2, 3]
+result = [x for x in items]'.
+	comp := model module statements second right.
+	self assertCollection: comp usedVariables hasSameElements: {
+			comp body.
+			comp forClauses first left.
+			comp forClauses first right }
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesDeeplyNested [
+
+	self parseAndResolve: 'y = 1
+x = 1 + (2 + (3 + (4 + y)))'.
+	self
+		assertCollection: model module statements second right usedVariables
+		hasSameElements: { model module statements second right rightOperand rightOperand rightOperand rightOperand }
+]
+
+{ #category : 'tests - variables in node' }
 FASTPythonVariablesAnalysisTest >> testUsedVariablesExcludesFunctionCall [
 
 	self parseAndResolve: 'def f():
@@ -415,6 +471,33 @@ FASTPythonVariablesAnalysisTest >> testUsedVariablesExcludesFunctionDefinition [
     pass'.
 
 	self assertCollection: model module usedVariables hasSameElements: #(  )
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesForLoop [
+
+	self parseAndResolve: 'items = [1]
+for i in items:
+    print(i)'.
+	{
+		model module statements second left.
+		model module statements second right.
+		model module statements second statements first arguments first } do: [ :each | self assert: (model module statements second usedVariables includes: each) ]
+]
+
+{ #category : 'tests - variables in node' }
+FASTPythonVariablesAnalysisTest >> testUsedVariablesFunctionBody [
+
+	| funcDef |
+	self parseAndResolve: 'def f(x):
+    y = x + 1
+    return y'.
+	funcDef := model module statements first.
+	self assertCollection: funcDef usedVariables hasSameElements: {
+			funcDef parameters first.
+			funcDef statements first left.
+			funcDef statements first right leftOperand.
+			funcDef statements second expression }
 ]
 
 { #category : 'tests - variables in node' }
