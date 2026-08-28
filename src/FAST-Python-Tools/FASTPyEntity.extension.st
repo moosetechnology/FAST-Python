@@ -13,6 +13,21 @@ FASTPyEntity >> fullCfg [
 ]
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> internalAccesses [
+	"If I am a variable, return all internal access done on me and all other accesses of the same variable. 
+	
+	I need the local resolution to be done before.
+	
+	It can be of two kinds:
+		- subscript `x[3]`
+		- attribute `x.y`"
+
+	^ self allAccesses
+		  collect: #internalAccess
+		  thenReject: #isNil
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> isResolvedVariable [
 	"Return true if this entity has been resolved to a local variable declaration.
 	

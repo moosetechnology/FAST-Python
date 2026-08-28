@@ -133,6 +133,14 @@ FASTPyExpression >> collectionInitializer: anObject [
 	collectionInitializer := anObject
 ]
 
+{ #category : 'accessing' }
+FASTPyExpression >> internalAccess [
+
+	self parentAttributeObject ifNotNil: [ :attribute | ^ attribute ].
+
+	^ super internalAccess
+]
+
 { #category : 'testing' }
 FASTPyExpression >> isExpressionStatement [
 

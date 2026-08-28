@@ -63,6 +63,18 @@ FASTPyEntity >> hasImmediateSource [
 	^ false
 ]
 
+{ #category : 'accessing' }
+FASTPyEntity >> internalAccess [
+	"If I am a variable, return a potential internal access done on me.
+	It can be of two kinds:
+		- subscript `x[3]`
+		- attribute `x.y`
+		
+	I am mostly used after a local resolution to find all internal accesses to a variable. Check #internalAccesses"
+
+	^ nil
+]
+
 { #category : 'testing' }
 FASTPyEntity >> isBinaryExpression [
 
