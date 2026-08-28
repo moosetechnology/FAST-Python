@@ -73,13 +73,13 @@ FASTPythonSSAVisitor resolve: model allFunctionDefinitions first.  "SSA (after r
 
 ### Variable-analysis API
 
-- Python-specific variable APIs (`usedVariables`, `isResolvedVariable`, `transitiveAssignedExpressions`, `transitiveAssignedExpressionsMap`) are single implementations on `FASTPyEntity` in `src/FAST-Python-Tools/FASTPyEntity.extension.st` (protocol `*FAST-Python-Tools`). The transitive ones require SSA resolution.
+- Python-specific variable APIs (`usedVariables`, `isResolvedVariable`, `transitiveAssignedExpressions`, `transitiveAssignedExpressionsMap`, `internalAccesses`) are single implementations on `FASTPyEntity` in `src/FAST-Python-Tools/FASTPyEntity.extension.st` (protocol `*FAST-Python-Tools`). The transitive ones require SSA resolution; the others require local resolution.
 - Contrast: FAST-level helpers (`versionWriteAccesses`, `assignedExpressionsMap`, `versionAccesses`, ...) follow a mass-extension convention -- one identical copy per FAST class in protocol `*FAST-Core-Tools`, living in the FAST dependency repo, not here.
 
 ## Testing
 
 - **Base test class**: `FASTPythonAbstractTestCase` (in Tools-Tests, tag `Core`) -- provides a `parse:` helper that wraps `FASTPythonImporter` with error reporting. The `model` instance variable has no accessor.
-- **Variable-analysis tests**: `FASTPythonVariablesAnalysisTest` is a slim base providing `parseAndResolve:` (parse + local resolution + SSA). Three subclasses in tag `Analysis`: `FASTPythonAssignedExpressionsInVariablesTest` (protocol `tests - transitive`), `FASTPythonIsResolvedVariablesTest`, `FASTPythonUsedVariablesTest`.
+- **Variable-analysis tests**: `FASTPythonVariablesAnalysisTest` is a slim base providing `parseAndResolve:` (parse + local resolution + SSA). Four subclasses in tag `Analysis`: `FASTPythonAssignedExpressionsInVariablesTest`, `FASTPythonIsResolvedVariablesTest`, `FASTPythonUsedVariablesTest`, `FASTPythonInternalAccessesTest`. Since each class tests a single concept, test methods use the plain `tests` protocol -- no specialized protocols.
 - **Documentation**: `resources/doc/analysis.md` documents the local resolver, SSA, shadowing and variable-query APIs. Convention: questions are written as bold questions without new TOC entries, and only implemented API is documented.
 - **Importer tests**: `FASTPythonImporterTest` extends `TSFASTAbstractImporterTest` (from TreeSitter). The test file is ~53k lines -- generated tests for every AST node type. Test generation snippet is in the class comment.
 - **CFG/Resolver/SSA tests**: `FASTPythonCFGTest`, `FASTPythonLocalResolverTest`, `FASTPythonSSATest`.

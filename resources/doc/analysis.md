@@ -101,6 +101,7 @@ It is possible to ask a few things to the nodes once the resolution is done:
 - `node allAccesses` if the node is a variable, returns all the read and write accesses to the variable
 - `node allReadAccesses` if the node is a variable, returns all the read accesses to the variable
 - `node allWriteAccesses` if the node is a variable, returns all the write accesses to the variable
+- `node internalAccesses` if the node is a variable, returns all the internal accesses done on the variable, i.e. the attribute accesses and subscripts such as `x.y` and `x[3]`, on all the accesses of the variable
 - `node variableDeclarator` if the node that is a variable write access, it will return the node assigning the variable (can be an assignment, augmented assignment, for loop or for in clause)
 
 On the model:
@@ -394,6 +395,10 @@ For nodes representing a write access to a variable (it is possible to find them
 
 > Note: you can find some warnings on this in the section [Querying local resolver information](#querying-local-resolver-information). They are the same.
 
+A node can also be accessed internally, via an attribute access such as `x.y` or a subscript such as `x[3]`. For a node used as the accessed object of such an access, `#internalAccess` returns that access. It returns `nil` if the node is not accessed internally.
+
+`#internalAccess` is mostly used by `#internalAccesses`, which returns all the internal accesses done on a variable, and requires the local resolution to be done.
+
 TODO: Document more
 
 ## Examples of analysis
@@ -563,3 +568,23 @@ This works on any AST node — an expression, a statement, or an entire module. 
 binaryExpr := model module statements second right. "x + z"
 binaryExpr usedVariables. "an OrderedCollection with x (z is undeclared, so excluded)"
 ```
+
+**How can I find every internal access done on a variable? (subscripts and attributes)**
+
+A variable can also be accessed internally, via a subscript (`x[3]`) or an attribute (`x.y`). `#internalAccesses` returns all such accesses done on the variable, on any of its accesses. It requires the local resolution to be done:
+
+```smalltalk
+model := FASTPythonImporter parseAndResolve: 'x = []
+
+x.append(1)
+
+print(x[0])' withPlatformLineEndings.
+
+model module statements first left internalAccesses
+
+"an OrderedCollection(
+	PyAttributeAccess(9 - 16)
+	PySubscript(28 - 31) )"
+```
+
+The result contains the `x.append` attribute access, done on the write access of `x`, and the `x[0]` subscript, done on its read in the print.
