@@ -184,6 +184,8 @@ On top of this, it is possible to get information via the SSA directly with the 
 It is also possible to query what is assigned in variables once the SSA is done:
 - `node variableDeclarator` for a node that is a write access to a variable, it will return the node assigning the variable
 - `node assignedExpressionsMap` for a variable, return a map of all expressions used to assigned the variable. The keys of the map are the write accesses that can impact the value of this variable. In some cases there will be only one. But if the variable is assigned in a conditional expression, it will get one entry by assignment that can impact the current variable value
+- `node transitiveAssignedExpressions` for a node doing an assignment (the `variableDeclarator` of a write access), returns the expressions used in the assignment and, for each variable used in those expressions, the expressions assigned to that variable, recursively
+- `node transitiveAssignedExpressionsMap` for a variable, same as `assignedExpressionsMap` but the values are the transitive assigned expressions of each write access
 
 Be carful, `x = 3` is not the only way to assign a variable. Take those cases into account:
 
@@ -223,6 +225,56 @@ x += 1
 Assigned expression: `1`
 
 Be carful, it does not know with the addition method of `x` will do if it is an object.
+
+The transitive variants go one step further than the direct assignment: for each variable used in the assigned expressions, the expressions assigned to that variable are added, and so on recursively. Both need the SSA resolution. The result contains each expression only once, even if it can be reached through multiple paths.
+
+For example:
+
+```python
+y = 1
+
+x = y
+
+print(x)
+```
+
+The assignment `x = y` assigns the expression `y`. Since `y` is itself assigned `1`, the transitive version returns both:
+
+```smalltalk
+model module statements second transitiveAssignedExpressions. "an OrderedCollection(PyIdentifier(12 - 12) PyInteger(5 - 5))"
+
+model module statements second assignedExpressions. "an Array(PyIdentifier(12 - 12)) <= The non transitive version returns only the read of `y`"
+```
+
+On the map side, the receiver is the variable read and each value is transitive:
+
+```smalltalk
+model module statements third arguments first transitiveAssignedExpressionsMap
+
+"a Dictionary(
+	PyVariable(8 - 8)->an OrderedCollection(PyIdentifier(12 - 12) PyInteger(5 - 5)) )"
+```
+
+In case of a phi version, the map has one entry per assignment that can impact the value, each with its own transitive expressions:
+
+```python
+y = 1
+
+if z > 3:
+	x = y
+else:
+	x = 2
+
+print(x)
+```
+
+```smalltalk
+model module statements last arguments first transitiveAssignedExpressionsMap
+
+"a Dictionary(
+	PyVariable(19 - 19)->an OrderedCollection(PyIdentifier(23 - 23) PyInteger(5 - 5))
+	PyVariable(32 - 32)->an OrderedCollection(PyInteger(36 - 36)) )"
+```
 
 ## Limitations of local resolver and SSA
 
@@ -456,6 +508,27 @@ It returns a dictionary with the possible write accesses as key and the expressi
 > Note: you can find some warnings on this in the section [Querying local resolver information](#querying-local-resolver-information). They are the same.
 
 > Note 2: You can use `#assignedExpressions` on the `variableDeclarator` of a specific write access to have information only on this one.
+
+**What expressions are transitively used to do the assignment?**
+
+`#transitiveAssignedExpressionsMap` works like `#assignedExpressionsMap` but also follows the variables used in the assigned expressions: for each of them, it adds the expressions assigned to that variable, and so on recursively:
+
+```smalltalk
+model := FASTPythonImporter parseAndResolve: 'y = 1
+
+x = y
+
+print(x)' withPlatformLineEndings.
+
+model module statements last arguments first transitiveAssignedExpressionsMap
+
+"a Dictionary(
+	PyVariable(8 - 8)->an OrderedCollection(PyIdentifier(12 - 12) PyInteger(5 - 5)) )"
+```
+
+The read of `y` is part of the result since `y` is itself assigned `1`.
+
+> Note: `#transitiveAssignedExpressions` is the equivalent of `#assignedExpressions`: call it on the `variableDeclarator` of a specific write access to have the transitive expressions of only this one.
 
 **How to know what nodes are variables?**
 
