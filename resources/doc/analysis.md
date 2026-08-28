@@ -106,44 +106,6 @@ It is possible to ask a few things to the nodes once the resolution is done:
 On the model:
 - `model allResolvedVariables` returns all nodes in the model that resolve to a variable declaration. This is a shortcut for querying the model-level view of all resolved variables.
 
-Be carful, `x = 3` is not the only way to assign a variable. Take those cases into account:
-
-```python
-x = 3
-```
-
-For x
-
-Assigned expression: `3`
-
-```python
-x, (y, z) = (3, (4, 5))
-```
-
-Assigned expression: `(3, (4, 5))`
-
-> Note: in case of tuples or lists, we do not select the right element in the tuple/list. Especially since it can be given via a variable or a call.
-
-```python
-for x in range(0):
-    print(x)
-```
-
-Assigned expression: `range(0)`
-
-```python
-[c for c in coll]
-```
-
-Assigned expression: `coll`
-
-```python
-x += 1
-```
-
-Assigned expression: `1`
-
-Be carful, it does not know with the addition method of `x` will do if it is an object.
 
 ## Static Single Assignment (SSA)
 
@@ -223,7 +185,44 @@ It is also possible to query what is assigned in variables once the SSA is done:
 - `node variableDeclarator` for a node that is a write access to a variable, it will return the node assigning the variable
 - `node assignedExpressionsMap` for a variable, return a map of all expressions used to assigned the variable. The keys of the map are the write accesses that can impact the value of this variable. In some cases there will be only one. But if the variable is assigned in a conditional expression, it will get one entry by assignment that can impact the current variable value
 
-> Note: you can find some warnings on this in the section [Querying local resolver information](#querying-local-resolver-information). They are the same.
+Be carful, `x = 3` is not the only way to assign a variable. Take those cases into account:
+
+```python
+x = 3
+```
+
+For x
+
+Assigned expression: `3`
+
+```python
+x, (y, z) = (3, (4, 5))
+```
+
+Assigned expression: `(3, (4, 5))`
+
+> Note: in case of tuples or lists, we do not select the right element in the tuple/list. Especially since it can be given via a variable or a call.
+
+```python
+for x in range(0):
+    print(x)
+```
+
+Assigned expression: `range(0)`
+
+```python
+[c for c in coll]
+```
+
+Assigned expression: `coll`
+
+```python
+x += 1
+```
+
+Assigned expression: `1`
+
+Be carful, it does not know with the addition method of `x` will do if it is an object.
 
 ## Limitations of local resolver and SSA
 
