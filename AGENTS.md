@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Always read and follow the coding conventions in `~/.opencode/AGENTS.md`.
+Always read and follow the coding conventions in `~/.opencode/AGENTS.md` if present.
 
 ## What This Is
 
