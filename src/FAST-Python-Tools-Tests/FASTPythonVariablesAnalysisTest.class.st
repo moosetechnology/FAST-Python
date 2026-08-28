@@ -456,6 +456,146 @@ print(x)'.
 ]
 
 { #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsMapChain [
+	| map |
+	self parseAndResolve: 'a = 1
+
+b = a
+
+c = b
+
+print(c)'.
+
+	map := model module statements fourth arguments first transitiveAssignedExpressionsMap.
+	self assert: map size equals: 1.
+	self assertCollection: (map at: model module statements third left) hasSameElements: { model module statements third right. model module statements second right. model module statements first right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsMapIsUnique [
+
+	| map |
+	self parseAndResolve: 'a = 1
+
+b = a
+
+c = a
+
+x = b + c
+
+print(x)'.
+
+	map := model module statements fifth arguments first transitiveAssignedExpressionsMap.
+	self assert: map size equals: 1.
+	self assertCollection: (map at: model module statements fourth left) hasSameElements: (model module statements fourth transitiveAssignedExpressions)
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsMapWithCycleOfVariables [
+	| map |
+	self parseAndResolve: 'x = 1
+
+y = x
+
+x = y
+
+print(x)'.
+
+	map := model module statements fourth arguments first transitiveAssignedExpressionsMap.
+	self assert: map size equals: 1.
+	self assertCollection: (map at: model module statements third left) hasSameElements: { model module statements third right. model module statements second right. model module statements first right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsMapWithFunctionCall [
+	| map |
+	self parseAndResolve: 'y = call2()
+
+x = call1(y)
+
+print(x)'.
+
+	map := model module statements third arguments first transitiveAssignedExpressionsMap.
+	self assert: map size equals: 1.
+	self assertCollection: (map at: model module statements second left) hasSameElements: { model module statements second right. model module statements first right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsMapWithMultipleVariables [
+	| map |
+	self parseAndResolve: 'a = 1
+
+b = 2
+
+x = a + b
+
+print(x)'.
+
+	map := model module statements fourth arguments first transitiveAssignedExpressionsMap.
+	self assert: map size equals: 1.
+	self assertCollection: (map at: model module statements third left) hasSameElements: { model module statements third right. model module statements first right. model module statements second right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsMapWithMultipleWrites [
+	| map |
+	self parseAndResolve: 'if z > 3:
+	x = a
+else:
+	x = b
+
+print(x)'.
+
+	map := model module statements second arguments first transitiveAssignedExpressionsMap.
+	self assert: map size equals: 2.
+	self assertCollection: (map at: model module statements first thenClause statements first left) hasSameElements: { model module statements first thenClause statements first right }.
+	self assertCollection: (map at: model module statements first elseClause statements first left) hasSameElements: { model module statements first elseClause statements first right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsMapWithPhiVariable [
+	| map |
+	self parseAndResolve: 'if z > 3:
+	y = 2
+else:
+	y = 3
+
+x = y
+
+print(x)'.
+
+	map := model module statements third arguments first transitiveAssignedExpressionsMap.
+	self assert: map size equals: 1.
+	self assertCollection: (map at: model module statements second left) hasSameElements: { model module statements second right. model module statements first thenClause statements first right. model module statements first elseClause statements first right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsMapWithReusedVariable [
+	| map |
+	self parseAndResolve: 'x = 1
+
+x = x + 1
+
+print(x)'.
+
+	map := model module statements third arguments first transitiveAssignedExpressionsMap.
+	self assert: map size equals: 1.
+	self assertCollection: (map at: model module statements second left) hasSameElements: { model module statements second right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsMapWithoutTransitivity [
+	| map |
+	self parseAndResolve: 'x = 5
+
+print(x)'.
+
+	map := model module statements second arguments first transitiveAssignedExpressionsMap.
+	self assert: map size equals: 1.
+	self assertCollection: (map at: model module statements first left) hasSameElements: { model module statements first right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
 FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsWithCycleOfVariables [
 
 	| variable |
