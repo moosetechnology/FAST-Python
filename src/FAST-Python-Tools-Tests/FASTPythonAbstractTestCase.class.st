@@ -4,8 +4,9 @@ Class {
 	#instVars : [
 		'model'
 	],
-	#category : 'FAST-Python-Model-Tests',
-	#package : 'FAST-Python-Model-Tests'
+	#category : 'FAST-Python-Tools-Tests-Core',
+	#package : 'FAST-Python-Tools-Tests',
+	#tag : 'Core'
 }
 
 { #category : 'testing' }

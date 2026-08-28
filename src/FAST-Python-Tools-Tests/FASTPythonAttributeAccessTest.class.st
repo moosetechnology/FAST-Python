@@ -1,8 +1,9 @@
 Class {
 	#name : 'FASTPythonAttributeAccessTest',
 	#superclass : 'FASTPythonAbstractTestCase',
-	#category : 'FAST-Python-Model-Tests',
-	#package : 'FAST-Python-Model-Tests'
+	#category : 'FAST-Python-Tools-Tests-Model',
+	#package : 'FAST-Python-Tools-Tests',
+	#tag : 'Model'
 }
 
 { #category : 'tests' }
