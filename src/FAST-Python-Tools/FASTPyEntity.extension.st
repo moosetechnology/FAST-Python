@@ -78,17 +78,14 @@ FASTPyEntity >> selfOrTopmostAssignableCollection [
 
 { #category : '*FAST-Python-Tools' }
 FASTPyEntity >> transitiveAssignedExpressions [
-	"I return for a variable, the expressions that were used during its assignment. If an expression references a variable, recursively add the expressions assigned to those variables."
+	"I return for a write access to a variable, the expressions that were used during its assignment. If an expression references a variable, recursively add the expressions assigned to those variables."
 
 	| toVisit visitedAccesses result |
 	toVisit := OrderedCollection new.
 	visitedAccesses := OrderedCollection new.
 	result := OrderedCollection new.
 
-	self flag: #todo. "Simplify once the todo of #assignedExpressions is done"
-	self versionWriteAccesses do: [ :access |
-			visitedAccesses add: access.
-			toVisit addAll: access variableDeclarator assignedExpressions ].
+	toVisit addAll: self assignedExpressions.
 
 	[ toVisit isEmpty ] whileFalse: [
 			| expression |

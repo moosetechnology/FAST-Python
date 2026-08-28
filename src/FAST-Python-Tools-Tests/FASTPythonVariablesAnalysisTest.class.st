@@ -396,7 +396,7 @@ x = y
 
 print(x)'.
 
-	variable := model module statements third arguments first transitiveAssignedExpressions.
+	variable := model module statements second transitiveAssignedExpressions.
 	self assertCollection: variable hasSameElements: {
 			model module statements second right.
 			model module statements first right }
@@ -413,7 +413,7 @@ b = a
 c = b
 
 print(c)'.
-	variable := model module statements fourth arguments first transitiveAssignedExpressions.
+	variable := model module statements third transitiveAssignedExpressions.
 	self assertCollection: variable hasSameElements: {
 			model module statements third right.
 			model module statements second right.
@@ -433,7 +433,7 @@ c = a
 x = b + c
 
 print(x)'.
-	variable := model module statements fifth arguments first transitiveAssignedExpressions.
+	variable := model module statements fourth transitiveAssignedExpressions.
 	self assertCollection: variable hasSameElements: {
 			model module statements fourth right.
 			model module statements second right.
@@ -452,7 +452,7 @@ y = x
 x = y
 
 print(x)'.
-	variable := model module statements fourth arguments first transitiveAssignedExpressions.
+	variable := model module statements third transitiveAssignedExpressions.
 	self assertCollection: variable hasSameElements: {
 			model module statements third right.
 			model module statements second right.
@@ -468,7 +468,7 @@ FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsWithFunction
 x = call1(y)
 
 print(x)'.
-	variable := model module statements third arguments first transitiveAssignedExpressions.
+	variable := model module statements second transitiveAssignedExpressions.
 	self assertCollection: variable hasSameElements: {
 			model module statements second right.
 			model module statements first right }
@@ -485,7 +485,7 @@ b = 2
 x = a + b
 
 print(x)'.
-	variable := model module statements fourth arguments first transitiveAssignedExpressions.
+	variable := model module statements third transitiveAssignedExpressions.
 	self assertCollection: variable hasSameElements: {
 			model module statements third right.
 			model module statements first right.
@@ -505,7 +505,7 @@ x = y
 
 print(x)'.
 
-	variable := model module statements third arguments first transitiveAssignedExpressions.
+	variable := model module statements second transitiveAssignedExpressions.
 	self assertCollection: variable hasSameElements: {
 			model module statements second right.
 			model module statements first thenClause statements first right.
@@ -521,7 +521,7 @@ FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsWithReusedVa
 x = x + 1
 
 print(x)'.
-	variable := model module statements third arguments first transitiveAssignedExpressions.
+	variable := model module statements second transitiveAssignedExpressions.
 	self assertCollection: variable hasSameElements: { model module statements second right }
 ]
 
@@ -532,7 +532,7 @@ FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsWithoutTrans
 	self parseAndResolve: 'x = 5
 
 print(x)'.
-	variable := model module statements second arguments first transitiveAssignedExpressions.
+	variable := model module statements first transitiveAssignedExpressions.
 	self assertCollection: variable hasSameElements: { model module statements first right }
 ]
 
