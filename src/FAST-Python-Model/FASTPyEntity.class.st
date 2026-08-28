@@ -188,13 +188,6 @@ FASTPyEntity >> isVariableEntity [
 	^ false
 ]
 
-{ #category : 'testing' }
-FASTPyEntity >> isVariableWriteAccess [
-	"I am used in the LR and SSA builder to know if I represent the assignment of a variable."
-
-	^ self variableDeclarator isNotNil
-]
-
 { #category : 'accessing' }
 FASTPyEntity >> shadowedBy [
 
