@@ -442,6 +442,20 @@ print(x)'.
 ]
 
 { #category : 'tests - transitive assigned expressions' }
+FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsMap [
+	| map |
+	self parseAndResolve: 'y = 4
+
+x = y
+
+print(x)'.
+
+	map := model module statements third arguments first transitiveAssignedExpressionsMap.
+	self assert: map size equals: 1.
+	self assertCollection: (map at: model module statements second left) hasSameElements: { model module statements second right. model module statements first right }
+]
+
+{ #category : 'tests - transitive assigned expressions' }
 FASTPythonVariablesAnalysisTest >> testTransitiveAssignedExpressionsWithCycleOfVariables [
 
 	| variable |

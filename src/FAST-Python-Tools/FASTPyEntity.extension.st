@@ -99,6 +99,17 @@ FASTPyEntity >> transitiveAssignedExpressions [
 ]
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> transitiveAssignedExpressionsMap [
+	"I return a dictionary with all write accesses of the receiver (it needs to be a variable) as key, and their transitive assigned expressions as values."
+
+	| result |
+	result := Dictionary new.
+
+	self versionWriteAccesses do: [ :access | result at: access put: access variableDeclarator transitiveAssignedExpressions ].
+	^ result
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> usedVariables [
 	"Return all entities in my subtree that have been resolved to local variable declarations.
 	
