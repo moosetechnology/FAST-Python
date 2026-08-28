@@ -138,6 +138,8 @@ FASTPyExpression >> internalAccess [
 
 	self parentAttributeObject ifNotNil: [ :attribute | ^ attribute ].
 
+	self parentSubscriptValue ifNotNil: [ :subscriptValue | ^ subscriptValue ].
+
 	^ super internalAccess
 ]
 

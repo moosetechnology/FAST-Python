@@ -92,6 +92,73 @@ print(x.y.z)'.
 ]
 
 { #category : 'tests' }
+FASTPythonInternalAccessesTest >> testInternalAccessesOnMixedChain [
+	| accesses |
+	self parseAndResolve: 'x = 1
+
+print(x[3].y)'.
+
+	accesses := model module statements last arguments first value value internalAccesses.
+
+	self assert: accesses size equals: 1.
+	self assert: accesses first identicalTo: model module statements last arguments first value
+]
+
+{ #category : 'tests' }
+FASTPythonInternalAccessesTest >> testInternalAccessesOnMultipleUsages [
+	| accesses |
+	self parseAndResolve: 'x = 1
+
+print(x.y)
+
+print(x.z)'.
+
+	accesses := model module statements second arguments first value internalAccesses.
+
+	self assert: accesses size equals: 2.
+	self assertCollection: accesses hasSameElements: { model module statements second arguments first. model module statements last arguments first }
+]
+
+{ #category : 'tests' }
+FASTPythonInternalAccessesTest >> testInternalAccessesOnSliceSubscript [
+	| accesses |
+	self parseAndResolve: 'x = 1
+
+print(x[1:4])'.
+
+	accesses := model module statements last arguments first value internalAccesses.
+
+	self assert: accesses size equals: 1.
+	self assert: accesses first identicalTo: model module statements last arguments first
+]
+
+{ #category : 'tests' }
+FASTPythonInternalAccessesTest >> testInternalAccessesOnSubscriptRead [
+	| accesses |
+	self parseAndResolve: 'x = 1
+
+print(x[3])'.
+
+	accesses := model module statements last arguments first value internalAccesses.
+
+	self assert: accesses size equals: 1.
+	self assert: accesses first identicalTo: model module statements last arguments first
+]
+
+{ #category : 'tests' }
+FASTPythonInternalAccessesTest >> testInternalAccessesOnSubscriptWrite [
+	| accesses |
+	self parseAndResolve: 'x = 1
+
+x[0] = 2'.
+
+	accesses := model module statements second left value internalAccesses.
+
+	self assert: accesses size equals: 1.
+	self assert: accesses first identicalTo: model module statements second left
+]
+
+{ #category : 'tests' }
 FASTPythonInternalAccessesTest >> testInternalAccessesWithoutInternalAccess [
 	self parseAndResolve: 'x = 1
 
