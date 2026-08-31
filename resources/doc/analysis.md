@@ -102,6 +102,8 @@ It is possible to ask a few things to the nodes once the resolution is done:
 - `node allReadAccesses` if the node is a variable, returns all the read accesses to the variable
 - `node allWriteAccesses` if the node is a variable, returns all the write accesses to the variable
 - `node internalAccesses` if the node is a variable, returns all the internal accesses done on the variable, i.e. the attribute accesses and subscripts such as `x.y` and `x[3]`, on all the accesses of the variable
+- `node allNodesUsingMe` if the node is a variable, returns all the nodes using the variable: for each access of the variable, all its ancestors up to the statement containing it, without going further than the statement blocks (Module, function, method, clauses, ...). For example, for `return x + 3`, it returns the return statement and the binary operation
+- `node statementsUsingMe` if the node is a variable, returns the statements using the variable: same as `allNodesUsingMe` but only the statement of each access, without the intermediate nodes
 - `node variableDeclarator` if the node that is a variable write access, it will return the node assigning the variable (can be an assignment, augmented assignment, for loop or for in clause)
 
 On the model:
@@ -179,6 +181,8 @@ On top of this, it is possible to get information via the SSA directly with the 
 - `node versionAccesses` returns all the read and write accesses for this sepcific version of the variable
 - `node versionReadAccesses` returns all the real accesses for this specific version of the variable
 - `node versionWriteAccesses` returns all the write accesses for this specific version of the variable
+- `node allNodesUsingMyVersion` same as `allNodesUsingMe` but only with the accesses reachable from the current SSA version of the node. In case of a Phi version, the accesses of all the reachable versions are considered
+- `node statementsUsingMyVersion` same as `statementsUsingMe` but only with the accesses reachable from the current SSA version of the node
 
 ### Assigned expressions
 
@@ -588,3 +592,73 @@ model module statements first left internalAccesses
 ```
 
 The result contains the `x.append` attribute access, done on the write access of `x`, and the `x[0]` subscript, done on its read in the print.
+
+**Which nodes and which statements use a variable?**
+
+`#allNodesUsingMe` returns all the nodes using a variable: for each of its accesses, the ancestors up to the statement containing it, without going further than the statement blocks (Module, function, method, clauses, ...). `#statementsUsingMe` returns the same but only the statements, without the intermediate nodes. Both need the local resolution to be done:
+
+```smalltalk
+model := FASTPythonImporter parseAndResolve: 'x = 1
+
+def f():
+	return x + 3' withPlatformLineEndings.
+
+model module statements first left allNodesUsingMe
+
+"a Set(
+	PyReturnStatement(18 - 29)
+	PyAssignment(1 - 5)
+	PyBinaryOperator(25 - 29) )"
+
+model module statements first left statementsUsingMe
+
+"a Set(
+	PyReturnStatement(18 - 29)
+	PyAssignment(1 - 5) )"
+```
+
+The binary operation is part of `#allNodesUsingMe` but not of `#statementsUsingMe`.
+
+**Which nodes and which statements use the current version of a variable?**
+
+`#allNodesUsingMyVersion` and `#statementsUsingMyVersion` are the SSA counterparts of the two previous methods: they only consider the accesses reachable from the current SSA version of the variable. In case of a Phi version, the accesses of all the reachable versions are considered:
+
+```smalltalk
+model := FASTPythonImporter parseAndResolve: 'x = 2
+
+print(x)
+
+x = 3
+
+if z > 4:
+	x = 5
+
+print(x + 1)' withPlatformLineEndings.
+
+lastVariableAccess := model module statements last arguments first leftOperand.
+
+lastVariableAccess allNodesUsingMe
+
+"a Set(
+	PyBinaryOperator(49 - 53)
+	PyCall(8 - 15)
+	PyAssignment(18 - 22)
+	PyCall(43 - 54)
+	PyAssignment(1 - 5)
+	PyAssignment(36 - 40) ) <= all the accesses of x, whatever their version"
+
+lastVariableAccess allNodesUsingMyVersion
+
+"a Set(
+	PyAssignment(36 - 40)
+	PyBinaryOperator(49 - 53)
+	PyCall(43 - 54)
+	PyAssignment(18 - 22) ) <= only the nodes using the current version of x"
+
+lastVariableAccess statementsUsingMyVersion
+
+"a Set(
+	PyAssignment(36 - 40)
+	PyCall(43 - 54)
+	PyAssignment(18 - 22) ) <= same without the intermediate nodes"
+```

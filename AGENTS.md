@@ -73,7 +73,7 @@ FASTPythonSSAVisitor resolve: model allFunctionDefinitions first.  "SSA (after r
 
 ### Variable-analysis API
 
-- Python-specific variable APIs (`usedVariables`, `isResolvedVariable`, `transitiveAssignedExpressions`, `transitiveAssignedExpressionsMap`, `internalAccesses`) are single implementations on `FASTPyEntity` in `src/FAST-Python-Tools/FASTPyEntity.extension.st` (protocol `*FAST-Python-Tools`). The transitive ones require SSA resolution; the others require local resolution.
+- Python-specific variable APIs (`usedVariables`, `isResolvedVariable`, `transitiveAssignedExpressions`, `transitiveAssignedExpressionsMap`, `internalAccesses`, `allNodesUsingMe`, `statementsUsingMe`, `allNodesUsingMyVersion`, `statementsUsingMyVersion`) are single implementations on `FASTPyEntity` in `src/FAST-Python-Tools/FASTPyEntity.extension.st` (protocol `*FAST-Python-Tools`). The transitive ones require SSA resolution; the others require local resolution. The `*MyVersion` variants also require SSA.
 - Contrast: FAST-level helpers (`versionWriteAccesses`, `assignedExpressionsMap`, `versionAccesses`, ...) follow a mass-extension convention -- one identical copy per FAST class in protocol `*FAST-Core-Tools`, living in the FAST dependency repo, not here.
 
 ## Testing
