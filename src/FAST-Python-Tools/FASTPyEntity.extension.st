@@ -109,6 +109,23 @@ FASTPyEntity >> statementsUsingMe [
 ]
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> statementsUsingMyVersion [
+	"If I am a variable, return all the statements using the accesses reachable from my current SSA version.
+	Contrary to #allNodesUsingMyVersion that returns all the nodes between the variable accesses and their statements, I return only the statements containing the variable.
+
+	I need the SSA to be done before."
+
+	^ self versionAccesses
+		  collect: [ :access |
+				  | node |
+				  node := access.
+				  [ node parentNode isNotNil and: [ (node parentNode isOfType: FASTTStatementBlock) not ] ] whileTrue: [ node := node parentNode ].
+				  node ifNil: [ self error: 'A variable should always be in a statement block' ].
+				  node ]
+		  as: Set
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> transitiveAssignedExpressions [
 	"I return for a write access to a variable, the expressions that were used during its assignment. If an expression references a variable, recursively add the expressions assigned to those variables."
 

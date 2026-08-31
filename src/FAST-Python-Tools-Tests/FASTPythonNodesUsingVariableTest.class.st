@@ -62,3 +62,63 @@ print(x)'.
 	self assertCollection: writeAccess statementsUsingMe hasSameElements: { model module statements first. model module statements second }.
 	self assertCollection: readAccess statementsUsingMe hasSameElements: { model module statements first. model module statements second }
 ]
+
+{ #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testStatementsUsingMyVersionDeduplicatesStatement [
+
+	self parseAndResolve: 'x = 1
+
+print(x + x)'.
+
+	self assert: model module statements second arguments first leftOperand statementsUsingMyVersion size equals: 2.
+	self assertCollection: model module statements second arguments first leftOperand statementsUsingMyVersion hasSameElements: {
+			model module statements first.
+			model module statements second }
+]
+
+{ #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testStatementsUsingMyVersionOnPhi [
+	| printRead ifStatement |
+	self parseAndResolve: 'if z > 3:
+	x = 2
+else:
+	x = 3
+
+print(x)'.
+
+	ifStatement := model module statements first.
+	printRead := model module statements second arguments first.
+
+	self assert: printRead statementsUsingMyVersion size equals: 3.
+	self assertCollection: printRead statementsUsingMyVersion hasSameElements: { ifStatement thenClause statements first. ifStatement elseClause statements first. model module statements second }
+]
+
+{ #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testStatementsUsingMyVersionOnSimpleCase [
+	| readAccess |
+	self parseAndResolve: 'x = 1
+
+print(x)'.
+
+	readAccess := model module statements second arguments first.
+
+	self assert: readAccess statementsUsingMyVersion size equals: 2.
+	self assertCollection: readAccess statementsUsingMyVersion hasSameElements: { model module statements first. model module statements second }
+]
+
+{ #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testStatementsUsingMyVersionOnlyReachableAccesses [
+	| firstRead |
+	self parseAndResolve: 'x = 1
+
+print(x)
+
+x = 2
+
+print(x)'.
+
+	firstRead := model module statements second arguments first.
+
+	self assert: firstRead statementsUsingMyVersion size equals: 2.
+	self assertCollection: firstRead statementsUsingMyVersion hasSameElements: { model module statements first. model module statements second }
+]
