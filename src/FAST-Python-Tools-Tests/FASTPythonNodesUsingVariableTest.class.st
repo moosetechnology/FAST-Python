@@ -10,6 +10,102 @@ Class {
 }
 
 { #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testAllNodesUsingMeOnAttributeAccess [
+	self parseAndResolve: 'x = []
+
+x.append(1)'.
+
+	self assert: (model module statements first left allNodesUsingMe) size equals: 3.
+	self assertCollection: (model module statements first left allNodesUsingMe) hasSameElements: { model module statements first. model module statements second callee. model module statements second }
+]
+
+{ #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testAllNodesUsingMeOnConditionOfControlStatement [
+
+	self parseAndResolve: 'x = 1
+
+if x > 3:
+	y = 2'.
+
+	self assert: model module statements first left allNodesUsingMe size equals: 3.
+	self assertCollection: model module statements first left allNodesUsingMe hasSameElements: {
+			model module statements first.
+			model module statements second condition.
+			model module statements second }
+]
+
+{ #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testAllNodesUsingMeOnMultipleUsages [
+
+	self parseAndResolve: 'x = 1
+
+print(x)
+
+print(x + x)'.
+
+	self assert: model module statements first left allNodesUsingMe size equals: 4.
+	self assertCollection: model module statements first left allNodesUsingMe hasSameElements: {
+			model module statements first.
+			model module statements second.
+			model module statements third arguments first.
+			model module statements third }
+]
+
+{ #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testAllNodesUsingMeOnNestedExpression [
+	self parseAndResolve: 'x = 1
+
+y = x + 1'.
+
+	self assert: (model module statements first left allNodesUsingMe) size equals: 3.
+	self assertCollection: (model module statements first left allNodesUsingMe) hasSameElements: { model module statements first. model module statements second. model module statements second right }
+]
+
+{ #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testAllNodesUsingMeOnSimpleCase [
+	| writeAccess readAccess |
+	self parseAndResolve: 'x = 1
+
+print(x)'.
+
+	writeAccess := model module statements first left.
+	readAccess := model module statements second arguments first.
+
+	self assert: writeAccess allNodesUsingMe size equals: 2.
+	self assert: readAccess allNodesUsingMe size equals: 2.
+	self assertCollection: writeAccess allNodesUsingMe hasSameElements: { model module statements first. model module statements second }.
+	self assertCollection: readAccess allNodesUsingMe hasSameElements: { model module statements first. model module statements second }
+]
+
+{ #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testAllNodesUsingMeStopsAtFunction [
+	| function |
+	self parseAndResolve: 'x = 1
+
+def f():
+	print(x)'.
+
+	function := model module statements second.
+
+	self assert: (model module statements first left allNodesUsingMe) size equals: 2.
+	self assertCollection: (model module statements first left allNodesUsingMe) hasSameElements: { model module statements first. function statements first }
+]
+
+{ #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testAllNodesUsingMeStopsAtIfBody [
+	| writeAccess |
+	self parseAndResolve: 'if z:
+	x = 2
+
+print(x)'.
+
+	writeAccess := model module statements first thenClause statements first left.
+
+	self assert: writeAccess allNodesUsingMe size equals: 2.
+	self assertCollection: writeAccess allNodesUsingMe hasSameElements: { model module statements first thenClause statements first. model module statements second }
+]
+
+{ #category : 'tests' }
 FASTPythonNodesUsingVariableTest >> testStatementsUsingMeDeduplicatesStatementOfMultipleUsages [
 	self parseAndResolve: 'x = 1
 

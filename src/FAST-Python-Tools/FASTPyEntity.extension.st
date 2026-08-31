@@ -1,6 +1,26 @@
 Extension { #name : 'FASTPyEntity' }
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> allNodesUsingMe [
+	"If I am a variable, return all the nodes using me and all the other accesses of the same variable: the ancestors of each access of the variable, stopping (exclusively) when the parent is a FASTTStatementBlock (Module, function, method, clauses, ...).
+	For example, for `return x + 3`, I return the return statement and the binary operation.
+
+	I need the local resolution to be done before."
+
+	^ self allAccesses
+		  flatCollect: [ :access |
+				  | node nodes |
+				  nodes := OrderedCollection new.
+				  node := access.
+				  [ node parentNode isNotNil and: [ (node parentNode isOfType: FASTTStatementBlock) not ] ] whileTrue: [
+						  node := node parentNode.
+						  nodes add: node ].
+				  node ifNil: [ self error: 'A variable should always be in a statement block' ].
+				  nodes ]
+		  as: Set
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> cfg [
 
 	^ FASTPythonCFGVisitor buildCFGOf: self
