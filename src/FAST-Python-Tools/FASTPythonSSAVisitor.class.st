@@ -67,7 +67,7 @@ FASTPythonSSAVisitor >> initialize [
 ]
 
 { #category : 'hooks' }
-FASTPythonSSAVisitor >> postConditonalsBranchVisitOf: firstBranchBlock conditional: aConditionalBlock [
+FASTPythonSSAVisitor >> postConditionalsBranchVisitOf: firstBranchBlock conditional: aConditionalBlock [
 	"Once we visited a conditional branch, we save the current active versions for this branch."
 
 	| mapForConditional |
@@ -76,7 +76,7 @@ FASTPythonSSAVisitor >> postConditonalsBranchVisitOf: firstBranchBlock condition
 ]
 
 { #category : 'hooks' }
-FASTPythonSSAVisitor >> postConditonalsBranchesVisitOf: aConditionalBlock [
+FASTPythonSSAVisitor >> postConditionalsBranchesVisitOf: aConditionalBlock [
 	"Once we're done visiting a conditional block we can clean the map and to build the Phi variables."
 
 	| mapForConditional previousVariables |
@@ -88,7 +88,7 @@ FASTPythonSSAVisitor >> postConditonalsBranchesVisitOf: aConditionalBlock [
 ]
 
 { #category : 'hooks' }
-FASTPythonSSAVisitor >> preConditonalsBranchesVisitOf: aConditionalBlock [
+FASTPythonSSAVisitor >> preConditionalsBranchesVisitOf: aConditionalBlock [
 	"When we start to visit the branches of a conditional, we start by creating an entri for this conditional in the new variables map and we save the actives versions present before visiting the childrem."
 
 	newVariablesMap at: aConditionalBlock put: (IdentityDictionary with: #previousVariables -> self currentActiveVersions)
