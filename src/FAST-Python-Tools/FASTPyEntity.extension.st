@@ -21,6 +21,26 @@ FASTPyEntity >> allNodesUsingMe [
 ]
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> allNodesUsingMyVersion [
+	"If I am a variable, return all the nodes using the accesses reachable from my current SSA version: the ancestors of each reachable access, stopping (exclusively) when the parent is a FASTTStatementBlock.
+	Contrary to #allNodesUsingMe, I only consider the accesses of the current SSA version. In case of a Phi version, the accesses of all the reachable versions are considered.
+
+	I need the SSA to be done before."
+
+	^ self versionAccesses
+		  flatCollect: [ :access |
+				  | node nodes |
+				  nodes := OrderedCollection new.
+				  node := access.
+				  [ node parentNode isNotNil and: [ (node parentNode isOfType: FASTTStatementBlock) not ] ] whileTrue: [
+						  node := node parentNode.
+						  nodes add: node ].
+				  node ifNil: [ self error: 'A variable should always be in a statement block' ].
+				  nodes ]
+		  as: Set
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> cfg [
 
 	^ FASTPythonCFGVisitor buildCFGOf: self

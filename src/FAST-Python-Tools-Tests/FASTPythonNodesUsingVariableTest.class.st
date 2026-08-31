@@ -106,6 +106,55 @@ print(x)'.
 ]
 
 { #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testAllNodesUsingMyVersionOnPhi [
+	| printRead ifStatement |
+	self parseAndResolve: 'if z > 3:
+	x = 2
+else:
+	x = 3
+
+print(x)'.
+
+	ifStatement := model module statements first.
+	printRead := model module statements second arguments first.
+
+	self assert: printRead allNodesUsingMyVersion size equals: 3.
+	self assertCollection: printRead allNodesUsingMyVersion hasSameElements: { ifStatement thenClause statements first. ifStatement elseClause statements first. model module statements second }
+]
+
+{ #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testAllNodesUsingMyVersionOnSimpleCase [
+	| readAccess writeAccess |
+	self parseAndResolve: 'x = 1
+
+print(x)'.
+
+	readAccess := model module statements second arguments first.
+	writeAccess := model module statements first left.
+
+	self assert: readAccess allNodesUsingMyVersion size equals: 2.
+	self assert: writeAccess allNodesUsingMyVersion size equals: 2.
+	self assertCollection: readAccess allNodesUsingMyVersion hasSameElements: { model module statements first. model module statements second }
+]
+
+{ #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testAllNodesUsingMyVersionOnlyReachableAccesses [
+	| firstRead |
+	self parseAndResolve: 'x = 1
+
+print(x)
+
+x = 2
+
+print(x)'.
+
+	firstRead := model module statements second arguments first.
+
+	self assert: firstRead allNodesUsingMyVersion size equals: 2.
+	self assertCollection: firstRead allNodesUsingMyVersion hasSameElements: { model module statements first. model module statements second }
+]
+
+{ #category : 'tests' }
 FASTPythonNodesUsingVariableTest >> testStatementsUsingMeDeduplicatesStatementOfMultipleUsages [
 	self parseAndResolve: 'x = 1
 
