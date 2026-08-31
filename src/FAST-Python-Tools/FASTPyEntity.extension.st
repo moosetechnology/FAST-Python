@@ -92,6 +92,23 @@ FASTPyEntity >> selfOrTopmostAssignableCollection [
 ]
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> statementsUsingMe [
+	"If I am a variable, return all the statements using me and all the other accesses of the same variable.
+	Contrary to #allNodesUsingMe that returns all the nodes between the variable and its statement, I return only the statement containing the variable. For example, for `return x + 3`, #allNodesUsingMe returns the return statement and the binary operation while I only return the return statement.
+
+	I need the local resolution to be done before."
+
+	^ self allAccesses
+		  collect: [ :access |
+				  | node |
+				  node := access.
+				  [ node parentNode isNotNil and: [ (node parentNode isOfType: FASTTStatementBlock) not ] ] whileTrue: [ node := node parentNode ].
+				  node ifNil: [ self error: 'A variable should always be in a statement block' ].
+				  node ]
+		  as: Set
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> transitiveAssignedExpressions [
 	"I return for a write access to a variable, the expressions that were used during its assignment. If an expression references a variable, recursively add the expressions assigned to those variables."
 
