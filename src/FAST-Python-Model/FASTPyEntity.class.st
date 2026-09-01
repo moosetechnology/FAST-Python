@@ -159,6 +159,12 @@ FASTPyEntity >> isNumericalLiteral [
 ]
 
 { #category : 'testing' }
+FASTPyEntity >> isReceiverOfCall [
+
+	^ false
+]
+
+{ #category : 'testing' }
 FASTPyEntity >> isReturnStatement [
 
 	<generated>

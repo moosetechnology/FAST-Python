@@ -41,6 +41,17 @@ FASTPyEntity >> allNodesUsingMyVersion [
 ]
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> callsOnVariable [
+	"If I am a variable, return all the call nodes having my read accesses as receiver. This will group invocations and instantiations.
+
+	I need the local resolution to be done before."
+
+	^ self allReadAccesses
+		  select: [ :access | access isReceiverOfCall ]
+		  thenCollect: [ :access | access parentAttributeObject caller ]
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> cfg [
 
 	^ FASTPythonCFGVisitor buildCFGOf: self

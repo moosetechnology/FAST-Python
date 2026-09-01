@@ -160,9 +160,10 @@ x[0] = 2'.
 
 { #category : 'tests' }
 FASTPythonInternalAccessesTest >> testInternalAccessesWithoutInternalAccess [
+
 	self parseAndResolve: 'x = 1
 
 print(x)'.
 
-	self assert: (model module statements last arguments first internalAccesses) isEmpty
+	self assertEmpty: model module statements last arguments first internalAccesses
 ]

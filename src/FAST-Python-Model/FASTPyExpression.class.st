@@ -151,6 +151,14 @@ FASTPyExpression >> isExpressionStatement [
 	^ false
 ]
 
+{ #category : 'testing' }
+FASTPyExpression >> isReceiverOfCall [
+
+	self parentAttributeObject ifNotNil: [ :attribute | ^ attribute caller isNotNil ].
+
+	^ false
+]
+
 { #category : 'accessing' }
 FASTPyExpression >> parentAssertStatement [
 	"Relation named: #parentAssertStatement type: #FASTPyAssertStatement opposite: #expressions"
