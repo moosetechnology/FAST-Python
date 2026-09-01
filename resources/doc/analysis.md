@@ -21,6 +21,15 @@ A general note: When we import an entity, we cannot know if it is a variable, a 
   - [FAST Python visitor](#fastpython-visitor)
   - [Control Flow Graph (CFG)](#control-flow-graph-cfg)
   - [FAST utilities](#fast-utilities)
+  - [API](#api)
+    - [Variables analysis](#variables-analysis)
+      - [Knowing what is a variable](#knowing-what-is-a-variable)
+      - [Accessing the SSA versions of a variable](#accessing-the-ssa-versions-of-a-variable)
+      - [Getting the accesses of a variable](#getting-the-accesses-of-a-variable)
+      - [Knowing what uses a variable](#knowing-what-uses-a-variable)
+      - [Getting the internal accesses of a variable](#getting-the-internal-accesses-of-a-variable)
+      - [Getting the calls on a variable](#getting-the-calls-on-a-variable)
+      - [Getting the assigned expressions](#getting-the-assigned-expressions)
   - [Examples of analysis](#examples-of-analysis)
 
 ## Local resolution
@@ -406,6 +415,77 @@ A node can also be accessed internally, via an attribute access such as `x.y` or
 `#internalAccess` is mostly used by `#internalAccesses`, which returns all the internal accesses done on a variable, and requires the local resolution to be done.
 
 TODO: Document more
+
+## API
+
+This section references the API available to analyse a FASTPython model. For now, FAST-Python was mostly used to analyse variables, so the API is centered on variables analysis.
+
+The requirement column indicates what needs to be done on the model before using the selector:
+- Vanilla: nothing, it works on the freshly imported model
+- LR: the local resolution needs to be done
+- SSA: the SSA resolution needs to be done (which includes the local resolution)
+
+### Variables analysis
+
+#### Knowing what is a variable
+
+| Selector | Receiver | Requirement | Description |
+|---|---|---|---|
+| `isResolvedVariable` | `FASTPyEntity` | LR | Returns `true` if the node resolves to a local variable declaration (not an unresolved name, function, method or import) |
+| `usedVariables` | `FASTPyEntity` | LR | Returns all the entities of the node and its subtree resolving to local variable declarations (includes the node itself if it is one) |
+| `allResolvedVariables` | `FASTPyModel` | LR | Returns every entity of the model resolving to a variable declaration |
+
+#### Accessing the SSA versions of a variable
+
+| Selector | Receiver | Requirement | Description |
+|---|---|---|---|
+| `ssaVersion` | `FASTPyEntity` representing a variable | SSA | Returns the current SSA version of the variable. It is a `FASTVariableVersionSSA` or a `FASTVariablePhiVersionSSA` if the value can come from multiple assignments |
+| `allSSAVersions` | `FASTPyEntity` representing a variable | SSA | Returns all the SSA versions the variable can get, including the Phi versions |
+| `allSSABasicVersions` | `FASTPyEntity` representing a variable | SSA | Same as `#allSSAVersions` but without the Phi versions |
+
+#### Getting the accesses of a variable
+
+| Selector | Receiver | Requirement | Description |
+|---|---|---|---|
+| `allAccesses` | Any access of a variable | LR | Returns all the read and write accesses to the variable |
+| `allReadAccesses` | Any access of a variable | LR | Returns all the read accesses to the variable |
+| `allWriteAccesses` | Any access of a variable | LR | Returns all the write accesses to the variable |
+| `variableDeclarator` | A write access of a variable | LR | Returns the node assigning the variable (assignment, augmented assignment, for loop or for in clause) |
+| `versionAccesses` | Any access of a variable | SSA | Returns the read and write accesses for the current SSA version of the receiver |
+| `versionReadAccesses` | Any access of a variable | SSA | Returns the read accesses for the current SSA version of the receiver |
+| `versionWriteAccesses` | Any access of a variable | SSA | Returns the write accesses for the current SSA version of the receiver |
+
+#### Knowing what uses a variable
+
+| Selector | Receiver | Requirement | Description |
+|---|---|---|---|
+| `allNodesUsingMe` | Any access of a variable | LR | Returns all the nodes using the variable: the ancestors of each of its accesses, up to the statement containing it, without going further than the statement blocks |
+| `statementsUsingMe` | Any access of a variable | LR | Same as `#allNodesUsingMe` but only the statements, without the intermediate nodes |
+| `allNodesUsingMyVersion` | Any access of a variable | SSA | Same as `#allNodesUsingMe` but only with the accesses reachable from the current SSA version |
+| `statementsUsingMyVersion` | Any access of a variable | SSA | Same as `#statementsUsingMe` but only with the accesses reachable from the current SSA version |
+
+#### Getting the internal accesses of a variable
+
+| Selector | Receiver | Requirement | Description |
+|---|---|---|---|
+| `internalAccess` | `FASTPyEntity` | Vanilla | Returns the attribute access or subscript directly accessing the node, or `nil` |
+| `internalAccesses` | Any access of a variable | LR | Returns all the internal accesses done on the variable, on all its accesses |
+
+#### Getting the calls on a variable
+
+| Selector | Receiver | Requirement | Description |
+|---|---|---|---|
+| `callsOnVariable` | Any access of a variable | LR | Returns the `FASTPyCall` nodes having the variable as receiver: the callee is the read of the variable itself (invocation or instantiation `x()`) or an internal access on it (`x.append(1)`, `x[3]()`) |
+| `callsOnVariableVersion` | Any access of a variable | SSA | Same as `#callsOnVariable` but only with the reads reachable from the current SSA version |
+
+#### Getting the assigned expressions
+
+| Selector | Receiver | Requirement | Description |
+|---|---|---|---|
+| `assignedExpressions` | An assignment node (the `variableDeclarator` of a write access) | Vanilla | Returns the expressions used by this assignment. Returns an empty collection on any other node |
+| `assignedExpressionsMap` | Any access of a variable | SSA | Returns a map with, as key, each write access impacting the value of the variable, and as value, the expressions used by that assignment |
+| `transitiveAssignedExpressions` | An assignment node (the `variableDeclarator` of a write access) | SSA | Same as `#assignedExpressions` but the variables used in the assigned expressions are followed: the expressions assigned to them are added, recursively |
+| `transitiveAssignedExpressionsMap` | Any access of a variable | SSA | Same as `#assignedExpressionsMap` but each value is the transitive assigned expressions of the corresponding assignment |
 
 ## Examples of analysis
 
