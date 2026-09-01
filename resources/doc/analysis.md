@@ -411,21 +411,14 @@ TODO: Document more
 
 In this section I'll show how to answer some questions I was asked to answer with FAST-Python.
 
-The examples will use `#parseAndResolve:` from the python importer that parse a piece of code and launch the local resolver and SSA resolution.
+The examples will use `#parseAndResolve:` from the python importer that parse a piece of code and launch the local resolver and SSA resolution. Each question provides its own piece of code. The python code is passed with `withPlatformLineEndings` since cr line returns are not supported in Python parsers.
 
-For example:
+**Where is a variable written/defined?**
+
+To know the write accesses that can impact a specific use of the variable:
 
 ```smalltalk
-code := 'x = 2
-print(x)' withPlatformLineEndings. "Platform line ending are needed because cr line returns are not supported in Python parsers."
-
-model := FASTPythonImporter parseAndResolve: code. "Import and resolve with local resolver and SSA."
-```
-
-Let's use this piece of Python code as example:
-
-```python
-x = 2
+model := FASTPythonImporter parseAndResolve: 'x = 2
 
 print(x)
 
@@ -434,14 +427,8 @@ x = 3
 if z > 4:
 	x = 5
 
-print(x)
-```
+print(x)' withPlatformLineEndings.
 
-**Where is a variable defined?**
-
-We can do this:
-
-```smalltalk
 lastVariableAccess := model module statements last arguments first.
 
 lastVariableAccess ssaVersion. "a FASTVariablePhiVersionSSA ['x_3', 'x_2'] <= We see here that this variable can come from 2 assignments depending on a condition>"
@@ -451,30 +438,7 @@ lastVariableAccess versionWriteAccesses. "an OrderedCollection(PyVariable(18 - 1
 
 This will return the write accesses that impacted this use of the variable. It will ignore the write accesses that cannot have an impact of this variable.
 
-**Where is a variable read?**
-
-With the same python snippet as before we can do:
-
-```smalltalk
-lastVariableAccess := model module statements last arguments first.
-
-lastVariableAccess versionReadAccesses "an OrderedCollection(PyIdentifier(50 - 50))"
-```
-
-This will return every reading of the variable you are checking for the current SSA version. It ignores all read accesses that are not for this version of the variable.
-
-**Where is a variable read independently of versions?**
-
-Let's imagine we want all read access to the variable and not just the ones for the current SSA version. We can do:
-
-```smalltalk
-variable := model module statements first left. "We could get any access to the variable here, not only the first one."
-
-variable allReadAccesses.  "an OrderedCollection(PyIdentifier(14 - 14) PyIdentifier(50 - 50))"
-```
-**Where is a variable writen independently of version?**
-
-Same as before, we can use the local declaration:
+To get all the write accesses of the variable independently of versions:
 
 ```smalltalk
 variable := model module statements first left. "We could get any access to the variable here, not only the first one."
@@ -484,11 +448,53 @@ variable allWriteAccesses  "an OrderedCollection(PyVariable(1 - 1) PyVariable(18
 
 > We can also use `#allAccesses` and `#versionAccesses` to mix read and write accesses.
 
+**Where is a variable read?**
+
+To get the reads of the current SSA version of the variable:
+
+```smalltalk
+model := FASTPythonImporter parseAndResolve: 'x = 2
+
+print(x)
+
+x = 3
+
+if z > 4:
+	x = 5
+
+print(x)' withPlatformLineEndings.
+
+lastVariableAccess := model module statements last arguments first.
+
+lastVariableAccess versionReadAccesses "an OrderedCollection(PyIdentifier(50 - 50))"
+```
+
+This will return every reading of the variable you are checking for the current SSA version. It ignores all read accesses that are not for this version of the variable.
+
+To get all the read accesses of the variable independently of versions:
+
+```smalltalk
+variable := model module statements first left. "We could get any access to the variable here, not only the first one."
+
+variable allReadAccesses.  "an OrderedCollection(PyIdentifier(14 - 14) PyIdentifier(50 - 50))"
+```
+
 **What is the assignment node of the variable I am manipulating?**
 
 It is possible to get the nodes doing the assignments this way:
 
 ```smalltalk
+model := FASTPythonImporter parseAndResolve: 'x = 2
+
+print(x)
+
+x = 3
+
+if z > 4:
+	x = 5
+
+print(x)' withPlatformLineEndings.
+
 lastVariableAccess := model module statements last arguments first.
 
 lastVariableAccess ssaVersion writeAccesses collect: [ :access | access variableDeclarator ] "an OrderedCollection(PyAssignment(18 - 22) PyAssignment(36 - 40))"
@@ -505,6 +511,17 @@ Also, there can be multiple ones, as shown in the example, in case of a phi vers
 It is possible to know all possible expressions involved in the assignment of a variable like this:
 
 ```smalltalk
+model := FASTPythonImporter parseAndResolve: 'x = 2
+
+print(x)
+
+x = 3
+
+if z > 4:
+	x = 5
+
+print(x)' withPlatformLineEndings.
+
 lastVariableAccess := model module statements last arguments first.
 
 lastVariableAccess assignedExpressionsMap
@@ -546,11 +563,22 @@ The read of `y` is part of the result since `y` is itself assigned `1`.
 The local resolver resolves each entity to its declaration. `#isResolvedVariable` returns `true` only if the entity's local declaration is a variable (identifier, parameter, walrus). It returns `false` for unresolved names, functions, methods, imports, literals, and operators:
 
 ```smalltalk
+model := FASTPythonImporter parseAndResolve: 'x = 2
+
+print(x)
+
+x = 3
+
+if z > 4:
+	x = 5
+
+print(x)' withPlatformLineEndings.
+
 firstVariableAccess := model module statements first left.
 firstVariableAccess isResolvedVariable. "true  (x is a variable)"
 
-firstFunctionDef := model module statements first.
-firstFunctionDef isResolvedVariable. "false (def x is a function definition)"
+ifStatement := model module statements fourth.
+ifStatement isResolvedVariable. "false (an if statement is not a variable)"
 ```
 
 At the model level, `#allResolvedVariables` returns every entity in the model that resolves to a variable declaration:
@@ -564,15 +592,21 @@ model allResolvedVariables. "all resolved variable entities across the entire mo
 `#usedVariables` collects all resolved variable entities within a node and its subtree. It includes the node itself if it is a resolved variable. It requires the local resolution to have been done:
 
 ```smalltalk
+model := FASTPythonImporter parseAndResolve: 'x = 2
+
+print(x)
+
+y = x + 1' withPlatformLineEndings.
+
 firstPrint := model module statements second. "print(x)"
-firstPrint usedVariables. "an OrderedCollection with the x identifier"
+firstPrint usedVariables. "an IdentitySet(PyIdentifier(14 - 14))"
 ```
 
 This works on any AST node — an expression, a statement, or an entire module. For example, on a binary operator:
 
 ```smalltalk
-binaryExpr := model module statements second right. "x + z"
-binaryExpr usedVariables. "an OrderedCollection with x (z is undeclared, so excluded)"
+binaryExpr := model module statements third right. "x + 1"
+binaryExpr usedVariables. "an IdentitySet(PyIdentifier(22 - 22)) <= the literal 1 is not a variable"
 ```
 
 **How can I find every internal access done on a variable? (subscripts and attributes)**
@@ -621,9 +655,7 @@ model module statements first left statementsUsingMe
 
 The binary operation is part of `#allNodesUsingMe` but not of `#statementsUsingMe`.
 
-**Which nodes and which statements use the current version of a variable?**
-
-`#allNodesUsingMyVersion` and `#statementsUsingMyVersion` are the SSA counterparts of the two previous methods: they only consider the accesses reachable from the current SSA version of the variable. In case of a Phi version, the accesses of all the reachable versions are considered:
+Their SSA counterparts, `#allNodesUsingMyVersion` and `#statementsUsingMyVersion`, only consider the accesses reachable from the current SSA version of the variable. In case of a Phi version, the accesses of all the reachable versions are considered:
 
 ```smalltalk
 model := FASTPythonImporter parseAndResolve: 'x = 2
