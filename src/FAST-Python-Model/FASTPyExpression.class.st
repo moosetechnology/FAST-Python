@@ -117,6 +117,17 @@ FASTPyExpression class >> isAbstract [
 ]
 
 { #category : 'accessing' }
+FASTPyExpression >> callOnMe [
+	"See implementation in my superclass for an explanation of what I do."
+
+	self parentAttributeObject ifNotNil: [ :attribute | ^ attribute caller ].
+
+	self parentSubscriptValue ifNotNil: [ :subscript | ^ subscript caller ].
+
+	^ super callOnMe
+]
+
+{ #category : 'accessing' }
 FASTPyExpression >> collectionInitializer [
 	"Relation named: #collectionInitializer type: #FASTPyCollectionInitializer opposite: #initializers"
 
@@ -147,14 +158,6 @@ FASTPyExpression >> internalAccess [
 FASTPyExpression >> isExpressionStatement [
 
 	self containersDo: [ :container | (container isOfType: FASTTStatementBlock) ifTrue: [ ^ true ] ].
-
-	^ false
-]
-
-{ #category : 'testing' }
-FASTPyExpression >> isReceiverOfCall [
-
-	self parentAttributeObject ifNotNil: [ :attribute | ^ attribute caller isNotNil ].
 
 	^ false
 ]

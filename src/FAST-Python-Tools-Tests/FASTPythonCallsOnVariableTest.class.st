@@ -1,5 +1,5 @@
 "
-Tests for the calls made on a variable. #callsOnVariable returns, for a variable, all the FASTPyCall whose receiver is the variable: the callee of the call is an internal access on the variable (`x.append(1)`, `x[3]()`). The calls of the variable itself, such as the instantiation `x()`, are not included since the variable is the callee and not the receiver. It requires the local resolution. #callsOnVariableVersion does the same but only for the reads reachable from the current SSA version of the receiver. It requires the SSA.
+Tests for the calls made on a variable. #callsOnVariable returns, for a variable, all the FASTPyCall having the variable as receiver: the callee of the call is the read of the variable itself (`x()`, invocation or instantiation) or an internal access on the variable (`x.append(1)`, `x[3]()`). It requires the local resolution. #callsOnVariableVersion does the same but only for the reads reachable from the current SSA version of the receiver. It requires the SSA.
 "
 Class {
 	#name : 'FASTPythonCallsOnVariableTest',
@@ -22,13 +22,16 @@ y = x'.
 ]
 
 { #category : 'tests' }
-FASTPythonCallsOnVariableTest >> testCallsOnVariableExcludesInstantiation [
-
+FASTPythonCallsOnVariableTest >> testCallsOnVariableOnInstantiation [
+	| call |
 	self parseAndResolve: 'x = []
 
 x()'.
 
-	self assertEmpty: model module statements first left callsOnVariable
+	call := model module statements second.
+
+	self assert: (model module statements first left callsOnVariable) size equals: 1.
+	self assert: (model module statements first left callsOnVariable) first identicalTo: call
 ]
 
 { #category : 'tests' }
@@ -61,7 +64,6 @@ x.b(2)'.
 
 { #category : 'tests' }
 FASTPythonCallsOnVariableTest >> testCallsOnVariableOnSubscriptReceiver [
-
 	| call |
 	self parseAndResolve: 'x = []
 
@@ -69,7 +71,21 @@ x[3]()'.
 
 	call := model module statements second.
 
-	self assertEmpty: model module statements first left callsOnVariable
+	self assert: (model module statements first left callsOnVariable) size equals: 1.
+	self assert: (model module statements first left callsOnVariable) first identicalTo: call
+]
+
+{ #category : 'tests' }
+FASTPythonCallsOnVariableTest >> testCallsOnVariableVersionOnInstantiation [
+	| call |
+	self parseAndResolve: 'x = []
+
+x()'.
+
+	call := model module statements second.
+
+	self assert: (model module statements first left callsOnVariableVersion) size equals: 1.
+	self assert: (model module statements first left callsOnVariableVersion) first identicalTo: call
 ]
 
 { #category : 'tests' }

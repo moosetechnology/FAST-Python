@@ -31,6 +31,14 @@ FASTPyTCallable classSide >> annotation [
 ]
 
 { #category : 'accessing' }
+FASTPyTCallable >> callOnMe [
+
+	self caller ifNotNil: [ ^ self caller ].
+
+	^ super callOnMe
+]
+
+{ #category : 'accessing' }
 FASTPyTCallable >> caller [
 	"Relation named: #caller type: #FASTPyCall opposite: #callee"
 

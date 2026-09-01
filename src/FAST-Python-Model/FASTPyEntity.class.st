@@ -56,6 +56,23 @@ FASTPyEntity >> assignedExpressions [
 	^ Array empty
 ]
 
+{ #category : 'accessing' }
+FASTPyEntity >> callOnMe [
+	"Return, if it exists, a call done on me.
+	
+	I am used for #callsOnVariable. 
+	
+	I'll return the call in those cases (I am x)
+	
+	x.y()
+	x()
+	x[0]()
+	
+	I know this is not 'really' the receiver in all 3 cases, but this is what is wanted for the project using #callsOnVariable. Maybe I should be renamed to show that I am private?"
+
+	^ nil
+]
+
 { #category : 'testing' }
 FASTPyEntity >> hasImmediateSource [
 
@@ -155,12 +172,6 @@ FASTPyEntity >> isLiteral [
 FASTPyEntity >> isNumericalLiteral [
 
 	<generated>
-	^ false
-]
-
-{ #category : 'testing' }
-FASTPyEntity >> isReceiverOfCall [
-
 	^ false
 ]
 

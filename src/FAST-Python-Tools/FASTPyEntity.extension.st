@@ -47,8 +47,8 @@ FASTPyEntity >> callsOnVariable [
 	I need the local resolution to be done before."
 
 	^ self allReadAccesses
-		  select: [ :access | access isReceiverOfCall ]
-		  thenCollect: [ :access | access parentAttributeObject caller ]
+		  collect: #callOnMe
+		  thenReject: #isNil
 ]
 
 { #category : '*FAST-Python-Tools' }
@@ -58,8 +58,8 @@ FASTPyEntity >> callsOnVariableVersion [
 	I need the SSA to be done before."
 
 	^ self versionReadAccesses
-		  select: [ :access | access isReceiverOfCall ]
-		  thenCollect: [ :access | access parentAttributeObject caller ]
+		  collect: #callOnMe
+		  thenReject: #isNil
 ]
 
 { #category : '*FAST-Python-Tools' }
