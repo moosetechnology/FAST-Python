@@ -15,6 +15,7 @@ Class {
 FASTPythonImporter class >> devFASTPythonMenu: aBuilder [
 
 	<worldMenu>
+	<ignoreForCoverage>
 	(aBuilder item: #DevFASTPython)
 		order: 100;
 		label: 'FAST Python dev utilities';
@@ -50,6 +51,7 @@ FASTPythonImporter class >> devParseAll [
 	We do not save the models to not flood the memory and allow their GC."
 
 	<script>
+	<ignoreForCoverage>
 	self devParseFiles: ('/Users/cyril/marius/selected_notebooks_converted' asFileReference allFiles select: [ :f | f extension = 'py' ])
 ]
 
@@ -57,6 +59,7 @@ FASTPythonImporter class >> devParseAll [
 FASTPythonImporter class >> devParseBatch1 [
 
 	<script>
+	<ignoreForCoverage>
 	[ self devParseBatchNumber: '001' ] spy
 ]
 
@@ -66,6 +69,7 @@ FASTPythonImporter class >> devParseBatchNumber: aString [
 	We do not save the models to not flood the memory and allow their GC."
 
 	<script>
+	<ignoreForCoverage>
 	self devParseFiles: (('/Users/cyril/marius/selected_notebooks_converted/batch_' , aString) asFileReference allFiles select: [ :f | f extension = 'py' ])
 ]
 
@@ -76,6 +80,7 @@ FASTPythonImporter class >> devParseFiles: aCollection [
 	
 	I save as last element the time it took to run on the full batch."
 
+	<ignoreForCoverage>
 	| result |
 	result := OrderedCollection new.
 
