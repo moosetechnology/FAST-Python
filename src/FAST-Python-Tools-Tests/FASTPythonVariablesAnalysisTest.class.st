@@ -70,6 +70,151 @@ print(x)'.
 ]
 
 { #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllSSABasicVersionsExcludesPhiVersions [
+	| versions |
+	self parseAndResolve: 'if z > 3:
+	x = 2
+else:
+	x = 3
+
+print(x)'.
+
+	versions := model module statements first thenClause statements first left allSSABasicVersions.
+
+	self assert: versions size equals: 2.
+	self assert: (versions noneSatisfy: [ :each | each isPhi ]).
+	self assertCollection: (versions collect: [ :each | each version ]) asArray hasSameElements: { 1. 2 }
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllSSABasicVersionsFromAnyAccess [
+	| writeAccess readAccess |
+	self parseAndResolve: 'if z > 3:
+	x = 2
+else:
+	x = 3
+
+print(x)'.
+
+	writeAccess := model module statements first thenClause statements first left.
+	readAccess := model module statements last arguments first.
+
+	self assert: writeAccess allSSABasicVersions size equals: 2.
+	self assert: readAccess allSSABasicVersions size equals: 2
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllSSABasicVersionsOnReassignedVariable [
+	| versions |
+	self parseAndResolve: 'x = 1
+
+print(x)
+
+x = 2
+
+print(x)'.
+
+	versions := model module statements first left allSSABasicVersions.
+
+	self assert: versions size equals: 2.
+	self assertCollection: (versions collect: [ :each | each version ]) asArray hasSameElements: { 1. 2 }
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllSSABasicVersionsOnVariableWithOneVersion [
+	| versions |
+	self parseAndResolve: 'x = 1
+
+print(x)'.
+
+	versions := model module statements first left allSSABasicVersions.
+
+	self assert: versions size equals: 1.
+	self assert: versions anyOne version equals: 1
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllSSAVersionsFromAnyAccess [
+	| writeAccess readAccess |
+	self parseAndResolve: 'x = 1
+
+print(x)
+
+x = 2
+
+print(x)'.
+
+	writeAccess := model module statements first left.
+	readAccess := model module statements last arguments first.
+
+	self assert: writeAccess allSSAVersions size equals: 2.
+	self assert: readAccess allSSAVersions size equals: 2
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllSSAVersionsIncludesPhiVersion [
+	| versions |
+	self parseAndResolve: 'if z > 3:
+	x = 2
+else:
+	x = 3
+
+print(x)'.
+
+	versions := model module statements first thenClause statements first left allSSAVersions.
+
+	self assert: versions size equals: 3.
+	self assert: (versions count: [ :each | each isPhi ]) equals: 1
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllSSAVersionsOnReassignedVariable [
+	| versions |
+	self parseAndResolve: 'x = 1
+
+print(x)
+
+x = 2
+
+print(x)'.
+
+	versions := model module statements first left allSSAVersions.
+
+	self assert: versions size equals: 2.
+	self assertCollection: (versions collect: [ :each | each version ]) asArray hasSameElements: { 1. 2 }
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllSSAVersionsOnVariableWithOneVersion [
+	| versions |
+	self parseAndResolve: 'x = 1
+
+print(x)'.
+
+	versions := model module statements first left allSSAVersions.
+
+	self assert: versions size equals: 1.
+	self assert: versions anyOne version equals: 1
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllSSAVersionsOnlyForTheReceiverVariable [
+	| versions |
+	self parseAndResolve: 'x = 1
+
+y = 2
+
+x = 3
+
+print(x)'.
+
+	versions := model module statements first left allSSAVersions.
+
+	self assert: versions size equals: 2.
+	self assertCollection: (versions collect: [ :each | each version ]) asArray hasSameElements: { 1. 2 }
+]
+
+{ #category : 'tests' }
 FASTPythonVariablesAnalysisTest >> testAllWriteAccessesOfIdentifier [
 
 	| variable result |

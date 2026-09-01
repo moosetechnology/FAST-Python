@@ -41,6 +41,26 @@ FASTPyEntity >> allNodesUsingMyVersion [
 ]
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> allSSABasicVersions [
+	"If the receiver is a variable, return all the SSA versions of the variable without the Phi versions. 
+	
+	Requires SSA resolution."
+
+	^ (self localDeclaration allAccesses
+		   collect: #ssaVersion
+		   thenReject: #isPhi) asSet
+]
+
+{ #category : '*FAST-Python-Tools' }
+FASTPyEntity >> allSSAVersions [
+	"If the receiver is a variable, return all the SSA versions of the variable including the Phi versions. 
+	
+	Requires SSA resolution."
+
+	^ self localDeclaration allAccesses collectAsSet: #ssaVersion
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> callsOnVariable [
 	"If I am a variable, return all the call nodes having my read accesses as receiver. This will group invocations and instantiations.
 
