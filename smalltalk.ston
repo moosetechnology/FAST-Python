@@ -7,7 +7,7 @@ SmalltalkCISpec {
   ],
   #testing : {
     #coverage : {
-      #packages : [ 'FAST-Python.*' ],
+      #packages : [ 'FAST-Python-Model', 'FAST-Python-Model-Generator', 'FAST-Python-Tools' ],
       #format : #lcov
     }
   }
