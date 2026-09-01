@@ -104,7 +104,7 @@ It is possible to ask a few things to the nodes once the resolution is done:
 - `node internalAccesses` if the node is a variable, returns all the internal accesses done on the variable, i.e. the attribute accesses and subscripts such as `x.y` and `x[3]`, on all the accesses of the variable
 - `node allNodesUsingMe` if the node is a variable, returns all the nodes using the variable: for each access of the variable, all its ancestors up to the statement containing it, without going further than the statement blocks (Module, function, method, clauses, ...). For example, for `return x + 3`, it returns the return statement and the binary operation
 - `node statementsUsingMe` if the node is a variable, returns the statements using the variable: same as `allNodesUsingMe` but only the statement of each access, without the intermediate nodes
-- `node callsOnVariable` if the node is a variable, returns the calls made on the variable, i.e. the `FASTPyCall` nodes whose receiver is the variable: the callee of the call is an internal access on the variable, such as `x.append(1)`
+- `node callsOnVariable` if the node is a variable, returns the calls made on the variable, i.e. the `FASTPyCall` nodes having the variable as receiver: the callee of the call is the read of the variable itself (such as the invocation or instantiation `x()`) or an internal access on the variable (such as `x.append(1)` or `x[3]()`)
 - `node variableDeclarator` if the node that is a variable write access, it will return the node assigning the variable (can be an assignment, augmented assignment, for loop or for in clause)
 
 On the model:
@@ -667,7 +667,7 @@ lastVariableAccess statementsUsingMyVersion
 
 **Which calls are made on a variable?**
 
-`#callsOnVariable` returns the calls made on a variable: the `FASTPyCall` nodes whose receiver is the variable, i.e. whose callee is an internal access on the variable. A `FASTPyCall` can be an invocation or an instantiation, but the calls of the variable itself, such as the instantiation `x()`, are not included since the variable is the callee and not the receiver. `#callsOnVariableVersion` is its SSA counterpart: it only considers the reads reachable from the current SSA version:
+`#callsOnVariable` returns the calls made on a variable: the `FASTPyCall` nodes having the variable as receiver. The callee of the call is the read of the variable itself (invocation or instantiation `x()`) or an internal access on the variable (`x.append(1)`). Calls where the variable is only an argument, such as `print(x)`, are not included. `#callsOnVariableVersion` is its SSA counterpart: it only considers the reads reachable from the current SSA version:
 
 ```smalltalk
 model := FASTPythonImporter parseAndResolve: 'x = []
@@ -681,7 +681,8 @@ print(x)' withPlatformLineEndings.
 model module statements first left callsOnVariable
 
 "an OrderedCollection(
-	PyCall(9 - 19) ) <= only the x.append(1) call, x() and print(x) are excluded"
+	PyCall(9 - 19)
+	PyCall(22 - 24) ) <= the x.append(1) call and the x() instantiation, print(x) is excluded"
 ```
 
 ```smalltalk
