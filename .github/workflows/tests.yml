@@ -2,12 +2,11 @@ name: Tests
 
 on: [push, pull_request, workflow_dispatch]
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       matrix:
         smalltalk: [ Pharo64-13, Pharo64-14 ]
@@ -20,13 +19,19 @@ jobs:
       - run: smalltalkci -s ${{ matrix.smalltalk }}
         shell: bash
         timeout-minutes: 30
-
-#  finish-coveralls:
-#    needs: build
-#    runs-on: ubuntu-latest
-#    steps:
-#    - name: Finish Coveralls
-#      uses: coverallsapp/github-action@v2
-#      with:
-#        github-token: ${{ secrets.github_token }}
-#        parallel-finished: true
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          flag-name: ${{matrix.smalltalk}}
+          parallel: true     
+          
+  finish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@v2
+      with:
+        github-token: ${{ secrets.github_token }}
+        parallel-finished: true
