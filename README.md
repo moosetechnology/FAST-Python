@@ -1,5 +1,7 @@
 # FAST-Python
 
+[![Tests](https://github.com/moosetechnology/FAST-Python/actions/workflows/tests.yml/badge.svg)](https://github.com/moosetechnology/FAST-Python/actions/workflows/tests.yml) [![Coverage Status](https://coveralls.io/repos/github/moosetechnology/FAST-Python/badge.svg?branch=main)](https://coveralls.io/github/moosetechnology/FAST-Python?branch=main) ![Static Badge](https://img.shields.io/badge/Version-Moose_13-blue)
+
 Famix AST representation for Python based on TreeSitter
 
 <!-- TOC -->
