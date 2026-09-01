@@ -96,7 +96,7 @@ Here both `x = 1` and `x = 2` resolve to the same `FASTPyVariable` declaration. 
 It is possible to ask a few things to the nodes once the resolution is done:
 - `node localDeclaration` returns the first node that declared the entity we are querying
 - `node localDeclaration localUses` returns all uses of the node (declarations and usage)
-- `node isResolvedVariable` returns `true` if the node resolves to a local variable declaration (not an unresolved name, not a function, not a method, not an import).
+- `node isResolvedVariable` returns `true` if the node resolves to a local variable declaration (not an unresolved name, not a function, not a method, not an import)
 - `node usedVariables` returns all entities in the node and its subtree that have been resolved to local variable declarations (includes the node itself if it is a resolved variable).
 - `node allAccesses` if the node is a variable, returns all the read and write accesses to the variable
 - `node allReadAccesses` if the node is a variable, returns all the read accesses to the variable
@@ -104,6 +104,7 @@ It is possible to ask a few things to the nodes once the resolution is done:
 - `node internalAccesses` if the node is a variable, returns all the internal accesses done on the variable, i.e. the attribute accesses and subscripts such as `x.y` and `x[3]`, on all the accesses of the variable
 - `node allNodesUsingMe` if the node is a variable, returns all the nodes using the variable: for each access of the variable, all its ancestors up to the statement containing it, without going further than the statement blocks (Module, function, method, clauses, ...). For example, for `return x + 3`, it returns the return statement and the binary operation
 - `node statementsUsingMe` if the node is a variable, returns the statements using the variable: same as `allNodesUsingMe` but only the statement of each access, without the intermediate nodes
+- `node callsOnVariable` if the node is a variable, returns the calls made on the variable, i.e. the `FASTPyCall` nodes whose receiver is the variable: the callee of the call is an internal access on the variable, such as `x.append(1)`
 - `node variableDeclarator` if the node that is a variable write access, it will return the node assigning the variable (can be an assignment, augmented assignment, for loop or for in clause)
 
 On the model:
@@ -183,6 +184,7 @@ On top of this, it is possible to get information via the SSA directly with the 
 - `node versionWriteAccesses` returns all the write accesses for this specific version of the variable
 - `node allNodesUsingMyVersion` same as `allNodesUsingMe` but only with the accesses reachable from the current SSA version of the node. In case of a Phi version, the accesses of all the reachable versions are considered
 - `node statementsUsingMyVersion` same as `statementsUsingMe` but only with the accesses reachable from the current SSA version of the node
+- `node callsOnVariableVersion` same as `callsOnVariable` but only with the reads reachable from the current SSA version of the node
 
 ### Assigned expressions
 
@@ -661,4 +663,43 @@ lastVariableAccess statementsUsingMyVersion
 	PyAssignment(36 - 40)
 	PyCall(43 - 54)
 	PyAssignment(18 - 22) ) <= same without the intermediate nodes"
+```
+
+**Which calls are made on a variable?**
+
+`#callsOnVariable` returns the calls made on a variable: the `FASTPyCall` nodes whose receiver is the variable, i.e. whose callee is an internal access on the variable. A `FASTPyCall` can be an invocation or an instantiation, but the calls of the variable itself, such as the instantiation `x()`, are not included since the variable is the callee and not the receiver. `#callsOnVariableVersion` is its SSA counterpart: it only considers the reads reachable from the current SSA version:
+
+```smalltalk
+model := FASTPythonImporter parseAndResolve: 'x = []
+
+x.append(1)
+
+x()
+
+print(x)' withPlatformLineEndings.
+
+model module statements first left callsOnVariable
+
+"an OrderedCollection(
+	PyCall(9 - 19) ) <= only the x.append(1) call, x() and print(x) are excluded"
+```
+
+```smalltalk
+model := FASTPythonImporter parseAndResolve: 'x = []
+
+x.a(1)
+
+x = []
+
+x.b(2)' withPlatformLineEndings.
+
+(model module statements second callee value) callsOnVariableVersion
+
+"an OrderedCollection(
+	PyCall(9 - 14) ) <= only the call of the current version"
+
+(model module statements last callee value) callsOnVariableVersion
+
+"an OrderedCollection(
+	PyCall(25 - 30) )"
 ```
