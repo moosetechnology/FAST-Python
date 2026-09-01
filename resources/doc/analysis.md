@@ -176,7 +176,7 @@ print(x)        # Phi(x_2, x_3)
 
 Asking `#ssaVersion` to the `FASTPyVariable` node of `x = 3`, it will return the version number 2. If you ask its local uses, it will return. The one of the assignment (write access), the one of the second printing (read access) and the one of the last printing (read access).
 
-It is possible to ask to a model or a group for the SSA versions inside it using `#allSSAVersions`.
+It is possible to ask to a model or a group for the SSA versions inside it using `#allSSAVersions`. On a node representing a variable, `#allSSAVersions` returns all the SSA versions this variable can get, including its Phi versions, and `#allSSABasicVersions` returns the same but without the Phi versions. Both require the SSA resolution to be done.
 
 On top of this, it is possible to get information via the SSA directly with the API of the variables nodes:
 - `node versionAccesses` returns all the read and write accesses for this sepcific version of the variable
