@@ -52,6 +52,17 @@ FASTPyEntity >> callsOnVariable [
 ]
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> callsOnVariableVersion [
+	"If I am a variable, return all the call nodes having my variable version (SSA)) as receiver. This will group invocations and instantiations.
+
+	I need the SSA to be done before."
+
+	^ self versionReadAccesses
+		  select: [ :access | access isReceiverOfCall ]
+		  thenCollect: [ :access | access parentAttributeObject caller ]
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> cfg [
 
 	^ FASTPythonCFGVisitor buildCFGOf: self

@@ -71,3 +71,51 @@ x[3]()'.
 
 	self assertEmpty: model module statements first left callsOnVariable
 ]
+
+{ #category : 'tests' }
+FASTPythonCallsOnVariableTest >> testCallsOnVariableVersionOnPhi [
+	| call receiverRead |
+	self parseAndResolve: 'if z > 3:
+	x = []
+
+else:
+	x = []
+
+x.c()'.
+
+	call := model module statements last.
+	receiverRead := call callee value.
+
+	self assert: receiverRead callsOnVariableVersion size equals: 1.
+	self assert: receiverRead callsOnVariableVersion first identicalTo: call
+]
+
+{ #category : 'tests' }
+FASTPythonCallsOnVariableTest >> testCallsOnVariableVersionOnSimpleCase [
+	| readAccess |
+	self parseAndResolve: 'x = []
+
+x.append(1)'.
+
+	readAccess := model module statements second callee value.
+
+	self assert: readAccess callsOnVariableVersion size equals: 1.
+	self assert: readAccess callsOnVariableVersion first identicalTo: model module statements second
+]
+
+{ #category : 'tests' }
+FASTPythonCallsOnVariableTest >> testCallsOnVariableVersionOnlyReachableAccesses [
+	| firstRead |
+	self parseAndResolve: 'x = []
+
+x.a(1)
+
+x = []
+
+x.b(2)'.
+
+	firstRead := model module statements second callee value.
+
+	self assert: firstRead callsOnVariableVersion size equals: 1.
+	self assert: firstRead callsOnVariableVersion first identicalTo: model module statements second
+]
