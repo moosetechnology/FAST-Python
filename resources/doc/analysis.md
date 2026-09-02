@@ -117,7 +117,8 @@ It is possible to ask a few things to the nodes once the resolution is done:
 - `node variableDeclarator` if the node that is a variable write access, it will return the node assigning the variable (can be an assignment, augmented assignment, for loop or for in clause)
 
 On the model:
-- `model allResolvedVariables` returns all nodes in the model that resolve to a variable declaration. This is a shortcut for querying the model-level view of all resolved variables.
+- `model allResolvedVariables` returns all nodes in the model that resolve to a variable declaration. This is a shortcut for querying the model-level view of all resolved variables
+- `model allResolvedVariablesByName` returns a dictionary grouping the resolved variables of the model by their name. The keys are the names (String) and the values are the collection of entities having this name 
 
 
 ## Static Single Assignment (SSA)
@@ -434,6 +435,7 @@ The requirement column indicates what needs to be done on the model before using
 | `isResolvedVariable` | `FASTPyEntity` | LR | Returns `true` if the node resolves to a local variable declaration (not an unresolved name, function, method or import) |
 | `usedVariables` | `FASTPyEntity` | LR | Returns all the entities of the node and its subtree resolving to local variable declarations (includes the node itself if it is one) |
 | `allResolvedVariables` | `FASTPyModel` | LR | Returns every entity of the model resolving to a variable declaration |
+| `allResolvedVariablesByName` | `FASTPyModel` | LR | Returns a dictionary grouping the resolved variables of the model by their name. The keys are the names (String) and the values are the collection of entities having this name |
 
 #### Accessing the SSA versions of a variable
 
