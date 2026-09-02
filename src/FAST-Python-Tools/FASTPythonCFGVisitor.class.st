@@ -1,30 +1,32 @@
 "
-I am a visitor used to build a CFG for FASTPython.
+I am a visitor used to build a control flow graph (CFG) for a FAST Python model.
 
-##Usage 
+A CFG models the different possible control flow paths in a behavioral entity: each basic block groups a sequence of statements, and blocks are linked by the possible transitions (sequences, conditionals, loops). Building a CFG is a prerequisite to analyses such as the `FASTPythonSSAVisitor`.
 
-I can be used like this:
+## Usage
 
 ```smalltalk
-	FASTPythonCFGVisitor buildCFGOf: aModel allFunctionDefinitions first.
-	
-	""or""
-	
-	aModel allFunctionDefinitions first cfg
+FASTPythonCFGVisitor buildCFGOf: aModel allFunctionDefinitions first.
+""or""
+aModel allFunctionDefinitions first cfg
 ```
 
-# Entry Points 
+## Entry Points
 
-I can take one of five different entities to build a CFG:
+I can build a CFG from one of five different entities:
 - a `FASTPyModule`
 - a `FASTPyFunctionDefinition`
 - a `FASTPyMethodDefinition`
 - a `FASTPyLambda`
 - a `FASTPyClassDefinition`
 
-# Full CFG
+## Full CFG
 
-It is possible to build af ""full"" CFG via `#fullCfg`. A full CFG returns a dictionary with each definition encountered associated to their CFG. The first entry of the dictionary is the provided definition.
+It is possible to build a """"full"""" CFG via `FASTPythonCFGVisitor class>>#fullCfg`. A full CFG returns a dictionary associating each definition encountered with its CFG. The first entry of the dictionary is the provided definition.
+
+## Documentation
+
+For more information about the FAST CFG you can read the [Control Flow Graph (CFG) section of the analysis documentation](https://github.com/moosetechnology/FAST-Python/blob/main/resources/doc/analysis.md#control-flow-graph-cfg) and this [article on visiting the control flow graph on the Moose wiki](https://modularmoose.org/developers/fast-cfg/#visiting-the-control-flow-graph).
 "
 Class {
 	#name : 'FASTPythonCFGVisitor',

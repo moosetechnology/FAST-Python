@@ -1,3 +1,22 @@
+"
+I am a `TSFASTCustomizableVisitor` that walks a TreeSitter Python CST and builds the corresponding FAST Python model.
+
+I am the core of the import logic. I declare the TreeSitter Python library to use and define the visit/redirect/alias methods for every Python AST node type, producing the `FASTPy*` entities.
+
+## Usage
+
+I am normally used through `FASTPythonImporter`, which dispatches the visit to me:
+
+```smalltalk
+model := FASTPythonImporter parseFile: aFile.
+```
+
+The class-side `#initialize` selects the TreeSitter Python grammar branch (the `master` branch for now).
+
+## Documentation
+
+For more information about the FAST Python visitor you can read the [FAST Python visitor section of the analysis documentation](https://github.com/moosetechnology/FAST-Python/blob/main/resources/doc/analysis.md#fastpython-visitor).
+"
 Class {
 	#name : 'FASTPythonTreeSitterVisitor',
 	#superclass : 'TSFASTCustomizableVisitor',

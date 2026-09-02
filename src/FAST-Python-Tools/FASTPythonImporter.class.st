@@ -1,7 +1,18 @@
 "
-I am a FAST Python importer. 
+I am a FAST Python importer.
 
-I mostly declare the TS language to use and redirect the visit to `FASTPythonVisitor`.
+I declare the TreeSitter Python language to use and redirect the visit to `FASTPythonTreeSitterVisitor`, which builds the `FASTPy*` model entities.
+
+## Usage
+
+```smalltalk
+model := FASTPythonImporter parseFile: aFile.
+model := FASTPythonImporter parse: 'print(1)'.
+```
+
+## Documentation
+
+For more information about doing analysis on the imported model you can read the [analysis documentation](https://github.com/moosetechnology/FAST-Python/blob/main/resources/doc/analysis.md).
 "
 Class {
 	#name : 'FASTPythonImporter',

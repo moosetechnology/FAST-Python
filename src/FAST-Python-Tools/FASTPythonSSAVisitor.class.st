@@ -1,3 +1,24 @@
+"
+I am a visitor that applies a Static Single Assignment (SSA) transform to a FAST Python model.
+
+I traverse the control-flow graph (CFG) built by `FASTPythonCFGVisitor` and rename each variable access so that every assignment receives a fresh version. This makes data-flow explicit: each SSA version of a variable is assigned exactly once.
+
+## Usage
+
+Local resolution must be run before SSA so that accesses are linked to their declarations:
+
+```smalltalk
+model := FASTPythonImporter parseFile: aFile.
+FASTPythonLocalResolverVisitor resolve: model module.
+FASTPythonSSAVisitor resolve: model allFunctionDefinitions first.
+```
+
+I am always invoked through the class-side entry point `FASTPythonSSAVisitor class>>#resolve:`.
+
+## Documentation
+
+For more information about SSA you can read the [Static Single Assignment (SSA) section of the analysis documentation](https://github.com/moosetechnology/FAST-Python/blob/main/resources/doc/analysis.md#static-single-assignment-ssa).
+"
 Class {
 	#name : 'FASTPythonSSAVisitor',
 	#superclass : 'FASTPythonVisitor',

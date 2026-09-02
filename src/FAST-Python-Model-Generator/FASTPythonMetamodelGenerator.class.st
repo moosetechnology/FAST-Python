@@ -1,3 +1,15 @@
+"
+I am a `FamixMetamodelGenerator` that produces the `FAST-Python-Model` classes (`FASTPy*` entities and the `FASTPyTVisitor` trait).
+
+I extend `FamixMetamodelGenerator`. The generated classes in `FAST-Python-Model` must not be edited by hand - edit me and re-run the generation instead.
+
+## Usage
+
+```smalltalk
+FASTPythonMetamodelGenerator new generate
+```
+
+"
 Class {
 	#name : 'FASTPythonMetamodelGenerator',
 	#superclass : 'FamixMetamodelGenerator',

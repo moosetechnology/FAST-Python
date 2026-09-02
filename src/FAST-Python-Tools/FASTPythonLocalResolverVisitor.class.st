@@ -1,20 +1,24 @@
 "
-I am a visitor used to link entities usages to their declaration. 
+I am a visitor used to link each entity usage to its declaration.
 
-You can run me like this:
+I am run from the class-side entry point `FASTPythonLocalResolverVisitor class>>#resolve:`:
 
-```st
+```smalltalk
 FASTPythonLocalResolverVisitor resolve: aModule ""could be any behavioral entity of a FASTPython model.""
 ```
 
-Once I ran, all entities will be able to get their declaration via `#localDeclaration`. Also, a local declaration knows its `#localUses`. 
+Once I ran, every entity can get its declaration via `FASTPyEntity>>#localDeclaration`, and a local declaration knows its uses via `#localUses`.
 
 The declaration can be various things:
-- First variable assignement
-- Function definition
-- Variable declared in a loop structure (like in the left side of a for each)
+- The first assignment of a variable
+- A `FASTPyFunctionDefinition` / `FASTPyMethodDefinition`
+- A variable declared in a loop structure (e.g. the left side of a `FASTPyForStatement`)
 - An imported entity
-...
+- ...
+
+## Documentation
+
+For more information about the local resolver you can read the [Local resolution section](https://github.com/moosetechnology/FAST-Python/blob/main/resources/doc/analysis.md#local-resolution) and the [Querying local resolver information section](https://github.com/moosetechnology/FAST-Python/blob/main/resources/doc/analysis.md#querying-local-resolver-information) of the analysis documentation.
 "
 Class {
 	#name : 'FASTPythonLocalResolverVisitor',
