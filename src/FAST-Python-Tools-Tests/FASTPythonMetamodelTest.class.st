@@ -16,6 +16,7 @@ FASTPythonMetamodelTest >> testCanResetMetamodel [
 FASTPythonMetamodelTest >> testGeneratorIsUpToDate [
 
 	| changes |
+	self skip. "Waiting for a PR to Famix before enabling this test"
 	changes := FASTPythonMetamodelGenerator new changesToApply.
 	self assert: changes isEmpty description: [
 			'The generator FASTPythonMetamodelGenerator  is not in sync with its meta-model. Please, regenerate your MMs with `FamixMetamodelGenerator generateAllMetamodels`. List of changes: '
