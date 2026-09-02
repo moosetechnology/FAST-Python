@@ -70,6 +70,49 @@ print(x)'.
 ]
 
 { #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllResolvedVariablesByNameEmptyModel [
+	| byName |
+	self parseAndResolve: ''.
+
+	byName := model allResolvedVariablesByName.
+
+	self assert: byName isEmpty
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllResolvedVariablesByNameGroupsNames [
+	| byName |
+	self parseAndResolve: 'x = 1
+
+x = 2
+
+y = 3'.
+
+	byName := model allResolvedVariablesByName.
+
+	self assert: byName size equals: 2.
+	self assert: byName keys asArray sort equals: #('x' 'y').
+	self assert: (byName at: 'x') size equals: 2.
+	self assert: (byName at: 'y') size equals: 1
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllResolvedVariablesByNameWithDistinctNames [
+	| byName |
+	self parseAndResolve: 'x = 1
+
+y = 2
+
+z = 3'.
+
+	byName := model allResolvedVariablesByName.
+
+	self assert: byName size equals: 3.
+	self assert: byName keys asArray sort equals: #('x' 'y' 'z').
+	self assert: (byName values allSatisfy: [ :each | each size = 1 ])
+]
+
+{ #category : 'tests' }
 FASTPythonVariablesAnalysisTest >> testAllSSABasicVersionsExcludesPhiVersions [
 	| versions |
 	self parseAndResolve: 'if z > 3:
