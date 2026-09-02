@@ -40,6 +40,7 @@ Class {
 { #category : 'meta' }
 FASTPyVariable class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Variable super: #FASTPyIdentifier>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -49,6 +50,7 @@ FASTPyVariable class >> annotation [
 FASTPyVariable >> parentGlobalStatement [
 	"Relation named: #parentGlobalStatement type: #FASTPyGlobalStatement opposite: #variables"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The global statement defining my scope (if it''s the case)'>
 	<container>
@@ -58,6 +60,7 @@ FASTPyVariable >> parentGlobalStatement [
 { #category : 'accessing' }
 FASTPyVariable >> parentGlobalStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentGlobalStatement := anObject
 ]
@@ -66,6 +69,7 @@ FASTPyVariable >> parentGlobalStatement: anObject [
 FASTPyVariable >> parentNonlocalStatement [
 	"Relation named: #parentNonlocalStatement type: #FASTPyNonlocalStatement opposite: #variables"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The global statement defining my scope (if it''s the case)'>
 	<container>
@@ -75,6 +79,7 @@ FASTPyVariable >> parentNonlocalStatement [
 { #category : 'accessing' }
 FASTPyVariable >> parentNonlocalStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentNonlocalStatement := anObject
 ]

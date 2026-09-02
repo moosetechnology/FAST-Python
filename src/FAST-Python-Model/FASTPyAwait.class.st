@@ -26,6 +26,7 @@ Class {
 { #category : 'meta' }
 FASTPyAwait class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Await super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -35,6 +36,7 @@ FASTPyAwait class >> annotation [
 FASTPyAwait >> expression [
 	"Relation named: #expression type: #FASTPyTAwaitable opposite: #parentAwait"
 
+	<ignoreForCoverage>
 	<generated>
 	^ expression
 ]
@@ -42,6 +44,7 @@ FASTPyAwait >> expression [
 { #category : 'accessing' }
 FASTPyAwait >> expression: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	expression := anObject
 ]

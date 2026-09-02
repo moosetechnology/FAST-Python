@@ -33,6 +33,7 @@ Class {
 { #category : 'meta' }
 FASTPyPositionalSeparator class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #PositionalSeparator super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>

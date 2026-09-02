@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTDeletable classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TDeletable super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -34,6 +35,7 @@ FASTPyTDeletable classSide >> annotation [
 FASTPyTDeletable >> parentDeleteStatement [
 	"Relation named: #parentDeleteStatement type: #FASTPyDeleteStatement opposite: #expression"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The delete statement that own the expression (if it''s the case)'>
 	<container>
@@ -44,6 +46,7 @@ FASTPyTDeletable >> parentDeleteStatement [
 { #category : 'accessing' }
 FASTPyTDeletable >> parentDeleteStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentDeleteStatement := anObject
 ]

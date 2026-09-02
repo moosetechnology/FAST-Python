@@ -26,6 +26,7 @@ Class {
 { #category : 'meta' }
 FASTPyDeleteStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #DeleteStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -35,6 +36,7 @@ FASTPyDeleteStatement class >> annotation [
 FASTPyDeleteStatement >> expression [
 	"Relation named: #expression type: #FASTPyTDeletable opposite: #parentDeleteStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The expression to apply the delete on'>
 	^ expression
@@ -43,6 +45,7 @@ FASTPyDeleteStatement >> expression [
 { #category : 'accessing' }
 FASTPyDeleteStatement >> expression: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	expression := anObject
 ]

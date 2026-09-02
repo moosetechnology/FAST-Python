@@ -36,6 +36,7 @@ Class {
 { #category : 'meta' }
 FASTPyReturnStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ReturnStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>

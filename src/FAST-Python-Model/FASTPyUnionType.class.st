@@ -31,6 +31,7 @@ Class {
 { #category : 'meta' }
 FASTPyUnionType class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #UnionType super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -38,6 +39,8 @@ FASTPyUnionType class >> annotation [
 
 { #category : 'adding' }
 FASTPyUnionType >> addType: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self types add: anObject
 ]
@@ -46,6 +49,7 @@ FASTPyUnionType >> addType: anObject [
 FASTPyUnionType >> types [
 	"Relation named: #types type: #FASTPyType opposite: #parentUnionType"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ types
@@ -54,6 +58,7 @@ FASTPyUnionType >> types [
 { #category : 'accessing' }
 FASTPyUnionType >> types: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	types value: anObject
 ]

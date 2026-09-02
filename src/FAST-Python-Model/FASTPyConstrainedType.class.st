@@ -35,6 +35,7 @@ Class {
 { #category : 'meta' }
 FASTPyConstrainedType class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ConstrainedType super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -44,6 +45,7 @@ FASTPyConstrainedType class >> annotation [
 FASTPyConstrainedType >> bound [
 	"Relation named: #bound type: #FASTPyType opposite: #parentContrainedTypeBound"
 
+	<ignoreForCoverage>
 	<generated>
 	^ bound
 ]
@@ -51,6 +53,7 @@ FASTPyConstrainedType >> bound [
 { #category : 'accessing' }
 FASTPyConstrainedType >> bound: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	bound := anObject
 ]
@@ -59,6 +62,7 @@ FASTPyConstrainedType >> bound: anObject [
 FASTPyConstrainedType >> type [
 	"Relation named: #type type: #FASTPyType opposite: #parentContrainedType"
 
+	<ignoreForCoverage>
 	<generated>
 	^ type
 ]
@@ -66,6 +70,7 @@ FASTPyConstrainedType >> type [
 { #category : 'accessing' }
 FASTPyConstrainedType >> type: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	type := anObject
 ]

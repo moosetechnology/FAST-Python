@@ -24,6 +24,7 @@ Class {
 { #category : 'meta' }
 FASTPyYield class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Yield super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -33,6 +34,7 @@ FASTPyYield class >> annotation [
 FASTPyYield >> expression [
 	"Relation named: #expression type: #FASTPyExpression opposite: #parentYield"
 
+	<ignoreForCoverage>
 	<generated>
 	^ expression
 ]
@@ -40,6 +42,7 @@ FASTPyYield >> expression [
 { #category : 'accessing' }
 FASTPyYield >> expression: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	expression := anObject
 ]

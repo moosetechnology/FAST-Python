@@ -32,6 +32,7 @@ Class {
 { #category : 'meta' }
 FASTPyDecorator class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Decorator super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -41,6 +42,7 @@ FASTPyDecorator class >> annotation [
 FASTPyDecorator >> expression [
 	"Relation named: #expression type: #FASTPyTDecoratorExpression opposite: #parentDeclarator"
 
+	<ignoreForCoverage>
 	<generated>
 	^ expression
 ]
@@ -48,6 +50,7 @@ FASTPyDecorator >> expression [
 { #category : 'accessing' }
 FASTPyDecorator >> expression: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	expression := anObject
 ]
@@ -56,6 +59,7 @@ FASTPyDecorator >> expression: anObject [
 FASTPyDecorator >> parentDefinition [
 	"Relation named: #parentDefinition type: #FASTPyTDefinition opposite: #decorators"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentDefinition
@@ -64,6 +68,7 @@ FASTPyDecorator >> parentDefinition [
 { #category : 'accessing' }
 FASTPyDecorator >> parentDefinition: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentDefinition := anObject
 ]

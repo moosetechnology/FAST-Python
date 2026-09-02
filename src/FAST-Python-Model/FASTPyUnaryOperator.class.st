@@ -32,6 +32,7 @@ Class {
 { #category : 'meta' }
 FASTPyUnaryOperator class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #UnaryOperator super: #FASTPyOperator>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -41,12 +42,14 @@ FASTPyUnaryOperator class >> annotation [
 FASTPyUnaryOperator >> operator [
 
 	<FMProperty: #operator type: #String>
+	<ignoreForCoverage>
 	<generated>
 	^ operator
 ]
 
 { #category : 'accessing' }
 FASTPyUnaryOperator >> operator: anObject [
+	<ignoreForCoverage>
 	<generated>
 	operator := anObject
 ]

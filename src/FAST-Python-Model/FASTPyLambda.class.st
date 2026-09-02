@@ -33,6 +33,7 @@ Class {
 { #category : 'meta' }
 FASTPyLambda class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Lambda super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -42,6 +43,7 @@ FASTPyLambda class >> annotation [
 FASTPyLambda >> expression [
 	"Relation named: #expression type: #FASTPyExpression opposite: #parentLambda"
 
+	<ignoreForCoverage>
 	<generated>
 	^ expression
 ]
@@ -49,6 +51,7 @@ FASTPyLambda >> expression [
 { #category : 'accessing' }
 FASTPyLambda >> expression: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	expression := anObject
 ]

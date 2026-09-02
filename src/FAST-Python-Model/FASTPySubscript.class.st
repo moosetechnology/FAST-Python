@@ -43,6 +43,7 @@ Class {
 { #category : 'meta' }
 FASTPySubscript class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Subscript super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -50,6 +51,8 @@ FASTPySubscript class >> annotation [
 
 { #category : 'adding' }
 FASTPySubscript >> addIndex: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self indices add: anObject
 ]
@@ -58,6 +61,7 @@ FASTPySubscript >> addIndex: anObject [
 FASTPySubscript >> indices [
 	"Relation named: #indices type: #FASTPyTSliceIndex opposite: #parentSubscriptIndex"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The elements defining the indices to select in a subscript.'>
 	<derived>
@@ -67,6 +71,7 @@ FASTPySubscript >> indices [
 { #category : 'accessing' }
 FASTPySubscript >> indices: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	indices value: anObject
 ]
@@ -75,6 +80,7 @@ FASTPySubscript >> indices: anObject [
 FASTPySubscript >> value [
 	"Relation named: #value type: #FASTPyExpression opposite: #parentSubscriptValue"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The receiver of the subscript'>
 	^ value
@@ -83,6 +89,7 @@ FASTPySubscript >> value [
 { #category : 'accessing' }
 FASTPySubscript >> value: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	value := anObject
 ]

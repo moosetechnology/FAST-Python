@@ -39,6 +39,7 @@ Class {
 { #category : 'meta' }
 FASTPyWhileStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #WhileStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>

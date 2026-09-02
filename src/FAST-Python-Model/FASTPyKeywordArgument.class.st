@@ -41,6 +41,7 @@ Class {
 { #category : 'meta' }
 FASTPyKeywordArgument class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #KeywordArgument super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -50,6 +51,7 @@ FASTPyKeywordArgument class >> annotation [
 FASTPyKeywordArgument >> parentClassDefinition [
 	"Relation named: #parentClassDefinition type: #FASTPyClassDefinition opposite: #keywords"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentClassDefinition
@@ -58,6 +60,7 @@ FASTPyKeywordArgument >> parentClassDefinition [
 { #category : 'accessing' }
 FASTPyKeywordArgument >> parentClassDefinition: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentClassDefinition := anObject
 ]
@@ -66,6 +69,7 @@ FASTPyKeywordArgument >> parentClassDefinition: anObject [
 FASTPyKeywordArgument >> value [
 	"Relation named: #value type: #FASTPyExpression opposite: #parentKeywordArgument"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The value of the keyword argument.'>
 	^ value
@@ -74,6 +78,7 @@ FASTPyKeywordArgument >> value [
 { #category : 'accessing' }
 FASTPyKeywordArgument >> value: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	value := anObject
 ]

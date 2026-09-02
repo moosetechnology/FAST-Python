@@ -24,6 +24,7 @@ Class {
 { #category : 'meta' }
 FASTPyIfClause class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #IfClause super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -33,6 +34,7 @@ FASTPyIfClause class >> annotation [
 FASTPyIfClause >> expression [
 	"Relation named: #expression type: #FASTPyExpression opposite: #parentIfClause"
 
+	<ignoreForCoverage>
 	<generated>
 	^ expression
 ]
@@ -40,6 +42,7 @@ FASTPyIfClause >> expression [
 { #category : 'accessing' }
 FASTPyIfClause >> expression: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	expression := anObject
 ]

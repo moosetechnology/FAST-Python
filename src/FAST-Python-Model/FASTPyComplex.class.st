@@ -40,6 +40,7 @@ Class {
 { #category : 'meta' }
 FASTPyComplex class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Complex super: #FASTPyLiteral>
 	<package: #'FAST-Python-Model'>
 	<generated>

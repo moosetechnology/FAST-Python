@@ -26,6 +26,7 @@ Class {
 { #category : 'meta' }
 FASTPyTuple class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Tuple super: #FASTPyCollectionInitializer>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -34,6 +35,7 @@ FASTPyTuple class >> annotation [
 { #category : 'testing' }
 FASTPyTuple >> isTuple [
 
+	<ignoreForCoverage>
 	<generated>
 	^ true
 ]

@@ -28,6 +28,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTAsPatternTarget classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TAsPatternTarget super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -37,6 +38,7 @@ FASTPyTAsPatternTarget classSide >> annotation [
 FASTPyTAsPatternTarget >> parentAsPatternTarget [
 	"Relation named: #parentAsPatternTarget type: #FASTPyAsPattern opposite: #target"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -46,6 +48,7 @@ FASTPyTAsPatternTarget >> parentAsPatternTarget [
 { #category : 'accessing' }
 FASTPyTAsPatternTarget >> parentAsPatternTarget: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentAsPatternTarget := anObject
 ]

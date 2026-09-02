@@ -35,6 +35,7 @@ Class {
 { #category : 'meta' }
 FASTPyAsPattern class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #AsPattern super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -44,6 +45,7 @@ FASTPyAsPattern class >> annotation [
 FASTPyAsPattern >> source [
 	"Relation named: #source type: #FASTPyTAsPatternSource opposite: #parentAsPatternSource"
 
+	<ignoreForCoverage>
 	<generated>
 	^ source
 ]
@@ -51,6 +53,7 @@ FASTPyAsPattern >> source [
 { #category : 'accessing' }
 FASTPyAsPattern >> source: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	source := anObject
 ]
@@ -59,6 +62,7 @@ FASTPyAsPattern >> source: anObject [
 FASTPyAsPattern >> target [
 	"Relation named: #target type: #FASTPyTAsPatternTarget opposite: #parentAsPatternTarget"
 
+	<ignoreForCoverage>
 	<generated>
 	^ target
 ]
@@ -66,6 +70,7 @@ FASTPyAsPattern >> target [
 { #category : 'accessing' }
 FASTPyAsPattern >> target: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	target := anObject
 ]

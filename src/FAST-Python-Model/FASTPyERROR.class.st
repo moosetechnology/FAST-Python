@@ -9,6 +9,7 @@ Class {
 { #category : 'meta' }
 FASTPyERROR class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ERROR super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>

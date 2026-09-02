@@ -21,6 +21,7 @@ Class {
 { #category : 'meta' }
 FASTPyOperator class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Operator super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>

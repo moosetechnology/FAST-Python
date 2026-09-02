@@ -23,6 +23,7 @@ Class {
 { #category : 'meta' }
 FASTPyAugmentedAssignment class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #AugmentedAssignment super: #FASTPyAssignment>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -32,12 +33,14 @@ FASTPyAugmentedAssignment class >> annotation [
 FASTPyAugmentedAssignment >> operator [
 
 	<FMProperty: #operator type: #String>
+	<ignoreForCoverage>
 	<generated>
 	^ operator
 ]
 
 { #category : 'accessing' }
 FASTPyAugmentedAssignment >> operator: anObject [
+	<ignoreForCoverage>
 	<generated>
 	operator := anObject
 ]

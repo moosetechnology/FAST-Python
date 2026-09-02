@@ -43,6 +43,7 @@ Class {
 { #category : 'meta' }
 FASTPyIdentifier class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Identifier super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -51,6 +52,7 @@ FASTPyIdentifier class >> annotation [
 { #category : 'testing' }
 FASTPyIdentifier >> isIdentifier [
 
+	<ignoreForCoverage>
 	<generated>
 	^ true
 ]

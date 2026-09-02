@@ -9,6 +9,7 @@ Class {
 { #category : 'meta' }
 FASTPyMemberType class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #MemberType super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>

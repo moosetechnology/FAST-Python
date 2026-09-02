@@ -33,6 +33,7 @@ Class {
 { #category : 'meta' }
 FASTPyImportedEntity class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ImportedEntity super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -42,6 +43,7 @@ FASTPyImportedEntity class >> annotation [
 FASTPyImportedEntity >> alias [
 
 	<FMProperty: #alias type: #String>
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'If the imported entity has an alias, I contain it.'>
 	^ alias
@@ -49,6 +51,7 @@ FASTPyImportedEntity >> alias [
 
 { #category : 'accessing' }
 FASTPyImportedEntity >> alias: anObject [
+	<ignoreForCoverage>
 	<generated>
 	alias := anObject
 ]
@@ -63,6 +66,7 @@ FASTPyImportedEntity >> hasAlias [
 FASTPyImportedEntity >> import [
 	"Relation named: #import type: #FASTPyImport opposite: #importedEntities"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'Import declaring me as imported entity.'>
 	<container>
@@ -72,6 +76,7 @@ FASTPyImportedEntity >> import [
 { #category : 'accessing' }
 FASTPyImportedEntity >> import: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	import := anObject
 ]
@@ -80,6 +85,7 @@ FASTPyImportedEntity >> import: anObject [
 FASTPyImportedEntity >> segments [
 
 	<FMProperty: #segments type: #String>
+	<ignoreForCoverage>
 	<generated>
 	<multivalued>
 	<FMComment: 'The segments of the imported entity. For example if you import `xml.etree.ElementTree`, the segments will be { ''xml'' . ''etree'' . ''ElementTree''}.'>
@@ -88,6 +94,7 @@ FASTPyImportedEntity >> segments [
 
 { #category : 'accessing' }
 FASTPyImportedEntity >> segments: anObject [
+	<ignoreForCoverage>
 	<generated>
 	segments := anObject
 ]

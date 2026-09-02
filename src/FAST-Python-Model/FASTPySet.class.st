@@ -21,6 +21,7 @@ Class {
 { #category : 'meta' }
 FASTPySet class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Set super: #FASTPyCollectionInitializer>
 	<package: #'FAST-Python-Model'>
 	<generated>

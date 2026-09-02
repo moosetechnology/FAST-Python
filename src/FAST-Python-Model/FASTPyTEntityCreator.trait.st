@@ -14,6 +14,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTEntityCreator classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TEntityCreator super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -22,6 +23,7 @@ FASTPyTEntityCreator classSide >> annotation [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newAsPattern [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyAsPattern new
 ]
@@ -29,6 +31,7 @@ FASTPyTEntityCreator >> newAsPattern [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newAssertStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyAssertStatement new
 ]
@@ -36,6 +39,7 @@ FASTPyTEntityCreator >> newAssertStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newAssignment [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyAssignment new
 ]
@@ -43,6 +47,7 @@ FASTPyTEntityCreator >> newAssignment [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newAttributeAccess [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyAttributeAccess new
 ]
@@ -50,6 +55,7 @@ FASTPyTEntityCreator >> newAttributeAccess [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newAugmentedAssignment [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyAugmentedAssignment new
 ]
@@ -57,6 +63,7 @@ FASTPyTEntityCreator >> newAugmentedAssignment [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newAwait [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyAwait new
 ]
@@ -64,6 +71,7 @@ FASTPyTEntityCreator >> newAwait [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newBinaryOperator [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyBinaryOperator new
 ]
@@ -71,6 +79,7 @@ FASTPyTEntityCreator >> newBinaryOperator [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newBoolean [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyBoolean new
 ]
@@ -78,6 +87,7 @@ FASTPyTEntityCreator >> newBoolean [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newBooleanOperator [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyBooleanOperator new
 ]
@@ -85,6 +95,7 @@ FASTPyTEntityCreator >> newBooleanOperator [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newBreakStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyBreakStatement new
 ]
@@ -92,6 +103,7 @@ FASTPyTEntityCreator >> newBreakStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newCall [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyCall new
 ]
@@ -99,6 +111,7 @@ FASTPyTEntityCreator >> newCall [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newCaseClause [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyCaseClause new
 ]
@@ -106,6 +119,7 @@ FASTPyTEntityCreator >> newCaseClause [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newChevron [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyChevron new
 ]
@@ -113,6 +127,7 @@ FASTPyTEntityCreator >> newChevron [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newClassDefinition [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyClassDefinition new
 ]
@@ -120,6 +135,7 @@ FASTPyTEntityCreator >> newClassDefinition [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newClassPattern [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyClassPattern new
 ]
@@ -127,6 +143,7 @@ FASTPyTEntityCreator >> newClassPattern [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newCollectionInitializer [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyCollectionInitializer new
 ]
@@ -134,6 +151,7 @@ FASTPyTEntityCreator >> newCollectionInitializer [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newComment [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyComment new
 ]
@@ -141,6 +159,7 @@ FASTPyTEntityCreator >> newComment [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newComparisonOperator [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyComparisonOperator new
 ]
@@ -148,6 +167,7 @@ FASTPyTEntityCreator >> newComparisonOperator [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newComplex [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyComplex new
 ]
@@ -155,6 +175,7 @@ FASTPyTEntityCreator >> newComplex [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newConcatenatedString [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyConcatenatedString new
 ]
@@ -162,6 +183,7 @@ FASTPyTEntityCreator >> newConcatenatedString [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newConditionalExpression [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyConditionalExpression new
 ]
@@ -169,6 +191,7 @@ FASTPyTEntityCreator >> newConditionalExpression [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newConstrainedType [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyConstrainedType new
 ]
@@ -176,6 +199,7 @@ FASTPyTEntityCreator >> newConstrainedType [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newContinueStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyContinueStatement new
 ]
@@ -183,6 +207,7 @@ FASTPyTEntityCreator >> newContinueStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newDecorator [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyDecorator new
 ]
@@ -190,6 +215,7 @@ FASTPyTEntityCreator >> newDecorator [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newDeleteStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyDeleteStatement new
 ]
@@ -197,6 +223,7 @@ FASTPyTEntityCreator >> newDeleteStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newDictionary [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyDictionary new
 ]
@@ -204,6 +231,7 @@ FASTPyTEntityCreator >> newDictionary [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newDictionaryComprehension [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyDictionaryComprehension new
 ]
@@ -211,6 +239,7 @@ FASTPyTEntityCreator >> newDictionaryComprehension [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newDottedName [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyDottedName new
 ]
@@ -218,6 +247,7 @@ FASTPyTEntityCreator >> newDottedName [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newERROR [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyERROR new
 ]
@@ -225,6 +255,7 @@ FASTPyTEntityCreator >> newERROR [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newElifClause [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyElifClause new
 ]
@@ -232,6 +263,7 @@ FASTPyTEntityCreator >> newElifClause [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newEllipsis [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyEllipsis new
 ]
@@ -239,6 +271,7 @@ FASTPyTEntityCreator >> newEllipsis [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newElseClause [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyElseClause new
 ]
@@ -246,6 +279,7 @@ FASTPyTEntityCreator >> newElseClause [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newEscapeInterpolation [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyEscapeInterpolation new
 ]
@@ -253,6 +287,7 @@ FASTPyTEntityCreator >> newEscapeInterpolation [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newEscapeSequence [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyEscapeSequence new
 ]
@@ -260,6 +295,7 @@ FASTPyTEntityCreator >> newEscapeSequence [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newExceptClause [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyExceptClause new
 ]
@@ -267,6 +303,7 @@ FASTPyTEntityCreator >> newExceptClause [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newExecStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyExecStatement new
 ]
@@ -274,6 +311,7 @@ FASTPyTEntityCreator >> newExecStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newFinallyClause [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyFinallyClause new
 ]
@@ -281,6 +319,7 @@ FASTPyTEntityCreator >> newFinallyClause [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newFloat [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyFloat new
 ]
@@ -288,6 +327,7 @@ FASTPyTEntityCreator >> newFloat [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newForInClause [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyForInClause new
 ]
@@ -295,6 +335,7 @@ FASTPyTEntityCreator >> newForInClause [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newForStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyForStatement new
 ]
@@ -302,6 +343,7 @@ FASTPyTEntityCreator >> newForStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newFormatExpression [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyFormatExpression new
 ]
@@ -309,6 +351,7 @@ FASTPyTEntityCreator >> newFormatExpression [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newFromModule [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyFromModule new
 ]
@@ -316,6 +359,7 @@ FASTPyTEntityCreator >> newFromModule [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newFunctionDefinition [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyFunctionDefinition new
 ]
@@ -323,6 +367,7 @@ FASTPyTEntityCreator >> newFunctionDefinition [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newGeneratorExpression [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyGeneratorExpression new
 ]
@@ -330,6 +375,7 @@ FASTPyTEntityCreator >> newGeneratorExpression [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newGenericType [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyGenericType new
 ]
@@ -337,6 +383,7 @@ FASTPyTEntityCreator >> newGenericType [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newGlobalStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyGlobalStatement new
 ]
@@ -344,6 +391,7 @@ FASTPyTEntityCreator >> newGlobalStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newIdentifier [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyIdentifier new
 ]
@@ -351,6 +399,7 @@ FASTPyTEntityCreator >> newIdentifier [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newIfClause [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyIfClause new
 ]
@@ -358,6 +407,7 @@ FASTPyTEntityCreator >> newIfClause [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newIfStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyIfStatement new
 ]
@@ -365,6 +415,7 @@ FASTPyTEntityCreator >> newIfStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newImport [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyImport new
 ]
@@ -372,6 +423,7 @@ FASTPyTEntityCreator >> newImport [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newImportFromStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyImportFromStatement new
 ]
@@ -379,6 +431,7 @@ FASTPyTEntityCreator >> newImportFromStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newImportStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyImportStatement new
 ]
@@ -386,6 +439,7 @@ FASTPyTEntityCreator >> newImportStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newImportedEntity [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyImportedEntity new
 ]
@@ -393,6 +447,7 @@ FASTPyTEntityCreator >> newImportedEntity [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newInteger [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyInteger new
 ]
@@ -400,6 +455,7 @@ FASTPyTEntityCreator >> newInteger [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newInterpolation [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyInterpolation new
 ]
@@ -407,6 +463,7 @@ FASTPyTEntityCreator >> newInterpolation [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newKeywordArgument [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyKeywordArgument new
 ]
@@ -414,6 +471,7 @@ FASTPyTEntityCreator >> newKeywordArgument [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newKeywordPattern [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyKeywordPattern new
 ]
@@ -421,6 +479,7 @@ FASTPyTEntityCreator >> newKeywordPattern [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newKeywordSeparator [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyKeywordSeparator new
 ]
@@ -428,6 +487,7 @@ FASTPyTEntityCreator >> newKeywordSeparator [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newLambda [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyLambda new
 ]
@@ -435,6 +495,7 @@ FASTPyTEntityCreator >> newLambda [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newLambdaParameters [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyLambdaParameters new
 ]
@@ -442,6 +503,7 @@ FASTPyTEntityCreator >> newLambdaParameters [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newList [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyList new
 ]
@@ -449,6 +511,7 @@ FASTPyTEntityCreator >> newList [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newListComprehension [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyListComprehension new
 ]
@@ -456,6 +519,7 @@ FASTPyTEntityCreator >> newListComprehension [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newMatchStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyMatchStatement new
 ]
@@ -463,6 +527,7 @@ FASTPyTEntityCreator >> newMatchStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newMemberType [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyMemberType new
 ]
@@ -470,6 +535,7 @@ FASTPyTEntityCreator >> newMemberType [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newMethodDefinition [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyMethodDefinition new
 ]
@@ -477,6 +543,7 @@ FASTPyTEntityCreator >> newMethodDefinition [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newModule [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyModule new
 ]
@@ -484,6 +551,7 @@ FASTPyTEntityCreator >> newModule [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newNone [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyNone new
 ]
@@ -491,6 +559,7 @@ FASTPyTEntityCreator >> newNone [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newNonlocalStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyNonlocalStatement new
 ]
@@ -498,6 +567,7 @@ FASTPyTEntityCreator >> newNonlocalStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newNotOperator [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyNotOperator new
 ]
@@ -505,6 +575,7 @@ FASTPyTEntityCreator >> newNotOperator [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newOperator [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyOperator new
 ]
@@ -512,6 +583,7 @@ FASTPyTEntityCreator >> newOperator [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newPair [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyPair new
 ]
@@ -519,6 +591,7 @@ FASTPyTEntityCreator >> newPair [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newParameter [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyParameter new
 ]
@@ -526,6 +599,7 @@ FASTPyTEntityCreator >> newParameter [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newParenthesizedListSplat [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyParenthesizedListSplat new
 ]
@@ -533,6 +607,7 @@ FASTPyTEntityCreator >> newParenthesizedListSplat [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newPassStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyPassStatement new
 ]
@@ -540,6 +615,7 @@ FASTPyTEntityCreator >> newPassStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newPositionalSeparator [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyPositionalSeparator new
 ]
@@ -547,6 +623,7 @@ FASTPyTEntityCreator >> newPositionalSeparator [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newPrintStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyPrintStatement new
 ]
@@ -554,6 +631,7 @@ FASTPyTEntityCreator >> newPrintStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newRaiseStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyRaiseStatement new
 ]
@@ -561,6 +639,7 @@ FASTPyTEntityCreator >> newRaiseStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newReturnStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyReturnStatement new
 ]
@@ -568,6 +647,7 @@ FASTPyTEntityCreator >> newReturnStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newSet [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPySet new
 ]
@@ -575,6 +655,7 @@ FASTPyTEntityCreator >> newSet [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newSetComprehension [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPySetComprehension new
 ]
@@ -582,6 +663,7 @@ FASTPyTEntityCreator >> newSetComprehension [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newSlice [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPySlice new
 ]
@@ -589,6 +671,7 @@ FASTPyTEntityCreator >> newSlice [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newSplat [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPySplat new
 ]
@@ -596,6 +679,7 @@ FASTPyTEntityCreator >> newSplat [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newSplatParameter [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPySplatParameter new
 ]
@@ -603,6 +687,7 @@ FASTPyTEntityCreator >> newSplatParameter [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newSplatType [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPySplatType new
 ]
@@ -610,6 +695,7 @@ FASTPyTEntityCreator >> newSplatType [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newString [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyString new
 ]
@@ -617,6 +703,7 @@ FASTPyTEntityCreator >> newString [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newSubscript [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPySubscript new
 ]
@@ -624,6 +711,7 @@ FASTPyTEntityCreator >> newSubscript [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newThenClause [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyThenClause new
 ]
@@ -631,6 +719,7 @@ FASTPyTEntityCreator >> newThenClause [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newTryStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyTryStatement new
 ]
@@ -638,6 +727,7 @@ FASTPyTEntityCreator >> newTryStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newTuple [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyTuple new
 ]
@@ -645,6 +735,7 @@ FASTPyTEntityCreator >> newTuple [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newType [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyType new
 ]
@@ -652,6 +743,7 @@ FASTPyTEntityCreator >> newType [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newTypeAliasStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyTypeAliasStatement new
 ]
@@ -659,6 +751,7 @@ FASTPyTEntityCreator >> newTypeAliasStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newTypeConversion [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyTypeConversion new
 ]
@@ -666,6 +759,7 @@ FASTPyTEntityCreator >> newTypeConversion [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newTypeParameter [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyTypeParameter new
 ]
@@ -673,6 +767,7 @@ FASTPyTEntityCreator >> newTypeParameter [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newUnaryOperator [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyUnaryOperator new
 ]
@@ -680,6 +775,7 @@ FASTPyTEntityCreator >> newUnaryOperator [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newUnionPattern [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyUnionPattern new
 ]
@@ -687,6 +783,7 @@ FASTPyTEntityCreator >> newUnionPattern [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newUnionType [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyUnionType new
 ]
@@ -694,6 +791,7 @@ FASTPyTEntityCreator >> newUnionType [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newVariable [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyVariable new
 ]
@@ -701,6 +799,7 @@ FASTPyTEntityCreator >> newVariable [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newWalrus [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyWalrus new
 ]
@@ -708,6 +807,7 @@ FASTPyTEntityCreator >> newWalrus [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newWhileStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyWhileStatement new
 ]
@@ -715,6 +815,7 @@ FASTPyTEntityCreator >> newWhileStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newWithStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyWithStatement new
 ]
@@ -722,6 +823,7 @@ FASTPyTEntityCreator >> newWithStatement [
 { #category : 'entity creation' }
 FASTPyTEntityCreator >> newYield [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self add: FASTPyYield new
 ]

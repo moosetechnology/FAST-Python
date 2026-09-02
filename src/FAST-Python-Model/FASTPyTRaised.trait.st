@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTRaised classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TRaised super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -34,6 +35,7 @@ FASTPyTRaised classSide >> annotation [
 FASTPyTRaised >> parentRaiseStatement [
 	"Relation named: #parentRaiseStatement type: #FASTPyRaiseStatement opposite: #exception"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -43,6 +45,7 @@ FASTPyTRaised >> parentRaiseStatement [
 { #category : 'accessing' }
 FASTPyTRaised >> parentRaiseStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentRaiseStatement := anObject
 ]

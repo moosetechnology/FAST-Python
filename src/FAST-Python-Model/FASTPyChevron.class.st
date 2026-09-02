@@ -32,6 +32,7 @@ Class {
 { #category : 'meta' }
 FASTPyChevron class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Chevron super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -41,6 +42,7 @@ FASTPyChevron class >> annotation [
 FASTPyChevron >> expression [
 	"Relation named: #expression type: #FASTPyExpression opposite: #parentChevron"
 
+	<ignoreForCoverage>
 	<generated>
 	^ expression
 ]
@@ -48,6 +50,7 @@ FASTPyChevron >> expression [
 { #category : 'accessing' }
 FASTPyChevron >> expression: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	expression := anObject
 ]
@@ -56,6 +59,7 @@ FASTPyChevron >> expression: anObject [
 FASTPyChevron >> parentPrintStatement [
 	"Relation named: #parentPrintStatement type: #FASTPyPrintStatement opposite: #redirection"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -65,6 +69,7 @@ FASTPyChevron >> parentPrintStatement [
 { #category : 'accessing' }
 FASTPyChevron >> parentPrintStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentPrintStatement := anObject
 ]

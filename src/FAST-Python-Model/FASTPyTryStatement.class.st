@@ -44,6 +44,7 @@ Class {
 { #category : 'meta' }
 FASTPyTryStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TryStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -51,6 +52,8 @@ FASTPyTryStatement class >> annotation [
 
 { #category : 'adding' }
 FASTPyTryStatement >> addExcept: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self excepts add: anObject
 ]
@@ -59,6 +62,7 @@ FASTPyTryStatement >> addExcept: anObject [
 FASTPyTryStatement >> excepts [
 	"Relation named: #excepts type: #FASTPyExceptClause opposite: #parentTryStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ excepts
@@ -67,6 +71,7 @@ FASTPyTryStatement >> excepts [
 { #category : 'accessing' }
 FASTPyTryStatement >> excepts: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	excepts value: anObject
 ]
@@ -75,6 +80,7 @@ FASTPyTryStatement >> excepts: anObject [
 FASTPyTryStatement >> finally [
 	"Relation named: #finally type: #FASTPyFinallyClause opposite: #parentTryStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	^ finally
 ]
@@ -82,6 +88,7 @@ FASTPyTryStatement >> finally [
 { #category : 'accessing' }
 FASTPyTryStatement >> finally: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	finally := anObject
 ]

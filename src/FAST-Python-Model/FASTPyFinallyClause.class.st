@@ -41,6 +41,7 @@ Class {
 { #category : 'meta' }
 FASTPyFinallyClause class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #FinallyClause super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -50,6 +51,7 @@ FASTPyFinallyClause class >> annotation [
 FASTPyFinallyClause >> parentTryStatement [
 	"Relation named: #parentTryStatement type: #FASTPyTryStatement opposite: #finally"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -59,6 +61,7 @@ FASTPyFinallyClause >> parentTryStatement [
 { #category : 'accessing' }
 FASTPyFinallyClause >> parentTryStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentTryStatement := anObject
 ]

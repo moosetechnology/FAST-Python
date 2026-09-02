@@ -48,6 +48,7 @@ Class {
 { #category : 'meta' }
 FASTPyCaseClause class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #CaseClause super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -57,6 +58,7 @@ FASTPyCaseClause class >> annotation [
 FASTPyCaseClause >> alias [
 
 	<FMProperty: #alias type: #String>
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'Alias used if an as pattern is used in the clause.'>
 	^ alias
@@ -64,6 +66,7 @@ FASTPyCaseClause >> alias [
 
 { #category : 'accessing' }
 FASTPyCaseClause >> alias: anObject [
+	<ignoreForCoverage>
 	<generated>
 	alias := anObject
 ]
@@ -72,6 +75,7 @@ FASTPyCaseClause >> alias: anObject [
 FASTPyCaseClause >> parentMatchStatement [
 	"Relation named: #parentMatchStatement type: #FASTPyMatchStatement opposite: #cases"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentMatchStatement
@@ -80,6 +84,7 @@ FASTPyCaseClause >> parentMatchStatement [
 { #category : 'accessing' }
 FASTPyCaseClause >> parentMatchStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentMatchStatement := anObject
 ]
@@ -88,6 +93,7 @@ FASTPyCaseClause >> parentMatchStatement: anObject [
 FASTPyCaseClause >> pattern [
 	"Relation named: #pattern type: #FASTPyTPattern opposite: #parentCaseClause"
 
+	<ignoreForCoverage>
 	<generated>
 	^ pattern
 ]
@@ -95,6 +101,7 @@ FASTPyCaseClause >> pattern [
 { #category : 'accessing' }
 FASTPyCaseClause >> pattern: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	pattern := anObject
 ]

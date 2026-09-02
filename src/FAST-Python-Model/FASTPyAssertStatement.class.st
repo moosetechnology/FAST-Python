@@ -26,6 +26,7 @@ Class {
 { #category : 'meta' }
 FASTPyAssertStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #AssertStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -33,6 +34,8 @@ FASTPyAssertStatement class >> annotation [
 
 { #category : 'adding' }
 FASTPyAssertStatement >> addExpression: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self expressions add: anObject
 ]
@@ -41,6 +44,7 @@ FASTPyAssertStatement >> addExpression: anObject [
 FASTPyAssertStatement >> expressions [
 	"Relation named: #expressions type: #FASTPyExpression opposite: #parentAssertStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The expressions asserted'>
 	<derived>
@@ -50,6 +54,7 @@ FASTPyAssertStatement >> expressions [
 { #category : 'accessing' }
 FASTPyAssertStatement >> expressions: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	expressions value: anObject
 ]

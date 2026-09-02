@@ -44,6 +44,7 @@ Class {
 { #category : 'meta' }
 FASTPyForStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ForStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -59,6 +60,7 @@ FASTPyForStatement >> assignedExpressions [
 FASTPyForStatement >> left [
 	"Relation named: #left type: #FASTPyExpression opposite: #parentForStatementLeft"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The identifier of the created local variable or tuple'>
 	^ left
@@ -67,6 +69,7 @@ FASTPyForStatement >> left [
 { #category : 'accessing' }
 FASTPyForStatement >> left: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	left := anObject
 ]
@@ -75,6 +78,7 @@ FASTPyForStatement >> left: anObject [
 FASTPyForStatement >> right [
 	"Relation named: #right type: #FASTPyExpression opposite: #parentForStatementRight"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The list that the for statement iterates over'>
 	^ right
@@ -83,6 +87,7 @@ FASTPyForStatement >> right [
 { #category : 'accessing' }
 FASTPyForStatement >> right: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	right := anObject
 ]

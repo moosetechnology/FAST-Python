@@ -41,6 +41,7 @@ Class {
 { #category : 'meta' }
 FASTPyWithStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #WithStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -48,6 +49,8 @@ FASTPyWithStatement class >> annotation [
 
 { #category : 'adding' }
 FASTPyWithStatement >> addItem: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self items add: anObject
 ]
@@ -56,6 +59,7 @@ FASTPyWithStatement >> addItem: anObject [
 FASTPyWithStatement >> items [
 	"Relation named: #items type: #FASTPyTWithStatementItem opposite: #parentWithStatementItem"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ items
@@ -64,6 +68,7 @@ FASTPyWithStatement >> items [
 { #category : 'accessing' }
 FASTPyWithStatement >> items: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	items value: anObject
 ]

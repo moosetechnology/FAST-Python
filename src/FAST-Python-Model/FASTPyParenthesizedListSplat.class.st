@@ -9,6 +9,7 @@ Class {
 { #category : 'meta' }
 FASTPyParenthesizedListSplat class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ParenthesizedListSplat super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>

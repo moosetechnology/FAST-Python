@@ -31,6 +31,7 @@ Class {
 { #category : 'meta' }
 FASTPySlice class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Slice super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -38,6 +39,8 @@ FASTPySlice class >> annotation [
 
 { #category : 'adding' }
 FASTPySlice >> addComponent: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self components add: anObject
 ]
@@ -46,6 +49,7 @@ FASTPySlice >> addComponent: anObject [
 FASTPySlice >> components [
 	"Relation named: #components type: #FASTPyExpression opposite: #parentSlice"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The components are the expressions between the `:` of a slice.'>
 	<derived>
@@ -55,6 +59,7 @@ FASTPySlice >> components [
 { #category : 'accessing' }
 FASTPySlice >> components: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	components value: anObject
 ]

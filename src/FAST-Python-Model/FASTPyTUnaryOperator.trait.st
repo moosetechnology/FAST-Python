@@ -23,6 +23,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTUnaryOperator classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TUnaryOperator super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -32,6 +33,7 @@ FASTPyTUnaryOperator classSide >> annotation [
 FASTPyTUnaryOperator >> argument [
 	"Relation named: #argument type: #FASTPyExpression opposite: #parentUnaryOperator"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'Expression influanced by the unary operator..'>
 	^ argument
@@ -40,6 +42,7 @@ FASTPyTUnaryOperator >> argument [
 { #category : 'accessing' }
 FASTPyTUnaryOperator >> argument: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	argument := anObject
 ]

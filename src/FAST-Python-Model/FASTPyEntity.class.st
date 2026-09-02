@@ -30,6 +30,7 @@ Class {
 { #category : 'meta' }
 FASTPyEntity class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Entity super: #MooseEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -39,6 +40,7 @@ FASTPyEntity class >> annotation [
 { #category : 'testing' }
 FASTPyEntity class >> isAbstract [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self == FASTPyEntity
 ]
@@ -46,6 +48,7 @@ FASTPyEntity class >> isAbstract [
 { #category : 'meta' }
 FASTPyEntity class >> metamodel [
 
+	<ignoreForCoverage>
 	<generated>
 	^ FASTPyModel metamodel
 ]
@@ -76,6 +79,7 @@ FASTPyEntity >> callOnMe [
 { #category : 'testing' }
 FASTPyEntity >> hasImmediateSource [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -95,6 +99,7 @@ FASTPyEntity >> internalAccess [
 { #category : 'testing' }
 FASTPyEntity >> isBinaryExpression [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -102,6 +107,7 @@ FASTPyEntity >> isBinaryExpression [
 { #category : 'testing' }
 FASTPyEntity >> isBooleanLiteral [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -109,6 +115,7 @@ FASTPyEntity >> isBooleanLiteral [
 { #category : 'testing' }
 FASTPyEntity >> isBreakStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -116,6 +123,7 @@ FASTPyEntity >> isBreakStatement [
 { #category : 'testing' }
 FASTPyEntity >> isClassDefinition [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -123,6 +131,7 @@ FASTPyEntity >> isClassDefinition [
 { #category : 'testing' }
 FASTPyEntity >> isContinueStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -130,6 +139,7 @@ FASTPyEntity >> isContinueStatement [
 { #category : 'testing' }
 FASTPyEntity >> isExpression [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -137,6 +147,7 @@ FASTPyEntity >> isExpression [
 { #category : 'testing' }
 FASTPyEntity >> isIdentifier [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -150,6 +161,7 @@ FASTPyEntity >> isInstanceVariableAccess [
 { #category : 'testing' }
 FASTPyEntity >> isInvocation [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -157,6 +169,7 @@ FASTPyEntity >> isInvocation [
 { #category : 'testing' }
 FASTPyEntity >> isList [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -164,6 +177,7 @@ FASTPyEntity >> isList [
 { #category : 'testing' }
 FASTPyEntity >> isLiteral [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -171,6 +185,7 @@ FASTPyEntity >> isLiteral [
 { #category : 'testing' }
 FASTPyEntity >> isNumericalLiteral [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -178,6 +193,7 @@ FASTPyEntity >> isNumericalLiteral [
 { #category : 'testing' }
 FASTPyEntity >> isReturnStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -185,6 +201,7 @@ FASTPyEntity >> isReturnStatement [
 { #category : 'testing' }
 FASTPyEntity >> isStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -192,6 +209,7 @@ FASTPyEntity >> isStatement [
 { #category : 'testing' }
 FASTPyEntity >> isStatementBlock [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -199,6 +217,7 @@ FASTPyEntity >> isStatementBlock [
 { #category : 'testing' }
 FASTPyEntity >> isStringLiteral [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -206,6 +225,7 @@ FASTPyEntity >> isStringLiteral [
 { #category : 'testing' }
 FASTPyEntity >> isTuple [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]
@@ -213,6 +233,7 @@ FASTPyEntity >> isTuple [
 { #category : 'testing' }
 FASTPyEntity >> isVariableEntity [
 
+	<ignoreForCoverage>
 	<generated>
 	^ false
 ]

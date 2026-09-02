@@ -41,6 +41,7 @@ Class {
 { #category : 'meta' }
 FASTPyLiteral class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Literal super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -50,6 +51,7 @@ FASTPyLiteral class >> annotation [
 { #category : 'testing' }
 FASTPyLiteral class >> isAbstract [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self == FASTPyLiteral
 ]

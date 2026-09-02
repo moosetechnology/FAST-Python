@@ -9,6 +9,7 @@ Class {
 { #category : 'meta' }
 FASTPyEllipsis class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Ellipsis super: #FASTPyLiteral>
 	<package: #'FAST-Python-Model'>
 	<generated>

@@ -16,6 +16,7 @@ Class {
 { #category : 'meta' }
 FASTPyContinueStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ContinueStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>

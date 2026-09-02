@@ -46,6 +46,7 @@ Class {
 { #category : 'meta' }
 FASTPyFunctionDefinition class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #FunctionDefinition super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -64,6 +65,7 @@ FASTPyFunctionDefinition >> isAsync [
 FASTPyFunctionDefinition >> returnType [
 	"Relation named: #returnType type: #FASTPyType opposite: #parentFunctionDefinition"
 
+	<ignoreForCoverage>
 	<generated>
 	^ returnType
 ]
@@ -71,6 +73,7 @@ FASTPyFunctionDefinition >> returnType [
 { #category : 'accessing' }
 FASTPyFunctionDefinition >> returnType: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	returnType := anObject
 ]

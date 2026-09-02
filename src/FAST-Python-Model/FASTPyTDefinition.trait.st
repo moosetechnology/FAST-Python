@@ -42,6 +42,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTDefinition classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TDefinition super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -49,6 +50,8 @@ FASTPyTDefinition classSide >> annotation [
 
 { #category : 'adding' }
 FASTPyTDefinition >> addDecorator: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self decorators add: anObject
 ]
@@ -57,6 +60,7 @@ FASTPyTDefinition >> addDecorator: anObject [
 FASTPyTDefinition >> decorators [
 	"Relation named: #decorators type: #FASTPyDecorator opposite: #parentDefinition"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ decorators
@@ -65,6 +69,7 @@ FASTPyTDefinition >> decorators [
 { #category : 'accessing' }
 FASTPyTDefinition >> decorators: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	decorators value: anObject
 ]

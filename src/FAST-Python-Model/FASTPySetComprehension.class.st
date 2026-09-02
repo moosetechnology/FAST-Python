@@ -28,6 +28,7 @@ Class {
 { #category : 'meta' }
 FASTPySetComprehension class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #SetComprehension super: #FASTPyComprehension>
 	<package: #'FAST-Python-Model'>
 	<generated>

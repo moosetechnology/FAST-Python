@@ -45,6 +45,7 @@ Class {
 { #category : 'meta' }
 FASTPyExceptClause class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ExceptClause super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -54,6 +55,7 @@ FASTPyExceptClause class >> annotation [
 FASTPyExceptClause >> alias [
 
 	<FMProperty: #alias type: #String>
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'Alias used if an as pattern is used in the clause.'>
 	^ alias
@@ -61,6 +63,7 @@ FASTPyExceptClause >> alias [
 
 { #category : 'accessing' }
 FASTPyExceptClause >> alias: anObject [
+	<ignoreForCoverage>
 	<generated>
 	alias := anObject
 ]
@@ -69,6 +72,7 @@ FASTPyExceptClause >> alias: anObject [
 FASTPyExceptClause >> expression [
 	"Relation named: #expression type: #FASTPyExpression opposite: #parentExceptClause"
 
+	<ignoreForCoverage>
 	<generated>
 	^ expression
 ]
@@ -76,6 +80,7 @@ FASTPyExceptClause >> expression [
 { #category : 'accessing' }
 FASTPyExceptClause >> expression: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	expression := anObject
 ]
@@ -84,6 +89,7 @@ FASTPyExceptClause >> expression: anObject [
 FASTPyExceptClause >> parentTryStatement [
 	"Relation named: #parentTryStatement type: #FASTPyTryStatement opposite: #excepts"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentTryStatement
@@ -92,6 +98,7 @@ FASTPyExceptClause >> parentTryStatement [
 { #category : 'accessing' }
 FASTPyExceptClause >> parentTryStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentTryStatement := anObject
 ]

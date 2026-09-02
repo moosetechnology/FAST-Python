@@ -9,6 +9,7 @@ Class {
 { #category : 'meta' }
 FASTPyEscapeSequence class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #EscapeSequence super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>

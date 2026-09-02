@@ -26,6 +26,7 @@ Class {
 { #category : 'meta' }
 FASTPyExecStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ExecStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -33,6 +34,8 @@ FASTPyExecStatement class >> annotation [
 
 { #category : 'adding' }
 FASTPyExecStatement >> addScope: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self scopes add: anObject
 ]
@@ -41,6 +44,7 @@ FASTPyExecStatement >> addScope: anObject [
 FASTPyExecStatement >> code [
 	"Relation named: #code type: #FASTPyTExecutable opposite: #parentExecStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	^ code
 ]
@@ -48,6 +52,7 @@ FASTPyExecStatement >> code [
 { #category : 'accessing' }
 FASTPyExecStatement >> code: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	code := anObject
 ]
@@ -56,6 +61,7 @@ FASTPyExecStatement >> code: anObject [
 FASTPyExecStatement >> scopes [
 	"Relation named: #scopes type: #FASTPyExpression opposite: #parentExecStatementScopes"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ scopes
@@ -64,6 +70,7 @@ FASTPyExecStatement >> scopes [
 { #category : 'accessing' }
 FASTPyExecStatement >> scopes: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	scopes value: anObject
 ]

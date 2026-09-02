@@ -33,6 +33,7 @@ Class {
 { #category : 'meta' }
 FASTPyBreakStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #BreakStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>

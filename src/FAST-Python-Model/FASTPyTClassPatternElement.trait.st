@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTClassPatternElement classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TClassPatternElement super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -34,6 +35,7 @@ FASTPyTClassPatternElement classSide >> annotation [
 FASTPyTClassPatternElement >> parentClassPattern [
 	"Relation named: #parentClassPattern type: #FASTPyClassPattern opposite: #elements"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentClassPattern
@@ -42,6 +44,7 @@ FASTPyTClassPatternElement >> parentClassPattern [
 { #category : 'accessing' }
 FASTPyTClassPatternElement >> parentClassPattern: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentClassPattern := anObject
 ]

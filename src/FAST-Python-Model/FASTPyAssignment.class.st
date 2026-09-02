@@ -37,6 +37,7 @@ Class {
 { #category : 'meta' }
 FASTPyAssignment class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Assignment super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -61,6 +62,7 @@ FASTPyAssignment >> isDeclaration [
 FASTPyAssignment >> left [
 	"Relation named: #left type: #FASTPyTAssignable opposite: #parentAssignmentLeft"
 
+	<ignoreForCoverage>
 	<generated>
 	^ left
 ]
@@ -68,6 +70,7 @@ FASTPyAssignment >> left [
 { #category : 'accessing' }
 FASTPyAssignment >> left: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	left := anObject
 ]
@@ -76,6 +79,7 @@ FASTPyAssignment >> left: anObject [
 FASTPyAssignment >> right [
 	"Relation named: #right type: #FASTPyExpression opposite: #parentAssignmentRight"
 
+	<ignoreForCoverage>
 	<generated>
 	^ right
 ]
@@ -83,6 +87,7 @@ FASTPyAssignment >> right [
 { #category : 'accessing' }
 FASTPyAssignment >> right: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	right := anObject
 ]
@@ -91,6 +96,7 @@ FASTPyAssignment >> right: anObject [
 FASTPyAssignment >> type [
 	"Relation named: #type type: #FASTPyType opposite: #parentAssignment"
 
+	<ignoreForCoverage>
 	<generated>
 	^ type
 ]
@@ -98,6 +104,7 @@ FASTPyAssignment >> type [
 { #category : 'accessing' }
 FASTPyAssignment >> type: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	type := anObject
 ]

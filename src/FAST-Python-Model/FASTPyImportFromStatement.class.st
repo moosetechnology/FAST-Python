@@ -24,6 +24,7 @@ Class {
 { #category : 'meta' }
 FASTPyImportFromStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ImportFromStatement super: #FASTPyImport>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -33,6 +34,7 @@ FASTPyImportFromStatement class >> annotation [
 FASTPyImportFromStatement >> fromModule [
 	"Relation named: #fromModule type: #FASTPyFromModule opposite: #import"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'Module in which the imported entities should be looked for. `from datetime import date` has `datetime` as fromModule..'>
 	^ fromModule
@@ -41,6 +43,7 @@ FASTPyImportFromStatement >> fromModule [
 { #category : 'accessing' }
 FASTPyImportFromStatement >> fromModule: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	fromModule := anObject
 ]

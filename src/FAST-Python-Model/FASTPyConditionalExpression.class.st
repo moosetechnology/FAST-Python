@@ -38,6 +38,7 @@ Class {
 { #category : 'meta' }
 FASTPyConditionalExpression class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ConditionalExpression super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -47,6 +48,7 @@ FASTPyConditionalExpression class >> annotation [
 FASTPyConditionalExpression >> elseExpression [
 	"Relation named: #elseExpression type: #FASTPyExpression opposite: #parentConditionalExpressionElse"
 
+	<ignoreForCoverage>
 	<generated>
 	^ elseExpression
 ]
@@ -54,6 +56,7 @@ FASTPyConditionalExpression >> elseExpression [
 { #category : 'accessing' }
 FASTPyConditionalExpression >> elseExpression: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	elseExpression := anObject
 ]
@@ -62,6 +65,7 @@ FASTPyConditionalExpression >> elseExpression: anObject [
 FASTPyConditionalExpression >> thenExpression [
 	"Relation named: #thenExpression type: #FASTPyExpression opposite: #parentConditionalExpressionThen"
 
+	<ignoreForCoverage>
 	<generated>
 	^ thenExpression
 ]
@@ -69,6 +73,7 @@ FASTPyConditionalExpression >> thenExpression [
 { #category : 'accessing' }
 FASTPyConditionalExpression >> thenExpression: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	thenExpression := anObject
 ]

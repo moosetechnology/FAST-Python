@@ -24,6 +24,7 @@ Class {
 { #category : 'meta' }
 FASTPyGlobalStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #GlobalStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -31,6 +32,8 @@ FASTPyGlobalStatement class >> annotation [
 
 { #category : 'adding' }
 FASTPyGlobalStatement >> addVariable: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self variables add: anObject
 ]
@@ -39,6 +42,7 @@ FASTPyGlobalStatement >> addVariable: anObject [
 FASTPyGlobalStatement >> variables [
 	"Relation named: #variables type: #FASTPyVariable opposite: #parentGlobalStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The variables scoped'>
 	<derived>
@@ -48,6 +52,7 @@ FASTPyGlobalStatement >> variables [
 { #category : 'accessing' }
 FASTPyGlobalStatement >> variables: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	variables value: anObject
 ]

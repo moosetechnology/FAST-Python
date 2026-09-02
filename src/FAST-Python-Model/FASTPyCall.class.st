@@ -63,6 +63,7 @@ Class {
 { #category : 'meta' }
 FASTPyCall class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Call super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -72,6 +73,7 @@ FASTPyCall class >> annotation [
 FASTPyCall >> callee [
 	"Relation named: #callee type: #FASTPyTCallable opposite: #caller"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'I represent what is called. Can be a class for an instantiation. A function invocation. A method invocation. The call of the return of a call. The call of something invoked from an array access...'>
 	^ callee
@@ -80,6 +82,7 @@ FASTPyCall >> callee [
 { #category : 'accessing' }
 FASTPyCall >> callee: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	callee := anObject
 ]

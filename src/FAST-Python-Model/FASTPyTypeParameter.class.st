@@ -23,6 +23,7 @@ Class {
 { #category : 'meta' }
 FASTPyTypeParameter class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TypeParameter super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>

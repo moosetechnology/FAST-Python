@@ -9,6 +9,7 @@ Class {
 { #category : 'meta' }
 FASTPyFormatExpression class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #FormatExpression super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>

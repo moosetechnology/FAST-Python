@@ -53,6 +53,7 @@ Class {
 { #category : 'meta' }
 FASTPyAttributeAccess class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #AttributeAccess super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -81,6 +82,7 @@ FASTPyAttributeAccess >> methodDefinition [
 FASTPyAttributeAccess >> value [
 	"Relation named: #value type: #FASTPyExpression opposite: #parentAttributeObject"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'I am the receiver of the attribute. I can be multiple things such as a variable, a call, another attribute access, a primitive type, a subscript...'>
 	^ value
@@ -89,6 +91,7 @@ FASTPyAttributeAccess >> value [
 { #category : 'accessing' }
 FASTPyAttributeAccess >> value: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	value := anObject
 ]

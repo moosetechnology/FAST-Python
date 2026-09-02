@@ -37,6 +37,7 @@ Class {
 { #category : 'meta' }
 FASTPyDottedName class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #DottedName super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -46,6 +47,7 @@ FASTPyDottedName class >> annotation [
 FASTPyDottedName >> identifiers [
 
 	<FMProperty: #identifiers type: #String>
+	<ignoreForCoverage>
 	<generated>
 	<multivalued>
 	<FMComment: 'The elements separated by a .'>
@@ -54,6 +56,7 @@ FASTPyDottedName >> identifiers [
 
 { #category : 'accessing' }
 FASTPyDottedName >> identifiers: anObject [
+	<ignoreForCoverage>
 	<generated>
 	identifiers := anObject
 ]

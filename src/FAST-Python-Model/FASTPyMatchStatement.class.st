@@ -26,6 +26,7 @@ Class {
 { #category : 'meta' }
 FASTPyMatchStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #MatchStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -33,6 +34,8 @@ FASTPyMatchStatement class >> annotation [
 
 { #category : 'adding' }
 FASTPyMatchStatement >> addCase: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self cases add: anObject
 ]
@@ -41,6 +44,7 @@ FASTPyMatchStatement >> addCase: anObject [
 FASTPyMatchStatement >> cases [
 	"Relation named: #cases type: #FASTPyCaseClause opposite: #parentMatchStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ cases
@@ -49,6 +53,7 @@ FASTPyMatchStatement >> cases [
 { #category : 'accessing' }
 FASTPyMatchStatement >> cases: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	cases value: anObject
 ]
@@ -57,6 +62,7 @@ FASTPyMatchStatement >> cases: anObject [
 FASTPyMatchStatement >> subject [
 	"Relation named: #subject type: #FASTPyExpression opposite: #parentMatchStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	^ subject
 ]
@@ -64,6 +70,7 @@ FASTPyMatchStatement >> subject [
 { #category : 'accessing' }
 FASTPyMatchStatement >> subject: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	subject := anObject
 ]

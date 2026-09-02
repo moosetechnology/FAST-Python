@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTAssignable classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TAssignable super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -34,6 +35,7 @@ FASTPyTAssignable classSide >> annotation [
 FASTPyTAssignable >> parentAssignmentLeft [
 	"Relation named: #parentAssignmentLeft type: #FASTPyAssignment opposite: #left"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -43,6 +45,7 @@ FASTPyTAssignable >> parentAssignmentLeft [
 { #category : 'accessing' }
 FASTPyTAssignable >> parentAssignmentLeft: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentAssignmentLeft := anObject
 ]

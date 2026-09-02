@@ -24,6 +24,7 @@ Class {
 { #category : 'meta' }
 FASTPyNonlocalStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #NonlocalStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -31,6 +32,8 @@ FASTPyNonlocalStatement class >> annotation [
 
 { #category : 'adding' }
 FASTPyNonlocalStatement >> addVariable: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self variables add: anObject
 ]
@@ -39,6 +42,7 @@ FASTPyNonlocalStatement >> addVariable: anObject [
 FASTPyNonlocalStatement >> variables [
 	"Relation named: #variables type: #FASTPyVariable opposite: #parentNonlocalStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The variables scoped'>
 	<derived>
@@ -48,6 +52,7 @@ FASTPyNonlocalStatement >> variables [
 { #category : 'accessing' }
 FASTPyNonlocalStatement >> variables: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	variables value: anObject
 ]

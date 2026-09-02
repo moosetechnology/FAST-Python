@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTCallable classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TCallable super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -42,6 +43,7 @@ FASTPyTCallable >> callOnMe [
 FASTPyTCallable >> caller [
 	"Relation named: #caller type: #FASTPyCall opposite: #callee"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The call entity calling me (if it''s the case)'>
 	<container>
@@ -52,6 +54,7 @@ FASTPyTCallable >> caller [
 { #category : 'accessing' }
 FASTPyTCallable >> caller: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	caller := anObject
 ]

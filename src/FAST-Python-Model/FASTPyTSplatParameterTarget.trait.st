@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTSplatParameterTarget classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TSplatParameterTarget super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -34,6 +35,7 @@ FASTPyTSplatParameterTarget classSide >> annotation [
 FASTPyTSplatParameterTarget >> parentSplatParameter [
 	"Relation named: #parentSplatParameter type: #FASTPySplatParameter opposite: #target"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -43,6 +45,7 @@ FASTPyTSplatParameterTarget >> parentSplatParameter [
 { #category : 'accessing' }
 FASTPyTSplatParameterTarget >> parentSplatParameter: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentSplatParameter := anObject
 ]

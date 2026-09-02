@@ -35,6 +35,7 @@ Class {
 { #category : 'meta' }
 FASTPyClassPattern class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ClassPattern super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -42,6 +43,8 @@ FASTPyClassPattern class >> annotation [
 
 { #category : 'adding' }
 FASTPyClassPattern >> addElement: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self elements add: anObject
 ]
@@ -50,6 +53,7 @@ FASTPyClassPattern >> addElement: anObject [
 FASTPyClassPattern >> elements [
 	"Relation named: #elements type: #FASTPyTClassPatternElement opposite: #parentClassPattern"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ elements
@@ -58,6 +62,7 @@ FASTPyClassPattern >> elements [
 { #category : 'accessing' }
 FASTPyClassPattern >> elements: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	elements value: anObject
 ]

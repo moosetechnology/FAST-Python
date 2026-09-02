@@ -46,6 +46,7 @@ Class {
 { #category : 'meta' }
 FASTPyMethodDefinition class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #MethodDefinition super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -80,6 +81,7 @@ FASTPyMethodDefinition >> isStatic [
 FASTPyMethodDefinition >> returnType [
 	"Relation named: #returnType type: #FASTPyType opposite: #parentMethodDefinition"
 
+	<ignoreForCoverage>
 	<generated>
 	^ returnType
 ]
@@ -87,6 +89,7 @@ FASTPyMethodDefinition >> returnType [
 { #category : 'accessing' }
 FASTPyMethodDefinition >> returnType: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	returnType := anObject
 ]

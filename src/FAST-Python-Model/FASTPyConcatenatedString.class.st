@@ -24,6 +24,7 @@ Class {
 { #category : 'meta' }
 FASTPyConcatenatedString class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ConcatenatedString super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -31,6 +32,8 @@ FASTPyConcatenatedString class >> annotation [
 
 { #category : 'adding' }
 FASTPyConcatenatedString >> addString: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self strings add: anObject
 ]
@@ -39,6 +42,7 @@ FASTPyConcatenatedString >> addString: anObject [
 FASTPyConcatenatedString >> strings [
 	"Relation named: #strings type: #FASTPyString opposite: #parentConcatenatedString"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ strings
@@ -47,6 +51,7 @@ FASTPyConcatenatedString >> strings [
 { #category : 'accessing' }
 FASTPyConcatenatedString >> strings: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	strings value: anObject
 ]

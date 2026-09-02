@@ -43,6 +43,7 @@ Class {
 { #category : 'meta' }
 FASTPyParameter class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Parameter super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -52,6 +53,7 @@ FASTPyParameter class >> annotation [
 FASTPyParameter >> defaultValue [
 	"Relation named: #defaultValue type: #FASTPyExpression opposite: #parentDefaultParameterValue"
 
+	<ignoreForCoverage>
 	<generated>
 	^ defaultValue
 ]
@@ -59,6 +61,7 @@ FASTPyParameter >> defaultValue [
 { #category : 'accessing' }
 FASTPyParameter >> defaultValue: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	defaultValue := anObject
 ]
@@ -78,6 +81,7 @@ FASTPyParameter >> isSelf [
 FASTPyParameter >> type [
 	"Relation named: #type type: #FASTPyType opposite: #parentParameter"
 
+	<ignoreForCoverage>
 	<generated>
 	^ type
 ]
@@ -85,6 +89,7 @@ FASTPyParameter >> type [
 { #category : 'accessing' }
 FASTPyParameter >> type: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	type := anObject
 ]

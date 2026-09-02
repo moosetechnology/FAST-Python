@@ -9,6 +9,7 @@ Class {
 { #category : 'meta' }
 FASTPyLambdaParameters class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #LambdaParameters super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>

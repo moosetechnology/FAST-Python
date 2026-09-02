@@ -9,6 +9,7 @@ Class {
 { #category : 'meta' }
 FASTPyEscapeInterpolation class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #EscapeInterpolation super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>

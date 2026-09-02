@@ -26,6 +26,7 @@ Class {
 { #category : 'meta' }
 FASTPyPair class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Pair super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -35,6 +36,7 @@ FASTPyPair class >> annotation [
 FASTPyPair >> key [
 	"Relation named: #key type: #FASTPyExpression opposite: #parentPairKey"
 
+	<ignoreForCoverage>
 	<generated>
 	^ key
 ]
@@ -42,6 +44,7 @@ FASTPyPair >> key [
 { #category : 'accessing' }
 FASTPyPair >> key: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	key := anObject
 ]
@@ -50,6 +53,7 @@ FASTPyPair >> key: anObject [
 FASTPyPair >> value [
 	"Relation named: #value type: #FASTPyExpression opposite: #parentPairValuer"
 
+	<ignoreForCoverage>
 	<generated>
 	^ value
 ]
@@ -57,6 +61,7 @@ FASTPyPair >> value [
 { #category : 'accessing' }
 FASTPyPair >> value: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	value := anObject
 ]

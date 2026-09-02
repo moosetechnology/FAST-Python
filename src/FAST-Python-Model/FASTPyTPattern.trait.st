@@ -29,6 +29,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTPattern classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TPattern super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -38,6 +39,7 @@ FASTPyTPattern classSide >> annotation [
 FASTPyTPattern >> parentCaseClause [
 	"Relation named: #parentCaseClause type: #FASTPyCaseClause opposite: #pattern"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -47,6 +49,7 @@ FASTPyTPattern >> parentCaseClause [
 { #category : 'accessing' }
 FASTPyTPattern >> parentCaseClause: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentCaseClause := anObject
 ]
@@ -55,6 +58,7 @@ FASTPyTPattern >> parentCaseClause: anObject [
 FASTPyTPattern >> parentKeywordPatternValue [
 	"Relation named: #parentKeywordPatternValue type: #FASTPyKeywordPattern opposite: #value"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -64,6 +68,7 @@ FASTPyTPattern >> parentKeywordPatternValue [
 { #category : 'accessing' }
 FASTPyTPattern >> parentKeywordPatternValue: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentKeywordPatternValue := anObject
 ]
@@ -72,6 +77,7 @@ FASTPyTPattern >> parentKeywordPatternValue: anObject [
 FASTPyTPattern >> parentUnionPattern [
 	"Relation named: #parentUnionPattern type: #FASTPyUnionPattern opposite: #members"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentUnionPattern
@@ -80,6 +86,7 @@ FASTPyTPattern >> parentUnionPattern [
 { #category : 'accessing' }
 FASTPyTPattern >> parentUnionPattern: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentUnionPattern := anObject
 ]

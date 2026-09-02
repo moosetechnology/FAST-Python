@@ -38,6 +38,7 @@ Class {
 { #category : 'meta' }
 FASTPyInteger class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Integer super: #FASTPyLiteral>
 	<package: #'FAST-Python-Model'>
 	<generated>

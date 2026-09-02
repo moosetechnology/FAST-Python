@@ -43,6 +43,7 @@ Class {
 { #category : 'meta' }
 FASTPyKeywordPattern class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #KeywordPattern super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -52,6 +53,7 @@ FASTPyKeywordPattern class >> annotation [
 FASTPyKeywordPattern >> value [
 	"Relation named: #value type: #FASTPyTPattern opposite: #parentKeywordPatternValue"
 
+	<ignoreForCoverage>
 	<generated>
 	^ value
 ]
@@ -59,6 +61,7 @@ FASTPyKeywordPattern >> value [
 { #category : 'accessing' }
 FASTPyKeywordPattern >> value: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	value := anObject
 ]

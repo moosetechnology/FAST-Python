@@ -48,6 +48,7 @@ Class {
 { #category : 'meta' }
 FASTPyBinaryOperator class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #BinaryOperator super: #FASTPyOperator>
 	<package: #'FAST-Python-Model'>
 	<generated>

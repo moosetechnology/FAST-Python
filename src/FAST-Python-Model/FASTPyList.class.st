@@ -25,6 +25,7 @@ Class {
 { #category : 'meta' }
 FASTPyList class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #List super: #FASTPyCollectionInitializer>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -33,6 +34,7 @@ FASTPyList class >> annotation [
 { #category : 'testing' }
 FASTPyList >> isList [
 
+	<ignoreForCoverage>
 	<generated>
 	^ true
 ]

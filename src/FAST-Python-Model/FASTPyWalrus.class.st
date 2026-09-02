@@ -39,6 +39,7 @@ Class {
 { #category : 'meta' }
 FASTPyWalrus class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Walrus super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -48,6 +49,7 @@ FASTPyWalrus class >> annotation [
 FASTPyWalrus >> value [
 	"Relation named: #value type: #FASTPyExpression opposite: #parentWalrus"
 
+	<ignoreForCoverage>
 	<generated>
 	^ value
 ]
@@ -55,6 +57,7 @@ FASTPyWalrus >> value [
 { #category : 'accessing' }
 FASTPyWalrus >> value: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	value := anObject
 ]

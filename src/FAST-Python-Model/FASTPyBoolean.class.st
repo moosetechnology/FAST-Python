@@ -38,6 +38,7 @@ Class {
 { #category : 'meta' }
 FASTPyBoolean class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Boolean super: #FASTPyLiteral>
 	<package: #'FAST-Python-Model'>
 	<generated>

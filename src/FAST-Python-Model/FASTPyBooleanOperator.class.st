@@ -46,6 +46,7 @@ Class {
 { #category : 'meta' }
 FASTPyBooleanOperator class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #BooleanOperator super: #FASTPyOperator>
 	<package: #'FAST-Python-Model'>
 	<generated>

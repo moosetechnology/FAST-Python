@@ -26,6 +26,7 @@ Class {
 { #category : 'meta' }
 FASTPyPrintStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #PrintStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -33,6 +34,8 @@ FASTPyPrintStatement class >> annotation [
 
 { #category : 'adding' }
 FASTPyPrintStatement >> addExpression: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self expressions add: anObject
 ]
@@ -41,6 +44,7 @@ FASTPyPrintStatement >> addExpression: anObject [
 FASTPyPrintStatement >> expressions [
 	"Relation named: #expressions type: #FASTPyExpression opposite: #prarentPrintStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ expressions
@@ -49,6 +53,7 @@ FASTPyPrintStatement >> expressions [
 { #category : 'accessing' }
 FASTPyPrintStatement >> expressions: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	expressions value: anObject
 ]
@@ -57,6 +62,7 @@ FASTPyPrintStatement >> expressions: anObject [
 FASTPyPrintStatement >> redirection [
 	"Relation named: #redirection type: #FASTPyChevron opposite: #parentPrintStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	^ redirection
 ]
@@ -64,6 +70,7 @@ FASTPyPrintStatement >> redirection [
 { #category : 'accessing' }
 FASTPyPrintStatement >> redirection: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	redirection := anObject
 ]

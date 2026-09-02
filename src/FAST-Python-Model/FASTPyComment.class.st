@@ -29,6 +29,7 @@ Class {
 { #category : 'meta' }
 FASTPyComment class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Comment super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>

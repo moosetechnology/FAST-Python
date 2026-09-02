@@ -26,6 +26,7 @@ Class {
 { #category : 'meta' }
 FASTPyForInClause class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ForInClause super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -41,6 +42,7 @@ FASTPyForInClause >> assignedExpressions [
 FASTPyForInClause >> left [
 	"Relation named: #left type: #FASTPyExpression opposite: #parentForInClauseLeft"
 
+	<ignoreForCoverage>
 	<generated>
 	^ left
 ]
@@ -48,6 +50,7 @@ FASTPyForInClause >> left [
 { #category : 'accessing' }
 FASTPyForInClause >> left: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	left := anObject
 ]
@@ -56,6 +59,7 @@ FASTPyForInClause >> left: anObject [
 FASTPyForInClause >> right [
 	"Relation named: #right type: #FASTPyExpression opposite: #parentForInClauseRight"
 
+	<ignoreForCoverage>
 	<generated>
 	^ right
 ]
@@ -63,6 +67,7 @@ FASTPyForInClause >> right [
 { #category : 'accessing' }
 FASTPyForInClause >> right: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	right := anObject
 ]

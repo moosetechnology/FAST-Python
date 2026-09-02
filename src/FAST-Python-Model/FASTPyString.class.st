@@ -50,6 +50,7 @@ Class {
 { #category : 'meta' }
 FASTPyString class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #String super: #FASTPyLiteral>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -57,6 +58,8 @@ FASTPyString class >> annotation [
 
 { #category : 'adding' }
 FASTPyString >> addInterpolation: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self interpolations add: anObject
 ]
@@ -65,6 +68,7 @@ FASTPyString >> addInterpolation: anObject [
 FASTPyString >> interpolations [
 	"Relation named: #interpolations type: #FASTPyInterpolation opposite: #parentString"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ interpolations
@@ -73,6 +77,7 @@ FASTPyString >> interpolations [
 { #category : 'accessing' }
 FASTPyString >> interpolations: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	interpolations value: anObject
 ]
@@ -81,6 +86,7 @@ FASTPyString >> interpolations: anObject [
 FASTPyString >> parentConcatenatedString [
 	"Relation named: #parentConcatenatedString type: #FASTPyConcatenatedString opposite: #strings"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentConcatenatedString
@@ -89,6 +95,7 @@ FASTPyString >> parentConcatenatedString [
 { #category : 'accessing' }
 FASTPyString >> parentConcatenatedString: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentConcatenatedString := anObject
 ]

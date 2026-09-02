@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTWithTypeParameters classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TWithTypeParameters super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -32,6 +33,8 @@ FASTPyTWithTypeParameters classSide >> annotation [
 
 { #category : 'adding' }
 FASTPyTWithTypeParameters >> addTypeParameter: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self typeParameters add: anObject
 ]
@@ -40,6 +43,7 @@ FASTPyTWithTypeParameters >> addTypeParameter: anObject [
 FASTPyTWithTypeParameters >> typeParameters [
 	"Relation named: #typeParameters type: #FASTPyType opposite: #parentWithTypeParameters"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ typeParameters
@@ -48,6 +52,7 @@ FASTPyTWithTypeParameters >> typeParameters [
 { #category : 'accessing' }
 FASTPyTWithTypeParameters >> typeParameters: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	typeParameters value: anObject
 ]

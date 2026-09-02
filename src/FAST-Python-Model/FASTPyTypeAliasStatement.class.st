@@ -26,6 +26,7 @@ Class {
 { #category : 'meta' }
 FASTPyTypeAliasStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TypeAliasStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -35,6 +36,7 @@ FASTPyTypeAliasStatement class >> annotation [
 FASTPyTypeAliasStatement >> left [
 	"Relation named: #left type: #FASTPyType opposite: #parentyTypeAliasStatementAlias"
 
+	<ignoreForCoverage>
 	<generated>
 	^ left
 ]
@@ -42,6 +44,7 @@ FASTPyTypeAliasStatement >> left [
 { #category : 'accessing' }
 FASTPyTypeAliasStatement >> left: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	left := anObject
 ]
@@ -50,6 +53,7 @@ FASTPyTypeAliasStatement >> left: anObject [
 FASTPyTypeAliasStatement >> right [
 	"Relation named: #right type: #FASTPyType opposite: #parentyTypeAliasStatementType"
 
+	<ignoreForCoverage>
 	<generated>
 	^ right
 ]
@@ -57,6 +61,7 @@ FASTPyTypeAliasStatement >> right [
 { #category : 'accessing' }
 FASTPyTypeAliasStatement >> right: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	right := anObject
 ]

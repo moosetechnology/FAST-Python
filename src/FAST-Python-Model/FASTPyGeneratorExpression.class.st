@@ -28,6 +28,7 @@ Class {
 { #category : 'meta' }
 FASTPyGeneratorExpression class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #GeneratorExpression super: #FASTPyComprehension>
 	<package: #'FAST-Python-Model'>
 	<generated>

@@ -31,6 +31,7 @@ Class {
 { #category : 'meta' }
 FASTPyComparisonOperator class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ComparisonOperator super: #FASTPyOperator>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -38,6 +39,8 @@ FASTPyComparisonOperator class >> annotation [
 
 { #category : 'adding' }
 FASTPyComparisonOperator >> addOperand: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self operands add: anObject
 ]
@@ -46,6 +49,7 @@ FASTPyComparisonOperator >> addOperand: anObject [
 FASTPyComparisonOperator >> operands [
 	"Relation named: #operands type: #FASTPyExpression opposite: #parentComparisonOperator"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'List of the operands of the comparison operands. For example if we have `a == b != c`, it will be a, b and c.'>
 	<derived>
@@ -55,6 +59,7 @@ FASTPyComparisonOperator >> operands [
 { #category : 'accessing' }
 FASTPyComparisonOperator >> operands: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	operands value: anObject
 ]
@@ -63,6 +68,7 @@ FASTPyComparisonOperator >> operands: anObject [
 FASTPyComparisonOperator >> operators [
 
 	<FMProperty: #operators type: #String>
+	<ignoreForCoverage>
 	<generated>
 	<multivalued>
 	<FMComment: 'The comparators applied in order. Possible operators:  <, <=, ==, !=, >=, >, <>, in, not in, is, is not'>
@@ -71,6 +77,7 @@ FASTPyComparisonOperator >> operators [
 
 { #category : 'accessing' }
 FASTPyComparisonOperator >> operators: anObject [
+	<ignoreForCoverage>
 	<generated>
 	operators := anObject
 ]

@@ -33,6 +33,7 @@ Class {
 { #category : 'meta' }
 FASTPyUnionPattern class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #UnionPattern super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -40,6 +41,8 @@ FASTPyUnionPattern class >> annotation [
 
 { #category : 'adding' }
 FASTPyUnionPattern >> addMember: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self members add: anObject
 ]
@@ -48,6 +51,7 @@ FASTPyUnionPattern >> addMember: anObject [
 FASTPyUnionPattern >> members [
 	"Relation named: #members type: #FASTPyTPattern opposite: #parentUnionPattern"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ members
@@ -56,6 +60,7 @@ FASTPyUnionPattern >> members [
 { #category : 'accessing' }
 FASTPyUnionPattern >> members: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	members value: anObject
 ]

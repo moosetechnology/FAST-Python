@@ -21,6 +21,7 @@ Class {
 { #category : 'meta' }
 FASTPyNone class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #None super: #FASTPyLiteral>
 	<package: #'FAST-Python-Model'>
 	<generated>

@@ -13,6 +13,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTCanBeVariable classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TCanBeVariable super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>

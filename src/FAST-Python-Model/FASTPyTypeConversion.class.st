@@ -9,6 +9,7 @@ Class {
 { #category : 'meta' }
 FASTPyTypeConversion class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TypeConversion super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>

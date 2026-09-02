@@ -10,6 +10,8 @@ Class {
 
 { #category : 'accessing' }
 FASTPyModel class >> allSubmetamodelsPackagesNames [
+
+	<ignoreForCoverage>
 	<generated>
 	^ #(#'Moose-Query' #'Famix-Traits' #'FAST-Core-Model')
 ]
@@ -17,6 +19,7 @@ FASTPyModel class >> allSubmetamodelsPackagesNames [
 { #category : 'meta' }
 FASTPyModel class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Model super: #MooseModel>
 	<package: #'FAST-Python-Model'>
 	<generated>

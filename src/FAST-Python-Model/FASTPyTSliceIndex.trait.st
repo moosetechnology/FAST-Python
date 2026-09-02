@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTSliceIndex classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TSliceIndex super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -34,6 +35,7 @@ FASTPyTSliceIndex classSide >> annotation [
 FASTPyTSliceIndex >> parentSubscriptIndex [
 	"Relation named: #parentSubscriptIndex type: #FASTPySubscript opposite: #indices"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'My parent if I am defining an index to select of a subscript (if it''s the case)'>
 	<container>
@@ -43,6 +45,7 @@ FASTPyTSliceIndex >> parentSubscriptIndex [
 { #category : 'accessing' }
 FASTPyTSliceIndex >> parentSubscriptIndex: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentSubscriptIndex := anObject
 ]

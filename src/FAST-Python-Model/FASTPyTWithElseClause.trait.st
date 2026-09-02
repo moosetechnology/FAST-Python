@@ -23,6 +23,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTWithElseClause classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TWithElseClause super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -32,6 +33,7 @@ FASTPyTWithElseClause classSide >> annotation [
 FASTPyTWithElseClause >> elseClause [
 	"Relation named: #elseClause type: #FASTPyElseClause opposite: #parentIfStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	^ elseClause
 ]
@@ -39,6 +41,7 @@ FASTPyTWithElseClause >> elseClause [
 { #category : 'accessing' }
 FASTPyTWithElseClause >> elseClause: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	elseClause := anObject
 ]

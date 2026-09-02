@@ -9,6 +9,7 @@ Class {
 { #category : 'meta' }
 FASTPyImportStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ImportStatement super: #FASTPyImport>
 	<package: #'FAST-Python-Model'>
 	<generated>

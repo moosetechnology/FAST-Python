@@ -43,6 +43,7 @@ Class {
 { #category : 'meta' }
 FASTPyModule class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Module super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>

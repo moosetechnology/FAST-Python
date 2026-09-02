@@ -29,6 +29,7 @@ Class {
 { #category : 'meta' }
 FASTPyPassStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #PassStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>

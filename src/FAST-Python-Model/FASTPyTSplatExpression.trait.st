@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTSplatExpression classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TSplatExpression super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -34,6 +35,7 @@ FASTPyTSplatExpression classSide >> annotation [
 FASTPyTSplatExpression >> parentSplat [
 	"Relation named: #parentSplat type: #FASTPySplat opposite: #expression"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -43,6 +45,7 @@ FASTPyTSplatExpression >> parentSplat [
 { #category : 'accessing' }
 FASTPyTSplatExpression >> parentSplat: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentSplat := anObject
 ]

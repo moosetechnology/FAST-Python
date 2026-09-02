@@ -24,6 +24,7 @@ Class {
 { #category : 'meta' }
 FASTPyRaiseStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #RaiseStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -33,6 +34,7 @@ FASTPyRaiseStatement class >> annotation [
 FASTPyRaiseStatement >> exception [
 	"Relation named: #exception type: #FASTPyTRaised opposite: #parentRaiseStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	^ exception
 ]
@@ -40,6 +42,7 @@ FASTPyRaiseStatement >> exception [
 { #category : 'accessing' }
 FASTPyRaiseStatement >> exception: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	exception := anObject
 ]

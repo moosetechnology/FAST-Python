@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTSuperclass classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TSuperclass super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -34,6 +35,7 @@ FASTPyTSuperclass classSide >> annotation [
 FASTPyTSuperclass >> parentClassDefinition [
 	"Relation named: #parentClassDefinition type: #FASTPyClassDefinition opposite: #superclasses"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentClassDefinition
@@ -42,6 +44,7 @@ FASTPyTSuperclass >> parentClassDefinition [
 { #category : 'accessing' }
 FASTPyTSuperclass >> parentClassDefinition: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentClassDefinition := anObject
 ]

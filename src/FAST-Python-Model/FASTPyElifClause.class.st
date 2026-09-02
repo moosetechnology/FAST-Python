@@ -42,6 +42,7 @@ Class {
 { #category : 'meta' }
 FASTPyElifClause class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ElifClause super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -51,6 +52,7 @@ FASTPyElifClause class >> annotation [
 FASTPyElifClause >> parentIfStatement [
 	"Relation named: #parentIfStatement type: #FASTPyIfStatement opposite: #elifClauses"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentIfStatement
@@ -59,6 +61,7 @@ FASTPyElifClause >> parentIfStatement [
 { #category : 'accessing' }
 FASTPyElifClause >> parentIfStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentIfStatement := anObject
 ]

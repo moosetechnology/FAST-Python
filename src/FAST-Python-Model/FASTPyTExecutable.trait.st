@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTExecutable classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TExecutable super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -34,6 +35,7 @@ FASTPyTExecutable classSide >> annotation [
 FASTPyTExecutable >> parentExecStatement [
 	"Relation named: #parentExecStatement type: #FASTPyExecStatement opposite: #code"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -43,6 +45,7 @@ FASTPyTExecutable >> parentExecStatement [
 { #category : 'accessing' }
 FASTPyTExecutable >> parentExecStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentExecStatement := anObject
 ]

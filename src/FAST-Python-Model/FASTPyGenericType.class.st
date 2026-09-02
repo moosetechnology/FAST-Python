@@ -41,6 +41,7 @@ Class {
 { #category : 'meta' }
 FASTPyGenericType class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #GenericType super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -48,6 +49,8 @@ FASTPyGenericType class >> annotation [
 
 { #category : 'adding' }
 FASTPyGenericType >> addArgument: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self arguments add: anObject
 ]
@@ -56,6 +59,7 @@ FASTPyGenericType >> addArgument: anObject [
 FASTPyGenericType >> arguments [
 	"Relation named: #arguments type: #FASTPyType opposite: #parentGenericTypeArgument"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ arguments
@@ -64,6 +68,7 @@ FASTPyGenericType >> arguments [
 { #category : 'accessing' }
 FASTPyGenericType >> arguments: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	arguments value: anObject
 ]

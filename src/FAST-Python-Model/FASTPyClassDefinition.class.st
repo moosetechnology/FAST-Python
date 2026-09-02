@@ -49,6 +49,7 @@ Class {
 { #category : 'meta' }
 FASTPyClassDefinition class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ClassDefinition super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -56,12 +57,16 @@ FASTPyClassDefinition class >> annotation [
 
 { #category : 'adding' }
 FASTPyClassDefinition >> addKeyword: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self keywords add: anObject
 ]
 
 { #category : 'adding' }
 FASTPyClassDefinition >> addSuperclass: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self superclasses add: anObject
 ]
@@ -69,6 +74,7 @@ FASTPyClassDefinition >> addSuperclass: anObject [
 { #category : 'testing' }
 FASTPyClassDefinition >> isClassDefinition [
 
+	<ignoreForCoverage>
 	<generated>
 	^ true
 ]
@@ -77,6 +83,7 @@ FASTPyClassDefinition >> isClassDefinition [
 FASTPyClassDefinition >> keywords [
 	"Relation named: #keywords type: #FASTPyKeywordArgument opposite: #parentClassDefinition"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ keywords
@@ -85,6 +92,7 @@ FASTPyClassDefinition >> keywords [
 { #category : 'accessing' }
 FASTPyClassDefinition >> keywords: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	keywords value: anObject
 ]
@@ -93,6 +101,7 @@ FASTPyClassDefinition >> keywords: anObject [
 FASTPyClassDefinition >> superclasses [
 	"Relation named: #superclasses type: #FASTPyTSuperclass opposite: #parentClassDefinition"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ superclasses
@@ -101,6 +110,7 @@ FASTPyClassDefinition >> superclasses [
 { #category : 'accessing' }
 FASTPyClassDefinition >> superclasses: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	superclasses value: anObject
 ]

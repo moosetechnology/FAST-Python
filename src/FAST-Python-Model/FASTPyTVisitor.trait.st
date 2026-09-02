@@ -14,6 +14,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTVisitor classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TVisitor super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -22,6 +23,7 @@ FASTPyTVisitor classSide >> annotation [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitCollection: aCollection [
 
+	<ignoreForCoverage>
 	<generated>
 	^ aCollection collect: [ :each | each accept: self ]
 ]
@@ -29,6 +31,7 @@ FASTPyTVisitor >> visitCollection: aCollection [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitEntity: aFamixEntity [
 
+	<ignoreForCoverage>
 	<generated>
 	^ aFamixEntity ifNotNil: [ aFamixEntity accept: self ]
 ]
@@ -36,6 +39,7 @@ FASTPyTVisitor >> visitEntity: aFamixEntity [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyAsPattern: anAsPattern [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTWithStatementItem: anAsPattern.
 
@@ -46,6 +50,7 @@ FASTPyTVisitor >> visitFASTPyAsPattern: anAsPattern [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyAssertStatement: anAssertStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyStatement: anAssertStatement.
 
@@ -55,6 +60,7 @@ FASTPyTVisitor >> visitFASTPyAssertStatement: anAssertStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyAssignment: anAssignment [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTAssignable: anAssignment.
 	self visitFASTPyExpression: anAssignment.
@@ -67,6 +73,7 @@ FASTPyTVisitor >> visitFASTPyAssignment: anAssignment [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyAttributeAccess: anAttributeAccess [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTAsPatternTarget: anAttributeAccess.
 	self visitFASTPyTCanBeVariable: anAttributeAccess.
@@ -81,6 +88,7 @@ FASTPyTVisitor >> visitFASTPyAttributeAccess: anAttributeAccess [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyAugmentedAssignment: anAugmentedAssignment [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyAssignment: anAugmentedAssignment
 ]
@@ -88,6 +96,7 @@ FASTPyTVisitor >> visitFASTPyAugmentedAssignment: anAugmentedAssignment [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyAwait: anAwait [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyExpression: anAwait.
 
@@ -97,6 +106,7 @@ FASTPyTVisitor >> visitFASTPyAwait: anAwait [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyBinaryOperator: aBinaryOperator [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTPattern: aBinaryOperator.
 	self visitFASTPyTSplatExpression: aBinaryOperator.
@@ -107,6 +117,7 @@ FASTPyTVisitor >> visitFASTPyBinaryOperator: aBinaryOperator [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyBoolean: aBoolean [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTBooleanLiteral: aBoolean.
 	self visitFASTPyLiteral: aBoolean
@@ -115,6 +126,7 @@ FASTPyTVisitor >> visitFASTPyBoolean: aBoolean [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyBooleanOperator: aBooleanOperator [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTRaised: aBooleanOperator.
 	self visitFASTPyTSplatExpression: aBooleanOperator.
@@ -125,6 +137,7 @@ FASTPyTVisitor >> visitFASTPyBooleanOperator: aBooleanOperator [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyBreakStatement: aBreakStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTBreakStatement: aBreakStatement.
 	self visitFASTPyStatement: aBreakStatement
@@ -133,6 +146,7 @@ FASTPyTVisitor >> visitFASTPyBreakStatement: aBreakStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyCall: aCall [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTReturnReferenceable: aCall.
 	self visitFASTPyTWithStatementItem: aCall.
@@ -145,6 +159,7 @@ FASTPyTVisitor >> visitFASTPyCall: aCall [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyCaseClause: aCaseClause [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTStatementBlock: aCaseClause.
 	self visitFASTTWithCondition: aCaseClause.
@@ -155,6 +170,7 @@ FASTPyTVisitor >> visitFASTPyCaseClause: aCaseClause [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyChevron: aChevron [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitEntity: aChevron expression
 ]
@@ -162,6 +178,7 @@ FASTPyTVisitor >> visitFASTPyChevron: aChevron [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyClassDefinition: aClassDefinition [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTDefinition: aClassDefinition.
 	self visitFASTPyTWithTypeParameters: aClassDefinition.
@@ -174,6 +191,7 @@ FASTPyTVisitor >> visitFASTPyClassDefinition: aClassDefinition [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyClassPattern: aClassPattern [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTPattern: aClassPattern.
 
@@ -183,6 +201,7 @@ FASTPyTVisitor >> visitFASTPyClassPattern: aClassPattern [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyCollectionInitializer: aCollectionInitializer [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTPattern: aCollectionInitializer.
 	self visitFASTPyTSplatExpression: aCollectionInitializer.
@@ -194,6 +213,7 @@ FASTPyTVisitor >> visitFASTPyCollectionInitializer: aCollectionInitializer [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyComment: aComment [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTComment: aComment
 ]
@@ -201,6 +221,7 @@ FASTPyTVisitor >> visitFASTPyComment: aComment [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyComparisonOperator: aComparisonOperator [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyOperator: aComparisonOperator.
 
@@ -210,6 +231,7 @@ FASTPyTVisitor >> visitFASTPyComparisonOperator: aComparisonOperator [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyComplex: aComplex [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTNumericalLiteral: aComplex.
 	self visitFASTPyLiteral: aComplex
@@ -218,6 +240,7 @@ FASTPyTVisitor >> visitFASTPyComplex: aComplex [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyComprehension: aComprehension [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTSplatExpression: aComprehension.
 	self visitFASTPyExpression: aComprehension.
@@ -230,6 +253,7 @@ FASTPyTVisitor >> visitFASTPyComprehension: aComprehension [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyConcatenatedString: aConcatenatedString [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyExpression: aConcatenatedString.
 
@@ -239,6 +263,7 @@ FASTPyTVisitor >> visitFASTPyConcatenatedString: aConcatenatedString [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyConditionalExpression: aConditionalExpression [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTCallable: aConditionalExpression.
 	self visitFASTPyTExecutable: aConditionalExpression.
@@ -253,6 +278,7 @@ FASTPyTVisitor >> visitFASTPyConditionalExpression: aConditionalExpression [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyConstrainedType: aConstrainedType [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTTypeContent: aConstrainedType.
 
@@ -263,6 +289,7 @@ FASTPyTVisitor >> visitFASTPyConstrainedType: aConstrainedType [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyContinueStatement: aContinueStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTContinueStatement: aContinueStatement.
 	self visitFASTPyStatement: aContinueStatement
@@ -271,6 +298,7 @@ FASTPyTVisitor >> visitFASTPyContinueStatement: aContinueStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyDecorator: aDecorator [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitEntity: aDecorator expression
 ]
@@ -278,6 +306,7 @@ FASTPyTVisitor >> visitFASTPyDecorator: aDecorator [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyDeleteStatement: aDeleteStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyStatement: aDeleteStatement.
 
@@ -287,6 +316,7 @@ FASTPyTVisitor >> visitFASTPyDeleteStatement: aDeleteStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyDictionary: aDictionary [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyCollectionInitializer: aDictionary
 ]
@@ -294,6 +324,7 @@ FASTPyTVisitor >> visitFASTPyDictionary: aDictionary [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyDictionaryComprehension: aDictionaryComprehension [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyComprehension: aDictionaryComprehension
 ]
@@ -301,6 +332,7 @@ FASTPyTVisitor >> visitFASTPyDictionaryComprehension: aDictionaryComprehension [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyDottedName: aDottedName [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTClassPatternElement: aDottedName.
 	self visitFASTPyTPattern: aDottedName.
@@ -310,6 +342,7 @@ FASTPyTVisitor >> visitFASTPyDottedName: aDottedName [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyERROR: anERROR [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyExpression: anERROR
 ]
@@ -317,6 +350,7 @@ FASTPyTVisitor >> visitFASTPyERROR: anERROR [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyElifClause: anElifClause [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTConditionalStatement: anElifClause.
 	self visitFASTTStatementBlock: anElifClause.
@@ -327,6 +361,7 @@ FASTPyTVisitor >> visitFASTPyElifClause: anElifClause [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyEllipsis: anEllipsis [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyLiteral: anEllipsis
 ]
@@ -334,6 +369,7 @@ FASTPyTVisitor >> visitFASTPyEllipsis: anEllipsis [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyElseClause: anElseClause [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTStatementBlock: anElseClause.
 
@@ -343,6 +379,7 @@ FASTPyTVisitor >> visitFASTPyElseClause: anElseClause [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyEntity: anEntity [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTEntity: anEntity.
 	self visitFASTTWithComments: anEntity
@@ -351,6 +388,7 @@ FASTPyTVisitor >> visitFASTPyEntity: anEntity [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyEscapeInterpolation: anEscapeInterpolation [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -358,6 +396,7 @@ FASTPyTVisitor >> visitFASTPyEscapeInterpolation: anEscapeInterpolation [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyEscapeSequence: anEscapeSequence [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -365,6 +404,7 @@ FASTPyTVisitor >> visitFASTPyEscapeSequence: anEscapeSequence [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyExceptClause: anExceptClause [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTStatementBlock: anExceptClause.
 
@@ -374,6 +414,7 @@ FASTPyTVisitor >> visitFASTPyExceptClause: anExceptClause [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyExecStatement: anExecStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyStatement: anExecStatement.
 
@@ -384,6 +425,7 @@ FASTPyTVisitor >> visitFASTPyExecStatement: anExecStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyExpression: anExpression [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTSliceIndex: anExpression.
 	self visitFASTPyTTypeContent: anExpression.
@@ -396,6 +438,7 @@ FASTPyTVisitor >> visitFASTPyExpression: anExpression [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyFinallyClause: aFinallyClause [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTStatementBlock: aFinallyClause.
 
@@ -405,6 +448,7 @@ FASTPyTVisitor >> visitFASTPyFinallyClause: aFinallyClause [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyFloat: aFloat [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTNumericalLiteral: aFloat.
 	self visitFASTPyLiteral: aFloat
@@ -413,6 +457,7 @@ FASTPyTVisitor >> visitFASTPyFloat: aFloat [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyForInClause: aForInClause [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyExpression: aForInClause.
 
@@ -423,6 +468,7 @@ FASTPyTVisitor >> visitFASTPyForInClause: aForInClause [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyForStatement: aForStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTWithElseClause: aForStatement.
 	self visitFASTTStatementBlock: aForStatement.
@@ -435,6 +481,7 @@ FASTPyTVisitor >> visitFASTPyForStatement: aForStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyFormatExpression: aFormatExpression [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -442,6 +489,7 @@ FASTPyTVisitor >> visitFASTPyFormatExpression: aFormatExpression [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyFromModule: aFromModule [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -449,6 +497,7 @@ FASTPyTVisitor >> visitFASTPyFromModule: aFromModule [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyFunctionDefinition: aFunctionDefinition [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTDefinition: aFunctionDefinition.
 	self visitFASTPyTWithTypeParameters: aFunctionDefinition.
@@ -461,6 +510,7 @@ FASTPyTVisitor >> visitFASTPyFunctionDefinition: aFunctionDefinition [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyGeneratorExpression: aGeneratorExpression [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyComprehension: aGeneratorExpression
 ]
@@ -468,6 +518,7 @@ FASTPyTVisitor >> visitFASTPyGeneratorExpression: aGeneratorExpression [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyGenericType: aGenericType [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTTypeContent: aGenericType.
 	self visitFASTPyTWithTypeParameters: aGenericType.
@@ -479,6 +530,7 @@ FASTPyTVisitor >> visitFASTPyGenericType: aGenericType [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyGlobalStatement: aGlobalStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyStatement: aGlobalStatement.
 
@@ -488,6 +540,7 @@ FASTPyTVisitor >> visitFASTPyGlobalStatement: aGlobalStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyIdentifier: anIdentifier [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTAsPatternTarget: anIdentifier.
 	self visitFASTPyTCanBeVariable: anIdentifier.
@@ -500,6 +553,7 @@ FASTPyTVisitor >> visitFASTPyIdentifier: anIdentifier [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyIfClause: anIfClause [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyExpression: anIfClause.
 
@@ -509,6 +563,7 @@ FASTPyTVisitor >> visitFASTPyIfClause: anIfClause [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyIfStatement: anIfStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTWithElseClause: anIfStatement.
 	self visitFASTTConditionalStatement: anIfStatement.
@@ -521,6 +576,7 @@ FASTPyTVisitor >> visitFASTPyIfStatement: anIfStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyImport: anImport [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyStatement: anImport.
 
@@ -530,6 +586,7 @@ FASTPyTVisitor >> visitFASTPyImport: anImport [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyImportFromStatement: anImportFromStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyImport: anImportFromStatement.
 
@@ -539,6 +596,7 @@ FASTPyTVisitor >> visitFASTPyImportFromStatement: anImportFromStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyImportStatement: anImportStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyImport: anImportStatement
 ]
@@ -546,6 +604,7 @@ FASTPyTVisitor >> visitFASTPyImportStatement: anImportStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyImportedEntity: anImportedEntity [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -553,6 +612,7 @@ FASTPyTVisitor >> visitFASTPyImportedEntity: anImportedEntity [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyInteger: anInteger [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTNumericalLiteral: anInteger.
 	self visitFASTPyLiteral: anInteger
@@ -561,6 +621,7 @@ FASTPyTVisitor >> visitFASTPyInteger: anInteger [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyInterpolation: anInterpolation [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitEntity: anInterpolation expression
 ]
@@ -568,6 +629,7 @@ FASTPyTVisitor >> visitFASTPyInterpolation: anInterpolation [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyKeywordArgument: aKeywordArgument [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTNamedEntity: aKeywordArgument.
 	self visitFASTPyExpression: aKeywordArgument.
@@ -578,6 +640,7 @@ FASTPyTVisitor >> visitFASTPyKeywordArgument: aKeywordArgument [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyKeywordPattern: aKeywordPattern [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTClassPatternElement: aKeywordPattern.
 	self visitFASTPyTPattern: aKeywordPattern.
@@ -589,6 +652,7 @@ FASTPyTVisitor >> visitFASTPyKeywordPattern: aKeywordPattern [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyKeywordSeparator: aKeywordSeparator [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTVariableEntity: aKeywordSeparator
 ]
@@ -596,6 +660,7 @@ FASTPyTVisitor >> visitFASTPyKeywordSeparator: aKeywordSeparator [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyLambda: aLambda [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTCallable: aLambda.
 	self visitFASTPyTDecoratorExpression: aLambda.
@@ -608,6 +673,7 @@ FASTPyTVisitor >> visitFASTPyLambda: aLambda [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyLambdaParameters: aLambdaParameters [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -615,6 +681,7 @@ FASTPyTVisitor >> visitFASTPyLambdaParameters: aLambdaParameters [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyList: aList [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTAsPatternTarget: aList.
 	self visitFASTPyTAssignable: aList.
@@ -624,6 +691,7 @@ FASTPyTVisitor >> visitFASTPyList: aList [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyListComprehension: aListComprehension [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyComprehension: aListComprehension
 ]
@@ -631,6 +699,7 @@ FASTPyTVisitor >> visitFASTPyListComprehension: aListComprehension [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyLiteral: aLiteral [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTPattern: aLiteral.
 	self visitFASTTLiteral: aLiteral.
@@ -640,6 +709,7 @@ FASTPyTVisitor >> visitFASTPyLiteral: aLiteral [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyMatchStatement: aMatchStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyStatement: aMatchStatement.
 
@@ -650,6 +720,7 @@ FASTPyTVisitor >> visitFASTPyMatchStatement: aMatchStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyMemberType: aMemberType [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -657,6 +728,7 @@ FASTPyTVisitor >> visitFASTPyMemberType: aMemberType [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyMethodDefinition: aMethodDefinition [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTDefinition: aMethodDefinition.
 	self visitFASTPyTWithTypeParameters: aMethodDefinition.
@@ -669,6 +741,7 @@ FASTPyTVisitor >> visitFASTPyMethodDefinition: aMethodDefinition [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyModule: aModule [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTStatementBlock: aModule.
 	self visitFamixTHasImmediateSource: aModule
@@ -677,6 +750,7 @@ FASTPyTVisitor >> visitFASTPyModule: aModule [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyNone: aNone [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyLiteral: aNone
 ]
@@ -684,6 +758,7 @@ FASTPyTVisitor >> visitFASTPyNone: aNone [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyNonlocalStatement: aNonlocalStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyStatement: aNonlocalStatement.
 
@@ -693,6 +768,7 @@ FASTPyTVisitor >> visitFASTPyNonlocalStatement: aNonlocalStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyNotOperator: aNotOperator [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTUnaryOperator: aNotOperator.
 	self visitFASTPyOperator: aNotOperator
@@ -701,6 +777,7 @@ FASTPyTVisitor >> visitFASTPyNotOperator: aNotOperator [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyOperator: anOperator [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyExpression: anOperator
 ]
@@ -708,6 +785,7 @@ FASTPyTVisitor >> visitFASTPyOperator: anOperator [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyPair: aPair [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyExpression: aPair.
 
@@ -718,6 +796,7 @@ FASTPyTVisitor >> visitFASTPyPair: aPair [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyParameter: aParameter [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTCanBeVariable: aParameter.
 	self visitFASTTVariableEntity: aParameter.
@@ -729,6 +808,7 @@ FASTPyTVisitor >> visitFASTPyParameter: aParameter [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyParenthesizedListSplat: aParenthesizedListSplat [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -736,6 +816,7 @@ FASTPyTVisitor >> visitFASTPyParenthesizedListSplat: aParenthesizedListSplat [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyPassStatement: aPassStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyStatement: aPassStatement
 ]
@@ -743,6 +824,7 @@ FASTPyTVisitor >> visitFASTPyPassStatement: aPassStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyPositionalSeparator: aPositionalSeparator [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTVariableEntity: aPositionalSeparator
 ]
@@ -750,6 +832,7 @@ FASTPyTVisitor >> visitFASTPyPositionalSeparator: aPositionalSeparator [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyPrintStatement: aPrintStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyStatement: aPrintStatement.
 
@@ -760,6 +843,7 @@ FASTPyTVisitor >> visitFASTPyPrintStatement: aPrintStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyRaiseStatement: aRaiseStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyStatement: aRaiseStatement.
 
@@ -769,6 +853,7 @@ FASTPyTVisitor >> visitFASTPyRaiseStatement: aRaiseStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyReturnStatement: aReturnStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTReturnStatement: aReturnStatement.
 	self visitFASTPyStatement: aReturnStatement
@@ -777,6 +862,7 @@ FASTPyTVisitor >> visitFASTPyReturnStatement: aReturnStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPySet: aSet [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyCollectionInitializer: aSet
 ]
@@ -784,6 +870,7 @@ FASTPyTVisitor >> visitFASTPySet: aSet [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPySetComprehension: aSetComprehension [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyComprehension: aSetComprehension
 ]
@@ -791,6 +878,7 @@ FASTPyTVisitor >> visitFASTPySetComprehension: aSetComprehension [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPySlice: aSlice [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTSliceIndex: aSlice.
 
@@ -800,6 +888,7 @@ FASTPyTVisitor >> visitFASTPySlice: aSlice [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPySplat: aSplat [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTPattern: aSplat.
 	self visitFASTPyTSuperclass: aSplat.
@@ -811,6 +900,7 @@ FASTPyTVisitor >> visitFASTPySplat: aSplat [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPySplatParameter: aSplatParameter [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyParameter: aSplatParameter.
 
@@ -820,6 +910,7 @@ FASTPyTVisitor >> visitFASTPySplatParameter: aSplatParameter [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPySplatType: aSplatType [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTTypeContent: aSplatType.
 	self visitFASTTNamedEntity: aSplatType
@@ -828,6 +919,7 @@ FASTPyTVisitor >> visitFASTPySplatType: aSplatType [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyStatement: aStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTStatement: aStatement
 ]
@@ -835,6 +927,7 @@ FASTPyTVisitor >> visitFASTPyStatement: aStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyString: aString [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTExecutable: aString.
 	self visitFASTPyTSplatExpression: aString.
@@ -847,6 +940,7 @@ FASTPyTVisitor >> visitFASTPyString: aString [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPySubscript: aSubscript [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTAsPatternTarget: aSubscript.
 	self visitFASTPyTCanBeVariable: aSubscript.
@@ -860,6 +954,7 @@ FASTPyTVisitor >> visitFASTPySubscript: aSubscript [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTAsPatternSource: aTAsPatternSource [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -867,6 +962,7 @@ FASTPyTVisitor >> visitFASTPyTAsPatternSource: aTAsPatternSource [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTAsPatternTarget: aTAsPatternTarget [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTAsPatternSource: aTAsPatternTarget.
 
@@ -876,6 +972,7 @@ FASTPyTVisitor >> visitFASTPyTAsPatternTarget: aTAsPatternTarget [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTAssignable: aTAssignable [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -883,6 +980,7 @@ FASTPyTVisitor >> visitFASTPyTAssignable: aTAssignable [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTAwaitable: aTAwaitable [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -890,6 +988,7 @@ FASTPyTVisitor >> visitFASTPyTAwaitable: aTAwaitable [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTCallable: aTCallable [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -897,6 +996,7 @@ FASTPyTVisitor >> visitFASTPyTCallable: aTCallable [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTCanBeVariable: aTCanBeVariable [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -904,6 +1004,7 @@ FASTPyTVisitor >> visitFASTPyTCanBeVariable: aTCanBeVariable [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTClassPatternElement: aTClassPatternElement [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -911,6 +1012,7 @@ FASTPyTVisitor >> visitFASTPyTClassPatternElement: aTClassPatternElement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTDecoratorExpression: aTDecoratorExpression [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -918,6 +1020,7 @@ FASTPyTVisitor >> visitFASTPyTDecoratorExpression: aTDecoratorExpression [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTDefinition: aTDefinition [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTNamedEntity: aTDefinition.
 	self visitFASTTStatementBlock: aTDefinition.
@@ -928,6 +1031,7 @@ FASTPyTVisitor >> visitFASTPyTDefinition: aTDefinition [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTDeletable: aTDeletable [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -935,6 +1039,7 @@ FASTPyTVisitor >> visitFASTPyTDeletable: aTDeletable [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTExecutable: aTExecutable [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -942,6 +1047,7 @@ FASTPyTVisitor >> visitFASTPyTExecutable: aTExecutable [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTPattern: aTPattern [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -949,6 +1055,7 @@ FASTPyTVisitor >> visitFASTPyTPattern: aTPattern [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTRaised: aTRaised [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -956,6 +1063,7 @@ FASTPyTVisitor >> visitFASTPyTRaised: aTRaised [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTReturnReferenceable: aTReturnReferenceable [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTAsPatternSource: aTReturnReferenceable.
 	self visitFASTPyTAssignable: aTReturnReferenceable.
@@ -972,6 +1080,7 @@ FASTPyTVisitor >> visitFASTPyTReturnReferenceable: aTReturnReferenceable [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTSliceIndex: aTSliceIndex [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -979,6 +1088,7 @@ FASTPyTVisitor >> visitFASTPyTSliceIndex: aTSliceIndex [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTSplatExpression: aTSplatExpression [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -986,6 +1096,7 @@ FASTPyTVisitor >> visitFASTPyTSplatExpression: aTSplatExpression [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTSplatParameterTarget: aTSplatParameterTarget [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -993,6 +1104,7 @@ FASTPyTVisitor >> visitFASTPyTSplatParameterTarget: aTSplatParameterTarget [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTSuperclass: aTSuperclass [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -1000,6 +1112,7 @@ FASTPyTVisitor >> visitFASTPyTSuperclass: aTSuperclass [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTTypeContent: aTTypeContent [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -1007,6 +1120,7 @@ FASTPyTVisitor >> visitFASTPyTTypeContent: aTTypeContent [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTUnaryOperator: aTUnaryOperator [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitEntity: aTUnaryOperator argument
 ]
@@ -1014,6 +1128,7 @@ FASTPyTVisitor >> visitFASTPyTUnaryOperator: aTUnaryOperator [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTWithElseClause: aTWithElseClause [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitEntity: aTWithElseClause elseClause
 ]
@@ -1021,6 +1136,7 @@ FASTPyTVisitor >> visitFASTPyTWithElseClause: aTWithElseClause [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTWithStatementItem: aTWithStatementItem [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -1028,6 +1144,7 @@ FASTPyTVisitor >> visitFASTPyTWithStatementItem: aTWithStatementItem [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTWithTypeParameters: aTWithTypeParameters [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitCollection: aTWithTypeParameters typeParameters
 ]
@@ -1035,6 +1152,7 @@ FASTPyTVisitor >> visitFASTPyTWithTypeParameters: aTWithTypeParameters [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyThenClause: aThenClause [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTStatementBlock: aThenClause.
 
@@ -1044,6 +1162,7 @@ FASTPyTVisitor >> visitFASTPyThenClause: aThenClause [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTryStatement: aTryStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTWithElseClause: aTryStatement.
 	self visitFASTTStatementBlock: aTryStatement.
@@ -1056,6 +1175,7 @@ FASTPyTVisitor >> visitFASTPyTryStatement: aTryStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTuple: aTuple [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTAsPatternTarget: aTuple.
 	self visitFASTPyTAssignable: aTuple.
@@ -1066,6 +1186,7 @@ FASTPyTVisitor >> visitFASTPyTuple: aTuple [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyType: aType [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitEntity: aType content
 ]
@@ -1073,6 +1194,7 @@ FASTPyTVisitor >> visitFASTPyType: aType [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTypeAliasStatement: aTypeAliasStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyStatement: aTypeAliasStatement.
 
@@ -1083,6 +1205,7 @@ FASTPyTVisitor >> visitFASTPyTypeAliasStatement: aTypeAliasStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTypeConversion: aTypeConversion [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -1090,6 +1213,7 @@ FASTPyTVisitor >> visitFASTPyTypeConversion: aTypeConversion [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTypeParameter: aTypeParameter [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTTypeContent: aTypeParameter
 ]
@@ -1097,6 +1221,7 @@ FASTPyTVisitor >> visitFASTPyTypeParameter: aTypeParameter [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyUnaryOperator: anUnaryOperator [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTUnaryOperator: anUnaryOperator.
 	self visitFASTPyOperator: anUnaryOperator
@@ -1105,6 +1230,7 @@ FASTPyTVisitor >> visitFASTPyUnaryOperator: anUnaryOperator [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyUnionPattern: anUnionPattern [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTPattern: anUnionPattern.
 
@@ -1114,6 +1240,7 @@ FASTPyTVisitor >> visitFASTPyUnionPattern: anUnionPattern [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyUnionType: anUnionType [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTTypeContent: anUnionType.
 
@@ -1123,6 +1250,7 @@ FASTPyTVisitor >> visitFASTPyUnionType: anUnionType [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyVariable: aVariable [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTAssignable: aVariable.
 	self visitFASTTVariableEntity: aVariable.
@@ -1134,6 +1262,7 @@ FASTPyTVisitor >> visitFASTPyVariable: aVariable [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyWalrus: aWalrus [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTNamedEntity: aWalrus.
 	self visitFASTPyExpression: aWalrus.
@@ -1144,6 +1273,7 @@ FASTPyTVisitor >> visitFASTPyWalrus: aWalrus [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyWhileStatement: aWhileStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTWithElseClause: aWhileStatement.
 	self visitFASTTConditionalStatement: aWhileStatement.
@@ -1154,6 +1284,7 @@ FASTPyTVisitor >> visitFASTPyWhileStatement: aWhileStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyWithStatement: aWithStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTTStatementBlock: aWithStatement.
 	self visitFASTPyStatement: aWithStatement.
@@ -1164,6 +1295,7 @@ FASTPyTVisitor >> visitFASTPyWithStatement: aWithStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyYield: aYield [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyExpression: aYield.
 
@@ -1173,6 +1305,7 @@ FASTPyTVisitor >> visitFASTPyYield: aYield [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTBinaryExpression: aTBinaryExpression [
 
+	<ignoreForCoverage>
 	<generated>
 	"We should visit FASTTExpression but all its users in this language already visit it in their superclasses so we skip the call here.".
 
@@ -1183,6 +1316,7 @@ FASTPyTVisitor >> visitFASTTBinaryExpression: aTBinaryExpression [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTBooleanLiteral: aTBooleanLiteral [
 
+	<ignoreForCoverage>
 	<generated>
 	"We should visit FASTTLiteral but all its users in this language already visit it in their superclasses so we skip the call here."
 ]
@@ -1190,6 +1324,7 @@ FASTPyTVisitor >> visitFASTTBooleanLiteral: aTBooleanLiteral [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTBreakStatement: aTBreakStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	"We should visit FASTTStatement but all its users in this language already visit it in their superclasses so we skip the call here."
 ]
@@ -1197,6 +1332,7 @@ FASTPyTVisitor >> visitFASTTBreakStatement: aTBreakStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTComment: aTComment [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -1204,6 +1340,7 @@ FASTPyTVisitor >> visitFASTTComment: aTComment [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTConditionalStatement: aTConditionalStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	"We do not visit all behaviorals because some classes already visit it in their superclasses in this language implementation. Visiting them here also would cause a double visit of this trait."
 	({ FASTPyIfStatement . FASTPyWhileStatement } includes: aTConditionalStatement class)
@@ -1214,6 +1351,7 @@ FASTPyTVisitor >> visitFASTTConditionalStatement: aTConditionalStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTContinueStatement: aTContinueStatement [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]
@@ -1221,6 +1359,7 @@ FASTPyTVisitor >> visitFASTTContinueStatement: aTContinueStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTEntity: aTEntity [
 
+	<ignoreForCoverage>
 	<generated>
 	"We should visit TEntityMetaLevelDependency but all its users in this language already visit it in their superclasses so we skip the call here."
 ]
@@ -1228,6 +1367,7 @@ FASTPyTVisitor >> visitFASTTEntity: aTEntity [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTExpression: aTExpression [
 
+	<ignoreForCoverage>
 	<generated>
 	"We should visit FASTTEntity but all its users in this language already visit it in their superclasses so we skip the call here.".
 
@@ -1237,6 +1377,7 @@ FASTPyTVisitor >> visitFASTTExpression: aTExpression [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTInvocation: aTInvocation [
 
+	<ignoreForCoverage>
 	<generated>
 	"We should visit FASTTExpression but all its users in this language already visit it in their superclasses so we skip the call here.".
 	self visitFASTTWithArguments: aTInvocation.
@@ -1247,6 +1388,7 @@ FASTPyTVisitor >> visitFASTTInvocation: aTInvocation [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTLiteral: aTLiteral [
 
+	<ignoreForCoverage>
 	<generated>
 	"We should visit FASTTExpression but all its users in this language already visit it in their superclasses so we skip the call here."
 ]
@@ -1254,6 +1396,7 @@ FASTPyTVisitor >> visitFASTTLiteral: aTLiteral [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTNamedEntity: aTNamedEntity [
 
+	<ignoreForCoverage>
 	<generated>
 	"We should visit FASTTEntity but all its users in this language already visit it in their superclasses so we skip the call here.".
 
@@ -1263,6 +1406,7 @@ FASTPyTVisitor >> visitFASTTNamedEntity: aTNamedEntity [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTNumericalLiteral: aTNumericalLiteral [
 
+	<ignoreForCoverage>
 	<generated>
 	"We should visit FASTTLiteral but all its users in this language already visit it in their superclasses so we skip the call here."
 ]
@@ -1270,6 +1414,7 @@ FASTPyTVisitor >> visitFASTTNumericalLiteral: aTNumericalLiteral [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTReturnStatement: aTReturnStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	"We should visit FASTTStatement but all its users in this language already visit it in their superclasses so we skip the call here.".
 
@@ -1279,6 +1424,7 @@ FASTPyTVisitor >> visitFASTTReturnStatement: aTReturnStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTStatement: aTStatement [
 
+	<ignoreForCoverage>
 	<generated>
 	"We should visit FASTTEntity but all its users in this language already visit it in their superclasses so we skip the call here.".
 
@@ -1288,6 +1434,7 @@ FASTPyTVisitor >> visitFASTTStatement: aTStatement [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTStatementBlock: aTStatementBlock [
 
+	<ignoreForCoverage>
 	<generated>
 	"We do not visit all behaviorals because some classes already visit it in their superclasses in this language implementation. Visiting them here also would cause a double visit of this trait."
 	({ FASTPyClassDefinition . FASTPyForStatement . FASTPyFunctionDefinition . FASTPyMethodDefinition . FASTPyTryStatement . FASTPyWhileStatement . FASTPyWithStatement } includes: aTStatementBlock class)
@@ -1299,6 +1446,7 @@ FASTPyTVisitor >> visitFASTTStatementBlock: aTStatementBlock [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTStringLiteral: aTStringLiteral [
 
+	<ignoreForCoverage>
 	<generated>
 	"We should visit FASTTLiteral but all its users in this language already visit it in their superclasses so we skip the call here."
 ]
@@ -1306,6 +1454,7 @@ FASTPyTVisitor >> visitFASTTStringLiteral: aTStringLiteral [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTVariableEntity: aTVariableEntity [
 
+	<ignoreForCoverage>
 	<generated>
 	"We do not visit all behaviorals because some classes already visit it in their superclasses in this language implementation. Visiting them here also would cause a double visit of this trait."
 	({ FASTPyVariable } includes: aTVariableEntity class)
@@ -1317,6 +1466,7 @@ FASTPyTVisitor >> visitFASTTVariableEntity: aTVariableEntity [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTWithArguments: aTWithArguments [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitCollection: aTWithArguments arguments
 ]
@@ -1324,6 +1474,7 @@ FASTPyTVisitor >> visitFASTTWithArguments: aTWithArguments [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTWithComments: aTWithComments [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitCollection: aTWithComments comments
 ]
@@ -1331,6 +1482,7 @@ FASTPyTVisitor >> visitFASTTWithComments: aTWithComments [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTWithCondition: aTWithCondition [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitEntity: aTWithCondition condition
 ]
@@ -1338,6 +1490,7 @@ FASTPyTVisitor >> visitFASTTWithCondition: aTWithCondition [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTWithParameters: aTWithParameters [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitCollection: aTWithParameters parameters
 ]
@@ -1345,6 +1498,7 @@ FASTPyTVisitor >> visitFASTTWithParameters: aTWithParameters [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFamixTHasImmediateSource: aTHasImmediateSource [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitFamixTSourceAnchor: aTHasImmediateSource
 ]
@@ -1352,6 +1506,7 @@ FASTPyTVisitor >> visitFamixTHasImmediateSource: aTHasImmediateSource [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFamixTSourceAnchor: aTSourceAnchor [
 
+	<ignoreForCoverage>
 	<generated>
 	self visitEntity: aTSourceAnchor element
 ]
@@ -1359,6 +1514,7 @@ FASTPyTVisitor >> visitFamixTSourceAnchor: aTSourceAnchor [
 { #category : 'visiting' }
 FASTPyTVisitor >> visitTEntityMetaLevelDependency: aTEntityMetaLevelDependency [
 
+	<ignoreForCoverage>
 	<generated>
 
 ]

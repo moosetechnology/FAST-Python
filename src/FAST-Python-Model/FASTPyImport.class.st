@@ -24,6 +24,7 @@ Class {
 { #category : 'meta' }
 FASTPyImport class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Import super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -31,6 +32,8 @@ FASTPyImport class >> annotation [
 
 { #category : 'adding' }
 FASTPyImport >> addImportedEntity: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self importedEntities add: anObject
 ]
@@ -39,6 +42,7 @@ FASTPyImport >> addImportedEntity: anObject [
 FASTPyImport >> importedEntities [
 	"Relation named: #importedEntities type: #FASTPyImportedEntity opposite: #import"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'List of the imported entities.'>
 	<derived>
@@ -48,6 +52,7 @@ FASTPyImport >> importedEntities [
 { #category : 'accessing' }
 FASTPyImport >> importedEntities: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	importedEntities value: anObject
 ]

@@ -39,6 +39,7 @@ Class {
 { #category : 'meta' }
 FASTPyInterpolation class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Interpolation super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -48,6 +49,7 @@ FASTPyInterpolation class >> annotation [
 FASTPyInterpolation >> expression [
 	"Relation named: #expression type: #FASTPyExpression opposite: #parentInterpolation"
 
+	<ignoreForCoverage>
 	<generated>
 	^ expression
 ]
@@ -55,6 +57,7 @@ FASTPyInterpolation >> expression [
 { #category : 'accessing' }
 FASTPyInterpolation >> expression: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	expression := anObject
 ]
@@ -63,6 +66,7 @@ FASTPyInterpolation >> expression: anObject [
 FASTPyInterpolation >> formatSpecifier [
 
 	<FMProperty: #formatSpecifier type: #String>
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'If specified, the format of the interpolation.'>
 	^ formatSpecifier
@@ -70,6 +74,7 @@ FASTPyInterpolation >> formatSpecifier [
 
 { #category : 'accessing' }
 FASTPyInterpolation >> formatSpecifier: anObject [
+	<ignoreForCoverage>
 	<generated>
 	formatSpecifier := anObject
 ]
@@ -78,6 +83,7 @@ FASTPyInterpolation >> formatSpecifier: anObject [
 FASTPyInterpolation >> parentString [
 	"Relation named: #parentString type: #FASTPyString opposite: #interpolations"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentString
@@ -86,6 +92,7 @@ FASTPyInterpolation >> parentString [
 { #category : 'accessing' }
 FASTPyInterpolation >> parentString: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentString := anObject
 ]
@@ -94,6 +101,7 @@ FASTPyInterpolation >> parentString: anObject [
 FASTPyInterpolation >> typeConversion [
 
 	<FMProperty: #typeConversion type: #String>
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'If specified, the type conversion of the interpolation.'>
 	^ typeConversion
@@ -101,6 +109,7 @@ FASTPyInterpolation >> typeConversion [
 
 { #category : 'accessing' }
 FASTPyInterpolation >> typeConversion: anObject [
+	<ignoreForCoverage>
 	<generated>
 	typeConversion := anObject
 ]

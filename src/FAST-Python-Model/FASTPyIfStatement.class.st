@@ -43,6 +43,7 @@ Class {
 { #category : 'meta' }
 FASTPyIfStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #IfStatement super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -50,6 +51,8 @@ FASTPyIfStatement class >> annotation [
 
 { #category : 'adding' }
 FASTPyIfStatement >> addElifClause: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self elifClauses add: anObject
 ]
@@ -58,6 +61,7 @@ FASTPyIfStatement >> addElifClause: anObject [
 FASTPyIfStatement >> elifClauses [
 	"Relation named: #elifClauses type: #FASTPyElifClause opposite: #parentIfStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ elifClauses
@@ -66,6 +70,7 @@ FASTPyIfStatement >> elifClauses [
 { #category : 'accessing' }
 FASTPyIfStatement >> elifClauses: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	elifClauses value: anObject
 ]
@@ -74,6 +79,7 @@ FASTPyIfStatement >> elifClauses: anObject [
 FASTPyIfStatement >> thenClause [
 	"Relation named: #thenClause type: #FASTPyThenClause opposite: #parentIfStatement"
 
+	<ignoreForCoverage>
 	<generated>
 	^ thenClause
 ]
@@ -81,6 +87,7 @@ FASTPyIfStatement >> thenClause [
 { #category : 'accessing' }
 FASTPyIfStatement >> thenClause: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	thenClause := anObject
 ]

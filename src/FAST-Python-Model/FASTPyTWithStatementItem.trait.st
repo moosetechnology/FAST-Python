@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTWithStatementItem classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TWithStatementItem super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -34,6 +35,7 @@ FASTPyTWithStatementItem classSide >> annotation [
 FASTPyTWithStatementItem >> parentWithStatementItem [
 	"Relation named: #parentWithStatementItem type: #FASTPyWithStatement opposite: #items"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentWithStatementItem
@@ -42,6 +44,7 @@ FASTPyTWithStatementItem >> parentWithStatementItem [
 { #category : 'accessing' }
 FASTPyTWithStatementItem >> parentWithStatementItem: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentWithStatementItem := anObject
 ]

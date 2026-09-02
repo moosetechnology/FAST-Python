@@ -32,6 +32,7 @@ Class {
 { #category : 'meta' }
 FASTPySplatType class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #SplatType super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>

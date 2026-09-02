@@ -38,6 +38,7 @@ Class {
 { #category : 'meta' }
 FASTPyFloat class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Float super: #FASTPyLiteral>
 	<package: #'FAST-Python-Model'>
 	<generated>

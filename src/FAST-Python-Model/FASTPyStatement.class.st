@@ -31,6 +31,7 @@ Class {
 { #category : 'meta' }
 FASTPyStatement class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Statement super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -40,6 +41,7 @@ FASTPyStatement class >> annotation [
 { #category : 'testing' }
 FASTPyStatement class >> isAbstract [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self == FASTPyStatement
 ]

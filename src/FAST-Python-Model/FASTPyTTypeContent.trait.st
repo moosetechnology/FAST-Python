@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTTypeContent classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TTypeContent super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -34,6 +35,7 @@ FASTPyTTypeContent classSide >> annotation [
 FASTPyTTypeContent >> parentType [
 	"Relation named: #parentType type: #FASTPyType opposite: #content"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -43,6 +45,7 @@ FASTPyTTypeContent >> parentType [
 { #category : 'accessing' }
 FASTPyTTypeContent >> parentType: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentType := anObject
 ]

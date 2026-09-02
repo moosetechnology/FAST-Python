@@ -37,6 +37,7 @@ Class {
 { #category : 'meta' }
 FASTPyComprehension class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Comprehension super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -46,18 +47,23 @@ FASTPyComprehension class >> annotation [
 { #category : 'testing' }
 FASTPyComprehension class >> isAbstract [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self == FASTPyComprehension
 ]
 
 { #category : 'adding' }
 FASTPyComprehension >> addCondition: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self conditions add: anObject
 ]
 
 { #category : 'adding' }
 FASTPyComprehension >> addForClause: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self forClauses add: anObject
 ]
@@ -66,6 +72,7 @@ FASTPyComprehension >> addForClause: anObject [
 FASTPyComprehension >> body [
 	"Relation named: #body type: #FASTPyExpression opposite: #parentComprehensionBody"
 
+	<ignoreForCoverage>
 	<generated>
 	^ body
 ]
@@ -73,6 +80,7 @@ FASTPyComprehension >> body [
 { #category : 'accessing' }
 FASTPyComprehension >> body: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	body := anObject
 ]
@@ -81,6 +89,7 @@ FASTPyComprehension >> body: anObject [
 FASTPyComprehension >> conditions [
 	"Relation named: #conditions type: #FASTPyExpression opposite: #parentComprehensionCondition"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ conditions
@@ -89,6 +98,7 @@ FASTPyComprehension >> conditions [
 { #category : 'accessing' }
 FASTPyComprehension >> conditions: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	conditions value: anObject
 ]
@@ -97,6 +107,7 @@ FASTPyComprehension >> conditions: anObject [
 FASTPyComprehension >> forClauses [
 	"Relation named: #forClauses type: #FASTPyExpression opposite: #parentComprehensionForClause"
 
+	<ignoreForCoverage>
 	<generated>
 	<derived>
 	^ forClauses
@@ -105,6 +116,7 @@ FASTPyComprehension >> forClauses [
 { #category : 'accessing' }
 FASTPyComprehension >> forClauses: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	forClauses value: anObject
 ]

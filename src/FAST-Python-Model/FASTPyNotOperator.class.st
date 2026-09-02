@@ -23,6 +23,7 @@ Class {
 { #category : 'meta' }
 FASTPyNotOperator class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #NotOperator super: #FASTPyOperator>
 	<package: #'FAST-Python-Model'>
 	<generated>

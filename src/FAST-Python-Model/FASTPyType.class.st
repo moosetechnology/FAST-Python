@@ -50,6 +50,7 @@ Class {
 { #category : 'meta' }
 FASTPyType class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Type super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -59,6 +60,7 @@ FASTPyType class >> annotation [
 FASTPyType >> content [
 	"Relation named: #content type: #FASTPyTTypeContent opposite: #parentType"
 
+	<ignoreForCoverage>
 	<generated>
 	^ content
 ]
@@ -66,6 +68,7 @@ FASTPyType >> content [
 { #category : 'accessing' }
 FASTPyType >> content: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	content := anObject
 ]
@@ -74,6 +77,7 @@ FASTPyType >> content: anObject [
 FASTPyType >> parentAssignment [
 	"Relation named: #parentAssignment type: #FASTPyAssignment opposite: #type"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -83,6 +87,7 @@ FASTPyType >> parentAssignment [
 { #category : 'accessing' }
 FASTPyType >> parentAssignment: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentAssignment := anObject
 ]
@@ -91,6 +96,7 @@ FASTPyType >> parentAssignment: anObject [
 FASTPyType >> parentContrainedType [
 	"Relation named: #parentContrainedType type: #FASTPyConstrainedType opposite: #type"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -100,6 +106,7 @@ FASTPyType >> parentContrainedType [
 { #category : 'accessing' }
 FASTPyType >> parentContrainedType: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentContrainedType := anObject
 ]
@@ -108,6 +115,7 @@ FASTPyType >> parentContrainedType: anObject [
 FASTPyType >> parentContrainedTypeBound [
 	"Relation named: #parentContrainedTypeBound type: #FASTPyConstrainedType opposite: #bound"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -117,6 +125,7 @@ FASTPyType >> parentContrainedTypeBound [
 { #category : 'accessing' }
 FASTPyType >> parentContrainedTypeBound: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentContrainedTypeBound := anObject
 ]
@@ -125,6 +134,7 @@ FASTPyType >> parentContrainedTypeBound: anObject [
 FASTPyType >> parentFunctionDefinition [
 	"Relation named: #parentFunctionDefinition type: #FASTPyFunctionDefinition opposite: #returnType"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -134,6 +144,7 @@ FASTPyType >> parentFunctionDefinition [
 { #category : 'accessing' }
 FASTPyType >> parentFunctionDefinition: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentFunctionDefinition := anObject
 ]
@@ -142,6 +153,7 @@ FASTPyType >> parentFunctionDefinition: anObject [
 FASTPyType >> parentGenericTypeArgument [
 	"Relation named: #parentGenericTypeArgument type: #FASTPyGenericType opposite: #arguments"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentGenericTypeArgument
@@ -150,6 +162,7 @@ FASTPyType >> parentGenericTypeArgument [
 { #category : 'accessing' }
 FASTPyType >> parentGenericTypeArgument: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentGenericTypeArgument := anObject
 ]
@@ -158,6 +171,7 @@ FASTPyType >> parentGenericTypeArgument: anObject [
 FASTPyType >> parentMethodDefinition [
 	"Relation named: #parentMethodDefinition type: #FASTPyMethodDefinition opposite: #returnType"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -167,6 +181,7 @@ FASTPyType >> parentMethodDefinition [
 { #category : 'accessing' }
 FASTPyType >> parentMethodDefinition: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentMethodDefinition := anObject
 ]
@@ -175,6 +190,7 @@ FASTPyType >> parentMethodDefinition: anObject [
 FASTPyType >> parentParameter [
 	"Relation named: #parentParameter type: #FASTPyParameter opposite: #type"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -184,6 +200,7 @@ FASTPyType >> parentParameter [
 { #category : 'accessing' }
 FASTPyType >> parentParameter: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentParameter := anObject
 ]
@@ -192,6 +209,7 @@ FASTPyType >> parentParameter: anObject [
 FASTPyType >> parentUnionType [
 	"Relation named: #parentUnionType type: #FASTPyUnionType opposite: #types"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentUnionType
@@ -200,6 +218,7 @@ FASTPyType >> parentUnionType [
 { #category : 'accessing' }
 FASTPyType >> parentUnionType: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentUnionType := anObject
 ]
@@ -208,6 +227,7 @@ FASTPyType >> parentUnionType: anObject [
 FASTPyType >> parentWithTypeParameters [
 	"Relation named: #parentWithTypeParameters type: #FASTPyTWithTypeParameters opposite: #typeParameters"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentWithTypeParameters
@@ -216,6 +236,7 @@ FASTPyType >> parentWithTypeParameters [
 { #category : 'accessing' }
 FASTPyType >> parentWithTypeParameters: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentWithTypeParameters := anObject
 ]
@@ -224,6 +245,7 @@ FASTPyType >> parentWithTypeParameters: anObject [
 FASTPyType >> parentyTypeAliasStatementAlias [
 	"Relation named: #parentyTypeAliasStatementAlias type: #FASTPyTypeAliasStatement opposite: #left"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -233,6 +255,7 @@ FASTPyType >> parentyTypeAliasStatementAlias [
 { #category : 'accessing' }
 FASTPyType >> parentyTypeAliasStatementAlias: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentyTypeAliasStatementAlias := anObject
 ]
@@ -241,6 +264,7 @@ FASTPyType >> parentyTypeAliasStatementAlias: anObject [
 FASTPyType >> parentyTypeAliasStatementType [
 	"Relation named: #parentyTypeAliasStatementType type: #FASTPyTypeAliasStatement opposite: #right"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -250,6 +274,7 @@ FASTPyType >> parentyTypeAliasStatementType [
 { #category : 'accessing' }
 FASTPyType >> parentyTypeAliasStatementType: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentyTypeAliasStatementType := anObject
 ]

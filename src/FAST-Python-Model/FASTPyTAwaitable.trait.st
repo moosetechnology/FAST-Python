@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTAwaitable classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TAwaitable super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -34,6 +35,7 @@ FASTPyTAwaitable classSide >> annotation [
 FASTPyTAwaitable >> parentAwait [
 	"Relation named: #parentAwait type: #FASTPyAwait opposite: #expression"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -43,6 +45,7 @@ FASTPyTAwaitable >> parentAwait [
 { #category : 'accessing' }
 FASTPyTAwaitable >> parentAwait: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentAwait := anObject
 ]

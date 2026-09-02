@@ -25,6 +25,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTDecoratorExpression classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TDecoratorExpression super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -34,6 +35,7 @@ FASTPyTDecoratorExpression classSide >> annotation [
 FASTPyTDecoratorExpression >> parentDeclarator [
 	"Relation named: #parentDeclarator type: #FASTPyDecorator opposite: #expression"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -43,6 +45,7 @@ FASTPyTDecoratorExpression >> parentDeclarator [
 { #category : 'accessing' }
 FASTPyTDecoratorExpression >> parentDeclarator: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentDeclarator := anObject
 ]

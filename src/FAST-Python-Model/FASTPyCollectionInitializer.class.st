@@ -36,6 +36,7 @@ Class {
 { #category : 'meta' }
 FASTPyCollectionInitializer class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #CollectionInitializer super: #FASTPyExpression>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -43,6 +44,8 @@ FASTPyCollectionInitializer class >> annotation [
 
 { #category : 'adding' }
 FASTPyCollectionInitializer >> addInitializer: anObject [
+
+	<ignoreForCoverage>
 	<generated>
 	^ self initializers add: anObject
 ]
@@ -51,6 +54,7 @@ FASTPyCollectionInitializer >> addInitializer: anObject [
 FASTPyCollectionInitializer >> initializers [
 	"Relation named: #initializers type: #FASTPyExpression opposite: #collectionInitializer"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'Each initializer defines one element.'>
 	<derived>
@@ -60,6 +64,7 @@ FASTPyCollectionInitializer >> initializers [
 { #category : 'accessing' }
 FASTPyCollectionInitializer >> initializers: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	initializers value: anObject
 ]

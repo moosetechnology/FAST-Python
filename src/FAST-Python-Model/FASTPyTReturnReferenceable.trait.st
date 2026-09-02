@@ -33,6 +33,7 @@ Trait {
 { #category : 'meta' }
 FASTPyTReturnReferenceable classSide >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #TReturnReferenceable super: #Object>
 	<package: #'FAST-Python-Model'>
 	<generated>

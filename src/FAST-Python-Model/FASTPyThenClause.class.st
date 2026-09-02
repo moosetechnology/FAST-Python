@@ -41,6 +41,7 @@ Class {
 { #category : 'meta' }
 FASTPyThenClause class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ThenClause super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -50,6 +51,7 @@ FASTPyThenClause class >> annotation [
 FASTPyThenClause >> parentIfStatement [
 	"Relation named: #parentIfStatement type: #FASTPyIfStatement opposite: #thenClause"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -59,6 +61,7 @@ FASTPyThenClause >> parentIfStatement [
 { #category : 'accessing' }
 FASTPyThenClause >> parentIfStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentIfStatement := anObject
 ]

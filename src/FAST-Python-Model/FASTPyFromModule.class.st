@@ -31,6 +31,7 @@ Class {
 { #category : 'meta' }
 FASTPyFromModule class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #FromModule super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -46,6 +47,7 @@ FASTPyFromModule >> addSegments: aCollection [
 FASTPyFromModule >> import [
 	"Relation named: #import type: #FASTPyImportFromStatement opposite: #fromModule"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'Import declaring me as from import module.'>
 	<container>
@@ -56,6 +58,7 @@ FASTPyFromModule >> import [
 { #category : 'accessing' }
 FASTPyFromModule >> import: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	import := anObject
 ]
@@ -64,6 +67,7 @@ FASTPyFromModule >> import: anObject [
 FASTPyFromModule >> segments [
 
 	<FMProperty: #segments type: #String>
+	<ignoreForCoverage>
 	<generated>
 	<multivalued>
 	<FMComment: 'The segments of the module path. For example if you declare `xml.etree.ElementTree` as module, the segments will be { ''xml'' . ''etree'' . ''ElementTree''}.'>
@@ -72,6 +76,7 @@ FASTPyFromModule >> segments [
 
 { #category : 'accessing' }
 FASTPyFromModule >> segments: anObject [
+	<ignoreForCoverage>
 	<generated>
 	segments := anObject
 ]

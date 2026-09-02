@@ -41,6 +41,7 @@ Class {
 { #category : 'meta' }
 FASTPyElseClause class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #ElseClause super: #FASTPyEntity>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -50,6 +51,7 @@ FASTPyElseClause class >> annotation [
 FASTPyElseClause >> parentIfStatement [
 	"Relation named: #parentIfStatement type: #FASTPyTWithElseClause opposite: #elseClause"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -59,6 +61,7 @@ FASTPyElseClause >> parentIfStatement [
 { #category : 'accessing' }
 FASTPyElseClause >> parentIfStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentIfStatement := anObject
 ]

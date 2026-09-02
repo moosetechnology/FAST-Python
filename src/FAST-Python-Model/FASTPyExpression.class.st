@@ -103,6 +103,7 @@ Class {
 { #category : 'meta' }
 FASTPyExpression class >> annotation [
 
+	<ignoreForCoverage>
 	<FMClass: #Expression super: #FASTPyStatement>
 	<package: #'FAST-Python-Model'>
 	<generated>
@@ -112,6 +113,7 @@ FASTPyExpression class >> annotation [
 { #category : 'testing' }
 FASTPyExpression class >> isAbstract [
 
+	<ignoreForCoverage>
 	<generated>
 	^ self == FASTPyExpression
 ]
@@ -131,6 +133,7 @@ FASTPyExpression >> callOnMe [
 FASTPyExpression >> collectionInitializer [
 	"Relation named: #collectionInitializer type: #FASTPyCollectionInitializer opposite: #initializers"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The owner of the expression'>
 	<container>
@@ -140,6 +143,7 @@ FASTPyExpression >> collectionInitializer [
 { #category : 'accessing' }
 FASTPyExpression >> collectionInitializer: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	collectionInitializer := anObject
 ]
@@ -166,6 +170,7 @@ FASTPyExpression >> isExpressionStatement [
 FASTPyExpression >> parentAssertStatement [
 	"Relation named: #parentAssertStatement type: #FASTPyAssertStatement opposite: #expressions"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The assert statement that own the expression (if it''s the case)'>
 	<container>
@@ -175,6 +180,7 @@ FASTPyExpression >> parentAssertStatement [
 { #category : 'accessing' }
 FASTPyExpression >> parentAssertStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentAssertStatement := anObject
 ]
@@ -183,6 +189,7 @@ FASTPyExpression >> parentAssertStatement: anObject [
 FASTPyExpression >> parentAssignmentRight [
 	"Relation named: #parentAssignmentRight type: #FASTPyAssignment opposite: #right"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -192,6 +199,7 @@ FASTPyExpression >> parentAssignmentRight [
 { #category : 'accessing' }
 FASTPyExpression >> parentAssignmentRight: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentAssignmentRight := anObject
 ]
@@ -200,6 +208,7 @@ FASTPyExpression >> parentAssignmentRight: anObject [
 FASTPyExpression >> parentAttributeObject [
 	"Relation named: #parentAttributeObject type: #FASTPyAttributeAccess opposite: #value"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'My parent if I define the object of an attribute access (if it''s the case).'>
 	<container>
@@ -210,6 +219,7 @@ FASTPyExpression >> parentAttributeObject [
 { #category : 'accessing' }
 FASTPyExpression >> parentAttributeObject: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentAttributeObject := anObject
 ]
@@ -218,6 +228,7 @@ FASTPyExpression >> parentAttributeObject: anObject [
 FASTPyExpression >> parentChevron [
 	"Relation named: #parentChevron type: #FASTPyChevron opposite: #expression"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -227,6 +238,7 @@ FASTPyExpression >> parentChevron [
 { #category : 'accessing' }
 FASTPyExpression >> parentChevron: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentChevron := anObject
 ]
@@ -235,6 +247,7 @@ FASTPyExpression >> parentChevron: anObject [
 FASTPyExpression >> parentComparisonOperator [
 	"Relation named: #parentComparisonOperator type: #FASTPyComparisonOperator opposite: #operands"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'Parent comparison expression of which I am.'>
 	<container>
@@ -244,6 +257,7 @@ FASTPyExpression >> parentComparisonOperator [
 { #category : 'accessing' }
 FASTPyExpression >> parentComparisonOperator: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentComparisonOperator := anObject
 ]
@@ -252,6 +266,7 @@ FASTPyExpression >> parentComparisonOperator: anObject [
 FASTPyExpression >> parentComprehensionBody [
 	"Relation named: #parentComprehensionBody type: #FASTPyComprehension opposite: #body"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -261,6 +276,7 @@ FASTPyExpression >> parentComprehensionBody [
 { #category : 'accessing' }
 FASTPyExpression >> parentComprehensionBody: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentComprehensionBody := anObject
 ]
@@ -269,6 +285,7 @@ FASTPyExpression >> parentComprehensionBody: anObject [
 FASTPyExpression >> parentComprehensionCondition [
 	"Relation named: #parentComprehensionCondition type: #FASTPyComprehension opposite: #conditions"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentComprehensionCondition
@@ -277,6 +294,7 @@ FASTPyExpression >> parentComprehensionCondition [
 { #category : 'accessing' }
 FASTPyExpression >> parentComprehensionCondition: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentComprehensionCondition := anObject
 ]
@@ -285,6 +303,7 @@ FASTPyExpression >> parentComprehensionCondition: anObject [
 FASTPyExpression >> parentComprehensionForClause [
 	"Relation named: #parentComprehensionForClause type: #FASTPyComprehension opposite: #forClauses"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentComprehensionForClause
@@ -293,6 +312,7 @@ FASTPyExpression >> parentComprehensionForClause [
 { #category : 'accessing' }
 FASTPyExpression >> parentComprehensionForClause: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentComprehensionForClause := anObject
 ]
@@ -301,6 +321,7 @@ FASTPyExpression >> parentComprehensionForClause: anObject [
 FASTPyExpression >> parentConditionalExpressionElse [
 	"Relation named: #parentConditionalExpressionElse type: #FASTPyConditionalExpression opposite: #elseExpression"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -310,6 +331,7 @@ FASTPyExpression >> parentConditionalExpressionElse [
 { #category : 'accessing' }
 FASTPyExpression >> parentConditionalExpressionElse: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentConditionalExpressionElse := anObject
 ]
@@ -318,6 +340,7 @@ FASTPyExpression >> parentConditionalExpressionElse: anObject [
 FASTPyExpression >> parentConditionalExpressionThen [
 	"Relation named: #parentConditionalExpressionThen type: #FASTPyConditionalExpression opposite: #thenExpression"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -327,6 +350,7 @@ FASTPyExpression >> parentConditionalExpressionThen [
 { #category : 'accessing' }
 FASTPyExpression >> parentConditionalExpressionThen: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentConditionalExpressionThen := anObject
 ]
@@ -335,6 +359,7 @@ FASTPyExpression >> parentConditionalExpressionThen: anObject [
 FASTPyExpression >> parentDefaultParameterValue [
 	"Relation named: #parentDefaultParameterValue type: #FASTPyParameter opposite: #defaultValue"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -344,6 +369,7 @@ FASTPyExpression >> parentDefaultParameterValue [
 { #category : 'accessing' }
 FASTPyExpression >> parentDefaultParameterValue: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentDefaultParameterValue := anObject
 ]
@@ -352,6 +378,7 @@ FASTPyExpression >> parentDefaultParameterValue: anObject [
 FASTPyExpression >> parentExceptClause [
 	"Relation named: #parentExceptClause type: #FASTPyExceptClause opposite: #expression"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -361,6 +388,7 @@ FASTPyExpression >> parentExceptClause [
 { #category : 'accessing' }
 FASTPyExpression >> parentExceptClause: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentExceptClause := anObject
 ]
@@ -369,6 +397,7 @@ FASTPyExpression >> parentExceptClause: anObject [
 FASTPyExpression >> parentExecStatementScopes [
 	"Relation named: #parentExecStatementScopes type: #FASTPyExecStatement opposite: #scopes"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ parentExecStatementScopes
@@ -377,6 +406,7 @@ FASTPyExpression >> parentExecStatementScopes [
 { #category : 'accessing' }
 FASTPyExpression >> parentExecStatementScopes: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentExecStatementScopes := anObject
 ]
@@ -385,6 +415,7 @@ FASTPyExpression >> parentExecStatementScopes: anObject [
 FASTPyExpression >> parentForInClauseLeft [
 	"Relation named: #parentForInClauseLeft type: #FASTPyForInClause opposite: #left"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -394,6 +425,7 @@ FASTPyExpression >> parentForInClauseLeft [
 { #category : 'accessing' }
 FASTPyExpression >> parentForInClauseLeft: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentForInClauseLeft := anObject
 ]
@@ -402,6 +434,7 @@ FASTPyExpression >> parentForInClauseLeft: anObject [
 FASTPyExpression >> parentForInClauseRight [
 	"Relation named: #parentForInClauseRight type: #FASTPyForInClause opposite: #right"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -411,6 +444,7 @@ FASTPyExpression >> parentForInClauseRight [
 { #category : 'accessing' }
 FASTPyExpression >> parentForInClauseRight: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentForInClauseRight := anObject
 ]
@@ -419,6 +453,7 @@ FASTPyExpression >> parentForInClauseRight: anObject [
 FASTPyExpression >> parentForStatementLeft [
 	"Relation named: #parentForStatementLeft type: #FASTPyForStatement opposite: #left"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The for statement left owner (if possible)'>
 	<container>
@@ -429,6 +464,7 @@ FASTPyExpression >> parentForStatementLeft [
 { #category : 'accessing' }
 FASTPyExpression >> parentForStatementLeft: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentForStatementLeft := anObject
 ]
@@ -437,6 +473,7 @@ FASTPyExpression >> parentForStatementLeft: anObject [
 FASTPyExpression >> parentForStatementRight [
 	"Relation named: #parentForStatementRight type: #FASTPyForStatement opposite: #right"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The for statement right owner (if possible)'>
 	<container>
@@ -447,6 +484,7 @@ FASTPyExpression >> parentForStatementRight [
 { #category : 'accessing' }
 FASTPyExpression >> parentForStatementRight: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentForStatementRight := anObject
 ]
@@ -455,6 +493,7 @@ FASTPyExpression >> parentForStatementRight: anObject [
 FASTPyExpression >> parentIfClause [
 	"Relation named: #parentIfClause type: #FASTPyIfClause opposite: #expression"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -464,6 +503,7 @@ FASTPyExpression >> parentIfClause [
 { #category : 'accessing' }
 FASTPyExpression >> parentIfClause: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentIfClause := anObject
 ]
@@ -472,6 +512,7 @@ FASTPyExpression >> parentIfClause: anObject [
 FASTPyExpression >> parentInterpolation [
 	"Relation named: #parentInterpolation type: #FASTPyInterpolation opposite: #expression"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -481,6 +522,7 @@ FASTPyExpression >> parentInterpolation [
 { #category : 'accessing' }
 FASTPyExpression >> parentInterpolation: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentInterpolation := anObject
 ]
@@ -489,6 +531,7 @@ FASTPyExpression >> parentInterpolation: anObject [
 FASTPyExpression >> parentKeywordArgument [
 	"Relation named: #parentKeywordArgument type: #FASTPyKeywordArgument opposite: #value"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'Keyword argument from which I am the value (if it''s the case)'>
 	<container>
@@ -499,6 +542,7 @@ FASTPyExpression >> parentKeywordArgument [
 { #category : 'accessing' }
 FASTPyExpression >> parentKeywordArgument: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentKeywordArgument := anObject
 ]
@@ -507,6 +551,7 @@ FASTPyExpression >> parentKeywordArgument: anObject [
 FASTPyExpression >> parentLambda [
 	"Relation named: #parentLambda type: #FASTPyLambda opposite: #expression"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -516,6 +561,7 @@ FASTPyExpression >> parentLambda [
 { #category : 'accessing' }
 FASTPyExpression >> parentLambda: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentLambda := anObject
 ]
@@ -524,6 +570,7 @@ FASTPyExpression >> parentLambda: anObject [
 FASTPyExpression >> parentMatchStatement [
 	"Relation named: #parentMatchStatement type: #FASTPyMatchStatement opposite: #subject"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -533,6 +580,7 @@ FASTPyExpression >> parentMatchStatement [
 { #category : 'accessing' }
 FASTPyExpression >> parentMatchStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentMatchStatement := anObject
 ]
@@ -541,6 +589,7 @@ FASTPyExpression >> parentMatchStatement: anObject [
 FASTPyExpression >> parentPairKey [
 	"Relation named: #parentPairKey type: #FASTPyPair opposite: #key"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -550,6 +599,7 @@ FASTPyExpression >> parentPairKey [
 { #category : 'accessing' }
 FASTPyExpression >> parentPairKey: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentPairKey := anObject
 ]
@@ -558,6 +608,7 @@ FASTPyExpression >> parentPairKey: anObject [
 FASTPyExpression >> parentPairValuer [
 	"Relation named: #parentPairValuer type: #FASTPyPair opposite: #value"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -567,6 +618,7 @@ FASTPyExpression >> parentPairValuer [
 { #category : 'accessing' }
 FASTPyExpression >> parentPairValuer: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentPairValuer := anObject
 ]
@@ -575,6 +627,7 @@ FASTPyExpression >> parentPairValuer: anObject [
 FASTPyExpression >> parentSlice [
 	"Relation named: #parentSlice type: #FASTPySlice opposite: #components"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'Slice in which I am a component (start, end or step) (If it''s the case)'''>
 	<container>
@@ -584,6 +637,7 @@ FASTPyExpression >> parentSlice [
 { #category : 'accessing' }
 FASTPyExpression >> parentSlice: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentSlice := anObject
 ]
@@ -592,6 +646,7 @@ FASTPyExpression >> parentSlice: anObject [
 FASTPyExpression >> parentSubscriptValue [
 	"Relation named: #parentSubscriptValue type: #FASTPySubscript opposite: #value"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'My parent if I define the receiver of a subscript (if it''s the case).'>
 	<container>
@@ -602,6 +657,7 @@ FASTPyExpression >> parentSubscriptValue [
 { #category : 'accessing' }
 FASTPyExpression >> parentSubscriptValue: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentSubscriptValue := anObject
 ]
@@ -610,6 +666,7 @@ FASTPyExpression >> parentSubscriptValue: anObject [
 FASTPyExpression >> parentUnaryOperator [
 	"Relation named: #parentUnaryOperator type: #FASTPyTUnaryOperator opposite: #argument"
 
+	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'Parent unary operator in which I am.'>
 	<container>
@@ -620,6 +677,7 @@ FASTPyExpression >> parentUnaryOperator [
 { #category : 'accessing' }
 FASTPyExpression >> parentUnaryOperator: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentUnaryOperator := anObject
 ]
@@ -628,6 +686,7 @@ FASTPyExpression >> parentUnaryOperator: anObject [
 FASTPyExpression >> parentWalrus [
 	"Relation named: #parentWalrus type: #FASTPyWalrus opposite: #value"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -637,6 +696,7 @@ FASTPyExpression >> parentWalrus [
 { #category : 'accessing' }
 FASTPyExpression >> parentWalrus: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentWalrus := anObject
 ]
@@ -645,6 +705,7 @@ FASTPyExpression >> parentWalrus: anObject [
 FASTPyExpression >> parentYield [
 	"Relation named: #parentYield type: #FASTPyYield opposite: #expression"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	<derived>
@@ -654,6 +715,7 @@ FASTPyExpression >> parentYield [
 { #category : 'accessing' }
 FASTPyExpression >> parentYield: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	parentYield := anObject
 ]
@@ -662,6 +724,7 @@ FASTPyExpression >> parentYield: anObject [
 FASTPyExpression >> prarentPrintStatement [
 	"Relation named: #prarentPrintStatement type: #FASTPyPrintStatement opposite: #expressions"
 
+	<ignoreForCoverage>
 	<generated>
 	<container>
 	^ prarentPrintStatement
@@ -670,6 +733,7 @@ FASTPyExpression >> prarentPrintStatement [
 { #category : 'accessing' }
 FASTPyExpression >> prarentPrintStatement: anObject [
 
+	<ignoreForCoverage>
 	<generated>
 	prarentPrintStatement := anObject
 ]
