@@ -54,6 +54,14 @@ FASTPyModel >> allResolvedVariables [
 ]
 
 { #category : 'accessing' }
+FASTPyModel >> allResolvedVariablesByName [
+	"I return a Dictionary grouping all the resolved variables of the model by their name.
+The keys are the name (String) and the values are the collection of entities having this name."
+
+	^ self allResolvedVariables groupedBy: #name
+]
+
+{ #category : 'accessing' }
 FASTPyModel >> module [
 	"In general a fast python model can only get one module so I return this module."
 
