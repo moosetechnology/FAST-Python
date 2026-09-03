@@ -5,8 +5,9 @@ A general note: When we import an entity, we cannot know if it is a variable, a 
 > Note: Currently, analysis done with FASTPython are mostly done to analyse variables. So the documentation will be centered on analysis of variables and the algos are mostly tested on variables analysis and not functions, methods, ...ß
 
 - [Doing analysis on FASTPython](#doing-analysis-on-fastpython)
-	- [Overview of the analysis pipeline](#overview-of-the-analysis-pipeline)
-	- [Local resolution](#local-resolution)
+  - [Overview of the analysis pipeline](#overview-of-the-analysis-pipeline)
+  - [FAST utilities](#fast-utilities)
+  - [Local resolution](#local-resolution)
 		- [Shadowing](#shadowing)
 		- [Querying local resolver information](#querying-local-resolver-information)
 	- [Static Single Assignment (SSA)](#static-single-assignment-ssa)
@@ -20,9 +21,8 @@ A general note: When we import an entity, we cannot know if it is a variable, a 
 		- [Python 2 VS Python 3](#python-2-vs-python-3)
 		- [Global and Non local statement](#global-and-non-local-statement)
 	- [FAST Python visitor](#fastpython-visitor)
-	- [Control Flow Graph (CFG)](#control-flow-graph-cfg)
-	- [FAST utilities](#fast-utilities)
-	- [API](#api)
+  - [Control Flow Graph (CFG)](#control-flow-graph-cfg)
+  - [API](#api)
 		- [Variables analysis](#variables-analysis)
 			- [Knowing what is a variable](#knowing-what-is-a-variable)
 			- [Accessing the SSA versions of a variable](#accessing-the-ssa-versions-of-a-variable)
@@ -49,6 +49,25 @@ Import → Local resolution → CFG → SSA
 Some analyses stop earlier (e.g. only local resolution is needed to know the declaration of a usage), while others need the full pipeline. Which stage a given API requires is indicated by the requirement column in the [API](#api) section (Vanilla / LR / SSA).
 
 Not everything is part of this pipeline: the [FAST utilities](#fast-utilities) are helpers available on the freshly imported model, without needing any tooling or resolution.
+
+## FAST utilities
+
+Some properties and helpers got added to FAST to get more information out of the AST. Here some of them will be described.
+
+Some general properties got added such as:
+- `FASTPyMethodDefinition>>isStatic` to know if a method is static
+- `FASTPyMethodDefinition>>isAbstract` to know if a method is abstract
+- `FASTPyMethodDefinition>>selfName` to know the name of the self parameter (will be nil for static methods)
+
+For nodes representing a write access to a variable (it is possible to find them easily once we resolved our project with the local resolver or the SSA), we can find the expressions used in their writing by using `#assignedExpressions` on the node doing the assignment, i.e. the `variableDeclarator` of the write access, not on the variable itself.
+
+> Note: you can find some warnings on this in the section [Querying local resolver information](#querying-local-resolver-information). They are the same.
+
+A node can also be accessed internally, via an attribute access such as `x.y` or a subscript such as `x[3]`. For a node used as the accessed object of such an access, `#internalAccess` returns that access. It returns `nil` if the node is not accessed internally.
+
+`#internalAccess` is mostly used by `#internalAccesses`, which returns all the internal accesses done on a variable, and requires the local resolution to be done.
+
+TODO: Document more
 
 ## Local resolution
 
@@ -415,25 +434,6 @@ It has the nice feature of visiting all blocks inside a conditional node before 
 This visitor and the python visitor are used to build the SSA if you need an example of real usage.
 
 For more information on FAST CFG you can read this [article on the Moose wiki](https://modularmoose.org/developers/fast-cfg/).
-
-## FAST utilities
-
-Some properties and helpers got added to FAST to get more information out of the AST. Here some of them will be described.
-
-Some general properties got added such as:
-- `FASTPyMethodDefinition>>isStatic` to know if a method is static
-- `FASTPyMethodDefinition>>isAbstract` to know if a method is abstract
-- `FASTPyMethodDefinition>>selfName` to know the name of the self parameter (will be nil for static methods)
-
-For nodes representing a write access to a variable (it is possible to find them easily once we resolved our project with the local resolver or the SSA), we can find the expressions used in their writing by using `#assignedExpressions` on the node doing the assignment, i.e. the `variableDeclarator` of the write access, not on the variable itself.
-
-> Note: you can find some warnings on this in the section [Querying local resolver information](#querying-local-resolver-information). They are the same.
-
-A node can also be accessed internally, via an attribute access such as `x.y` or a subscript such as `x[3]`. For a node used as the accessed object of such an access, `#internalAccess` returns that access. It returns `nil` if the node is not accessed internally.
-
-`#internalAccess` is mostly used by `#internalAccesses`, which returns all the internal accesses done on a variable, and requires the local resolution to be done.
-
-TODO: Document more
 
 ## API
 
