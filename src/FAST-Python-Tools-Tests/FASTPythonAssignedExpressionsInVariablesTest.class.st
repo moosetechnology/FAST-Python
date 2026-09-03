@@ -38,6 +38,23 @@ print(x)'.
 ]
 
 { #category : 'tests' }
+FASTPythonAssignedExpressionsInVariablesTest >> testAssignedExpressionsMapWithForInClause [
+
+	| forInVariable map forInClause |
+	self parseAndResolve: 'coll = [1, 2, 3]
+y = [c for c in coll]'.
+
+	forInClause := model module statements second right forClauses first.
+	forInVariable := forInClause left.
+
+	map := forInVariable assignedExpressionsMap.
+
+	self assert: map size equals: 1.
+	self assert: (map at: forInVariable) size equals: 1.
+	self assertCollection: (map at: forInVariable) hasSameElements: { forInClause right }
+]
+
+{ #category : 'tests' }
 FASTPythonAssignedExpressionsInVariablesTest >> testAssignedExpressionsMapWithLoop [
 
 	| writenVariable1 writenVariable2 writenVariable3 map |
@@ -292,6 +309,23 @@ print(x)'.
 	self assertCollection: variable hasSameElements: {
 			model module statements third right.
 			model module statements second right.
+			model module statements first right }
+]
+
+{ #category : 'tests - transitive' }
+FASTPythonAssignedExpressionsInVariablesTest >> testTransitiveAssignedExpressionsWithForInClause [
+
+	| forInClause result |
+	self parseAndResolve: 'coll = [1, 2, 3]
+y = [c for c in coll]'.
+
+	forInClause := model module statements second right forClauses first.
+
+	result := forInClause transitiveAssignedExpressions.
+
+	self assert: result size equals: 2.
+	self assertCollection: result hasSameElements: {
+			forInClause right.
 			model module statements first right }
 ]
 
