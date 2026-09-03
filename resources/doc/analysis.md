@@ -51,6 +51,8 @@ Some analyses stop earlier (e.g. only local resolution is needed to know the dec
 
 Not everything is part of this pipeline: the [FAST utilities](#fast-utilities) are helpers available on the freshly imported model, without needing any tooling or resolution.
 
+![An example of a FAST Python model](model.png)
+
 ## FAST utilities
 
 Some properties and helpers got added to FAST to get more information out of the AST. Here some of them will be described.
@@ -98,6 +100,8 @@ FASTPythonLocalResolverVisitor resolve: aModule "could be any behavioral entity 
 Once this is done, you can ask any node that can represent a variable for its `#localDeclaration`. It will return the first definition of the entity if it is in the file. If the entity is not declared in the file, it will return a `FASTNonLocalDeclaration`.
 
 The local declaration knows all the usages of the entity in the model. We can get them by asking `#localUses`.
+
+![An example of the local resolution of a module](lr.png)
 
 ### Shadowing
 
@@ -172,6 +176,8 @@ On the model:
 ## Control Flow Graph (CFG)
 
 It is possible to get a control flow graph of a behavioral entities in FASTPython.
+
+![An example of a control flow graph](cfg.png)
 
 I can be used like this:
 
