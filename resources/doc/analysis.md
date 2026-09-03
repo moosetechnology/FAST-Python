@@ -5,32 +5,50 @@ A general note: When we import an entity, we cannot know if it is a variable, a 
 > Note: Currently, analysis done with FASTPython are mostly done to analyse variables. So the documentation will be centered on analysis of variables and the algos are mostly tested on variables analysis and not functions, methods, ...ß
 
 - [Doing analysis on FASTPython](#doing-analysis-on-fastpython)
-  - [Local resolution](#local-resolution)
-    - [Shadowing](#shadowing)
-    - [Querying local resolver information](#querying-local-resolver-information)
-  - [Static Single Assignment (SSA)](#static-single-assignment-ssa)
-    - [Building](#building)
-    - [Exploiting the SSA](#exploiting-the-ssa)
-    - [Assigned expressions](#assigned-expressions)
-  - [Limitations of local resolver and SSA](#limitations-of-local-resolver-and-ssa)
-    - [Attribute accesses](#attribute-accesses)
-    - [Subscript content](#subscript-content)
-    - [Instance variables](#instance-variables)
-    - [Python 2 VS Python 3](#python-2-vs-python-3)
-    - [Global and Non local statement](#global-and-non-local-statement)
-  - [FAST Python visitor](#fastpython-visitor)
-  - [Control Flow Graph (CFG)](#control-flow-graph-cfg)
-  - [FAST utilities](#fast-utilities)
-  - [API](#api)
-    - [Variables analysis](#variables-analysis)
-      - [Knowing what is a variable](#knowing-what-is-a-variable)
-      - [Accessing the SSA versions of a variable](#accessing-the-ssa-versions-of-a-variable)
-      - [Getting the accesses of a variable](#getting-the-accesses-of-a-variable)
-      - [Knowing what uses a variable](#knowing-what-uses-a-variable)
-      - [Getting the internal accesses of a variable](#getting-the-internal-accesses-of-a-variable)
-      - [Getting the calls on a variable](#getting-the-calls-on-a-variable)
-      - [Getting the assigned expressions](#getting-the-assigned-expressions)
-  - [Examples of analysis](#examples-of-analysis)
+	- [Overview of the analysis pipeline](#overview-of-the-analysis-pipeline)
+	- [Local resolution](#local-resolution)
+		- [Shadowing](#shadowing)
+		- [Querying local resolver information](#querying-local-resolver-information)
+	- [Static Single Assignment (SSA)](#static-single-assignment-ssa)
+		- [Building](#building)
+		- [Exploiting the SSA](#exploiting-the-ssa)
+		- [Assigned expressions](#assigned-expressions)
+	- [Limitations of local resolver and SSA](#limitations-of-local-resolver-and-ssa)
+		- [Attribute accesses](#attribute-accesses)
+		- [Subscript content](#subscript-content)
+		- [Instance variables](#instance-variables)
+		- [Python 2 VS Python 3](#python-2-vs-python-3)
+		- [Global and Non local statement](#global-and-non-local-statement)
+	- [FAST Python visitor](#fastpython-visitor)
+	- [Control Flow Graph (CFG)](#control-flow-graph-cfg)
+	- [FAST utilities](#fast-utilities)
+	- [API](#api)
+		- [Variables analysis](#variables-analysis)
+			- [Knowing what is a variable](#knowing-what-is-a-variable)
+			- [Accessing the SSA versions of a variable](#accessing-the-ssa-versions-of-a-variable)
+			- [Getting the accesses of a variable](#getting-the-accesses-of-a-variable)
+			- [Knowing what uses a variable](#knowing-what-uses-a-variable)
+			- [Getting the internal accesses of a variable](#getting-the-internal-accesses-of-a-variable)
+			- [Getting the calls on a variable](#getting-the-calls-on-a-variable)
+			- [Getting the assigned expressions](#getting-the-assigned-expressions)
+	- [Examples of analysis](#examples-of-analysis)
+
+## Overview of the analysis pipeline
+
+A typical analysis on a FASTPython model follows a small pipeline where each stage builds on the previous one:
+
+```
+Import → Local resolution → CFG → SSA
+```
+
+1. **Import**: `FASTPythonImporter` parses Python source and builds the raw `FASTPyModel`.
+2. **Local resolution**: `FASTPythonLocalResolverVisitor` does a name resolution and links each usage of a named node to its declaration.
+3. **CFG**: `FASTPythonCFGVisitor` builds a control flow graph of a behavioral entity. This is a transparent prerequisite to SSA.
+4. **SSA**: `FASTPythonSSAVisitor` allows to scope variables to the possible assignments impacting it, and not to all assignments. This is used a lot for data-flow analysis.
+
+Some analyses stop earlier (e.g. only local resolution is needed to know the declaration of a usage), while others need the full pipeline. Which stage a given API requires is indicated by the requirement column in the [API](#api) section (Vanilla / LR / SSA).
+
+Not everything is part of this pipeline: the [FAST utilities](#fast-utilities) are helpers available on the freshly imported model, without needing any tooling or resolution.
 
 ## Local resolution
 
