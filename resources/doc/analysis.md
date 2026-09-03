@@ -10,8 +10,9 @@ A general note: When we import an entity, we cannot know if it is a variable, a 
     - [Nodes additional API](#nodes-additional-api)
     - [FAST Python visitor](#fastpython-visitor)
   - [Local resolution](#local-resolution)
-		- [Shadowing](#shadowing)
-		- [Querying local resolver information](#querying-local-resolver-information)
+ 		- [Shadowing](#shadowing)
+ 		- [Querying local resolver information](#querying-local-resolver-information)
+   - [Control Flow Graph (CFG)](#control-flow-graph-cfg)
 	- [Static Single Assignment (SSA)](#static-single-assignment-ssa)
 		- [Building](#building)
 		- [Exploiting the SSA](#exploiting-the-ssa)
@@ -22,8 +23,7 @@ A general note: When we import an entity, we cannot know if it is a variable, a 
 		- [Instance variables](#instance-variables)
 		- [Python 2 VS Python 3](#python-2-vs-python-3)
  		- [Global and Non local statement](#global-and-non-local-statement)
-   - [Control Flow Graph (CFG)](#control-flow-graph-cfg)
-  - [API](#api)
+   - [API](#api)
 		- [Variables analysis](#variables-analysis)
 			- [Knowing what is a variable](#knowing-what-is-a-variable)
 			- [Accessing the SSA versions of a variable](#accessing-the-ssa-versions-of-a-variable)
@@ -168,6 +168,37 @@ On the model:
 - `model allResolvedVariables` returns all nodes in the model that resolve to a variable declaration. This is a shortcut for querying the model-level view of all resolved variables
 - `model allResolvedVariablesByName` returns a dictionary grouping the resolved variables of the model by their name. The keys are the names (String) and the values are the collection of entities having this name 
 
+
+## Control Flow Graph (CFG)
+
+It is possible to get a control flow graph of a behavioral entities in FASTPython.
+
+I can be used like this:
+
+```smalltalk
+FASTPythonCFGVisitor buildCFGOf: aModel allFunctionDefinitions first.
+
+"or"
+
+aModel allFunctionDefinitions first cfg
+```
+
+I can take one of five different entities to build a CFG:
+
+•	a FASTPyModule
+•	a FASTPyFunctionDefinition
+•	a FASTPyMethodDefinition
+•	a FASTPyLambda
+•	a FASTPyClassDefinition
+
+It is also possible to ask for a "full" CFG that returns a dictionary with the CFG on the entity and also the CFGs of all definitions found inside of this entity.
+
+Once we have the CFG, we can use `FASTCFGTVisitor` to visit it. This visitor will visit all expressions in the CFG and all the next blocks.
+It has the nice feature of visiting all blocks inside a conditional node before visiting the next blocks. It visit them branch by branch and allows the user to hook behavior between the branches.
+
+This visitor and the python visitor are used to build the SSA if you need an example of real usage.
+
+For more information on FAST CFG you can read this [article on the Moose wiki](https://modularmoose.org/developers/fast-cfg/).
 
 ## Static Single Assignment (SSA)
 
@@ -406,37 +437,6 @@ Here, the printing will be linked to an nonlocal declaration because in Python 3
 ### Global and Non local statement
 
 The local resolver handles global and non local statements. A `global x` inside a function redirects the variable resolution to the module-scope declaration of `x`. A `nonlocal x` redirects to the nearest enclosing scope that defines `x`. This means writes inside the function (including walrus operators) create new SSA versions of the outer declaration.
-
-## Control Flow Graph (CFG)
-
-It is possible to get a control flow graph of a behavioral entities in FASTPython.
-
-I can be used like this:
-
-```smalltalk
-FASTPythonCFGVisitor buildCFGOf: aModel allFunctionDefinitions first.
-
-"or"
-
-aModel allFunctionDefinitions first cfg
-```
-
-I can take one of five different entities to build a CFG:
-
-•	a FASTPyModule
-•	a FASTPyFunctionDefinition
-•	a FASTPyMethodDefinition
-•	a FASTPyLambda
-•	a FASTPyClassDefinition
-
-It is also possible to ask for a "full" CFG that returns a dictionary with the CFG on the entity and also the CFGs of all definitions found inside of this entity.
-
-Once we have the CFG, we can use `FASTCFGTVisitor` to visit it. This visitor will visit all expressions in the CFG and all the next blocks.
-It has the nice feature of visiting all blocks inside a conditional node before visiting the next blocks. It visit them branch by branch and allows the user to hook behavior between the branches.
-
-This visitor and the python visitor are used to build the SSA if you need an example of real usage.
-
-For more information on FAST CFG you can read this [article on the Moose wiki](https://modularmoose.org/developers/fast-cfg/).
 
 ## API
 
