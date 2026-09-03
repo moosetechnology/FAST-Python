@@ -7,6 +7,8 @@ A general note: When we import an entity, we cannot know if it is a variable, a 
 - [Doing analysis on FASTPython](#doing-analysis-on-fastpython)
   - [Overview of the analysis pipeline](#overview-of-the-analysis-pipeline)
   - [FAST utilities](#fast-utilities)
+    - [Nodes additional API](#nodes-additional-api)
+    - [FAST Python visitor](#fastpython-visitor)
   - [Local resolution](#local-resolution)
 		- [Shadowing](#shadowing)
 		- [Querying local resolver information](#querying-local-resolver-information)
@@ -19,9 +21,8 @@ A general note: When we import an entity, we cannot know if it is a variable, a 
 		- [Subscript content](#subscript-content)
 		- [Instance variables](#instance-variables)
 		- [Python 2 VS Python 3](#python-2-vs-python-3)
-		- [Global and Non local statement](#global-and-non-local-statement)
-	- [FAST Python visitor](#fastpython-visitor)
-  - [Control Flow Graph (CFG)](#control-flow-graph-cfg)
+ 		- [Global and Non local statement](#global-and-non-local-statement)
+   - [Control Flow Graph (CFG)](#control-flow-graph-cfg)
   - [API](#api)
 		- [Variables analysis](#variables-analysis)
 			- [Knowing what is a variable](#knowing-what-is-a-variable)
@@ -54,6 +55,8 @@ Not everything is part of this pipeline: the [FAST utilities](#fast-utilities) a
 
 Some properties and helpers got added to FAST to get more information out of the AST. Here some of them will be described.
 
+### Nodes additional API
+
 Some general properties got added such as:
 - `FASTPyMethodDefinition>>isStatic` to know if a method is static
 - `FASTPyMethodDefinition>>isAbstract` to know if a method is abstract
@@ -68,6 +71,14 @@ A node can also be accessed internally, via an attribute access such as `x.y` or
 `#internalAccess` is mostly used by `#internalAccesses`, which returns all the internal accesses done on a variable, and requires the local resolution to be done.
 
 TODO: Document more
+
+### FAST Python visitor
+
+FASTPython comes with a visitor either used in the form of a trait to use with `FASTPyTVisitor` or a class to subclass with `FASTPythonVisitor`.
+
+Be careful, in some usage of the visitor some visit methods need to be overriden to change the visit order. For example, in a visitor I needed to ensure that function parameters are visited before the statements of the function.
+
+For more information about FASTPython visitor you can read [this blog post on the Moose wiki](https://modularmoose.org/blog/2026-05-20-improving-visitor-generator-copy/).
 
 ## Local resolution
 
@@ -395,14 +406,6 @@ Here, the printing will be linked to an nonlocal declaration because in Python 3
 ### Global and Non local statement
 
 The local resolver handles global and non local statements. A `global x` inside a function redirects the variable resolution to the module-scope declaration of `x`. A `nonlocal x` redirects to the nearest enclosing scope that defines `x`. This means writes inside the function (including walrus operators) create new SSA versions of the outer declaration.
-
-## FAST Python visitor
-
-FASTPython comes with a visitor either used in the form of a trait to use with `FASTPyTVisitor` or a class to subclass with `FASTPythonVisitor`.
-
-Be careful, in some usage of the visitor some visit methods need to be overriden to change the visit order. For example, in a visitor I needed to ensure that function parameters are visited before the statements of the function.
-
-For more information about FASTPython visitor you can read [this blog post on the Moose wiki](https://modularmoose.org/blog/2026-05-20-improving-visitor-generator-copy/).
 
 ## Control Flow Graph (CFG)
 
