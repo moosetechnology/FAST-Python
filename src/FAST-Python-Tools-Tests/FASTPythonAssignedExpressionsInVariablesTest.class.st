@@ -270,6 +270,7 @@ print(x)'.
 
 { #category : 'tests - transitive' }
 FASTPythonAssignedExpressionsInVariablesTest >> testTransitiveAssignedExpressionsMapWithReusedVariable [
+
 	| map |
 	self parseAndResolve: 'x = 1
 
@@ -279,7 +280,9 @@ print(x)'.
 
 	map := model module statements third arguments first transitiveAssignedExpressionsMap.
 	self assert: map size equals: 1.
-	self assertCollection: (map at: model module statements second left) hasSameElements: { model module statements second right }
+	self assertCollection: (map at: model module statements second left) hasSameElements: {
+			model module statements second right.
+			model module statements first right }
 ]
 
 { #category : 'tests - transitive' }
@@ -392,7 +395,9 @@ x = x + 1
 
 print(x)'.
 	variable := model module statements second transitiveAssignedExpressions.
-	self assertCollection: variable hasSameElements: { model module statements second right }
+	self assertCollection: variable hasSameElements: {
+			model module statements second right.
+			model module statements first right }
 ]
 
 { #category : 'tests - transitive' }
