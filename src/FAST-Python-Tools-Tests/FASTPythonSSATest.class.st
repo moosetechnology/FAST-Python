@@ -1936,6 +1936,32 @@ print(x[3])'.
 	self assert: usedVar ssaVersion identicalTo: assignedVar ssaVersion
 ]
 
+{ #category : 'tests - subscripts' }
+FASTPythonSSATest >> testSubscriptReadBeforeAssignment [
+
+	| usedSubscript1 assignedSubscript usedSubscript2 |
+	self parseAndResolve: 'x = coll
+print(x[3])
+x[3] = 5
+print(x[3])'.
+
+	usedSubscript1 := model module statements second arguments first.
+	self assert: usedSubscript1 ssaVersion version equals: 1.
+	self assert: usedSubscript1 ssaName equals: 'x[3]_1'.
+	self assert: usedSubscript1 ssaVersion localDeclaration equals: usedSubscript1 localDeclaration.
+	self assert: usedSubscript1 ssaVersion localUses size equals: 1.
+
+	assignedSubscript := model module statements third left.
+	self assert: assignedSubscript ssaVersion version equals: 2.
+	self assert: assignedSubscript ssaName equals: 'x[3]_2'.
+	self assert: assignedSubscript ssaVersion localDeclaration equals: assignedSubscript localDeclaration.
+	self assert: assignedSubscript ssaVersion localUses size equals: 2.
+
+	usedSubscript2 := model module statements fourth arguments first.
+	self assert: usedSubscript2 ssaVersion identicalTo: assignedSubscript ssaVersion.
+	self assert: usedSubscript2 equals: assignedSubscript ssaVersion localUses second
+]
+
 { #category : 'tests - try' }
 FASTPythonSSATest >> testTryAssignAndUsage [
 

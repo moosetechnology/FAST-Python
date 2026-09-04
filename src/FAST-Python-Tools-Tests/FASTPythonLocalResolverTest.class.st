@@ -1987,6 +1987,24 @@ FASTPythonLocalResolverTest >> testParameterShadowedByAssignement [
 ]
 
 { #category : 'tests - subscripts' }
+FASTPythonLocalResolverTest >> testSubscriptReadAfterReceiverAssignation [
+	"In case we read a subscript before writing anything on it, since we cannot use the variable declaration as declaration, we point the first read."
+
+	| subscript |
+	self parseAndResolve: 'x = coll
+print(x[3])'.
+
+	subscript := model module statements second arguments first.
+	self assert: subscript localDeclaration equals: subscript.
+	self assert: subscript localDeclaration value name equals: 'x'.
+	self assert: subscript localDeclaration indices first sourceCode equals: '3'.
+	self assert: subscript localDeclaration variableDeclarator isNil.
+	self deny: subscript localDeclaration isNonLocalDeclaration.
+	self assert: subscript localDeclaration localUses size equals: 1.
+	self assert: subscript localDeclaration localUses first equals: subscript
+]
+
+{ #category : 'tests - subscripts' }
 FASTPythonLocalResolverTest >> testSubscriptUsageInCall [
 
 	| assignedVariable usedVariable |

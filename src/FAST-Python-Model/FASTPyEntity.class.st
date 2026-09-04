@@ -223,6 +223,14 @@ FASTPyEntity >> isStringLiteral [
 ]
 
 { #category : 'testing' }
+FASTPyEntity >> isSubscript [
+
+	<ignoreForCoverage>
+	<generated>
+	^ false
+]
+
+{ #category : 'testing' }
 FASTPyEntity >> isTuple [
 
 	<ignoreForCoverage>

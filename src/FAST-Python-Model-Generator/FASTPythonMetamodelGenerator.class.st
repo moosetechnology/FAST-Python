@@ -346,6 +346,7 @@ FASTPythonMetamodelGenerator >> defineClasses [
 	statement := builder newAbstractClassNamed: #Statement.
 	string := builder newClassNamed: #String.
 	subscript := builder newClassNamed: #Subscript.
+	subscript withTesting.
 	thenClause := builder newClassNamed: #ThenClause.
 	tryStatement := builder newClassNamed: #TryStatement.
 	tuple := builder newClassNamed: #Tuple.

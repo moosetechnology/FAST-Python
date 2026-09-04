@@ -40,17 +40,29 @@ FASTPythonLocalResolverVisitor class >> resolve: aPythonEntity [
 { #category : 'declarations' }
 FASTPythonLocalResolverVisitor >> bind: aFASTNode toDeclarationNamed: aName [
 
+	^ self bind: aFASTNode toDeclarationNamed: aName ifAbsentUse: [ self ensureNonlocalDeclarationNamed: aName ]
+]
+
+{ #category : 'declarations' }
+FASTPythonLocalResolverVisitor >> bind: aFASTNode toDeclarationNamed: aName ifAbsentUse: aBlock [
+
 	| declaration |
-	declaration := (self declarationNamed: aName) ifNil: [ "If it is undeclared, we create an undeclared in the lowest scope in the stack."
-			               self
-				               ensureDeclarationOf: aName
-				               declaration: (FASTNonLocalDeclaration new
-						                name: aName;
-						                yourself)
-				               in: namesContext first ].
+	declaration := (self declarationNamed: aName) ifNil: [ aBlock cull: aFASTNode cull: aName ].
 
 	aFASTNode localDeclaration: declaration.
 	declaration addLocalUse: aFASTNode
+]
+
+{ #category : 'declarations' }
+FASTPythonLocalResolverVisitor >> declarationForUndeclaredNode: aNode named: aName [
+	"In case of a subscript, if the receiving variable exists, we consider that the first read access to the subscript is the declaration."
+
+	aNode isSubscript ifTrue: [
+			aNode value
+				localDeclarationifPresent: [ ^ self ensureDeclarationOf: aName declaration: aNode in: namesContext top ]
+				ifAbsent: [ "Nothing, just let the non local declaration." ] ].
+
+	^ self ensureNonlocalDeclarationNamed: aName
 ]
 
 { #category : 'declarations' }
@@ -89,6 +101,17 @@ FASTPythonLocalResolverVisitor >> ensureDeclarationOf: anEntity named: aName dec
 
 	self ensureDeclarationOf: aName declaration: aFASTNode in: namesContext top.
 	self bind: anEntity toDeclarationNamed: aName
+]
+
+{ #category : 'declarations' }
+FASTPythonLocalResolverVisitor >> ensureNonlocalDeclarationNamed: aName [
+
+	^ self
+		  ensureDeclarationOf: aName
+		  declaration: (FASTNonLocalDeclaration new
+				   name: aName;
+				   yourself)
+		  in: namesContext first
 ]
 
 { #category : 'initialization' }
@@ -201,7 +224,11 @@ FASTPythonLocalResolverVisitor >> visitFASTPyTCanBeVariable: aTCanBeVariable [
 
 	aTCanBeVariable isVariableWriteAccess
 		ifTrue: [ self ensureDeclarationOf: aTCanBeVariable named: aTCanBeVariable localDeclarationName declaration: aTCanBeVariable ]
-		ifFalse: [ self bind: aTCanBeVariable toDeclarationNamed: aTCanBeVariable localDeclarationName ].
+		ifFalse: [
+				self
+					bind: aTCanBeVariable
+					toDeclarationNamed: aTCanBeVariable localDeclarationName
+					ifAbsentUse: [ :node :name | self declarationForUndeclaredNode: node named: name ] ].
 
 	super visitFASTPyTCanBeVariable: aTCanBeVariable
 ]
