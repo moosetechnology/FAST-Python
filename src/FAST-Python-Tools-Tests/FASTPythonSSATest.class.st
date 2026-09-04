@@ -779,7 +779,7 @@ def reset():
 	self assert: assignedVariable ssaVersion version equals: 1.
 	self assert: assignedVariable ssaName equals: 'x_1'.
 	self assert: assignedVariable ssaVersion localDeclaration equals: assignedVariable localDeclaration.
-	self assert: assignedVariable ssaVersion localUses size equals: 2.
+	self assert: assignedVariable ssaVersion localUses size equals: 3.
 
 	globalVariableInInc := model module statements second statements first variables first.
 	self assert: globalVariableInInc ssaVersion identicalTo: assignedVariable ssaVersion.
@@ -789,11 +789,11 @@ def reset():
 	self assert: assignedVariableInInc ssaName equals: 'x_2'.
 	self assert: assignedVariableInInc ssaVersion localDeclaration equals: assignedVariableInInc localDeclaration.
 	self assert: assignedVariableInInc ssaVersion localDeclaration equals: assignedVariable ssaVersion localDeclaration.
-	self assert: assignedVariableInInc ssaVersion localUses size equals: 3.
+	self assert: assignedVariableInInc ssaVersion localUses size equals: 2.
 
 	usedVariableInInc := model module statements second statements second right leftOperand.
 	self deny: usedVariableInInc ssaVersion isPhi.
-	self assert: usedVariableInInc ssaVersion identicalTo: assignedVariableInInc ssaVersion.
+	self assert: usedVariableInInc ssaVersion identicalTo: assignedVariable ssaVersion.
 
 	globalVariableInReset := model module statements third statements first variables first.
 	self assert: globalVariableInReset ssaVersion identicalTo: assignedVariableInInc ssaVersion.
@@ -1132,7 +1132,7 @@ FASTPythonSSATest >> testNonlocalStatementSharedByInnerFunctions [
 	self assert: assignedVariable ssaVersion version equals: 1.
 	self assert: assignedVariable ssaName equals: 'x_1'.
 	self assert: assignedVariable ssaVersion localDeclaration equals: assignedVariable localDeclaration.
-	self assert: assignedVariable ssaVersion localUses size equals: 2.
+	self assert: assignedVariable ssaVersion localUses size equals: 3.
 
 	nonlocalVariableInInc := model module statements first statements second statements first variables first.
 	self assert: nonlocalVariableInInc ssaVersion identicalTo: assignedVariable ssaVersion.
@@ -1142,11 +1142,11 @@ FASTPythonSSATest >> testNonlocalStatementSharedByInnerFunctions [
 	self assert: assignedVariableInInc ssaName equals: 'x_2'.
 	self assert: assignedVariableInInc ssaVersion localDeclaration equals: assignedVariableInInc localDeclaration.
 	self assert: assignedVariableInInc ssaVersion localDeclaration equals: assignedVariable ssaVersion localDeclaration.
-	self assert: assignedVariableInInc ssaVersion localUses size equals: 3.
+	self assert: assignedVariableInInc ssaVersion localUses size equals: 2.
 
 	usedVariableInInc := model module statements first statements second statements second right leftOperand.
 	self deny: usedVariableInInc ssaVersion isPhi.
-	self assert: usedVariableInInc ssaVersion identicalTo: assignedVariableInInc ssaVersion.
+	self assert: usedVariableInInc ssaVersion identicalTo: assignedVariable ssaVersion.
 
 	nonlocalVariableInReset := model module statements first statements third statements first variables first.
 	self assert: nonlocalVariableInReset ssaVersion identicalTo: assignedVariableInInc ssaVersion.
@@ -1804,6 +1804,32 @@ print(x)'.
 	self assertCollection: usedVar ssaVersion ssaVariables hasSameElements: {
 			assignedVar1 ssaVersion.
 			assignedVar2 ssaVersion }
+]
+
+{ #category : 'tests - assignments' }
+FASTPythonSSATest >> testReAssignementUsingSelf [
+
+	| assignedVar1 assignedVar2 usedVar |
+	self parseAndResolve: 'x = 3
+
+x = x + 4'.
+
+	assignedVar1 := model module statements first left.
+	self assert: assignedVar1 ssaVersion version equals: 1.
+	self assert: assignedVar1 ssaName equals: 'x_1'.
+	self assert: assignedVar1 ssaVersion localDeclaration equals: assignedVar1 localDeclaration.
+	self assert: assignedVar1 ssaVersion localUses size equals: 2.
+
+	usedVar := model module statements second right leftOperand.
+	self assert: usedVar ssaVersion identicalTo: assignedVar1 ssaVersion.
+	self assert: usedVar identicalTo: assignedVar1 ssaVersion localUses second.
+
+	assignedVar2 := model module statements second left.
+	self assert: assignedVar2 ssaVersion version equals: 2.
+	self assert: assignedVar2 ssaName equals: 'x_2'.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar2 localDeclaration.
+	self assert: assignedVar2 ssaVersion localDeclaration equals: assignedVar1 ssaVersion localDeclaration.
+	self assert: assignedVar2 ssaVersion localUses size equals: 1
 ]
 
 { #category : 'tests' }

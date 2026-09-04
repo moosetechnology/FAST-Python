@@ -154,6 +154,18 @@ FASTPythonSSAVisitor >> resolve: aFASTBehaviouralEntity [
 ]
 
 { #category : 'visiting - reordering' }
+FASTPythonSSAVisitor >> visitFASTPyAssignment: anAssignment [
+	"Visiting the right field before the left because the variables at the right should be linked to the previous assignment."
+
+	self visitFASTPyTAssignable: anAssignment.
+	self visitFASTPyExpression: anAssignment.
+
+	self visitEntity: anAssignment right.
+	self visitEntity: anAssignment left.
+	self visitEntity: anAssignment type
+]
+
+{ #category : 'visiting - reordering' }
 FASTPythonSSAVisitor >> visitFASTPyFunctionDefinition: aFunctionDefinition [
 	"Reordering for parameters to be visited before the statements in order to have all declarations"
 
