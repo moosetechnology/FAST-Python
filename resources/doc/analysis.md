@@ -5,14 +5,14 @@ A general note: When we import an entity, we cannot know if it is a variable, a 
 > Note: Currently, analysis done with FASTPython are mostly done to analyse variables. So the documentation will be centered on analysis of variables and the algos are mostly tested on variables analysis and not functions, methods, ...ß
 
 - [Doing analysis on FASTPython](#doing-analysis-on-fastpython)
-  - [Overview of the analysis pipeline](#overview-of-the-analysis-pipeline)
-  - [FAST utilities](#fast-utilities)
-    - [Nodes additional API](#nodes-additional-api)
-    - [FAST Python visitor](#fastpython-visitor)
-  - [Local resolution](#local-resolution)
- 		- [Shadowing](#shadowing)
- 		- [Querying local resolver information](#querying-local-resolver-information)
-   - [Control Flow Graph (CFG)](#control-flow-graph-cfg)
+	- [Overview of the analysis pipeline](#overview-of-the-analysis-pipeline)
+	- [FAST utilities](#fast-utilities)
+		- [Nodes additional API](#nodes-additional-api)
+		- [FAST Python visitor](#fastpython-visitor)
+	- [Local resolution](#local-resolution)
+		- [Shadowing](#shadowing)
+		- [Querying local resolver information](#querying-local-resolver-information)
+	- [Control Flow Graph (CFG)](#control-flow-graph-cfg)
 	- [Static Single Assignment (SSA)](#static-single-assignment-ssa)
 		- [Building](#building)
 		- [Exploiting the SSA](#exploiting-the-ssa)
@@ -22,8 +22,8 @@ A general note: When we import an entity, we cannot know if it is a variable, a 
 		- [Subscript content](#subscript-content)
 		- [Instance variables](#instance-variables)
 		- [Python 2 VS Python 3](#python-2-vs-python-3)
- 		- [Global and Non local statement](#global-and-non-local-statement)
-   - [API](#api)
+		- [Global and Non local statement](#global-and-non-local-statement)
+	- [API](#api)
 		- [Variables analysis](#variables-analysis)
 			- [Knowing what is a variable](#knowing-what-is-a-variable)
 			- [Accessing the SSA versions of a variable](#accessing-the-ssa-versions-of-a-variable)
@@ -64,7 +64,7 @@ Some general properties got added such as:
 - `FASTPyMethodDefinition>>isAbstract` to know if a method is abstract
 - `FASTPyMethodDefinition>>selfName` to know the name of the self parameter (will be nil for static methods)
 
-For nodes representing a write access to a variable (it is possible to find them easily once we resolved our project with the local resolver or the SSA), we can find the expressions used in their writing by using `#assignedExpressions` on the node doing the assignment, i.e. the `variableDeclarator` of the write access, not on the variable itself.
+For nodes representing a write access to a variable (it is possible to find them easily once we resolved our project with the local resolver or the SSA), we can find the expressions used in their writing by using `#assignedExpressions` on the node doing the assignment, i.e. the `variableDeclaration` of the write access, not on the variable itself.
 
 > Note: you can find some warnings on this in the section [Querying local resolver information](#querying-local-resolver-information). They are the same.
 
@@ -166,7 +166,7 @@ It is possible to ask a few things to the nodes once the resolution is done:
 - `node allNodesUsingMe` if the node is a variable, returns all the nodes using the variable: for each access of the variable, all its ancestors up to the statement containing it, without going further than the statement blocks (Module, function, method, clauses, ...). For example, for `return x + 3`, it returns the return statement and the binary operation
 - `node statementsUsingMe` if the node is a variable, returns the statements using the variable: same as `allNodesUsingMe` but only the statement of each access, without the intermediate nodes
 - `node callsOnVariable` if the node is a variable, returns the calls made on the variable, i.e. the `FASTPyCall` nodes having the variable as receiver: the callee of the call is the read of the variable itself (such as the invocation or instantiation `x()`) or an internal access on the variable (such as `x.append(1)` or `x[3]()`)
-- `node variableDeclarator` if the node that is a variable write access, it will return the node assigning the variable (can be an assignment, augmented assignment, for loop or for in clause)
+- `node variableDeclaration` if the node that is a variable write access, it will return the node assigning the variable (can be an assignment, augmented assignment, for loop or for in clause)
 
 On the model:
 - `model allResolvedVariables` returns all nodes in the model that resolve to a variable declaration. This is a shortcut for querying the model-level view of all resolved variables
@@ -284,9 +284,9 @@ On top of this, it is possible to get information via the SSA directly with the 
 ### Assigned expressions
 
 It is also possible to query what is assigned in variables once the SSA is done:
-- `node variableDeclarator` for a node that is a write access to a variable, it will return the node assigning the variable
+- `node variableDeclaration` for a node that is a write access to a variable, it will return the node assigning the variable
 - `node assignedExpressionsMap` for a variable, return a map of all expressions used to assigned the variable. The keys of the map are the write accesses that can impact the value of this variable. In some cases there will be only one. But if the variable is assigned in a conditional expression, it will get one entry by assignment that can impact the current variable value
-- `node transitiveAssignedExpressions` for a node doing an assignment (the `variableDeclarator` of a write access), returns the expressions used in the assignment and, for each variable used in those expressions, the expressions assigned to that variable, recursively
+- `node transitiveAssignedExpressions` for a node doing an assignment (the `variableDeclaration` of a write access), returns the expressions used in the assignment and, for each variable used in those expressions, the expressions assigned to that variable, recursively
 - `node transitiveAssignedExpressionsMap` for a variable, same as `assignedExpressionsMap` but the values are the transitive assigned expressions of each write access
 
 Be carful, `x = 3` is not the only way to assign a variable. Take those cases into account:
@@ -479,7 +479,7 @@ The requirement column indicates what needs to be done on the model before using
 | `allAccesses` | Any access of a variable | LR | Returns all the read and write accesses to the variable |
 | `allReadAccesses` | Any access of a variable | LR | Returns all the read accesses to the variable |
 | `allWriteAccesses` | Any access of a variable | LR | Returns all the write accesses to the variable |
-| `variableDeclarator` | A write access of a variable | LR | Returns the node assigning the variable (assignment, augmented assignment, for loop or for in clause) |
+| `variableDeclaration` | A write access of a variable | LR | Returns the node assigning the variable (assignment, augmented assignment, for loop or for in clause) |
 | `versionAccesses` | Any access of a variable | SSA | Returns the read and write accesses for the current SSA version of the receiver |
 | `versionReadAccesses` | Any access of a variable | SSA | Returns the read accesses for the current SSA version of the receiver |
 | `versionWriteAccesses` | Any access of a variable | SSA | Returns the write accesses for the current SSA version of the receiver |
@@ -511,9 +511,9 @@ The requirement column indicates what needs to be done on the model before using
 
 | Selector | Receiver | Requirement | Description |
 |---|---|---|---|
-| `assignedExpressions` | An assignment node (the `variableDeclarator` of a write access) | Vanilla | Returns the expressions used by this assignment. Returns an empty collection on any other node |
+| `assignedExpressions` | An assignment node (the `variableDeclaration` of a write access) | Vanilla | Returns the expressions used by this assignment. Returns an empty collection on any other node |
 | `assignedExpressionsMap` | Any access of a variable | SSA | Returns a map with, as key, each write access impacting the value of the variable, and as value, the expressions used by that assignment |
-| `transitiveAssignedExpressions` | An assignment node (the `variableDeclarator` of a write access) | SSA | Same as `#assignedExpressions` but the variables used in the assigned expressions are followed: the expressions assigned to them are added, recursively |
+| `transitiveAssignedExpressions` | An assignment node (the `variableDeclaration` of a write access) | SSA | Same as `#assignedExpressions` but the variables used in the assigned expressions are followed: the expressions assigned to them are added, recursively |
 | `transitiveAssignedExpressionsMap` | Any access of a variable | SSA | Same as `#assignedExpressionsMap` but each value is the transitive assigned expressions of the corresponding assignment |
 
 ## Examples of analysis
@@ -606,7 +606,7 @@ print(x)' withPlatformLineEndings.
 
 lastVariableAccess := model module statements last arguments first.
 
-lastVariableAccess ssaVersion writeAccesses collect: [ :access | access variableDeclarator ] "an OrderedCollection(PyAssignment(18 - 22) PyAssignment(36 - 40))"
+lastVariableAccess ssaVersion writeAccesses collect: [ :access | access variableDeclaration ] "an OrderedCollection(PyAssignment(18 - 22) PyAssignment(36 - 40))"
 ```
 
 The assignments nodes can be an assignment, a for, an augmented assignment or a for in clause.
@@ -644,7 +644,7 @@ It returns a dictionary with the possible write accesses as key and the expressi
 
 > Note: you can find some warnings on this in the section [Querying local resolver information](#querying-local-resolver-information). They are the same.
 
-> Note 2: You can use `#assignedExpressions` on the `variableDeclarator` of a specific write access to have information only on this one.
+> Note 2: You can use `#assignedExpressions` on the `variableDeclaration` of a specific write access to have information only on this one.
 
 **What expressions are transitively used to do the assignment?**
 
@@ -665,7 +665,7 @@ model module statements last arguments first transitiveAssignedExpressionsMap
 
 The read of `y` is part of the result since `y` is itself assigned `1`.
 
-> Note: `#transitiveAssignedExpressions` is the equivalent of `#assignedExpressions`: call it on the `variableDeclarator` of a specific write access to have the transitive expressions of only this one.
+> Note: `#transitiveAssignedExpressions` is the equivalent of `#assignedExpressions`: call it on the `variableDeclaration` of a specific write access to have the transitive expressions of only this one.
 
 **How to know what nodes are variables?**
 

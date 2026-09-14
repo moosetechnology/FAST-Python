@@ -95,7 +95,7 @@ FASTPyParameter >> type: anObject [
 ]
 
 { #category : 'accessing' }
-FASTPyParameter >> variableDeclarator [
+FASTPyParameter >> variableDeclaration [
 	"For parameters, they are their own declarator."
 
 	^ self

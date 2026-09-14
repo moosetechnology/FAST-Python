@@ -224,7 +224,7 @@ FASTPyEntity >> transitiveAssignedExpressions [
 			expression usedVariables do: [ :variable |
 					variable versionWriteAccesses \ visitedAccesses do: [ :access |
 							visitedAccesses add: access.
-							toVisit addAll: access variableDeclarator assignedExpressions ] ] ].
+							toVisit addAll: access variableDeclaration assignedExpressions ] ] ].
 
 	^ result
 ]
@@ -236,7 +236,7 @@ FASTPyEntity >> transitiveAssignedExpressionsMap [
 	| result |
 	result := Dictionary new.
 
-	self versionWriteAccesses do: [ :access | result at: access put: access variableDeclarator transitiveAssignedExpressions ].
+	self versionWriteAccesses do: [ :access | result at: access put: access variableDeclaration transitiveAssignedExpressions ].
 	^ result
 ]
 

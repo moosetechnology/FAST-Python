@@ -56,7 +56,7 @@ FASTPythonLocalResolverTest >> testAssignUnpacking [
 	self assert: assignedVariable1 localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable1 localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable1 localDeclaration localUses size equals: 1.
-	self assert: assignedVariable1 localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable1 localDeclaration variableDeclaration equals: model module statements first.
 
 	assignedVariable2 := model module statements first left initializers second expression.
 	self assert: assignedVariable2 localDeclaration equals: assignedVariable2.
@@ -64,7 +64,7 @@ FASTPythonLocalResolverTest >> testAssignUnpacking [
 	self assert: assignedVariable2 localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable2 localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable2 localDeclaration localUses size equals: 1.
-	self assert: assignedVariable2 localDeclaration variableDeclarator equals: model module statements first
+	self assert: assignedVariable2 localDeclaration variableDeclaration equals: model module statements first
 ]
 
 { #category : 'tests - globals' }
@@ -78,7 +78,7 @@ print(x)'.
 	assignedVariableX := model module statements first left initializers first.
 	self assert: assignedVariableX localDeclaration equals: assignedVariableX.
 	self assert: assignedVariableX localDeclaration name equals: 'x'.
-	self assert: assignedVariableX localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariableX localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariableX localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableX localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableX localDeclaration localUses size equals: 2.
@@ -91,7 +91,7 @@ print(x)'.
 	assignedVariableY := model module statements first left initializers second.
 	self assert: assignedVariableY localDeclaration equals: assignedVariableY.
 	self assert: assignedVariableY localDeclaration name equals: 'y'.
-	self assert: assignedVariableY localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariableY localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariableY localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableY localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableY localDeclaration localUses size equals: 1.
@@ -111,7 +111,7 @@ print(z)'.
 	assignedVariableX := model module statements first left initializers first.
 	self assert: assignedVariableX localDeclaration equals: assignedVariableX.
 	self assert: assignedVariableX localDeclaration name equals: 'x'.
-	self assert: assignedVariableX localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariableX localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariableX localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableX localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableX localDeclaration localUses size equals: 2.
@@ -124,7 +124,7 @@ print(z)'.
 	assignedVariableY := model module statements first left initializers second initializers first.
 	self assert: assignedVariableY localDeclaration equals: assignedVariableY.
 	self assert: assignedVariableY localDeclaration name equals: 'y'.
-	self assert: assignedVariableY localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariableY localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariableY localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableY localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableY localDeclaration localUses size equals: 2.
@@ -137,7 +137,7 @@ print(z)'.
 	assignedVariableZ := model module statements first left initializers second initializers second.
 	self assert: assignedVariableZ localDeclaration equals: assignedVariableZ.
 	self assert: assignedVariableZ localDeclaration name equals: 'z'.
-	self assert: assignedVariableZ localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariableZ localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariableZ localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableZ localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableZ localDeclaration localUses size equals: 2.
@@ -159,7 +159,7 @@ print(x)'.
 	assignedVariableX := model module statements first left initializers first.
 	self assert: assignedVariableX localDeclaration equals: assignedVariableX.
 	self assert: assignedVariableX localDeclaration name equals: 'x'.
-	self assert: assignedVariableX localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariableX localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariableX localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableX localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableX localDeclaration localUses size equals: 2.
@@ -172,7 +172,7 @@ print(x)'.
 	assignedVariableY := model module statements first left initializers second.
 	self assert: assignedVariableY localDeclaration equals: assignedVariableY.
 	self assert: assignedVariableY localDeclaration name equals: 'y'.
-	self assert: assignedVariableY localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariableY localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariableY localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableY localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableY localDeclaration localUses size equals: 1.
@@ -192,7 +192,7 @@ print(z)'.
 	assignedVariableX := model module statements first left initializers first.
 	self assert: assignedVariableX localDeclaration equals: assignedVariableX.
 	self assert: assignedVariableX localDeclaration name equals: 'x'.
-	self assert: assignedVariableX localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariableX localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariableX localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableX localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableX localDeclaration localUses size equals: 2.
@@ -205,7 +205,7 @@ print(z)'.
 	assignedVariableY := model module statements first left initializers second initializers first.
 	self assert: assignedVariableY localDeclaration equals: assignedVariableY.
 	self assert: assignedVariableY localDeclaration name equals: 'y'.
-	self assert: assignedVariableY localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariableY localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariableY localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableY localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableY localDeclaration localUses size equals: 2.
@@ -218,7 +218,7 @@ print(z)'.
 	assignedVariableZ := model module statements first left initializers second initializers second.
 	self assert: assignedVariableZ localDeclaration equals: assignedVariableZ.
 	self assert: assignedVariableZ localDeclaration name equals: 'z'.
-	self assert: assignedVariableZ localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariableZ localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariableZ localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableZ localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableZ localDeclaration localUses size equals: 2.
@@ -322,7 +322,7 @@ x()'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -342,7 +342,7 @@ y.x()'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -362,7 +362,7 @@ x[1]()'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration value name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -384,7 +384,7 @@ FASTPythonLocalResolverTest >> testCommentedGlobalUsage [
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 1.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable
@@ -401,7 +401,7 @@ x'.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -499,7 +499,7 @@ print(x)'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 3.
@@ -630,7 +630,7 @@ print(glob)'.
 	assignedGlobal := model module statements first left.
 	self assert: assignedGlobal localDeclaration equals: assignedGlobal.
 	self assert: assignedGlobal localDeclaration name equals: 'glob'.
-	self assert: assignedGlobal localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedGlobal localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedGlobal localDeclaration isNonLocalDeclaration.
 	self assert: assignedGlobal localDeclaration localUses size equals: 2.
 	self assert: assignedGlobal localDeclaration localUses first equals: assignedGlobal.
@@ -642,7 +642,7 @@ print(glob)'.
 	assignedTemporary := model module statements second statements first left.
 	self assert: assignedTemporary localDeclaration equals: assignedTemporary.
 	self assert: assignedTemporary localDeclaration name equals: 'glob'.
-	self assert: assignedTemporary localDeclaration variableDeclarator equals: model module statements second statements first.
+	self assert: assignedTemporary localDeclaration variableDeclaration equals: model module statements second statements first.
 	self deny: assignedTemporary localDeclaration isNonLocalDeclaration.
 	self assert: assignedTemporary localDeclaration localUses size equals: 3.
 	self assert: assignedTemporary localDeclaration localUses first equals: assignedTemporary.
@@ -667,7 +667,7 @@ print(y.x)'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -696,7 +696,7 @@ print(x.y)'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'y'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
@@ -740,7 +740,7 @@ print(y.x)'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 3.
@@ -770,7 +770,7 @@ print(x)'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
@@ -810,7 +810,7 @@ print(x)'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
@@ -853,7 +853,7 @@ print(x)'.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -882,7 +882,7 @@ print(matplotlib)'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'matplotlib'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 3.
@@ -914,7 +914,7 @@ def reset():
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 6.
@@ -960,7 +960,7 @@ def outer():
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 3.
@@ -969,7 +969,7 @@ def outer():
 	assignedVariableInOuterFunction := model module statements second statements first left.
 	self assert: assignedVariableInOuterFunction localDeclaration equals: assignedVariableInOuterFunction.
 	self assert: assignedVariableInOuterFunction localDeclaration name equals: 'x'.
-	self assert: assignedVariableInOuterFunction localDeclaration variableDeclarator equals: model module statements second statements first.
+	self assert: assignedVariableInOuterFunction localDeclaration variableDeclaration equals: model module statements second statements first.
 	self assert: assignedVariableInOuterFunction localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableInOuterFunction localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableInOuterFunction localDeclaration localUses size equals: 1.
@@ -1027,7 +1027,7 @@ print(x)'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 5.
@@ -1064,7 +1064,7 @@ def f():
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 3.
@@ -1090,7 +1090,7 @@ print(x)'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -1111,7 +1111,7 @@ FASTPythonLocalResolverTest >> testGlobalUsedInDictionaryValue [
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -1135,7 +1135,7 @@ print(fun())'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'glob'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -1156,7 +1156,7 @@ lambda: x'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -1177,7 +1177,7 @@ FASTPythonLocalResolverTest >> testGlobalUsedInList [
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -1198,7 +1198,7 @@ FASTPythonLocalResolverTest >> testGlobalUsedInSet [
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -1219,7 +1219,7 @@ FASTPythonLocalResolverTest >> testGlobalUsedInTuple [
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -1243,7 +1243,7 @@ print(x)'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
@@ -1359,7 +1359,7 @@ print(x)'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 3.
@@ -1420,7 +1420,7 @@ print(f())'.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -1444,7 +1444,7 @@ print(f())'.
 	self assert: assignedVariableX localDeclaration equals: assignedVariableX.
 	self assert: assignedVariableX localDeclaration name equals: 'x'.
 	self assert: assignedVariableX localDeclaration isVariableWriteAccess.
-	self assert: assignedVariableX localDeclaration variableDeclarator equals: model module statements first statements first.
+	self assert: assignedVariableX localDeclaration variableDeclaration equals: model module statements first statements first.
 	self deny: assignedVariableX localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableX localDeclaration localUses size equals: 2.
 	self assert: assignedVariableX localDeclaration localUses first equals: assignedVariableX.
@@ -1457,7 +1457,7 @@ print(f())'.
 	self assert: assignedVariableY localDeclaration equals: assignedVariableY.
 	self assert: assignedVariableY localDeclaration name equals: 'y'.
 	self assert: assignedVariableY localDeclaration isVariableWriteAccess.
-	self assert: assignedVariableY localDeclaration variableDeclarator equals: model module statements first statements first.
+	self assert: assignedVariableY localDeclaration variableDeclaration equals: model module statements first statements first.
 	self deny: assignedVariableY localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableY localDeclaration localUses size equals: 1.
 	self assert: assignedVariableY localDeclaration localUses first equals: assignedVariableY.
@@ -1687,7 +1687,7 @@ FASTPythonLocalResolverTest >> testNonlocalStatementBindsToNearestEnclosingDecla
 	assignedVariableInGrand := model module statements first statements first left.
 	self assert: assignedVariableInGrand localDeclaration equals: assignedVariableInGrand.
 	self assert: assignedVariableInGrand localDeclaration name equals: 'x'.
-	self assert: assignedVariableInGrand localDeclaration variableDeclarator equals: model module statements first statements first.
+	self assert: assignedVariableInGrand localDeclaration variableDeclaration equals: model module statements first statements first.
 	self assert: assignedVariableInGrand localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableInGrand localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableInGrand localDeclaration localUses size equals: 1.
@@ -1696,7 +1696,7 @@ FASTPythonLocalResolverTest >> testNonlocalStatementBindsToNearestEnclosingDecla
 	assignedVariableInMiddle := model module statements first statements second statements first left.
 	self assert: assignedVariableInMiddle localDeclaration equals: assignedVariableInMiddle.
 	self assert: assignedVariableInMiddle localDeclaration name equals: 'x'.
-	self assert: assignedVariableInMiddle localDeclaration variableDeclarator equals: model module statements first statements second statements first.
+	self assert: assignedVariableInMiddle localDeclaration variableDeclaration equals: model module statements first statements second statements first.
 	self assert: assignedVariableInMiddle localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableInMiddle localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableInMiddle localDeclaration localUses size equals: 3.
@@ -1732,7 +1732,7 @@ FASTPythonLocalResolverTest >> testNonlocalStatementSharedByInnerFunctions [
 	assignedVariable := model module statements first statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 6.
@@ -1777,7 +1777,7 @@ FASTPythonLocalResolverTest >> testNonlocalStatementShouldCheckBindingsRecursive
 	assignedVariable := model module statements first statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 3.
@@ -1807,7 +1807,7 @@ FASTPythonLocalResolverTest >> testNonlocalStatementToReadVariable [
 	assignedVariable := model module statements first statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 3.
@@ -1841,7 +1841,7 @@ FASTPythonLocalResolverTest >> testNonlocalStatementWithMultipleVariables [
 	assignedVariableX := model module statements first statements first left.
 	self assert: assignedVariableX localDeclaration equals: assignedVariableX.
 	self assert: assignedVariableX localDeclaration name equals: 'x'.
-	self assert: assignedVariableX localDeclaration variableDeclarator equals: model module statements first statements first.
+	self assert: assignedVariableX localDeclaration variableDeclaration equals: model module statements first statements first.
 	self assert: assignedVariableX localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableX localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableX localDeclaration localUses size equals: 3.
@@ -1850,7 +1850,7 @@ FASTPythonLocalResolverTest >> testNonlocalStatementWithMultipleVariables [
 	assignedVariableY := model module statements first statements second left.
 	self assert: assignedVariableY localDeclaration equals: assignedVariableY.
 	self assert: assignedVariableY localDeclaration name equals: 'y'.
-	self assert: assignedVariableY localDeclaration variableDeclarator equals: model module statements first statements second.
+	self assert: assignedVariableY localDeclaration variableDeclaration equals: model module statements first statements second.
 	self assert: assignedVariableY localDeclaration isVariableWriteAccess.
 	self deny: assignedVariableY localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariableY localDeclaration localUses size equals: 3.
@@ -1890,7 +1890,7 @@ FASTPythonLocalResolverTest >> testNonlocalStatementWriteInInnerFunction [
 	assignedVariable := model module statements first statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 5.
@@ -1932,7 +1932,7 @@ FASTPythonLocalResolverTest >> testNonlocalStatementWriteInInnerFunctionAfterRea
 	assignedVariable := model module statements first statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 5.
@@ -1998,7 +1998,7 @@ print(x[3])'.
 	self assert: subscript localDeclaration equals: subscript.
 	self assert: subscript localDeclaration value name equals: 'x'.
 	self assert: subscript localDeclaration indices first sourceCode equals: '3'.
-	self assert: subscript localDeclaration variableDeclarator isNil.
+	self assert: subscript localDeclaration variableDeclaration isNil.
 	self deny: subscript localDeclaration isNonLocalDeclaration.
 	self assert: subscript localDeclaration localUses size equals: 1.
 	self assert: subscript localDeclaration localUses first equals: subscript
@@ -2015,7 +2015,7 @@ print(x[3])'.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration value name equals: 'x'.
 	self assert: assignedVariable localDeclaration indices first sourceCode equals: '3'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -2105,7 +2105,7 @@ x'.
 	self assert: assignedVariable1 localDeclaration equals: assignedVariable1.
 	self assert: assignedVariable1 localDeclaration name equals: 'x'.
 	self assert: assignedVariable1 localDeclaration isVariableWriteAccess.
-	self assert: assignedVariable1 localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable1 localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable1 localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable1 localDeclaration localUses size equals: 3.
 	self assert: assignedVariable1 localDeclaration localUses first equals: assignedVariable1.
@@ -2133,7 +2133,7 @@ print(x)'.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
 	self assert: assignedVariable localDeclaration localUses first equals: assignedVariable.
@@ -2154,7 +2154,7 @@ for x in fruits:
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'fruits'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
@@ -2177,7 +2177,7 @@ if glob < 3:
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'glob'.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 3.
 
@@ -2202,7 +2202,7 @@ print(i)'.
 	declared := model module statements first statements first left.
 	self assert: declared localDeclaration equals: declared.
 	self assert: declared localDeclaration name equals: 'i'.
-	self assert: declared localDeclaration variableDeclarator equals: model module statements first statements first.
+	self assert: declared localDeclaration variableDeclaration equals: model module statements first statements first.
 	self assert: declared localDeclaration isVariableWriteAccess.
 	self deny: declared localDeclaration isNonLocalDeclaration.
 	self assert: declared localDeclaration localUses size equals: 2.
@@ -2226,7 +2226,7 @@ print(i)'.
 	self assert: declared localDeclaration equals: declared.
 	self assert: declared localDeclaration name equals: 'i'.
 	self assert: declared localDeclaration isVariableWriteAccess.
-	self assert: declared localDeclaration variableDeclarator equals: model module statements first statements first.
+	self assert: declared localDeclaration variableDeclaration equals: model module statements first statements first.
 	self deny: declared localDeclaration isNonLocalDeclaration.
 	self assert: declared localDeclaration localUses size equals: 2.
 	self assert: declared localDeclaration localUses first equals: declared.
@@ -2248,7 +2248,7 @@ FASTPythonLocalResolverTest >> testVariableInListComprehensions [
 	self assert: declared localDeclaration equals: declared.
 	self assert: declared localDeclaration name equals: 'x'.
 	self assert: declared localDeclaration isVariableWriteAccess.
-	self assert: declared localDeclaration variableDeclarator equals: model module statements second forClauses first.
+	self assert: declared localDeclaration variableDeclaration equals: model module statements second forClauses first.
 	self deny: declared localDeclaration isNonLocalDeclaration.
 	self assert: declared localDeclaration localUses size equals: 2.
 	self assert: declared localDeclaration localUses first equals: declared.
@@ -2288,7 +2288,7 @@ print(x)'.
 	self assert: declared localDeclaration equals: declared.
 	self assert: declared localDeclaration name equals: 'x'.
 	self assert: declared localDeclaration isVariableWriteAccess.
-	self assert: declared localDeclaration variableDeclarator equals: model module statements third forClauses first.
+	self assert: declared localDeclaration variableDeclaration equals: model module statements third forClauses first.
 	self deny: declared localDeclaration isNonLocalDeclaration.
 	self assert: declared localDeclaration localUses size equals: 2.
 	self assert: declared localDeclaration localUses first equals: declared.
@@ -2308,7 +2308,7 @@ FASTPythonLocalResolverTest >> testVariableOfFor [
 	declared := model module statements first left.
 	self assert: declared localDeclaration equals: declared.
 	self assert: declared localDeclaration name equals: 'x'.
-	self assert: declared localDeclaration variableDeclarator equals: model module statements first.
+	self assert: declared localDeclaration variableDeclaration equals: model module statements first.
 	self assert: declared localDeclaration isVariableWriteAccess.
 	self deny: declared localDeclaration isNonLocalDeclaration.
 	self assert: declared localDeclaration localUses size equals: 2.
@@ -2331,7 +2331,7 @@ for x in range(5):
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 3.
@@ -2356,7 +2356,7 @@ FASTPythonLocalResolverTest >> testVariableOfForRedefinedInside [
 	declared := model module statements first left.
 	self assert: declared localDeclaration equals: declared.
 	self assert: declared localDeclaration name equals: 'x'.
-	self assert: declared localDeclaration variableDeclarator equals: model module statements first.
+	self assert: declared localDeclaration variableDeclaration equals: model module statements first.
 	self assert: declared localDeclaration isVariableWriteAccess.
 	self deny: declared localDeclaration isNonLocalDeclaration.
 	self assert: declared localDeclaration localUses size equals: 2.
@@ -2379,7 +2379,7 @@ print(x)'.
 	assignedVariable := model module statements first left.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'x'.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 2.
@@ -2400,7 +2400,7 @@ FASTPythonLocalResolverTest >> testVariableOfForWithTuple [
 	declaredA := model module statements first left initializers first.
 	self assert: declaredA localDeclaration equals: declaredA.
 	self assert: declaredA localDeclaration name equals: 'a'.
-	self assert: declaredA localDeclaration variableDeclarator equals: model module statements first.
+	self assert: declaredA localDeclaration variableDeclaration equals: model module statements first.
 	self assert: declaredA localDeclaration isVariableWriteAccess.
 	self deny: declaredA localDeclaration isNonLocalDeclaration.
 	self assert: declaredA localDeclaration localUses size equals: 2.
@@ -2413,7 +2413,7 @@ FASTPythonLocalResolverTest >> testVariableOfForWithTuple [
 	declaredB := model module statements first left initializers second.
 	self assert: declaredB localDeclaration equals: declaredB.
 	self assert: declaredB localDeclaration name equals: 'b'.
-	self assert: declaredA localDeclaration variableDeclarator equals: model module statements first.
+	self assert: declaredA localDeclaration variableDeclaration equals: model module statements first.
 	self assert: declaredB localDeclaration isVariableWriteAccess.
 	self deny: declaredB localDeclaration isNonLocalDeclaration.
 	self assert: declaredB localDeclaration localUses size equals: 2.
@@ -2466,7 +2466,7 @@ print(glob)'.
 	self assert: assignedVariable localDeclaration equals: assignedVariable.
 	self assert: assignedVariable localDeclaration name equals: 'glob'.
 	self assert: assignedVariable localDeclaration isVariableWriteAccess.
-	self assert: assignedVariable localDeclaration variableDeclarator equals: model module statements first.
+	self assert: assignedVariable localDeclaration variableDeclaration equals: model module statements first.
 	self deny: assignedVariable localDeclaration isNonLocalDeclaration.
 	self assert: assignedVariable localDeclaration localUses size equals: 3.
 

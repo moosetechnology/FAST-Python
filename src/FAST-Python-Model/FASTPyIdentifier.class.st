@@ -58,7 +58,7 @@ FASTPyIdentifier >> isIdentifier [
 ]
 
 { #category : 'accessing' }
-FASTPyIdentifier >> variableDeclarator [
+FASTPyIdentifier >> variableDeclaration [
 	"In the case I represent a write access to a variable, I return the node representing my assignment."
 
 	| assignedNode |
@@ -71,5 +71,5 @@ FASTPyIdentifier >> variableDeclarator [
 
 	assignedNode parentForInClauseLeft ifNotNil: [ :clause | ^ clause ].
 
-	^ super variableDeclarator
+	^ super variableDeclaration
 ]

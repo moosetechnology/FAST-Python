@@ -63,7 +63,7 @@ FASTPyWalrus >> value: anObject [
 ]
 
 { #category : 'accessing' }
-FASTPyWalrus >> variableDeclarator [
+FASTPyWalrus >> variableDeclaration [
 
 	^ self
 ]
