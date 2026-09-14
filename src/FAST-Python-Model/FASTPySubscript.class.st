@@ -29,8 +29,8 @@
 Class {
 	#name : 'FASTPySubscript',
 	#superclass : 'FASTPyExpression',
-	#traits : 'FASTPyTAsPatternTarget + FASTPyTCanBeVariable + FASTPyTReturnReferenceable',
-	#classTraits : 'FASTPyTAsPatternTarget classTrait + FASTPyTCanBeVariable classTrait + FASTPyTReturnReferenceable classTrait',
+	#traits : 'FASTPyTAsPatternTarget + FASTPyTReturnReferenceable + FASTTCanBeVariable',
+	#classTraits : 'FASTPyTAsPatternTarget classTrait + FASTPyTReturnReferenceable classTrait + FASTTCanBeVariable classTrait',
 	#instVars : [
 		'#indices => FMMany type: #FASTPyTSliceIndex opposite: #parentSubscriptIndex',
 		'#value => FMOne type: #FASTPyExpression opposite: #parentSubscriptValue'

@@ -887,8 +887,6 @@ FASTPythonMetamodelGenerator >> defineTraits [
 	
 	tCallable := (builder newTraitNamed: #TCallable) comment: 'I represent something that can be the receiver of a call'.
 	
-	tCanBeVariable := (builder newTraitNamed: #TCanBeVariable) comment: 'Represent everything that can be a variable. Used for the LocalResolver and the SSA builder. Maybe I should be merged with TAssignable?'.
-	
 	tClassPatternElement := (builder newTraitNamed: #TClassPatternElement) comment: 'I represent the elements of a class pattern in python pattern matcher. The first element is the class name, the others the arguments.'.
 
 	tDecoratorExpression := (builder newTraitNamed: #TDecoratorExpression) comment: 'I represent an entity that *can* be the expression of a decorator.'.
@@ -928,6 +926,7 @@ FASTPythonMetamodelGenerator >> defineTraits [
 	tBinaryExpression := self remoteTrait: #TBinaryExpression withPrefix: #FAST.
 	tBooleanLiteral := self remoteTrait: #TBooleanLiteral withPrefix: #FAST.
 	tBreakStatement := self remoteTrait: #TBreakStatement withPrefix: #FAST.
+	tCanBeVariable := self remoteTrait: #TCanBeVariable withPrefix: #FAST.
 	tComment := self remoteTrait: #TComment withPrefix: #FAST.
 	tConditionalStatement := self remoteTrait: #TConditionalStatement withPrefix: #FAST.
 	tContinueStatement := self remoteTrait: #TContinueStatement withPrefix: #FAST.

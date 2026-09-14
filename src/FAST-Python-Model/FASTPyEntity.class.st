@@ -77,6 +77,14 @@ FASTPyEntity >> callOnMe [
 ]
 
 { #category : 'testing' }
+FASTPyEntity >> canBeVariable [
+
+	<ignoreForCoverage>
+	<generated>
+	^ false
+]
+
+{ #category : 'testing' }
 FASTPyEntity >> hasImmediateSource [
 
 	<ignoreForCoverage>

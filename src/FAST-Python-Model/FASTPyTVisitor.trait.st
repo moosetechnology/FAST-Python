@@ -76,9 +76,9 @@ FASTPyTVisitor >> visitFASTPyAttributeAccess: anAttributeAccess [
 	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTAsPatternTarget: anAttributeAccess.
-	self visitFASTPyTCanBeVariable: anAttributeAccess.
 	self visitFASTPyTReturnReferenceable: anAttributeAccess.
 	self visitFASTPyTSplatParameterTarget: anAttributeAccess.
+	self visitFASTTCanBeVariable: anAttributeAccess.
 	self visitFASTTNamedEntity: anAttributeAccess.
 	self visitFASTPyExpression: anAttributeAccess.
 
@@ -543,9 +543,9 @@ FASTPyTVisitor >> visitFASTPyIdentifier: anIdentifier [
 	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTAsPatternTarget: anIdentifier.
-	self visitFASTPyTCanBeVariable: anIdentifier.
 	self visitFASTPyTReturnReferenceable: anIdentifier.
 	self visitFASTPyTSplatParameterTarget: anIdentifier.
+	self visitFASTTCanBeVariable: anIdentifier.
 	self visitFASTTNamedEntity: anIdentifier.
 	self visitFASTPyExpression: anIdentifier
 ]
@@ -798,7 +798,7 @@ FASTPyTVisitor >> visitFASTPyParameter: aParameter [
 
 	<ignoreForCoverage>
 	<generated>
-	self visitFASTPyTCanBeVariable: aParameter.
+	self visitFASTTCanBeVariable: aParameter.
 	self visitFASTTVariableEntity: aParameter.
 
 	self visitEntity: aParameter type.
@@ -943,8 +943,8 @@ FASTPyTVisitor >> visitFASTPySubscript: aSubscript [
 	<ignoreForCoverage>
 	<generated>
 	self visitFASTPyTAsPatternTarget: aSubscript.
-	self visitFASTPyTCanBeVariable: aSubscript.
 	self visitFASTPyTReturnReferenceable: aSubscript.
+	self visitFASTTCanBeVariable: aSubscript.
 	self visitFASTPyExpression: aSubscript.
 
 	self visitEntity: aSubscript value.
@@ -987,14 +987,6 @@ FASTPyTVisitor >> visitFASTPyTAwaitable: aTAwaitable [
 
 { #category : 'visiting' }
 FASTPyTVisitor >> visitFASTPyTCallable: aTCallable [
-
-	<ignoreForCoverage>
-	<generated>
-
-]
-
-{ #category : 'visiting' }
-FASTPyTVisitor >> visitFASTPyTCanBeVariable: aTCanBeVariable [
 
 	<ignoreForCoverage>
 	<generated>
@@ -1327,6 +1319,14 @@ FASTPyTVisitor >> visitFASTTBreakStatement: aTBreakStatement [
 	<ignoreForCoverage>
 	<generated>
 	"We should visit FASTTStatement but all its users in this language already visit it in their superclasses so we skip the call here."
+]
+
+{ #category : 'visiting' }
+FASTPyTVisitor >> visitFASTTCanBeVariable: aTCanBeVariable [
+
+	<ignoreForCoverage>
+	<generated>
+
 ]
 
 { #category : 'visiting' }

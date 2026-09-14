@@ -211,29 +211,6 @@ FASTPythonLocalResolverVisitor >> visitFASTPyMethodDefinition: aMethodDefinition
 ]
 
 { #category : 'visiting' }
-FASTPythonLocalResolverVisitor >> visitFASTPyTCanBeVariable: aTCanBeVariable [
-	"This has some limits. For example, 
-	
-	x.y.z = 3
-	v = x.y
-	print(v.z)
-	
-	Here v.z should be linked to the z variable but it will not. This case will not be managed for now but we might need it in the future.
-	
-	Or also subscripts are linked if their source code is identical only."
-
-	aTCanBeVariable isVariableWriteAccess
-		ifTrue: [ self ensureDeclarationOf: aTCanBeVariable named: aTCanBeVariable localDeclarationName declaration: aTCanBeVariable ]
-		ifFalse: [
-				self
-					bind: aTCanBeVariable
-					toDeclarationNamed: aTCanBeVariable localDeclarationName
-					ifAbsentUse: [ :node :name | self declarationForUndeclaredNode: node named: name ] ].
-
-	super visitFASTPyTCanBeVariable: aTCanBeVariable
-]
-
-{ #category : 'visiting' }
 FASTPythonLocalResolverVisitor >> visitFASTPyVariable: aVariable [
 	"We handle two specific cases here. 
 	
@@ -272,4 +249,27 @@ FASTPythonLocalResolverVisitor >> visitFASTPyWhileStatement: aWhileStatement [
 	self visitFASTTStatementBlock: aWhileStatement.
 	self visitFASTPyStatement: aWhileStatement.
 	self visitFASTPyTWithElseClause: aWhileStatement
+]
+
+{ #category : 'visiting' }
+FASTPythonLocalResolverVisitor >> visitFASTTCanBeVariable: aTCanBeVariable [
+	"This has some limits. For example, 
+	
+	x.y.z = 3
+	v = x.y
+	print(v.z)
+	
+	Here v.z should be linked to the z variable but it will not. This case will not be managed for now but we might need it in the future.
+	
+	Or also subscripts are linked if their source code is identical only."
+
+	aTCanBeVariable isVariableWriteAccess
+		ifTrue: [ self ensureDeclarationOf: aTCanBeVariable named: aTCanBeVariable localDeclarationName declaration: aTCanBeVariable ]
+		ifFalse: [
+				self
+					bind: aTCanBeVariable
+					toDeclarationNamed: aTCanBeVariable localDeclarationName
+					ifAbsentUse: [ :node :name | self declarationForUndeclaredNode: node named: name ] ].
+
+	super visitFASTTCanBeVariable: aTCanBeVariable
 ]

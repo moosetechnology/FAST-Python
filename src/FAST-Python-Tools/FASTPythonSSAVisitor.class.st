@@ -184,20 +184,6 @@ FASTPythonSSAVisitor >> visitFASTPyMethodDefinition: aMethodDefinition [
 ]
 
 { #category : 'visiting' }
-FASTPythonSSAVisitor >> visitFASTPyTCanBeVariable: aTCanBeVariable [
-
-	aTCanBeVariable isVariableWriteAccess
-		ifTrue: [ self handleNewAssignemntTo: aTCanBeVariable ]
-		ifFalse: [
-				aTCanBeVariable localDeclaration isNonLocalDeclaration ifFalse: [ "Subscript is a special case since it is not directly assigned. So thfe first read act as a new declaration."
-						(aTCanBeVariable isSubscript and: [ aTCanBeVariable localDeclaration activeVersion isNil ])
-							ifTrue: [ self handleNewAssignemntTo: aTCanBeVariable ]
-							ifFalse: [ aTCanBeVariable ssaVersion: aTCanBeVariable localDeclaration activeVersion ] ] ].
-
-	super visitFASTPyTCanBeVariable: aTCanBeVariable
-]
-
-{ #category : 'visiting' }
 FASTPythonSSAVisitor >> visitFASTPyTDefinition: aTDefinition [
 	"We need to redo the CFG for definitions"
 
@@ -215,4 +201,18 @@ FASTPythonSSAVisitor >> visitFASTPyWalrus: aWalrus [
 	self handleNewAssignemntTo: aWalrus.
 
 	super visitFASTPyWalrus: aWalrus
+]
+
+{ #category : 'visiting' }
+FASTPythonSSAVisitor >> visitFASTTCanBeVariable: aTCanBeVariable [
+
+	aTCanBeVariable isVariableWriteAccess
+		ifTrue: [ self handleNewAssignemntTo: aTCanBeVariable ]
+		ifFalse: [
+				aTCanBeVariable localDeclaration isNonLocalDeclaration ifFalse: [ "Subscript is a special case since it is not directly assigned. So thfe first read act as a new declaration."
+						(aTCanBeVariable isSubscript and: [ aTCanBeVariable localDeclaration activeVersion isNil ])
+							ifTrue: [ self handleNewAssignemntTo: aTCanBeVariable ]
+							ifFalse: [ aTCanBeVariable ssaVersion: aTCanBeVariable localDeclaration activeVersion ] ] ].
+
+	super visitFASTTCanBeVariable: aTCanBeVariable
 ]

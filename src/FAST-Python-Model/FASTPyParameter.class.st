@@ -29,8 +29,8 @@
 Class {
 	#name : 'FASTPyParameter',
 	#superclass : 'FASTPyEntity',
-	#traits : 'FASTPyTCanBeVariable + FASTTVariableEntity',
-	#classTraits : 'FASTPyTCanBeVariable classTrait + FASTTVariableEntity classTrait',
+	#traits : 'FASTTCanBeVariable + FASTTVariableEntity',
+	#classTraits : 'FASTTCanBeVariable classTrait + FASTTVariableEntity classTrait',
 	#instVars : [
 		'#defaultValue => FMOne type: #FASTPyExpression opposite: #parentDefaultParameterValue',
 		'#type => FMOne type: #FASTPyType opposite: #parentParameter'
