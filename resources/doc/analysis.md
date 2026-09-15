@@ -195,7 +195,7 @@ It is possible to ask a few things to the nodes once the resolution is done:
 - `node allWriteAccesses` if the node is a variable, returns all the write accesses to the variable
 - `node internalAccesses` if the node is a variable, returns all the internal accesses done on the variable, i.e. the attribute accesses and subscripts such as `x.y` and `x[3]`, on all the accesses of the variable
 - `node allNodesUsingMe` if the node is a variable, returns all the nodes using the variable: for each access of the variable, all its ancestors up to the statement containing it, without going further than the statement blocks (Module, function, method, clauses, ...). For example, for `return x + 3`, it returns the return statement and the binary operation
-- `node statementsUsingMe` if the node is a variable, returns the statements using the variable: same as `allNodesUsingMe` but only the statement of each access, without the intermediate nodes
+- `node allStatementsUsingMe` if the node is a variable, returns the statements using the variable: same as `allNodesUsingMe` but only the statement of each access, without the intermediate nodes
 - `node callsOnVariable` if the node is a variable, returns the calls made on the variable, i.e. the `FASTPyCall` nodes having the variable as receiver: the callee of the call is the read of the variable itself (such as the invocation or instantiation `x()`) or an internal access on the variable (such as `x.append(1)` or `x[3]()`)
 - `node variableDeclaration` if the node that is a variable write access, it will return the node assigning the variable (can be an assignment, augmented assignment, for loop or for in clause)
 
@@ -311,7 +311,7 @@ On top of this, it is possible to get information via the SSA directly with the 
 - `node versionReadAccesses` returns all the real accesses for this specific version of the variable
 - `node versionWriteAccesses` returns all the write accesses for this specific version of the variable
 - `node allNodesUsingMyVersion` same as `allNodesUsingMe` but only with the accesses reachable from the current SSA version of the node. In case of a Phi version, the accesses of all the reachable versions are considered
-- `node statementsUsingMyVersion` same as `statementsUsingMe` but only with the accesses reachable from the current SSA version of the node
+- `node allStatementsUsingMyVersion` same as `allStatementsUsingMe` but only with the accesses reachable from the current SSA version of the node
 - `node callsOnVariableVersion` same as `callsOnVariable` but only with the reads reachable from the current SSA version of the node
 
 On the model:
@@ -538,9 +538,9 @@ The requirement column indicates what needs to be done on the model before using
 | Selector | Receiver | Requirement | Description |
 |---|---|---|---|
 | `allNodesUsingMe` | Any access of a variable | LR | Returns all the nodes using the variable: the ancestors of each of its accesses, up to the statement containing it, without going further than the statement blocks |
-| `statementsUsingMe` | Any access of a variable | LR | Same as `#allNodesUsingMe` but only the statements, without the intermediate nodes |
+| `allStatementsUsingMe` | Any access of a variable | LR | Same as `#allNodesUsingMe` but only the statements, without the intermediate nodes |
 | `allNodesUsingMyVersion` | Any access of a variable | SSA | Same as `#allNodesUsingMe` but only with the accesses reachable from the current SSA version |
-| `statementsUsingMyVersion` | Any access of a variable | SSA | Same as `#statementsUsingMe` but only with the accesses reachable from the current SSA version |
+| `allStatementsUsingMyVersion` | Any access of a variable | SSA | Same as `#allStatementsUsingMe` but only with the accesses reachable from the current SSA version |
 
 #### Getting the internal accesses of a variable
 
@@ -789,7 +789,7 @@ The result contains the `x.append` attribute access, done on the write access of
 
 **Which nodes and which statements use a variable?**
 
-`#allNodesUsingMe` returns all the nodes using a variable: for each of its accesses, the ancestors up to the statement containing it, without going further than the statement blocks (Module, function, method, clauses, ...). `#statementsUsingMe` returns the same but only the statements, without the intermediate nodes. Both need the local resolution to be done:
+`#allNodesUsingMe` returns all the nodes using a variable: for each of its accesses, the ancestors up to the statement containing it, without going further than the statement blocks (Module, function, method, clauses, ...). `#allStatementsUsingMe` returns the same but only the statements, without the intermediate nodes. Both need the local resolution to be done:
 
 ```smalltalk
 model := FASTPythonImporter parseAndResolve: 'x = 1
@@ -804,16 +804,16 @@ model module statements first left allNodesUsingMe
 	PyAssignment(1 - 5)
 	PyBinaryOperator(25 - 29) )"
 
-model module statements first left statementsUsingMe
+model module statements first left allStatementsUsingMe
 
 "a Set(
 	PyReturnStatement(18 - 29)
 	PyAssignment(1 - 5) )"
 ```
 
-The binary operation is part of `#allNodesUsingMe` but not of `#statementsUsingMe`.
+The binary operation is part of `#allNodesUsingMe` but not of `#allStatementsUsingMe`.
 
-Their SSA counterparts, `#allNodesUsingMyVersion` and `#statementsUsingMyVersion`, only consider the accesses reachable from the current SSA version of the variable. In case of a Phi version, the accesses of all the reachable versions are considered:
+Their SSA counterparts, `#allNodesUsingMyVersion` and `#allStatementsUsingMyVersion`, only consider the accesses reachable from the current SSA version of the variable. In case of a Phi version, the accesses of all the reachable versions are considered:
 
 ```smalltalk
 model := FASTPythonImporter parseAndResolve: 'x = 2
@@ -847,7 +847,7 @@ lastVariableAccess allNodesUsingMyVersion
 	PyCall(43 - 54)
 	PyAssignment(18 - 22) ) <= only the nodes using the current version of x"
 
-lastVariableAccess statementsUsingMyVersion
+lastVariableAccess allStatementsUsingMyVersion
 
 "a Set(
 	PyAssignment(36 - 40)
