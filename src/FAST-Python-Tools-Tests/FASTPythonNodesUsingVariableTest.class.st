@@ -155,17 +155,21 @@ print(x)'.
 ]
 
 { #category : 'tests' }
-FASTPythonNodesUsingVariableTest >> testStatementsUsingMeDeduplicatesStatementOfMultipleUsages [
+FASTPythonNodesUsingVariableTest >> testAllStatementsUsingMeDeduplicatesStatementOfMultipleUsages [
+
 	self parseAndResolve: 'x = 1
 
 print(x + x)'.
 
-	self assert: (model module statements first left statementsUsingMe) size equals: 2.
-	self assertCollection: (model module statements first left statementsUsingMe) hasSameElements: { model module statements first. model module statements second }
+	self assert: model module statements first left allStatementsUsingMe size equals: 2.
+	self assertCollection: model module statements first left allStatementsUsingMe hasSameElements: {
+			model module statements first.
+			model module statements second }
 ]
 
 { #category : 'tests' }
-FASTPythonNodesUsingVariableTest >> testStatementsUsingMeExcludesIntermediateNodes [
+FASTPythonNodesUsingVariableTest >> testAllStatementsUsingMeExcludesIntermediateNodes [
+
 	| function |
 	self parseAndResolve: 'x = 1
 
@@ -174,12 +178,15 @@ def f():
 
 	function := model module statements second.
 
-	self assert: (model module statements first left statementsUsingMe) size equals: 2.
-	self assertCollection: (model module statements first left statementsUsingMe) hasSameElements: { model module statements first. function statements first }
+	self assert: model module statements first left allStatementsUsingMe size equals: 2.
+	self assertCollection: model module statements first left allStatementsUsingMe hasSameElements: {
+			model module statements first.
+			function statements first }
 ]
 
 { #category : 'tests' }
-FASTPythonNodesUsingVariableTest >> testStatementsUsingMeOnConditionOfControlStatement [
+FASTPythonNodesUsingVariableTest >> testAllStatementsUsingMeOnConditionOfControlStatement [
+
 	| ifStatement |
 	self parseAndResolve: 'x = 1
 
@@ -188,12 +195,15 @@ if x > 3:
 
 	ifStatement := model module statements second.
 
-	self assert: (model module statements first left statementsUsingMe) size equals: 2.
-	self assertCollection: (model module statements first left statementsUsingMe) hasSameElements: { model module statements first. ifStatement }
+	self assert: model module statements first left allStatementsUsingMe size equals: 2.
+	self assertCollection: model module statements first left allStatementsUsingMe hasSameElements: {
+			model module statements first.
+			ifStatement }
 ]
 
 { #category : 'tests' }
-FASTPythonNodesUsingVariableTest >> testStatementsUsingMeOnSimpleCase [
+FASTPythonNodesUsingVariableTest >> testAllStatementsUsingMeOnSimpleCase [
+
 	| writeAccess readAccess |
 	self parseAndResolve: 'x = 1
 
@@ -202,27 +212,32 @@ print(x)'.
 	writeAccess := model module statements first left.
 	readAccess := model module statements second arguments first.
 
-	self assert: writeAccess statementsUsingMe size equals: 2.
-	self assert: readAccess statementsUsingMe size equals: 2.
-	self assertCollection: writeAccess statementsUsingMe hasSameElements: { model module statements first. model module statements second }.
-	self assertCollection: readAccess statementsUsingMe hasSameElements: { model module statements first. model module statements second }
-]
-
-{ #category : 'tests' }
-FASTPythonNodesUsingVariableTest >> testStatementsUsingMyVersionDeduplicatesStatement [
-
-	self parseAndResolve: 'x = 1
-
-print(x + x)'.
-
-	self assert: model module statements second arguments first leftOperand statementsUsingMyVersion size equals: 2.
-	self assertCollection: model module statements second arguments first leftOperand statementsUsingMyVersion hasSameElements: {
+	self assert: writeAccess allStatementsUsingMe size equals: 2.
+	self assert: readAccess allStatementsUsingMe size equals: 2.
+	self assertCollection: writeAccess allStatementsUsingMe hasSameElements: {
+			model module statements first.
+			model module statements second }.
+	self assertCollection: readAccess allStatementsUsingMe hasSameElements: {
 			model module statements first.
 			model module statements second }
 ]
 
 { #category : 'tests' }
-FASTPythonNodesUsingVariableTest >> testStatementsUsingMyVersionOnPhi [
+FASTPythonNodesUsingVariableTest >> testAllStatementsUsingMyVersionDeduplicatesStatement [
+
+	self parseAndResolve: 'x = 1
+
+print(x + x)'.
+
+	self assert: model module statements second arguments first leftOperand allStatementsUsingMyVersion size equals: 2.
+	self assertCollection: model module statements second arguments first leftOperand allStatementsUsingMyVersion hasSameElements: {
+			model module statements first.
+			model module statements second }
+]
+
+{ #category : 'tests' }
+FASTPythonNodesUsingVariableTest >> testAllStatementsUsingMyVersionOnPhi [
+
 	| printRead ifStatement |
 	self parseAndResolve: 'if z > 3:
 	x = 2
@@ -234,12 +249,16 @@ print(x)'.
 	ifStatement := model module statements first.
 	printRead := model module statements second arguments first.
 
-	self assert: printRead statementsUsingMyVersion size equals: 3.
-	self assertCollection: printRead statementsUsingMyVersion hasSameElements: { ifStatement thenClause statements first. ifStatement elseClause statements first. model module statements second }
+	self assert: printRead allStatementsUsingMyVersion size equals: 3.
+	self assertCollection: printRead allStatementsUsingMyVersion hasSameElements: {
+			ifStatement thenClause statements first.
+			ifStatement elseClause statements first.
+			model module statements second }
 ]
 
 { #category : 'tests' }
-FASTPythonNodesUsingVariableTest >> testStatementsUsingMyVersionOnSimpleCase [
+FASTPythonNodesUsingVariableTest >> testAllStatementsUsingMyVersionOnSimpleCase [
+
 	| readAccess |
 	self parseAndResolve: 'x = 1
 
@@ -247,12 +266,15 @@ print(x)'.
 
 	readAccess := model module statements second arguments first.
 
-	self assert: readAccess statementsUsingMyVersion size equals: 2.
-	self assertCollection: readAccess statementsUsingMyVersion hasSameElements: { model module statements first. model module statements second }
+	self assert: readAccess allStatementsUsingMyVersion size equals: 2.
+	self assertCollection: readAccess allStatementsUsingMyVersion hasSameElements: {
+			model module statements first.
+			model module statements second }
 ]
 
 { #category : 'tests' }
-FASTPythonNodesUsingVariableTest >> testStatementsUsingMyVersionOnlyReachableAccesses [
+FASTPythonNodesUsingVariableTest >> testAllStatementsUsingMyVersionOnlyReachableAccesses [
+
 	| firstRead |
 	self parseAndResolve: 'x = 1
 
@@ -264,6 +286,8 @@ print(x)'.
 
 	firstRead := model module statements second arguments first.
 
-	self assert: firstRead statementsUsingMyVersion size equals: 2.
-	self assertCollection: firstRead statementsUsingMyVersion hasSameElements: { model module statements first. model module statements second }
+	self assert: firstRead allStatementsUsingMyVersion size equals: 2.
+	self assertCollection: firstRead allStatementsUsingMyVersion hasSameElements: {
+			model module statements first.
+			model module statements second }
 ]

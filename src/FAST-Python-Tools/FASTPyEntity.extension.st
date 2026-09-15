@@ -61,6 +61,40 @@ FASTPyEntity >> allSSAVersions [
 ]
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> allStatementsUsingMe [
+	"If I am a variable, return all the statements using me and all the other accesses of the same variable.
+	Contrary to #allNodesUsingMe that returns all the nodes between the variable and its statement, I return only the statement containing the variable. For example, for `return x + 3`, #allNodesUsingMe returns the return statement and the binary operation while I only return the return statement.
+
+	I need the local resolution to be done before."
+
+	^ self allAccesses
+		  collect: [ :access |
+				  | node |
+				  node := access.
+				  [ node parentNode isNotNil and: [ (node parentNode isOfType: FASTTStatementBlock) not ] ] whileTrue: [ node := node parentNode ].
+				  node ifNil: [ self error: 'A variable should always be in a statement block' ].
+				  node ]
+		  as: Set
+]
+
+{ #category : '*FAST-Python-Tools' }
+FASTPyEntity >> allStatementsUsingMyVersion [
+	"If I am a variable, return all the statements using the accesses reachable from my current SSA version.
+	Contrary to #allNodesUsingMyVersion that returns all the nodes between the variable accesses and their statements, I return only the statements containing the variable.
+
+	I need the SSA to be done before."
+
+	^ self versionAccesses
+		  collect: [ :access |
+				  | node |
+				  node := access.
+				  [ node parentNode isNotNil and: [ (node parentNode isOfType: FASTTStatementBlock) not ] ] whileTrue: [ node := node parentNode ].
+				  node ifNil: [ self error: 'A variable should always be in a statement block' ].
+				  node ]
+		  as: Set
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> callsOnVariable [
 	"If I am a variable, return all the call nodes having my read accesses as receiver. This will group invocations and instantiations.
 
@@ -171,40 +205,6 @@ FASTPyEntity >> selfOrTopmostAssignableCollection [
 	node parentSplat ifNotNil: [ :splat | ^ splat selfOrTopmostAssignableCollection ].
 
 	^ node
-]
-
-{ #category : '*FAST-Python-Tools' }
-FASTPyEntity >> statementsUsingMe [
-	"If I am a variable, return all the statements using me and all the other accesses of the same variable.
-	Contrary to #allNodesUsingMe that returns all the nodes between the variable and its statement, I return only the statement containing the variable. For example, for `return x + 3`, #allNodesUsingMe returns the return statement and the binary operation while I only return the return statement.
-
-	I need the local resolution to be done before."
-
-	^ self allAccesses
-		  collect: [ :access |
-				  | node |
-				  node := access.
-				  [ node parentNode isNotNil and: [ (node parentNode isOfType: FASTTStatementBlock) not ] ] whileTrue: [ node := node parentNode ].
-				  node ifNil: [ self error: 'A variable should always be in a statement block' ].
-				  node ]
-		  as: Set
-]
-
-{ #category : '*FAST-Python-Tools' }
-FASTPyEntity >> statementsUsingMyVersion [
-	"If I am a variable, return all the statements using the accesses reachable from my current SSA version.
-	Contrary to #allNodesUsingMyVersion that returns all the nodes between the variable accesses and their statements, I return only the statements containing the variable.
-
-	I need the SSA to be done before."
-
-	^ self versionAccesses
-		  collect: [ :access |
-				  | node |
-				  node := access.
-				  [ node parentNode isNotNil and: [ (node parentNode isOfType: FASTTStatementBlock) not ] ] whileTrue: [ node := node parentNode ].
-				  node ifNil: [ self error: 'A variable should always be in a statement block' ].
-				  node ]
-		  as: Set
 ]
 
 { #category : '*FAST-Python-Tools' }
