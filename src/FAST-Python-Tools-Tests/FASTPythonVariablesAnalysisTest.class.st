@@ -70,6 +70,111 @@ print(x)'.
 ]
 
 { #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllResolvedDeclarations [
+
+	self parseAndResolve: 'x = 1
+
+y = 2
+
+print(x)'.
+
+	self assert: model allResolvedDeclarations size equals: 2.
+	self assertCollection: model allResolvedDeclarations hasSameElements: {
+			model module statements first left.
+			model module statements second left }
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllResolvedDeclarationsByName [
+
+	| byName |
+	self parseAndResolve: 'x = 1
+
+print(x)
+
+x = 2
+
+y = 3'.
+
+	byName := model allResolvedDeclarationsByName.
+
+	self assert: byName size equals: 2.
+	self assert: byName keys asArray sort equals: #( 'x' 'y' ).
+	self assert: (byName at: 'x') size equals: 1.
+	self assert: (byName at: 'y') size equals: 1
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllResolvedDeclarationsForReassignedVariable [
+
+	self parseAndResolve: 'x = 1
+
+print(x)
+
+x = 2'.
+
+	self assert: model allResolvedDeclarations size equals: 1.
+	self assert: model allResolvedDeclarations anyOne equals: model module statements first left
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllResolvedVariableVersions [
+
+	| versions |
+	self parseAndResolve: 'x = 1
+
+print(x)
+
+y = 2
+
+print(y)'.
+
+	versions := model allResolvedVariableVersions.
+
+	self assert: versions size equals: 2.
+	self assertCollection: (versions collect: [ :each | each version ]) asArray hasSameElements: { 1. 1 }
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllResolvedVariableVersionsByName [
+
+	| byName |
+	self parseAndResolve: 'x = 1
+
+print(x)
+
+x = 2
+
+y = 3
+
+print(y)'.
+
+	byName := model allResolvedVariableVersionsByName.
+
+	self assert: byName size equals: 3.
+	self assert: byName keys asArray sort equals: #( 'x_1' 'x_2' 'y_1' ).
+	self assert: (byName values allSatisfy: [ :each | each size = 1 ])
+]
+
+{ #category : 'tests' }
+FASTPythonVariablesAnalysisTest >> testAllResolvedVariableVersionsForReassignedVariable [
+
+	| versions |
+	self parseAndResolve: 'x = 1
+
+print(x)
+
+x = 2
+
+print(x)'.
+
+	versions := model allResolvedVariableVersions.
+
+	self assert: versions size equals: 2.
+	self assertCollection: (versions collect: [ :each | each version ]) asArray hasSameElements: { 1. 2 }
+]
+
+{ #category : 'tests' }
 FASTPythonVariablesAnalysisTest >> testAllResolvedVariablesByNameEmptyModel [
 	| byName |
 	self parseAndResolve: ''.
