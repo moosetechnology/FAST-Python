@@ -202,6 +202,8 @@ It is possible to ask a few things to the nodes once the resolution is done:
 On the model:
 - `model allResolvedVariables` returns all nodes in the model that resolve to a variable declaration. This is a shortcut for querying the model-level view of all resolved variables
 - `model allResolvedVariablesByName` returns a dictionary grouping the resolved variables of the model by their name. The keys are the names (String) and the values are the collection of entities having this name 
+- `model allResolvedDeclarations` returns all the local declarations of the resolved variables of the model. Each declaration appears only once, even if it has several accesses
+- `model allResolvedDeclarationsByName` returns a dictionary grouping the local declarations of the resolved variables of the model by their name. The keys are the names (String) and the values are the collection of declarations having this name 
 
 
 ## Control Flow Graph (CFG)
@@ -311,6 +313,10 @@ On top of this, it is possible to get information via the SSA directly with the 
 - `node allNodesUsingMyVersion` same as `allNodesUsingMe` but only with the accesses reachable from the current SSA version of the node. In case of a Phi version, the accesses of all the reachable versions are considered
 - `node statementsUsingMyVersion` same as `statementsUsingMe` but only with the accesses reachable from the current SSA version of the node
 - `node callsOnVariableVersion` same as `callsOnVariable` but only with the reads reachable from the current SSA version of the node
+
+On the model:
+- `model allResolvedVariableVersions` returns all the SSA versions of the resolved variables of the model. Each version appears only once. Requires the SSA resolution
+- `model allResolvedVariableVersionsByName` returns a dictionary grouping the SSA versions of the resolved variables of the model by their name. The keys are the version names (String) such as `x_1` and the values are the collection of versions having this name. Requires the SSA resolution
 
 ### Assigned expressions
 
@@ -502,6 +508,10 @@ The requirement column indicates what needs to be done on the model before using
 | `usedVariables` | `FASTPyEntity` | LR | Returns all the entities of the node and its subtree resolving to local variable declarations (includes the node itself if it is one) |
 | `allResolvedVariables` | `FASTPyModel` | LR | Returns every entity of the model resolving to a variable declaration |
 | `allResolvedVariablesByName` | `FASTPyModel` | LR | Returns a dictionary grouping the resolved variables of the model by their name. The keys are the names (String) and the values are the collection of entities having this name |
+| `allResolvedDeclarations` | `FASTPyModel` | LR | Returns all the local declarations of the resolved variables of the model, each declaration only once |
+| `allResolvedDeclarationsByName` | `FASTPyModel` | LR | Returns a dictionary grouping the local declarations of the resolved variables of the model by their name. The keys are the names (String) and the values are the collection of declarations having this name |
+| `allResolvedVariableVersions` | `FASTPyModel` | SSA | Returns all the SSA versions of the resolved variables of the model, each version only once |
+| `allResolvedVariableVersionsByName` | `FASTPyModel` | SSA | Returns a dictionary grouping the SSA versions of the resolved variables of the model by their name. The keys are the version names (String) such as `x_1` and the values are the collection of versions having this name |
 
 #### Accessing the SSA versions of a variable
 
