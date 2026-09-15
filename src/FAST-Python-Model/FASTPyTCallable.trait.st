@@ -32,11 +32,11 @@ FASTPyTCallable classSide >> annotation [
 ]
 
 { #category : 'accessing' }
-FASTPyTCallable >> callOnMe [
+FASTPyTCallable >> allCallOnMe [
 
 	self caller ifNotNil: [ ^ self caller ].
 
-	^ super callOnMe
+	^ super allCallOnMe
 ]
 
 { #category : 'accessing' }

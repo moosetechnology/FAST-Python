@@ -119,12 +119,21 @@ FASTPyExpression class >> isAbstract [
 ]
 
 { #category : 'accessing' }
-FASTPyExpression >> callOnMe [
+FASTPyExpression >> allCallOnMe [
 	"See implementation in my superclass for an explanation of what I do."
 
 	self parentAttributeObject ifNotNil: [ :attribute | ^ attribute caller ].
 
 	self parentSubscriptValue ifNotNil: [ :subscript | ^ subscript caller ].
+
+	^ super allCallOnMe
+]
+
+{ #category : 'accessing' }
+FASTPyExpression >> callOnMe [
+	"See implementation in my superclass for an explanation of what I do."
+
+	self parentAttributeObject ifNotNil: [ :attribute | ^ attribute caller ].
 
 	^ super callOnMe
 ]

@@ -1,6 +1,32 @@
 Extension { #name : 'FASTPyEntity' }
 
 { #category : '*FAST-Python-Tools' }
+FASTPyEntity >> allCallsOnVariable [
+	"If I am a variable, return all the call nodes having me as caller: the callee of the call is me, an internal access on me, or an attribute access on me, grouping calls such as `x()`, `x[3]()` and `x.y()`.
+
+	Contrary to #callsOnVariable that only returns the calls where I am the object receiving the call (`x.y()`), I also return the calls where I am directly the callee (`x()`) or where an internal access on me is the callee (`x[3]()`).
+
+	I need the local resolution to be done before."
+
+	^ self allReadAccesses
+		  collect: #allCallOnMe
+		  thenReject: #isNil
+]
+
+{ #category : '*FAST-Python-Tools' }
+FASTPyEntity >> allCallsOnVariableVersion [
+	"If I am a variable, return all the call nodes having me as caller for my current SSA version: the callee of the call is me, an internal access on me, or an attribute access on me, grouping calls such as `x()`, `x[3]()` and `x.y()`.
+
+	Contrary to #callsOnVariableVersion that only returns the calls where I am the object receiving the call (`x.y()`), I also return the calls where I am directly the callee (`x()`) or where an internal access on me is the callee (`x[3]()`).
+
+	I need the SSA to be done before."
+
+	^ self versionReadAccesses
+		  collect: #allCallOnMe
+		  thenReject: #isNil
+]
+
+{ #category : '*FAST-Python-Tools' }
 FASTPyEntity >> allNodesUsingMe [
 	"If I am a variable, return all the nodes using me and all the other accesses of the same variable: the ancestors of each access of the variable, stopping (exclusively) when the parent is a FASTTStatementBlock (Module, function, method, clauses, ...).
 	For example, for `return x + 3`, I return the return statement and the binary operation.
@@ -96,7 +122,7 @@ FASTPyEntity >> allStatementsUsingMyVersion [
 
 { #category : '*FAST-Python-Tools' }
 FASTPyEntity >> callsOnVariable [
-	"If I am a variable, return all the call nodes having my read accesses as receiver. This will group invocations and instantiations.
+	"If I am a variable, return all the call nodes having me as receiver: the callee of the call is an attribute access on me, such as `x.y()`.
 
 	I need the local resolution to be done before."
 
@@ -107,7 +133,7 @@ FASTPyEntity >> callsOnVariable [
 
 { #category : '*FAST-Python-Tools' }
 FASTPyEntity >> callsOnVariableVersion [
-	"If I am a variable, return all the call nodes having my variable version (SSA)) as receiver. This will group invocations and instantiations.
+	"If I am a variable, return all the call nodes having me as receiver for my current SSA version: the callee of the call is an attribute access on me, such as `x.y()`.
 
 	I need the SSA to be done before."
 

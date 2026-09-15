@@ -54,6 +54,23 @@ FASTPyEntity class >> metamodel [
 ]
 
 { #category : 'accessing' }
+FASTPyEntity >> allCallOnMe [
+	"Return, if it exists, a call done on me.
+	
+	I am used for #allCallsOnVariable. 
+	
+	I'll return the call in those cases (I am x)
+	
+	x.y()
+	x()
+	x[0]()
+	
+	I know this is not 'really' the receiver in all 3 cases, but this is what is wanted for the project using #callsOnVariable. Maybe I should be renamed to show that I am private?"
+
+	^ nil
+]
+
+{ #category : 'accessing' }
 FASTPyEntity >> assignedExpressions [
 
 	^ Array empty
@@ -68,10 +85,11 @@ FASTPyEntity >> callOnMe [
 	I'll return the call in those cases (I am x)
 	
 	x.y()
-	x()
-	x[0]()
 	
-	I know this is not 'really' the receiver in all 3 cases, but this is what is wanted for the project using #callsOnVariable. Maybe I should be renamed to show that I am private?"
+	But not in those cases: 
+	
+	x()
+	x[0]()"
 
 	^ nil
 ]
