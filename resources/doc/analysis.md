@@ -196,7 +196,8 @@ It is possible to ask a few things to the nodes once the resolution is done:
 - `node internalAccesses` if the node is a variable, returns all the internal accesses done on the variable, i.e. the attribute accesses and subscripts such as `x.y` and `x[3]`, on all the accesses of the variable
 - `node allNodesUsingMe` if the node is a variable, returns all the nodes using the variable: for each access of the variable, all its ancestors up to the statement containing it, without going further than the statement blocks (Module, function, method, clauses, ...). For example, for `return x + 3`, it returns the return statement and the binary operation
 - `node allStatementsUsingMe` if the node is a variable, returns the statements using the variable: same as `allNodesUsingMe` but only the statement of each access, without the intermediate nodes
-- `node callsOnVariable` if the node is a variable, returns the calls made on the variable, i.e. the `FASTPyCall` nodes having the variable as receiver: the callee of the call is the read of the variable itself (such as the invocation or instantiation `x()`) or an internal access on the variable (such as `x.append(1)` or `x[3]()`)
+- `node allCallsOnVariable` if the node is a variable, returns all the calls made on the variable, i.e. the `FASTPyCall` nodes having the variable as caller: the callee of the call is the read of the variable itself (such as the invocation or instantiation `x()`), an internal access on the variable (such as `x[3]()`) or an attribute access on the variable (such as `x.append(1)`). Contrary to `callsOnVariable`, it groups all the call styles, whether the variable is directly the callee or only the object receiving the call
+- `node callsOnVariable` if the node is a variable, returns the calls made on the variable where the variable is the object receiving the call: only the `FASTPyCall` nodes whose callee is an attribute access on the variable, such as `x.y()`. Calls where the variable is directly the callee (`x()`) or where only an internal access on it is the callee (`x[3]()`) are not included
 - `node variableDeclaration` if the node that is a variable write access, it will return the node assigning the variable (can be an assignment, augmented assignment, for loop or for in clause)
 
 On the model:
@@ -312,6 +313,7 @@ On top of this, it is possible to get information via the SSA directly with the 
 - `node versionWriteAccesses` returns all the write accesses for this specific version of the variable
 - `node allNodesUsingMyVersion` same as `allNodesUsingMe` but only with the accesses reachable from the current SSA version of the node. In case of a Phi version, the accesses of all the reachable versions are considered
 - `node allStatementsUsingMyVersion` same as `allStatementsUsingMe` but only with the accesses reachable from the current SSA version of the node
+- `node allCallsOnVariableVersion` same as `allCallsOnVariable` but only with the reads reachable from the current SSA version of the node
 - `node callsOnVariableVersion` same as `callsOnVariable` but only with the reads reachable from the current SSA version of the node
 
 On the model:
@@ -553,7 +555,9 @@ The requirement column indicates what needs to be done on the model before using
 
 | Selector | Receiver | Requirement | Description |
 |---|---|---|---|
-| `callsOnVariable` | Any access of a variable | LR | Returns the `FASTPyCall` nodes having the variable as receiver: the callee is the read of the variable itself (invocation or instantiation `x()`) or an internal access on it (`x.append(1)`, `x[3]()`) |
+| `allCallsOnVariable` | Any access of a variable | LR | Returns all the `FASTPyCall` nodes having the variable as caller: the callee of the call is the read of the variable itself (invocation or instantiation `x()`) or an internal or attribute access on it (`x[3]()`, `x.append(1)`) |
+| `callsOnVariable` | Any access of a variable | LR | Returns the `FASTPyCall` nodes where the variable is the object receiving the call: only the calls whose callee is an attribute access on the variable, such as `x.y()`. The calls where the variable is directly the callee (`x()`) or where an internal access is the callee (`x[3]()`) are excluded |
+| `allCallsOnVariableVersion` | Any access of a variable | SSA | Same as `#allCallsOnVariable` but only with the reads reachable from the current SSA version |
 | `callsOnVariableVersion` | Any access of a variable | SSA | Same as `#callsOnVariable` but only with the reads reachable from the current SSA version |
 
 #### Getting the assigned expressions
