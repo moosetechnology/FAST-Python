@@ -24,6 +24,7 @@ A general note: When we import an entity, we cannot know if it is a variable, a 
 		- [Python 2 VS Python 3](#python-2-vs-python-3)
 		- [Global and Non local statement](#global-and-non-local-statement)
 	- [API](#api)
+		- [Nodes included between lines](#nodes-included-between-lines)
 		- [Variables analysis](#variables-analysis)
 			- [Knowing what is a variable](#knowing-what-is-a-variable)
 			- [Accessing the SSA versions of a variable](#accessing-the-ssa-versions-of-a-variable)
@@ -71,6 +72,36 @@ For nodes representing a write access to a variable (it is possible to find them
 A node can also be accessed internally, via an attribute access such as `x.y` or a subscript such as `x[3]`. For a node used as the accessed object of such an access, `#internalAccess` returns that access. It returns `nil` if the node is not accessed internally.
 
 `#internalAccess` is mostly used by `#internalAccesses`, which returns all the internal accesses done on a variable, and requires the local resolution to be done.
+
+A node can also be queried based on its position in the source, using line numbers:
+- `#isBetweenLine:and:` returns `true` if the node is fully included in the line bounds given as parameters, `false` otherwise
+- `#isPartiallyBetweenLine:and:` returns `true` if the node is partially included in the line bounds, i.e. it overlaps a bound without being fully inside them. A node fully inside the bounds returns `false`
+- `#nodesIncludedBetween:and:` returns the highest level nodes of the subtree that are fully included in the line bounds, bounds included. If a node is only partially inside the bounds, we descend into its children to look for nodes that are fully inside. This means that if an assignment `x = 1` matches, only the assignment is returned, not its identifier `x` and literal `1`
+
+For example, with this code:
+
+```python
+x = 1            # line 1
+y = 2            # line 2
+print(x + y)     # line 3
+```
+
+```smalltalk
+model := FASTPythonImporter parse: 'x = 1
+y = 2
+print(x + y)'.
+
+firstAssignment := model module statements first.    "x = 1, line 1"
+secondAssignment := model module statements second.  "y = 2, line 2"
+
+firstAssignment isBetweenLine: 1 and: 1.            "true"
+firstAssignment isBetweenLine: 2 and: 2.            "false"
+
+firstAssignment isPartiallyBetweenLine: 1 and: 3.   "false (fully inside the bounds)"
+secondAssignment isPartiallyBetweenLine: 1 and: 2.  "true (ends on the second bound)"
+
+model module nodesIncludedBetween: 1 and: 1.        "the first assignment, not its subnodes x and 1"
+```
 
 TODO: Document more
 
@@ -452,6 +483,14 @@ The requirement column indicates what needs to be done on the model before using
 - Vanilla: nothing, it works on the freshly imported model
 - LR: the local resolution needs to be done
 - SSA: the SSA resolution needs to be done (which includes the local resolution)
+
+### Nodes included between lines
+
+| Selector | Receiver | Requirement | Description |
+|---|---|---|---|
+| `isBetweenLine:and:` | `FASTPyEntity` | Vanilla | Returns `true` if the node is fully included in the line bounds given as parameters |
+| `isPartiallyBetweenLine:and:` | `FASTPyEntity` | Vanilla | Returns `true` if the node is partially included in the line bounds (it overlaps a bound without being fully inside them), `false` if it is fully inside |
+| `nodesIncludedBetween:and:` | `FASTPyEntity` | Vanilla | Returns the highest level nodes of the subtree that are fully included in the line bounds, bounds included. If a node is only partially inside the bounds, its children are visited to look for nodes fully inside |
 
 ### Variables analysis
 
