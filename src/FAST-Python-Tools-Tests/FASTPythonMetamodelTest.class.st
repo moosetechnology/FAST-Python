@@ -1,6 +1,6 @@
 Class {
 	#name : 'FASTPythonMetamodelTest',
-	#superclass : 'TSFASTAbstractImporterTest',
+	#superclass : 'TestCase',
 	#category : 'FAST-Python-Tools-Tests-Core',
 	#package : 'FAST-Python-Tools-Tests',
 	#tag : 'Core'

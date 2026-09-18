@@ -37,6 +37,9 @@ Dictionary new
 Class {
 	#name : 'FASTPythonImporterTest',
 	#superclass : 'TSFASTAbstractImporterTest',
+	#instVars : [
+		'persist'
+	],
 	#category : 'FAST-Python-Tools-Tests-Importer',
 	#package : 'FAST-Python-Tools-Tests',
 	#tag : 'Importer'
@@ -47,6 +50,12 @@ FASTPythonImporterTest class >> regenerateAllTests [
 
 	<script>
 	super regenerateAllTests
+]
+
+{ #category : 'building suites' }
+FASTPythonImporterTest class >> testParameters [
+
+	^ ParametrizedTestMatrix new forSelector: #persist addOptions: { false. true }
 ]
 
 { #category : 'test generation' }
@@ -73,6 +82,36 @@ FASTPythonImporterTest class >> traitsToTest [
 		  FASTTReturnStatement.
 		  FamixTHasImmediateSource.
 		  FamixTSourceAnchor }
+]
+
+{ #category : 'running' }
+FASTPythonImporterTest >> exportAndImportModelIfNeeded [
+
+	| json |
+	self persist ifFalse: [ ^ self ].
+
+	json := fast asJSONString.
+
+	fast := json readStreamDo: [ :stream | FASTPyModel new importFromJSONStream: stream ]
+]
+
+{ #category : 'running' }
+FASTPythonImporterTest >> parse: aString [
+
+	super parse: aString.
+	self exportAndImportModelIfNeeded.
+
+	^ fast
+]
+
+{ #category : 'accessing' }
+FASTPythonImporterTest >> persist [
+	^ persist
+]
+
+{ #category : 'accessing' }
+FASTPythonImporterTest >> persist: anObject [
+	persist := anObject
 ]
 
 { #category : 'tests - with statements' }
