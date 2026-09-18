@@ -9,8 +9,9 @@ Class {
 { #category : 'parsing' }
 FASTPythonSSATest >> parseAndResolve: aString [
 
-	self parse: aString.
-	FASTPythonSSAVisitor resolve: model module
+	self privateParse: aString.
+	FASTPythonSSAVisitor resolve: model module.
+	self exportAndImportModelIfNeeded
 ]
 
 { #category : 'tests - assignments' }

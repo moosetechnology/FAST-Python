@@ -9,8 +9,9 @@ Class {
 { #category : 'resolving' }
 FASTPythonLocalResolverTest >> parseAndResolve: aString [
 
-	self parse: aString.
-	FASTPythonLocalResolverVisitor resolve: model module
+	self privateParse: aString.
+	FASTPythonLocalResolverVisitor resolve: model module.
+	self exportAndImportModelIfNeeded
 ]
 
 { #category : 'tests - if' }
