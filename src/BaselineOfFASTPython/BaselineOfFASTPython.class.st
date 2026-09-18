@@ -12,7 +12,10 @@ Class {
 BaselineOfFASTPython >> baseline: spec [
 
 	<baseline>
-	spec for: #common do: [ "Dependencies"
+	spec for: #common do: [ 
+			spec preLoadDoIt: #'preload:package:'.
+			
+			"Dependencies"
 			self
 				fast: spec;
 				treeSitter: spec.
@@ -40,6 +43,13 @@ BaselineOfFASTPython >> fast: spec [
 				repository: 'github://moosetechnology/FAST:v3/src' ]
 ]
 
+{ #category : 'actions' }
+BaselineOfFASTPython >> preload: loader package: packageSpec [
+	"For now we use the bleeding edge of tree-sitter-python"
+
+	(self class environment at: #TreeSitterLibraryBranchMap ifAbsentPut: [ Dictionary new ]) at: 'Python' put: 'master'
+]
+
 { #category : 'accessing' }
 BaselineOfFASTPython >> projectClass [
 	^ MetacelloCypressBaselineProject
@@ -47,6 +57,9 @@ BaselineOfFASTPython >> projectClass [
 
 { #category : 'dependencies' }
 BaselineOfFASTPython >> treeSitter: spec [
-	spec
-		baseline: 'TreeSitter' with: [ spec repository: 'github://Evref-BL/Pharo-Tree-Sitter:v.2.0.0/src' ]
+
+	spec baseline: 'TreeSitter' with: [
+			spec
+				repository: 'github://Evref-BL/Pharo-Tree-Sitter:v.2.1.2/src';
+				loads: #( 'moose' 'python' ) ]
 ]
