@@ -25,13 +25,6 @@ Class {
 	#tag : 'Importing'
 }
 
-{ #category : 'class initialization' }
-FASTPythonTreeSitterVisitor class >> initialize [
-	"For now we use the bleeding edge"
-
-	TSLibrariesPython gitBranchToUse: 'master'
-]
-
 { #category : 'private' }
 FASTPythonTreeSitterVisitor >> handleBinaryOperator: aTSNode ofKind: aClass [
 
