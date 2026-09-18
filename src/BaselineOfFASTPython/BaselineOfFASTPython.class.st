@@ -57,6 +57,9 @@ BaselineOfFASTPython >> projectClass [
 
 { #category : 'dependencies' }
 BaselineOfFASTPython >> treeSitter: spec [
-	spec
-		baseline: 'TreeSitter' with: [ spec repository: 'github://Evref-BL/Pharo-Tree-Sitter:v.2.1.2/src' ]
+
+	spec baseline: 'TreeSitter' with: [
+			spec
+				repository: 'github://Evref-BL/Pharo-Tree-Sitter:v.2.1.2/src';
+				loads: #( 'moose' 'python' ) ]
 ]
