@@ -38,6 +38,7 @@ FASTPyTSuperclass >> parentClassDefinition [
 	<ignoreForCoverage>
 	<generated>
 	<container>
+	<derived>
 	^ parentClassDefinition
 ]
 

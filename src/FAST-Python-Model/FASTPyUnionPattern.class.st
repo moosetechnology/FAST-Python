@@ -53,7 +53,6 @@ FASTPyUnionPattern >> members [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ members
 ]
 

@@ -80,6 +80,7 @@ FASTPyTPattern >> parentUnionPattern [
 	<ignoreForCoverage>
 	<generated>
 	<container>
+	<derived>
 	^ parentUnionPattern
 ]
 

@@ -63,7 +63,6 @@ FASTPyIfStatement >> elifClauses [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ elifClauses
 ]
 

@@ -38,6 +38,7 @@ FASTPyTClassPatternElement >> parentClassPattern [
 	<ignoreForCoverage>
 	<generated>
 	<container>
+	<derived>
 	^ parentClassPattern
 ]
 

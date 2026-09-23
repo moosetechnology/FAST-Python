@@ -146,6 +146,7 @@ FASTPyExpression >> collectionInitializer [
 	<generated>
 	<FMComment: 'The owner of the expression'>
 	<container>
+	<derived>
 	^ collectionInitializer
 ]
 
@@ -183,6 +184,7 @@ FASTPyExpression >> parentAssertStatement [
 	<generated>
 	<FMComment: 'The assert statement that own the expression (if it''s the case)'>
 	<container>
+	<derived>
 	^ parentAssertStatement
 ]
 
@@ -260,6 +262,7 @@ FASTPyExpression >> parentComparisonOperator [
 	<generated>
 	<FMComment: 'Parent comparison expression of which I am.'>
 	<container>
+	<derived>
 	^ parentComparisonOperator
 ]
 
@@ -297,6 +300,7 @@ FASTPyExpression >> parentComprehensionCondition [
 	<ignoreForCoverage>
 	<generated>
 	<container>
+	<derived>
 	^ parentComprehensionCondition
 ]
 
@@ -315,6 +319,7 @@ FASTPyExpression >> parentComprehensionForClause [
 	<ignoreForCoverage>
 	<generated>
 	<container>
+	<derived>
 	^ parentComprehensionForClause
 ]
 
@@ -409,6 +414,7 @@ FASTPyExpression >> parentExecStatementScopes [
 	<ignoreForCoverage>
 	<generated>
 	<container>
+	<derived>
 	^ parentExecStatementScopes
 ]
 
@@ -640,6 +646,7 @@ FASTPyExpression >> parentSlice [
 	<generated>
 	<FMComment: 'Slice in which I am a component (start, end or step) (If it''s the case)'''>
 	<container>
+	<derived>
 	^ parentSlice
 ]
 
@@ -736,6 +743,7 @@ FASTPyExpression >> prarentPrintStatement [
 	<ignoreForCoverage>
 	<generated>
 	<container>
+	<derived>
 	^ prarentPrintStatement
 ]
 

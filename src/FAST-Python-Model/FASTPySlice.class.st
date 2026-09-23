@@ -52,7 +52,6 @@ FASTPySlice >> components [
 	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The components are the expressions between the `:` of a slice.'>
-	<derived>
 	^ components
 ]
 

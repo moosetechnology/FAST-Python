@@ -39,6 +39,7 @@ FASTPyTSliceIndex >> parentSubscriptIndex [
 	<generated>
 	<FMComment: 'My parent if I am defining an index to select of a subscript (if it''s the case)'>
 	<container>
+	<derived>
 	^ parentSubscriptIndex
 ]
 

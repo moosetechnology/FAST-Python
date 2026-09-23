@@ -38,6 +38,7 @@ FASTPyTWithStatementItem >> parentWithStatementItem [
 	<ignoreForCoverage>
 	<generated>
 	<container>
+	<derived>
 	^ parentWithStatementItem
 ]
 

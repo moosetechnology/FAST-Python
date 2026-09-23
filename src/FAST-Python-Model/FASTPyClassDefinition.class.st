@@ -85,7 +85,6 @@ FASTPyClassDefinition >> keywords [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ keywords
 ]
 
@@ -103,7 +102,6 @@ FASTPyClassDefinition >> superclasses [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ superclasses
 ]
 

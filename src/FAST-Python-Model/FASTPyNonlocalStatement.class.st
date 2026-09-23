@@ -45,7 +45,6 @@ FASTPyNonlocalStatement >> variables [
 	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The variables scoped'>
-	<derived>
 	^ variables
 ]
 

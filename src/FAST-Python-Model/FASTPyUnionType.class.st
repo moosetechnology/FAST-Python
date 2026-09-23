@@ -51,7 +51,6 @@ FASTPyUnionType >> types [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ types
 ]
 

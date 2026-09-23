@@ -70,7 +70,6 @@ FASTPyString >> interpolations [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ interpolations
 ]
 
@@ -89,6 +88,7 @@ FASTPyString >> parentConcatenatedString [
 	<ignoreForCoverage>
 	<generated>
 	<container>
+	<derived>
 	^ parentConcatenatedString
 ]
 

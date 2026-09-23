@@ -55,7 +55,6 @@ FASTPyClassPattern >> elements [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ elements
 ]
 

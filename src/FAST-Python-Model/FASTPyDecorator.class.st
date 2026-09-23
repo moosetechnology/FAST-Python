@@ -62,6 +62,7 @@ FASTPyDecorator >> parentDefinition [
 	<ignoreForCoverage>
 	<generated>
 	<container>
+	<derived>
 	^ parentDefinition
 ]
 

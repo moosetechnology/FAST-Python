@@ -92,6 +92,7 @@ FASTPyExceptClause >> parentTryStatement [
 	<ignoreForCoverage>
 	<generated>
 	<container>
+	<derived>
 	^ parentTryStatement
 ]
 

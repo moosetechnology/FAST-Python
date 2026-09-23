@@ -156,6 +156,7 @@ FASTPyType >> parentGenericTypeArgument [
 	<ignoreForCoverage>
 	<generated>
 	<container>
+	<derived>
 	^ parentGenericTypeArgument
 ]
 
@@ -212,6 +213,7 @@ FASTPyType >> parentUnionType [
 	<ignoreForCoverage>
 	<generated>
 	<container>
+	<derived>
 	^ parentUnionType
 ]
 
@@ -230,6 +232,7 @@ FASTPyType >> parentWithTypeParameters [
 	<ignoreForCoverage>
 	<generated>
 	<container>
+	<derived>
 	^ parentWithTypeParameters
 ]
 

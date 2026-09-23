@@ -46,7 +46,6 @@ FASTPyMatchStatement >> cases [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ cases
 ]
 

@@ -64,7 +64,6 @@ FASTPySubscript >> indices [
 	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The elements defining the indices to select in a subscript.'>
-	<derived>
 	^ indices
 ]
 

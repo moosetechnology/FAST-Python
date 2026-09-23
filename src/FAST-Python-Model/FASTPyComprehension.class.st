@@ -91,7 +91,6 @@ FASTPyComprehension >> conditions [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ conditions
 ]
 
@@ -109,7 +108,6 @@ FASTPyComprehension >> forClauses [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ forClauses
 ]
 
