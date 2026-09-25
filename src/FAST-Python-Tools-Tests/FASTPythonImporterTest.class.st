@@ -4657,47 +4657,98 @@ FASTPythonImporterTest >> testAwaitSubscript [
 
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperator [
+	<generated>
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	Regenerate executing: 	self regenerateTest: #testBinaryOperator 	"
 
-	| operator |
 	self parse: '40 + 2'.
 
-	self assert: (fast allWithType: FASTPyModule) size equals: 1.
 	self assert: (fast allWithType: FASTPyBinaryOperator) size equals: 1.
+	self assert: (fast allWithType: FASTPyInteger) size equals: 2.
+	self assert: (fast allWithType: FASTPyModule) size equals: 1.
 
-	operator := (fast allWithType: FASTPyBinaryOperator) anyOne.
-	self assert: operator sourceCode equals: '40 + 2'.
-	self assert: (operator isOfType: FASTTBinaryExpression).
-	self assert: operator leftOperand sourceCode equals: '40'.
-	self assert: (operator leftOperand isOfType: FASTPyInteger).
-	self assert: operator rightOperand sourceCode equals: '2'.
-	self assert: (operator rightOperand isOfType: FASTPyInteger).
-	self assert: operator operator equals: '+'
+	stack push: fast rootEntities anyOne containedEntities first.
+	self assert: self topEntity sourceCode equals: '40 + 2'.
+	self assert: (self topEntity isOfType: FASTPyBinaryOperator).
+	self assert: (self topEntity isOfType: FASTTBinaryExpression).
+	
+	"Testing value of monovalue relation leftOperand"
+	self assert: self topEntity leftOperand isNotNil.
+
+		stack push: self topEntity leftOperand.
+		self assert: self topEntity sourceCode equals: '40'.
+		self assert: (self topEntity isOfType: FASTPyInteger).
+		self assert: (self topEntity isOfType: FASTTLiteral).
+		self assert: (self topEntity isOfType: FASTTNumericalLiteral).
+		stack pop.
+	self assert: self topEntity operator equals: '+'.
+	
+	"Testing value of monovalue relation rightOperand"
+	self assert: self topEntity rightOperand isNotNil.
+
+		stack push: self topEntity rightOperand.
+		self assert: self topEntity sourceCode equals: '2'.
+		self assert: (self topEntity isOfType: FASTPyInteger).
+		self assert: (self topEntity isOfType: FASTTLiteral).
+		self assert: (self topEntity isOfType: FASTTNumericalLiteral)
 ]
 
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBinaryOperatorInBinaryOperator [
+	<generated>
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	Regenerate executing: 	self regenerateTest: #testBinaryOperatorInBinaryOperator 	"
 
-	| operator left |
 	self parse: '40 + 2 - 0'.
 
-	self assert: (fast allWithType: FASTPyModule) size equals: 1.
 	self assert: (fast allWithType: FASTPyBinaryOperator) size equals: 2.
+	self assert: (fast allWithType: FASTPyInteger) size equals: 3.
+	self assert: (fast allWithType: FASTPyModule) size equals: 1.
 
-	operator := (fast allWithType: FASTPyBinaryOperator) anyOne.
-	self assert: operator sourceCode equals: '40 + 2 - 0'.
-	self assert: (operator isOfType: FASTTBinaryExpression).
+	stack push: fast rootEntities anyOne containedEntities first.
+	self assert: self topEntity sourceCode equals: '40 + 2 - 0'.
+	self assert: (self topEntity isOfType: FASTPyBinaryOperator).
+	self assert: (self topEntity isOfType: FASTTBinaryExpression).
+	
+	"Testing value of monovalue relation leftOperand"
+	self assert: self topEntity leftOperand isNotNil.
 
-	self assert: operator operator equals: '-'.
-	self assert: operator rightOperand sourceCode equals: '0'.
-	self assert: (operator rightOperand isOfType: FASTPyInteger).
+		stack push: self topEntity leftOperand.
+		self assert: self topEntity sourceCode equals: '40 + 2'.
+		self assert: (self topEntity isOfType: FASTPyBinaryOperator).
+		self assert: (self topEntity isOfType: FASTTBinaryExpression).
+		
+		"Testing value of monovalue relation leftOperand"
+		self assert: self topEntity leftOperand isNotNil.
 
-	left := operator leftOperand.
-	self assert: left sourceCode equals: '40 + 2'.
-	self assert: (left isOfType: FASTPyBinaryOperator).
-	self assert: (left leftOperand isOfType: FASTPyInteger).
-	self assert: (left leftOperand sourceCode) equals: '40'.
-	self assert: (left rightOperand sourceCode) equals: '2'.
-	self assert: left operator equals: '+'
+			stack push: self topEntity leftOperand.
+			self assert: self topEntity sourceCode equals: '40'.
+			self assert: (self topEntity isOfType: FASTPyInteger).
+			self assert: (self topEntity isOfType: FASTTLiteral).
+			self assert: (self topEntity isOfType: FASTTNumericalLiteral).
+			stack pop.
+		self assert: self topEntity operator equals: '+'.
+		
+		"Testing value of monovalue relation rightOperand"
+		self assert: self topEntity rightOperand isNotNil.
+
+			stack push: self topEntity rightOperand.
+			self assert: self topEntity sourceCode equals: '2'.
+			self assert: (self topEntity isOfType: FASTPyInteger).
+			self assert: (self topEntity isOfType: FASTTLiteral).
+			self assert: (self topEntity isOfType: FASTTNumericalLiteral).
+			stack pop.
+		stack pop.
+	self assert: self topEntity operator equals: '-'.
+	
+	"Testing value of monovalue relation rightOperand"
+	self assert: self topEntity rightOperand isNotNil.
+
+		stack push: self topEntity rightOperand.
+		self assert: self topEntity sourceCode equals: '0'.
+		self assert: (self topEntity isOfType: FASTPyInteger).
+		self assert: (self topEntity isOfType: FASTTLiteral).
+		self assert: (self topEntity isOfType: FASTTNumericalLiteral)
 ]
 
 { #category : 'tests - operators' }
