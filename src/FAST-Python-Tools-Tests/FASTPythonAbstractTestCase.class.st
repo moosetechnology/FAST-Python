@@ -19,9 +19,7 @@ FASTPythonAbstractTestCase class >> isAbstract [
 { #category : 'building suites' }
 FASTPythonAbstractTestCase class >> testParameters [
 
-	self flag: #todo. "enable once the tests of FASTPythonImporterTest will all be green with the parametric tests."
-	"^ ParametrizedTestMatrix new forSelector: #persist addOptions: { false. true }"
-	^ super testParameters
+	^ ParametrizedTestMatrix new forSelector: #persist addOptions: { false. true }
 ]
 
 { #category : 'running' }
@@ -31,7 +29,7 @@ FASTPythonAbstractTestCase >> exportAndImportModelIfNeeded [
 	self persist ifFalse: [ ^ self ].
 
 	json := model asJSONString.
-	self halt.
+
 	model := json readStreamDo: [ :stream | FASTPyModel new importFromJSONStream: stream ]
 ]
 
@@ -47,7 +45,7 @@ FASTPythonAbstractTestCase >> parse: aString [
 { #category : 'accessing' }
 FASTPythonAbstractTestCase >> persist [
 
-	^ persist
+	^ persist ifNil: [ ^ false ]
 ]
 
 { #category : 'accessing' }

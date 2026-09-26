@@ -40,7 +40,7 @@ FASTPythonLocalResolverVisitor class >> resolve: aPythonEntity [
 { #category : 'declarations' }
 FASTPythonLocalResolverVisitor >> bind: aFASTNode toDeclarationNamed: aName [
 
-	^ self bind: aFASTNode toDeclarationNamed: aName ifAbsentUse: [ self ensureNonlocalDeclarationNamed: aName ]
+	^ self bind: aFASTNode toDeclarationNamed: aName ifAbsentUse: [ self ensureNonlocalDeclarationNamed: aName model: aFASTNode mooseModel ]
 ]
 
 { #category : 'declarations' }
@@ -62,7 +62,7 @@ FASTPythonLocalResolverVisitor >> declarationForUndeclaredNode: aNode named: aNa
 				localDeclarationifPresent: [ ^ self ensureDeclarationOf: aName declaration: aNode in: namesContext top ]
 				ifAbsent: [ "Nothing, just let the non local declaration." ] ].
 
-	^ self ensureNonlocalDeclarationNamed: aName
+	^ self ensureNonlocalDeclarationNamed: aName model: aNode mooseModel
 ]
 
 { #category : 'declarations' }
@@ -104,12 +104,13 @@ FASTPythonLocalResolverVisitor >> ensureDeclarationOf: anEntity named: aName dec
 ]
 
 { #category : 'declarations' }
-FASTPythonLocalResolverVisitor >> ensureNonlocalDeclarationNamed: aName [
+FASTPythonLocalResolverVisitor >> ensureNonlocalDeclarationNamed: aName model: mooseModel [
 
 	^ self
 		  ensureDeclarationOf: aName
 		  declaration: (FASTNonLocalDeclaration new
 				   name: aName;
+				   in: [ :declaration | mooseModel add: declaration ];
 				   yourself)
 		  in: namesContext first
 ]
