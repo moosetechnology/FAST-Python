@@ -6368,28 +6368,60 @@ FASTPythonImporterTest >> testBooleanOperator [
 
 { #category : 'tests - operators' }
 FASTPythonImporterTest >> testBooleanOperatorInBooleanOperator [
+	<generated>
+	"Generated as regression test by TSFASTImporterTestGenerator>>#generateTestNamed:fromCode:protocol:
+	Regenerate executing: 	self regenerateTest: #testBooleanOperatorInBooleanOperator 	"
 
-	| operator left |
 	self parse: 'True and True or False'.
 
-	self assert: (fast allWithType: FASTPyModule) size equals: 1.
+	self assert: (fast allWithType: FASTPyBoolean) size equals: 3.
 	self assert: (fast allWithType: FASTPyBooleanOperator) size equals: 2.
+	self assert: (fast allWithType: FASTPyModule) size equals: 1.
 
-	operator := (fast allWithType: FASTPyBooleanOperator) anyOne.
-	self assert: operator sourceCode equals: 'True and True or False'.
-	self assert: (operator isOfType: FASTTBinaryExpression).
+	stack push: fast rootEntities anyOne containedEntities first.
+	self assert: self topEntity sourceCode equals: 'True and True or False'.
+	self assert: (self topEntity isOfType: FASTPyBooleanOperator).
+	self assert: (self topEntity isOfType: FASTTBinaryExpression).
+	
+	"Testing value of monovalue relation leftOperand"
+	self assert: self topEntity leftOperand isNotNil.
 
-	self assert: operator operator equals: 'or'.
-	self assert: operator rightOperand sourceCode equals: 'False'.
-	self assert: (operator rightOperand isOfType: FASTPyBoolean).
+		stack push: self topEntity leftOperand.
+		self assert: self topEntity sourceCode equals: 'True and True'.
+		self assert: (self topEntity isOfType: FASTPyBooleanOperator).
+		self assert: (self topEntity isOfType: FASTTBinaryExpression).
+		
+		"Testing value of monovalue relation leftOperand"
+		self assert: self topEntity leftOperand isNotNil.
 
-	left := operator leftOperand.
-	self assert: left sourceCode equals: 'True and True'.
-	self assert: (left isOfType: FASTPyBooleanOperator).
-	self assert: (left leftOperand isOfType: FASTPyBoolean).
-	self assert: (left leftOperand sourceCode) equals: 'True'.
-	self assert: (left rightOperand sourceCode) equals: 'True'.
-	self assert: left operator equals: 'and'
+			stack push: self topEntity leftOperand.
+			self assert: self topEntity sourceCode equals: 'True'.
+			self assert: (self topEntity isOfType: FASTPyBoolean).
+			self assert: (self topEntity isOfType: FASTTBooleanLiteral).
+			self assert: (self topEntity isOfType: FASTTLiteral).
+			stack pop.
+		self assert: self topEntity operator equals: 'and'.
+		
+		"Testing value of monovalue relation rightOperand"
+		self assert: self topEntity rightOperand isNotNil.
+
+			stack push: self topEntity rightOperand.
+			self assert: self topEntity sourceCode equals: 'True'.
+			self assert: (self topEntity isOfType: FASTPyBoolean).
+			self assert: (self topEntity isOfType: FASTTBooleanLiteral).
+			self assert: (self topEntity isOfType: FASTTLiteral).
+			stack pop.
+		stack pop.
+	self assert: self topEntity operator equals: 'or'.
+	
+	"Testing value of monovalue relation rightOperand"
+	self assert: self topEntity rightOperand isNotNil.
+
+		stack push: self topEntity rightOperand.
+		self assert: self topEntity sourceCode equals: 'False'.
+		self assert: (self topEntity isOfType: FASTPyBoolean).
+		self assert: (self topEntity isOfType: FASTTBooleanLiteral).
+		self assert: (self topEntity isOfType: FASTTLiteral)
 ]
 
 { #category : 'tests - operators' }
