@@ -47,7 +47,6 @@ FASTPyTCallable >> caller [
 	<generated>
 	<FMComment: 'The call entity calling me (if it''s the case)'>
 	<container>
-	<derived>
 	^ caller
 ]
 

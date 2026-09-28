@@ -70,7 +70,6 @@ FASTPyImportedEntity >> import [
 	<generated>
 	<FMComment: 'Import declaring me as imported entity.'>
 	<container>
-	<derived>
 	^ import
 ]
 

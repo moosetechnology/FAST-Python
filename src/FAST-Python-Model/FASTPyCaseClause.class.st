@@ -78,7 +78,6 @@ FASTPyCaseClause >> parentMatchStatement [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentMatchStatement
 ]
 

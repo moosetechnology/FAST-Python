@@ -38,7 +38,6 @@ FASTPyTDecoratorExpression >> parentDeclarator [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentDeclarator
 ]
 

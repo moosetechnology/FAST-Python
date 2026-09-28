@@ -39,7 +39,6 @@ FASTPyTDeletable >> parentDeleteStatement [
 	<generated>
 	<FMComment: 'The delete statement that own the expression (if it''s the case)'>
 	<container>
-	<derived>
 	^ parentDeleteStatement
 ]
 

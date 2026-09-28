@@ -38,7 +38,6 @@ FASTPyTSplatExpression >> parentSplat [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentSplat
 ]
 

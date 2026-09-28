@@ -86,7 +86,6 @@ FASTPyInterpolation >> parentString [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentString
 ]
 

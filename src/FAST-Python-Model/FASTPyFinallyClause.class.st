@@ -54,7 +54,6 @@ FASTPyFinallyClause >> parentTryStatement [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentTryStatement
 ]
 

@@ -62,7 +62,6 @@ FASTPyChevron >> parentPrintStatement [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentPrintStatement
 ]
 

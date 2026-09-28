@@ -54,7 +54,6 @@ FASTPyVariable >> parentGlobalStatement [
 	<generated>
 	<FMComment: 'The global statement defining my scope (if it''s the case)'>
 	<container>
-	<derived>
 	^ parentGlobalStatement
 ]
 
@@ -74,7 +73,6 @@ FASTPyVariable >> parentNonlocalStatement [
 	<generated>
 	<FMComment: 'The global statement defining my scope (if it''s the case)'>
 	<container>
-	<derived>
 	^ parentNonlocalStatement
 ]
 

@@ -88,7 +88,6 @@ FASTPyString >> parentConcatenatedString [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentConcatenatedString
 ]
 

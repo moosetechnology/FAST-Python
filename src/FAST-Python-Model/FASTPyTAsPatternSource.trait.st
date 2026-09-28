@@ -38,7 +38,6 @@ FASTPyTAsPatternSource >> parentAsPatternSource [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentAsPatternSource
 ]
 

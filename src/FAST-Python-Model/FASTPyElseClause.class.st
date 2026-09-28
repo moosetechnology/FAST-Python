@@ -54,7 +54,6 @@ FASTPyElseClause >> parentIfStatement [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentIfStatement
 ]
 

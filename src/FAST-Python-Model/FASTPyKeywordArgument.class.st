@@ -54,7 +54,6 @@ FASTPyKeywordArgument >> parentClassDefinition [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentClassDefinition
 ]
 

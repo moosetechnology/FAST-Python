@@ -55,7 +55,6 @@ FASTPyElifClause >> parentIfStatement [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentIfStatement
 ]
 

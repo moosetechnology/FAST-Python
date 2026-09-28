@@ -38,7 +38,6 @@ FASTPyTExecutable >> parentExecStatement [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentExecStatement
 ]
 

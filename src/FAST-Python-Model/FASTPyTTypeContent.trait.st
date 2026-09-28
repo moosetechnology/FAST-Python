@@ -38,7 +38,6 @@ FASTPyTTypeContent >> parentType [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentType
 ]
 

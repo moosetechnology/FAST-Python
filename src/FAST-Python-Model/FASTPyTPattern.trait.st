@@ -42,7 +42,6 @@ FASTPyTPattern >> parentCaseClause [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentCaseClause
 ]
 
@@ -61,7 +60,6 @@ FASTPyTPattern >> parentKeywordPatternValue [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentKeywordPatternValue
 ]
 
@@ -80,7 +78,6 @@ FASTPyTPattern >> parentUnionPattern [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentUnionPattern
 ]
 
