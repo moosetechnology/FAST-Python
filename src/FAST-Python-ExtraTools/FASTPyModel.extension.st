@@ -10,7 +10,7 @@ FASTPyModel >> exportAsJSONWithDerived [
 FASTPyModel >> exportAsJSONWithDerivedBlacklist: aCollection [
 	"The blacklist should be a collection of properties to exclude such as `TEntityMetalevelDependency>>fanIn`."
 
-	^ '' writeStreamDo: [ :stream |
+	^ String streamContents: [ :stream |
 			  FMModelExporterWithDerived new
 				  blacklist: aCollection;
 				  model: ((FMModel withMetamodel: self metamodel)
