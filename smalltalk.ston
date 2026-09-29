@@ -2,7 +2,7 @@ SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
       #baseline : 'FASTPython',
-      load: [ 'Profile', 'default' ],
+      #load: [ 'Profile', 'default' ],
       #directory : 'src'
     }
   ],
