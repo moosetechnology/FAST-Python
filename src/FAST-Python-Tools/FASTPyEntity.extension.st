@@ -72,9 +72,7 @@ FASTPyEntity >> allSSABasicVersions [
 	
 	Requires SSA resolution."
 
-	^ (self localDeclaration allAccesses
-		   collect: #ssaVersion
-		   thenReject: #isPhi) asSet
+	^ ((self localDeclaration allAccesses collect: #ssaVersion) reject: #isPhi) asSet
 ]
 
 { #category : '*FAST-Python-Tools' }
@@ -164,9 +162,7 @@ FASTPyEntity >> internalAccesses [
 		- subscript `x[3]`
 		- attribute `x.y`"
 
-	^ self allAccesses
-		  collect: #internalAccess
-		  thenReject: #isNil
+	^ (self allAccesses collect: #internalAccess) reject: #isNil
 ]
 
 { #category : '*FAST-Python-Tools' }

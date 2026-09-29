@@ -49,8 +49,7 @@ FASTPythonLocalResolverVisitor >> bind: aFASTNode toDeclarationNamed: aName ifAb
 	| declaration |
 	declaration := (self declarationNamed: aName) ifNil: [ aBlock cull: aFASTNode cull: aName ].
 
-	aFASTNode localDeclaration: declaration.
-	declaration addLocalUse: aFASTNode
+	aFASTNode localDeclaration: declaration
 ]
 
 { #category : 'declarations' }
@@ -88,12 +87,8 @@ FASTPythonLocalResolverVisitor >> ensureDeclarationOf: aName declaration: aFASTN
 							  declaration shadowedBy: aFASTNode.
 
 							  "If the kind is different, we save a new declaration."
-							  aFASTNode ensureLocalUses.
 							  scope at: aName put: aFASTNode ] ]
-		  ifAbsentPut: [
-				  aFASTNode
-					  ensureLocalUses;
-					  yourself ]
+		  ifAbsentPut: [ aFASTNode ]
 ]
 
 { #category : 'declarations' }
