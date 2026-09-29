@@ -67,6 +67,10 @@ The best documentation to read about this project is located in Pharo Tree Sitte
 
 You can find the documentation on some analysis possible here: [Analysis documentation](resources/doc/analysis.md).
 
+You can find the documentation on exporting models with their derived properties (used by the Profile project) here: [Profile documentation](resources/doc/profile.md).
+
+The export and import of a model are covered by parametric tests: the tests run both on the imported model and on the model exported and re-imported.
+
 
 ## Control flow graph
 
