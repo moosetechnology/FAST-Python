@@ -201,7 +201,6 @@ FASTPyExpression >> parentAssignmentRight [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentAssignmentRight
 ]
 
@@ -221,7 +220,6 @@ FASTPyExpression >> parentAttributeObject [
 	<generated>
 	<FMComment: 'My parent if I define the object of an attribute access (if it''s the case).'>
 	<container>
-	<derived>
 	^ parentAttributeObject
 ]
 
@@ -240,7 +238,6 @@ FASTPyExpression >> parentChevron [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentChevron
 ]
 
@@ -278,7 +275,6 @@ FASTPyExpression >> parentComprehensionBody [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentComprehensionBody
 ]
 
@@ -333,7 +329,6 @@ FASTPyExpression >> parentConditionalExpressionElse [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentConditionalExpressionElse
 ]
 
@@ -352,7 +347,6 @@ FASTPyExpression >> parentConditionalExpressionThen [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentConditionalExpressionThen
 ]
 
@@ -371,7 +365,6 @@ FASTPyExpression >> parentDefaultParameterValue [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentDefaultParameterValue
 ]
 
@@ -390,7 +383,6 @@ FASTPyExpression >> parentExceptClause [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentExceptClause
 ]
 
@@ -427,7 +419,6 @@ FASTPyExpression >> parentForInClauseLeft [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentForInClauseLeft
 ]
 
@@ -446,7 +437,6 @@ FASTPyExpression >> parentForInClauseRight [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentForInClauseRight
 ]
 
@@ -466,7 +456,6 @@ FASTPyExpression >> parentForStatementLeft [
 	<generated>
 	<FMComment: 'The for statement left owner (if possible)'>
 	<container>
-	<derived>
 	^ parentForStatementLeft
 ]
 
@@ -486,7 +475,6 @@ FASTPyExpression >> parentForStatementRight [
 	<generated>
 	<FMComment: 'The for statement right owner (if possible)'>
 	<container>
-	<derived>
 	^ parentForStatementRight
 ]
 
@@ -505,7 +493,6 @@ FASTPyExpression >> parentIfClause [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentIfClause
 ]
 
@@ -524,7 +511,6 @@ FASTPyExpression >> parentInterpolation [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentInterpolation
 ]
 
@@ -544,7 +530,6 @@ FASTPyExpression >> parentKeywordArgument [
 	<generated>
 	<FMComment: 'Keyword argument from which I am the value (if it''s the case)'>
 	<container>
-	<derived>
 	^ parentKeywordArgument
 ]
 
@@ -563,7 +548,6 @@ FASTPyExpression >> parentLambda [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentLambda
 ]
 
@@ -582,7 +566,6 @@ FASTPyExpression >> parentMatchStatement [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentMatchStatement
 ]
 
@@ -601,7 +584,6 @@ FASTPyExpression >> parentPairKey [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentPairKey
 ]
 
@@ -620,7 +602,6 @@ FASTPyExpression >> parentPairValuer [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentPairValuer
 ]
 
@@ -659,7 +640,6 @@ FASTPyExpression >> parentSubscriptValue [
 	<generated>
 	<FMComment: 'My parent if I define the receiver of a subscript (if it''s the case).'>
 	<container>
-	<derived>
 	^ parentSubscriptValue
 ]
 
@@ -679,7 +659,6 @@ FASTPyExpression >> parentUnaryOperator [
 	<generated>
 	<FMComment: 'Parent unary operator in which I am.'>
 	<container>
-	<derived>
 	^ parentUnaryOperator
 ]
 
@@ -698,7 +677,6 @@ FASTPyExpression >> parentWalrus [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentWalrus
 ]
 
@@ -717,7 +695,6 @@ FASTPyExpression >> parentYield [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentYield
 ]
 

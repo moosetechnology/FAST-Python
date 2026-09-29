@@ -41,7 +41,6 @@ FASTPyTAsPatternTarget >> parentAsPatternTarget [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentAsPatternTarget
 ]
 

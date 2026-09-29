@@ -57,7 +57,6 @@ FASTPyCollectionInitializer >> initializers [
 	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'Each initializer defines one element.'>
-	<derived>
 	^ initializers
 ]
 

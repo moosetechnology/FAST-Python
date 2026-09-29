@@ -38,7 +38,6 @@ FASTPyTAwaitable >> parentAwait [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentAwait
 ]
 

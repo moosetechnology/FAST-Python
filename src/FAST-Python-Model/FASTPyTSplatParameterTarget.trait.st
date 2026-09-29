@@ -38,7 +38,6 @@ FASTPyTSplatParameterTarget >> parentSplatParameter [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentSplatParameter
 ]
 

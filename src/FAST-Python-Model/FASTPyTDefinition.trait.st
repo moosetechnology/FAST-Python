@@ -62,7 +62,6 @@ FASTPyTDefinition >> decorators [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ decorators
 ]
 

@@ -13,7 +13,7 @@ Class {
 FASTPythonCFGTest >> buildCFGForFunction: aString [
 
 	self parse: aString.
-	startBlock := FASTPythonCFGVisitor buildCFGOf: model allFunctionDefinitions first
+	startBlock := FASTPythonCFGVisitor buildCFGOf: (model allFunctionDefinitions sorted: [ :a :b | a startPos < b startPos ]) first
 ]
 
 { #category : 'tests' }
@@ -39,7 +39,7 @@ FASTPythonCFGTest >> testCFGOfClass [
 { #category : 'tests' }
 FASTPythonCFGTest >> testCFGOfFunction [
 
-	startBlock := FASTPythonCFGVisitor buildCFGOf: (self parse: 'def funct():
+	startBlock := FASTPythonCFGVisitor buildCFGOf: ((self parse: 'def funct():
 	i = 0
 	
 	def funct2(i):
@@ -48,7 +48,7 @@ FASTPythonCFGTest >> testCFGOfFunction [
 	
 	i = funct2(i)
 	print(i)
-	return i') allFunctionDefinitions first.
+	return i') allFunctionDefinitions sorted: [ :a :b | a startPos < b startPos ]) first.
 
 	self assert: startBlock isStart.
 	self assert: startBlock isFinal.

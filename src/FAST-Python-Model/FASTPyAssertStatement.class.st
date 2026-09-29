@@ -47,7 +47,6 @@ FASTPyAssertStatement >> expressions [
 	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'The expressions asserted'>
-	<derived>
 	^ expressions
 ]
 

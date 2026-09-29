@@ -63,7 +63,6 @@ FASTPyExecStatement >> scopes [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ scopes
 ]
 

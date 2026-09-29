@@ -61,7 +61,6 @@ FASTPyGenericType >> arguments [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ arguments
 ]
 

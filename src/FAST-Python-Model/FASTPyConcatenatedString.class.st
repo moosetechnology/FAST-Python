@@ -44,7 +44,6 @@ FASTPyConcatenatedString >> strings [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ strings
 ]
 

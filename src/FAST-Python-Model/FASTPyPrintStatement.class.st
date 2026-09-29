@@ -46,7 +46,6 @@ FASTPyPrintStatement >> expressions [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ expressions
 ]
 

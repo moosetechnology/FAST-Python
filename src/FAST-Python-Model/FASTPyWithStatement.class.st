@@ -61,7 +61,6 @@ FASTPyWithStatement >> items [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ items
 ]
 

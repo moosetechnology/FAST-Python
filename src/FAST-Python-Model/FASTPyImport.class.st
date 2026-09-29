@@ -45,7 +45,6 @@ FASTPyImport >> importedEntities [
 	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'List of the imported entities.'>
-	<derived>
 	^ importedEntities
 ]
 

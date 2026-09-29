@@ -45,7 +45,6 @@ FASTPyTWithTypeParameters >> typeParameters [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ typeParameters
 ]
 

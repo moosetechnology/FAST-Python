@@ -40,7 +40,7 @@ FASTPythonLocalResolverVisitor class >> resolve: aPythonEntity [
 { #category : 'declarations' }
 FASTPythonLocalResolverVisitor >> bind: aFASTNode toDeclarationNamed: aName [
 
-	^ self bind: aFASTNode toDeclarationNamed: aName ifAbsentUse: [ self ensureNonlocalDeclarationNamed: aName ]
+	^ self bind: aFASTNode toDeclarationNamed: aName ifAbsentUse: [ self ensureNonlocalDeclarationNamed: aName model: aFASTNode mooseModel ]
 ]
 
 { #category : 'declarations' }
@@ -49,8 +49,7 @@ FASTPythonLocalResolverVisitor >> bind: aFASTNode toDeclarationNamed: aName ifAb
 	| declaration |
 	declaration := (self declarationNamed: aName) ifNil: [ aBlock cull: aFASTNode cull: aName ].
 
-	aFASTNode localDeclaration: declaration.
-	declaration addLocalUse: aFASTNode
+	aFASTNode localDeclaration: declaration
 ]
 
 { #category : 'declarations' }
@@ -62,7 +61,7 @@ FASTPythonLocalResolverVisitor >> declarationForUndeclaredNode: aNode named: aNa
 				localDeclarationifPresent: [ ^ self ensureDeclarationOf: aName declaration: aNode in: namesContext top ]
 				ifAbsent: [ "Nothing, just let the non local declaration." ] ].
 
-	^ self ensureNonlocalDeclarationNamed: aName
+	^ self ensureNonlocalDeclarationNamed: aName model: aNode mooseModel
 ]
 
 { #category : 'declarations' }
@@ -88,12 +87,8 @@ FASTPythonLocalResolverVisitor >> ensureDeclarationOf: aName declaration: aFASTN
 							  declaration shadowedBy: aFASTNode.
 
 							  "If the kind is different, we save a new declaration."
-							  aFASTNode ensureLocalUses.
 							  scope at: aName put: aFASTNode ] ]
-		  ifAbsentPut: [
-				  aFASTNode
-					  ensureLocalUses;
-					  yourself ]
+		  ifAbsentPut: [ aFASTNode ]
 ]
 
 { #category : 'declarations' }
@@ -104,12 +99,13 @@ FASTPythonLocalResolverVisitor >> ensureDeclarationOf: anEntity named: aName dec
 ]
 
 { #category : 'declarations' }
-FASTPythonLocalResolverVisitor >> ensureNonlocalDeclarationNamed: aName [
+FASTPythonLocalResolverVisitor >> ensureNonlocalDeclarationNamed: aName model: mooseModel [
 
 	^ self
 		  ensureDeclarationOf: aName
 		  declaration: (FASTNonLocalDeclaration new
 				   name: aName;
+				   in: [ :declaration | mooseModel add: declaration ];
 				   yourself)
 		  in: namesContext first
 ]

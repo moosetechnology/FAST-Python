@@ -64,7 +64,6 @@ FASTPyTryStatement >> excepts [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ excepts
 ]
 

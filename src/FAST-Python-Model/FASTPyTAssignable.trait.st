@@ -38,7 +38,6 @@ FASTPyTAssignable >> parentAssignmentLeft [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentAssignmentLeft
 ]
 

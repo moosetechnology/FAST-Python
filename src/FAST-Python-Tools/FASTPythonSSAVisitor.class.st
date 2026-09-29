@@ -47,6 +47,7 @@ FASTPythonSSAVisitor >> createPhiVersionFor: localDeclaration versions: allVersi
 	allVersions size < 2 ifTrue: [ ^ self ]. "No need to create a phi version if we don't have at least 2 versions"
 
 	phiVersion := FASTVariablePhiVersionSSA for: allVersions.
+	allVersions anyOne mooseModel add: phiVersion.
 	localDeclaration activeVersion: phiVersion.
 	^ phiVersion
 ]
@@ -56,6 +57,7 @@ FASTPythonSSAVisitor >> createVariableVersionFor: aFASTEntity [
 
 	| newSSA |
 	newSSA := FASTVariableVersionSSA for: aFASTEntity.
+	aFASTEntity mooseModel add: newSSA.
 	aFASTEntity lastSSAVersion ifNotNil: [ :lastSSA | newSSA version: lastSSA version ].
 
 	aFASTEntity localDeclaration activeVersion: newSSA.

@@ -70,7 +70,6 @@ FASTPyString >> interpolations [
 
 	<ignoreForCoverage>
 	<generated>
-	<derived>
 	^ interpolations
 ]
 

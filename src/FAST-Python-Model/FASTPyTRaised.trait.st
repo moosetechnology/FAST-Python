@@ -38,7 +38,6 @@ FASTPyTRaised >> parentRaiseStatement [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentRaiseStatement
 ]
 

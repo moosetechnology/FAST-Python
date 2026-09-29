@@ -52,7 +52,6 @@ FASTPyComparisonOperator >> operands [
 	<ignoreForCoverage>
 	<generated>
 	<FMComment: 'List of the operands of the comparison operands. For example if we have `a == b != c`, it will be a, b and c.'>
-	<derived>
 	^ operands
 ]
 

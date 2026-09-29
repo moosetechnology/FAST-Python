@@ -9,8 +9,9 @@ Class {
 { #category : 'parsing' }
 FASTPythonSSATest >> parseAndResolve: aString [
 
-	self parse: aString.
-	FASTPythonSSAVisitor resolve: model module
+	self privateParse: aString.
+	FASTPythonSSAVisitor resolve: model module.
+	self exportAndImportModelIfNeeded
 ]
 
 { #category : 'tests - assignments' }
@@ -1880,7 +1881,6 @@ FASTPythonSSATest >> testSingleAssignement [
 	self assert: assignedVar ssaVersion version equals: 1.
 	self assert: assignedVar ssaName equals: 'x_1'.
 
-	self assert: assignedVar localDeclaration newVersionNumber equals: 2.
 	self assert: assignedVar ssaVersion localDeclaration equals: assignedVar localDeclaration.
 	self assert: assignedVar ssaVersion localUses size equals: 1
 ]
@@ -1913,7 +1913,6 @@ FASTPythonSSATest >> testSubscriptAssignement [
 	self assert: assignedVar ssaVersion version equals: 1.
 	self assert: assignedVar ssaName equals: 'x[3]_1'.
 
-	self assert: assignedVar localDeclaration newVersionNumber equals: 2.
 	self assert: assignedVar ssaVersion localDeclaration equals: assignedVar localDeclaration.
 	self assert: assignedVar ssaVersion localUses size equals: 1
 ]

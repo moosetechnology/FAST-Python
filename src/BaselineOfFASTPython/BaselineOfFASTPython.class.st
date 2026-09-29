@@ -12,9 +12,9 @@ Class {
 BaselineOfFASTPython >> baseline: spec [
 
 	<baseline>
-	spec for: #common do: [ 
-			spec preLoadDoIt: #'preload:package:'.
-			
+	spec for: #common do: [
+			spec preLoadDoIt: #preload:package:.
+
 			"Dependencies"
 			self
 				fast: spec;
@@ -25,11 +25,13 @@ BaselineOfFASTPython >> baseline: spec [
 				package: 'FAST-Python-Model' with: [ spec requires: #( 'FAST' 'TreeSitter' ) ];
 				package: 'FAST-Python-Model-Generator';
 				package: 'FAST-Python-Tools' with: [ spec requires: #( 'FAST-Python-Model' ) ];
+				package: 'FAST-Python-ExtraTools' with: [ spec requires: #( 'FAST-Python-Tools' ) ];
 				package: 'FAST-Python-Tools-Tests' with: [ spec requires: #( 'FAST-Python-Tools' ) ].
 
 			"Groups"
 			spec
 				group: 'Core' with: #( 'FAST-Python-Model' 'FAST-Python-Tools' );
+				group: 'Profile' with: #( 'FAST-Python-ExtraTools' );
 				group: 'Generator' with: #( 'FAST-Python-Model-Generator' );
 				group: 'Tests' with: #( 'FAST-Python-Tools-Tests' ) ]
 ]

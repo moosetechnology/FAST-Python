@@ -80,7 +80,6 @@ FASTPyType >> parentAssignment [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentAssignment
 ]
 
@@ -99,7 +98,6 @@ FASTPyType >> parentContrainedType [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentContrainedType
 ]
 
@@ -118,7 +116,6 @@ FASTPyType >> parentContrainedTypeBound [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentContrainedTypeBound
 ]
 
@@ -137,7 +134,6 @@ FASTPyType >> parentFunctionDefinition [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentFunctionDefinition
 ]
 
@@ -174,7 +170,6 @@ FASTPyType >> parentMethodDefinition [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentMethodDefinition
 ]
 
@@ -193,7 +188,6 @@ FASTPyType >> parentParameter [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentParameter
 ]
 
@@ -248,7 +242,6 @@ FASTPyType >> parentyTypeAliasStatementAlias [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentyTypeAliasStatementAlias
 ]
 
@@ -267,7 +260,6 @@ FASTPyType >> parentyTypeAliasStatementType [
 	<ignoreForCoverage>
 	<generated>
 	<container>
-	<derived>
 	^ parentyTypeAliasStatementType
 ]
 

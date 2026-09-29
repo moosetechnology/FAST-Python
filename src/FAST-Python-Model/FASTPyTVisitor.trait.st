@@ -1322,6 +1322,14 @@ FASTPyTVisitor >> visitFASTTBreakStatement: aTBreakStatement [
 ]
 
 { #category : 'visiting' }
+FASTPyTVisitor >> visitFASTTCanBeLocalDeclaration: aTCanBeLocalDeclaration [
+
+	<ignoreForCoverage>
+	<generated>
+
+]
+
+{ #category : 'visiting' }
 FASTPyTVisitor >> visitFASTTCanBeVariable: aTCanBeVariable [
 
 	<ignoreForCoverage>
@@ -1361,6 +1369,7 @@ FASTPyTVisitor >> visitFASTTEntity: aTEntity [
 
 	<ignoreForCoverage>
 	<generated>
+	"We should visit FASTTCanBeLocalDeclaration but all its users in this language already visit it in their superclasses so we skip the call here.".
 	"We should visit TEntityMetaLevelDependency but all its users in this language already visit it in their superclasses so we skip the call here."
 ]
 
