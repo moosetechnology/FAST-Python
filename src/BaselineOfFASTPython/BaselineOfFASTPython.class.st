@@ -30,6 +30,7 @@ BaselineOfFASTPython >> baseline: spec [
 
 			"Groups"
 			spec
+				group: 'default' with: #( 'Core' 'Generator' 'Tests' );
 				group: 'Core' with: #( 'FAST-Python-Model' 'FAST-Python-Tools' );
 				group: 'Profile' with: #( 'FAST-Python-ExtraTools' );
 				group: 'Generator' with: #( 'FAST-Python-Model-Generator' );
