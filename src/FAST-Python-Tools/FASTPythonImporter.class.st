@@ -106,6 +106,13 @@ FASTPythonImporter class >> devParseFiles: aCollection [
 	result inspect
 ]
 
+{ #category : 'accessing' }
+FASTPythonImporter class >> extensions [
+	"File extensions without the dot that the importer handles"
+
+	^ #( 'py' )
+]
+
 { #category : 'parsing' }
 FASTPythonImporter class >> parseAndResolve: aString [
 

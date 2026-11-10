@@ -27387,6 +27387,13 @@ FASTPythonImporterTest >> testGlobalStatementMultiple [
 				self assert: self topEntity name equals: 'z'
 ]
 
+{ #category : 'tests - importer API' }
+FASTPythonImporterTest >> testHandlesPythonFiles [
+
+	self assert: (FASTPythonImporter handlesFile: '/folder/module.py' asFileReference).
+	self deny: (FASTPythonImporter handlesFile: '/folder/module.pyc' asFileReference)
+]
+
 { #category : 'tests - advanced statements' }
 FASTPythonImporterTest >> testIf [
 	<generated>
@@ -40853,6 +40860,16 @@ FASTPythonImporterTest >> testParameter [
 		stack push: (stack top statements at: 1).
 		self assert: self topEntity sourceCode equals: 'pass'.
 		self assert: (self topEntity isOfType: FASTPyPassStatement)
+]
+
+{ #category : 'tests - model reuse' }
+FASTPythonImporterTest >> testParseIntoAnExistingModelAddsTheNewSourceToIt [
+
+	| model |
+	model := self importer parse: 'x = 1'.
+	self assert: (self importer parse: 'y = 2' into: model) identicalTo: model.
+	self assert: (model allWithType: FASTPyModule) size equals: 2.
+	self assert: (model allWithType: FASTPyAssignment) size equals: 2
 ]
 
 { #category : 'tests - statements' }
