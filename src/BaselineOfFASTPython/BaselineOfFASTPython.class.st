@@ -63,6 +63,6 @@ BaselineOfFASTPython >> treeSitter: spec [
 
 	spec baseline: 'TreeSitter' with: [
 			spec
-				repository: 'github://Evref-BL/Pharo-Tree-Sitter:v.2.1.2/src';
+				repository: 'github://Evref-BL/Pharo-Tree-Sitter:v3.3.1/src';
 				loads: #( 'moose' 'python' ) ]
 ]
